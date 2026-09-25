@@ -1,103 +1,59 @@
-# Stack Tecnológica e Bibliotecas Permitidas — FuelFinder
+# Stack Tecnológica — FuelFinder
 
-Este documento define expressamente as versões de runtime, frameworks, dependências aprovadas e ferramentas permitidas para o desenvolvimento da plataforma **FuelFinder**.
+Este documento detalha as tecnologias **planejadas e definidas** para a plataforma **FuelFinder**.
 
----
-
-## 1. Runtime e Linguagem
-
-| Componente | Versão Aprovada | Finalidade / Justificativa |
-| :--- | :--- | :--- |
-| **Java JDK** | **Java 25** (OpenJDK / Eclipse Temurin) | Runtime da aplicação com suporte a Virtual Threads de alta performance, Records modernos e Pattern Matching. |
-| **Build Tool** | **Maven 3.9+** (ou Gradle 8.10+) | Gerenciamento de dependências e automação de build contínuo. |
-| **Encoding** | **UTF-8** | Padrão obrigatório para todo o código-fonte e recursos. |
+> **Diretriz de Rigor:** Somente tecnologias formalmente definidas ou autorizadas nas especificações do projeto constam neste documento. Nenhuma versão não especificada foi inferida ou inventada.
 
 ---
 
-## 2. Framework Principal: Spring Boot Ecosystem
+## 1. Tabela da Stack Tecnológica
 
-| Módulo / Starter | Versão | Descrição de Uso |
-| :--- | :--- | :--- |
-| **Spring Boot** | **3.4.x / 3.5.x** | Core do backend monolítico modular. |
-| **spring-boot-starter-web** | Versão do BOM | Exposição das APIs REST HTTP com suporte a Tomcat embarcado. |
-| **spring-boot-starter-security** | Versão do BOM | Autenticação, autorização de rotas e filtros de segurança RBAC. |
-| **spring-boot-starter-data-jpa** | Versão do BOM | Mapeamento objeto-relacional com Hibernate 6.6+. |
-| **spring-boot-starter-validation**| Versão do BOM | Validação declarativa de entrada via Jakarta Bean Validation. |
-| **spring-boot-starter-actuator**  | Versão do BOM | Métricas, health checks (`/actuator/health`) e observabilidade. |
-
----
-
-## 3. Spring AI (Mecanismo de Inteligência Artificial)
-
-| Dependência | Versão | Finalidade |
-| :--- | :--- | :--- |
-| **spring-ai-bom** | **1.0.0-M6** (ou mais recente) | Alinhamento de dependências do ecossistema Spring AI. |
-| **spring-ai-google-genai-spring-boot-starter** *(ou Vertex AI / OpenAI)* | Versão do BOM | Integração com Gemini API para geração de recomendações personalizadas, análise de sentimento em avaliações e comparações contextuais. |
-
-### Configuração de IA Recomendada:
-- **Modelo Base**: `gemini-1.5-flash` / `gemini-2.0-flash` para baixa latência em respostas da API.
-- **Temperatura**: `0.2` a `0.4` para recomendações determinísticas e consistentes sobre custo-benefício.
+| Categoria | Tecnologia | Versão | Status | Observações |
+| :--- | :--- | :--- | :--- | :--- |
+| **Backend** | Spring Boot | Versão ainda não definida. | Planejada | Framework para desenvolvimento da API REST e monólito modular. |
+| **Banco de Dados** | PostgreSQL | Versão ainda não definida. | Planejada | Banco de dados relacional principal para persistência e transações ACID. |
+| **Frontend** | HTML | Versão ainda não definida. | Planejada | Estrutura base da interface web responsiva para desktop e dispositivos móveis. |
+| **Visualização de Mapa** | Leaflet | 1.9.4 | Definida | Biblioteca JavaScript para renderização interativa do mapa no frontend. |
+| **Provedor de Mapas** | OpenStreetMap | — | Definida | Provedor aberto de tiles de mapas para renderização através do Leaflet. |
+| **Autenticação** | JWT (JSON Web Token) | — | Planejada | Padrão stateless para autenticação e autorização na API REST. |
+| **Navegação Externa** | Google Maps / Waze | — | Definida | Destino para redirecionamento externo de rotas através de deep links / URLs. |
+| **Banco / Geoespacial** | PostGIS | Versão ainda não definida. | Em avaliação | Extensão relacional para consultas geoespaciais avançadas (evolução futura). |
+| **Processamento de Imagem** | Leitura de Fotos / OCR | — | Funcionalidade futura / Em avaliação | Leitura e reconhecimento automático de preços a partir de fotografias. |
 
 ---
 
-## 4. Persistência de Dados e Suporte Geoespacial
+## 2. Classificação das Tecnologias por Status
 
-| Tecnologia / Driver | Versão | Justificativa |
-| :--- | :--- | :--- |
-| **PostgreSQL** | **16+ / 17+** | Banco de dados relacional principal da aplicação. |
-| **PostGIS** | **3.4+** | Extensão geoespacial para cálculos de raio (`ST_DWithin`) e ordenação esferoidal de distância. |
-| **postgresql** (Driver JDBC) | Versão gerenciada | Driver oficial de conexão com o banco. |
-| **hibernate-spatial** | Versão compatível com Hibernate 6.6+ | Suporte a tipos geométricos (`org.locationtech.jts.geom.Point`) em entidades JPA. |
-| **jts-core** | **1.19+** | Biblioteca Java Topology Suite para manipulação de coordenadas espaciais. |
-| **Flyway** (`flyway-core`, `flyway-database-postgresql`) | **10.x+** | Migrações e versionamento estruturado do esquema do banco de dados. |
-| **HikariCP** | Gerenciado | Pool de conexões JDBC de alta performance padrão do Spring Boot. |
+### 2.1 Tecnologias Definidas
+Tecnologias cuja escolha e versão (ou provedor) estão formalmente aprovadas:
+* **Leaflet (1.9.4):** Ferramenta mandatória para o cliente de mapas interativos.
+* **OpenStreetMap:** Base cartográfica para exibição dos mapas sem custos no MVP.
+* **Google Maps e Waze:** Serviços externos mandatários para recepção de rotas redirecionadas pelo sistema.
 
----
+### 2.2 Tecnologias Planejadas
+Tecnologias cuja categoria e produto estão aprovados, mas cuja versão específica ou especificações técnicas detalhadas de implementação estão pendentes:
+* **Spring Boot:** Escolhido como backend da aplicação; versão exata a ser fixada no setup do projeto (`Versão ainda não definida.`).
+* **PostgreSQL:** Escolhido como banco de dados principal; versão exata a ser fixada no setup do ambiente (`Versão ainda não definida.`).
+* **HTML (Web Responsiva):** Escolhido como padrão da camada de visão; frameworks auxiliares ou pré-processadores não foram estipulados.
+* **JWT:** Mecanismo adotado para a camada de segurança; biblioteca de manipulação a ser definida.
 
-## 5. Segurança, Criptografia e Autenticação
-
-| Biblioteca | Versão | Finalidade |
-| :--- | :--- | :--- |
-| **jjwt-api**, **jjwt-impl**, **jjwt-jackson** | **0.12.6+** | Criação, assinatura (HMAC-SHA256) e decodificação de tokens JWT. |
-| **BCryptPasswordEncoder** | Nativo Spring Security | Algoritmo obrigatório para hash de senhas de usuários (fator de custo 12). |
-
----
-
-## 6. Documentação da API
-
-| Dependência | Versão | Finalidade |
-| :--- | :--- | :--- |
-| **springdoc-openapi-starter-webmvc-ui** | **2.7.0+** | Geração automática da especificação OpenAPI 3.0 e disponibilização do Swagger UI em `/swagger-ui.html`. |
+### 2.3 Tecnologias em Avaliação e Funcionalidades Futuras
+Tecnologias que não fazem parte do escopo mandatório do MVP e dependem de avaliação técnica posterior:
+* **PostGIS:** Avaliação sobre a real necessidade de índice espacial no banco frente ao cálculo de distância em linha reta na aplicação.
+* **Leitura de Preços por Fotografia (OCR):** Funcionalidade pós-MVP destinada ao reconhecimento de valores em fotos de totens de postos de combustível.
 
 ---
 
-## 7. Testes Automatizados e Qualidade de Código
+## 3. Decisões Tecnológicas em Aberto
 
-| Ferramenta / Lib | Versão | Escopo | Finalidade |
-| :--- | :--- | :--- | :--- |
-| **JUnit Jupiter (JUnit 5)** | Gerenciado | `test` | Framework de testes unitários e de integração. |
-| **Mockito** & **mockito-junit-jupiter** | Gerenciado | `test` | Mocks para serviços e dependências externas. |
-| **AssertJ** | Gerenciado | `test` | Asserções fluentes e expressivas. |
-| **Testcontainers PostgreSQL** | **1.20+** | `test` | Subida de contêiner real com PostGIS para testes de integração de repositório. |
+As seguintes decisões técnicas não possuem definições preliminares nas especificações:
 
----
-
-## 8. Frontend e Recursos de Interface
-
-| Recurso | Versão / Padrão | Finalidade |
-| :--- | :--- | :--- |
-| **HTML5 Semântico** | Standard W3C | Estruturação acessível das páginas web da aplicação. |
-| **CSS3 / Tailwind CSS** | **3.4+** (ou 4.0 via CDN/CLI) | Estilização responsiva e ágil, com foco em usabilidade mobile. |
-| **Vanilla JavaScript** | **ES2023+** | Manipulação do DOM, chamadas Fetch API assíncronas e integração de geolocalização. |
-| **Leaflet.js** | **1.9.4+** | Biblioteca leve para renderização do mapa interativo e marcadores dos postos. |
-| **OpenStreetMap Tiles** | Standard OSM | Camada gratuita de mapas sem necessidade de cartão de crédito no MVP. |
-
----
-
-## 9. Diretrizes de Dependências e Proibições
-
-### ⚠️ Práticas e Bibliotecas Proibidas:
-1. **Pacotes `javax.*` obsoletos**: Usar exclusivamente a especificação moderna `jakarta.*` (Jakarta EE 10+).
-2. **WebSecurityConfigurerAdapter**: Proibido estender esta classe descontinuada; utilizar a configuração baseada no bean `SecurityFilterChain`.
-3. **Lógica de Banco no Código**: Não concatenar strings em consultas SQL para evitar injeção de SQL; sempre usar parâmetros nomeados (`:param`) ou Spring Data Method Queries.
-4. **Dependências Não Homologadas**: Não adicionar bibliotecas externas adicionais (ex.: Apache Commons desnecessários ou bibliotecas de reflexão não auditadas) sem prévia revisão de segurança e performance.
+```text
+DECISÃO EM ABERTO
+- Versão do Java (ex.: Java 17 LTS ou Java 21 LTS).
+- Versão do Spring Boot (ex.: 3.x).
+- Versão do PostgreSQL (ex.: 15 ou 16).
+- Definição de bibliotecas/frameworks CSS complementares para responsividade (ex.: CSS puro, Bootstrap, Tailwind).
+- Framework/biblioteca JavaScript reativa para o frontend (ex.: JavaScript Vanilla puro, Vue, React, ou renderização de templates no servidor via Thymeleaf).
+- Ferramenta/SDK para geração e validação de tokens JWT (ex.: jjwt, java-jwt).
+```

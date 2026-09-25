@@ -1,225 +1,196 @@
-# Decisões de Alto Nível de Arquitetura (ADRs) — FuelFinder
+# Arquitetura Planejada — FuelFinder
 
-Este documento registra as decisões arquiteturais essenciais (Architecture Decision Records — ADRs), o modelo conceitual do sistema e os diagramas das camadas da plataforma **FuelFinder**.
+Este documento descreve a arquitetura planejada para a plataforma **FuelFinder**. 
+O conteúdo aqui documentado representa o **estado planejado do sistema**, servindo como base técnica estrutural para futuras implementações, e não uma descrição de código pré-existente.
 
 ---
 
 ## 1. Visão Geral da Arquitetura
 
-O **FuelFinder** adota o modelo de **Monolito Modular em Camadas**. Esta abordagem oferece alta coesão e independência lógica entre os módulos de negócio, permitindo desenvolvimento ágil no MVP sem o custo e a complexidade operacional distribuída de microsserviços.
+O FuelFinder é concebido inicialmente como um **Monólito Modular** que expõe uma **API REST**.
 
-```mermaid
-flowchart TD
-    subgraph Client["Camada Cliente (Frontend)"]
-        UI["Web Responsiva (HTML5 / CSS / Vanilla JS / Leaflet)"]
-    end
+### 1.1 Motivação e Abordagem
+* **Simplicidade Operacional:** A escolha do monólito modular para o Produto Mínimo Viável (MVP) visa manter uma base de código unificada, com baixo custo de infraestrutura e sem a sobrecarga operacional decorrente de arquiteturas de microsserviços (como orquestração distribuída, transações distribuídas e latência de rede interserviços).
+* **Fronteiras Claras de Domínio:** O código é estruturado internamente em módulos funcionais com alto acoplamento interno e baixo acoplamento externo, permitindo futura evolução ou até mesmo extração de serviços isolados caso haja demanda de escala.
+* **Comunicação Cliente-Servidor:** O monólito atua primordialmente como provedor de dados via API REST stateless para o cliente frontend responsivo.
 
-    subgraph Backend["Camada Backend (Spring Boot / Java 25)"]
-        Controller["Controllers REST & DTOs"]
-        Security["Spring Security (JWT / RBAC Filter)"]
-        Services["Camada de Aplicação & Negócio (Services)"]
-        SpringAI["Spring AI (Mecanismo de Recomendação Inteligente)"]
-        Repositories["Spring Data JPA & Hibernate Spatial"]
-    end
+---
 
-    subgraph Data["Camada de Persistência"]
-        PG["PostgreSQL com Extensão PostGIS"]
-    end
+## 2. Camadas da Aplicação
 
-    UI -->|"HTTPS / JSON"| Security
-    Security --> Controller
-    Controller --> Services
-    Services --> SpringAI
-    Services --> Repositories
-    Repositories -->|"JDBC / SQL Espacial"| PG
+O fluxo de processamento de requisições segue a arquitetura em camadas tradicional do ecossistema Spring:
+
+```text
+[ Requisição HTTP ]
+        ↓
+    Security (Filtro JWT & RBAC)
+        ↓
+   Controller (Exposição REST & Validação de Entrada)
+        ↓
+    Service (Regras de Negócio & Orquestração)
+        ↓
+   Repository (Acesso a Dados & Consultas)
+        ↓
+    Database (PostgreSQL)
 ```
 
----
+### 2.1 Detalhamento das Responsabilidades
 
-## 2. Registros de Decisão de Arquitetura (ADRs)
+#### Controller
+* Ponto de entrada das requisições HTTP da API REST.
+* Responsável por mapear rotas, receber payloads (Request DTOs), acionar validações e delegar o processamento para a camada de serviço.
+* Retorna respostas padronizadas com os devidos códigos de status HTTP e Response DTOs.
+* **Regra:** Não contém lógica de negócio nem regras de cálculo.
 
-### ADR-001: Adoção de Monolito Modular para o MVP
-- **Status**: Aprovado
-- **Contexto**: A plataforma precisa ser entregue de forma ágil, testável e de fácil manutenção, integrando autenticação, gestão de postos, preços, veículos e avaliações.
-- **Decisão**: Construir a aplicação como um Monolito Modular utilizando Spring Boot, onde cada domínio (`user`, `vehicle`, `station`, `price`, `review`, `recommendation`) é isolado em seus próprios pacotes com contratos explícitos.
-- **Consequências**:
-  - *Positivas*: Deploy simplificado (único artefato executável JAR/Docker), transações atômicas nativas ACID, ausência de latência de rede entre serviços.
-  - *Negativas*: Caso um módulo demande escala extrema no futuro, será necessário desacoplá-lo para um microsserviço independente.
+#### Service
+* Camada central onde residem todas as **regras de negócio**, casos de uso e orquestrações do sistema (cálculo de consumo, comparação de preços, fórmulas de recomendação).
+* Gerencia transações (`@Transactional`).
+* Lança exceções de negócio em casos de violação de invariantes.
 
----
+#### Repository
+* Abstrai o acesso e persistência no banco de dados relacional (Spring Data JPA / Repositórios).
+* Responsável pela execução de operações de CRUD e queries especializadas (ex.: busca de postos por coordenadas ou critérios de filtro).
 
-### ADR-002: Runtime Java 25 e Spring Boot 3.4+ com Virtual Threads
-- **Status**: Aprovado
-- **Contexto**: O sistema atenderá a consultas frequentes de localização e comparações com I/O de banco de dados e APIs externas de mapas.
-- **Decisão**: Utilizar o Java 25 e Spring Boot 3.4+, habilitando Virtual Threads (Project Loom) no Tomcat embutido (`spring.threads.virtual.enabled=true`).
-- **Consequências**:
-  - *Positivas*: Alta taxa de throughput com I/O bloqueante tradicional sem necessidade de reatividade complexa (WebFlux/Reactor); código síncrono limpo e legível.
-  - *Negativas*: Requer JDK 25 e suporte atualizado nas bibliotecas de infraestrutura.
+#### Database
+* Banco de dados relacional **PostgreSQL**, responsável pelo armazenamento persistente com integridade referencial e suporte a transações ACID.
 
----
+#### DTO (Data Transfer Object)
+* Objetos dedicados para transportar dados entre o cliente HTTP e a aplicação.
+* Garante isolamento estrito entre o modelo de apresentação da API e o modelo de domínio interno.
 
-### ADR-003: Persistência Relacional com PostgreSQL e Extensão PostGIS
-- **Status**: Aprovado
-- **Contexto**: O sistema exige integridade referencial forte (usuários, veículos, postos, preços) e consultas geoespaciais eficientes (encontrar postos dentro de um raio de distância a partir da latitude/longitude do motorista).
-- **Decisão**: Utilizar o PostgreSQL como banco de dados principal, integrado à extensão PostGIS e mapeamento com Hibernate Spatial (`geometry(Point, 4326)`).
-- **Consequências**:
-  - *Positivas*: Consultas geoespaciais nativas de altíssimo desempenho (`ST_DWithin`, `ST_DistanceSphere`), consistência ACID e suporte a índices espaciais GIST.
-  - *Negativas*: Requer provisionamento de imagem PostgreSQL com extensão PostGIS ativa.
+#### Entity
+* Classes de mapeamento objeto-relacional representando tabelas e relacionamentos no banco de dados.
+* Contêm atributos persistíveis e anotações de integridade.
 
----
+#### Security
+* Intercepta todas as requisições HTTP para validar tokens JWT.
+* Carrega o contexto de segurança e impõe verificações de autorização baseadas em papéis (RBAC - Motorista e Administrador).
 
-### ADR-004: Autenticação Stateless com JWT e Controle de Acesso Baseado em Papéis (RBAC)
-- **Status**: Aprovado
-- **Contexto**: A plataforma requer diferenciação de privilégios entre usuários comuns (Motoristas) e Administradores da plataforma.
-- **Decisão**: Utilizar Spring Security 6 com autenticação baseada em tokens JWT (JSON Web Tokens) assinados com algoritmo HMAC-SHA256 ou RSA. As permissões serão validadas via papéis:
-  - `ROLE_DRIVER`: Motorista (consulta, comparação, cadastro de veículos, avaliações).
-  - `ROLE_ADMIN`: Administrador (gestão de postos, preços, usuários e moderação).
-  - `ROLE_STATION_OPERATOR`: Operador de Posto (opcional para evolução futura).
-- **Consequências**:
-  - *Positivas*: Backend completamente stateless, facilitando escalabilidade horizontal; autorização declarativa nos métodos e rotas.
-  - *Negativas*: Invalidação de tokens antes do tempo de expiração exige estratégia de blacklist (Redis) ou tokens de curta duração com refresh token.
+#### Exception Handling
+* Camada transversal de captura global de exceções (`@RestControllerAdvice`).
+* Intercepta exceções de validação, de domínio e de infraestrutura, convertendo-as em respostas HTTP estruturadas com mensagens previsíveis para o cliente.
 
 ---
 
-### ADR-005: Utilização do Spring AI para Recomendações e Análise de Valor
-- **Status**: Aprovado
-- **Contexto**: Para além da fórmula matemática básica de paridade, os motoristas se beneficiam de recomendações contextuais explicadas em linguagem natural, considerando condições do veículo, distância e qualidade percebida (avaliações).
-- **Decisão**: Integrar o Spring AI para orquestrar prompts estruturados de recomendação e análise qualitativa de avaliações de postos.
-- **Consequências**:
-  - *Positivas*: Geração de insights personalizados e explicações claras sobre o porquê de abastecer em determinado posto; diferenciação competitiva do produto.
-  - *Negativas*: Dependência de chaves de API de provedor LLM (ex.: Gemini) e latência moderada nas chamadas de geração de texto (mitigada com cache).
+## 3. Domínios Principais (Módulos)
+
+A aplicação é dividida logicamente nos seguintes domínios:
+
+1. **Autenticação (`auth`):**
+   * Emissão, validação e controle de tokens JWT; autenticação de credenciais.
+2. **Usuários (`user`):**
+   * Gestão de contas de usuários, perfis de acesso (Motorista, Administrador) e dados cadastrais.
+3. **Veículos (`vehicle`):**
+   * Registro e gestão de veículos dos usuários (marca, modelo, ano, tanque, combustível).
+   * Registro do consumo médio informado pelo usuário e cálculo de consumo real baseado em abastecimentos.
+4. **Postos (`station`):**
+   * Cadastro, localização geográfica (latitude e longitude), dados cadastrais e status de postos de combustível.
+5. **Combustíveis (`fuel`):**
+   * Gestão dos tipos de combustíveis aceitos na plataforma (Gasolina Comum, Aditivada, Etanol, Diesel, etc.).
+6. **Preços (`price`):**
+   * Registro de preços de combustíveis vinculados a cada posto, com histórico e data/hora de atualização.
+7. **Avaliações (`review`):**
+   * Avaliações numéricas e comentários de motoristas sobre os postos; cálculo da nota média de cada posto.
+8. **Recomendações (`recommendation`):**
+   * Algoritmos de comparação de preços, ponderação de distância versus consumo e sugestão de melhor custo-benefício.
+9. **Administração (`admin`):**
+   * Painel de operações administrativas: gerenciamento de postos, preços oficiais e moderação de avaliações.
 
 ---
 
-### ADR-006: Frontend Web Responsivo com HTML5, Tailwind CSS e Leaflet
-- **Status**: Aprovado
-- **Contexto**: O usuário precisa acessar a plataforma tanto pelo celular (durante o trajeto) quanto pelo desktop de maneira leve e rápida.
-- **Decisão**: Construir a interface web como uma aplicação web responsiva leve (HTML5 Semântico, CSS moderno / Tailwind CSS, JavaScript modular e Leaflet.js para renderização de mapas com OpenStreetMap).
-- **Consequências**:
-  - *Positivas*: Carregamento quase instantâneo, compatibilidade total com navegadores móveis, sem a sobrecarga de frameworks frontend pesados no MVP.
-  - *Negativas*: Gerenciamento manual de estados de componentes de UI.
+## 4. Frontend e Comunicação
+
+* **Tecnologia:** Interface web responsiva baseada em HTML (acompanhado de CSS e JavaScript para interação e consumo de dados).
+* **Responsividade:** O layout deve adaptar-se adequadamente tanto a dispositivos móveis quanto a desktops.
+* **Comunicação com o Backend:** 
+  * Totalmente desacoplada, consumindo a API REST do Spring Boot através de chamadas assíncronas (ex.: `fetch`).
+  * O frontend gerencia localmente o token JWT recebido no login, enviando-o no cabeçalho `Authorization: Bearer <token>` em todas as requisições autenticadas.
+* **Renderização de Mapas:** O frontend incorpora o componente de mapa Leaflet para visualização interativa dos postos e localização do usuário.
 
 ---
 
-## 3. Modelo de Entidades e Relacionamentos (ERD)
+## 5. Banco de Dados e Evolução Geoespacial
 
-```mermaid
-erDiagram
-    USER ||--o{ VEHICLE : "possui"
-    USER ||--o{ REVIEW : "registra"
-    USER ||--o{ REFUELING : "registra"
-    STATION ||--o{ FUEL_PRICE : "pratica"
-    STATION ||--o{ REVIEW : "recebe"
-    VEHICLE ||--o{ REFUELING : "abastece"
-
-    USER {
-        uuid id PK
-        string name
-        string email UK
-        string password_hash
-        string role "DRIVER, ADMIN, OPERATOR"
-        string status "ACTIVE, INACTIVE, BLOCKED"
-        timestamp created_at
-        timestamp updated_at
-    }
-
-    VEHICLE {
-        uuid id PK
-        uuid user_id FK
-        string nickname
-        string brand
-        string model
-        int year
-        string fuel_type "GASOLINE, ETHANOL, FLEX, DIESEL, CNG"
-        decimal tank_capacity_liters
-        decimal avg_consumption_gasoline "km/L"
-        decimal avg_consumption_ethanol "km/L"
-        timestamp created_at
-        timestamp updated_at
-    }
-
-    STATION {
-        uuid id PK
-        string name
-        string trade_name
-        string address_street
-        string address_number
-        string address_neighborhood
-        string address_city
-        string address_state
-        string address_zipcode
-        geometry location "Point(lat, lon) SRID 4326"
-        string phone
-        string status "ACTIVE, INACTIVE, UNDER_MAINTENANCE"
-        decimal average_rating
-        int total_reviews
-        timestamp created_at
-        timestamp updated_at
-    }
-
-    FUEL_PRICE {
-        uuid id PK
-        uuid station_id FK
-        string fuel_type "GASOLINE_REGULAR, GASOLINE_PREMIUM, ETHANOL, DIESEL_S10, DIESEL_S500, CNG"
-        decimal price_per_liter
-        uuid registered_by FK
-        timestamp updated_at
-    }
-
-    REVIEW {
-        uuid id PK
-        uuid station_id FK
-        uuid user_id FK
-        int rating "1 a 5"
-        string comment
-        string moderation_status "APPROVED, PENDING, REJECTED"
-        timestamp created_at
-        timestamp updated_at
-    }
-
-    REFUELING {
-        uuid id PK
-        uuid vehicle_id FK
-        uuid user_id FK
-        timestamp refueling_date
-        decimal current_odometer_km
-        decimal previous_odometer_km
-        decimal fuel_liters
-        decimal total_amount_paid
-        string fuel_type
-        decimal calculated_consumption "km/L"
-        timestamp created_at
-    }
-```
+* **Banco Principal:** **PostgreSQL** é o banco relacional adotado para toda a aplicação.
+* **Persistência de Coordenadas no MVP:** As coordenadas geográficas dos postos (e as enviadas pelo usuário) são armazenadas como valores numéricos de ponto flutuante/precisão dupla (`latitude` e `longitude`).
+* **Evolução Geoespacial com PostGIS:**
+  * O uso da extensão **PostGIS** é reconhecido como a evolução natural para indexação espacial (GIST) e consultas espaciais nativas de alta performance.
+  * Para o MVP inicial, a dependência direta do PostGIS permanece em avaliação, enquanto o cálculo de distância em linha reta pode ser executado diretamente via query matemática ou serviço da aplicação.
 
 ---
 
-## 4. Fluxo de Comunicação e Ciclo de Vida da Requisição
+## 6. Geolocalização e Mapas
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Driver as Motorista / Cliente
-    participant Browser as Web Browser (HTML/JS)
-    participant AuthFilter as Spring Security (JWT)
-    participant Controller as Station / Price Controller
-    participant Service as RecommendationService
-    participant PostGIS as PostgreSQL (PostGIS)
-    participant AI as Spring AI (Gemini)
+* **Autorização do Dispositivo:** O sistema solicita a geolocalização do dispositivo do usuário via API do navegador (Geolocation API) mediante consentimento explícito.
+* **Busca Manual Alternativa:** Caso o usuário negue a permissão de geolocalização ou o dispositivo não forneça coordenadas, o sistema deve permitir a entrada manual de localização (endereço, CEP ou cidade/bairro).
+* **Camada de Visualização de Mapas:**
+  * Utilização da biblioteca **Leaflet 1.9.4**.
+  * Utilização de camada de tiles gratuitos e abertos fornecidos pelo **OpenStreetMap**.
+  * Exibição de marcadores para a posição do usuário e para os postos de combustível na região.
+* **Cálculo de Distância:**
+  * A distância entre o usuário e os postos é calculada em **linha reta** baseada nas coordenadas geográficas (fórmula trigonométrica de Haversine ou euclidiana esférica).
+  * O sistema não calcula distâncias considerando trajetos viários no backend durante o MVP.
 
-    Driver->>Browser: Informa localização ou solicita postos próximos
-    Browser->>AuthFilter: GET /fuel-prices/compare?lat=-23.55&lon=-46.63&fuelType=ETHANOL
-    AuthFilter->>AuthFilter: Valida token JWT e permissões RBAC
-    AuthFilter->>Controller: Requisição autorizada
-    Controller->>Service: comparePrices(location, fuelType, vehicleId)
-    Service->>PostGIS: Consulta postos em raio de X km com preços vigentes (ST_DWithin)
-    PostGIS-->>Service: Lista de postos ordenados por preço e proximidade
-    alt Veículo Informado e Análise Inteligente Solicitada
-        Service->>Service: Calcula custo por km rodado e custo do deslocamento
-        Service->>AI: Solicita parecer explicativo de melhor custo-benefício
-        AI-->>Service: Explicação contextualizada
-    end
-    Service-->>Controller: DTO compilado com ranking e métricas
-    Controller-->>Browser: 200 OK + JSON estruturado
-    Browser-->>Driver: Exibe postos no mapa e na lista comparativa
+---
+
+## 7. Rotas e Navegação Externa
+
+* O FuelFinder **não implementa nem manterá um sistema próprio de navegação ponto a ponto por rotas viárias**.
+* Para navegação até o posto selecionado, o sistema disponibilizará um botão de rota na interface.
+* **Mecanismo:** Ao clicar no botão, o usuário será redirecionado para aplicativos externos de navegação estabelecidos (**Google Maps** ou **Waze**), repassando as coordenadas de destino via URL estruturada (ex.: `https://www.google.com/maps/dir/?api=1&destination=lat,lng` ou `waze://?ll=lat,lng&navigate=yes`).
+
+---
+
+## 8. Registros de Decisão Arquitetural (ADRs)
+
+### ADR-001 — Adoção de Monólito Modular
+* **Contexto:** O projeto FuelFinder necessita de velocidade de entrega na fase inicial de concepção e MVP, mantendo facilidade de implantação e manutenção sem incorrer na complexidade de microsserviços.
+* **Decisão:** Adotar a arquitetura de monólito modular baseado em Spring Boot, segregando lógica de domínios em pacotes isolados com comunicação controlada entre serviços.
+* **Consequências:** Simplificação do pipeline de build e deploy; simplificação do gerenciamento de transações; possibilidade de extração futura de domínios caso surja necessidade de escala.
+
+---
+
+### ADR-002 — Backend Baseado em Spring Boot e API REST
+* **Contexto:** Necessidade de um backend robusto, tipado e com suporte consolidado para segurança, persistência e construção de APIs web.
+* **Decisão:** Utilizar o framework Spring Boot expondo exclusivamente endpoints em padrão RESTful com comunicação em JSON.
+* **Consequências:** Alto desacoplamento entre frontend e backend; facilidade de consumo por múltiplos clientes futuros (web, mobile); ecossistema consolidado de validação e tratamento de exceções.
+
+---
+
+### ADR-003 — Banco de Dados Relacional PostgreSQL
+* **Contexto:** Os dados do FuelFinder possuem natureza altamente relacional (postos associados a combustíveis e preços históricos; veículos associados a usuários; avaliações vinculadas a usuários e postos), demandando integridade referencial estrita e transações ACID.
+* **Decisão:** Adotar o PostgreSQL como banco de dados relacional principal do sistema.
+* **Consequências:** Garantia de integridade e consistência relacional; suporte futuro transparente à extensão PostGIS para consultas geoespaciais avançadas.
+
+---
+
+### ADR-004 — Autenticação Stateless via JWT e Controle de Acesso Baseado em Papéis (RBAC)
+* **Contexto:** O sistema atende a diferentes tipos de usuários (Motoristas e Administradores) e deve operar de forma desacoplada com o frontend responsivo sem reter sessão em memória no servidor.
+* **Decisão:** Adotar autenticação stateless utilizando tokens JWT assinados pelo backend, com autorização baseada em papéis (RBAC: `ROLE_MOTORISTA` e `ROLE_ADMIN`).
+* **Consequências:** Escalabilidade horizontal facilitada do backend; ausência de gerenciamento de sessão distribuída; o cliente frontend é responsável por armazenar e encaminhar o token em cada requisição.
+
+---
+
+### ADR-005 — Visualização de Mapas com Leaflet 1.9.4 e OpenStreetMap
+* **Contexto:** A plataforma precisa apresentar visualmente a localização de postos e do motorista em um mapa interativo responsivo sem custos proibitivos de licenciamento no MVP.
+* **Decisão:** Adotar a biblioteca Leaflet na versão 1.9.4 no frontend, consumindo a camada de mapas e tiles do OpenStreetMap.
+* **Consequências:** Solução aberta, leve, livre de taxas por requisição de mapa no MVP e com excelente compatibilidade com navegadores móveis e desktop.
+
+---
+
+### ADR-006 — Distância em Linha Reta no MVP e Redirecionamento de Rotas para Serviços Externos
+* **Contexto:** Calcular rotas viárias em tempo real exige algoritmos complexos de grafos ou consumo de APIs de roteamento proprietárias com custo e latência elevados.
+* **Decisão:** O FuelFinder calculará a distância de proximidade em linha reta via coordenadas no MVP e delegará a navegação veicular por rota para aplicativos especializados externos (Google Maps e Waze) via links parametrizados.
+* **Consequências:** Redução drástica da complexidade algorítmica e custo de infraestrutura no MVP; entrega imediata de valor ao usuário, permitindo utilizar seu aplicativo de GPS preferido no dispositivo.
+
+---
+
+## 9. Decisões em Aberto e Pendências Arquiteturais
+
+```text
+DECISÃO EM ABERTO
+- Adoção imediata da extensão PostGIS no PostgreSQL para cálculo geoespacial no banco versus cálculo inicial de distância euclidiana/Haversine na camada de aplicação.
+- Definição do mecanismo de cache (ex.: Redis ou cache em memória local) para mitigar consultas frequentes de preços e postos por coordenadas.
+- Escolha da estratégia de deploy e empacotamento da aplicação (Docker, JAR único contendo frontend estático ou servidores web separados).
+- Especificação de serviço de geocoding reverso para suporte à busca manual de localização por endereço textual.
 ```
