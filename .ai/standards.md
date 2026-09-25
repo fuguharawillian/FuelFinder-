@@ -1,197 +1,230 @@
 # Padrões e Convenções de Desenvolvimento — FuelFinder
 
-Este documento estabelece as convenções, diretrizes de arquitetura de código, padrões de API REST, segurança e práticas de validação e testes para o projeto **FuelFinder**. 
+Este documento define os padrões, convenções de código, diretrizes arquiteturais, normas de segurança e práticas de qualidade que devem ser rigorosamente seguidos durante a implementação do projeto **FuelFinder**.
 
-Como o projeto encontra-se em fase de concepção e o código-fonte ainda não foi implementado, este arquivo atua como a **fonte de diretrizes normativas** que deverão ser rigorosamente seguidas durante a implementação futura.
+Como o projeto está em **fase de concepção e planejamento**, o conteúdo deste documento expressa **convenções normativas planejadas** para orientar futuras tarefas de desenvolvimento e automação por IA.
 
 ---
 
-## 1. Organização do Projeto
+## 1. Princípios Gerais e Conformidade Técnica
 
-O sistema é concebido como um **monólito modular** baseado em Spring Boot. A organização do código deve refletir a separação clara de responsabilidades técnicas e a delimitação dos domínios de negócio.
+O desenvolvimento do FuelFinder deve aderir a boas práticas reconhecidas de engenharia de software e padrões de conformidade técnica:
 
-### 1.1 Estrutura de Módulos e Pacotes
-A divisão de pacotes deve balancear a modularidade dos domínios com a separação clássica em camadas. A estrutura esperada na aplicação Spring Boot segue o padrão modular:
+* **OWASP (Open Worldwide Application Security Project):** Desenvolvimento seguro com foco no OWASP Top 10 — sanitização de inputs, parametrização contra SQL Injection, prevenção de Cross-Site Scripting (XSS), autenticação forte, autorização RBAC rigorosa em todas as rotas e proteção de dados sensíveis.
+* **W3C / WCAG (Web Content Accessibility Guidelines):** Estruturação semântica de páginas web, garantia de contraste, responsividade para múltiplos tamanhos de tela e acessibilidade para pessoas com deficiência.
+* **TC39 (ECMAScript):** Adoção de padrões modernos, seguros e padronizados de JavaScript no ambiente web do cliente.
+* **IETF:** Comunicação estritamente segura via HTTPS (TLS 1.2/1.3), aderência às especificações HTTP/1.1 e HTTP/2, uso correto dos cabeçalhos de segurança (HSTS, CSP, X-Content-Type-Options) e semântica RESTful.
+* **ISO/IEC 25010 & ISO/IEC 27001:** Qualidade de atributos de software (usabilidade, manutenibilidade, confiabilidade, desempenho) e governança da segurança da informação.
+* **TPC (Transaction Processing Performance Council):** Boas práticas de eficiência de banco de dados para suportar cargas volumosas provenientes das importações de dados da ANP e consultas geoespaciais com baixa latência.
+
+---
+
+## 2. Organização do Projeto e Arquitetura Modular
+
+O backend é concebido como um **Monólito Modular** baseado em **Spring Boot**, organizando os domínios de negócio com alto acoplamento interno e baixo acoplamento intermodular.
+
+### 2.1 Estrutura de Pacotes
+
+A aplicação deve adotar a seguinte hierarquia de pacotes:
 
 ```text
 com.fuelfinder/
-├── config/              # Configurações globais (segurança, CORS, web, etc.)
-├── common/              # Utilitários transversais, classes base e exceptions globais
-│   ├── exception/
-│   └── util/
-└── modules/             # Domínios de negócio isolados modularmente
-    ├── auth/            # Módulo de Autenticação e Autorização (JWT / RBAC)
-    ├── user/            # Módulo de Usuários (Motoristas e Administradores)
-    ├── vehicle/         # Módulo de Veículos e Consumo
-    ├── station/         # Módulo de Postos de Combustível e Localização
-    ├── fuel/            # Módulo de Tipos de Combustível
-    ├── price/           # Módulo de Preços e Histórico
-    ├── review/          # Módulo de Avaliações e Moderação
-    └── recommendation/  # Módulo de Comparação, Recomendações e Custo-Benefício
+├── config/                  # Configurações globais (Security, WebMvc, Swagger/OpenAPI, CORS)
+├── common/                  # Componentes transversais reutilizáveis
+│   ├── exception/           # Classes base de exceções e tratamento global (@RestControllerAdvice)
+│   ├── util/                # Utilitários gerais (geometria, cálculos matemáticos, datas)
+│   └── dto/                 # DTOs compartilhados (ex.: paginação, respostas padrão de erro)
+└── modules/                 # Módulos de domínio de negócio isolados
+    ├── auth/                # Autenticação, emissão e validação de tokens JWT
+    ├── user/                # Gestão de usuários, perfis (RBAC) e status de contas
+    ├── vehicle/             # Gestão de veículos e consumo informado
+    ├── station/             # Postos de combustível, localização e dados cadastrais
+    ├── fuel/                # Catálogo de tipos de combustíveis
+    ├── price/               # Preços históricos e correntes por posto
+    ├── review/              # Avaliações numéricas, comentários e moderação
+    ├── recommendation/      # Comparação de preços, custo por km e recomendações
+    ├── anp/                 # Ingestão, download, validação e carga dos arquivos da ANP
+    └── admin/               # Operações administrativas e moderação centralizada
 ```
 
-Dentro de cada módulo (`modules/<dominio>`), a separação interna esperada é:
+### 2.2 Estrutura Interna de Cada Módulo
+
+Cada módulo dentro de `modules/<dominio>` deve manter a separação em camadas:
+
 ```text
-├── controller/          # Controladores REST (entrada HTTP)
-├── dto/                 # Data Transfer Objects (Request / Response)
-│   ├── request/
-│   └── response/
-├── entity/              # Entidades persistidas no banco de dados relacional
-├── repository/          # Interfaces de acesso a dados (Spring Data)
-├── service/             # Regras de negócio e casos de uso
-└── exception/           # Exceções específicas do domínio
+modules/<dominio>/
+├── controller/              # Controladores REST (@RestController)
+├── service/                 # Regras de negócio, interfaces e implementações de serviço
+├── repository/              # Interfaces Spring Data JPA para acesso a dados
+├── entity/                  # Entidades JPA (@Entity) persistidas no PostgreSQL
+├── dto/                     # Contratos de transferência de dados
+│   ├── request/             # DTOs de entrada validados com Bean Validation
+│   └── response/            # DTOs de saída expostos aos clientes HTTP
+├── mapper/                  # Conversores entre Entity e DTO (MapStruct ou mappers manuais)
+└── exception/               # Exceções específicas do domínio
 ```
 
-> **Diretriz de Dependência:** Módulos não devem acessar repositórios de outros módulos diretamente. A comunicação intermodular deve ocorrer preferencialmente através de serviços (`Service`) bem definidos.
+### 2.3 Regras de Dependência e Comunicação Intermodular
+
+1. **Repositórios Privados:** Um módulo NUNCA deve injetar ou acessar diretamente o `Repository` de outro módulo. O acesso a dados de outro domínio deve ocorrer exclusivamente por meio de interfaces públicas de `Service`.
+2. **Isolamento de Entidades:** Entidades JPA de um módulo não devem ser expostas diretamente em contratos públicos ou controllers de outros módulos; prefira a troca de DTOs ou identificadores.
+3. **Comunicação Síncrona Inicial:** A comunicação entre módulos no monólito modular é síncrona, via injeção de dependência Spring (`@Autowired` via construtor).
 
 ---
 
-## 2. Convenções de Código
+## 3. Convenções de Nomenclatura
 
-### 2.1 Nomenclatura Geral
-* **Linguagem do Código:** Nomes de classes, métodos, variáveis, DTOs e entidades devem ser escritos em Inglês para manter conformidade idiomática com o framework Spring Boot e ecossistema Java.
-* **Classes e Interfaces:** `PascalCase` (ex.: `StationController`, `VehicleService`).
-* **Métodos e Variáveis:** `camelCase` (ex.: `findNearbyStations`, `averageConsumption`).
-* **Constantes e Enums:** `UPPER_SNAKE_CASE` (ex.: `ROLE_MOTORISTA`, `ROLE_ADMIN`, `GASOLINE_REGULAR`).
+* **Idioma do Código:** Todo o código-fonte (nomes de classes, interfaces, métodos, variáveis, atributos, enums, endpoints, comentários técnicos e testes) deve ser escrito em **Inglês**. A documentação de negócio e mensagens de usuário permanecem em Português.
+* **Classes e Interfaces:** `PascalCase` (ex.: `StationService`, `FuelPriceRepository`, `VehicleResponseDTO`).
+* **Métodos e Variáveis:** `camelCase` (ex.: `calculateCostPerKm`, `findNearbyStations`, `averageConsumption`).
+* **Constantes e Enums:** `UPPER_SNAKE_CASE` (ex.: `ROLE_MOTORISTA`, `ROLE_ADMIN`, `REGULAR_GASOLINE`, `IMPORT_STATUS_SUCCESS`).
+* **Tabelas do Banco de Dados:** `snake_case` no plural (ex.: `users`, `vehicles`, `stations`, `fuel_prices`, `reviews`, `anp_import_logs`).
+* **Colunas do Banco de Dados:** `snake_case` (ex.: `station_id`, `created_at`, `sale_value`, `fuel_type`).
+* **Rotas da API REST:** `kebab-case` no plural (ex.: `/fuel-prices/compare`, `/recommendations/fuel`).
 
-### 2.2 Convenções por Artefato
-* **Controllers:** Sufixo `Controller` (ex.: `StationController`, `PriceComparisonController`).
-* **Services:** Sufixo `Service` para a classe ou interface de serviço (ex.: `VehicleService`, `FuelRecommendationService`).
-* **Repositories:** Sufixo `Repository` (ex.: `StationRepository`, `UserRepository`).
-* **Entities:** Nomes substantivos no singular representando a tabela de domínio (ex.: `Station`, `Vehicle`, `FuelPrice`).
-* **DTOs:** Sufixos explícitos indicando sua direção:
-  * Requisições: `*Request` ou `*RequestDTO` (ex.: `CreateVehicleRequest`, `PriceFilterRequest`).
-  * Respostas: `*Response` ou `*ResponseDTO` (ex.: `StationSummaryResponse`, `FuelRecommendationResponse`).
-* **Exceptions:** Sufixo `Exception` com nome descritivo do erro de negócio (ex.: `StationNotFoundException`, `InvalidConsumptionCalculationException`).
-* **Enums:** Sufixo descritivo ou nome do tipo em `PascalCase` com valores em `UPPER_SNAKE_CASE` (ex.: `UserRole`, `FuelType`).
+### 3.1 Sufixos e Padrões de Artefatos
 
----
-
-## 3. Padrões de API REST
-
-A API do FuelFinder deve ser estritamente RESTful, previsível e stateless.
-
-### 3.1 Nomenclatura de Endpoints
-* Endpoints devem utilizar substantivos no plural, letras minúsculas e hífens para palavras compostas (`kebab-case`).
-* O prefixo global da API deve conter versionamento: `/api/v1/...`.
-* Estrutura de caminhos deve representar hierarquia de recursos:
-  * `GET /api/v1/stations` (Listagem de postos)
-  * `GET /api/v1/stations/{id}` (Detalhes de um posto)
-  * `POST /api/v1/stations` (Cadastro de posto - Admin)
-  * `GET /api/v1/stations/{id}/prices` (Preços de um posto específico)
-  * `GET /api/v1/vehicles` (Veículos do usuário autenticado)
-  * `POST /api/v1/vehicles` (Cadastro de veículo)
-  * `GET /api/v1/stations/{id}/reviews` (Avaliações de um posto)
-  * `POST /api/v1/stations/{id}/reviews` (Criar avaliação)
-
-### 3.2 Métodos HTTP e Semântica
-* `GET`: Recuperação de recursos. Seguro e idempotente. Não deve alterar estado no servidor.
-* `POST`: Criação de recursos ou operações de processamento (ex.: autenticação, cálculo sob demanda).
-* `PUT`: Substituição integral de recurso existente.
-* `PATCH`: Atualização parcial de recurso existente.
-* `DELETE`: Remoção de recurso existente.
-
-### 3.3 Códigos de Resposta HTTP
-* `200 OK`: Sucesso em operações de leitura, atualização ou processamento com retorno no corpo.
-* `201 Created`: Recurso criado com sucesso. Deve preferencialmente incluir o cabeçalho `Location` com a URI do recurso criado.
-* `204 No Content`: Operação executada com sucesso sem conteúdo no corpo de resposta (ex.: deleção com sucesso).
-* `400 Bad Request`: Requisição malformada ou falha em validações sintáticas/semânticas.
-* `401 Unauthorized`: Falha de autenticação (token ausente, inválido ou expirado).
-* `403 Forbidden`: Usuário autenticado não possui permissão para acessar o recurso (violação de RBAC).
-* `404 Not Found`: Recurso não localizado para o identificador informado.
-* `422 Unprocessable Entity`: Dados compreensíveis, mas violam regras de validação de negócio (opcional frente ao 400).
-* `500 Internal Server Error`: Erro inesperado do servidor (detalhes técnicos sensíveis nunca devem ser expostos ao cliente).
-
-### 3.4 DTOs de Entrada e Saída
-* **Isolamento de Entidades:** Jamais expor entidades do banco diretamente nos endpoints. Toda comunicação com a API deve ser intermediada por DTOs.
-* **Projeção e Imutabilidade:** DTOs de resposta devem fornecer apenas os dados necessários para o cliente, prevenindo vazamento de dados internos (ex.: senhas, dados de auditoria irrelevantes).
+* **Controllers:** Sufixo `Controller` (ex.: `StationController`).
+* **Services:** Sufixo `Service` (ex.: `VehicleService`, `AnpIntegrationService`).
+* **Repositories:** Sufixo `Repository` (ex.: `FuelPriceRepository`).
+* **Entities:** Nome substantivo singular sem sufixo (ex.: `Station`, `Vehicle`, `FuelPrice`).
+* **DTOs:** Sufixos `RequestDTO` e `ResponseDTO` (ex.: `CreateVehicleRequestDTO`, `StationDetailsResponseDTO`).
+* **Exceptions:** Sufixo `Exception` (ex.: `ResourceNotFoundException`, `BusinessRuleException`).
 
 ---
 
-## 4. Segurança e Autorização (RBAC)
+## 4. Padrões de Camadas Arquiteturais
 
-O FuelFinder adota autenticação stateless baseada em tokens JWT e autorização por controle de acesso baseado em papéis (Role-Based Access Control - RBAC).
+### 4.1 Camada Controller
 
-### 4.1 Autenticação
-* Autenticação via `POST /api/v1/auth/login`.
-* O cliente deve receber um token JWT e enviá-lo nas requisições subsequentes no cabeçalho:
-  ```http
-  Authorization: Bearer <token_jwt>
+* Responsável exclusivamente pelo protocolo HTTP: mapeamento de rotas, serialização/deserialização JSON, acionamento de validações e delegação para a camada Service.
+* **Proibições:**
+  * Não conter regras de cálculo, fórmulas matemáticas ou regras de negócio.
+  * Não acessar repositórios diretamente.
+  * Não manipular entidades de banco de dados diretamente; consumir e retornar estritamente DTOs.
+* **Anotações Mandatórias:** `@RestController`, `@RequestMapping`, anotações semânticas de rota (`@GetMapping`, `@PostMapping`, etc.), `@Valid` nos corpos de requisição e anotações de segurança RBAC (`@PreAuthorize`).
+
+### 4.2 Camada Service
+
+* Concentra toda a lógica de negócio, orquestração de casos de uso, validações de invariantes e cálculos (fórmula de consumo, autonomia, custo por km, comparações de combustível).
+* Gerencia demarcação de transações com `@Transactional(readOnly = true)` no nível de classe e `@Transactional` explícito em métodos de escrita.
+* Lança exceções de domínio tipadas quando invariantes forem violadas.
+
+### 4.3 Camada Repository
+
+* Extensões de `JpaRepository<Entity, ID>` do Spring Data JPA.
+* Consultas customizadas devem utilizar JPQL ou queries nativas indexadas quando a performance for mandatória.
+* Devem retornar `Optional<Entity>` em consultas por chave ou atributos únicos.
+
+### 4.4 Camada Entity
+
+* Mapeamento explícito de tabelas e colunas com anotações JPA (`@Table`, `@Column`, `@Id`, `@GeneratedValue`).
+* Toda entidade deve conter campos de auditoria: `createdAt` (`TIMESTAMP WITH TIME ZONE`) e `updatedAt`.
+* Relacionamentos Lazy por padrão (`FetchType.LAZY`) para evitar queries N+1.
+
+### 4.5 Camada DTO
+
+* Devem ser imutáveis (utilizar Java `record` quando aplicável).
+* Anotados com Jakarta Bean Validation (`@NotNull`, `@NotBlank`, `@Size`, `@Positive`, `@Email`).
+* Isolam totalmente o esquema de banco de dados da representação externa da API REST.
+
+### 4.6 Camada de Segurança e RBAC
+
+* Centralizada no Spring Security.
+* Autenticação Stateless via filtro JWT (`OncePerRequestFilter`) validando o header `Authorization: Bearer <token>`.
+* Autorização baseada em papéis com `@PreAuthorize("hasRole('ADMIN')")` ou `@PreAuthorize("hasRole('MOTORISTA')")`.
+* Senhas criptografadas obrigatoriamente com algoritmo seguro (BCrypt com fator de custo adequado ou Argon2).
+
+### 4.7 Camada de Tratamento de Exceções
+
+* Centralizada através de `@RestControllerAdvice`.
+* Respostas de erro padronizadas inspiradas na RFC 7807 (Problem Details for HTTP APIs):
+  ```json
+  {
+    "timestamp": "2026-09-24T22:00:00Z",
+    "status": 400,
+    "error": "Bad Request",
+    "message": "Dados de entrada inválidos",
+    "path": "/vehicles",
+    "fields": [
+      {
+        "field": "tankCapacity",
+        "message": "A capacidade do tanque deve ser um valor estritamente positivo"
+      }
+    ]
+  }
   ```
-* Se o token não for fornecido em rotas protegidas, a API deve responder `401 Unauthorized`.
-
-### 4.2 Perfis e Papéis (RBAC)
-Os perfis definidos para o MVP são:
-* `ROLE_MOTORISTA`: Usuário padrão do sistema.
-* `ROLE_ADMIN`: Administrador da plataforma.
-
-### 4.3 Proteção de Endpoints
-* **Rotas Públicas:** Consulta básica de postos, comparação de preços, leitura de avaliações, login e cadastro de usuários.
-* **Rotas Protegidas - Motorista (`ROLE_MOTORISTA`):** Gestão de veículos próprios, registro de avaliações, preferências de recomendação.
-* **Rotas Protegidas - Administrador (`ROLE_ADMIN`):** Cadastro e edição de postos, gerenciamento de preços oficiais, gerenciamento de combustíveis, moderação de avaliações e administração geral.
 
 ---
 
-## 5. Validação de Dados
+## 5. Padrões de API REST
 
-* Todos os dados de entrada recebidos via `body`, `path variables` ou `query parameters` devem ser validados antes de qualquer processamento negocial.
-* Devem ser validadas restrições como: obrigatoriedade de campos, limites numéricos (ex.: capacidade de tanque > 0, consumo > 0), intervalos de coordenadas válidas (-90 a 90 para latitude, -180 a 180 para longitude), formatos de e-mail e tamanhos de textos.
-* Quando houver falha de validação, a requisição deve ser imediatamente interrompida, retornando código `400 Bad Request` com o detalhamento dos campos rejeitados.
+### 5.1 Verbos HTTP e Semântica
 
----
+* `GET`: Consultas idempotentes e seguras (sem efeito colateral no servidor).
+* `POST`: Criação de recursos ou operações de processamento (ex.: autenticação, importação de arquivo). Retorna HTTP 201 com header `Location` ou objeto criado.
+* `PUT`: Substituição integral de um recurso existente.
+* `PATCH`: Atualização parcial de campos específicos de um recurso.
+* `DELETE`: Remoção ou inativação lógica de recurso. Retorna HTTP 204 No Content.
 
-## 6. Tratamento de Erros
+> [!IMPORTANT]
+> **Inconsistência Observada na Especificação Original:**
+> A especificação fornecida utilizou repetidamente a palavra `PATH` em vez de `PATCH` nas tabelas de rotas para:
+> * `PATH /users/me`
+> * `PATH /vehicles/{id}`
+> * `PATH /stations/{id}`
+> * `PATH /stations/{id}/fuel-prices/{priceId}`
+> * `PATH /reviews/{id}`
+> Como a palavra `PATH` não existe no protocolo HTTP (RFC 9110 / RFC 5789), o padrão normativo de implementação estabelece o uso do método `PATCH` para atualizações parciais. Essa divergência está explicitamente registrada neste documento.
 
-A API deve prover um tratamento centralizado de exceções através de controladores de conselho (`@ControllerAdvice` / `@RestControllerAdvice` no Spring Boot).
+### 5.2 Códigos de Retorno HTTP Padronizados
 
-### 6.1 Regra de Isolamento
-* Regras de negócio **nunca** devem ser implementadas ou espalhadas dentro dos `Controllers`.
-* Os `Controllers` apenas recebem requisições, delegam a execução para os `Services` e convertem resultados em DTOs e códigos HTTP apropriados.
-* Violações de regras de negócio devem disparar exceções de domínio no `Service`, capturadas pela camada centralizada de tratamento de erros.
+* `200 OK`: Consulta ou atualização executada com sucesso.
+* `201 Created`: Novo recurso criado com sucesso.
+* `204 No Content`: Operação concluída com sucesso sem corpo de resposta (ex.: deleção).
+* `400 Bad Request`: Payload inválido, falha de validação de campos sintáticos ou lógicos.
+* `401 Unauthorized`: Ausência de token JWT, token expirado ou credenciais inválidas.
+* `403 Forbidden`: Usuário autenticado não possui o papel (Role) necessário para o recurso.
+* `404 Not Found`: Recurso não localizado para o ID especificado.
+* `409 Conflict`: Conflito de integridade (ex.: e-mail já cadastrado, violação de chave única).
+* `422 Unprocessable Entity`: Erro semântico de regra de negócio em dados sintaticamente válidos.
+* `500 Internal Server Error`: Erro inesperado não tratado no servidor.
 
-### 6.2 Estrutura Padronizada de Resposta de Erro
-Todas as respostas de erro da API devem retornar um payload JSON consistente com a seguinte estrutura:
+### 5.3 Paginação e Ordenação
 
-```json
-{
-  "timestamp": "2026-09-24T21:00:00Z",
-  "status": 400,
-  "error": "Bad Request",
-  "message": "Mensagem clara e objetiva sobre o erro",
-  "path": "/api/v1/vehicles",
-  "errors": [
-    {
-      "field": "tankCapacity",
-      "message": "A capacidade do tanque deve ser maior que zero."
-    }
-  ]
-}
-```
-
----
-
-## 7. Estratégia de Testes
-
-Para garantir a confiabilidade do FuelFinder durante a evolução do monólito modular, deve ser adotada uma pirâmide de testes proporcional à complexidade inicial:
-
-### 7.1 Testes Unitários
-* **Foco:** Serviços de domínio (`Service`), utilitários de cálculo de consumo e componentes de recomendação e custo-benefício.
-* **Premissa:** Rápidos, isolados e sem dependência de banco de dados ou contexto de rede.
-
-### 7.2 Testes de Integração
-* **Foco:** Endpoints REST (`Controllers`), segurança (validação de JWT e RBAC) e repositórios de dados (`Repository`).
-* **Premissa:** Validação do fluxo completo de requisição/resposta, persistência e transacionalidade.
+* Endpoints que retornam listagens (postos, preços, avaliações) devem suportar paginação:
+  * `page`: Índice da página (0-indexed, padrão: 0).
+  * `size`: Quantidade de registros por página (padrão: 20, máximo: 100).
+  * `sort`: Campo de ordenação e direção (ex.: `sort=saleValue,asc` ou `sort=distance,asc`).
 
 ---
 
-## 8. Decisões em Aberto e Pendências
+## 6. Padrões de Testes de Software
 
-As seguintes decisões técnicas não estão fechadas nas especificações atuais e devem ser tratadas como pendentes:
+O projeto deve seguir a estratégia da pirâmide de testes:
+
+1. **Testes Unitários:**
+   * Foco em Services, cálculos matemáticos (fórmula de consumo, estimativa de autonomia, custo por km, cálculo de distância em linha reta) e regras de validação.
+   * Frameworks: JUnit 5, AssertJ e Mockito para isolamento de dependências.
+   * Cobertura esperada: alta densidade nas classes de domínio e serviços.
+2. **Testes de Integração:**
+   * Foco em Repositories (queries nativas/JPQL), validações de integridade relacional e Controllers (com `MockMvc` ou `WebTestClient`).
+   * Utilização de banco de dados real em contêineres de teste (Testcontainers com imagem oficial do PostgreSQL).
+3. **Testes de Desempenho e Carga (Diretriz TPC):**
+   * Avaliação do processo de parsing e inserção em lote (batch insert) do arquivo semestral da ANP contendo milhares de registros.
+   * Avaliação do tempo de resposta das consultas de postos e preços com filtros de ordenação sob volume expressivo de dados.
+4. **Testes de Segurança:**
+   * Validação de permissões de acesso em rotas restritas a motoristas e administradores.
+   * Testes de injeção de parâmetros maliciosos e tokens forjados/expirados.
+
+---
+
+## 7. Decisões em Aberto e Não Definidas
 
 ```text
 DECISÃO EM ABERTO
-- Biblioteca e ferramenta específica de migração de banco de dados (ex.: Flyway vs Liquibase).
-- Framework específico de testes de integração e asserções a ser padronizado além das ferramentas nativas do ecossistema Spring.
-- Estrutura de documentação automática de API (ex.: OpenAPI / Swagger).
-- Estratégia de renovação de tokens JWT (Refresh Tokens).
+- Padrão de versionamento da API REST: adoção de prefixo na URI (/api/v1) versus versionamento por Header HTTP.
+- Biblioteca específica para mapeamento de objetos: MapStruct versus mapeamento programático manual em mappers Java.
+- Mecanismo de blacklist ou revogação de tokens JWT em caso de logout antes da expiração natural.
+- Biblioteca de documentação OpenAPI/Swagger (ex.: Springdoc-openapi v2.x).
 ```

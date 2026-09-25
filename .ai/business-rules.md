@@ -1,208 +1,312 @@
 # Regras de Negócio — FuelFinder
 
-Este documento formaliza as **regras de negócio do FuelFinder**. As regras aqui descritas devem orientar diretamente a implementação das validações de entidades, serviços de domínio e comportamentos esperados do sistema.
+Este documento formaliza as regras de negócio, invariantes operacionais, fórmulas de cálculo e políticas de controle da plataforma **FuelFinder**.
+
+As regras aqui estabelecidas orientam a lógica de validação nos serviços de domínio, entidades de dados e controladores da aplicação.
 
 ---
 
-## 1. Domínio de Usuários e Autenticação
+## 1. Usuários, Autenticação e RBAC
 
-### 1.1 Cadastro de Usuários
-* O sistema deve permitir o autocadastro de novos usuários (motoristas).
-* Campos mínimos esperados: Nome, E-mail (único no sistema) e Senha.
-* As senhas devem ser obrigatoriamente armazenadas com hash criptográfico seguro antes de serem persistidas no banco de dados.
+### 1.1 Autocadastro de Motoristas
+* `REGRA DEFINIDA`: O sistema permite o autocadastro de novos usuários com o perfil de **Motorista**.
+* `REGRA DEFINIDA`: O e-mail informado deve ser estritamente único em toda a base de dados.
+* `REGRA DEFINIDA`: As senhas devem ser armazenadas com hash criptográfico seguro (ex.: BCrypt). Não é permitido o armazenamento de senhas em texto puro.
+* `REGRA / COMPORTAMENTO A DEFINIR`: Requisitos mínimos de complexidade de senha (ex.: tamanho mínimo, caracteres especiais, números).
 
 ### 1.2 Autenticação e Sessão
-* A autenticação é realizada através do fornecimento de credenciais válidas (e-mail e senha).
-* A autenticação é estritamente **stateless**, gerando um token JWT após validação com sucesso.
-* O encerramento de sessão no cliente consiste no descarte local do token JWT.
+* `REGRA DEFINIDA`: A autenticação é realizada com e-mail e senha cadastrados.
+* `REGRA DEFINIDA`: Após a autenticação bem-sucedida, o backend emite um token JWT stateless para controle de sessão.
+* `REGRA DEFINIDA`: Contas com status `INACTIVE` ou `BLOCKED` não podem autenticar nem renovar tokens.
+* `REGRA DEFINIDA`: O encerramento de sessão (`logout`) deve invalidar o acesso ativo no dispositivo.
 
-### 1.3 Perfis e Permissões (RBAC)
-O controle de acesso é baseado em papéis (Role-Based Access Control). Cada usuário possui ao menos um perfil associado no sistema:
+### 1.3 Perfis e Matriz de Permissões (RBAC)
 
-```text
-[ Usuário ] ── possui ──> [ Perfil / Role ] ── determina ──> [ Permissões ]
+O controle de acesso é baseado no modelo RBAC (*Role-Based Access Control*):
+
+```mermaid
+flowchart LR
+    subgraph PERFIS[Perfis de Usuário]
+        USER[Motorista / Usuário Final]
+        ADMIN[Administrador]
+        OP[Operador de Posto - Em Avaliação]
+    end
+
+    subgraph ACOES_MOTORISTA[Ações de Motorista]
+        M1[Consultar postos e mapa]
+        M2[Comparar preços de combustíveis]
+        M3[Cadastrar e gerenciar veículos]
+        M4[Registrar avaliações e comentários]
+        M5[Obter estimativas e recomendações]
+    end
+
+    subgraph ACOES_ADMIN[Ações de Administrador]
+        A1[Gerenciar postos: criar, editar, inativar]
+        A2[Gerenciar e retificar preços]
+        A3[Gerenciar tipos de combustível]
+        A4[Moderar avaliações de usuários]
+        A5[Gerenciar usuários, papéis e status]
+        A6[Acompanhar e disparar cargas ANP]
+    end
+
+    USER --> M1
+    USER --> M2
+    USER --> M3
+    USER --> M4
+    USER --> M5
+
+    ADMIN --> A1
+    ADMIN --> A2
+    ADMIN --> A3
+    ADMIN --> A4
+    ADMIN --> A5
+    ADMIN --> A6
+
+    OP -. Atualizar preços do próprio posto .-> A2
 ```
 
----
+#### Perfil: Motorista (`ROLE_MOTORISTA`)
+* `REGRA DEFINIDA`: Pode consultar postos de combustível, mapa interativo e lista ordenada.
+* `REGRA DEFINIDA`: Pode comparar preços de combustíveis e filtrar resultados.
+* `REGRA DEFINIDA`: Pode cadastrar, listar, atualizar e remover seus próprios veículos.
+* `REGRA DEFINIDA`: Pode emitir uma avaliação numérica (1 a 5) e comentário para postos.
+* `REGRA DEFINIDA`: Pode solicitar recomendações de abastecimento para seus veículos.
+* `REGRA DEFINIDA`: **NÃO** pode alterar cadastros de postos, gerenciar tipos de combustíveis, alterar preços oficiais ou moderar avaliações alheias.
 
-## 2. Matriz de Perfis (RBAC)
+#### Perfil: Administrador (`ROLE_ADMIN`)
+* `REGRA DEFINIDA`: Possui controle total de gestão e governança da plataforma.
+* `REGRA DEFINIDA`: Pode cadastrar, editar dados cadastrais (endereço, coordenadas, contato) e inativar postos.
+* `REGRA DEFINIDA`: Pode cadastrar e atualizar preços de venda de combustíveis.
+* `REGRA DEFINIDA`: Pode gerenciar tipos de combustíveis aceitos na plataforma.
+* `REGRA DEFINIDA`: Pode moderar e remover avaliações inadequadas de usuários.
+* `REGRA DEFINIDA`: Pode alterar papéis (`role`) e status (`ACTIVE`, `INACTIVE`, `BLOCKED`) de contas de usuários.
 
-### 2.1 Perfil: Motorista (`ROLE_MOTORISTA`)
-Perfil atribuído por padrão aos usuários que se cadastram na plataforma.
-* **Pode:**
-  * Consultar postos de combustível e visualizar suas informações no mapa ou em lista.
-  * Comparar preços de combustíveis disponíveis nos postos cadastrados.
-  * Cadastrar, listar, editar e remover seus próprios veículos.
-  * Informar o consumo médio de seus veículos e registrar abastecimentos para cálculo de consumo.
-  * Registrar avaliações (nota e comentário opcional) sobre postos de combustível.
-  * Receber recomendações personalizadas de abastecimento com base no veículo selecionado.
-* **Não pode:**
-  * Criar ou alterar dados cadastrais de postos.
-  * Cadastrar ou alterar preços oficiais de combustíveis.
-  * Cadastrar novos tipos de combustível na plataforma.
-  * Excluir ou moderar avaliações de outros usuários.
-
-### 2.2 Perfil: Administrador (`ROLE_ADMIN`)
-Perfil operacional de gestão da plataforma FuelFinder.
-* **Pode:**
-  * Gerenciar postos de combustível (criar, editar dados, ativar ou desativar postos).
-  * Gerenciar preços de combustíveis (cadastrar, retificar ou atualizar preços vigentes).
-  * Gerenciar tipos de combustível disponíveis no sistema (ex.: Gasolina Comum, Etanol, Diesel S10, etc.).
-  * Moderar avaliações registradas por motoristas (ocultar ou remover comentários impróprios).
-  * Administrar cadastros e parâmetros globais da plataforma.
-
-### 2.3 Perfil: Operador de Posto (`ROLE_OPERADOR`)
-```text
-POSSIBILIDADE FUTURA / NÃO OBRIGATÓRIO NO MVP
-- O perfil de operador/gerente de posto (com permissão restrita para atualizar preços exclusivamente do seu posto) é reconhecido como evolução futura da plataforma.
-- Não deve ser tratado como requisito obrigatório do MVP inicial.
-```
+#### Perfil: Operador de Posto (`ROLE_OPERADOR`)
+* `PÓS-MVP / EM AVALIAÇÃO`: A especificação cita este perfil como "opcional no MVP" e em outra seção como evolução futura para representantes de postos gerenciarem dados e promoções com aprovação administrativa.
+* `REGRA / COMPORTAMENTO A DEFINIR`: Se implementado, terá permissão restrita exclusivamente para atualizar preços e dados do posto ao qual estiver explicitamente vinculado.
 
 ---
 
-## 3. Domínio de Veículos
+## 2. Veículos e Consumo Médio
 
-### 3.1 Dados do Veículo
-O cadastro de veículo é vinculado ao usuário motorista autenticado e prevê os seguintes dados:
-* **Identificação / Apelido:** Nome amigável dado pelo motorista (ex.: "Carro da Família", "Carro de Trabalho").
-* **Marca:** Fabricante do veículo (ex.: Volkswagen, Chevrolet, Fiat).
-* **Modelo:** Modelo específico (ex.: Gol 1.0, Onix, Strada).
-* **Ano:** Ano de fabricação / modelo do veículo.
-* **Combustível:** Tipo(s) de combustível aceito(s) pelo motor (ex.: Flex - Gasolina/Etanol, Apenas Gasolina, Apenas Diesel).
-* **Capacidade do Tanque:** Volume máximo do reservatório em litros (deve ser um valor numérico estritamente positivo).
-* **Consumo Médio Informado pelo Usuário:** Valor numérico em quilômetros por litro (km/L) informado diretamente pelo condutor.
+### 2.1 Cadastro de Veículos
+* `REGRA DEFINIDA`: Um usuário autenticado pode possuir um ou múltiplos veículos cadastrados.
+* `REGRA DEFINIDA`: O cadastro compreende: identificação/apelido, marca, modelo, ano de fabricação, combustíveis aceitos (ex.: Flex, Gasolina, Diesel, GNV), capacidade aproximada do tanque em litros e consumo médio em km/L.
+* `REGRA DEFINIDA`: A capacidade do tanque deve ser um valor numérico estritamente positivo (`tank_capacity > 0`).
+* `REGRA DEFINIDA`: O consumo médio cadastrado deve ser um valor numérico estritamente positivo (`average_consumption > 0`).
 
-### 3.2 Fonte dos Dados de Consumo
-* **Regra Fundamental:** O sistema deve utilizar inicialmente o **consumo informado pelo próprio usuário**.
-* **Restrição de Implementação:** O sistema **não deve assumir** que haverá integração ou consulta automática a bases de dados externas ou tabelas de fabricantes (ex.: Inmetro) no MVP.
+### 2.2 Fonte do Consumo Médio no MVP
+* `REGRA DEFINIDA`: O consumo médio inicial é **obrigatoriamente informado pelo próprio usuário condutor** com base na sua experiência prática de uso.
+* `REGRA DEFINIDA`: O sistema **NÃO** consulta tabelas externas, manuais de montadoras ou bases do Inmetro no escopo do MVP.
 
 ---
 
-## 4. Domínio de Consumo
+## 3. Abastecimentos e Cálculo de Consumo Real
 
-Além do consumo médio fixo informado pelo condutor no cadastro do veículo, o sistema prevê o cálculo do consumo médio real obtido a partir de registros de abastecimento.
+### 3.1 Status da Funcionalidade: Divergência na Especificação
+* `PÓS-MVP / EM AVALIAÇÃO`: Na seção de evoluções previstas da especificação, o módulo de "Histórico de abastecimentos" é classificado formalmente como pós-MVP.
+* Por outro lado, na seção de fluxos principais, o fluxo e a fórmula de consumo real são explicitados.
+* Para fins de preservação das regras conceituais, a fórmula e suas condições permanecem documentadas a seguir para futura ativação.
 
-### 4.1 Fórmula de Cálculo
+### 3.2 Fórmula do Consumo Médio Real
+Quando o módulo de abastecimento for ativado, o cálculo de consumo real entre dois abastecimentos consecutivos com método de tanque cheio será regido por:
+
+$$\text{Consumo Médio (km/L)} = \frac{\text{Quilometragem Atual} - \text{Quilometragem Anterior}}{\text{Litros Abastecidos}}$$
+
 ```text
 Consumo médio (km/L) = (quilometragem atual - quilometragem anterior) / litros abastecidos
 ```
 
-### 4.2 Condições Obrigatórias para Validade do Cálculo
-Para que o cálculo de consumo seja matematicamente e logicamente válido, todas as seguintes condições devem ser atendidas simultaneamente:
-1. **Regra do Tanque Cheio:** O abastecimento anterior e o abastecimento atual devem ter sido realizados com o método de "tanque cheio" (completar o tanque até o desarme automático da bomba). Abastecimentos parciais invalidam o cálculo de consumo exato pela fórmula direta.
-2. **Quilometragem Estritamente Crescente:** A quilometragem atual do hodômetro no momento do abastecimento deve ser estritamente maior que a quilometragem registrada no abastecimento anterior (`quilometragem_atual > quilometragem_anterior`).
-3. **Volume de Combustível Positivo:** A quantidade de litros abastecidos deve ser um número real estritamente maior que zero (`litros_abastecidos > 0`).
-4. **Mesmo Veículo:** Os registros de abastecimento anterior e atual devem obrigatoriamente pertencer ao mesmo veículo cadastrado.
+### 3.3 Condições de Validade Matemática e Operacional
 
----
-
-## 5. Domínio de Preços
-
-### 5.1 Dados do Registro de Preço
-* **Tipo de Combustível:** Combustível ao qual o preço se aplica (ex.: Gasolina Comum, Gasolina Aditivada, Etanol, Diesel).
-* **Posto Associado:** Identificador do posto de combustível onde o preço é praticado.
-* **Preço:** Valor monetário por litro (R$/L), com precisão mínima de duas a três casas decimais.
-* **Data e Hora de Atualização:** Timestamp indicando o momento exato em que o preço foi registrado ou retificado.
-
-### 5.2 Filtros, Comparação e Ordenação
-A consulta de preços na API e na interface deve suportar:
-* **Filtros:**
-  * Por tipo de combustível específico.
-  * Por raio geográfico em relação à posição do usuário.
-  * Por posto específico.
-* **Ordenação:**
-  * Menor preço nominal por litro.
-  * Menor distância em relação ao usuário.
-  * Melhor avaliação do posto.
-  * Preços mais recentemente atualizados.
-
----
-
-## 6. Domínio de Comparação de Preços e Custo-Benefício
-
-A funcionalidade de comparação tem como objetivo permitir ao motorista identificar a opção mais vantajosa para abastecimento.
-
-### 6.1 Fatores Considerados na Comparação
-A lógica de comparação e cálculo de custo-benefício poderá considerar:
-1. **Preço do Combustível:** Valor por litro comercializado no posto.
-2. **Distância até o Posto:** Distância calculada em linha reta a partir da localização do usuário.
-3. **Avaliação do Posto:** Nota média obtida pelo posto perante os motoristas.
-4. **Compatibilidade de Combustível:** Combustíveis suportados pelo veículo ativo do motorista.
-5. **Consumo Médio do Veículo:** Rendimento (km/L) informado pelo usuário para cada combustível compatível.
-6. **Custo Estimado de Deslocamento e Abastecimento:** Estimativa financeira considerando o combustível gasto no trajeto somado ao valor do abastecimento.
-7. **Custo Aproximado por Quilômetro:** Relação `(Preço por Litro) / (Consumo km/L)` expressa em R$/km.
-8. **Atualização do Preço:** Recorrência temporal da última atualização do preço (priorizando postos com valores recentes e confiáveis).
-
-> **Aviso de Implementação:** Não transformar a comparação em regras empíricas ou fórmulas rígidas não especificadas no documento de arquitetura. O sistema deve manter flexibilidade analítica baseada nos fatores acima listados.
-
----
-
-## 7. Domínio de Avaliações (Reviews)
-
-### 7.1 Dados da Avaliação
-* **Usuário:** Identificador do motorista que emitiu a avaliação.
-* **Posto:** Identificador do posto de combustível avaliado.
-* **Nota:** Pontuação numérica (ex.: escala de 1 a 5 estrelas).
-* **Comentário:** Texto opinativo opcional fornecido pelo usuário.
-* **Data e Hora:** Registro temporal de criação da avaliação.
-
-### 7.2 Regras de Negócio de Avaliações
-* **Cálculo da Média:** O posto deve manter ou calcular dinamicamente a sua nota média agregada baseada em todas as avaliações ativas registradas.
-* **Unicidade de Avaliação:** Recomenda-se que cada usuário possa manter apenas uma avaliação ativa por posto (podendo atualizá-la).
-* **Moderação Administrativa:** Usuários com perfil `ROLE_ADMIN` podem inspecionar, ocultar ou remover avaliações cujo conteúdo viole termos de convivência ou contenha dados ofensivos.
-
----
-
-## 8. Domínio de Localização e Proximidade
-
-### 8.1 Obtenção de Localização
-* O sistema deve solicitar a localização atual do dispositivo do usuário através da API do navegador, sempre mediante **autorização explícita**.
-* Caso a permissão seja negada ou o dispositivo não forneça coordenadas, a aplicação deve disponibilizar **busca manual** (campo de texto para busca por bairro, cidade, endereço ou ponto de referência).
-
-### 8.2 Parâmetros de Localização
-* As coordenadas geográficas devem ser expressas em **Latitude** e **Longitude**.
-* A consulta deve aceitar um **raio de busca** (ex.: em quilômetros) em torno do ponto central informado.
-
-### 8.3 Cálculo de Distância
-* A distância entre a localização de referência (usuário) e o posto deve ser calculada em **linha reta** baseando-se exclusivamente nas coordenadas geodésicas (fórmula de Haversine ou esférica).
-* O FuelFinder não computa rotas viárias nem estimativas de trânsito em sua camada interna.
-
----
-
-## 9. Domínio de Recomendações de Combustível
-
-O sistema de recomendação sintetiza os dados do veículo do motorista e dos postos ao redor para apresentar a sugestão ideal de abastecimento.
-
-### 9.1 Critérios da Recomendação
-O algoritmo de recomendação pode ponderar:
-* Compatibilidade do combustível com o motor do veículo.
-* Consumo médio informado para o tipo de combustível avaliado.
-* Preço por litro praticado no posto.
-* Distância em linha reta até o posto.
-* Custo aproximado por quilômetro rodado (`Preço / Consumo`).
-* Data/hora da última atualização do preço registrado.
-
----
-
-## 10. Leitura de Preços por Fotografia
-
-```text
-FUNCIONALIDADE FUTURA / EM AVALIAÇÃO
-- A leitura automatizada de preços de combustíveis em totens ou bombas através de fotografias capturadas pelo motorista é classificada estritamente como funcionalidade futura em avaliação técnica.
-- Esta funcionalidade NÃO faz parte dos requisitos obrigatórios do MVP.
-- O sistema no MVP operará com inserção de preços via painel administrativo ou cadastro direto.
+```mermaid
+flowchart TD
+    INPUT[Novo Registro de Abastecimento] --> COND1{Mesmo Veículo?}
+    COND1 -- Não --> ERR1[Rejeita Cálculo: Veículos Distintos]
+    COND1 -- Sim --> COND2{Método Tanque Cheio em Ambos?}
+    COND2 -- Não --> ERR2[Não Calcula Média Exata: Requer Tanque Completo]
+    COND2 -- Sim --> COND3{Km Atual > Km Anterior?}
+    COND3 -- Não --> ERR3[Rejeita Registro: Quilometragem Incoerente]
+    COND3 -- Sim --> COND4{Litros Abastecidos > 0?}
+    COND4 -- Não --> ERR4[Rejeita Registro: Volume Nulo ou Negativo]
+    COND4 -- Sim --> CALC[Calcula Consumo Médio km/L e Atualiza Histórico]
 ```
 
+1. **Regra do Tanque Cheio:** O cálculo exato exige que o abastecimento anterior e o atual tenham completado o reservatório até o desarme automático da bomba.
+2. **Hodômetro Crescente:** A quilometragem atual deve ser estritamente superior à quilometragem anterior (`km_atual > km_anterior`).
+3. **Volume Estritamente Positivo:** A quantidade de litros deve ser maior que zero (`litros > 0`).
+4. **Unicidade de Veículo:** Os dois abastecimentos comparados devem pertencer rigorosamente ao mesmo automóvel.
+
 ---
 
-## 11. Decisões de Negócio em Aberto
+## 4. Integração com a Base de Dados da ANP
 
-As seguintes regras de negócio necessitam de definição em etapas futuras:
+### 4.1 Origem e Caráter dos Dados
+* `REGRA DEFINIDA`: A fonte oficial de dados é a Série Histórica de Preços de Combustíveis e GLP da ANP (`https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/serie-historica-de-precos-de-combustiveis`).
+* `REGRA DEFINIDA`: No MVP, o sistema utiliza o arquivo semestral mais recente disponibilizado, iniciando pelo arquivo referente ao **1º semestre de 2026** (enquanto permanecer como o mais atual).
+* `REGRA DEFINIDA`: **Caráter Informativo e Histórico:** Os dados da ANP possuem defasagem inerente à periodicidade das pesquisas de preços. Portanto, **NÃO representam preços em tempo real**.
+* `REGRA DEFINIDA`: A **Data da Coleta** informada pela ANP deve ser obrigatoriamente persistida e exibida de forma visível ao motorista junto a cada preço consultado.
+
+### 4.2 Regras do Processo de Ingestão (ETL)
+
+```mermaid
+flowchart TD
+    INICIA[Início do Processo de Carga ANP] --> BAIXA[Download do Arquivo Público]
+    BAIXA --> VALIDA{Estrutura e Cabeçalho Válidos?}
+    VALIDA -- Falha --> FALHA[Registra Erro no Log e ABORTA Carga]
+    FALHA --> MANTEM[PRESERVA ÚLTIMA BASE VÁLIDA PARA CONSULTA]
+    VALIDA -- Sucesso --> HIGIENIZA[Limpeza e Padronização: CNPJ, Nomes, Valores]
+    HIGIENIZA --> IDEMP{Registro Já Existe para o Período?}
+    IDEMP -- Sim --> IGNORA[Evita Duplicidade - Idempotência]
+    IDEMP -- Não --> PERSISTE[Insere Posto e Preço no Banco]
+    PERSISTE --> SUCESSO[Registra Rastreabilidade: Período, Data, Total Importado]
+    IGNORA --> SUCESSO
+```
+
+1. **Validação Estrutural:** O sistema deve verificar o formato e a presença dos campos obrigatórios: Região, Estado/UF, Município, Revenda, CNPJ, Endereço, Bairro, CEP, Produto, Data da Coleta, Valor de Venda, Unidade de Medida e Bandeira.
+2. **Prevenção de Duplicatas (Idempotência):** Reexecuções de carga para o mesmo arquivo semestral ou período não podem gerar registros duplicados no banco de dados.
+3. **Rastreabilidade Obrigatória:** Toda carga deve registrar em log auditável: URL/origem do arquivo, período de referência, data/hora da execução, quantidade de linhas lidas/inseridas e status final (`SUCCESS`, `PARTIAL`, `FAILED`).
+4. **Política de Fallback e Resiliência:** Caso ocorra qualquer erro de download, inconsistência estrutural ou falha de processamento durante a importação, o sistema deve manter intactos e disponíveis para consulta os últimos dados válidos previamente carregados.
+5. **Geocodificação de Coordenadas:** Caso o arquivo da ANP não forneça latitude e longitude, o sistema poderá acionar rotina de geocodificação baseada em endereço, bairro, CEP e município para permitir a localização em mapa.
+
+---
+
+## 5. Postos de Combustível e Localização
+
+### 5.1 Cadastro e Identificação do Posto
+* `REGRA DEFINIDA`: O posto deve possuir CNPJ válido e único no sistema.
+* `REGRA DEFINIDA`: Cada posto mantém endereço textual completo (logradouro, bairro, município, UF e CEP) e coordenadas geográficas (latitude e longitude decimais).
+* `REGRA DEFINIDA`: Postos podem receber status `ACTIVE` ou `INACTIVE`. Postos inativos não aparecem nas buscas de motoristas.
+
+### 5.2 Geolocalização e Consulta de Proximidade
+* `REGRA DEFINIDA`: O sistema solicita autorização do usuário no navegador para obter as coordenadas via API Geolocation.
+* `REGRA DEFINIDA`: **Busca Manual Obrigatória:** Se a permissão for recusada ou indisponível, o sistema deve permitir que o motorista pesquise manualmente informando endereço, bairro, cidade ou CEP.
+* `REGRA DEFINIDA`: **Visualização Dupla Obrigatória:** Os resultados devem ser apresentados simultaneamente em:
+  1. Mapa interativo com marcadores (Leaflet 1.9.4 + OpenStreetMap).
+  2. Lista ordenada com nome, bandeira, endereço, distância calculada e preços.
+* `REGRA DEFINIDA`: **Distância em Linha Reta:** No MVP, a distância entre a posição de referência e o posto é calculada em **linha reta** baseando-se na diferença matemática das coordenadas geográficas (fórmula trigonométrica de Haversine ou euclidiana esférica):
+
+$$d = 2 R \cdot \arcsin\left(\sqrt{\sin^2\left(\frac{\Delta \phi}{2}\right) + \cos(\phi_1)\cos(\phi_2)\sin^2\left(\frac{\Delta \lambda}{2}\right)}\right)$$
+
+* `REGRA DEFINIDA`: O sistema **NÃO** calcula rotas viárias nem estimativas de trânsito em sua infraestrutura interna no MVP.
+
+### 5.3 Navegação e Rotas Externas
+* `REGRA DEFINIDA`: A aplicação deve disponibilizar o botão **"Rotas"** nos detalhes de cada posto.
+* `REGRA DEFINIDA`: Ao acionar o botão, o sistema redireciona a navegação para os aplicativos externos **Google Maps** ou **Waze**, repassando as coordenadas de destino do posto via deep link / URL parametrizada.
+
+---
+
+## 6. Preços de Combustíveis e Comparação
+
+### 6.1 Cadastro de Preços
+* `REGRA DEFINIDA`: Cada registro de preço está vinculado a um posto e a um tipo de combustível (Gasolina Comum, Gasolina Aditivada, Etanol, Diesel S10, GNV, etc.).
+* `REGRA DEFINIDA`: O valor de venda deve ser um número monetário estritamente positivo (`sale_value > 0`).
+* `REGRA DEFINIDA`: Preços cadastrados registram a data de coleta/atualização e a fonte (`ANP_IMPORT` ou `MANUAL_ADMIN`).
+
+### 6.2 Critérios de Filtro e Ordenação
+A consulta de preços e postos deve suportar os seguintes critérios combinados:
+* Tipo de combustível selecionado;
+* Menor preço nominal;
+* Menor distância geográfica em linha reta;
+* Melhor nota de avaliação média do posto;
+* Faixa de preço (valor mínimo e máximo);
+* Raio de busca geográfico (ex.: 5 km, 10 km, 20 km).
+
+---
+
+## 7. Recomendações e Estimativas de Custo-Benefício
+
+O módulo de recomendações cruza os dados do veículo cadastrado com os postos e preços da região pesquisada.
+
+### 7.1 Fórmulas das Estimativas Personalizadas
+
+1. **Custo Estimado para Abastecimento Completo (Tanque Cheio):**
+
+$$\text{Custo Tanque Cheio (R\$)} = \text{Capacidade do Tanque (L)} \times \text{Preço por Litro (R\$/L)}$$
+
+2. **Custo Estimado por Quilômetro Rodado:**
+
+$$\text{Custo por km (R\$/km)} = \frac{\text{Preço por Litro (R\$/L)}}{\text{Consumo Médio do Veículo (km/L)}}$$
+
+3. **Autonomia Estimada com Tanque Cheio:**
+
+$$\text{Autonomia (km)} = \text{Capacidade do Tanque (L)} \times \text{Consumo Médio (km/L)}$$
+
+4. **Comparação de Custo-Benefício entre Combustíveis Compatíveis:**
+   * Para veículos bicombustíveis (Flex - Gasolina e Etanol), o sistema calcula o custo por quilômetro rodado de cada opção compatível e indica qual combustível apresenta o menor gasto financeiro por distância percorrida na região pesquisada.
+
+* `REGRA DEFINIDA`: O processamento e as fórmulas das recomendações devem residir centralizados no **backend** para garantir auditabilidade e integridade das regras.
+* `REGRA DEFINIDA`: Todas as estimativas apresentadas ao usuário possuem caráter meramente informativo e de apoio à decisão, dependendo da acurácia dos dados informados pelo motorista.
+
+---
+
+## 8. Avaliações de Postos (Reviews)
+
+### 8.1 Registro de Avaliação
+* `REGRA DEFINIDA`: Apenas usuários autenticados (com perfil de Motorista) podem avaliar postos.
+* `REGRA DEFINIDA`: A avaliação consiste em uma nota numérica inteira em escala de **1 a 5** e um comentário textual opcional.
+* `REGRA DEFINIDA`: A avaliação registra data/hora de criação, identificador do condutor avaliador e identificador do posto avaliado.
+* `REGRA / COMPORTAMENTO A DEFINIR`: Política de unicidade — se o motorista pode registrar apenas uma avaliação ativa por posto (com suporte a edição) ou se pode registrar múltiplas avaliações ao longo do tempo.
+
+### 8.2 Nota Média do Posto
+* `REGRA DEFINIDA`: A nota média de cada posto é a média aritmética das notas das avaliações ativas e aprovadas:
+
+$$\text{Nota Média} = \frac{\sum_{i=1}^{N} \text{Nota}_i}{N}$$
+
+* `REGRA DEFINIDA`: O sistema deve manter atualizados a nota média agregada e o número total de avaliações recebidas pelo estabelecimento.
+
+### 8.3 Moderação Administrativa
+* `REGRA DEFINIDA`: Usuários com perfil `ROLE_ADMIN` podem inspecionar, ocultar ou excluir avaliações cujo texto contenha termos impróprios, ofensivos ou inconsistentes.
+
+---
+
+## 9. Funcionalidades Pós-MVP / Em Avaliação
+
+As seguintes funcionalidades não integram o escopo obrigatório do MVP inicial:
+
+1. **Atualização Colaborativa de Preços:** Envio ou confirmação de preços por motoristas, com mecanismos de aprovação e reputação.
+2. **Leitura de Preços por Fotografia (OCR):** Envio de fotos de totens de postos pelo aplicativo, validação de metadados de localização/horário e atualização automática de divergências de preço.
+3. **Módulo de Histórico de Abastecimentos e Hodômetro:** Registro de abastecimentos consecutivos para cálculo automático do consumo real.
+4. **Notificações e Alertas:** Alertas no dispositivo para quedas de preços em postos favoritos ou valores abaixo de limites configurados.
+5. **Favoritos e Rotas Frequentes:** Marcação de postos preferidos e comparação de valores ao longo de trajetos habituais (ex.: casa-trabalho).
+6. **Portal de Representantes / Operadores de Posto:** Perfil restrito para gerenciamento de informações e publicação de promoções de postos.
+7. **Painéis Analíticos e Relatórios:** Dashboards com indicadores estatísticos sobre preços médios regionais e comportamento de consumo.
+
+---
+
+## 10. Decisões de Negócio em Aberto
 
 ```text
 DECISÃO EM ABERTO
-- Política de expiração ou descarte de preços antigos (ex.: considerar preços desatualizados após quantos dias sem nova confirmação?).
-- Política de colaboração de motoristas na atualização de preços (usuários comuns poderão sugerir preços ou somente administradores?).
-- Frequência e limite de avaliações por usuário (quantas avaliações um mesmo usuário pode registrar em determinado período?).
-- Escala exata da nota de avaliação (ex.: valores inteiros de 1 a 5 ou suporte a frações decimais).
+1. Política de Validade dos Preços ANP:
+   - Critério para rotular preços como "desatualizados" na interface caso passem mais de X meses sem nova carga oficial.
+   - Status: NÃO DEFINIDO NA ESPECIFICAÇÃO.
+
+2. Escopo do Perfil "Operador de Posto":
+   - Definição formal se o operador de posto terá acesso no MVP para atualização manual ou se o cadastro manual será atribuição exclusiva de administradores.
+   - Status: DECISÃO EM ABERTO.
+
+3. Limite e Periodicidade de Avaliações:
+   - Restrição de intervalo mínimo para que um mesmo motorista reavalie o mesmo posto de combustível.
+   - Status: NÃO DEFINIDO NA ESPECIFICAÇÃO.
+
+4. Raio de Busca Padrão e Limite Máximo:
+   - Definição do raio padrão inicial (ex.: 5 km) e raio máximo permitido na busca por proximidade (ex.: 50 km).
+   - Status: NÃO DEFINIDO NA ESPECIFICAÇÃO.
 ```
+
+---
+
+## 11. Inconsistências Identificadas na Especificação
+
+Em cumprimento ao princípio de **não corrigir silenciosamente inconsistências da especificação**:
+
+1. **Histórico de Abastecimentos x Classificação Pós-MVP:**
+   * A especificação declara no tópico *"Evoluções previstas (pós-MVP)"* que o *"Histórico de abastecimentos"* não faz parte da primeira versão do sistema. Contudo, dedica o item 5 de *"Fluxos principais"* e a fórmula de cálculo `(km_atual - km_anterior) / litros` como fluxo central, e cita na nota 2 que o app calculará o consumo com base em abastecimentos preenchidos.
+   * *Resolução documental:* O cálculo foi integralmente documentado na seção 3 deste documento para fins de clareza matemática, mas classificado formalmente como Pós-MVP no escopo executável, uma vez que a tabela de endpoints REST da própria especificação não contém rotas para abastecimento.
+2. **Método HTTP `PATH` nas Tabelas da API:**
+   * As tabelas de rotas utilizam a palavra `PATH` em vez de `PATCH` para atualização de dados do usuário, veículos, postos, preços e avaliações.
+   * *Resolução documental:* A divergência foi documentada em todos os arquivos de contexto, adotando `PATCH` como convenção padrão RESTful da RFC 5789.
+3. **Ambiguidade de Perfis (Motorista x Usuário Final x Operador de Posto):**
+   * A especificação refere-se ora a "Motorista", ora a "Usuário final". Também menciona "Operador de posto" como opcional no MVP na seção 2 da API, mas restringe a "Administrador e Usuário final" no sumário de tipos de usuários, e como pós-MVP na seção de promoções.
+   * *Resolução documental:* Fixou-se formalmente `ROLE_MOTORISTA` e `ROLE_ADMIN` para o MVP, e `ROLE_OPERADOR` como pós-MVP / em avaliação.
