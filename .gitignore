@@ -1,0 +1,14 @@
+# IDEs e editores
+.idea/
+**/.idea/
+*.iml
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
