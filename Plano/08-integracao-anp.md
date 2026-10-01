@@ -1,448 +1,201 @@
-# Fase 8 — Integração com a Base de Dados da ANP
+# Fase 8 — Integração com os Dados da ANP
 
-## Objetivo
+## Objetivo e estado
 
-Implementar o pipeline ETL para ingestão do arquivo CSV semestral de preços de combustíveis publicado pela ANP (Agência Nacional do Petróleo), com validação, limpeza, normalização, geocodificação via Geoapify, idempotência contra duplicatas e auditoria completa.
+**Objetivo-alvo da evolução:** ampliar o pipeline administrativo auditável,
+validado, idempotente e transacional para receber CSV/TSV direto ou ZIP que
+contenha CSV. A implementação entregue atualmente baixa CSV/TSV direto; o
+suporte a ZIP está planejado abaixo e ainda não foi implementado. Os preços são
+históricos e informativos; a interface deve exibir a data de coleta da ANP e não
+prometer preços em tempo real.
 
-**Branch:** `feature/integracao-anp`
-**Dependência:** Fase 5 (Preços de Combustíveis)
+**Dependência:** Fase 5 (Preços de Combustíveis).
 
----
+## Fonte e formato
 
-## Fonte de Dados
+- Fonte: Portal de Dados Abertos da ANP — Série Histórica de Preços de
+  Combustíveis e GLP. A URL HTTPS oficial é fornecida na solicitação de importação.
+- O downloader aceita HTTPS somente nos hosts oficiais configurados
+  (`gov.br`, `www.gov.br`, `anp.gov.br`, `www.anp.gov.br` e `dados.gov.br`) e
+  nas portas padrão 443 (ou não especificadas); não segue redirecionamentos. O
+  tamanho é limitado a 50 MB e há timeouts de conexão e leitura.
+- A entrega atual baixa CSV/TSV diretamente, reconhece ponto e vírgula,
+  tabulação ou vírgula, BOM UTF-8 e UTF-8/Windows-1252. ZIP, os casos
+  específicos de números com vírgula decimal e a robustez de detecção do
+  delimitador descrita abaixo são trabalho planejado, ainda não implementado.
+- O comportamento-alvo deve aceitar um CSV/TSV direto ou um ZIP da ANP
+  contendo CSV. Para ZIP: validar o arquivo, inspecionar as entradas sem
+  confiar em caminhos internos, aplicar limites de tamanho/expansão e processar
+  o CSV elegível. Falhas de integridade, ausência de CSV ou layout incompatível
+  devem produzir erro útil e auditável. Limites de descompactação e critério
+  para selecionar entre múltiplos CSVs válidos permanecem pendentes.
+- A detecção do delimitador deve usar cabeçalhos conhecidos e consistência do
+  número de colunas; `;` é delimitador quando esse for o formato, sem confundir
+  a vírgula decimal no valor com separador de campo. Interpretar formatos
+  numéricos conforme amostras oficiais (inclusive decimal com vírgula quando
+  presente), sem conversões ambíguas. Um CSV válido separado por `;` não pode
+  falhar com a mensagem genérica “Não foi possível identificar o separador do
+  CSV ANP”; o diagnóstico deve indicar causa útil quando o layout realmente
+  não puder ser reconhecido. Casos concretos devem ser cobertos por amostras de
+  teste da ANP.
 
-- **Portal:** Dados Abertos da ANP — Série Histórica de Preços de Combustíveis e GLP
-- **Arquivo de referência:** 1º Semestre de 2026 (CSV/TSV)
-- **Caráter:** Informativo e histórico. Preços decorrem de coletas periódicas da ANP
+## Endpoints administrativos
 
-> **Importante:** O sistema não garante preços em tempo real. Toda exibição de preço deve incluir a **data de coleta** informada pela ANP.
+Todos os endpoints exigem `ROLE_ADMIN`. A implementação atual recebe `sourceUrl`
+e `referencePeriod`; a forma-alvo do pedido substitui o campo único por
+`sourceUrl`, `referenceYear` e `referenceSemester`. O usuário autenticado é
+registrado como autor da importação.
 
----
+O ano deve ser informado como ano de quatro algarismos e o semestre como valor
+inteiro `1` ou `2`. Persistir os valores separadamente (`reference_year`,
+`reference_semester`) e apresentá-los, por exemplo, como “1º semestre de 2026”.
+A faixa histórica permitida e a regra para registros cuja data de coleta não
+caiba no semestre informado precisam ser decididas antes da implementação.
 
-## Endpoints (Admin)
+| Método | Rota | Resposta |
+|---|---|---|
+| `POST` | `/admin/anp/import` | `202 Accepted` com o log da importação |
+| `GET` | `/admin/anp/imports` | `200 OK` com logs ordenados do mais recente |
+| `GET` | `/admin/anp/imports/{id}` | `200 OK` com o log solicitado; `404` se não existir |
 
-| Método | Rota | Objetivo | Acesso | Status HTTP |
-|--------|------|----------|--------|-------------|
-| `POST` | `/admin/anp/import` | Dispara processo de carga do arquivo semestral | `ROLE_ADMIN` | `202 Accepted` |
-| `GET`  | `/admin/anp/imports` | Lista histórico de importações | `ROLE_ADMIN` | `200 OK` |
-| `GET`  | `/admin/anp/imports/{id}` | Detalhes de uma importação | `ROLE_ADMIN` | `200 OK` |
+Contrato de entrada planejado para `POST /admin/anp/import`:
 
----
+```json
+{
+  "sourceUrl": "https://dados.gov.br/arquivo-oficial.zip",
+  "referenceYear": 2026,
+  "referenceSemester": 1
+}
+```
 
-## Mapeamento de Campos (CSV ANP → Entidades)
+`referenceYear` é um inteiro correspondente a um ano com quatro algarismos
+(validação de faixa permitida ainda pendente); `referenceSemester` aceita
+somente `1` ou `2`. Não aceitar novamente um único campo como `2026-S1`.
 
-| Campo CSV ANP | Entidade | Campo no Sistema |
-|---------------|----------|------------------|
-| `CNPJ da Revenda` | Station | `cnpj` (identificador único) |
-| `Revenda` | Station | `corporate_name`, `trade_name` |
-| `Bandeira` | Station | `brand` |
-| `Nome da Rua` | Station | `street` |
-| `Numero Rua` | Station | `number` |
-| `Bairro` | Station | `neighborhood` |
-| `Cep` | Station | `postal_code` |
-| `Municipio` | Station | `city` |
-| `Estado - Sigla` | Station | `state` |
-| `Produto` | FuelType | Mapeado para `code` (ver tabela abaixo) |
-| `Data da Coleta` | FuelPrice | `collection_date` |
-| `Valor de Venda` | FuelPrice | `sale_value` |
-| `Unidade de Medida` | FuelType | `unit_of_measure` |
+## Mapeamento
 
-### Mapeamento de Produtos ANP → FuelType Code
+| Campo ANP | Destino |
+|---|---|
+| `CNPJ da Revenda` | `Station.cnpj`, normalizado para 14 dígitos |
+| `Revenda`, `Bandeira` | Nome corporativo/comercial e marca do posto |
+| `Nome da Rua`, `Numero Rua`, `Bairro`, `Cep` | Endereço do posto |
+| `Municipio`, `Estado - Sigla` | Cidade e UF |
+| `Produto` | Código canônico do catálogo |
+| `Data da Coleta`, `Valor de Venda` | Data e valor em `FuelPrice` |
+| `Unidade de Medida` | Validada contra o combustível: `R$/litro` ou `R$/m³` |
 
-| Produto ANP | `fuel_type.code` |
-|-------------|------------------|
-| GASOLINA COMUM | `GASOLINE_REGULAR` |
-| GASOLINA ADITIVADA | `GASOLINE_ADDITIVE` |
-| ETANOL | `ETHANOL` |
-| DIESEL S10 | `DIESEL_S10` |
-| DIESEL S500 | `DIESEL_S500` |
+| Produto ANP | `FuelType.code` |
+|---|---|
+| Gasolina comum | `GASOLINE_REGULAR` |
+| Gasolina aditivada ou premium | `GASOLINE_PREMIUM` |
+| Etanol | `ETHANOL` |
+| Diesel S10 | `DIESEL_S10` |
+| Diesel S500 | `DIESEL_S500` |
 | GNV | `CNG` |
 
----
+## Regras de processamento e auditoria
+
+- A identidade do posto é seu CNPJ normalizado. A chave de preço é
+  `(station_id, fuel_type_id, collection_date)`. Uma nova execução não cria
+  duplicatas; se o preço existente mudou, ele é atualizado.
+- O pipeline futuro deve procurar o posto pelo CNPJ normalizado antes de criar
+  qualquer registro. Se o CNPJ corresponder a um posto existente, vincular o
+  preço a esse posto. Se não existir, criar somente quando CNPJ válido, razão
+  social, município e UF — campos obrigatórios do cadastro — estiverem
+  disponíveis e coerentes; coordenadas podem permanecer nulas conforme a regra
+  atual e a exceção de coordenadas ausentes para importação da ANP descrita na
+  Fase 4. Isso não altera os requisitos do cadastro manual de posto.
+- Não usar correspondência aproximada por endereço/nome para criar postos e
+  não criar duplicatas silenciosamente. Sem CNPJ válido ou sem campos
+  obrigatórios suficientes, não criar posto nem preço vinculado; classificar a
+  linha como falha e explicar o campo ausente/inválido. Divergência cadastral
+  para CNPJ já existente deve ser reportada sem sobrescrever silenciosamente.
+  A política de reconciliação/atualização de metadados do posto existente
+  permanece pendente.
+- Produto desconhecido, preço/data/unidade inválidos, CNPJ inválido e outros
+  problemas por registro são armazenados como erros e resultam em `PARTIAL`
+  quando houver linhas válidas processadas.
+- Se `GEOAPIFY_API_KEY` estiver configurada, postos sem coordenadas podem ser
+  geocodificados; os resultados são reutilizados durante a importação. Sem a
+  chave, o posto e o preço ainda são salvos, latitude/longitude permanecem
+  nulas e o resultado é `PARTIAL`, sem bloquear a inicialização ou outras
+  funcionalidades.
+- `AnpImportLog` registra arquivo, período, URL sem query string, início/fim,
+  contagens, status, erros e UUID do administrador. Os status são `SUCCESS`,
+  `PARTIAL` e `FAILED`.
+- O resultado-alvo distingue registros lidos, importados, ignorados e falhos.
+  Cada linha de dados deve receber uma classificação única e explicação quando
+  ignorada/falha; a definição de se “importado” conta linha ou preço e os
+  critérios exatos de “ignorado” devem ser fechados no contrato antes de
+  implementar os novos contadores. Manter erro de posto associado à linha e
+  não persistir o preço daquela linha se o posto não puder ser resolvido ou
+  cadastrado com segurança.
+- Download ou layout inválido gera um log `FAILED`. Falha interna do
+  processamento reverte a transação de dados, registra a falha fora dela e
+  propaga o erro; assim, os dados válidos anteriores permanecem disponíveis.
+- A migração V5 torna latitude e longitude anuláveis em `stations`, permitindo
+  armazenar postos ainda não geocodificados. Consultas geográficas não incluem
+  postos sem coordenadas.
+
+## Configuração Geoapify
+
+Leia a chave exclusivamente da variável de ambiente `GEOAPIFY_API_KEY`. Para
+testar chamadas reais, configure-a no ambiente do processo que inicia a
+aplicação; nunca a grave no código, em arquivos versionados ou no frontend. Sem
+a variável, a aplicação continua operando sem geocodificação. Os limites e
+condições do serviço devem ser verificados na documentação vigente da Geoapify.
+
+## Implementação entregue
+
+- Entidades, repositório e DTOs de auditoria em `modules/anp`.
+- Downloader restrito a hosts HTTPS oficiais, parser CSV/TSV e processador
+  transacional por linha.
+- Serviço de importação, atualização idempotente de preços e endpoints
+  administrativos protegidos por `ROLE_ADMIN`.
+- Geocodificação opcional Geoapify e migração V5 para coordenadas nulas.
+- Testes unitários do parser, downloader, processador e serviço; teste de
+  integração dos endpoints, RBAC, importação, geocodificação opcional e
+  idempotência.
+
+## Trabalho futuro planejado (não implementado)
+
+1. Evoluir entrada para aceitar ZIP oficial e CSV/TSV direto, com validação
+   segura do arquivo compactado e seleção não ambígua do CSV.
+2. Ajustar e testar parser para delimitador identificado pelo cabeçalho/
+   consistência, com `;` preservado como delimitador e suporte aos formatos
+   numéricos reais da ANP, inclusive decimal com vírgula.
+3. Criar ou localizar postos de forma controlada pelo CNPJ normalizado antes
+   de importar o preço, verificando dados obrigatórios e reportando
+   inconsistências sem duplicação ou sobrescrita silenciosa.
+4. Alterar contrato de entrada, log e interface para `referenceYear` e
+   `referenceSemester`; planejar migração progressiva dos dados atuais de
+   `reference_period`, sem editar migrações já aplicadas.
+5. Acrescentar resumo consistente de lidos/importados/ignorados/falhos,
+   explicações por linha e testes para formatos, duplicidades, postos novos e
+   erros de cadastro.
+
+As tarefas acima são incrementais sobre a importação entregue. Não significam
+que o backend, banco ou formulário já tenham sido atualizados.
+
+## Critérios de aceitação
+
+- [x] Importações idempotentes por posto, combustível e data de coleta.
+- [x] Falhas internas revertem os dados parciais e preservam dados existentes.
+- [x] Auditoria inclui período, URL segura, usuário, contagens, status e erros.
+- [x] CNPJ normalizado e validado; produtos e unidades mapeados ao catálogo.
+- [x] Geocodificação opcional, sem chave obrigatória para iniciar a aplicação.
+- [x] Coordenadas ausentes persistidas como nulas e reportadas como importação parcial.
+- [x] Endpoints de importação e histórico restritos a `ROLE_ADMIN`.
+- [x] Testes unitários e de integração direcionados passam.
+- [x] `mvn -q clean verify` passa com o gate de 100% de cobertura de linhas.
+- [ ] Aceitar e validar arquivo ZIP contendo CSV, além dos formatos diretos já suportados.
+- [ ] Validar delimitador e números com amostras oficiais ANP, incluindo `;` e vírgula decimal.
+- [ ] Criar posto novo apenas após validação de CNPJ e dados obrigatórios; não gravar preço órfão.
+- [ ] Exibir contadores de registros lidos, importados, ignorados e falhos com mensagens úteis.
+- [ ] Receber, validar, armazenar e apresentar ano e semestre em campos separados.
+
+## Testes executados
 
-## Regras de Negócio
-
-### Idempotência
-1. **Chave de deduplicação:** `(station.cnpj, fuel_type.code, collection_date)`
-2. Reexecuções da carga **não geram** registros duplicados
-3. Se um registro já existe com a mesma chave: **ignora** ou **atualiza** se o valor mudou
-
-### Resiliência e Fallback
-1. Se o download falhar → aborta transação, registra `FAILED`
-2. Se a estrutura/layout do CSV for inválida → aborta, registra `FAILED`
-3. Se o processamento for interrompido → **preserva dados anteriores intactos**
-4. O sistema mantém disponíveis os últimos dados válidos previamente carregados
-
-### Normalização de CNPJ
-1. Remover caracteres especiais (pontos, barras, hífens)
-2. Validar formato: 14 dígitos numéricos
-3. Armazenar no formato `XX.XXX.XXX/XXXX-XX` (ou apenas numérico — padronizar)
-
-### Geocodificação (Geoapify)
-1. Quando latitude/longitude estiverem ausentes no CSV da ANP
-2. Usar a **Geoapify Geocoding API** (plano gratuito) para converter endereço em coordenadas
-3. Montar query: `{rua}, {numero}, {bairro}, {cidade}, {estado}, Brasil`
-4. Rate limit do plano gratuito: respeitar limites (3000 req/dia)
-5. Cachear resultados por CNPJ para evitar chamadas duplicadas
-
-### Auditoria
-1. Toda importação registra log na tabela `anp_import_logs`
-2. Campos: início, fim, período referência, total lidos, total importados, status, erros
-3. Status possíveis: `SUCCESS`, `PARTIAL`, `FAILED`
-4. `triggered_by`: UUID do admin que disparou
-
----
-
-## Fluxo ETL
-
-```mermaid
-flowchart TD
-    A["Admin dispara POST /admin/anp/import"] --> B["Download do CSV da ANP"]
-    B --> C{"Arquivo obtido com sucesso?"}
-    C -- Não --> D["Log: FAILED + error_details"]
-    D --> E["Preserva base atual intacta"]
-
-    C -- Sim --> F{"Estrutura e cabeçalho válidos?"}
-    F -- Não --> D
-    F -- Sim --> G["Parse linha por linha"]
-
-    G --> H["Normalizar CNPJ"]
-    H --> I{"Posto existe pelo CNPJ?"}
-    I -- Não --> J["Criar novo Station"]
-    I -- Sim --> K["Usar Station existente"]
-
-    J --> L{"Lat/Lng disponíveis?"}
-    K --> L
-    L -- Não --> M["Geocodificar via Geoapify"]
-    M --> N["Salvar coordenadas"]
-    L -- Sim --> N
-
-    N --> O["Mapear Produto → FuelType"]
-    O --> P{"Preço já existe? (CNPJ + tipo + data)"}
-    P -- Sim --> Q["Ignorar ou atualizar se mudou"]
-    P -- Não --> R["Inserir FuelPrice (ANP_IMPORT)"]
-
-    Q --> S["Próxima linha"]
-    R --> S
-    S --> T{"Mais linhas?"}
-    T -- Sim --> G
-    T -- Não --> U["Log: SUCCESS + totais"]
-```
-
----
-
-## Tarefas de Implementação
-
-### 8.1 Entidade AnpImportLog
-
-```java
-@Entity
-@Table(name = "anp_import_logs")
-public class AnpImportLog {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-
-    @Column(name = "file_name", nullable = false)
-    private String fileName;
-
-    @Column(name = "reference_period", nullable = false, length = 20)
-    private String referencePeriod;
-
-    @Column(name = "source_url", length = 500)
-    private String sourceUrl;
-
-    @Column(name = "import_start", nullable = false)
-    private LocalDateTime importStart;
-
-    @Column(name = "import_end")
-    private LocalDateTime importEnd;
-
-    @Column(name = "total_records_read")
-    private Integer totalRecordsRead = 0;
-
-    @Column(name = "total_records_imported")
-    private Integer totalRecordsImported = 0;
-
-    @Column(nullable = false, length = 20)
-    @Enumerated(EnumType.STRING)
-    private ImportStatus status = ImportStatus.FAILED;
-
-    @Column(name = "error_details", columnDefinition = "TEXT")
-    private String errorDetails;
-
-    @Column(name = "triggered_by")
-    private UUID triggeredBy;
-
-    // Construtores, getters, setters
-}
-```
-
-### 8.2 AnpImportService
-
-```java
-@Service
-public class AnpImportService {
-
-    private final AnpImportLogRepository importLogRepository;
-    private final StationRepository stationRepository;
-    private final FuelPriceRepository fuelPriceRepository;
-    private final FuelTypeRepository fuelTypeRepository;
-    private final GeoapifyService geoapifyService;
-
-    @Transactional
-    public AnpImportLog executeImport(
-            String fileUrl, String referencePeriod, UUID triggeredBy) {
-
-        AnpImportLog log = new AnpImportLog();
-        log.setSourceUrl(fileUrl);
-        log.setReferencePeriod(referencePeriod);
-        log.setImportStart(LocalDateTime.now());
-        log.setTriggeredBy(triggeredBy);
-
-        try {
-            // 1. Download do arquivo
-            String csvContent = downloadFile(fileUrl);
-            log.setFileName(extractFileName(fileUrl));
-
-            // 2. Validar estrutura
-            validateCsvStructure(csvContent);
-
-            // 3. Parse e processamento
-            List<String[]> records = parseCsv(csvContent);
-            log.setTotalRecordsRead(records.size());
-
-            int imported = 0;
-            for (String[] record : records) {
-                if (processRecord(record)) {
-                    imported++;
-                }
-            }
-
-            log.setTotalRecordsImported(imported);
-            log.setStatus(ImportStatus.SUCCESS);
-            log.setImportEnd(LocalDateTime.now());
-
-        } catch (Exception e) {
-            log.setStatus(ImportStatus.FAILED);
-            log.setErrorDetails(e.getMessage());
-            log.setImportEnd(LocalDateTime.now());
-        }
-
-        return importLogRepository.save(log);
-    }
-
-    private boolean processRecord(String[] record) {
-        // 1. Extrair e normalizar CNPJ
-        String cnpj = normalizeCnpj(record[CNPJ_INDEX]);
-
-        // 2. Buscar ou criar Station
-        Station station = stationRepository.findByCnpj(cnpj)
-                .orElseGet(() -> createStation(record, cnpj));
-
-        // 3. Geocodificar se necessário
-        if (station.getLatitude() == null || station.getLongitude() == null) {
-            geocodeStation(station);
-        }
-
-        // 4. Mapear produto para FuelType
-        FuelType fuelType = mapProductToFuelType(record[PRODUCT_INDEX]);
-        if (fuelType == null) return false;
-
-        // 5. Extrair preço e data
-        BigDecimal price = parsePrice(record[PRICE_INDEX]);
-        LocalDate date = parseDate(record[DATE_INDEX]);
-
-        // 6. Verificar duplicata (idempotência)
-        Optional<FuelPrice> existing = fuelPriceRepository
-                .findByStationIdAndFuelTypeIdAndCollectionDate(
-                        station.getId(), fuelType.getId(), date);
-
-        if (existing.isPresent()) {
-            // Atualizar apenas se preço mudou
-            FuelPrice fp = existing.get();
-            if (fp.getSaleValue().compareTo(price) != 0) {
-                fp.setSaleValue(price);
-                fp.setUpdatedAt(LocalDateTime.now());
-                fuelPriceRepository.save(fp);
-                return true;
-            }
-            return false; // Sem alteração
-        }
-
-        // 7. Inserir novo preço
-        FuelPrice fuelPrice = new FuelPrice();
-        fuelPrice.setStation(station);
-        fuelPrice.setFuelType(fuelType);
-        fuelPrice.setSaleValue(price);
-        fuelPrice.setCollectionDate(date);
-        fuelPrice.setDataSource(DataSource.ANP_IMPORT);
-        fuelPriceRepository.save(fuelPrice);
-
-        return true;
-    }
-
-    private String normalizeCnpj(String raw) {
-        return raw.replaceAll("[^0-9]", "");
-    }
-
-    // Métodos auxiliares: downloadFile, validateCsvStructure, parseCsv,
-    //                     createStation, geocodeStation, mapProductToFuelType,
-    //                     parsePrice, parseDate
-}
-```
-
-### 8.3 GeoapifyService
-
-```java
-@Service
-public class GeoapifyService {
-
-    @Value("${geoapify.api-key}")
-    private String apiKey;
-
-    private static final String BASE_URL =
-            "https://api.geoapify.com/v1/geocode/search";
-
-    private final RestTemplate restTemplate;
-
-    /**
-     * Geocodifica um endereço usando a Geoapify API (plano gratuito)
-     * @return [latitude, longitude] ou null se não encontrar
-     */
-    public double[] geocode(String street, String number,
-                            String neighborhood, String city,
-                            String state) {
-
-        String address = String.join(", ",
-                street != null ? street + " " + number : "",
-                neighborhood != null ? neighborhood : "",
-                city, state, "Brasil")
-                .replaceAll(",\\s*,", ",").trim();
-
-        String url = UriComponentsBuilder.fromHttpUrl(BASE_URL)
-                .queryParam("text", address)
-                .queryParam("apiKey", apiKey)
-                .queryParam("lang", "pt")
-                .queryParam("limit", 1)
-                .queryParam("filter", "countrycode:br")
-                .toUriString();
-
-        try {
-            ResponseEntity<JsonNode> response =
-                    restTemplate.getForEntity(url, JsonNode.class);
-
-            JsonNode features = response.getBody().get("features");
-            if (features != null && features.size() > 0) {
-                JsonNode coords = features.get(0)
-                        .get("geometry").get("coordinates");
-                double lng = coords.get(0).asDouble();
-                double lat = coords.get(1).asDouble();
-                return new double[]{lat, lng};
-            }
-        } catch (Exception e) {
-            // Log warning, não falhar a importação por geocodificação
-        }
-
-        return null;
-    }
-}
-```
-
-### 8.4 Configuração do Geoapify
-
-Adicionar ao `application.yml`:
-
-```yaml
-# Geoapify Geocoding (Free Tier)
-geoapify:
-  api-key: ${GEOAPIFY_API_KEY:sua-chave-aqui}
-```
-
-### 8.5 AnpImportController
-
-```java
-@RestController
-@RequestMapping("/admin/anp")
-@PreAuthorize("hasRole('ADMIN')")
-public class AnpImportController {
-
-    private final AnpImportService anpImportService;
-    private final AnpImportLogRepository importLogRepository;
-
-    @PostMapping("/import")
-    public ResponseEntity<AnpImportLogDTO> triggerImport(
-            @Valid @RequestBody AnpImportRequestDTO request,
-            @AuthenticationPrincipal String userId) {
-
-        AnpImportLog result = anpImportService.executeImport(
-                request.sourceUrl(), request.referencePeriod(),
-                UUID.fromString(userId));
-
-        return ResponseEntity.accepted().body(toDTO(result));
-    }
-
-    @GetMapping("/imports")
-    public ResponseEntity<List<AnpImportLogDTO>> listImports() {
-        return ResponseEntity.ok(
-                importLogRepository.findAllByOrderByImportStartDesc()
-                        .stream().map(this::toDTO).toList());
-    }
-
-    @GetMapping("/imports/{id}")
-    public ResponseEntity<AnpImportLogDTO> getImport(@PathVariable UUID id) {
-        AnpImportLog log = importLogRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(
-                        "Log de importação não encontrado."));
-        return ResponseEntity.ok(toDTO(log));
-    }
-}
-```
-
----
-
-## Testes
-
-### Unitários
-- `AnpImportServiceTest`:
-  - Carga com CSV válido → SUCCESS com totais corretos
-  - Carga com CSV inválido (layout errado) → FAILED
-  - Reexecução do mesmo arquivo não duplica registros (idempotência)
-  - CNPJ normalizado corretamente
-  - Mapeamento de produtos ANP → FuelType correto
-
-- `GeoapifyServiceTest`:
-  - Geocodificação com endereço válido retorna coordenadas
-  - Endereço não encontrado retorna null (não falha)
-
-### Integração
-- `AnpImportControllerIntegrationTest`:
-  - POST como ADMIN retorna 202
-  - POST como MOTORISTA retorna 403
-  - GET imports retorna lista de logs
-
-### Dados de Teste
-- Criar arquivo CSV com ~100 registros simulando o formato ANP
-- Incluir cenários: CNPJ duplicado, produto desconhecido, preço inválido
-
----
-
-## Critérios de Aceitação
-
-- [ ] Carga idempotente (re-executar não duplica registros)
-- [ ] Falha preserva dados anteriores intactos (rollback transacional)
-- [ ] Log de auditoria completo (início, fim, totais, status, erros)
-- [ ] CNPJ normalizado e validado
-- [ ] Mapeamento correto de todos os produtos ANP → FuelType
-- [ ] Geocodificação via Geoapify para postos sem coordenadas
-- [ ] Apenas ADMIN pode disparar a carga
-- [ ] Testes passam
-
----
-
-## Commit Sugerido
-
-```
-feat: implement ANP ETL pipeline with idempotency and Geoapify geocoding
+```powershell
+mvn -q "-Dtest=AnpCsvParserTest,AnpCsvDownloaderTest,AnpImportProcessorTest,AnpImportServiceTest,AnpImportControllerIntegrationTest" test
 ```

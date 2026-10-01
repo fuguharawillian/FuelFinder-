@@ -13,6 +13,9 @@ O desenvolvimento do FuelFinder segue normas de excelência em engenharia de sof
 * **Clean Code & SOLID:** Alta coesão interna, baixo acoplamento intermodular e responsabilidade única em cada classe.
 * **OWASP Top 10:** Desenvolvimento seguro com foco na prevenção de SQL Injection (consultas estritamente parametrizadas via Spring Data JPA), proteção contra XSS e validação minuciosa de dados externos provenientes da ANP.
 * **W3C / WCAG (Acessibilidade Web):** Estruturação semântica de páginas HTML5 (`<main>`, `<nav>`, `<article>`), contraste de cores acessível e botões identificados com `aria-label`.
+* **Navegação e acesso:** Login/cadastro são áreas públicas; telas internas exigem autenticação e autorização server-side. Uma rota interna aberta sem sessão retorna ao login preservando apenas um destino interno seguro para retorno após autenticação.
+* **Responsividade e UX:** Projetar para desktop e mobile; usar navegação lateral persistente em telas amplas e menu lateral recolhível por botão hambúrguer em telas estreitas. No mobile, iniciar recolhido; botão expõe `aria-expanded`, menu aberto permite fechar pelo controle, navegação ou tecla Escape e mantém foco acessível. Breakpoint exato deve ser validado pelo conteúdo, não presumido. Manter escala de espaçamento consistente, respiro entre campos, textos, cartões e botões, e áreas de toque confortáveis. Telas relevantes devem expor estados de carregamento, vazio, sucesso e erro.
+* **Referência visual:** Usar [a imagem de referência](../Plano/img_exemplo.png) como inspiração apenas para características visíveis de composição responsiva, cartões, hierarquia visual, respiro e uso de cor. Não copiar conteúdo ou elementos específicos de outro domínio nem inferir detalhes que a imagem não mostra.
 * **IETF:** Comunicação via HTTPS; adesão estrita à semântica RESTful dos métodos HTTP (utilizando `PATCH` para atualizações parciais, conforme a RFC 5789).
 * **ISO/IEC 25010:** Foco em manutenibilidade, testabilidade, usabilidade e eficiência de execução.
 
@@ -63,12 +66,14 @@ modules/<dominio>/
 ## 3. Convenções de Nomenclatura e Idioma
 
 * **Idioma do Código:** Todo o código-fonte (classes, métodos, variáveis, DTOs, entidades, tabelas e colunas de banco de dados) deve ser escrito em **Inglês**. A documentação de regras de negócio e as mensagens exibidas na interface do usuário permanecem em **Português**.
+* **Runtime:** Todo o backend deve compilar e executar com **Java 21 LTS**; não usar recursos de linguagem posteriores a essa versão.
 * **Classes, Records, Interfaces e Enums:** `PascalCase` (ex.: `StationService`, `VehicleResponseDTO`, `FuelType`).
 * **Métodos e Variáveis:** `camelCase` (ex.: `calculateHaversineDistance`, `tankCapacity`, `stationRepository`).
-* **Constantes e Valores de Enum:** `UPPER_SNAKE_CASE` (ex.: `ROLE_MOTORISTA`, `ROLE_ADMIN`, `GASOLINE_REGULAR`).
+* **Constantes e Valores de Enum:** `UPPER_SNAKE_CASE` (ex.: `ROLE_DRIVER`, `ROLE_ADMIN`, `GASOLINE_REGULAR`, `GASOLINE_PREMIUM`).
 * **Tabelas do Banco de Dados:** `snake_case` no plural (ex.: `users`, `vehicles`, `stations`, `fuel_prices`, `reviews`, `anp_import_logs`).
 * **Colunas do Banco de Dados:** `snake_case` (ex.: `user_id`, `tank_capacity`, `average_consumption_gasoline`).
 * **Rotas da API REST:** `kebab-case` no plural (ex.: `/stations/{id}/fuel-prices`, `/fuel-prices/compare`).
+* **Segurança de credenciais:** Papéis e autoridades usam os identificadores `DRIVER`/`ROLE_DRIVER` e `ADMIN`/`ROLE_ADMIN`. Senhas exigem pelo menos 8 caracteres, uma maiúscula, uma minúscula, um número e um caractere especial, e devem ser armazenadas com BCrypt de custo mínimo 12.
 
 ---
 
@@ -133,7 +138,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/vehicles")
-@PreAuthorize("hasRole('MOTORISTA')")
+@PreAuthorize("hasRole('DRIVER')")
 public class VehicleController {
 
     private final VehicleService vehicleService;
@@ -191,9 +196,11 @@ public class VehicleService {
             request.model(),
             request.yearManufacture(),
             request.fuelTypeAccepted(),
-            request.tankCapacity(),
-            request.averageConsumptionGasoline(),
-            request.averageConsumptionEthanol()
+            toTankCapacity(request.tankCapacity()),
+            toConsumption(request.averageConsumptionGasoline()),
+            toConsumption(request.averageConsumptionEthanol()),
+            toConsumption(request.averageConsumptionDiesel()),
+            toConsumption(request.averageConsumptionCng())
         );
         Vehicle saved = vehicleRepository.save(vehicle);
         return toDTO(saved);

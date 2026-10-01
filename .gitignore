@@ -12,3 +12,14 @@
 # Sistema operacional
 .DS_Store
 Thumbs.db
+
+# Maven
+target/
+
+# Configuração local e segredos
+.env
+.env.*
+!.env.example
+application-local.yml
+application-local.yaml
+application-local.properties

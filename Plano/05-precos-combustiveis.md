@@ -13,17 +13,17 @@ Implementar a gestão de preços de combustíveis por posto, o catálogo de tipo
 
 | Método | Rota | Objetivo | Acesso | Status HTTP |
 |--------|------|----------|--------|-------------|
-| `GET`  | `/stations/{id}/fuel-prices` | Lista preços cadastrados do posto | Público / Autenticado | `200 OK` |
+| `GET`  | `/stations/{id}/fuel-prices` | Lista preços cadastrados do posto | `ROLE_DRIVER` / `ROLE_ADMIN` | `200 OK` |
 | `POST` | `/stations/{id}/fuel-prices` | Registra novo preço de combustível | `ROLE_ADMIN` | `201 Created` |
 | `PATCH`| `/stations/{id}/fuel-prices/{priceId}` | Atualiza preço existente | `ROLE_ADMIN` | `200 OK` |
-| `GET`  | `/fuel-prices/compare` | Compara postos ordenados por preço/distância | Público / Autenticado | `200 OK` |
+| `GET`  | `/fuel-prices/compare` | Compara postos ordenados por preço/distância | `ROLE_DRIVER` / `ROLE_ADMIN` | `200 OK` |
 
 ---
 
 ## Regras de Negócio
 
 ### Preços de Combustíveis
-1. Cada preço é vinculado a um `station_id` e um `fuel_type_id`
+1. Cada preço é vinculado a um `station_id` e um `fuel_type_id`; o catálogo identifica a unidade comercial (`R$/litro` ou `R$/m³`)
 2. **Data de coleta obrigatória:** `collection_date` — data da coleta ANP ou data do cadastro manual
 3. **Fonte de dados:** `data_source` → `ANP_IMPORT` (carga automática) ou `MANUAL_ADMIN` (cadastro pelo administrador)
 4. **Unicidade:** constraint `(station_id, fuel_type_id, collection_date)` — não pode haver dois preços para o mesmo combustível no mesmo posto na mesma data
@@ -31,8 +31,9 @@ Implementar a gestão de preços de combustíveis por posto, o catálogo de tipo
 
 ### Comparação de Preços
 1. Recebe parâmetros: `latitude`, `longitude`, `radiusKm`, `fuelTypeCode` (opcional), `sortBy` (price/distance)
-2. Retorna postos com preços do combustível selecionado, ordenados conforme critério
-3. Inclui fórmulas calculadas quando `vehicleId` é fornecido:
+2. Retorna o preço mais recente por posto e combustível na área pesquisada. `fuelTypeCode` é opcional; quando omitido, cada resultado identifica seu combustível.
+3. `sortBy` aceita `PRICE` (padrão) ou `DISTANCE`; empates são desfeitos pelo outro critério.
+4. Inclui fórmulas calculadas quando `vehicleId` pertence ao motorista autenticado e há consumo compatível:
    - Custo para tanque cheio
    - Autonomia estimada
    - Custo por quilômetro
@@ -41,19 +42,25 @@ Implementar a gestão de preços de combustíveis por posto, o catálogo de tipo
 
 **Custo para encher o tanque:**
 
-$$\text{Custo Tanque Cheio (R\$)} = \text{Capacidade do Tanque (L)} \times \text{Preço por Litro (R\$/L)}$$
+$$\text{Custo Tanque Cheio (R\$)} = \text{Capacidade (L ou m³)} \times \text{Preço (R\$/L ou R\$/m³)}$$
+
+A unidade do preço e a unidade da capacidade devem corresponder: líquidos usam litros e CNG usa m³.
 
 **Autonomia estimada:**
 
-$$\text{Autonomia (km)} = \text{Capacidade do Tanque (L)} \times \text{Consumo Médio (km/L)}$$
+$$\text{Autonomia (km)} = \text{Capacidade (L ou m³)} \times \text{Consumo (km/L ou km/m³)}$$
 
 **Custo por quilômetro:**
 
-$$\text{Custo/KM (R\$/km)} = \frac{\text{Preço por Litro (R\$/L)}}{\text{Consumo Médio (km/L)}}$$
+$$\text{Custo/KM (R\$/km)} = \frac{\text{Preço por unidade (R\$/L ou R\$/m³)}}{\text{Consumo correspondente (km/L ou km/m³)}}$$
 
 **Custo efetivo de deslocamento:**
 
 $$\text{Custo Efetivo Total} = \text{Custo do Abastecimento} + \left(2 \times \text{Distância (km)} \times \text{Custo/KM}\right)$$
+
+Na resposta da comparação, `estimatedFullTankCost` e `estimatedRoundTripCost`
+são apresentados separadamente; o segundo representa apenas o custo estimado do
+trajeto de ida e volta. O custo efetivo total é a soma dos dois.
 
 ---
 
@@ -184,8 +191,10 @@ public record CompareResultDTO(
     UUID stationId,
     String stationName,
     String brand,
-    String fuelType,
+    String fuelTypeCode,
     BigDecimal price,
+    String unitOfMeasure,
+    LocalDate collectionDate,
     Double distanceKm,
     BigDecimal costPerKm,
     BigDecimal estimatedFullTankCost,
@@ -206,9 +215,11 @@ public class FuelPriceService {
     private final StationRepository stationRepository;
 
     public List<FuelPriceResponseDTO> getLatestPrices(UUID stationId) {
-        return fuelPriceRepository.findLatestPricesByStation(stationId)
+        stationRepository.findByIdAndStatus(stationId, StationStatus.ACTIVE)
+                .orElseThrow(() -> new ResourceNotFoundException("Posto não encontrado."));
+        return fuelPriceRepository.findLatestByStationId(stationId)
                 .stream()
-                .map(this::toDTO)
+                .map(this::toResponse)
                 .toList();
     }
 
@@ -216,11 +227,12 @@ public class FuelPriceService {
     public FuelPriceResponseDTO create(UUID stationId, CreateFuelPriceRequestDTO request) {
         Station station = stationRepository.findById(stationId)
                 .orElseThrow(() -> new ResourceNotFoundException("Posto não encontrado."));
+        if (station.getStatus() != StationStatus.ACTIVE) {
+            throw new BusinessException("Não é possível cadastrar preços em um posto inativo.");
+        }
 
-        FuelType fuelType = fuelTypeRepository.findByCode(request.fuelTypeCode())
-                .orElseThrow(() -> new ResourceNotFoundException("Tipo de combustível inválido."));
+        FuelType fuelType = findActiveFuelType(request.fuelTypeCode());
 
-        // Verificar unicidade
         fuelPriceRepository.findByStationIdAndFuelTypeIdAndCollectionDate(
                 stationId, fuelType.getId(), request.collectionDate())
                 .ifPresent(existing -> {
@@ -228,20 +240,15 @@ public class FuelPriceService {
                         "Já existe um preço para este combustível nesta data.");
                 });
 
-        FuelPrice fuelPrice = new FuelPrice();
-        fuelPrice.setStation(station);
-        fuelPrice.setFuelType(fuelType);
-        fuelPrice.setSaleValue(request.saleValue());
-        fuelPrice.setCollectionDate(request.collectionDate());
-        fuelPrice.setDataSource(DataSource.MANUAL_ADMIN);
+        FuelPrice fuelPrice = new FuelPrice(
+                station, fuelType, request.saleValue(), request.collectionDate(),
+                DataSource.MANUAL_ADMIN);
 
         FuelPrice saved = fuelPriceRepository.save(fuelPrice);
-        return toDTO(saved);
+        return toResponse(saved);
     }
 
-    /**
-     * Calcula custo por km = preço / consumo
-     */
+    /** The vehicle's declared consumption must match the catalog's volume unit. */
     public BigDecimal calculateCostPerKm(BigDecimal price, BigDecimal consumption) {
         if (consumption == null || consumption.compareTo(BigDecimal.ZERO) <= 0) {
             return null;
@@ -249,9 +256,6 @@ public class FuelPriceService {
         return price.divide(consumption, 4, RoundingMode.HALF_UP);
     }
 
-    /**
-     * Calcula custo efetivo total = custo abastecimento + (2 × distância × custo/km)
-     */
     public BigDecimal calculateEffectiveCost(
             BigDecimal tankCapacity, BigDecimal price,
             double distanceKm, BigDecimal costPerKm) {
@@ -269,7 +273,7 @@ public class FuelPriceService {
 
 ## Exemplo de Resposta: `GET /fuel-prices/compare`
 
-**Request:** `GET /fuel-prices/compare?latitude=-23.55&longitude=-46.63&radiusKm=5&fuelTypeCode=GASOLINE_REGULAR&vehicleId=...`
+**Request:** `GET /fuel-prices/compare?latitude=-23.55&longitude=-46.63&radiusKm=5&fuelTypeCode=CNG&vehicleId=...`
 
 **Response (200 OK):**
 
@@ -279,13 +283,14 @@ public class FuelPriceService {
     "stationId": "c1f7b8a2-...",
     "stationName": "Posto Central",
     "brand": "IPIRANGA",
-    "fuelType": "GASOLINE_REGULAR",
-    "price": 5.79,
+    "fuelTypeCode": "CNG",
+    "price": 4.25,
+    "unitOfMeasure": "R$/m³",
     "distanceKm": 2.45,
-    "costPerKm": 0.4289,
-    "estimatedFullTankCost": 312.66,
-    "estimatedRange": 729.00,
-    "estimatedRoundTripCost": 2.10
+    "costPerKm": 0.3269,
+    "estimatedFullTankCost": 53.13,
+    "estimatedRange": 162.50,
+    "estimatedRoundTripCost": 1.60
   }
 ]
 ```
@@ -305,20 +310,20 @@ public class FuelPriceService {
 - `FuelPriceControllerIntegrationTest`:
   - GET lista preços do posto
   - POST como ADMIN retorna 201
-  - POST como MOTORISTA retorna 403
+  - POST como `ROLE_DRIVER` retorna 403
   - GET compare retorna lista ordenada por preço
 
 ---
 
 ## Critérios de Aceitação
 
-- [ ] Preços associados a posto + tipo de combustível + data
-- [ ] Unicidade por (station, fuelType, collectionDate)
-- [ ] Data de coleta exibida em todo preço
-- [ ] `data_source` identifica origem (ANP_IMPORT / MANUAL_ADMIN)
-- [ ] Comparação ordena por preço e/ou distância
-- [ ] Fórmulas de custo/km e custo efetivo calculam corretamente
-- [ ] Testes passam
+- [x] Preços associados a posto + tipo de combustível + data
+- [x] Unicidade por (station, fuelType, collectionDate)
+- [x] Data de coleta exibida em todo preço
+- [x] `data_source` identifica origem (ANP_IMPORT / MANUAL_ADMIN)
+- [x] Comparação ordena por preço e/ou distância
+- [x] Fórmulas de custo/km, tanque, autonomia e trajeto respeitam as unidades
+- [x] Testes passam
 
 ---
 
