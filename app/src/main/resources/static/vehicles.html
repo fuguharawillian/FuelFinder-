@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meus veículos — FuelFinder</title>
+  <script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="/css/styles.css">
+  <script type="module" src="/js/vehicles-page.js"></script>
+</head>
+<body>
+  <header class="site-header"><div data-site-nav></div></header>
+  <main class="page">
+    <div class="page-heading"><div><h1>Meus veículos</h1><p class="muted">Informe capacidade e consumo para personalizar as recomendações.</p></div></div>
+    <p id="page-status" class="result-state" role="status" aria-live="polite" data-shell-status></p>
+    <div class="home-grid">
+      <section class="panel">
+        <h2>Cadastrar veículo</h2>
+        <form id="vehicle-form" class="stack">
+          <div class="form-grid">
+            <label for="nickname">Apelido<input id="nickname" name="nickname" minlength="2" maxlength="50" required></label>
+            <label for="brand">Marca<input id="brand" name="brand" maxlength="100" required></label>
+            <label for="model">Modelo<input id="model" name="model" maxlength="100" required></label>
+            <label for="year-manufacture">Ano<input id="year-manufacture" name="yearManufacture" type="number" min="1900" max="2100" required></label>
+            <label for="fuel-type">Combustível
+              <select id="fuel-type" name="fuelTypeAccepted" required>
+                <option value="FLEX">Flex</option><option value="GASOLINE">Gasolina</option><option value="ETHANOL">Etanol</option><option value="DIESEL">Diesel</option><option value="CNG">GNV</option>
+              </select>
+            </label>
+            <label for="tank-capacity">Capacidade do tanque (<span id="capacity-unit">L</span>)
+              <input id="tank-capacity" name="tankCapacity" type="number" min="0.01" step="0.01" required>
+            </label>
+          </div>
+          <fieldset><legend>Consumo médio</legend><div id="consumption-fields" class="form-grid"></div><p class="muted">Informe km/L para combustíveis líquidos ou km/m³ para GNV.</p></fieldset>
+          <button type="submit" aria-label="Cadastrar veículo">Cadastrar veículo</button>
+        </form>
+      </section>
+      <section><h2>Veículos cadastrados</h2><div id="vehicle-list" class="stack"></div></section>
+    </div>
+  </main>
+</body>
+</html>

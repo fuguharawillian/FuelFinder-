@@ -13,14 +13,13 @@
 .DS_Store
 Thumbs.db
 
-# Saidas geradas por builds (incluindo projetos dentro de app/)
-**/target/
-**/build/
-**/dist/
-**/logs/
-*.log
+# Maven
+target/
 
-# Configuracoes locais e segredos
+# Configuração local e segredos
 .env
 .env.*
 !.env.example
+application-local.yml
+application-local.yaml
+application-local.properties
