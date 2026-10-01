@@ -15,7 +15,10 @@ class OriginValidationFilterTest {
 
     private final TestableOriginValidationFilter filter =
             new TestableOriginValidationFilter(
-                    "http://localhost:8080,http://localhost:3000,http://localhost:5500");
+                    "http://localhost:8080,http://127.0.0.1:8080,"
+                            + "http://localhost:3000,http://127.0.0.1:3000,"
+                            + "http://localhost:5500,http://127.0.0.1:5500,"
+                            + "http://localhost:8081,http://127.0.0.1:8081");
 
     @Test
     void filtersOnlyPostRefreshAndLogoutRequests() {
@@ -51,6 +54,14 @@ class OriginValidationFilterTest {
         MockHttpServletResponse sameOriginResponse = new MockHttpServletResponse();
         filter.doFilterInternal(sameOrigin, sameOriginResponse, new MockFilterChain());
         assertEquals(200, sameOriginResponse.getStatus());
+
+        MockHttpServletRequest loopbackOrigin = request("POST", "/auth/refresh");
+        loopbackOrigin.addHeader("Origin", "http://127.0.0.1:8081");
+        MockHttpServletResponse loopbackResponse = new MockHttpServletResponse();
+        MockFilterChain loopbackChain = new MockFilterChain();
+        filter.doFilterInternal(loopbackOrigin, loopbackResponse, loopbackChain);
+        assertNotNull(loopbackChain.getRequest());
+        assertEquals(200, loopbackResponse.getStatus());
     }
 
     @Test

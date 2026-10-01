@@ -2,6 +2,9 @@ package com.fuelfinder.modules.anp.service;
 
 import org.springframework.stereotype.Component;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.CharacterCodingException;
 import java.nio.charset.Charset;
@@ -14,6 +17,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 @Component
 public class AnpCsvParser {
@@ -28,12 +33,22 @@ public class AnpCsvParser {
             "valor de venda",
             "unidade de medida");
     private static final List<Character> SUPPORTED_DELIMITERS = List.of(';', '\t', ',');
+    private static final Charset LEGACY_ZIP_ENTRY_CHARSET = Charset.forName("CP437");
+    private static final int MAX_ARCHIVE_ENTRIES = 1_000;
+    private static final int MAX_UNCOMPRESSED_ENTRY_BYTES = 100 * 1024 * 1024;
+    private static final int MAX_TOTAL_ARCHIVE_BYTES = 200 * 1024 * 1024;
 
     public ParsedAnpCsv parse(byte[] fileContent) {
         if (fileContent == null || fileContent.length == 0) {
             throw new AnpCsvParseException("O arquivo ANP está vazio.");
         }
+        if (isZipArchive(fileContent)) {
+            return parseZipArchive(fileContent);
+        }
+        return parseCsv(fileContent);
+    }
 
+    private ParsedAnpCsv parseCsv(byte[] fileContent) {
         String content = decode(fileContent);
         if (!content.isEmpty() && content.charAt(0) == '\uFEFF') {
             content = content.substring(1);
@@ -41,12 +56,14 @@ public class AnpCsvParser {
         if (content.isBlank()) {
             throw new AnpCsvParseException("O arquivo ANP não contém cabeçalho.");
         }
-        List<CsvRecord> parsedRecords = parseRecords(content, detectDelimiter(content));
+        char delimiter = detectDelimiter(content);
+        List<CsvRecord> parsedRecords = parseRecords(content, delimiter);
 
-        List<String> headers = parsedRecords.get(0).fields().stream()
+        List<String> rawHeaders = parsedRecords.get(0).fields();
+        List<String> headers = rawHeaders.stream()
                 .map(AnpCsvParser::normalizeHeader)
                 .toList();
-        validateHeaders(headers);
+        validateHeaders(headers, rawHeaders, delimiter);
 
         List<AnpCsvRow> records = new ArrayList<>();
         List<String> errors = new ArrayList<>();
@@ -58,7 +75,7 @@ public class AnpCsvParser {
             }
             totalRecordsRead++;
             if (record.fields().size() != headers.size()) {
-                errors.add("Registro " + record.recordNumber()
+                errors.add("Linha " + record.startLine()
                         + ": quantidade de colunas diferente do cabeçalho.");
                 continue;
             }
@@ -66,7 +83,7 @@ public class AnpCsvParser {
             for (int column = 0; column < headers.size(); column++) {
                 values.put(headers.get(column), record.fields().get(column).trim());
             }
-            records.add(new AnpCsvRow(record.recordNumber(), Map.copyOf(values)));
+            records.add(new AnpCsvRow(record.startLine(), Map.copyOf(values)));
         }
         if (totalRecordsRead == 0) {
             throw new AnpCsvParseException("O arquivo ANP não contém registros de dados.");
@@ -77,12 +94,129 @@ public class AnpCsvParser {
                 List.copyOf(errors));
     }
 
+    private ParsedAnpCsv parseZipArchive(byte[] archive) {
+        ParsedAnpCsv matchingCsv = null;
+        String matchingEntry = null;
+        String firstCsvEntry = null;
+        String firstCsvError = null;
+        int entryCount = 0;
+        int totalArchiveBytes = 0;
+
+        try (ZipInputStream zip = new ZipInputStream(
+                new ByteArrayInputStream(archive),
+                LEGACY_ZIP_ENTRY_CHARSET)) {
+            ZipEntry entry;
+            while ((entry = zip.getNextEntry()) != null) {
+                entryCount++;
+                if (entryCount > MAX_ARCHIVE_ENTRIES) {
+                    throw new AnpCsvParseException(
+                            "O ZIP da ANP excede o limite de " + MAX_ARCHIVE_ENTRIES + " arquivos.");
+                }
+                boolean csvEntry = !entry.isDirectory() && isCsvEntry(entry.getName());
+                String entryName = safeEntryName(entry.getName());
+                EntryContent content = readEntry(zip, entryName, csvEntry);
+                totalArchiveBytes += content.uncompressedBytes();
+                if (totalArchiveBytes > MAX_TOTAL_ARCHIVE_BYTES) {
+                    throw new AnpCsvParseException(
+                            "O conteúdo descompactado do ZIP excede o limite de 200 MB.");
+                }
+                zip.closeEntry();
+                if (!csvEntry) continue;
+                if (firstCsvEntry == null) firstCsvEntry = entryName;
+
+                ParsedAnpCsv parsed = null;
+                try {
+                    parsed = parseCsv(content.bytes());
+                } catch (AnpCsvParseException exception) {
+                    if (firstCsvError == null) firstCsvError = exception.getMessage();
+                }
+                if (parsed != null) {
+                    if (matchingCsv != null) {
+                        throw new AnpCsvParseException(
+                                "O ZIP contém mais de um CSV/TSV com layout ANP válido: "
+                                        + matchingEntry + " e " + entryName
+                                        + ". Envie um arquivo com apenas um CSV elegível.");
+                    }
+                    matchingCsv = parsed;
+                    matchingEntry = entryName;
+                }
+            }
+        } catch (IOException exception) {
+            throw new AnpCsvParseException("Não foi possível ler o arquivo ZIP da ANP.");
+        }
+
+        if (matchingCsv != null) return matchingCsv;
+        if (firstCsvEntry == null) {
+            throw new AnpCsvParseException(
+                    "O ZIP da ANP não contém arquivos .csv ou .tsv para importar.");
+        }
+        throw new AnpCsvParseException(
+                "Nenhum CSV/TSV do ZIP possui um layout ANP válido. Arquivo examinado: "
+                        + firstCsvEntry + ". " + firstCsvError);
+    }
+
+    private EntryContent readEntry(
+            ZipInputStream zip,
+            String entryName,
+            boolean retainContent) throws IOException {
+        ByteArrayOutputStream output = retainContent ? new ByteArrayOutputStream() : null;
+        byte[] buffer = new byte[8192];
+        int totalBytes = 0;
+        int read;
+        while ((read = zip.read(buffer)) != -1) {
+            totalBytes += read;
+            if (totalBytes > MAX_UNCOMPRESSED_ENTRY_BYTES) {
+                throw new AnpCsvParseException(
+                        "A entrada " + entryName
+                                + " excede o limite descompactado de 100 MB.");
+            }
+            if (output != null) {
+                output.write(buffer, 0, read);
+            }
+        }
+        return new EntryContent(output == null ? null : output.toByteArray(), totalBytes);
+    }
+
+    private boolean isZipArchive(byte[] content) {
+        return content.length >= 4
+                && content[0] == 'P'
+                && content[1] == 'K'
+                && ((content[2] == 3 && content[3] == 4)
+                        || (content[2] == 5 && content[3] == 6)
+                        || (content[2] == 7 && content[3] == 8));
+    }
+
+    private boolean isCsvEntry(String name) {
+        String normalized = name.toLowerCase(Locale.ROOT);
+        return normalized.endsWith(".csv") || normalized.endsWith(".tsv");
+    }
+
+    private String safeEntryName(String name) {
+        String basename = name.replace('\\', '/');
+        basename = basename.substring(basename.lastIndexOf('/') + 1);
+        return basename.replaceAll("\\p{C}", "?");
+    }
+
     private String decode(byte[] content) {
+        if (hasPrefix(content, 0xFF, 0xFE)) {
+            return StandardCharsets.UTF_16LE.decode(ByteBuffer.wrap(content, 2, content.length - 2))
+                    .toString();
+        }
+        if (hasPrefix(content, 0xFE, 0xFF)) {
+            return StandardCharsets.UTF_16BE.decode(ByteBuffer.wrap(content, 2, content.length - 2))
+                    .toString();
+        }
         try {
             return StandardCharsets.UTF_8.newDecoder().decode(ByteBuffer.wrap(content)).toString();
         } catch (CharacterCodingException exception) {
             return new String(content, Charset.forName("windows-1252"));
         }
+    }
+
+    private boolean hasPrefix(byte[] content, int first, int second) {
+        return content.length >= 2
+                && Byte.toUnsignedInt(content[0]) == first
+                && Byte.toUnsignedInt(content[1]) == second;
     }
 
     private char detectDelimiter(String content) {
@@ -149,7 +283,6 @@ public class AnpCsvParser {
         StringBuilder field = new StringBuilder();
         boolean insideQuotes = false;
         int lineNumber = 1;
-        int recordNumber = 1;
         int recordStartLine = 1;
 
         for (int index = 0; index < content.length(); index++) {
@@ -175,7 +308,7 @@ public class AnpCsvParser {
             } else if (current == '\n' || current == '\r') {
                 fields.add(field.toString());
                 field.setLength(0);
-                records.add(new CsvRecord(recordNumber++, recordStartLine, List.copyOf(fields)));
+                records.add(new CsvRecord(recordStartLine, List.copyOf(fields)));
                 fields.clear();
                 if (current == '\r' && index + 1 < content.length()
                         && content.charAt(index + 1) == '\n') {
@@ -193,12 +326,15 @@ public class AnpCsvParser {
         }
         if (!fields.isEmpty() || !field.isEmpty()) {
             fields.add(field.toString());
-            records.add(new CsvRecord(recordNumber, recordStartLine, List.copyOf(fields)));
+            records.add(new CsvRecord(recordStartLine, List.copyOf(fields)));
         }
         return records;
     }
 
-    private void validateHeaders(List<String> headers) {
+    private void validateHeaders(
+            List<String> headers,
+            List<String> rawHeaders,
+            char delimiter) {
         if (headers.stream().anyMatch(String::isBlank)) {
             throw new AnpCsvParseException("O cabeçalho do CSV contém coluna sem nome.");
         }
@@ -211,8 +347,21 @@ public class AnpCsvParser {
         if (!missingHeaders.isEmpty()) {
             throw new AnpCsvParseException(
                     "Layout ANP inválido; colunas obrigatórias ausentes: "
-                            + String.join(", ", missingHeaders) + ".");
+                            + String.join(", ", missingHeaders)
+                            + ". Cabeçalhos lidos: "
+                            + rawHeaders.stream()
+                                    .map(AnpCsvParser::describeHeader)
+                                    .toList()
+                            + "; delimitador: " + describeDelimiter(delimiter) + ".");
         }
+    }
+
+    private static String describeHeader(String value) {
+        return value.replaceAll("\\p{C}", "?").trim();
+    }
+
+    private String describeDelimiter(char delimiter) {
+        return delimiter == '\t' ? "TAB" : "'" + delimiter + "'";
     }
 
     static String normalizeHeader(String value) {
@@ -224,6 +373,9 @@ public class AnpCsvParser {
         return normalized;
     }
 
-    private record CsvRecord(int recordNumber, int startLine, List<String> fields) {
+    private record CsvRecord(int startLine, List<String> fields) {
+    }
+
+    private record EntryContent(byte[] bytes, int uncompressedBytes) {
     }
 }

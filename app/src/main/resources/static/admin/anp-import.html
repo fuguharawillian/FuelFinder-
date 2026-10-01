@@ -17,7 +17,7 @@
         <h2 class="h5">Nova importação</h2>
         <p class="alert alert-warning mb-0">Somente HTTPS em domínios oficiais permitidos pelo backend. Redirecionamentos são bloqueados. A chave Geoapify é opcional; sem ela, postos sem coordenadas serão incluídos com status parcial.</p>
         <form id="anp-import-form" class="stack">
-          <label for="source-url">URL oficial do arquivo CSV/TSV<input class="form-control" id="source-url" name="sourceUrl" type="url" maxlength="500" placeholder="https://www.gov.br/..." required></label>
+          <label for="source-url">URL oficial do arquivo CSV/TSV ou ZIP contendo CSV<input class="form-control" id="source-url" name="sourceUrl" type="url" maxlength="500" placeholder="https://www.gov.br/..." required></label>
           <label for="reference-period">Período de referência<input class="form-control" id="reference-period" name="referencePeriod" maxlength="20" placeholder="2026-S1" required></label>
           <button type="submit" class="btn btn-primary align-self-start">Executar importação</button>
         </form>

@@ -9,6 +9,7 @@ import com.fuelfinder.modules.price.repository.FuelPriceRepository;
 import com.fuelfinder.modules.station.entity.Station;
 import com.fuelfinder.modules.station.repository.StationRepository;
 import com.fuelfinder.modules.station.service.GeoapifyGeocodingService;
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -44,13 +45,19 @@ class AnpImportProcessorTest {
     private FuelTypeRepository fuelTypeRepository;
     @Mock
     private GeoapifyGeocodingService geocodingService;
+    @Mock
+    private EntityManager entityManager;
 
     private AnpImportProcessor processor;
 
     @BeforeEach
     void setUp() {
         processor = new AnpImportProcessor(
-                stationRepository, fuelPriceRepository, fuelTypeRepository, geocodingService);
+                stationRepository,
+                fuelPriceRepository,
+                fuelTypeRepository,
+                geocodingService,
+                entityManager);
         lenient().when(stationRepository.save(any(Station.class))).thenAnswer(invocation -> {
             Station station = invocation.getArgument(0);
             if (station.getId() == null) {
@@ -76,12 +83,14 @@ class AnpImportProcessorTest {
                 row("12345678000197", "ETANOL HIDRATADO", "4,199", "R$/L", "29/09/2026"),
                 row("12345678000198", "DIESEL S10", "6,50", "R$/LT", "29/09/2026"),
                 row("12345678000199", "DIESEL S500", "6,30", "R$/L", "29/09/2026"),
-                row("12345678000200", "GNV", "4,00", "R$/m³", "29/09/2026")));
+                row("12345678000200", "GNV", "4,00", "R$/m³", "29/09/2026"),
+                row("12345678000201", "GASOLINA", "7,97", "R$ / litro", "02/01/2026"),
+                row("12345678000202", "DIESEL", "8,15", "R$ / litro", "02/01/2026")));
 
-        assertEquals(6, result.totalRecordsRead());
-        assertEquals(6, result.totalRecordsImported());
-        assertEquals(6, result.errors().size());
-        verify(fuelPriceRepository, times(6)).save(any(FuelPrice.class));
+        assertEquals(8, result.totalRecordsRead());
+        assertEquals(8, result.totalRecordsImported());
+        assertEquals(8, result.errors().size());
+        verify(fuelPriceRepository, times(8)).save(any(FuelPrice.class));
         verify(geocodingService, never()).geocode(anyString());
     }
 
@@ -99,11 +108,9 @@ class AnpImportProcessorTest {
                 new BigDecimal("4.00"),
                 LocalDate.of(2026, 9, 29),
                 DataSource.MANUAL_ADMIN);
-        when(fuelPriceRepository.findByStationIdAndFuelTypeIdAndCollectionDate(
-                existingStation.getId(),
-                existingPrice.getFuelType().getId(),
-                LocalDate.of(2026, 9, 29)))
-                .thenReturn(Optional.of(existingPrice));
+        when(fuelPriceRepository.findByCollectionDateBetweenWithRelations(
+                LocalDate.of(2026, 9, 29), LocalDate.of(2026, 9, 29)))
+                .thenReturn(List.of(existingPrice));
         AnpCsvRow row = row("12.345.678/0001-95", "ETANOL", "4,199", "R$/L", "29/09/2026");
 
         AnpImportResult changed = processor.process(csv(row));
@@ -134,6 +141,9 @@ class AnpImportProcessorTest {
         verify(geocodingService, times(1))
                 .geocode("Rua 10 10, Centro, Sao Paulo, SP, Brasil");
         verify(stationRepository, times(2)).save(any(Station.class));
+        verify(stationRepository, times(1)).findByCnpj("12345678000195");
+        verify(fuelTypeRepository, times(1)).findByCode("ETHANOL");
+        verify(fuelTypeRepository, times(1)).findByCode("GASOLINE_REGULAR");
     }
 
     @Test
@@ -199,6 +209,22 @@ class AnpImportProcessorTest {
 
         assertEquals(0, result.totalRecordsImported());
         assertEquals(3, result.errors().size());
+    }
+
+    @Test
+    void boundsPersistenceContextWhileProcessingLargeImports() {
+        stubFuelType("ETHANOL", "R$/litro", true);
+        when(geocodingService.isConfigured()).thenReturn(false);
+        List<AnpCsvRow> rows = java.util.stream.IntStream.range(0, 201)
+                .mapToObj(index -> row(
+                        "12345678000195", "ETANOL", "4,199", "R$/L", "29/09/2026"))
+                .toList();
+
+        AnpImportResult result = processor.process(new ParsedAnpCsv(201, rows, List.of()));
+
+        assertEquals(201, result.totalRecordsImported());
+        verify(entityManager, times(3)).flush();
+        verify(entityManager, times(2)).clear();
     }
 
     @Test

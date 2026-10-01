@@ -11,6 +11,7 @@ import com.fuelfinder.modules.station.repository.StationRepository;
 import com.fuelfinder.modules.station.service.GeoapifyGeocodingService;
 import com.fuelfinder.modules.vehicle.entity.FuelTypeAccepted;
 import com.fuelfinder.modules.vehicle.entity.VolumeUnit;
+import jakarta.persistence.EntityManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,6 +34,7 @@ import java.util.regex.Pattern;
 @Service
 public class AnpImportProcessor {
 
+    private static final int PERSISTENCE_CONTEXT_BATCH_SIZE = 100;
     private static final DateTimeFormatter BRAZILIAN_DATE_FORMAT =
             DateTimeFormatter.ofPattern("d/M/uuuu").withResolverStyle(ResolverStyle.STRICT);
     private static final Pattern NUMERIC_CNPJ = Pattern.compile("[0-9]{14}");
@@ -40,39 +42,56 @@ public class AnpImportProcessor {
     private final FuelPriceRepository fuelPriceRepository;
     private final FuelTypeRepository fuelTypeRepository;
     private final GeoapifyGeocodingService geocodingService;
+    private final EntityManager entityManager;
 
     public AnpImportProcessor(
             StationRepository stationRepository,
             FuelPriceRepository fuelPriceRepository,
             FuelTypeRepository fuelTypeRepository,
-            GeoapifyGeocodingService geocodingService) {
+            GeoapifyGeocodingService geocodingService,
+            EntityManager entityManager) {
         this.stationRepository = stationRepository;
         this.fuelPriceRepository = fuelPriceRepository;
         this.fuelTypeRepository = fuelTypeRepository;
         this.geocodingService = geocodingService;
+        this.entityManager = entityManager;
     }
 
     @Transactional
     public AnpImportResult process(ParsedAnpCsv csv) {
         Set<String> errors = new LinkedHashSet<>(csv.errors());
         Map<String, GeocodingResolution> geocodingCache = new HashMap<>();
+        Map<String, FuelType> fuelTypeCache = new HashMap<>();
+        Map<String, Station> stationCache = new HashMap<>();
+        Map<PriceKey, FuelPrice> existingPrices = loadExistingPrices(csv.records());
         int importedRecords = 0;
+        int recordsSinceFlush = 0;
         for (AnpCsvRow row : csv.records()) {
             try {
                 AnpPriceRecord record = parseRecord(row);
-                FuelType fuelType = findActiveFuelType(record.fuelCode());
-                Station station = stationRepository.findByCnpj(record.cnpj())
-                        .orElseGet(() -> createStation(record));
+                FuelType fuelType = fuelTypeCache.computeIfAbsent(
+                        record.fuelCode(), this::findActiveFuelType);
+                Station station = stationCache.computeIfAbsent(
+                        record.cnpj(),
+                        cnpj -> stationRepository.findByCnpj(cnpj)
+                                .orElseGet(() -> createStation(record)));
                 applyStationDetails(station, record);
                 geocodeIfNeeded(station, record, geocodingCache, errors);
                 station = stationRepository.save(station);
-                if (savePriceIfChanged(station, fuelType, record)) {
+                stationCache.put(record.cnpj(), station);
+                if (savePriceIfChanged(station, fuelType, record, existingPrices)) {
                     importedRecords++;
                 }
             } catch (AnpRecordException exception) {
-                errors.add("Registro " + row.recordNumber() + ": " + exception.getMessage());
+                errors.add("Linha " + row.lineNumber() + ": " + exception.getMessage());
+            }
+            if (++recordsSinceFlush == PERSISTENCE_CONTEXT_BATCH_SIZE) {
+                entityManager.flush();
+                entityManager.clear();
+                recordsSinceFlush = 0;
             }
         }
+        entityManager.flush();
         return new AnpImportResult(
                 csv.totalRecordsRead(),
                 importedRecords,
@@ -129,11 +148,11 @@ public class AnpImportProcessor {
     private String mapFuelCode(String product) {
         String normalized = normalizeText(product).toUpperCase(Locale.ROOT);
         return switch (normalized) {
-            case "GASOLINA COMUM" -> "GASOLINE_REGULAR";
+            case "GASOLINA", "GASOLINA COMUM" -> "GASOLINE_REGULAR";
             case "GASOLINA ADITIVADA", "GASOLINA PREMIUM" -> "GASOLINE_PREMIUM";
             case "ETANOL", "ETANOL HIDRATADO", "ETANOL HIDRATADO COMUM" -> "ETHANOL";
             case "DIESEL S10" -> "DIESEL_S10";
-            case "DIESEL S500" -> "DIESEL_S500";
+            case "DIESEL", "DIESEL S500" -> "DIESEL_S500";
             case "GNV", "GAS NATURAL VEICULAR" -> "CNG";
             default -> throw new AnpRecordException(
                     "produto ANP não reconhecido: " + safeValue(product) + ".");
@@ -310,27 +329,59 @@ public class AnpImportProcessor {
     private boolean savePriceIfChanged(
             Station station,
             FuelType fuelType,
-            AnpPriceRecord record) {
-        FuelPrice existing = fuelPriceRepository
-                .findByStationIdAndFuelTypeIdAndCollectionDate(
-                        station.getId(), fuelType.getId(), record.collectionDate())
-                .orElse(null);
+            AnpPriceRecord record,
+            Map<PriceKey, FuelPrice> existingPrices) {
+        PriceKey key = new PriceKey(record.cnpj(), record.fuelCode(), record.collectionDate());
+        FuelPrice existing = existingPrices.get(key);
         if (existing != null) {
             if (existing.getSaleValue().compareTo(record.saleValue()) == 0) {
                 return false;
             }
             existing.setSaleValue(record.saleValue());
             existing.setDataSource(DataSource.ANP_IMPORT);
-            fuelPriceRepository.save(existing);
+            existingPrices.put(key, fuelPriceRepository.save(existing));
             return true;
         }
-        fuelPriceRepository.save(new FuelPrice(
+        FuelPrice price = fuelPriceRepository.save(new FuelPrice(
                 station,
                 fuelType,
                 record.saleValue(),
                 record.collectionDate(),
                 DataSource.ANP_IMPORT));
+        existingPrices.put(key, price);
         return true;
+    }
+
+    private Map<PriceKey, FuelPrice> loadExistingPrices(List<AnpCsvRow> rows) {
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        for (AnpCsvRow row : rows) {
+            try {
+                LocalDate date = parseDate(row.values().get("data da coleta"));
+                if (startDate == null || date.isBefore(startDate)) {
+                    startDate = date;
+                }
+                if (endDate == null || date.isAfter(endDate)) {
+                    endDate = date;
+                }
+            } catch (AnpRecordException ignored) {
+                // The main pass reports invalid records with their physical line numbers.
+            }
+        }
+        if (startDate == null) {
+            return new HashMap<>();
+        }
+        Map<PriceKey, FuelPrice> prices = new HashMap<>();
+        for (FuelPrice price : fuelPriceRepository
+                .findByCollectionDateBetweenWithRelations(startDate, endDate)) {
+            prices.put(
+                    new PriceKey(
+                            price.getStation().getCnpj(),
+                            price.getFuelType().getCode(),
+                            price.getCollectionDate()),
+                    price);
+        }
+        return prices;
     }
 
     private String trimToNull(String value) {
@@ -365,5 +416,8 @@ public class AnpImportProcessor {
     private record GeocodingResolution(
             GeoapifyGeocodingService.GeoPoint point,
             String error) {
+    }
+
+    private record PriceKey(String cnpj, String fuelCode, LocalDate collectionDate) {
     }
 }

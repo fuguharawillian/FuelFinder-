@@ -17,6 +17,10 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+        jdbc:
+          batch_size: 100
+        order_inserts: true
+        order_updates: true
 
   flyway:
     enabled: true
@@ -29,7 +33,7 @@ spring:
     default-property-inclusion: non_null
 
 jwt:
-  secret: ${JWT_SECRET}
+  secret: ${JWT_SECRET:change-me-local-development-secret-123}
   access-token-expiration: ${JWT_ACCESS_TOKEN_EXPIRATION:900000}
   refresh-token-expiration: ${JWT_REFRESH_TOKEN_EXPIRATION:2592000000}
 
@@ -40,7 +44,7 @@ app:
     cookie-same-site: Lax
     cookie-secure: ${AUTH_COOKIE_SECURE:false}
   security:
-    allowed-origins: ${APP_SECURITY_ALLOWED_ORIGINS:http://localhost:8080,http://localhost:3000,http://localhost:5500}
+    allowed-origins: ${APP_SECURITY_ALLOWED_ORIGINS:http://localhost:8080,http://127.0.0.1:8080,http://localhost:3000,http://127.0.0.1:3000,http://localhost:5500,http://127.0.0.1:5500,http://localhost:8081,http://127.0.0.1:8081}
 
 # Geoapify is optional; set this environment variable only to test real API calls.
 geoapify:

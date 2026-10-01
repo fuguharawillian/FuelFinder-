@@ -2,11 +2,18 @@ package com.fuelfinder.modules.anp.service;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.ByteBuffer;
 import java.util.List;
+import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AnpCsvParserTest {
 
@@ -30,6 +37,25 @@ class AnpCsvParserTest {
         assertEquals("Posto\nNovo", result.records().get(1).values().get("revenda"));
         assertEquals("29/09/2026", result.records().get(0).values().get("data da coleta"));
         assertEquals(List.of(), result.errors());
+    }
+
+    @Test
+    void mapsColumnsFromTheAutomotiveAnpReferenceLayout() {
+        String csv = "\uFEFFRegiao - Sigla;Estado - Sigla;Municipio;Revenda;CNPJ da Revenda;"
+                + "Nome da Rua;Numero Rua;Complemento;Bairro;Cep;Produto;Data da Coleta;"
+                + "Valor de Venda;Valor de Compra;Unidade de Medida;Bandeira\r\n"
+                + "N;AC;CRUZEIRO DO SUL;POSTO CENTRAL;01.492.748/0003-83;"
+                + "\"AVENIDA CENTRAL; KM 2\";440;;CENTRO;69980-000;GASOLINA;"
+                + "02/01/2026;7,97;;\"R$ / litro\";IPIRANGA";
+
+        AnpCsvRow row = parser.parse(csv.getBytes(StandardCharsets.UTF_8)).records().get(0);
+
+        assertEquals("AC", row.values().get("estado sigla"));
+        assertEquals("CRUZEIRO DO SUL", row.values().get("municipio"));
+        assertEquals("POSTO CENTRAL", row.values().get("revenda"));
+        assertEquals("AVENIDA CENTRAL; KM 2", row.values().get("nome da rua"));
+        assertEquals("7,97", row.values().get("valor de venda"));
+        assertEquals("R$ / litro", row.values().get("unidade de medida"));
     }
 
     @Test
@@ -64,15 +90,83 @@ class AnpCsvParserTest {
     }
 
     @Test
+    void parsesUtf16LittleEndianAndBigEndianFilesWithBom() {
+        String csv = header(';') + "\r\n" + row(';');
+
+        ParsedAnpCsv littleEndian = parser.parse(utf16WithBom(csv, StandardCharsets.UTF_16LE, true));
+        ParsedAnpCsv bigEndian = parser.parse(utf16WithBom(csv, StandardCharsets.UTF_16BE, false));
+
+        assertEquals(1, littleEndian.records().size());
+        assertEquals(1, bigEndian.records().size());
+        assertEquals("12345678000195",
+                littleEndian.records().get(0).values().get("cnpj da revenda"));
+        assertEquals("12345678000195",
+                bigEndian.records().get(0).values().get("cnpj da revenda"));
+    }
+
+    @Test
+    void parsesCsvFromZipWithoutExtractingArchivePaths() throws IOException {
+        byte[] archive = zip(Map.of(
+                "../notes.txt", "ignore me".getBytes(StandardCharsets.UTF_8),
+                "Preços semestrais - AUTOMOTIVOS_2026.01.csv",
+                ("\uFEFF" + header(';') + "\r\n" + row(';'))
+                        .getBytes(StandardCharsets.UTF_8)));
+
+        ParsedAnpCsv parsed = parser.parse(archive);
+
+        assertEquals(1, parsed.totalRecordsRead());
+        assertEquals("12345678000195",
+                parsed.records().get(0).values().get("cnpj da revenda"));
+    }
+
+    @Test
+    void parsesZipWithLegacyCp437EntryNames() throws IOException {
+        String entryName = "Preços semestrais - AUTOMOTIVOS_2026.01.csv";
+        byte[] archive = zip(
+                Map.of(
+                        entryName,
+                        (header(';') + "\r\n" + row(';'))
+                                .getBytes(StandardCharsets.UTF_8)),
+                java.nio.charset.Charset.forName("CP437"));
+
+        ParsedAnpCsv parsed = parser.parse(archive);
+
+        assertEquals(1, parsed.totalRecordsRead());
+        assertEquals("12345678000195",
+                parsed.records().get(0).values().get("cnpj da revenda"));
+    }
+
+    @Test
+    void reportsZipWithoutCsvAndRejectsMultipleValidCsvEntries() throws IOException {
+        AnpCsvParseException missingCsv = assertThrows(
+                AnpCsvParseException.class,
+                () -> parser.parse(zip(Map.of(
+                        "readme.txt", "not a csv".getBytes(StandardCharsets.UTF_8)))));
+        assertTrue(missingCsv.getMessage().contains("não contém arquivos .csv ou .tsv"));
+
+        AnpCsvParseException ambiguous = assertThrows(
+                AnpCsvParseException.class,
+                () -> parser.parse(zip(Map.of(
+                        "gasolina.csv", (header(';') + "\n" + row(';'))
+                                .getBytes(StandardCharsets.UTF_8),
+                        "diesel.csv", (header(';') + "\n" + row(';'))
+                                .getBytes(StandardCharsets.UTF_8)))));
+        assertTrue(ambiguous.getMessage().contains("mais de um CSV/TSV"));
+        assertTrue(ambiguous.getMessage().contains("gasolina.csv"));
+        assertTrue(ambiguous.getMessage().contains("diesel.csv"));
+    }
+
+    @Test
     void collectsRowsWithInvalidColumnCountAndIgnoresBlankLines() {
-        String csv = header(';') + "\n\n" + row(';') + "\ninvalid;row\n";
+        String multilineRow = row(';').replace("Posto", "\"Posto\nNovo\"");
+        String csv = header(';') + "\n\n" + row(';') + "\n" + multilineRow + "\ninvalid;row\n";
 
         ParsedAnpCsv result = parser.parse(csv.getBytes(StandardCharsets.UTF_8));
 
-        assertEquals(2, result.totalRecordsRead());
-        assertEquals(1, result.records().size());
+        assertEquals(3, result.totalRecordsRead());
+        assertEquals(2, result.records().size());
         assertEquals(1, result.errors().size());
-        assertEquals("Registro 4: quantidade de colunas diferente do cabeçalho.",
+        assertEquals("Linha 6: quantidade de colunas diferente do cabeçalho.",
                 result.errors().get(0));
     }
 
@@ -97,6 +191,12 @@ class AnpCsvParserTest {
     void rejectsMissingDuplicateAndBlankHeaderNames() {
         assertThrows(AnpCsvParseException.class,
                 () -> parser.parse("one;two\n1;2".getBytes(StandardCharsets.UTF_8)));
+        AnpCsvParseException unknownLayout = assertThrows(
+                AnpCsvParseException.class,
+                () -> parser.parse("Region;State\nNorth;AC"
+                        .getBytes(StandardCharsets.UTF_8)));
+        assertTrue(unknownLayout.getMessage().contains("Cabeçalhos lidos: [Region, State]"));
+        assertTrue(unknownLayout.getMessage().contains("delimitador: ';'"));
 
         String header = header(';');
         String duplicate = header.replace("Estado - Sigla", "CNPJ da Revenda");
@@ -123,6 +223,36 @@ class AnpCsvParserTest {
                 "29/09/2026", delimiter == ',' ? "\"4,199\"" : "4,199",
                 "R$/L", "Marca");
         return String.join(String.valueOf(delimiter), fields);
+    }
+
+    private byte[] utf16WithBom(
+            String value,
+            java.nio.charset.Charset charset,
+            boolean littleEndian) {
+        byte[] encoded = value.getBytes(charset);
+        return ByteBuffer.allocate(encoded.length + 2)
+                .put((byte) (littleEndian ? 0xFF : 0xFE))
+                .put((byte) (littleEndian ? 0xFE : 0xFF))
+                .put(encoded)
+                .array();
+    }
+
+    private byte[] zip(Map<String, byte[]> entries) throws IOException {
+        return zip(entries, StandardCharsets.UTF_8);
+    }
+
+    private byte[] zip(
+            Map<String, byte[]> entries,
+            java.nio.charset.Charset archiveCharset) throws IOException {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        try (ZipOutputStream archive = new ZipOutputStream(output, archiveCharset)) {
+            for (Map.Entry<String, byte[]> entry : entries.entrySet()) {
+                archive.putNextEntry(new ZipEntry(entry.getKey()));
+                archive.write(entry.getValue());
+                archive.closeEntry();
+            }
+        }
+        return output.toByteArray();
     }
 
     private static final class CharsetForTests {

@@ -110,7 +110,17 @@ public class AnpImportService {
         if (errors.isEmpty()) {
             return null;
         }
-        return truncate(errors.stream().collect(Collectors.joining(System.lineSeparator())));
+        String separator = System.lineSeparator();
+        String details = errors.stream().collect(Collectors.joining(separator));
+        if (details.length() <= MAX_ERROR_DETAILS_LENGTH) {
+            return details;
+        }
+        String notice = separator + "[Detalhes truncados pelo limite de "
+                + MAX_ERROR_DETAILS_LENGTH + " caracteres.]";
+        int prefixLimit = MAX_ERROR_DETAILS_LENGTH - notice.length();
+        int lastCompleteLine = details.lastIndexOf(separator, prefixLimit);
+        int end = lastCompleteLine > 0 ? lastCompleteLine : prefixLimit;
+        return details.substring(0, end) + notice;
     }
 
     private String extractFileName(URI sourceUri) {

@@ -5,7 +5,7 @@ let map;
 let stationMarkers = [];
 let userMarker;
 
-export function initMap(containerId, latitude = -23.5505, longitude = -46.6333, zoom = 11) {
+export function initMap(containerId, latitude = -14.235, longitude = -51.9253, zoom = 4) {
   if (!window.L) throw new Error("A biblioteca Leaflet não foi carregada.");
   map = window.L.map(containerId, { zoomControl: false }).setView([latitude, longitude], zoom);
   window.L.control.zoom({
@@ -32,7 +32,7 @@ export function setUserLocation(latitude, longitude) {
   map.setView([latitude, longitude], 14);
 }
 
-export function renderStationMarkers(stations) {
+export function renderStationMarkers(stations, fitToStations = true) {
   if (!map) return;
   stationMarkers.forEach((marker) => map.removeLayer(marker));
   stationMarkers = [];
@@ -51,9 +51,9 @@ export function renderStationMarkers(stations) {
     });
     stationMarkers.push(marker);
   });
-  if (stationMarkers.length === 1) {
+  if (fitToStations && stationMarkers.length === 1) {
     map.setView(stationMarkers[0].getLatLng(), 14);
-  } else if (stationMarkers.length > 1) {
+  } else if (fitToStations && stationMarkers.length > 1) {
     map.fitBounds(window.L.featureGroup(stationMarkers).getBounds().pad(0.12), { maxZoom: 15 });
   }
 }

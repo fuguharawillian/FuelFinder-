@@ -25,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.doReturn;
@@ -154,6 +155,8 @@ class AnpImportServiceTest {
 
         assertEquals("anp-import.csv", result.getFileName());
         assertEquals(10_000, result.getErrorDetails().length());
+        assertTrue(result.getErrorDetails().endsWith(
+                "[Detalhes truncados pelo limite de 10000 caracteres.]"));
         assertEquals(ImportStatus.PARTIAL, result.getStatus());
     }
 

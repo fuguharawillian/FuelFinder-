@@ -46,5 +46,15 @@ public interface FuelPriceRepository extends JpaRepository<FuelPrice, UUID> {
             UUID fuelTypeId,
             LocalDate collectionDate);
 
+    @Query("""
+            SELECT price FROM FuelPrice price
+            JOIN FETCH price.station
+            JOIN FETCH price.fuelType
+            WHERE price.collectionDate BETWEEN :startDate AND :endDate
+            """)
+    List<FuelPrice> findByCollectionDateBetweenWithRelations(
+            @Param("startDate") LocalDate startDate,
+            @Param("endDate") LocalDate endDate);
+
     Optional<FuelPrice> findByIdAndStationId(UUID id, UUID stationId);
 }

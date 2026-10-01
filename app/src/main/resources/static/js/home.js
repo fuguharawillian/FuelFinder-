@@ -5,6 +5,8 @@ import { clearElement, makeElement, showMessage } from "./ui.js";
 
 const status = document.getElementById("page-status");
 const list = document.getElementById("station-list");
+const stationCount = document.getElementById("station-count");
+let searchSequence = 0;
 
 document.addEventListener("DOMContentLoaded", async () => {
   const user = await initializeShell({ requiredAuth: true });
@@ -12,6 +14,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   initMap("map");
   document.getElementById("search-form").addEventListener("submit", searchFromForm);
   document.getElementById("gps-button").addEventListener("click", useGps);
+  document.getElementById("radius").value = "5";
+  useGps();
 });
 
 async function searchFromForm(event) {
@@ -27,36 +31,64 @@ async function searchFromForm(event) {
 }
 
 async function useGps() {
+  const requestSequence = ++searchSequence;
   if (!navigator.geolocation) {
-    showMessage(status, "Este navegador não oferece localização. Use a busca por cidade, bairro ou CEP.", "error");
+    showLocationError(
+      "Este navegador não oferece localização. Busque por cidade, bairro ou CEP.",
+      requestSequence,
+    );
     return;
   }
-  showMessage(status, "Solicitando sua localização…");
+  showMessage(status, "Solicitando sua localização atual…");
+  setPendingResults("Aguardando sua localização…");
   navigator.geolocation.getCurrentPosition(async ({ coords }) => {
+    if (requestSequence !== searchSequence) return;
     const radiusKm = Number(document.getElementById("radius").value);
     setUserLocation(coords.latitude, coords.longitude);
     await loadStations(`/stations?${new URLSearchParams({
       latitude: String(coords.latitude),
       longitude: String(coords.longitude),
       radiusKm: String(radiusKm),
-    })}`);
-  }, () => {
-    showMessage(status, "Não foi possível obter sua localização. Permita o acesso ao GPS ou faça uma busca textual.", "error");
-    document.getElementById("location-query").focus();
+    })}`, requestSequence, false);
+  }, (error) => {
+    const message = error.code === 1
+      ? "A permissão de localização foi negada. Busque por cidade, bairro ou CEP."
+      : "Sua localização não está disponível. Busque por cidade, bairro ou CEP.";
+    showLocationError(message, requestSequence);
   }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 });
 }
 
-async function loadStations(endpoint) {
+async function loadStations(endpoint, requestSequence = ++searchSequence, fitToStations = true) {
   showMessage(status, "Buscando postos…");
+  setPendingResults("Buscando postos…");
   try {
     const stations = await api.get(endpoint);
-    renderStationMarkers(stations);
+    if (requestSequence !== searchSequence) return;
+    renderStationMarkers(stations, fitToStations);
     renderStationList(stations);
+    stationCount.textContent = String(stations.length);
     showMessage(status, `${stations.length} posto(s) encontrado(s).`, "success");
   } catch (error) {
+    if (requestSequence !== searchSequence) return;
     showMessage(status, error.message, "error");
     clearElement(list);
+    renderStationMarkers([]);
+    stationCount.textContent = "—";
+    list.append(makeElement("p", "Não foi possível carregar os postos. Tente novamente.", "muted"));
   }
+}
+
+function setPendingResults(message) {
+  clearElement(list);
+  list.append(makeElement("p", message, "muted"));
+  renderStationMarkers([]);
+  stationCount.textContent = "—";
+}
+
+function showLocationError(message, requestSequence) {
+  if (requestSequence !== searchSequence) return;
+  showMessage(status, message, "error");
+  setPendingResults("Use a busca por cidade, bairro ou CEP para encontrar postos.");
 }
 
 function renderStationList(stations) {

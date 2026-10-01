@@ -5,6 +5,10 @@ const COOKIE_AUTH_ENDPOINTS = new Set([
   "auth/logout",
   "auth/sessions/revoke-all",
 ]);
+const BEARER_AUTH_ENDPOINTS = new Set([
+  "auth/logout",
+  "auth/sessions/revoke-all",
+]);
 
 let accessToken = null;
 let refreshInFlight = null;
@@ -47,7 +51,20 @@ async function parseResponse(response) {
 
 function errorMessage(payload, status) {
   if (payload && typeof payload === "object") {
-    return payload.detail || payload.message || payload.title || `Erro ${status}`;
+    const message = payload.detail || payload.message || payload.title || `Erro ${status}`;
+    if (!payload.invalidFields || typeof payload.invalidFields !== "object") return message;
+    const fieldErrors = Object.entries(payload.invalidFields)
+      .flatMap(([field, errors]) => {
+        const label = ({
+          email: "E-mail",
+          password: "Senha",
+          fullName: "Nome",
+        })[field] || field;
+        return (Array.isArray(errors) ? errors : [errors])
+          .filter((error) => typeof error === "string" && error.trim())
+          .map((error) => `${label}: ${error}`);
+      });
+    return fieldErrors.length ? `${message} ${fieldErrors.join("; ")}.` : message;
   }
   return typeof payload === "string" && payload.trim() ? payload : `Erro ${status}`;
 }
@@ -56,18 +73,28 @@ async function refreshToken() {
   if (!refreshInFlight) {
     refreshInFlight = (async () => {
       try {
-        const response = await fetch("/auth/refresh", {
-          method: "POST",
-          credentials: "include",
-          headers: { Accept: "application/json" },
-        });
-        if (!response.ok) return false;
-        const data = await parseResponse(response);
-        if (!data?.accessToken || !data.user) return false;
-        setAccessToken(data.accessToken);
+        let response;
+        try {
+          response = await fetch("/auth/refresh", {
+            method: "POST",
+            credentials: "include",
+            headers: { Accept: "application/json" },
+          });
+        } catch {
+          throw new ApiError(
+            "Não foi possível conectar ao FuelFinder. Verifique a conexão e tente novamente.",
+          );
+        }
+        if (response.status === 401) return false;
+        const payload = await parseResponse(response);
+        if (!response.ok) {
+          throw new ApiError(errorMessage(payload, response.status), response.status);
+        }
+        if (!payload?.accessToken || !payload.user) {
+          throw new ApiError("Resposta inválida ao restaurar a sessão.");
+        }
+        setAccessToken(payload.accessToken);
         return true;
-      } catch {
-        return false;
       } finally {
         refreshInFlight = null;
       }
@@ -83,7 +110,8 @@ async function send(endpoint, options, allowRefresh) {
   if (options.body !== undefined && !headers.has("Content-Type")) {
     headers.set("Content-Type", "application/json");
   }
-  if (accessToken && !COOKIE_AUTH_ENDPOINTS.has(path)) {
+  if (accessToken
+      && (!COOKIE_AUTH_ENDPOINTS.has(path) || BEARER_AUTH_ENDPOINTS.has(path))) {
     headers.set("Authorization", `Bearer ${accessToken}`);
   }
   let response;
@@ -97,10 +125,11 @@ async function send(endpoint, options, allowRefresh) {
     throw new ApiError("Não foi possível conectar ao FuelFinder. Verifique a conexão e tente novamente.");
   }
 
-  if (response.status === 401 && allowRefresh && accessToken && !COOKIE_AUTH_ENDPOINTS.has(path)) {
+  if (response.status === 401 && allowRefresh && accessToken
+      && (!COOKIE_AUTH_ENDPOINTS.has(path) || BEARER_AUTH_ENDPOINTS.has(path))) {
     if (await refreshToken()) return send(endpoint, options, false);
     setAccessToken(null);
-    unauthorizedHandler();
+    if (path !== "auth/logout") unauthorizedHandler();
     throw new ApiError("Sua sessão expirou. Entre novamente.", 401);
   }
 

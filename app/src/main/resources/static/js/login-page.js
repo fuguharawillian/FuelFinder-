@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (!form.reportValidity()) return;
     const data = new FormData(form);
     const isRegister = !document.getElementById("full-name").closest("label").classList.contains("hidden");
     showMessage(message, isRegister ? "Criando sua conta…" : "Entrando…");

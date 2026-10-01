@@ -45,7 +45,11 @@ export async function register(fullName, email, password) {
 }
 
 export async function logout() {
-  await api.post("auth/logout");
+  try {
+    await api.post("auth/logout");
+  } catch (error) {
+    if (error.status !== 401) throw error;
+  }
   clearSession();
 }
 
