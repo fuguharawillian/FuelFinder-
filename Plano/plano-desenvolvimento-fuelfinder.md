@@ -2,7 +2,7 @@
 
 ## Descrição do Objetivo
 
-Criar o plano de desenvolvimento detalhado e faseado do aplicativo **FuelFinder** — uma plataforma web responsiva para consulta, localização e comparação de preços de combustíveis no Brasil. O plano traduz as especificações definidas nos arquivos [architecture.md](file:///c:/Users/will_/.gemini/antigravity/scratch/fuelfinder/.ai/architecture.md), [business-rules.md](file:///c:/Users/will_/.gemini/antigravity/scratch/fuelfinder/.ai/business-rules.md), [standards.md](file:///c:/Users/will_/.gemini/antigravity/scratch/fuelfinder/.ai/standards.md) e [tech-stack.md](file:///c:/Users/will_/.gemini/antigravity/scratch/fuelfinder/.ai/tech-stack.md) em uma sequência de **fases incrementais** prontas para implementação.
+Criar o plano de desenvolvimento detalhado e faseado do aplicativo **FuelFinder** — uma plataforma web responsiva para consulta, localização e comparação de preços de combustíveis no Brasil. O plano traduz as decisões registradas nos documentos de arquitetura, regras de negócio, padrões e stack tecnológica em uma sequência de **fases incrementais** prontas para implementação.
 
 O plano será materializado em uma pasta `Plano/` no diretório raiz do projeto, contendo documentos detalhados de cada fase.
 
@@ -11,23 +11,30 @@ O plano será materializado em uma pasta `Plano/` no diretório raiz do projeto,
 ## User Review Required
 
 > [!IMPORTANT]
-> **Estrutura da pasta `Plano/`**: O plano será organizado em 8 arquivos Markdown dentro de `Plano/`, cada um cobrindo uma fase do desenvolvimento com suas tarefas, dependências e critérios de aceitação.
+> **Estrutura da pasta `Plano/`**: O plano de implementação compreende 10 documentos Markdown: um documento de visão geral e nove documentos, um para cada fase, com tarefas, dependências e critérios de aceitação. Este arquivo (`plano-desenvolvimento-fuelfinder.md`) é o documento mestre que descreve e coordena esses entregáveis.
 
 > [!IMPORTANT]
-> **Escopo MVP**: O plano cobre exclusivamente as funcionalidades do MVP. Funcionalidades Pós-MVP (OCR de totens, PostGIS, ROLE_OPERADOR, histórico de abastecimentos) são mencionadas apenas como referência futura.
+> **Escopo MVP**: O plano cobre exclusivamente as funcionalidades do MVP. Funcionalidades Pós-MVP (OCR de totens, PostGIS, `ROLE_STATION_OPERATOR`, histórico de abastecimentos) são mencionadas apenas como referência futura.
 
 ---
 
-## Open Questions
+## Pendências
 
 > [!IMPORTANT]
-> **Java 21 ou 25?** O arquivo `tech-stack.md` menciona "Java 21 LTS *(ou 25)*". Qual versão deseja adotar? O plano assume Java 21 LTS como padrão.
+> **IA — provedor e modelo Spring AI:** a escolha será feita futuramente. Manter a integração desacoplada e opcional; ela não pode impedir a inicialização da aplicação nem os fluxos essenciais do MVP.
 
 > [!IMPORTANT]
-> **Spring AI — Modelo de IA**: O `tech-stack.md` menciona "modelos como Gemini" via `ChatClient`. É necessário definir qual provedor/modelo será utilizado (Gemini, OpenAI, Ollama local) e se haverá API key configurada.
+> **Geoapify — chave para chamadas reais:** `GEOAPIFY_API_KEY` será necessária somente para testar chamadas reais ao serviço. Lê-la exclusivamente do ambiente; nunca incluir a chave no código ou em arquivos versionados. Documentar como habilitar a integração. Sem a variável, a aplicação e os demais fluxos devem continuar funcionando.
 
-> [!IMPORTANT]
-> **Geocodificação de endereços da ANP**: O `business-rules.md` menciona geocodificação de endereço quando lat/long estiver ausente. Qual serviço será usado? (Nominatim/OpenStreetMap gratuito? Google Geocoding API?)
+## Pré-requisitos do Ambiente Local — Fase 1
+
+Os itens abaixo são requisitos para executar e validar os comandos da fase 1, não decisões pendentes:
+
+- JDK 21 LTS instalado e ativo.
+- Maven 3.9 ou superior instalado.
+- Docker e Docker Compose instalados e disponíveis para iniciar o PostgreSQL local.
+
+Confirmar o ambiente com `java --version`, `mvn --version`, `docker --version` e `docker compose version`.
 
 ---
 
@@ -44,7 +51,7 @@ Plano/
 ├── 04-postos-geolocalizacao.md # Postos, busca por proximidade, Haversine
 ├── 05-precos-combustiveis.md  # Preços, tipos de combustível, comparação
 ├── 06-avaliacoes-moderacao.md # Reviews, nota média, moderação admin
-├── 07-recomendacoes-ia.md     # Motor de recomendação, Spring AI, paridade
+├── 07-recomendacoes.md        # Motor de recomendação, Spring AI, paridade
 ├── 08-integracao-anp.md       # Pipeline ETL da ANP, idempotência, auditoria
 └── 09-frontend-integracao.md  # Interface web, Leaflet, Tailwind, deep links
 ```
@@ -72,14 +79,21 @@ flowchart LR
     F4 --> F5["Fase 5: Preços"]
     F4 --> F6["Fase 6: Avaliações"]
     F3 --> F7["Fase 7: Recomendações"]
+    F4 --> F7
     F5 --> F7
     F5 --> F8["Fase 8: ANP"]
-    F1 --> F9["Fase 9: Frontend"]
-    F2 --> F9
-    F4 --> F9
-    F5 --> F9
-    F7 --> F9
+    F1 --> F9A["Fase 9A: Construção inicial do frontend<br/>(contratos definidos e dados simulados)"]
+    F9A --> F9B["Fase 9B: Integração e validação final"]
+    F2 --> F9B
+    F3 --> F9B
+    F4 --> F9B
+    F5 --> F9B
+    F6 --> F9B
+    F7 --> F9B
+    F8 --> F9B
 ```
+
+**Execução da Fase 9:** A construção inicial de telas e componentes pode começar em paralelo após a Fase 1, usando os contratos de API documentados e dados simulados. A integração com a API real e a validação final do frontend dependem da conclusão das Fases 2 a 8, incluindo os endpoints de avaliações (Fase 6) e os dados/importação ANP (Fase 8).
 
 ---
 
@@ -92,8 +106,8 @@ flowchart LR
 | # | Tarefa | Detalhes |
 |---|--------|----------|
 | 1.1 | Criar projeto Spring Boot 3.4 via Spring Initializr | Dependências: Web, JPA, Security, Validation, Flyway, PostgreSQL Driver, Springdoc OpenAPI |
-| 1.2 | Configurar `pom.xml` com JJWT 0.12.6+, Spring AI | Gerenciar versões via Spring BOM |
-| 1.3 | Estruturar pacotes conforme `standards.md` | `com.fuelfinder.{config, common, modules.*}` |
+| 1.2 | Configurar `pom.xml` com Java 21 e JJWT 0.12.6+ | Spring AI não é dependência obrigatória do MVP; adicionar um adaptador opcional somente após aprovação do provedor e modelo |
+| 1.3 | Estruturar pacotes conforme `standards.md` | `com.fuelfinder.config`, `com.fuelfinder.common` e módulos em `com.fuelfinder.modules` (`auth`, `user`, `vehicle`, `station`, `fuel`, `price`, `review`, `recommendation`, `anp`) |
 | 1.4 | Configurar `application.yml` / `application-dev.yml` | DataSource, JPA, Flyway, CORS, JWT secret/expiration |
 | 1.5 | Docker Compose para PostgreSQL 16 | Container local para desenvolvimento |
 | 1.6 | Criar migração Flyway `V1__initial_schema.sql` | Todas as 7 tabelas conforme ERD do `architecture.md` |
@@ -127,7 +141,7 @@ CREATE TABLE users (
     email VARCHAR(255) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
     full_name VARCHAR(255) NOT NULL,
-    role VARCHAR(30) NOT NULL DEFAULT 'ROLE_MOTORISTA',
+    role VARCHAR(30) NOT NULL DEFAULT 'ROLE_DRIVER',
     status VARCHAR(20) NOT NULL DEFAULT 'ACTIVE',
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW()
@@ -160,8 +174,8 @@ CREATE TABLE stations (
     city VARCHAR(100) NOT NULL,
     state CHAR(2) NOT NULL,
     postal_code VARCHAR(10),
-    latitude DECIMAL(10,7) NOT NULL,
-    longitude DECIMAL(10,7) NOT NULL,
+    latitude DECIMAL(10,7),
+    longitude DECIMAL(10,7),
     average_rating DECIMAL(3,2) DEFAULT 0.00,
     total_reviews INTEGER DEFAULT 0,
     status VARCHAR(20) NOT NULL DEFAULT 'ACTIVE',
@@ -204,17 +218,32 @@ CREATE TABLE reviews (
 CREATE TABLE anp_import_logs (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     file_name VARCHAR(255) NOT NULL,
-    reference_period VARCHAR(20) NOT NULL,
+    reference_year SMALLINT NOT NULL CHECK (reference_year BETWEEN 1000 AND 9999),
+    reference_semester SMALLINT NOT NULL CHECK (reference_semester IN (1, 2)),
     source_url VARCHAR(500),
     import_start TIMESTAMP NOT NULL,
     import_end TIMESTAMP,
     total_records_read INTEGER DEFAULT 0,
     total_records_imported INTEGER DEFAULT 0,
+    total_records_ignored INTEGER DEFAULT 0,
+    total_records_failed INTEGER DEFAULT 0,
     status VARCHAR(20) NOT NULL DEFAULT 'FAILED',
     error_details TEXT,
     triggered_by UUID REFERENCES users(id)
 );
 ```
+
+O trecho representa o modelo-alvo documentado. O banco atual usa `reference_period`;
+a alteração requer uma migração futura que converta os valores existentes antes
+de remover/substituir a coluna antiga. Não editar migrações Flyway já aplicadas.
+
+O SQL acima representa somente o ponto de partida da migração V1. A migração
+V4 passa a armazenar capacidade e consumo com valor e unidade (`*_value`,
+`*_unit`), inclui consumos de diesel e CNG e valida a compatibilidade entre
+combustível e unidade. Veículos CNG usam m³ e km/m³; os demais usam litros e km/L.
+Capacidades CNG legadas são convertidas de litros para m³ por divisão por 1.000,
+mantendo cinco casas decimais para preservar os valores antigos. Consumos CNG
+legados são preservados numericamente e classificados como km/m³.
 
 **Critérios de aceitação:**
 - ✅ `mvn clean compile` executa sem erros
@@ -235,15 +264,19 @@ CREATE TABLE anp_import_logs (
 |---|--------|----------|
 | 2.1 | Criar entidade `User` (@Entity) | Com campos do ERD, enum `Role` e `AccountStatus` |
 | 2.2 | Criar `UserRepository` | Método `findByEmail(String email)` |
-| 2.3 | Criar DTOs de Auth | `RegisterRequestDTO`, `LoginRequestDTO`, `AuthResponseDTO`, `UserProfileDTO` |
-| 2.4 | Implementar `JwtService` | Geração, validação e extração de claims (JJWT 0.12.6) |
+| 2.3 | Criar DTOs de Auth | `RegisterRequestDTO`, `LoginRequestDTO`, `AuthResponseDTO`, `UserProfileDTO`; o refresh token chega pelo cookie HttpOnly, sem DTO/body próprio |
+| 2.4 | Implementar `JwtService` | Geração e validação de access JWT de curta duração com claims `sub`, `role`, `sid` e `exp` (JJWT 0.12.6); duração configurável |
 | 2.5 | Implementar `JwtAuthenticationFilter` | `OncePerRequestFilter` que extrai token do header `Authorization: Bearer ...` |
-| 2.6 | Configurar `SecurityConfig` | Rotas públicas (`/auth/**`, `/stations GET`), protegidas e RBAC |
-| 2.7 | Implementar `AuthService` | Registro (BCrypt hash, custo 10), login (verificação + emissão JWT), refresh |
-| 2.8 | Implementar `AuthController` | `POST /auth/register`, `POST /auth/login`, `POST /auth/logout`, `POST /auth/refresh`, `GET /auth/me` |
-| 2.9 | Implementar `PATCH /users/me` | Atualização de dados cadastrais do próprio usuário |
-| 2.10 | Testes unitários | AuthService, JwtService |
-| 2.11 | Testes de integração | AuthController com MockMvc |
+| 2.6 | Criar persistência de sessões | Entidades `AuthSession` e `RefreshToken`, repositórios e migração Flyway; armazenar hashes de tokens e manter tokens consumidos para detectar reutilização |
+| 2.7 | Implementar rotação de refresh token | Emitir tokens opacos, persistir somente hashes, invalidar token anterior em cada renovação e revogar a sessão em caso de reutilização |
+| 2.8 | Integrar validação de sessão ao `JwtAuthenticationFilter` | Em cada rota protegida, validar sessão ativa e status `ACTIVE` do usuário após validar o JWT |
+| 2.9 | Configurar `SecurityConfig` | Rotas públicas (`/auth/register`, `/auth/login`, `/auth/refresh`), dados de domínio protegidos, RBAC e validação de origem/CSRF para endpoints que usam cookies |
+| 2.10 | Implementar `AuthService` | Registro, login, refresh rotativo, logout da sessão atual e revogação de todas as sessões do usuário |
+| 2.11 | Implementar `AuthController` | `POST /auth/register`, `POST /auth/login`, `POST /auth/logout`, `POST /auth/refresh`, `POST /auth/sessions/revoke-all`, `GET /auth/me` |
+| 2.12 | Implementar `PATCH /users/me` | Atualização de dados cadastrais do próprio usuário |
+| 2.13 | Implementar bloqueio imediato de conta | Bloquear login e refresh, revogar todas as sessões e negar acesso protegido por verificação de status |
+| 2.14 | Testes unitários | AuthService, JwtService e RefreshTokenService: expiração de access/refresh, rotação, reutilização, logout, revogação global e conta bloqueada |
+| 2.15 | Testes de integração | AuthController e filtros de segurança com MockMvc, incluindo rejeição de access JWT expirado ou sessão revogada |
 
 **Endpoints implementados:**
 
@@ -251,21 +284,27 @@ CREATE TABLE anp_import_logs (
 |--------|------|--------|--------|
 | `POST` | `/auth/register` | Público | `201 Created` |
 | `POST` | `/auth/login` | Público | `200 OK` |
-| `POST` | `/auth/logout` | Autenticado | `204 No Content` |
-| `POST` | `/auth/refresh` | Autenticado | `200 OK` |
+| `POST` | `/auth/logout` | Autenticado; revoga a sessão atual | `204 No Content` |
+| `POST` | `/auth/sessions/revoke-all` | Autenticado; revoga todas as sessões do usuário | `204 No Content` |
+| `POST` | `/auth/refresh` | Público; exige refresh token válido e rotaciona-o | `200 OK` |
 | `GET`  | `/auth/me` | Autenticado | `200 OK` |
 | `PATCH`| `/users/me` | Autenticado | `200 OK` |
 
 **Regras de negócio implementadas:**
 - E-mail único (409 Conflict em duplicata)
-- Senha ≥ 8 chars, ao menos 1 letra e 1 número
-- BCrypt com custo mínimo 10
-- JWT com claims: `sub: userId`, `role`, `exp`
-- Conta BLOCKED impede login e revoga tokens
+- Senha com mínimo de 8 caracteres, uma maiúscula, uma minúscula, um número e um caractere especial; hash BCrypt com custo mínimo 12
+- Access JWT de curta duração configurável com claims `sub: userId`, `role`, `sid: sessionId`, `exp`
+- Refresh token opaco de uso único; somente seu hash é persistido no servidor
+- Reutilização de refresh token rotacionado revoga a sessão associada
+- Logout revoga a sessão atual; endpoint de revogação global revoga todas as sessões do usuário
+- Rotas protegidas validam sessão ativa e conta `ACTIVE`; conta BLOCKED não pode autenticar ou renovar tokens e perde acesso imediatamente
 
 **Critérios de aceitação:**
-- ✅ Registro cria usuário com `ROLE_MOTORISTA` e `ACTIVE`
-- ✅ Login retorna JWT válido
+- ✅ Registro cria usuário com `ROLE_DRIVER` e `ACTIVE`
+- ✅ Login retorna access JWT de curta duração e refresh token
+- ✅ Access JWT e refresh token expirados são rejeitados; refresh válido é rotacionado e não pode ser reutilizado
+- ✅ Logout invalida a sessão e seus tokens; revogação global invalida todas as sessões do usuário
+- ✅ Conta BLOCKED não pode renovar tokens e perde imediatamente acesso às rotas protegidas
 - ✅ Rotas protegidas rejeitam requisição sem token (401)
 - ✅ Rotas ADMIN rejeitam motorista (403)
 - ✅ E-mail duplicado retorna 409
@@ -285,7 +324,7 @@ CREATE TABLE anp_import_logs (
 | 3.3 | Criar DTOs | `CreateVehicleRequestDTO`, `UpdateVehicleRequestDTO`, `VehicleResponseDTO` |
 | 3.4 | Criar `VehicleMapper` | Conversão Entity ↔ DTO |
 | 3.5 | Implementar `VehicleService` | CRUD com verificação de ownership (`user_id`) |
-| 3.6 | Implementar `VehicleController` | 5 endpoints com `@PreAuthorize("hasRole('MOTORISTA')")` |
+| 3.6 | Implementar `VehicleController` | 5 endpoints com `@PreAuthorize("hasRole('DRIVER')")` |
 | 3.7 | Validações de negócio | Ano: [1950, ano atual+1], consumo: [1.0, 40.0] km/L, FLEX exige ambos consumos |
 | 3.8 | Testes | Unitários + integração |
 
@@ -293,11 +332,11 @@ CREATE TABLE anp_import_logs (
 
 | Método | Rota | Acesso | Status |
 |--------|------|--------|--------|
-| `POST` | `/vehicles` | MOTORISTA | `201 Created` |
-| `GET`  | `/vehicles` | MOTORISTA | `200 OK` |
-| `GET`  | `/vehicles/{id}` | MOTORISTA | `200 OK` |
-| `PATCH`| `/vehicles/{id}` | MOTORISTA | `200 OK` |
-| `DELETE`| `/vehicles/{id}` | MOTORISTA | `204 No Content` |
+| `POST` | `/vehicles` | `ROLE_DRIVER` | `201 Created` |
+| `GET`  | `/vehicles` | `ROLE_DRIVER` | `200 OK` |
+| `GET`  | `/vehicles/{id}` | `ROLE_DRIVER` | `200 OK` |
+| `PATCH`| `/vehicles/{id}` | `ROLE_DRIVER` | `200 OK` |
+| `DELETE`| `/vehicles/{id}` | `ROLE_DRIVER` | `204 No Content` |
 
 **Critérios de aceitação:**
 - ✅ Motorista só acessa seus próprios veículos
@@ -316,40 +355,25 @@ CREATE TABLE anp_import_logs (
 | # | Tarefa | Detalhes |
 |---|--------|----------|
 | 4.1 | Criar entidade `Station` | Com todos os campos do ERD |
-| 4.2 | Criar `StationRepository` | Custom query com Haversine para busca por raio |
+| 4.2 | Criar `StationRepository` | Consultas por janela geográfica e status para reduzir candidatos |
 | 4.3 | Implementar `HaversineCalculator` | Classe utilitária em `com.fuelfinder.common.util` |
 | 4.4 | Criar DTOs | `StationRequestDTO`, `StationResponseDTO`, `StationSummaryDTO` (com distância) |
 | 4.5 | Implementar `StationService` | Busca por raio (latitude, longitude, radiusKm), CRUD admin |
 | 4.6 | Implementar `StationController` | GET público, POST/PATCH/DELETE para ADMIN |
-| 4.7 | Query JPQL com Haversine | Cálculo no PostgreSQL usando `acos`, `cos`, `sin`, `radians` |
+| 4.7 | Busca geográfica no MVP | Calcular a distância exata com Haversine na aplicação Java e ordenar por distância |
 | 4.8 | Testes | Unitários + integração com dados de teste geolocalizados |
 
-**Query de busca por raio (JPQL):**
-
-```java
-@Query("""
-    SELECT s, (6371 * acos(
-        cos(radians(:lat)) * cos(radians(s.latitude)) *
-        cos(radians(s.longitude) - radians(:lng)) +
-        sin(radians(:lat)) * sin(radians(s.latitude))
-    )) AS distance
-    FROM Station s
-    WHERE s.status = 'ACTIVE'
-    HAVING distance <= :radius
-    ORDER BY distance ASC
-    """)
-List<Object[]> findStationsWithinRadius(
-    @Param("lat") double lat,
-    @Param("lng") double lng,
-    @Param("radius") double radiusKm);
-```
+**Busca por raio no MVP:** `StationRepository` limita candidatos por status e
+janela de latitude/longitude, considerando antimeridiano e polos.
+`StationService` calcula a distância exata com `HaversineCalculator`, filtra
+pelo raio e ordena os postos em memória. PostGIS não é requisito desta fase.
 
 **Endpoints:**
 
 | Método | Rota | Acesso | Status |
 |--------|------|--------|--------|
-| `GET`  | `/stations` | Público/Autenticado | `200 OK` |
-| `GET`  | `/stations/{id}` | Público/Autenticado | `200 OK` |
+| `GET`  | `/stations` | `ROLE_DRIVER` / `ROLE_ADMIN` | `200 OK` |
+| `GET`  | `/stations/{id}` | `ROLE_DRIVER` / `ROLE_ADMIN` | `200 OK` |
 | `POST` | `/stations` | ADMIN | `201 Created` |
 | `PATCH`| `/stations/{id}` | ADMIN | `200 OK` |
 | `DELETE`| `/stations/{id}` | ADMIN | `204 No Content` |
@@ -358,7 +382,7 @@ List<Object[]> findStationsWithinRadius(
 - ✅ Busca por latitude/longitude/raio retorna postos ordenados por distância
 - ✅ CNPJ único por posto (409 em duplicata)
 - ✅ DELETE faz inativação lógica (`INACTIVE`), não exclusão física
-- ✅ Postos `INACTIVE` não aparecem em buscas públicas
+- ✅ Postos `INACTIVE` não aparecem em buscas de usuários autenticados
 
 ---
 
@@ -370,7 +394,7 @@ List<Object[]> findStationsWithinRadius(
 
 | # | Tarefa | Detalhes |
 |---|--------|----------|
-| 5.1 | Criar entidade `FuelType` | Enum code: GASOLINE_REGULAR, GASOLINE_ADDITIVE, ETHANOL, DIESEL_S10, DIESEL_S500, CNG |
+| 5.1 | Criar entidade `FuelType` | Enum code: GASOLINE_REGULAR, GASOLINE_PREMIUM, ETHANOL, DIESEL_S10, DIESEL_S500, CNG |
 | 5.2 | Criar entidade `FuelPrice` | Com constraint unique (station_id, fuel_type_id, collection_date) |
 | 5.3 | Criar repositórios | `FuelTypeRepository`, `FuelPriceRepository` |
 | 5.4 | Criar DTOs | `FuelPriceRequestDTO`, `FuelPriceResponseDTO`, `CompareResultDTO` |
@@ -383,10 +407,10 @@ List<Object[]> findStationsWithinRadius(
 
 | Método | Rota | Acesso | Status |
 |--------|------|--------|--------|
-| `GET`  | `/stations/{id}/fuel-prices` | Público/Autenticado | `200 OK` |
+| `GET`  | `/stations/{id}/fuel-prices` | `ROLE_DRIVER` / `ROLE_ADMIN` | `200 OK` |
 | `POST` | `/stations/{id}/fuel-prices` | ADMIN | `201 Created` |
 | `PATCH`| `/stations/{id}/fuel-prices/{priceId}` | ADMIN | `200 OK` |
-| `GET`  | `/fuel-prices/compare` | Público/Autenticado | `200 OK` |
+| `GET`  | `/fuel-prices/compare` | `ROLE_DRIVER` / `ROLE_ADMIN` | `200 OK` |
 
 **Fórmulas implementadas:**
 - Custo Tanque Cheio = `tankCapacity × pricePerLiter`
@@ -421,135 +445,135 @@ List<Object[]> findStationsWithinRadius(
 
 | Método | Rota | Acesso | Status |
 |--------|------|--------|--------|
-| `GET`  | `/stations/{id}/reviews` | Público/Autenticado | `200 OK` |
-| `POST` | `/stations/{id}/reviews` | MOTORISTA | `201 Created` |
-| `PATCH`| `/reviews/{id}` | MOTORISTA (própria) | `200 OK` |
-| `DELETE`| `/reviews/{id}` | MOTORISTA (própria) / ADMIN | `204 No Content` |
+| `GET`  | `/stations/{id}/reviews` | `ROLE_DRIVER` / `ROLE_ADMIN` | `200 OK` |
+| `POST` | `/stations/{id}/reviews` | `ROLE_DRIVER` | `201 Created` |
+| `PATCH`| `/reviews/{id}` | `ROLE_DRIVER` (própria) | `200 OK` |
+| `PATCH`| `/reviews/{id}/moderation` | `ROLE_ADMIN` | `200 OK` |
+| `DELETE`| `/reviews/{id}` | `ROLE_DRIVER` (própria) / `ROLE_ADMIN` | `204 No Content` |
 
 **Regras:**
-- 1 avaliação ativa por motorista por posto (upsert)
+- 1 avaliação por motorista por posto (upsert), preservando o status de moderação existente
 - Nota: inteiro 1-5
 - Comentário: opcional, máx 500 chars
 - Nota média = soma das notas APPROVED / total APPROVED
-- Admin pode aprovar/rejeitar/excluir
+- Novas avaliações iniciam `APPROVED`; Admin pode aprovar/rejeitar/excluir
 
 **Critérios de aceitação:**
-- ✅ Nova avaliação do mesmo motorista para o mesmo posto atualiza a existente
-- ✅ Nota média do posto recalculada em cada operação
-- ✅ Apenas avaliações APPROVED contam na média
-- ✅ Admin pode moderar (aprovar/rejeitar)
+- [x] Nova avaliação do mesmo motorista para o mesmo posto atualiza a existente
+- [x] Nota média do posto recalculada em cada operação
+- [x] Apenas avaliações APPROVED contam na média
+- [x] Admin pode moderar (aprovar/rejeitar)
 
 ---
 
-### [NEW] `Plano/07-recomendacoes-ia.md`
+### [NEW] `Plano/07-recomendacoes.md`
 
-**Objetivo:** Motor de recomendação inteligente de combustível com paridade personalizada e explicação via Spring AI.
+**Objetivo:** Motor determinístico de recomendação de combustível com paridade personalizada; explicações por IA são uma integração opcional e desacoplada, sujeita à aprovação do provedor/modelo.
 
 **Tarefas:**
 
 | # | Tarefa | Detalhes |
 |---|--------|----------|
-| 7.1 | Implementar `RecommendationService` | Lógica de paridade e custo por km |
-| 7.2 | Integrar Spring AI `ChatClient` | Geração de explicações em linguagem natural |
-| 7.3 | Implementar `RecommendationController` | `GET /recommendations/fuel` |
-| 7.4 | Criar DTOs | `RecommendationResponseDTO` com topOptions |
-| 7.5 | Lógica de paridade clássica (70%) | Quando o motorista não tem veículo FLEX cadastrado |
-| 7.6 | Lógica de paridade personalizada | Custo/km etanol vs gasolina com consumos reais do veículo |
-| 7.7 | Custo efetivo com deslocamento | Incluir ida e volta ao posto no cálculo |
-| 7.8 | Testes | Cenários com veículo FLEX, gasolina puro, diesel |
+| 7.1 | Implementar `RecommendationService` | Reutiliza veículo do condutor, postos ativos por Haversine e preços vigentes |
+| 7.2 | Criar DTOs | Resposta inclui combustível recomendado, explicação, paridade quando aplicável e opções com unidade |
+| 7.3 | Implementar `RecommendationController` | `GET /recommendations/fuel`, restrito a `ROLE_DRIVER` |
+| 7.4 | Selecionar combustível pelo custo/km | FLEX compara etanol e variantes de gasolina; GASOLINE e DIESEL comparam suas variantes; ETHANOL e CNG usam tipo único |
+| 7.5 | Calcular custo efetivo com deslocamento | Tanque completo mais ida e volta; ordenar opções do combustível recomendado |
+| 7.6 | Criar testes unitários e de integração | FLEX, combustíveis únicos, variantes, unidades CNG, autorização, propriedade e erros |
 
 **Endpoint:**
 
 | Método | Rota | Acesso | Status |
 |--------|------|--------|--------|
-| `GET`  | `/recommendations/fuel?vehicleId=...&latitude=...&longitude=...&radiusKm=...` | MOTORISTA | `200 OK` |
+| `GET`  | `/recommendations/fuel?vehicleId=...&latitude=...&longitude=...&radiusKm=...` | `ROLE_DRIVER` | `200 OK` |
 
 **Lógica de decisão:**
 
 ```mermaid
 flowchart TD
-    A["Recebe requisição com vehicleId + coordenadas"] --> B{"Veículo é FLEX?"}
-    B -- Sim --> C["Calcular custo/km Etanol e Gasolina"]
-    C --> D{"custoKm_Etanol < custoKm_Gasolina?"}
-    D -- Sim --> E["Recomendar ETANOL"]
-    D -- Não --> F["Recomendar GASOLINA"]
-    B -- Não --> G["Usar paridade clássica 70%"]
-    G --> H{"Preço Etanol / Preço Gasolina ≤ 70%?"}
-    H -- Sim --> E
-    H -- Não --> F
-    E --> I["Ordenar postos por custo efetivo total"]
-    F --> I
-    I --> J["Spring AI gera explicação em linguagem natural"]
+    A["Recebe vehicleId + coordenadas"] --> B["Confirma propriedade do veículo"]
+    B --> C["Busca postos ativos próximos por Haversine"]
+    C --> D["Carrega preços vigentes"]
+    D --> E["Calcula custo/km com consumo e unidade compatíveis"]
+    E --> F{"Veículo FLEX?"}
+    F -- Sim --> G["Compara etanol com a melhor variante de gasolina"]
+    F -- Não --> H["Escolhe a variante compatível de menor custo/km"]
+    G --> I["Calcula custo efetivo e ordena postos"]
+    H --> I
+    I --> J["Gera explicação determinística por template"]
     J --> K["Retorna RecommendationResponseDTO"]
 ```
 
 **Critérios de aceitação:**
 - ✅ Recomendação correta para veículo FLEX com dados reais
-- ✅ Fallback para paridade 70% quando sem dados de consumo
+- ✅ Veículos de combustível único recebem recomendação entre os preços compatíveis
+- ✅ Preços, consumo e capacidade respeitam as unidades de líquidos e CNG
 - ✅ Custo efetivo inclui deslocamento ida+volta
-- ✅ Explicação gerada via Spring AI é coerente
+- ✅ Opções do código recomendado são ordenadas por custo efetivo crescente
+- ✅ Fluxo e explicação determinística funcionam sem IA configurada
+- ✅ A integração de IA permanece opcional e pendente de aprovação do provedor/modelo
 
 ---
 
 ### [NEW] `Plano/08-integracao-anp.md`
 
-**Objetivo:** Pipeline ETL para ingestão do arquivo semestral CSV da ANP com resiliência, idempotência e auditoria.
+**Objetivo:** Pipeline ETL para ingestão segura dos arquivos semestrais da ANP (CSV/TSV direto ou ZIP contendo CSV), com resiliência, idempotência e auditoria.
 
 **Tarefas:**
 
 | # | Tarefa | Detalhes |
 |---|--------|----------|
-| 8.1 | Criar entidade `AnpImportLog` | Auditoria completa de cada importação |
-| 8.2 | Criar `AnpImportLogRepository` | Consultas de histórico de importações |
-| 8.3 | Implementar `AnpImportService` | Download CSV, validação, parsing, limpeza, carga em lote |
-| 8.4 | Mapeamento de campos ANP | CSV → entidades Station + FuelPrice |
-| 8.5 | Normalização de CNPJ | Remover caracteres especiais, validar formato |
-| 8.6 | Idempotência | Chave de deduplicação: `(station_cnpj, fuel_type_code, collection_date)` |
-| 8.7 | Resiliência e rollback | Falha aborta transação, preserva dados anteriores |
-| 8.8 | Controller Admin | Endpoint para disparar carga manualmente |
-| 8.9 | Testes | Com arquivo CSV de teste, cenários de falha |
+| 8.1 | Auditoria | `AnpImportLog`, repositório, DTOs e estados `SUCCESS`, `PARTIAL`, `FAILED` |
+| 8.2 | Download seguro | Hosts HTTPS oficiais permitidos, sem redirects, timeouts e limites configuráveis para download/descompactação |
+| 8.3 | Parsing CSV/TSV e ZIP | Validar ZIP e CSV interno; identificar delimitador pelo cabeçalho/consistência, tratar BOM/charset, cabeçalhos e linhas inválidas |
+| 8.4 | Números ANP | Reconhecer formatos numéricos reais, incluindo vírgula decimal, sem confundir com o delimitador `;` |
+| 8.5 | Período | Entrada e auditoria com campos separados `referenceYear` (quatro algarismos) e `referenceSemester` (`1` ou `2`); migração preserva dados existentes |
+| 8.6 | Cadastro controlado de postos | Resolver por CNPJ normalizado; criar apenas com identificador e campos obrigatórios válidos; não duplicar nem persistir preço sem posto resolvido |
+| 8.7 | Idempotência | Chave efetiva `(station_id, fuel_type_id, collection_date)`; atualizar apenas preço alterado |
+| 8.8 | Geocodificação opcional | Geoapify via `GEOAPIFY_API_KEY`; importar sem coordenadas quando ausente |
+| 8.9 | Auditoria e resumo | Exibir registros lidos, importados, ignorados e falhos; razões úteis por linha; fechar previamente as definições dos contadores |
+| 8.10 | Controller Admin | Atualizar contrato `POST /admin/anp/import`, histórico e formulário administrativo para o período separado |
+| 8.11 | Testes | CSV/TSV e ZIP, delimitadores/formatos numéricos, cabeçalhos, registros inválidos, posto existente/novo, falha de cadastro, idempotência e RBAC |
 
 **Fluxo ETL:**
 
 ```mermaid
 flowchart TD
-    A["Admin dispara carga"] --> B["Download CSV do Portal ANP"]
-    B --> C{"Arquivo íntegro?"}
-    C -- Não --> D["Registra FAILED no anp_import_logs"]
-    D --> E["Preserva base atual intacta"]
-    C -- Sim --> F["Parse e limpeza dos registros"]
-    F --> G["Para cada registro:"]
-    G --> H{"Posto existe por CNPJ?"}
-    H -- Não --> I["Insere novo Station"]
-    H -- Sim --> J["Atualiza se necessário"]
-    I --> K{"Preço existe? (station + fuel + date)"}
-    J --> K
-    K -- Sim --> L["Ignora ou atualiza"]
-    K -- Não --> M["Insere FuelPrice"]
-    L --> N["Registra SUCCESS + totais"]
-    M --> N
+    A["Admin dispara carga"] --> B["Download HTTPS validado"]
+    B --> C{"Download e layout válidos?"}
+    C -- Não --> D["Registra FAILED"]
+    C -- Sim --> E["Valida e processa registros em transação"]
+    E --> F{"Coordenadas ausentes?"}
+    F -- Não --> G["Cria/atualiza posto e preço"]
+    F -- Sim, Geoapify habilitado --> H["Geocodifica endereço"]
+    F -- Sim, sem chave --> I["Persiste coordenadas nulas; registra erro"]
+    H --> G
+    I --> G
+    G --> J{"Falha interna?"}
+    J -- Sim --> K["Reverte dados; registra FAILED"]
+    J -- Não --> L{"Há erros por registro?"}
+    L -- Sim --> M["Registra PARTIAL"]
+    L -- Não --> N["Registra SUCCESS"]
 ```
 
-**Mapeamento de campos:**
+**Critérios já atendidos pela entrega inicial:**
+- [x] Carga idempotente; preço alterado atualiza o registro existente
+- [x] Falha interna reverte os dados da carga e preserva dados anteriores
+- [x] Log completo com URL segura, período, usuário, totais, status e erros
+- [x] CNPJ, catálogo de produtos, datas, preços e unidades validados
+- [x] Geocodificação Geoapify opcional; ausência da chave permite funcionamento
+- [x] Endpoints protegidos por `ROLE_ADMIN`
+- [x] Testes unitários e de integração passam, incluindo cobertura de 100% das linhas
 
-| Campo CSV ANP | Campo no Sistema |
-|---------------|------------------|
-| `CNPJ da Revenda` | `station.cnpj` |
-| `Revenda` | `station.corporate_name` |
-| `Bandeira` | `station.brand` |
-| `Nome da Rua`, `Numero Rua`, `Bairro`, `Cep` | Endereço do posto |
-| `Municipio` | `station.city` |
-| `Estado - Sigla` | `station.state` |
-| `Produto` | → Mapeado para `fuel_type.code` |
-| `Data da Coleta` | `fuel_price.collection_date` |
-| `Valor de Venda` | `fuel_price.sale_value` |
-| `Unidade de Medida` | `fuel_type.unit_of_measure` |
+**Critérios adicionais planejados, ainda não implementados:**
+- [ ] ZIP contendo CSV validado com limites de segurança; múltiplos CSVs tratados sem seleção silenciosa
+- [ ] Parser identifica delimitador e separador decimal com amostras oficiais ANP
+- [ ] Posto criado de forma controlada quando não existe, sem preço associado a registro inválido
+- [ ] Resumo consistente de linhas lidas, importadas, ignoradas e falhas com mensagens úteis
+- [ ] Período submetido e persistido como ano e semestre separados, com migração progressiva
 
-**Critérios de aceitação:**
-- ✅ Carga idempotente (re-executar não duplica registros)
-- ✅ Falha preserva dados anteriores intactos
-- ✅ Log de auditoria completo (início, fim, totais, status)
-- ✅ CNPJ normalizado e validado
+Ver detalhes do contrato, comportamento e validação em
+[`08-integracao-anp.md`](./08-integracao-anp.md).
 
 ---
 
@@ -561,67 +585,49 @@ flowchart TD
 
 | # | Tarefa | Detalhes |
 |---|--------|----------|
-| 9.1 | Estruturar projeto frontend | HTML5 semântico + Tailwind CSS 3.4+ + Vanilla JS ES2023 |
-| 9.2 | Página de Login / Registro | Forms com validação, armazenar JWT no localStorage |
-| 9.3 | Header com navegação | Navbar responsiva, identificação do usuário logado |
-| 9.4 | Mapa principal com Leaflet 1.9.4 | Renderizar marcadores dos postos nos resultados |
-| 9.5 | Geolocation API | Solicitar permissão GPS, fallback para busca textual |
-| 9.6 | Lista de postos ordenada | Nome, bandeira, distância, preços, nota média |
-| 9.7 | Detalhes do posto | Preços por combustível, avaliações, botão "Rotas" |
-| 9.8 | Botão "Rotas" | Deep links para Google Maps e Waze com coordenadas |
-| 9.9 | Tela de veículos | CRUD de veículos do motorista |
-| 9.10 | Tela de recomendação | Resultado personalizado com explicação da IA |
-| 9.11 | Painel Admin | Gestão de postos, preços, moderação, carga ANP |
+| 9.1 | Estruturar projeto frontend | HTML5 semântico + Tailwind CSS via CDN + Vanilla JS ES modules |
+| 9.2 | Página de Login / Registro | Access token só em memória; refresh token em cookie HttpOnly |
+| 9.3 | Header com navegação | Navbar responsiva e identificação do usuário logado |
+| 9.4 | Mapa principal com Leaflet 1.9.4 | Marcadores e preços buscados sob demanda da API |
+| 9.5 | Geolocation API | Permissão GPS e fallback para busca textual |
+| 9.6 | Lista de postos | Nome, bandeira, distância e nota; preços no popup e detalhes |
+| 9.7 | Detalhes do posto | Preços/data de coleta, avaliações e botões de rota |
+| 9.8 | Botão "Rotas" | Deep links seguros para Google Maps e Waze |
+| 9.9 | Tela de veículos | CRUD integrado; capacidade/consumo com unidades de domínio |
+| 9.10 | Tela de recomendação | Resultado determinístico, explicação, paridade e opções |
+| 9.11 | Painel Admin | Gestão de postos, preços, fila de moderação e carga ANP |
 | 9.12 | Interceptor Fetch com JWT | Adicionar `Authorization: Bearer ...` em todas as requests |
-| 9.13 | Responsividade | Mobile-first com Tailwind |
-| 9.14 | Acessibilidade | HTML semântico (`<main>`, `<nav>`, `<article>`), `aria-label`, contraste |
+| 9.13 | Responsividade | Mobile-first com layout de mapa e lista adaptável |
+| 9.14 | Acessibilidade | HTML semântico, foco visível, labels e regiões `aria-live` |
+| 9.15 | Sessão segura no frontend | Manter access token só em memória; usar cookie de refresh `HttpOnly`, `SameSite` e `Secure` em produção, com rotação, logout que revoga sessão/limpa cookie e proteção CSRF; enviar credenciais via Fetch somente aos endpoints que usam o cookie; nunca registrar tokens em logs ou URLs |
+| 9.16 | Entrada protegida | Raiz encaminha ao login; mapa e áreas internas exigem sessão; navegação direta preserva destino interno seguro e retorna após login |
+| 9.17 | Autorização de conteúdo | Proteger telas internas e APIs de dados no servidor; somente login/cadastro e endpoints mínimos de autenticação permanecem públicos |
+| 9.18 | Navegação responsiva | Menu lateral em desktop e menu recolhível por hambúrguer em mobile, com estados aberto/fechado, foco, seção atual e fechamento acessível |
+| 9.19 | Referência visual e respiro | Inspirar-se em [`Plano/img_exemplo.png`](./img_exemplo.png) apenas pelo que é visível; padronizar espaçamento e áreas de toque |
+| 9.20 | Mapa com posição atual | Após login e consentimento, centralizar mapa e carregar postos próximos automaticamente; apresentar carregamento e fallback manual |
+| 9.21 | Estados de tela | Planejar estados de carregamento, vazio, sucesso e erro nas operações relevantes |
 
-**Deep links de navegação:**
+**Critérios já atendidos pela entrega inicial:**
+- ✅ Leaflet/OSM, GPS, busca textual, lista e marcadores integrados
+- ✅ Detalhes mostram preços e data de coleta; rotas abrem Maps ou Waze
+- ✅ Autenticação, veículos, avaliações e recomendações integram a API real
+- ✅ Admin inclui postos, preços, moderação por status e importação ANP
+- ✅ JWT não persiste em storage; cookie é enviado só nos endpoints próprios
+- ✅ **Estado da entrega inicial:** assets estáticos públicos e autorização por endpoint; algumas leituras de domínio também estão públicas. Restringir telas e APIs internas está planejado abaixo.
+- ✅ Interface responsiva, semântica, teclado acessível e feedback `aria-live`
+- ✅ Testes de integração verificam acesso público a assets e RBAC da moderação
 
-```javascript
-// Google Maps
-const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+**Critérios adicionais planejados, ainda não implementados:**
+- [ ] Acesso inicial apresenta login; mapa e telas internas não são acessíveis sem autenticação
+- [ ] Retorno após login funciona apenas para destino interno autorizado, sem open redirect
+- [ ] APIs de leitura de postos, preços e avaliações exigem `ROLE_DRIVER` ou `ROLE_ADMIN`
+- [ ] Menu lateral responsivo, com comportamento desktop/mobile e acessibilidade verificados
+- [ ] Mapa solicita permissão ao entrar; após autorização centra na posição e carrega postos automaticamente
+- [ ] Recusa/erro/indisponibilidade de GPS permite localização manual e não bloqueia o restante do sistema
+- [ ] Espaçamento consistente, áreas de toque adequadas e estados loading/empty/success/error validados
 
-// Waze
-const wazeUrl = `https://waze.com/ul?ll=${lat},${lng}&navigate=yes`;
-```
-
-**Estrutura de arquivos frontend:**
-
-```text
-src/main/resources/static/
-├── index.html              # Página principal com mapa
-├── login.html              # Login e registro
-├── vehicles.html           # Gestão de veículos
-├── station-detail.html     # Detalhes do posto
-├── recommendations.html    # Tela de recomendação
-├── admin/                  # Painel administrativo
-│   ├── stations.html
-│   ├── prices.html
-│   ├── reviews.html
-│   └── anp-import.html
-├── css/
-│   └── styles.css          # Customizações sobre Tailwind
-├── js/
-│   ├── api.js              # Client HTTP com interceptor JWT
-│   ├── auth.js             # Login, registro, logout
-│   ├── map.js              # Inicialização e controle do Leaflet
-│   ├── stations.js         # Busca e listagem de postos
-│   ├── vehicles.js         # CRUD de veículos
-│   ├── reviews.js          # Avaliações
-│   ├── recommendations.js  # Recomendações
-│   └── admin.js            # Funções administrativas
-└── img/
-    └── markers/            # Ícones de marcadores do mapa
-```
-
-**Critérios de aceitação:**
-- ✅ Mapa Leaflet com tiles OpenStreetMap renderiza corretamente
-- ✅ Marcadores no mapa correspondem aos postos da API
-- ✅ GPS solicita permissão e faz fallback para busca textual
-- ✅ Botão "Rotas" abre Google Maps ou Waze corretamente
-- ✅ Interface responsiva em mobile e desktop
-- ✅ Tags semânticas e `aria-label` em elementos interativos
+Implementação entregue e instruções de validação em
+[`09-frontend-integracao.md`](./09-frontend-integracao.md).
 
 ---
 
@@ -640,6 +646,8 @@ mvn clean compile
 mvn spring-boot:run
 ```
 
+Antes de iniciar localmente, configure `JWT_SECRET` com pelo menos 32 bytes; consulte [01-setup-infraestrutura.md](./01-setup-infraestrutura.md) para o comando PowerShell que gera um segredo temporário sem gravá-lo no repositório.
+
 ### Manual Verification
 
 1. **Auth Flow:** Registrar → Login → Acessar rota protegida → Logout
@@ -648,7 +656,7 @@ mvn spring-boot:run
 4. **Price Comparison:** Comparar postos por preço → Verificar ordenação
 5. **Review Flow:** Avaliar posto → Verificar nota média atualizada → Admin modera
 6. **Recommendation:** Selecionar veículo FLEX → Obter recomendação → Verificar paridade
-7. **ANP Import:** Importar arquivo CSV de teste → Verificar idempotência re-executando
+7. **ANP Import:** Importar CSV e ZIP contendo CSV de teste → Validar delimitadores e vírgula decimal, criar/localizar posto e confirmar contadores; reexecutar para verificar idempotência
 8. **Responsive:** Testar em viewport mobile (375px) e desktop (1440px)
 9. **Swagger:** Verificar todos os endpoints documentados em `/swagger-ui.html`
 
@@ -664,6 +672,6 @@ mvn spring-boot:run
 | 4 | `feature/postos-geolocalizacao` | `feat: implement station search with Haversine distance` |
 | 5 | `feature/precos-combustiveis` | `feat: add fuel prices and comparison endpoint` |
 | 6 | `feature/avaliacoes` | `feat: implement reviews with rating aggregation` |
-| 7 | `feature/recomendacoes-ia` | `feat: add fuel recommendation engine with Spring AI` |
+| 7 | `feature/recomendacoes` | `feat: add deterministic fuel recommendation engine` |
 | 8 | `feature/integracao-anp` | `feat: implement ANP ETL pipeline with idempotency` |
 | 9 | `feature/frontend-leaflet` | `feat: build responsive frontend with Leaflet map` |

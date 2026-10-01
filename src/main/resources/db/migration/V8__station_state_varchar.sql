@@ -1,0 +1,2 @@
+ALTER TABLE stations
+    ALTER COLUMN state TYPE VARCHAR(2);

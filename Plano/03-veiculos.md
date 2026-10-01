@@ -13,11 +13,11 @@ Implementar o CRUD completo de veículos vinculados ao motorista autenticado, co
 
 | Método | Rota | Objetivo | Acesso | Status HTTP |
 |--------|------|----------|--------|-------------|
-| `POST` | `/vehicles` | Cadastra veículo com consumo informado | `ROLE_MOTORISTA` | `201 Created` |
-| `GET`  | `/vehicles` | Lista veículos do motorista autenticado | `ROLE_MOTORISTA` | `200 OK` |
-| `GET`  | `/vehicles/{id}` | Consulta detalhes de um veículo | `ROLE_MOTORISTA` | `200 OK` |
-| `PATCH`| `/vehicles/{id}` | Atualiza dados do veículo | `ROLE_MOTORISTA` | `200 OK` |
-| `DELETE`| `/vehicles/{id}` | Remove um veículo | `ROLE_MOTORISTA` | `204 No Content` |
+| `POST` | `/vehicles` | Cadastra veículo com consumo informado | `ROLE_DRIVER` | `201 Created` |
+| `GET`  | `/vehicles` | Lista veículos do motorista autenticado | `ROLE_DRIVER` | `200 OK` |
+| `GET`  | `/vehicles/{id}` | Consulta detalhes de um veículo | `ROLE_DRIVER` | `200 OK` |
+| `PATCH`| `/vehicles/{id}` | Atualiza dados do veículo | `ROLE_DRIVER` | `200 OK` |
+| `DELETE`| `/vehicles/{id}` | Remove um veículo | `ROLE_DRIVER` | `204 No Content` |
 
 ---
 
@@ -34,19 +34,27 @@ Implementar o CRUD completo de veículos vinculados ao motorista autenticado, co
 - `model`: Modelo do veículo
 - `yearManufacture`: Ano de fabricação (inteiro entre 1950 e ano corrente + 1)
 - `fuelTypeAccepted`: Enum `[GASOLINE, ETHANOL, FLEX, DIESEL, CNG]`
-- `tankCapacity`: Capacidade do tanque em litros (valor positivo > 0)
+- `tankCapacity`: Objeto `{value, unit}`. Combustíveis líquidos usam `LITER`; `CNG` usa `CUBIC_METER`. O valor deve ser positivo.
 
 ### Consumo Médio Informado
 1. **Premissa central:** O consumo é informado diretamente pelo motorista
 2. O sistema **não** consulta manuais de montadoras ou tabelas externas
-3. Validação numérica: consumo entre `1.0` e `40.0` km/L
+3. Cada consumo é um objeto `{value, unit}`; o valor deve estar entre `1.0` e `40.0`.
+   - Gasolina, etanol e diesel usam `KM_PER_LITER`.
+   - GNV (`CNG`) usa `KM_PER_CUBIC_METER`.
 4. **Veículos FLEX (bicombustíveis):**
    - Obrigatório informar `averageConsumptionGasoline` E `averageConsumptionEthanol`
    - Ambos devem ser valores positivos entre 1.0 e 40.0
 5. **Veículos de combustível único:**
    - Informar apenas o consumo do combustível correspondente
    - Ex.: GASOLINE → apenas `averageConsumptionGasoline`
-   - Ex.: DIESEL → apenas `averageConsumptionGasoline` (campo genérico)
+   - DIESEL → apenas `averageConsumptionDiesel`
+   - CNG → apenas `averageConsumptionCng`, em km/m³, com capacidade em m³
+
+### Atualização Parcial
+- Campos omitidos em `PATCH /vehicles/{id}` permanecem inalterados.
+- `null` pode limpar os campos de consumo, sujeito às regras do combustível após a atualização.
+- Campos obrigatórios do veículo não podem ser definidos como `null`; validações de ano, capacidade e consumo usam os valores finais do veículo.
 
 ---
 
@@ -82,14 +90,17 @@ public class Vehicle {
     @Enumerated(EnumType.STRING)
     private FuelTypeAccepted fuelTypeAccepted;
 
-    @Column(name = "tank_capacity", nullable = false, precision = 6, scale = 2)
-    private BigDecimal tankCapacity;
+    @Embedded
+    private TankCapacity tankCapacity;
 
-    @Column(name = "avg_consumption_gasoline", precision = 5, scale = 2)
-    private BigDecimal avgConsumptionGasoline;
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "avg_consumption_gasoline_value")),
+        @AttributeOverride(name = "unit", column = @Column(name = "avg_consumption_gasoline_unit"))
+    })
+    private FuelConsumption avgConsumptionGasoline;
 
-    @Column(name = "avg_consumption_ethanol", precision = 5, scale = 2)
-    private BigDecimal avgConsumptionEthanol;
+    // Campos FuelConsumption equivalentes para etanol, diesel e CNG.
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
@@ -145,16 +156,11 @@ public record CreateVehicleRequestDTO(
     String fuelTypeAccepted,
 
     @NotNull(message = "A capacidade do tanque é obrigatória")
-    @Positive(message = "A capacidade do tanque deve ser maior que zero")
-    BigDecimal tankCapacity,
-
-    @DecimalMin(value = "1.0", message = "O consumo deve ser no mínimo 1.0 km/L")
-    @DecimalMax(value = "40.0", message = "O consumo deve ser no máximo 40.0 km/L")
-    BigDecimal averageConsumptionGasoline,
-
-    @DecimalMin(value = "1.0", message = "O consumo deve ser no mínimo 1.0 km/L")
-    @DecimalMax(value = "40.0", message = "O consumo deve ser no máximo 40.0 km/L")
-    BigDecimal averageConsumptionEthanol
+    @Valid TankCapacityDTO tankCapacity,
+    @Valid ConsumptionDTO averageConsumptionGasoline,
+    @Valid ConsumptionDTO averageConsumptionEthanol,
+    @Valid ConsumptionDTO averageConsumptionDiesel,
+    @Valid ConsumptionDTO averageConsumptionCng
 ) {}
 
 // VehicleResponseDTO
@@ -165,11 +171,18 @@ public record VehicleResponseDTO(
     String model,
     Integer yearManufacture,
     String fuelTypeAccepted,
-    BigDecimal tankCapacity,
-    BigDecimal averageConsumptionGasoline,
-    BigDecimal averageConsumptionEthanol
+    TankCapacityDTO tankCapacity,
+    ConsumptionDTO averageConsumptionGasoline,
+    ConsumptionDTO averageConsumptionEthanol,
+    ConsumptionDTO averageConsumptionDiesel,
+    ConsumptionDTO averageConsumptionCng
 ) {}
 ```
+
+`TankCapacityDTO` contém `value` e a unidade `LITER` ou `CUBIC_METER`.
+`ConsumptionDTO` contém `value` e `KM_PER_LITER` ou `KM_PER_CUBIC_METER`.
+Na migração de dados legados, a capacidade CNG em litros é dividida por 1.000;
+o valor numérico do consumo CNG legado é preservado e classificado como km/m³.
 
 ### 3.5 VehicleService
 
@@ -185,16 +198,18 @@ public class VehicleService {
         validateFuelConsumption(request);
         validateYear(request.yearManufacture());
 
-        Vehicle vehicle = new Vehicle();
-        vehicle.setUserId(userId);
-        vehicle.setNickname(request.nickname());
-        vehicle.setBrand(request.brand());
-        vehicle.setModel(request.model());
-        vehicle.setYearManufacture(request.yearManufacture());
-        vehicle.setFuelTypeAccepted(FuelTypeAccepted.valueOf(request.fuelTypeAccepted()));
-        vehicle.setTankCapacity(request.tankCapacity());
-        vehicle.setAvgConsumptionGasoline(request.averageConsumptionGasoline());
-        vehicle.setAvgConsumptionEthanol(request.averageConsumptionEthanol());
+        Vehicle vehicle = new Vehicle(
+                userId,
+                request.nickname(),
+                request.brand(),
+                request.model(),
+                request.yearManufacture(),
+                request.fuelTypeAccepted(),
+                toTankCapacity(request.tankCapacity()),
+                toConsumption(request.averageConsumptionGasoline()),
+                toConsumption(request.averageConsumptionEthanol()),
+                toConsumption(request.averageConsumptionDiesel()),
+                toConsumption(request.averageConsumptionCng()));
 
         Vehicle saved = vehicleRepository.save(vehicle);
         return toDTO(saved);
@@ -220,15 +235,8 @@ public class VehicleService {
         vehicleRepository.delete(vehicle);
     }
 
-    private void validateFuelConsumption(CreateVehicleRequestDTO request) {
-        if ("FLEX".equals(request.fuelTypeAccepted())) {
-            if (request.averageConsumptionGasoline() == null
-                    || request.averageConsumptionEthanol() == null) {
-                throw new BusinessException(
-                    "Veículos Flex devem informar consumo médio de gasolina e etanol.");
-            }
-        }
-    }
+    // O service valida as combinações combustível/consumo e as unidades:
+    // km/L para líquidos, km/m³ e capacidade em m³ para CNG.
 
     private void validateYear(Integer year) {
         int maxYear = Year.now().getValue() + 1;
@@ -254,7 +262,7 @@ public class VehicleService {
 ```java
 @RestController
 @RequestMapping("/vehicles")
-@PreAuthorize("hasRole('MOTORISTA')")
+@PreAuthorize("hasRole('DRIVER')")
 public class VehicleController {
 
     private final VehicleService vehicleService;
@@ -328,13 +336,13 @@ public class VehicleController {
 
 ## Critérios de Aceitação
 
-- [ ] Motorista só acessa seus próprios veículos
-- [ ] Veículo FLEX exige ambos consumos (gasolina e etanol)
-- [ ] Consumo validado no range [1.0, 40.0] km/L
-- [ ] Ano de fabricação validado entre 1950 e ano corrente + 1
-- [ ] Capacidade do tanque deve ser positiva
-- [ ] CRUD completo funciona via Swagger
-- [ ] Testes passam
+- [x] Motorista só acessa seus próprios veículos
+- [x] Veículo FLEX exige ambos consumos (gasolina e etanol)
+- [x] Consumo validado no range [1.0, 40.0] com unidade dimensional compatível
+- [x] Ano de fabricação validado entre 1950 e ano corrente + 1
+- [x] Capacidade do tanque deve ser positiva
+- [x] CRUD completo funciona via Swagger
+- [x] Testes passam
 
 ---
 

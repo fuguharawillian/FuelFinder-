@@ -4,6 +4,10 @@
 
 O **FuelFinder** é uma plataforma web responsiva para consulta, localização e comparação de preços de combustíveis no Brasil. Permite que motoristas encontrem postos próximos com os melhores preços, recebam recomendações personalizadas de combustível (etanol vs gasolina) e avaliem os estabelecimentos.
 
+Login e cadastro são as áreas funcionais públicas. O mapa e todas as funcionalidades internas exigem autenticação; endpoints de dados seguem a mesma regra, além das permissões administrativas. Ao tentar abrir uma área interna sem sessão, o usuário é encaminhado ao login e, após autenticar, pode continuar para o destino interno solicitado se estiver autorizado.
+
+Como inspiração de composição responsiva, usar [a imagem de referência](./img_exemplo.png), observando somente os elementos visíveis — organização em cartões, hierarquia, respiro e uso de cor — sem inferir telas ou conteúdos não representados.
+
 ---
 
 ## 2. Decisões Técnicas Consolidadas
@@ -17,17 +21,32 @@ O **FuelFinder** é uma plataforma web responsiva para consulta, localização e
 | **Build** | Maven 3.9+ | Gerenciamento padronizado de dependências |
 | **Frontend** | HTML5 + Tailwind CSS 3.4+ + Vanilla JS ES2023+ | Leve, responsivo, sem overhead de SPA |
 | **Mapas** | Leaflet 1.9.4 + OpenStreetMap | Gratuito, leve, compatível com mobile |
-| **Autenticação** | JWT (JJWT 0.12.6+) + Spring Security 6.4+ | Stateless, RBAC com BCrypt |
+| **Autenticação** | JWT (JJWT 0.12.6+) + Spring Security 6.4+ | Access JWT curto e sessões server-side para refresh rotativo e revogação; RBAC com BCrypt |
 | **Validação** | Jakarta Bean Validation 3.0+ | Validação declarativa nos DTOs |
 | **Documentação API** | Springdoc OpenAPI (Swagger) 2.7.x | Swagger UI interativo |
-| **Recomendações** | Algoritmo puro (paridade + custo/km) | Sem dependência de modelo de IA |
-| **Geocodificação** | Geoapify (plano gratuito) | Para endereços ANP sem coordenadas |
+| **Recomendações** | Algoritmo determinístico; adaptador de IA opcional e pendente de aprovação | Fluxos essenciais não dependem de provedor, modelo ou credenciais |
+| **Geocodificação** | Geoapify opcional (plano gratuito) | `GEOAPIFY_API_KEY` só é necessária para testar chamadas reais; sem a chave, a aplicação e os demais fluxos continuam disponíveis |
+| **Busca geográfica** | Fórmula de Haversine | PostGIS fica para evolução futura, fora do MVP |
 | **Navegação** | Deep links Google Maps / Waze | Sem custo com APIs de roteamento |
 | **Testes** | JUnit 5 + Mockito + AssertJ | Unitários + integração |
 
 ---
 
-## 3. Arquitetura de Alto Nível
+## 3. Pré-requisitos do Ambiente Local para a Fase 1
+
+São requisitos para executar os comandos e critérios de aceitação da configuração inicial, não pendências de decisão:
+
+- JDK 21 LTS.
+- Maven 3.9 ou superior.
+- Docker e Docker Compose.
+
+Validar com `java --version`, `mvn --version`, `docker --version` e `docker compose version`.
+
+As variáveis opcionais de integrações externas não são pré-requisitos para iniciar a aplicação: `GEOAPIFY_API_KEY` só é necessária para testar chamadas reais de geocodificação; as credenciais de IA dependerão da futura escolha de provedor/modelo.
+
+---
+
+## 4. Arquitetura de Alto Nível
 
 ```text
 [ Cliente Web Responsivo ] (HTML5 / Tailwind CSS / Vanilla JS / Leaflet 1.9.4)
@@ -47,7 +66,7 @@ O **FuelFinder** é uma plataforma web responsiva para consulta, localização e
 
 ---
 
-## 4. Fases do Desenvolvimento
+## 5. Fases do Desenvolvimento
 
 O projeto está organizado em **9 fases incrementais**, cada uma com escopo definido, entregáveis e critérios de aceitação.
 
@@ -60,12 +79,12 @@ O projeto está organizado em **9 fases incrementais**, cada uma com escopo defi
 | **5** | [Preços de Combustíveis](05-precos-combustiveis.md) | Gestão de preços, tipos de combustível, comparação |
 | **6** | [Avaliações & Moderação](06-avaliacoes-moderacao.md) | Reviews 1-5 estrelas, nota média, moderação admin |
 | **7** | [Recomendações](07-recomendacoes.md) | Paridade etanol/gasolina, custo/km personalizado |
-| **8** | [Integração ANP](08-integracao-anp.md) | Pipeline ETL do CSV semestral, idempotência, auditoria |
+| **8** | [Integração ANP](08-integracao-anp.md) | Pipeline ETL para ZIP/CSV semestral, cadastro controlado de postos, idempotência e auditoria |
 | **9** | [Frontend & Integração](09-frontend-integracao.md) | Interface web, Leaflet, Tailwind, deep links |
 
 ---
 
-## 5. Diagrama de Dependências entre Fases
+## 6. Diagrama de Dependências entre Fases
 
 ```mermaid
 flowchart LR
@@ -77,11 +96,15 @@ flowchart LR
     F3 --> F7["Fase 7: Recomendações"]
     F5 --> F7
     F5 --> F8["Fase 8: ANP"]
-    F1 --> F9["Fase 9: Frontend"]
-    F2 --> F9
-    F4 --> F9
-    F5 --> F9
-    F7 --> F9
+    F1 --> F9A["Fase 9A: Construção inicial do frontend<br/>(contratos definidos e dados simulados)"]
+    F9A --> F9B["Fase 9B: Integração e validação final"]
+    F2 --> F9B
+    F3 --> F9B
+    F4 --> F9B
+    F5 --> F9B
+    F6 --> F9B
+    F7 --> F9B
+    F8 --> F9B
 ```
 
 **Leitura do diagrama:**
@@ -90,22 +113,27 @@ flowchart LR
 - Fases 5 e 6 podem ser desenvolvidas em paralelo (ambas dependem da Fase 4)
 - Fase 7 requer Fases 3 e 5 concluídas
 - Fase 8 requer Fase 5 concluída
-- Fase 9 (frontend) é a integração final e depende de múltiplas fases
+- A construção inicial do frontend (Fase 9A) pode começar após a Fase 1, em paralelo com as fases de backend, usando os contratos de API documentados e dados simulados.
+- A integração e validação final do frontend (Fase 9B) dependem das Fases 2 a 8: autenticação, veículos, postos, preços, avaliações, recomendações e integração/dados ANP. Assim, as telas de avaliações e as informações originadas da ANP só são integradas e validadas quando as respectivas fases estiverem concluídas.
+
+### Ajustes planejados após validação de uso
+
+A implementação inicial das Fases 1 a 9 foi entregue. Os requisitos recentes de acesso, navegação responsiva, busca automática pela localização consentida e importação ZIP/CSV com ano/semestre separados são correções planejadas, ainda não implementadas. A Fase 9 depende da Fase 2 para proteção de páginas e retorno após login; a geolocalização automática depende da Fase 4 e de seus endpoints; a importação revisada depende da Fase 8 e do modelo de auditoria. Ver listas de trabalho pendente nos documentos dessas fases.
 
 ---
 
-## 6. Perfis de Usuário (MVP)
+## 7. Perfis de Usuário (MVP)
 
 | Perfil | Role | Descrição |
 |--------|------|-----------|
-| **Motorista** | `ROLE_MOTORISTA` | Consulta postos, compara preços, registra veículos, avalia postos, recebe recomendações |
+| **Motorista** | `ROLE_DRIVER` | Consulta postos, compara preços, registra veículos, avalia postos, recebe recomendações |
 | **Administrador** | `ROLE_ADMIN` | Gerencia postos e preços, modera avaliações, gerencia usuários, dispara cargas ANP |
 
-> **Nota:** O perfil `ROLE_OPERADOR` (Operador de Posto) está previsto para o Pós-MVP.
+> **Nota:** O perfil `ROLE_STATION_OPERATOR` (Operador de Posto) está previsto para o Pós-MVP.
 
 ---
 
-## 7. Convenções de Desenvolvimento
+## 8. Convenções de Desenvolvimento
 
 ### 7.1 Branches
 
@@ -137,14 +165,14 @@ flowchart LR
 |----------|-----------|---------|
 | Classes, Records, Enums | `PascalCase` | `StationService`, `FuelType` |
 | Métodos, variáveis | `camelCase` | `calculateHaversineDistance` |
-| Constantes, enum values | `UPPER_SNAKE_CASE` | `ROLE_MOTORISTA`, `GASOLINE_REGULAR` |
+| Constantes, enum values | `UPPER_SNAKE_CASE` | `ROLE_DRIVER`, `GASOLINE_REGULAR`, `GASOLINE_PREMIUM` |
 | Tabelas do banco | `snake_case` plural | `fuel_prices`, `anp_import_logs` |
 | Colunas do banco | `snake_case` | `tank_capacity`, `user_id` |
 | Rotas REST | `kebab-case` plural | `/fuel-prices/compare` |
 
 ---
 
-## 8. Estrutura de Pacotes
+## 9. Estrutura de Pacotes
 
 ```text
 com.fuelfinder/
@@ -180,12 +208,12 @@ modules/<dominio>/
 
 ---
 
-## 9. Funcionalidades Pós-MVP (Fora do Escopo)
+## 10. Funcionalidades Pós-MVP (Fora do Escopo)
 
 As seguintes funcionalidades estão documentadas mas **não fazem parte** deste plano:
 
-- `ROLE_OPERADOR` (Operador de Posto)
+- `ROLE_STATION_OPERATOR` (Operador de Posto)
 - Histórico de abastecimentos e cálculo de consumo real
 - OCR / Processamento de imagens de totens de preço
-- PostGIS para índices espaciais avançados
+- PostGIS para índices espaciais avançados (não necessário no MVP)
 - Notificações push de variação de preços

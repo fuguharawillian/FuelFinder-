@@ -2,12 +2,12 @@
 
 ## Objetivo
 
-Implementar o motor de recomendação algorítmico de combustível que calcula a paridade etanol vs gasolina, custo por quilômetro personalizado e custo efetivo de deslocamento, ordenando os melhores postos para o motorista.
+Implementar o motor determinístico de recomendação de combustível que calcula o custo por quilômetro personalizado, compara combustíveis compatíveis e ordena os postos pelo custo efetivo de abastecimento e deslocamento.
 
-> **Decisão:** Este módulo utiliza **algoritmo puro** (fórmulas de paridade e custo/km) — **sem** integração com modelos de IA. As explicações são geradas por templates textuais com base nos resultados dos cálculos.
+> **IA opcional:** Provedor e modelo Spring AI permanecem pendentes de aprovação. A integração deverá usar um adaptador desacoplado, sem tornar a inicialização ou os fluxos essenciais dependentes de IA ou credenciais. O cálculo e a explicação por template são o comportamento funcional sem IA; não fixar provedor, modelo ou credencial antes da aprovação.
 
 **Branch:** `feature/recomendacoes`
-**Dependências:** Fase 3 (Veículos) + Fase 5 (Preços de Combustíveis)
+**Dependências:** Fase 3 (Veículos) + Fase 4 (Postos/Haversine) + Fase 5 (Preços de Combustíveis)
 
 ---
 
@@ -15,7 +15,7 @@ Implementar o motor de recomendação algorítmico de combustível que calcula a
 
 | Método | Rota | Objetivo | Acesso | Status HTTP |
 |--------|------|----------|--------|-------------|
-| `GET`  | `/recommendations/fuel` | Recomendação de melhor custo-benefício | `ROLE_MOTORISTA` | `200 OK` |
+| `GET`  | `/recommendations/fuel` | Recomendação de melhor custo-benefício | `ROLE_DRIVER` | `200 OK` |
 
 ### Parâmetros
 
@@ -35,54 +35,50 @@ Implementar o motor de recomendação algorítmico de combustível que calcula a
 ```mermaid
 flowchart TD
     A["Recebe vehicleId + coordenadas"] --> B["Busca veículo do motorista"]
-    B --> C["Busca postos no raio com preços vigentes"]
-    C --> D{"Veículo é FLEX?"}
-
-    D -- Sim --> E["Calcular custo/km para ETANOL e GASOLINA"]
-    E --> F{"custoKm Etanol < custoKm Gasolina?"}
-    F -- Sim --> G["Recomendar ETANOL"]
-    F -- Não --> H["Recomendar GASOLINA"]
-
-    D -- Não --> I{"Tipo de combustível?"}
-    I -- "GASOLINE" --> J["Buscar preços de GASOLINA apenas"]
-    I -- "ETHANOL" --> K["Buscar preços de ETANOL apenas"]
-    I -- "DIESEL" --> L["Buscar preços de DIESEL apenas"]
-    I -- "CNG" --> M["Buscar preços de GNV apenas"]
-
-    G --> N["Para cada posto no raio:"]
-    H --> N
-    J --> N
-    K --> N
-    L --> N
-    M --> N
-
-    N --> O["Calcular custo efetivo total com deslocamento ida+volta"]
-    O --> P["Ordenar por custo efetivo total (menor primeiro)"]
-    P --> Q["Gerar explicação textual por template"]
-    Q --> R["Retornar RecommendationResponseDTO"]
+    B --> C["Busca postos ativos próximos via StationService/Haversine"]
+    C --> D["Carrega os preços mais recentes"]
+    D --> E{"Combustíveis compatíveis têm preço?"}
+    E -- Não --> X["Retorna 404"]
+    E -- Sim --> F["Calcula custo/km com consumo e unidade do veículo"]
+    F --> G{"Veículo FLEX?"}
+    G -- Sim --> H["Compara etanol com a melhor variante de gasolina"]
+    G -- Não --> I["Escolhe a melhor variante aceita pelo veículo"]
+    H --> J["Calcula custo efetivo e ordena postos do combustível recomendado"]
+    I --> J
+    J --> K["Gera explicação por template, sem depender de IA"]
+    K --> L["Retorna RecommendationResponseDTO"]
 ```
 
 ### Fórmulas Aplicadas
 
-**1. Paridade Clássica dos 70% (referência genérica):**
+**1. Custo por quilômetro personalizado:**
 
-$$\text{Índice de Paridade} = \left(\frac{\text{Preço do Etanol}}{\text{Preço da Gasolina}}\right) \times 100\%$$
+$$\text{Custo/KM} = \frac{\text{Preço por unidade (R\$/L ou R\$/m³)}}{\text{Consumo correspondente (km/L ou km/m³)}}$$
 
-- Se Índice ≤ 70%: Etanol mais vantajoso
-- Se Índice > 70%: Gasolina mais vantajosa
+Consumo, capacidade e preço devem ter unidades compatíveis. A regra genérica dos
+70% é apenas uma referência e **não** decide a recomendação personalizada.
 
-**2. Paridade Real Personalizada (veículo FLEX):**
+**2. Seleção personalizada:**
 
-$$\text{Custo/KM}_{\text{Etanol}} = \frac{\text{Preço Etanol}}{\text{Consumo com Etanol (km/L)}}$$
+Para veículo `FLEX`, calcula-se o custo/km do etanol e de cada variante de
+gasolina com os consumos informados pelo motorista. Recomenda-se o combustível
+com menor custo/km; em empate, gasolina é escolhida. A paridade retornada é a
+razão entre o preço do melhor etanol e o preço da melhor gasolina, multiplicada
+por 100. Se só houver preços para um dos dois grupos, recomenda-se o grupo
+disponível e a paridade fica `null`.
 
-$$\text{Custo/KM}_{\text{Gasolina}} = \frac{\text{Preço Gasolina}}{\text{Consumo com Gasolina (km/L)}}$$
+Para `GASOLINE`, são consideradas `GASOLINE_REGULAR` e `GASOLINE_PREMIUM`;
+para `DIESEL`, `DIESEL_S10` e `DIESEL_S500`. Em cada categoria, a recomendação
+retorna o código exato da variante de menor custo/km. `ETHANOL` e `CNG` usam
+seus códigos correspondentes. A decisão de considerar todas essas variantes
+foi confirmada para esta fase.
 
-- Se Custo/KM_Etanol < Custo/KM_Gasolina → **Recomenda Etanol**
-- Caso contrário → **Recomenda Gasolina**
+**3. Custo efetivo total (inclui deslocamento):**
 
-**3. Custo Efetivo Total (inclui deslocamento):**
+$$\text{Custo Efetivo} = \text{Capacidade (L ou m³)} \times \text{Preço} + \left(2 \times \text{Distância Haversine (km)} \times \text{Custo/KM}\right)$$
 
-$$\text{Custo Efetivo} = \text{Custo Tanque Cheio} + \left(2 \times \text{Distância (km)} \times \text{Custo/KM}\right)$$
+`topOptions` contém as opções do código recomendado, ordenadas pelo custo
+efetivo crescente; a fase não define um limite de quantidade.
 
 ---
 
@@ -113,6 +109,7 @@ public record StationRecommendationDTO(
     String brand,
     String fuelType,
     BigDecimal price,
+    String unitOfMeasure,
     Double distanceKm,
     BigDecimal costPerKm,
     BigDecimal estimatedFullTankCost,
@@ -120,195 +117,19 @@ public record StationRecommendationDTO(
 ) {}
 ```
 
-### 7.2 RecommendationService
+### 7.2 Service e controller
 
-```java
-@Service
-@Transactional(readOnly = true)
-public class RecommendationService {
+`RecommendationService` reutiliza `VehicleService.findByIdAndUser` para impor
+propriedade do veículo, `StationService.search` para validar coordenadas e
+obter postos ativos ordenados por Haversine, e
+`FuelPriceRepository.findLatestForStations` para preços vigentes. Não acessa
+repositórios de outras fronteiras diretamente para localização ou veículos.
 
-    private final VehicleService vehicleService;
-    private final StationRepository stationRepository;
-    private final FuelPriceRepository fuelPriceRepository;
-    private final FuelTypeRepository fuelTypeRepository;
-
-    public RecommendationResponseDTO recommend(
-            UUID vehicleId, UUID userId,
-            double latitude, double longitude, double radiusKm) {
-
-        // 1. Buscar veículo do motorista
-        VehicleResponseDTO vehicle = vehicleService.findByIdAndUser(vehicleId, userId);
-
-        // 2. Buscar postos no raio
-        List<Object[]> nearbyStations = stationRepository
-                .findStationsWithinRadius(latitude, longitude, radiusKm);
-
-        if (nearbyStations.isEmpty()) {
-            throw new ResourceNotFoundException(
-                "Nenhum posto encontrado no raio de " + radiusKm + " km.");
-        }
-
-        // 3. Determinar recomendação baseada no tipo do veículo
-        String fuelTypeAccepted = vehicle.fuelTypeAccepted();
-
-        if ("FLEX".equals(fuelTypeAccepted)) {
-            return recommendForFlex(vehicle, nearbyStations);
-        } else {
-            return recommendForSingleFuel(vehicle, nearbyStations);
-        }
-    }
-
-    private RecommendationResponseDTO recommendForFlex(
-            VehicleResponseDTO vehicle,
-            List<Object[]> nearbyStations) {
-
-        List<StationRecommendationDTO> ethanolOptions = new ArrayList<>();
-        List<StationRecommendationDTO> gasolineOptions = new ArrayList<>();
-
-        for (Object[] row : nearbyStations) {
-            Station station = (Station) row[0];
-            double distance = ((Number) row[1]).doubleValue();
-
-            // Buscar preço mais recente de etanol e gasolina
-            BigDecimal ethanolPrice = getLatestPrice(station.getId(), "ETHANOL");
-            BigDecimal gasolinePrice = getLatestPrice(station.getId(), "GASOLINE_REGULAR");
-
-            if (ethanolPrice != null) {
-                BigDecimal costPerKm = ethanolPrice.divide(
-                        vehicle.averageConsumptionEthanol(), 4, RoundingMode.HALF_UP);
-                BigDecimal fullTankCost = vehicle.tankCapacity().multiply(ethanolPrice);
-                BigDecimal roundTripCost = costPerKm.multiply(
-                        BigDecimal.valueOf(distance * 2));
-
-                ethanolOptions.add(new StationRecommendationDTO(
-                        station.getId(), station.getTradeName(), station.getBrand(),
-                        "ETHANOL", ethanolPrice, distance,
-                        costPerKm, fullTankCost, roundTripCost));
-            }
-
-            if (gasolinePrice != null) {
-                BigDecimal costPerKm = gasolinePrice.divide(
-                        vehicle.averageConsumptionGasoline(), 4, RoundingMode.HALF_UP);
-                BigDecimal fullTankCost = vehicle.tankCapacity().multiply(gasolinePrice);
-                BigDecimal roundTripCost = costPerKm.multiply(
-                        BigDecimal.valueOf(distance * 2));
-
-                gasolineOptions.add(new StationRecommendationDTO(
-                        station.getId(), station.getTradeName(), station.getBrand(),
-                        "GASOLINE_REGULAR", gasolinePrice, distance,
-                        costPerKm, fullTankCost, roundTripCost));
-            }
-        }
-
-        // Encontrar a melhor opção de cada
-        Optional<StationRecommendationDTO> bestEthanol = ethanolOptions.stream()
-                .min(Comparator.comparing(o ->
-                        o.estimatedFullTankCost().add(o.estimatedRoundTripCost())));
-        Optional<StationRecommendationDTO> bestGasoline = gasolineOptions.stream()
-                .min(Comparator.comparing(o ->
-                        o.estimatedFullTankCost().add(o.estimatedRoundTripCost())));
-
-        // Decidir recomendação
-        String recommended;
-        BigDecimal parity = null;
-        List<StationRecommendationDTO> topOptions;
-
-        if (bestEthanol.isPresent() && bestGasoline.isPresent()) {
-            BigDecimal ethanolCostKm = bestEthanol.get().costPerKm();
-            BigDecimal gasolineCostKm = bestGasoline.get().costPerKm();
-
-            if (ethanolCostKm.compareTo(gasolineCostKm) < 0) {
-                recommended = "ETHANOL";
-                topOptions = ethanolOptions;
-            } else {
-                recommended = "GASOLINE_REGULAR";
-                topOptions = gasolineOptions;
-            }
-
-            // Calcular paridade percentual
-            parity = bestEthanol.get().price().divide(
-                    bestGasoline.get().price(), 4, RoundingMode.HALF_UP)
-                    .multiply(BigDecimal.valueOf(100));
-        } else if (bestEthanol.isPresent()) {
-            recommended = "ETHANOL";
-            topOptions = ethanolOptions;
-        } else {
-            recommended = "GASOLINE_REGULAR";
-            topOptions = gasolineOptions;
-        }
-
-        // Ordenar por custo efetivo
-        topOptions.sort(Comparator.comparing(o ->
-                o.estimatedFullTankCost().add(o.estimatedRoundTripCost())));
-
-        String explanation = buildExplanation(
-                vehicle, recommended, parity, topOptions.get(0));
-
-        return new RecommendationResponseDTO(
-                new VehicleSummaryDTO(vehicle.nickname(), vehicle.fuelTypeAccepted()),
-                recommended, explanation,
-                parity, topOptions
-        );
-    }
-
-    /**
-     * Gera explicação textual por template
-     */
-    private String buildExplanation(
-            VehicleResponseDTO vehicle, String recommended,
-            BigDecimal parity, StationRecommendationDTO best) {
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("Com base no consumo informado (");
-
-        if ("FLEX".equals(vehicle.fuelTypeAccepted())) {
-            sb.append(vehicle.averageConsumptionEthanol()).append(" km/L no etanol vs ");
-            sb.append(vehicle.averageConsumptionGasoline()).append(" km/L na gasolina), ");
-        }
-
-        String fuelName = "ETHANOL".equals(recommended) ? "etanol" : "gasolina";
-        sb.append("o ").append(fuelName);
-        sb.append(" tem custo de R$ ").append(best.costPerKm()).append("/km");
-        sb.append(" no ").append(best.stationName());
-        sb.append(", garantindo a maior economia.");
-
-        if (parity != null) {
-            sb.append(" Paridade etanol/gasolina: ")
-              .append(parity.setScale(2, RoundingMode.HALF_UP)).append("%.");
-        }
-
-        return sb.toString();
-    }
-
-    // Métodos auxiliares: recommendForSingleFuel, getLatestPrice
-}
-```
-
-### 7.3 RecommendationController
-
-```java
-@RestController
-@RequestMapping("/recommendations")
-@PreAuthorize("hasRole('MOTORISTA')")
-public class RecommendationController {
-
-    private final RecommendationService recommendationService;
-
-    @GetMapping("/fuel")
-    public ResponseEntity<RecommendationResponseDTO> recommendFuel(
-            @RequestParam UUID vehicleId,
-            @RequestParam double latitude,
-            @RequestParam double longitude,
-            @RequestParam(defaultValue = "5") double radiusKm,
-            @AuthenticationPrincipal String userId) {
-
-        return ResponseEntity.ok(
-                recommendationService.recommend(
-                        vehicleId, UUID.fromString(userId),
-                        latitude, longitude, radiusKm));
-    }
-}
-```
+O endpoint exige `ROLE_DRIVER`; o principal autenticado fornece o `userId`.
+Parâmetros inválidos são tratados pelos validadores e pelo serviço de busca.
+Sem posto próximo ou sem preço vigente compatível, retorna `404`. O valor
+`radiusKm` padrão é 5 km. A explicação é gerada localmente por template; IA não
+é necessária para inicialização nem para este fluxo.
 
 ---
 
@@ -325,7 +146,7 @@ public class RecommendationController {
     "fuelTypeAccepted": "FLEX"
   },
   "recommendedFuel": "ETHANOL",
-  "explanation": "Com base no consumo informado (9.2 km/L no etanol vs 13.5 km/L na gasolina), o etanol tem custo de R$ 0.4228/km no Posto Central, garantindo a maior economia. Paridade etanol/gasolina: 67.18%.",
+  "explanation": "Para o veículo Meu Onix, etanol tem custo de R$ 0.4228/km no posto Posto Central. Paridade etanol/gasolina: 67.18%.",
   "parityPercentage": 67.18,
   "topOptions": [
     {
@@ -334,6 +155,7 @@ public class RecommendationController {
       "brand": "IPIRANGA",
       "fuelType": "ETHANOL",
       "price": 3.89,
+      "unitOfMeasure": "R$/litro",
       "distanceKm": 2.45,
       "costPerKm": 0.4228,
       "estimatedFullTankCost": 210.06,
@@ -376,14 +198,16 @@ public class RecommendationController {
 
 ## Critérios de Aceitação
 
-- [ ] Recomendação correta para veículo FLEX com dados reais
-- [ ] Paridade personalizada usa consumos reais do veículo (não a regra dos 70%)
-- [ ] Fallback funciona para veículos de combustível único
-- [ ] Custo efetivo inclui deslocamento ida+volta
-- [ ] Explicação textual gerada por template é coerente e informativa
-- [ ] Ordenação por custo efetivo total (menor primeiro)
-- [ ] Nenhum posto no raio retorna erro adequado
-- [ ] Testes com valores conhecidos passam
+- [x] Recomendação correta para veículo FLEX com dados reais
+- [x] Paridade personalizada usa consumos reais do veículo (não a regra dos 70%)
+- [x] Fallback funciona para veículos de combustível único
+- [x] Custo efetivo inclui deslocamento ida+volta
+- [x] Explicação textual gerada por template é coerente e informativa sem configuração de IA
+- [x] Provedor/modelo de IA continuam pendentes; a integração não bloqueia o fluxo determinístico
+- [x] Variantes de gasolina comum/premium e diesel S10/S500 são consideradas
+- [x] Ordenação por custo efetivo total (menor primeiro)
+- [x] Nenhum posto no raio ou preço compatível retorna erro adequado
+- [x] Testes unitários e de integração com valores conhecidos passam
 
 ---
 
