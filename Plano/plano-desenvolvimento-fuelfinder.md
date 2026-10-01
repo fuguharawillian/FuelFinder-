@@ -2,9 +2,9 @@
 
 ## Descrição do Objetivo
 
-Criar o plano de desenvolvimento detalhado e faseado do aplicativo **FuelFinder** — uma plataforma web responsiva para consulta, localização e comparação de preços de combustíveis no Brasil. O plano traduz as decisões registradas nos documentos de arquitetura, regras de negócio, padrões e stack tecnológica em uma sequência de **fases incrementais** prontas para implementação.
+Coordenar o plano de desenvolvimento detalhado e faseado do aplicativo **FuelFinder** — uma plataforma web responsiva para consulta, localização e comparação de preços de combustíveis no Brasil. Este documento mestre traduz as decisões registradas nos documentos de arquitetura, regras de negócio, padrões e stack tecnológica em fases incrementais e aponta o estado entregue e as pendências de cada área.
 
-O plano será materializado em uma pasta `Plano/` no diretório raiz do projeto, contendo documentos detalhados de cada fase.
+Os documentos detalhados das fases estão em `Plano/`. As orientações visuais do frontend e o estado da decisão sobre a biblioteca CSS estão em [`09-frontend-integracao.md`](./09-frontend-integracao.md); a referência LUNO Bootstrap está na pasta [`../Layout/`](../Layout/README.md), na raiz do repositório.
 
 ---
 
@@ -26,6 +26,9 @@ O plano será materializado em uma pasta `Plano/` no diretório raiz do projeto,
 > [!IMPORTANT]
 > **Geoapify — chave para chamadas reais:** `GEOAPIFY_API_KEY` será necessária somente para testar chamadas reais ao serviço. Lê-la exclusivamente do ambiente; nunca incluir a chave no código ou em arquivos versionados. Documentar como habilitar a integração. Sem a variável, a aplicação e os demais fluxos devem continuar funcionando.
 
+> [!IMPORTANT]
+> **Frontend — decisão tomada:** o usuário aprovou a substituição do Tailwind por Bootstrap 5. O frontend está migrando para Bootstrap 5.2.3 via CDN, mantendo Vanilla JS, Leaflet e os fluxos existentes. A migração não está concluída até a validação funcional, visual e responsiva descrita na Fase 9.
+
 ## Pré-requisitos do Ambiente Local — Fase 1
 
 Os itens abaixo são requisitos para executar e validar os comandos da fase 1, não decisões pendentes:
@@ -38,9 +41,11 @@ Confirmar o ambiente com `java --version`, `mvn --version`, `docker --version` e
 
 ---
 
-## Proposed Changes
+## Plano por Fases
 
-A pasta `Plano/` será criada na raiz do projeto com a seguinte estrutura:
+Os documentos do plano já estão materializados em `Plano/`. O índice abaixo
+mostra os entregáveis por fase; o estado atual, critérios pendentes e referências
+específicas do frontend são mantidos em cada documento e em especial na Fase 9.
 
 ```text
 Plano/
@@ -53,7 +58,7 @@ Plano/
 ├── 06-avaliacoes-moderacao.md # Reviews, nota média, moderação admin
 ├── 07-recomendacoes.md        # Motor de recomendação, Spring AI, paridade
 ├── 08-integracao-anp.md       # Pipeline ETL da ANP, idempotência, auditoria
-└── 09-frontend-integracao.md  # Interface web, Leaflet, Tailwind, deep links
+└── 09-frontend-integracao.md  # Interface web, Leaflet, referência LUNO/Bootstrap, deep links
 ```
 
 ---
@@ -62,7 +67,7 @@ Plano/
 
 ---
 
-### [NEW] `Plano/00-visao-geral.md`
+### `Plano/00-visao-geral.md`
 
 Documento-mestre com:
 - Visão geral da arquitetura e decisões técnicas
@@ -95,9 +100,11 @@ flowchart LR
 
 **Execução da Fase 9:** A construção inicial de telas e componentes pode começar em paralelo após a Fase 1, usando os contratos de API documentados e dados simulados. A integração com a API real e a validação final do frontend dependem da conclusão das Fases 2 a 8, incluindo os endpoints de avaliações (Fase 6) e os dados/importação ANP (Fase 8).
 
+**Andamento da Fase 9 — migração visual:** em andamento na branch `feature/Danilo`. Bootstrap 5.2.3 foi adotado para substituir Tailwind; as páginas de busca/mapa, autenticação, veículos, recomendação, detalhe do posto e administração foram adaptadas ao grid e componentes Bootstrap. `mvn -q -f app\pom.xml test`, validação sintática dos módulos JavaScript e `git diff --check` passaram. Smoke visual em servidor estático confirmou ausência de overflow horizontal no mapa nas larguras testadas de 360 a 1440px e abertura do menu móvel; integração real de sessão/API e revisão visual de todos os estados continuam pendentes. A referência `Layout/` permanece somente para leitura.
+
 ---
 
-### [NEW] `Plano/01-setup-infraestrutura.md`
+### `Plano/01-setup-infraestrutura.md`
 
 **Objetivo:** Configurar o projeto Spring Boot, banco de dados, migrações Flyway e toda a infraestrutura base.
 
@@ -254,7 +261,7 @@ legados são preservados numericamente e classificados como km/m³.
 
 ---
 
-### [NEW] `Plano/02-autenticacao-usuarios.md`
+### `Plano/02-autenticacao-usuarios.md`
 
 **Objetivo:** Implementar autenticação JWT, registro de motoristas, login, refresh token, logout e gestão de perfis RBAC.
 
@@ -311,7 +318,7 @@ legados são preservados numericamente e classificados como km/m³.
 
 ---
 
-### [NEW] `Plano/03-veiculos.md`
+### `Plano/03-veiculos.md`
 
 **Objetivo:** CRUD completo de veículos vinculados ao motorista autenticado, com validação de consumo informado.
 
@@ -346,7 +353,7 @@ legados são preservados numericamente e classificados como km/m³.
 
 ---
 
-### [NEW] `Plano/04-postos-geolocalizacao.md`
+### `Plano/04-postos-geolocalizacao.md`
 
 **Objetivo:** CRUD de postos, busca por proximidade com Fórmula de Haversine, e visualização geolocalizada.
 
@@ -386,7 +393,7 @@ pelo raio e ordena os postos em memória. PostGIS não é requisito desta fase.
 
 ---
 
-### [NEW] `Plano/05-precos-combustiveis.md`
+### `Plano/05-precos-combustiveis.md`
 
 **Objetivo:** Gestão de preços de combustíveis por posto, catálogo de tipos de combustível e endpoint de comparação.
 
@@ -425,7 +432,7 @@ pelo raio e ordena os postos em memória. PostGIS não é requisito desta fase.
 
 ---
 
-### [NEW] `Plano/06-avaliacoes-moderacao.md`
+### `Plano/06-avaliacoes-moderacao.md`
 
 **Objetivo:** Sistema de avaliações com nota (1-5 estrelas) e comentário, nota média agregada e moderação administrativa.
 
@@ -466,7 +473,7 @@ pelo raio e ordena os postos em memória. PostGIS não é requisito desta fase.
 
 ---
 
-### [NEW] `Plano/07-recomendacoes.md`
+### `Plano/07-recomendacoes.md`
 
 **Objetivo:** Motor determinístico de recomendação de combustível com paridade personalizada; explicações por IA são uma integração opcional e desacoplada, sujeita à aprovação do provedor/modelo.
 
@@ -515,7 +522,7 @@ flowchart TD
 
 ---
 
-### [NEW] `Plano/08-integracao-anp.md`
+### `Plano/08-integracao-anp.md`
 
 **Objetivo:** Pipeline ETL para ingestão segura dos arquivos semestrais da ANP (CSV/TSV direto ou ZIP contendo CSV), com resiliência, idempotência e auditoria.
 
@@ -577,15 +584,15 @@ Ver detalhes do contrato, comportamento e validação em
 
 ---
 
-### [NEW] `Plano/09-frontend-integracao.md`
+### `Plano/09-frontend-integracao.md`
 
-**Objetivo:** Interface web responsiva com mapa Leaflet, consumo da API REST, autenticação JWT no cliente e deep links de navegação.
+**Objetivo:** Interface web responsiva com mapa Leaflet, consumo da API REST, autenticação JWT no cliente, deep links de navegação e direção visual orientada pelo LUNO/Bootstrap 5. A decisão de substituir Tailwind por Bootstrap 5.2.3 via CDN foi aprovada; migração visual em andamento, sem carregar ambos os frameworks em conjunto.
 
 **Tarefas:**
 
 | # | Tarefa | Detalhes |
 |---|--------|----------|
-| 9.1 | Estruturar projeto frontend | HTML5 semântico + Tailwind CSS via CDN + Vanilla JS ES modules |
+| 9.1 | Estruturar projeto frontend | Preservar HTML5 + Vanilla JS ES modules e Leaflet; substituir Tailwind por Bootstrap 5.2.3 via CDN e CSS próprio |
 | 9.2 | Página de Login / Registro | Access token só em memória; refresh token em cookie HttpOnly |
 | 9.3 | Header com navegação | Navbar responsiva e identificação do usuário logado |
 | 9.4 | Mapa principal com Leaflet 1.9.4 | Marcadores e preços buscados sob demanda da API |
@@ -597,13 +604,13 @@ Ver detalhes do contrato, comportamento e validação em
 | 9.10 | Tela de recomendação | Resultado determinístico, explicação, paridade e opções |
 | 9.11 | Painel Admin | Gestão de postos, preços, fila de moderação e carga ANP |
 | 9.12 | Interceptor Fetch com JWT | Adicionar `Authorization: Bearer ...` em todas as requests |
-| 9.13 | Responsividade | Mobile-first com layout de mapa e lista adaptável |
+| 9.13 | Responsividade | Grid Bootstrap e breakpoints nativos mais pontos customizados LUNO; mobile-first sem overflow e com mapa/lista adaptáveis |
 | 9.14 | Acessibilidade | HTML semântico, foco visível, labels e regiões `aria-live` |
 | 9.15 | Sessão segura no frontend | Manter access token só em memória; usar cookie de refresh `HttpOnly`, `SameSite` e `Secure` em produção, com rotação, logout que revoga sessão/limpa cookie e proteção CSRF; enviar credenciais via Fetch somente aos endpoints que usam o cookie; nunca registrar tokens em logs ou URLs |
-| 9.16 | Entrada protegida | Raiz encaminha ao login; mapa e áreas internas exigem sessão; navegação direta preserva destino interno seguro e retorna após login |
+| 9.16 | Home pública e entrada autenticada | Raiz apresenta produto/benefícios e login; mapa e áreas internas exigem sessão na UI; destino interno seguro é preservado após login |
 | 9.17 | Autorização de conteúdo | Proteger telas internas e APIs de dados no servidor; somente login/cadastro e endpoints mínimos de autenticação permanecem públicos |
-| 9.18 | Navegação responsiva | Menu lateral em desktop e menu recolhível por hambúrguer em mobile, com estados aberto/fechado, foco, seção atual e fechamento acessível |
-| 9.19 | Referência visual e respiro | Inspirar-se em [`Plano/img_exemplo.png`](./img_exemplo.png) apenas pelo que é visível; padronizar espaçamento e áreas de toque |
+| 9.18 | Navegação responsiva | Adaptar navegação para cabeçalho e menu recolhível próximo de 1200px; fechar por controle, navegação e Escape, com foco e seção atual acessíveis |
+| 9.19 | Referência visual e respiro | Adaptar paleta, tipografia, espaçamento e componentes documentados em [`09-frontend-integracao.md`](./09-frontend-integracao.md) a partir de [`../Layout/`](../Layout/README.md); não copiar assets sem verificar licença |
 | 9.20 | Mapa com posição atual | Após login e consentimento, centralizar mapa e carregar postos próximos automaticamente; apresentar carregamento e fallback manual |
 | 9.21 | Estados de tela | Planejar estados de carregamento, vazio, sucesso e erro nas operações relevantes |
 
@@ -618,15 +625,22 @@ Ver detalhes do contrato, comportamento e validação em
 - ✅ Testes de integração verificam acesso público a assets e RBAC da moderação
 
 **Critérios adicionais planejados, ainda não implementados:**
-- [ ] Acesso inicial apresenta login; mapa e telas internas não são acessíveis sem autenticação
+- [x] Home pública é a página inicial padrão; botão Entrar abre login e o login não duplica essa ação no cabeçalho
+- [x] Busca/mapa movido para `map.html`, com sessão requerida no controle do frontend; login/registro retorna ao mapa por padrão
+- [x] Navegação e conteúdo reagem a mudanças de sessão; links e ações são condicionados à autenticação e papel
+- [ ] Validar integração da home e navegação com sessão/API real e confirmar autorização server-side das páginas internas
 - [ ] Retorno após login funciona apenas para destino interno autorizado, sem open redirect
 - [ ] APIs de leitura de postos, preços e avaliações exigem `ROLE_DRIVER` ou `ROLE_ADMIN`
-- [ ] Menu lateral responsivo, com comportamento desktop/mobile e acessibilidade verificados
+- [ ] Navegação responsiva no cabeçalho, com comportamento desktop/mobile e acessibilidade verificados
 - [ ] Mapa solicita permissão ao entrar; após autorização centra na posição e carrega postos automaticamente
 - [ ] Recusa/erro/indisponibilidade de GPS permite localização manual e não bloqueia o restante do sistema
 - [ ] Espaçamento consistente, áreas de toque adequadas e estados loading/empty/success/error validados
+- [ ] Concluir a migração e validar todas as telas FuelFinder com o sistema visual LUNO/Bootstrap, sem copiar conteúdo demonstrativo e com toda a interface em pt-BR
+- [ ] Validar a versão Bootstrap 5.2.3 carregada e avaliar integridade/reprodutibilidade da dependência CDN para o modo de entrega do projeto
+- [ ] Validar os estados de autenticação, formulários, administração e respostas da API em ambiente integrado; o smoke test estático não fornece endpoints reais
+- [ ] Validar licenças antes de reutilizar assets/fontes do template e preferir CSS próprio enxuto aos bundles e plugins não usados
 
-Implementação entregue e instruções de validação em
+Estado atual, diretrizes de referência e instruções de validação em
 [`09-frontend-integracao.md`](./09-frontend-integracao.md).
 
 ---
@@ -657,7 +671,7 @@ Antes de iniciar localmente, configure `JWT_SECRET` com pelo menos 32 bytes; con
 5. **Review Flow:** Avaliar posto → Verificar nota média atualizada → Admin modera
 6. **Recommendation:** Selecionar veículo FLEX → Obter recomendação → Verificar paridade
 7. **ANP Import:** Importar CSV e ZIP contendo CSV de teste → Validar delimitadores e vírgula decimal, criar/localizar posto e confirmar contadores; reexecutar para verificar idempotência
-8. **Responsive:** Testar em viewport mobile (375px) e desktop (1440px)
+8. **Responsive:** Testar nos breakpoints documentados em `09-frontend-integracao.md`, incluindo 360/375px, 567/576px, 640px, 768px, 992/1024px, 1200/1280px e 1400/1440px
 9. **Swagger:** Verificar todos os endpoints documentados em `/swagger-ui.html`
 
 ---

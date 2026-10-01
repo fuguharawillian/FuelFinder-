@@ -71,10 +71,10 @@ function renderReviews(reviews, user) {
     row.append(content);
     if (user?.id === review.userId) {
       const actions = makeElement("div", undefined, "form-actions");
-      const edit = makeElement("button", "Editar comentário", "secondary");
+      const edit = makeElement("button", "Editar comentário", "btn btn-outline-primary");
       edit.type = "button";
       edit.addEventListener("click", () => editReview(review));
-      const remove = makeElement("button", "Excluir", "danger");
+      const remove = makeElement("button", "Excluir", "btn btn-outline-danger");
       remove.type = "button";
       remove.addEventListener("click", () => deleteReview(review.id));
       actions.append(edit, remove);
@@ -97,7 +97,7 @@ function renderRoutes(station) {
 }
 
 function routeLink(label, href) {
-  const anchor = makeElement("a", `Abrir no ${label}`, "button secondary");
+  const anchor = makeElement("a", `Abrir no ${label}`, "btn btn-outline-primary");
   anchor.href = href;
   anchor.target = "_blank";
   anchor.rel = "noopener noreferrer";

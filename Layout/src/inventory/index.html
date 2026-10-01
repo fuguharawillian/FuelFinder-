@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Inventory Dashboard",
+        "daterangepicker": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-inventory.html', {"page": "index"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-2 row-cols-sm-2 row-cols-1 g-3 mb-3 row-deck">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase small">Current Stock</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">567</span>
+                                    <span class="text-success ms-1">Unit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase small">Stock Value</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">38,765</span>
+                                    <span class="text-success ms-1">USD</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase small">Stock In</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">55</span>
+                                    <span class="text-success ms-1">Unit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase small">Stock Out</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">32</span>
+                                    <span class="text-success ms-1">Unit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase small">Product Sold</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">452</span>
+                                    <span class="text-success ms-1">M</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase small">to be packed</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">22</span>
+                                    <span class="text-success ms-1">Qty</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase small">to be shipped</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">11</span>
+                                    <span class="text-success ms-1">Pkgs</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase small">to be delivered</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">9</span>
+                                    <span class="text-success ms-1">Pkgs</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase small">to be invoiced</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">5</span>
+                                    <span class="text-success ms-1">Qty</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase small">Labor Cost</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">3,908</span>
+                                    <span class="text-success ms-1">USD</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-3 row-deck">
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Stock Quality</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div id="apex-StockQuality" class="ac-line-transparent"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Average Cost</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div id="apex-AverageCost" class="ac-line-transparent"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Quality Purchase</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div id="apex-QualityPurchase" class="ac-line-transparent"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Top Selling Plans
+                                    <small class="d-block text-muted">last update week ago</small>
+                                </h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <div id="apex-TopSellingPlans"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xl-8 col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Sales Statistics</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="card-body">
+                                            <div class="fw-bold h6 mb-0">11.54k USD</div>
+                                            <div class="text-muted small text-uppercase">Revenue</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="card-body">
+                                            <div class="fw-bold h6 mb-0">5.87k USD</div>
+                                            <div class="text-muted small text-uppercase">Cost</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="apex-SalesStatistics" class="ac-line-transparent"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">New Agents</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                    <div class="flex-fill ms-3">
+                                        <div class="h6 mb-0">Hossein Shams</div>
+                                        <small>Exp. 5 Year</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="">
+                                    <div class="flex-fill ms-3">
+                                        <div class="h6 mb-0">Maryam Amiri</div>
+                                        <small>Exp. 2.5 Year</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar4.jpg" alt="">
+                                    <div class="flex-fill ms-3">
+                                        <div class="h6 mb-0">Cindy Anderson</div>
+                                        <small>Exp. 8.2 Year</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar5.jpg" alt="">
+                                    <div class="flex-fill ms-3">
+                                        <div class="h6 mb-0">Alexander</div>
+                                        <small>Exp. 3 Year</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar6.jpg" alt="">
+                                    <div class="flex-fill ms-3">
+                                        <div class="h6 mb-0">Nellie</div>
+                                        <small>Exp. 7 Year</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Sales Order</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <table id="myDataTable_no_filter" class="table myDataTable card-table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Channel</th>
+                                        <th>Draft</th>
+                                        <th>Confirmed</th>
+                                        <th>Packed</th>
+                                        <th>Shipped</th>
+                                        <th>Invoiced</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Other</td>
+                                        <td>0</td>
+                                        <td>22</td>
+                                        <td>3</td>
+                                        <td>18</td>
+                                        <td>56</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Etary</td>
+                                        <td>0</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>6</td>
+                                        <td>33</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shopify</td>
+                                        <td>0</td>
+                                        <td>2</td>
+                                        <td>12</td>
+                                        <td>18</td>
+                                        <td>65</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Magento</td>
+                                        <td>0</td>
+                                        <td>16</td>
+                                        <td>8</td>
+                                        <td>11</td>
+                                        <td>13</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Wordpress</td>
+                                        <td>0</td>
+                                        <td>18</td>
+                                        <td>16</td>
+                                        <td>76</td>
+                                        <td>22</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> <!-- .card end -->
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables":true,
+    "apexcharts":true,
+})
+<script>
+    $('#myDataTable_no_filter')
+    .addClass('nowrap')
+    .dataTable({
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: false,
+        info: false,
+    });
+
+    // Stock Quality
+    var options = {
+        series: [{
+            name: 'PRODUCT A',
+            data: [44, 55, 41, 43]
+        }],
+        chart: {
+            type: 'bar',
+            height: 220,
+            stacked: true,
+            toolbar: {
+                show: false
+            },
+            zoom: {
+                enabled: true
+            }
+        },
+        colors: ['var(--chart-color3)'],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                legend: {
+                    position: 'bottom',
+                    offsetX: -10,
+                    offsetY: 0
+                }
+            }
+        }],
+        plotOptions: {
+            bar: {
+                borderRadius: 8,
+                horizontal: false,
+            },
+        },
+        xaxis: {
+            categories: ['2017', '2018', '2019', '2020'],
+        },
+        legend: {
+            position: 'bottom',
+        },
+        fill: {
+            opacity: 1
+        }
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-StockQuality"), options); chart.render();
+
+    // Average Cost
+    var options = {
+        series: [{
+            name: "STOCK ABC",
+            data: [0, 9, 5, 43]
+        }],
+        chart: {
+            type: 'area',
+            height: 220,
+            toolbar: {
+                show: false
+            },
+            zoom: {
+                enabled: false
+            }
+        },
+        colors: ['var(--chart-color3)'],
+        fill: {
+            type: "gradient",
+            gradient: {
+                gradientToColors: ['var(--chart-color1)' , 'var(--chart-color3)'],
+                shadeIntensity: 4,
+                opacityFrom: 0.5,
+                opacityTo: 0.1,
+                stops: [0, 100]
+            },
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'straight'
+        },
+        
+        xaxis: {
+            categories: ['2017', '2018', '2019', '2020'],
+        },
+        yaxis: {
+            opposite: true
+        },
+        legend: {
+            horizontalAlign: 'left'
+        }
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-AverageCost"), options); chart.render();
+
+    // Quality Purchase
+    var options = {
+        series: [{
+            name: 'PRODUCT A',
+            data: [56, 50, 32, 9]
+        }],
+        chart: {
+            type: 'bar',
+            height: 220,
+            stacked: true,
+            toolbar: {
+                show: false
+            },
+            zoom: {
+                enabled: true
+            }
+        },
+        colors: ['var(--chart-color4)'],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                legend: {
+                    position: 'bottom',
+                    offsetX: -10,
+                    offsetY: 0
+                }
+            }
+        }],
+        plotOptions: {
+            bar: {
+                borderRadius: 8,
+                horizontal: false,
+            },
+        },
+        xaxis: {
+            categories: ['2017', '2018', '2019', '2020'],
+        },
+        legend: {
+            position: 'bottom',
+        },
+        fill: {
+            opacity: 1
+        }
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-QualityPurchase"), options); chart.render();
+
+    // Top Selling Plans
+    var options = {
+        series: [32, 56, 12],
+        chart: {
+            type: 'donut',
+            width: 340,
+            toolbar: {
+                show: false,
+            },
+        },
+        responsive: [{
+            breakpoint: 1200,
+            options: {
+                chart: {
+                    width: 260
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }],
+        labels: ['Plan 1', 'Plan 2', 'Plan 3'],
+        colors: ['var(--chart-color1)', 'var(--chart-color2)', 'var(--chart-color3)'],
+        dataLabels: {
+            enabled: false
+        },
+        legend: {
+            position: 'bottom', // top, bottom
+            enabled: false
+        }
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-TopSellingPlans"), options); chart.render();
+
+    // Sales Statistics
+    var options = {
+        series: [{
+            name: 'Revenue',
+            data: [13, 23, 20, 8, 13, 27, 33, 12, 67, 22, 43, 21, 49, 13, 23]
+        }, {
+            name: 'Cost',
+            data: [44, 55, 41, 67, 22, 43, 21, 49, 13, 23, 20, 8, 13, 27, 33]
+        }],
+        chart: {
+            type: 'bar',
+            height: 190,
+            stacked: true,
+            //stackType: '100%',
+            toolbar: {
+                show: false,
+            },
+        },
+        colors: ['var(--chart-color1)', 'var(--chart-color2)'],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                legend: {
+                    position: 'bottom',
+                    offsetX: -10,
+                    offsetY: 0
+                }
+            }
+        }],
+        xaxis: {
+            categories: ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15',],
+        },
+        fill: {
+            opacity: 1
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        legend: {
+            position: 'bottom',
+        },
+        tooltip: {
+            y: [{
+                title: {
+                    formatter: function (val) {
+                        return val + " (K)"
+                    }
+                }
+            },{
+                title: {
+                    formatter: function (val) {
+                        return val + " (K)"
+                    }
+                }
+            }]
+        },
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-SalesStatistics"), options); chart.render();
+</script>
+</body>
+</html>

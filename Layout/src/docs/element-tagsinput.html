@@ -1,0 +1,100 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Tags Input",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "element-tagsinput"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+                
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Tagsinput</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="element-sweetalert2.html"><i class="fa fa-long-arrow-left me-2"></i>Sweetalert 2</a>
+                        <a class="btn btn-secondary" href="element-select2.html">Select 2<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Introduction</h6>
+                            </div>
+                            <div class="card-body">
+                                <h4>Tagsinput</h4>
+                                <p class="fs-6">Bootstrap Tags Input is a jQuery plugin providing a Twitter Bootstrap user interface for managing tags. For more info, please visit the <a href="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/examples/" target="_blank">plugin's site</a></p>
+                            </div>
+                            <div class="card-body pt-0">
+<pre class="language-html m-0" data-lang="html"><code class=" language-html">&lt;!-- Plugin Js --&gt;
+&lt;script src=&quot;assets/bundles/bootstraptagsinput.bundle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- HTML --&gt;
+&lt;input type=&quot;text&quot; class=&quot;form-control&quot; data-role=&quot;tagsinput&quot; value=&quot;LUNO,Admin,React,VueJs,Angular&quot;&gt;
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <label class="form-label">Tags Input</label>
+                                <input type="text" class="form-control" data-role="tagsinput" value="LUNO,Admin,React,VueJs,Angular">
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+               <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="element-sweetalert2.html"><i class="fa fa-long-arrow-left me-3"></i>Sweetalert 2</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="element-select2.html">Select 2<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('docs/_scripts.html',{
+    "bootstraptagsinput": true,
+})
+</body>
+</html>

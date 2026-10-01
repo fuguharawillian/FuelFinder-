@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Crypto Dashboard",
+        "daterangepicker": true,
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-red">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-crypto.html', {"page": "index"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-2 row-cols-1 g-2 mb-4 row-deck">
+                    <div class="col">
+                        <div class="card p-3">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar rounded-circle no-thumbnail bg-light"><i class="fa fa-dollar fa-lg"></i></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="small text-uppercase">Today's Profit</div>
+                                    <div><span class="h6 mb-0 fw-bold">$8,925</span> <small class="text-danger">-3%</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-3">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar rounded-circle no-thumbnail bg-light"><i class="fa fa-bank fa-lg"></i></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="small text-uppercase">Balance</div>
+                                    <div><span class="h6 mb-0 fw-bold">$2,98,00</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-3">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar rounded-circle no-thumbnail bg-light"><i class="fa fa-money fa-lg"></i></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="small text-uppercase">Expenses</div>
+                                    <div><span class="h6 mb-0 fw-bold">$52,908</span> <small class="text-danger">-6%</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-3">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar rounded-circle no-thumbnail bg-light"><i class="fa fa-money fa-lg"></i></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="small text-uppercase">Transaction</div>
+                                    <div><span class="h6 mb-0 fw-bold">$1,24,580</span> <small class="text-danger">-10%</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class=""><img class="avatar" src="@@webRoot/assets/img/coin/BTC.svg" alt="BTC" /></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <span class="text-muted small text-uppercase">Bitcoin</span>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fs-6 fw-bold">$25,450</span>
+                                        <span class="small text-success">+ 1.25 <i class="fa fa-level-up"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="apexspark1"></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class=""><img class="avatar" src="@@webRoot/assets/img/coin/XRP.svg" alt="BTC" /></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <span class="text-muted small text-uppercase">Ripple</span>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fs-6 fw-bold">$25,450</span>
+                                        <span class="small text-success">+ 0.25 <i class="fa fa-level-up"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="apexspark2"></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class=""><img class="avatar" src="@@webRoot/assets/img/coin/neo.svg" alt="BTC" /></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <span class="text-muted small text-uppercase">Neo</span>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fs-6 fw-bold">$25,450</span>
+                                        <span class="small text-success">+ 0.50 <i class="fa fa-level-up"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="apexspark3"></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class=""><img class="avatar" src="@@webRoot/assets/img/coin/ETH.svg" alt="BTC" /></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <span class="text-muted small text-uppercase">Ethereum</span>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fs-6 fw-bold">$25,450</span>
+                                        <span class="small text-danger">- 0.73 <i class="fa fa-level-down"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="apexspark4"></div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-2 mb-2">
+                    <div class="col-12">
+                        @@include('widgets/_card-crypto-live.html')
+                    </div>
+                    <div class="col-12 mt-4">
+                        <h5 class="fw-bold mb-2">Quick Exchange</h5>
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt <a href="#">View more</a></p>
+                                <div class="row g-2">
+                                    <div class="col-md-6 col-lg-3 col-xl-2">
+                                        <div class="form-floating">
+                                            <select class="form-select"
+                                                aria-label="Floating label select example">
+                                                <option>Bitcoin</option>
+                                                <option>Ethereum</option>
+                                                <option>Ripple</option>
+                                                <option>Cardano</option>
+                                                <option>Stellar</option>
+                                                <option>RaiBlocks</option>
+                                                <option>Monero</option>
+                                            </select>
+                                            <label>Selects Currency</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 col-xl-4">
+                                        <div class="form-floating">
+                                            <select class="form-select"
+                                                aria-label="Floating label select example">
+                                                <option>Bank of America ********65657</option>
+                                                <option>Master Card ***********12012</option>
+                                                <option>Pay with Paypal</option>
+                                            </select>
+                                            <label>Payment Method</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3 col-xl-4">
+                                        <div class="form-floating">
+                                            <input type="number" class="form-control" placeholder="Enter Amount">
+                                            <label>Enter Amount</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-2 col-xl-2">
+                                        <div class="form-floating">
+                                            <input type="number" class="form-control" placeholder="Enter Price">
+                                            <label>Enter Price</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                        <button type="button" class="btn px-4 btn-primary btn-lg">Buy</button>
+                                        <button type="button" class="btn px-4 btn-danger btn-lg">Sell</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-2 mb-5 row-deck">
+                    <div class="col-xxl-9 col-xl-8 col-lg-7 col-md-12">
+                        <div class="card">
+                            <ul class="nav nav-tabs tab-card pt-3 " role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#nav-BTC" id="nav_BTC" role="tab">
+                                        <span class="d-inline d-sm-none">
+                                            <img class="avatar sm me-1" src="@@webRoot/assets/img/coin/BTC.svg" alt="BTC">BTC
+                                        </span>
+                                        <span class="d-none d-sm-inline">Bitcoin</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#nav-ETC" id="nav_ETC" role="tab">
+                                        <span class="d-inline d-sm-none">
+                                            <img class="avatar sm me-1" src="@@webRoot/assets/img/coin/ETC.svg" alt="BTC">ETC
+                                        </span>
+                                        <span class="d-none d-sm-inline">Ethereum</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#nav-STL" role="tab">
+                                        <span class="d-inline d-sm-none">
+                                            <img class="avatar sm me-1" src="@@webRoot/assets/img/coin/stellar.svg" alt="BTC">STL
+                                        </span>
+                                        <span class="d-none d-sm-inline">Stellar</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#nav-XRP" role="tab">
+                                        <span class="d-inline d-sm-none">
+                                            <img class="avatar sm me-1" src="@@webRoot/assets/img/coin/XRP.svg" alt="BTC">XRP
+                                        </span>
+                                        <span class="d-none d-sm-inline">Ripple</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between flex-wrap align-items-center">
+                                    <div class="d-none d-sm-block">
+                                        <div class="btn-group" role="group">
+                                            <input type="radio" class="btn-check" name="btn-radio" id="btn-radio1" checked="">
+                                            <label class="btn btn-sm btn-outline-secondary" for="btn-radio1">1M</label>
+
+                                            <input type="radio" class="btn-check" name="btn-radio" id="btn-radio2">
+                                            <label class="btn btn-sm btn-outline-secondary" for="btn-radio2">6M</label>
+
+                                            <input type="radio" class="btn-check" name="btn-radio" id="btn-radio3">
+                                            <label class="btn btn-sm btn-outline-secondary" for="btn-radio3">1Y</label>
+
+                                            <input type="radio" class="btn-check" name="btn-radio" id="btn-radio4">
+                                            <label class="btn btn-sm btn-outline-secondary" for="btn-radio4">YTD</label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="me-3"><span class="h5 mb-0">$3,056</span>
+                                        <span class="small text-danger">- 0.73 <i class="fa fa-level-down"></i></span></span>
+                                        <span class="me-3">
+                                            <span class="text-muted">High:</span>
+                                            <span class="small text-success">451,325</span>
+                                        </span>
+                                        <span class="me-3">
+                                            <span class="text-muted">Low:</span>
+                                            <span class="small text-danger">351,325</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="tab-content mt-2">
+                                    <div class="tab-pane fade show active" id="nav-BTC" role="tabpanel">
+                                        <div id="apex-BTC"></div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-ETC" role="tabpanel">
+                                        <div id="apex-ETC"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-4 col-lg-5 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Market Cap</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="btn-group px-4 mb-3" role="group">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked="">
+                                <label class="btn btn-sm btn-outline-secondary" for="btnradio1">1M</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2">
+                                <label class="btn btn-sm btn-outline-secondary" for="btnradio2">6M</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3">
+                                <label class="btn btn-sm btn-outline-secondary" for="btnradio3">1Y</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio4">
+                                <label class="btn btn-sm btn-outline-secondary" for="btnradio4">YTD</label>
+                            </div>
+                            <ul class="list-group list-group-flush list-group-custom mb-0">
+                                <li class="list-group-item px-4 d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img class="avatar sm me-2" src="@@webRoot/assets/img/coin/BTC.svg" alt="BTC">
+                                        <span>BTC</span>
+                                    </div>
+                                    <div>
+                                        <span>$211,410</span>
+                                        <span class="small text-success">+ 1.78 <i class="fa fa-level-up"></i></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item px-4 d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img class="avatar sm me-2" src="@@webRoot/assets/img/coin/stellar.svg" alt="BTC">
+                                        <span>STL</span>
+                                    </div>
+                                    <div>
+                                        <span>$8,450</span>
+                                        <span class="small text-danger">- 3.05 <i class="fa fa-level-down"></i></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item px-4 d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img class="avatar sm me-2" src="@@webRoot/assets/img/coin/DASH.svg" alt="BTC">
+                                        <span>DASH</span>
+                                    </div>
+                                    <div>
+                                        <span>$105,245</span>
+                                        <span class="small text-danger">- 4.15 <i class="fa fa-level-down"></i></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item px-4 d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img class="avatar sm me-2" src="@@webRoot/assets/img/coin/ETC.svg" alt="BTC">
+                                        <span>ETC</span>
+                                    </div>
+                                    <div>
+                                        <span>$124,450</span>
+                                        <span class="small text-success">+ 1.25 <i class="fa fa-level-up"></i></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item px-4 d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img class="avatar sm me-2" src="@@webRoot/assets/img/coin/ETH.svg" alt="BTC">
+                                        <span>ETH</span>
+                                    </div>
+                                    <div>
+                                        <span>$5,411</span>
+                                        <span class="small text-success">+ 1.25 <i class="fa fa-level-up"></i></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item px-4 d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img class="avatar sm me-2" src="@@webRoot/assets/img/coin/LTC.svg" alt="BTC">
+                                        <span>LTC</span>
+                                    </div>
+                                    <div>
+                                        <span>$25,254</span>
+                                        <span class="small text-danger">- 2.55 <i class="fa fa-level-down"></i></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item px-4 d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img class="avatar sm me-2" src="@@webRoot/assets/img/coin/neo.svg" alt="BTC">
+                                        <span>NEO</span>
+                                    </div>
+                                    <div>
+                                        <span>$12,450</span>
+                                        <span class="small text-success">+ 5.25 <i class="fa fa-level-up"></i></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-2 mb-5">
+                    <div class="col-12">
+                        <h5 class="fw-bold mb-2">Recent Transaction</h5>
+                        <table id="myDataTable" class="myDataTable table align-middle table-bordered mb-0 custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Amount BTC</th>
+                                    <th>BTC Remaining</th>
+                                    <th>Price</th>
+                                    <th>USD</th>
+                                    <th>Fee (%)</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>28-July-2018 06:51:51</td>
+                                    <td>Buy</td>
+                                    <td>0.58647</td>
+                                    <td>0.58647</td>
+                                    <td>11900.12</td>
+                                    <td>$ 1597.78</td>
+                                    <td>0.023</td>
+                                    <td>
+                                        <button class="btn btn-sm round btn-outline-success">Accept</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>28-July-2018 06:50:50</td>
+                                    <td>Sell</td>
+                                    <td>1.38647</td>
+                                    <td>0.38647</td>
+                                    <td>11905.09</td>
+                                    <td>$ 2496.36</td>
+                                    <td>0.017</td>
+                                    <td>
+                                        <button class="btn btn-sm round btn-outline-success">Accept</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>28-July-2018 06:49:51</td>
+                                    <td>Buy</td>
+                                    <td>0.45879</td>
+                                    <td>0.45879</td>
+                                    <td>11901.85</td>
+                                    <td>$ 3165.44</td>
+                                    <td>0.013</td>
+                                    <td>
+                                        <button class="btn btn-sm round btn-outline-success"> Accept</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>28-July-2018 06:51:51</td>
+                                    <td>Buy</td>
+                                    <td>0.89877</td>
+                                    <td>0.89877</td>
+                                    <td>11899.28</td>
+                                    <td>$ 25830.6</td>
+                                    <td>0.011</td>
+                                    <td>
+                                        <button class="btn btn-sm round btn-outline-success">Accept</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>28-July-2018 06:51:51</td>
+                                    <td>Sell</td>
+                                    <td>0.45712</td>
+                                    <td>0.45712</td>
+                                    <td>11908.19</td>
+                                    <td>$ 2586.34</td>
+                                    <td>0.024</td>
+                                    <td>
+                                        <button class="btn btn-sm round btn-outline-danger"> Cancel</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>28-July-2018 06:51:51</td>
+                                    <td>Buy</td>
+                                    <td>0.58647</td>
+                                    <td>0.58647</td>
+                                    <td>11900.12</td>
+                                    <td>$ 1597.78</td>
+                                    <td>0.023</td>
+                                    <td>
+                                        <button class="btn btn-sm round btn-outline-success">Accept</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "apexcharts": true,
+    "dataTables": true,
+})
+<script>
+    // top sparklines
+    $(function() {
+        var randomizeArray = function (arg) {
+            var array = arg.slice();
+            var currentIndex = array.length,
+            temporaryValue, randomIndex;
+        
+            while (0 !== currentIndex) {  
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+        
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }  
+            return array;
+        }
+
+        // data for the sparklines that appear below header area
+        var sparklineData = [47, 45, 54, 38, 56, 47, 45, 54, 38, 56, 38, 56, 24, 65, 31];
+
+        // topb big chart
+        var spark1 = {
+            chart: {
+                type: 'area',
+                height: 60,
+                sparkline: {
+                enabled: true
+                },
+            },
+            stroke: {
+                width: 1
+            },
+            series: [{
+                data: randomizeArray(sparklineData)
+            }],
+            colors: ['#f8921a'],
+        }
+        var spark1 = new ApexCharts(document.querySelector("#apexspark1"), spark1); spark1.render();
+
+        var spark2 = {
+            chart: {
+                type: 'area',
+                height: 60,
+                sparkline: {
+                enabled: true
+                },
+            },
+            stroke: {
+                width: 1
+            },
+            series: [{
+                data: randomizeArray(sparklineData)
+            }],
+            colors: ['#0077af'],
+        }
+        var spark2 = new ApexCharts(document.querySelector("#apexspark2"), spark2); spark2.render();
+
+        var spark3 = {
+            chart: {
+                type: 'area',
+                height: 60,
+                sparkline: {
+                enabled: true
+                },
+            },
+            stroke: {
+                width: 1
+            },
+            colors: ['#6fb92c'],
+            series: [{
+                data: randomizeArray(sparklineData)
+            }],
+        }
+        var spark3 = new ApexCharts(document.querySelector("#apexspark3"), spark3); spark3.render();
+
+        var spark4 = {
+            chart: {
+                type: 'area',
+                height: 60,
+                sparkline: {
+                enabled: true
+                },
+            },
+            stroke: {
+                width: 1
+            },
+            colors: ['#141414'],
+            series: [{
+                data: randomizeArray(sparklineData)
+            }],
+        }
+        var spark4 = new ApexCharts(document.querySelector("#apexspark4"), spark4); spark4.render();
+    });
+
+    // BTC
+    $(function() {
+        var options = {
+            chart: {
+                height: 340,
+                type: 'candlestick',
+                toolbar: {
+                    show: false,
+                },
+            },
+            plotOptions: {
+                candlestick: {
+                    colors: {
+                        upward: 'var(--chart-color1)',
+                        downward: 'var(--chart-color5)',
+                    },
+                    wick: {
+                        useFillColor: true
+                    }
+                }
+            },
+    
+            series: [{
+                data: [{
+                    x: new Date(1538778600000),
+                    y: [6629.81, 6650.5, 6623.04, 6633.33]
+                    },{
+                    x: new Date(1538780400000),
+                    y: [6632.01, 6643.59, 6620, 6630.11]
+                    },{
+                    x: new Date(1538782200000),
+                    y: [6630.71, 6648.95, 6623.34, 6635.65]
+                    },{
+                    x: new Date(1538784000000),
+                    y: [6635.65, 6651, 6629.67, 6638.24]
+                    },{
+                    x: new Date(1538785800000),
+                    y: [6638.24, 6640, 6620, 6624.47]
+                    },{
+                    x: new Date(1538787600000),
+                    y: [6624.53, 6636.03, 6621.68, 6624.31]
+                    },{
+                    x: new Date(1538789400000),
+                    y: [6624.61, 6632.2, 6617, 6626.02]
+                    },{
+                    x: new Date(1538791200000),
+                    y: [6627, 6627.62, 6584.22, 6603.02]
+                    },{
+                    x: new Date(1538793000000),
+                    y: [6605, 6608.03, 6598.95, 6604.01]
+                    },{
+                    x: new Date(1538794800000),
+                    y: [6604.5, 6614.4, 6602.26, 6608.02]
+                    },{
+                    x: new Date(1538796600000),
+                    y: [6608.02, 6610.68, 6601.99, 6608.91]
+                    },{
+                    x: new Date(1538798400000),
+                    y: [6608.91, 6618.99, 6608.01, 6612]
+                    },{
+                    x: new Date(1538800200000),
+                    y: [6612, 6615.13, 6605.09, 6612]
+                    },{
+                    x: new Date(1538802000000),
+                    y: [6612, 6624.12, 6608.43, 6622.95]
+                    },{
+                    x: new Date(1538803800000),
+                    y: [6623.91, 6623.91, 6615, 6615.67]
+                    },{
+                    x: new Date(1538805600000),
+                    y: [6618.69, 6618.74, 6610, 6610.4]
+                    },{
+                    x: new Date(1538807400000),
+                    y: [6611, 6622.78, 6610.4, 6614.9]
+                    },{
+                    x: new Date(1538809200000),
+                    y: [6614.9, 6626.2, 6613.33, 6623.45]
+                    },{
+                    x: new Date(1538811000000),
+                    y: [6623.48, 6627, 6618.38, 6620.35]
+                    },{
+                    x: new Date(1538812800000),
+                    y: [6619.43, 6620.35, 6610.05, 6615.53]
+                    },{
+                    x: new Date(1538814600000),
+                    y: [6615.53, 6617.93, 6610, 6615.19]
+                    },{
+                    x: new Date(1538816400000),
+                    y: [6615.19, 6621.6, 6608.2, 6620]
+                    },{
+                    x: new Date(1538818200000),
+                    y: [6619.54, 6625.17, 6614.15, 6620]
+                    },{
+                    x: new Date(1538820000000),
+                    y: [6620.33, 6634.15, 6617.24, 6624.61]
+                    },{
+                    x: new Date(1538821800000),
+                    y: [6625.95, 6626, 6611.66, 6617.58]
+                    },{
+                    x: new Date(1538823600000),
+                    y: [6619, 6625.97, 6595.27, 6598.86]
+                    },{
+                    x: new Date(1538825400000),
+                    y: [6598.86, 6598.88, 6570, 6587.16]
+                    },{
+                    x: new Date(1538827200000),
+                    y: [6588.86, 6600, 6580, 6593.4]
+                    },{
+                    x: new Date(1538829000000),
+                    y: [6593.99, 6598.89, 6585, 6587.81]
+                    },{
+                    x: new Date(1538830800000),
+                    y: [6587.81, 6592.73, 6567.14, 6578]
+                    },{
+                    x: new Date(1538832600000),
+                    y: [6578.35, 6581.72, 6567.39, 6579]
+                    },{
+                    x: new Date(1538834400000),
+                    y: [6579.38, 6580.92, 6566.77, 6575.96]
+                    },{
+                    x: new Date(1538836200000),
+                    y: [6575.96, 6589, 6571.77, 6588.92]
+                    },{
+                    x: new Date(1538838000000),
+                    y: [6588.92, 6594, 6577.55, 6589.22]
+                    },{
+                    x: new Date(1538839800000),
+                    y: [6589.3, 6598.89, 6589.1, 6596.08]
+                    },{
+                    x: new Date(1538841600000),
+                    y: [6597.5, 6600, 6588.39, 6596.25]
+                    },{
+                    x: new Date(1538843400000),
+                    y: [6598.03, 6600, 6588.73, 6595.97]
+                    },{
+                    x: new Date(1538845200000),
+                    y: [6595.97, 6602.01, 6588.17, 6602]
+                    },{
+                    x: new Date(1538847000000),
+                    y: [6602, 6607, 6596.51, 6599.95]
+                    },{
+                    x: new Date(1538848800000),
+                    y: [6600.63, 6601.21, 6590.39, 6591.02]
+                    },{
+                    x: new Date(1538850600000),
+                    y: [6591.02, 6603.08, 6591, 6591]
+                    },{
+                    x: new Date(1538852400000),
+                    y: [6591, 6601.32, 6585, 6592]
+                    },{
+                    x: new Date(1538854200000),
+                    y: [6593.13, 6596.01, 6590, 6593.34]
+                    },{
+                    x: new Date(1538856000000),
+                    y: [6593.34, 6604.76, 6582.63, 6593.86]
+                    },{
+                    x: new Date(1538857800000),
+                    y: [6593.86, 6604.28, 6586.57, 6600.01]
+                    },{
+                    x: new Date(1538859600000),
+                    y: [6601.81, 6603.21, 6592.78, 6596.25]
+                    },{
+                    x: new Date(1538861400000),
+                    y: [6596.25, 6604.2, 6590, 6602.99]
+                    },{
+                    x: new Date(1538863200000),
+                    y: [6602.99, 6606, 6584.99, 6587.81]
+                    },{
+                    x: new Date(1538865000000),
+                    y: [6587.81, 6595, 6583.27, 6591.96]
+                    },{
+                    x: new Date(1538866800000),
+                    y: [6591.97, 6596.07, 6585, 6588.39]
+                    },{
+                    x: new Date(1538868600000),
+                    y: [6587.6, 6598.21, 6587.6, 6594.27]
+                    },{
+                    x: new Date(1538870400000),
+                    y: [6596.44, 6601, 6590, 6596.55]
+                    },{
+                    x: new Date(1538872200000),
+                    y: [6598.91, 6605, 6596.61, 6600.02]
+                    },{
+                    x: new Date(1538874000000),
+                    y: [6600.55, 6605, 6589.14, 6593.01]
+                    },{
+                    x: new Date(1538875800000),
+                    y: [6593.15, 6605, 6592, 6603.06]
+                    },{
+                    x: new Date(1538877600000),
+                    y: [6603.07, 6604.5, 6599.09, 6603.89]
+                    },{
+                    x: new Date(1538879400000),
+                    y: [6604.44, 6604.44, 6600, 6603.5]
+                    },{
+                    x: new Date(1538881200000),
+                    y: [6603.5, 6603.99, 6597.5, 6603.86]
+                    },{
+                    x: new Date(1538883000000),
+                    y: [6603.85, 6605, 6600, 6604.07]
+                    },{
+                    x: new Date(1538884800000),
+                    y: [6604.98, 6606, 6604.07, 6606]
+                    },
+                ]
+            }],
+                
+            xaxis: {
+                type: 'datetime'
+            },
+            yaxis: {
+                tooltip: {
+                    enabled: true
+                }
+            }
+        }
+        var chart = new ApexCharts(document.querySelector("#apex-BTC"),options); chart.render();
+    });
+
+    // ETC
+    $(function() {
+        var options = {
+            chart: {
+                height: 340,
+                type: 'candlestick',
+                toolbar: {
+                    show: false,
+                },
+            },
+            plotOptions: {
+                candlestick: {
+                    colors: {
+                        upward: 'var(--chart-color1)',
+                        downward: 'var(--chart-color5)',
+                    },
+                    wick: {
+                        useFillColor: true
+                    }
+                }
+            },
+    
+            series: [{
+                data: [{
+                    x: new Date(1538778600000),
+                    y: [6629.81, 6650.5, 6623.04, 6633.33]
+                    },{
+                    x: new Date(1538780400000),
+                    y: [6632.01, 6643.59, 6620, 6630.11]
+                    },{
+                    x: new Date(1538818200000),
+                    y: [6619.54, 6625.17, 6614.15, 6620]
+                    },{
+                    x: new Date(1538820000000),
+                    y: [6620.33, 6634.15, 6617.24, 6624.61]
+                    },{
+                    x: new Date(1538821800000),
+                    y: [6625.95, 6626, 6611.66, 6617.58]
+                    },{
+                    x: new Date(1538823600000),
+                    y: [6619, 6625.97, 6595.27, 6598.86]
+                    },{
+                    x: new Date(1538825400000),
+                    y: [6598.86, 6598.88, 6570, 6587.16]
+                    },{
+                    x: new Date(1538827200000),
+                    y: [6588.86, 6600, 6580, 6593.4]
+                    },{
+                    x: new Date(1538829000000),
+                    y: [6593.99, 6598.89, 6585, 6587.81]
+                    },{
+                    x: new Date(1538830800000),
+                    y: [6587.81, 6592.73, 6567.14, 6578]
+                    },{
+                    x: new Date(1538832600000),
+                    y: [6578.35, 6581.72, 6567.39, 6579]
+                    },{
+                    x: new Date(1538834400000),
+                    y: [6579.38, 6580.92, 6566.77, 6575.96]
+                    },{
+                    x: new Date(1538836200000),
+                    y: [6575.96, 6589, 6571.77, 6588.92]
+                    },{
+                    x: new Date(1538838000000),
+                    y: [6588.92, 6594, 6577.55, 6589.22]
+                    },{
+                    x: new Date(1538839800000),
+                    y: [6589.3, 6598.89, 6589.1, 6596.08]
+                    },{
+                    x: new Date(1538841600000),
+                    y: [6597.5, 6600, 6588.39, 6596.25]
+                    },{
+                    x: new Date(1538843400000),
+                    y: [6598.03, 6600, 6588.73, 6595.97]
+                    },{
+                    x: new Date(1538845200000),
+                    y: [6595.97, 6602.01, 6588.17, 6602]
+                    },{
+                    x: new Date(1538847000000),
+                    y: [6602, 6607, 6596.51, 6599.95]
+                    },{
+                    x: new Date(1538848800000),
+                    y: [6600.63, 6601.21, 6590.39, 6591.02]
+                    },{
+                    x: new Date(1538850600000),
+                    y: [6591.02, 6603.08, 6591, 6591]
+                    },{
+                    x: new Date(1538852400000),
+                    y: [6591, 6601.32, 6585, 6592]
+                    },{
+                    x: new Date(1538854200000),
+                    y: [6593.13, 6596.01, 6590, 6593.34]
+                    },{
+                    x: new Date(1538856000000),
+                    y: [6593.34, 6604.76, 6582.63, 6593.86]
+                    },{
+                    x: new Date(1538857800000),
+                    y: [6593.86, 6604.28, 6586.57, 6600.01]
+                    },{
+                    x: new Date(1538859600000),
+                    y: [6601.81, 6603.21, 6592.78, 6596.25]
+                    },{
+                    x: new Date(1538861400000),
+                    y: [6596.25, 6604.2, 6590, 6602.99]
+                    },{
+                    x: new Date(1538863200000),
+                    y: [6602.99, 6606, 6584.99, 6587.81]
+                    },{
+                    x: new Date(1538865000000),
+                    y: [6587.81, 6595, 6583.27, 6591.96]
+                    },{
+                    x: new Date(1538782200000),
+                    y: [6630.71, 6648.95, 6623.34, 6635.65]
+                    },{
+                    x: new Date(1538794800000),
+                    y: [6604.5, 6614.4, 6602.26, 6608.02]
+                    },{
+                    x: new Date(1538796600000),
+                    y: [6608.02, 6610.68, 6601.99, 6608.91]
+                    },{
+                    x: new Date(1538798400000),
+                    y: [6608.91, 6618.99, 6608.01, 6612]
+                    },{
+                    x: new Date(1538800200000),
+                    y: [6612, 6615.13, 6605.09, 6612]
+                    },{
+                    x: new Date(1538802000000),
+                    y: [6612, 6624.12, 6608.43, 6622.95]
+                    },{
+                    x: new Date(1538803800000),
+                    y: [6623.91, 6623.91, 6615, 6615.67]
+                    },{
+                    x: new Date(1538805600000),
+                    y: [6618.69, 6618.74, 6610, 6610.4]
+                    },{
+                    x: new Date(1538807400000),
+                    y: [6611, 6622.78, 6610.4, 6614.9]
+                    },{
+                    x: new Date(1538809200000),
+                    y: [6614.9, 6626.2, 6613.33, 6623.45]
+                    },{
+                    x: new Date(1538811000000),
+                    y: [6623.48, 6627, 6618.38, 6620.35]
+                    },{
+                    x: new Date(1538812800000),
+                    y: [6619.43, 6620.35, 6610.05, 6615.53]
+                    },{
+                    x: new Date(1538814600000),
+                    y: [6615.53, 6617.93, 6610, 6615.19]
+                    },{
+                    x: new Date(1538816400000),
+                    y: [6615.19, 6621.6, 6608.2, 6620]
+                    },{
+                    x: new Date(1538866800000),
+                    y: [6591.97, 6596.07, 6585, 6588.39]
+                    },{
+                    x: new Date(1538868600000),
+                    y: [6587.6, 6598.21, 6587.6, 6594.27]
+                    },{
+                    x: new Date(1538870400000),
+                    y: [6596.44, 6601, 6590, 6596.55]
+                    },{
+                    x: new Date(1538872200000),
+                    y: [6598.91, 6605, 6596.61, 6600.02]
+                    },{
+                    x: new Date(1538784000000),
+                    y: [6635.65, 6651, 6629.67, 6638.24]
+                    },{
+                    x: new Date(1538785800000),
+                    y: [6638.24, 6640, 6620, 6624.47]
+                    },{
+                    x: new Date(1538787600000),
+                    y: [6624.53, 6636.03, 6621.68, 6624.31]
+                    },{
+                    x: new Date(1538789400000),
+                    y: [6624.61, 6632.2, 6617, 6626.02]
+                    },{
+                    x: new Date(1538791200000),
+                    y: [6627, 6627.62, 6584.22, 6603.02]
+                    },{
+                    x: new Date(1538793000000),
+                    y: [6605, 6608.03, 6598.95, 6604.01]
+                    },{
+                    x: new Date(1538874000000),
+                    y: [6600.55, 6605, 6589.14, 6593.01]
+                    },{
+                    x: new Date(1538875800000),
+                    y: [6593.15, 6605, 6592, 6603.06]
+                    },{
+                    x: new Date(1538877600000),
+                    y: [6603.07, 6604.5, 6599.09, 6603.89]
+                    },{
+                    x: new Date(1538879400000),
+                    y: [6604.44, 6604.44, 6600, 6603.5]
+                    },{
+                    x: new Date(1538881200000),
+                    y: [6603.5, 6603.99, 6597.5, 6603.86]
+                    },{
+                    x: new Date(1538883000000),
+                    y: [6603.85, 6605, 6600, 6604.07]
+                    },{
+                    x: new Date(1538884800000),
+                    y: [6604.98, 6606, 6604.07, 6606]
+                    },
+                ]
+            }],
+                
+            xaxis: {
+                type: 'datetime'
+            },
+            yaxis: {
+                tooltip: {
+                    enabled: true
+                }
+            }
+        }       
+        $("#nav_ETC").on("click",function() {
+                setTimeout(function() {
+                    var chart = new ApexCharts(document.querySelector("#apex-ETC"),options); chart.render();
+                },500);
+            });
+    });
+
+    // DataTable
+    $(function() {
+       $('#myDataTable')
+       .addClass( 'nowrap' )
+       .dataTable( {
+           responsive: true,
+           columnDefs: [
+               { targets: [-1, -3], className: 'dt-body-right' }
+           ]
+       });
+   });
+</script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 export function showMessage(element, message, type = "") {
   element.textContent = message;
-  element.className = `result-state${type ? ` ${type}` : ""}`;
+  const alertType = type === "error" ? "danger" : type === "success" ? "success" : "info";
+  element.className = `result-state alert alert-${alertType}${type ? ` ${type}` : ""}`;
 }
 
 export function clearElement(element) {
@@ -28,7 +29,7 @@ export function formatDate(value) {
   return `${day}/${month}/${year}`;
 }
 
-export function safeExternalLink(url, text, className = "button secondary") {
+export function safeExternalLink(url, text, className = "btn btn-outline-primary") {
   const anchor = makeElement("a", text, className);
   anchor.href = url;
   anchor.target = "_blank";
@@ -40,6 +41,7 @@ export function createFormField(labelText, name, type = "text", options = {}) {
   const label = document.createElement("label");
   label.append(document.createTextNode(labelText));
   const input = document.createElement(type === "textarea" ? "textarea" : "input");
+  input.className = "form-control";
   input.name = name;
   input.id = name;
   if (type !== "textarea") input.type = type;

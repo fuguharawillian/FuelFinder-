@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Music Top Charts",
+        "dataTables":true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-red">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-music.html', {"page": "index"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0 text-end">
+                        <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#Add" type="button"><i class="fa fa-plus-square"></i> Add Top Songs</button>
+                    </div>
+                </div> <!-- .row end -->
+
+                <!-- Modal: Add Songs -->
+                <div class="modal fade" id="Add" tabindex="-1" aria-labelledby="Add" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Add Top Songs</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row g-3 mb-4">
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" placeholder="Song Name">
+                                            <label>Song Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" placeholder="Artist">
+                                            <label>Artist</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control datepicker" placeholder="Duration">
+                                            <label>Duration</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-floating">
+                                            <select class="form-select form-control">
+                                                <option value="1">Categories 1</option>
+                                                <option value="2">Categories 2</option>
+                                                <option value="2">Categories 3</option>
+                                                <option value="2">Categories 4</option>
+                                                <option value="2">Categories 5</option>
+                                            </select>
+                                            <label for="floatingSelect">Categories</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label for="formFile" class="form-label">Select Song</label>
+                                        <input class="form-control" type="file" id="formFile">
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-floating">
+                                            <textarea type="text" class="form-control" placeholder="Description" style="height: 100px"></textarea>
+                                            <label>Description</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="d-flex align-items-md-start align-items-center flex-column flex-md-row">
+                                    <img src="@@webRoot/assets/img/music/music-list-1.jpg" alt="" class="rounded-4">
+                                    <div class="media-body ms-md-5 m-0 mt-4 mt-md-0 text-md-start text-center">
+                                        <h4 class="mb-1 fw-light">Top Chart <a href="#" class="fa fa-pencil-square-o fs-6 ms-2" data-bs-toggle="offcanvas" data-bs-target="#edit_profile" title="Edit Profile"></a></h4>
+                                        <span class="text-muted">It is a long established fact that a reader will be distracted by the readable<br> content of a page when looking at its layout.</span>
+                                        <div class="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-md-start">
+                                            <div class="card py-2 px-3 me-2 mt-2">
+                                                <small class="text-muted">Songs</small>
+                                                <div class="fs-5">65</div>
+                                            </div>
+                                            <div class="card py-2 px-3 me-2 mt-2">
+                                                <small class="text-muted">Tracks</small>
+                                                <div class="fs-5">30</div>
+                                            </div>
+                                            <div class="card py-2 px-3 me-2 mt-2">
+                                                <small class="text-muted">Followers</small>
+                                                <div class="fs-5">1.8K</div>
+                                            </div>
+                                            <div class="card py-2 px-3 me-2 mt-2">
+                                                <small class="text-muted">Like</small>
+                                                <div class="fs-5">2.6K</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <h5 class="mb-0 mt-3">Top Songs</h5>
+                        <span class="text-muted small">Weeks top songs list</span>
+                    </div>
+                    <div class="col-12">
+                        <table id="myList" class="table align-middle mb-0 custom-table-2">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Artist</th>
+                                    <th>Album</th>
+                                    <th>duration</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/music/music-list-2.jpg" class="rounded-circle avatar sm" alt="">
+                                            <div class="ms-2 mb-0">Top English 50</div>
+                                        </div>
+                                    </td>
+                                    <td>J Balvin, Ed Sheeran</td>
+                                    <td>Sigue/Forever My Love</td>
+                                    <td>2:55</td>
+                                    <td>
+                                        <div class="dropdown morphing scale-left">
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"><i class="fa fa-heart"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Playlist"><i class="fa fa-music"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                            <ul class="dropdown-menu shadow border-0 p-2">
+                                                <li><a class="dropdown-item" href="#">Add to Library</a></li>
+                                                <li><a class="dropdown-item" href="#">Play Now</a></li>
+                                                <li><a class="dropdown-item" href="#">Add to Queue</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/music/music-list-3.jpg" class="rounded-circle avatar sm" alt="">
+                                            <div class="ms-2 mb-0">Top Morning 50</div>
+                                        </div>
+                                    </td>
+                                    <td>Arizona Zervas</td>
+                                    <td>My Time</td>
+                                    <td>2:30</td>
+                                    <td>
+                                        <div class="dropdown morphing scale-left">
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"><i class="fa fa-heart"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Playlist"><i class="fa fa-music"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                            <ul class="dropdown-menu shadow border-0 p-2">
+                                                <li><a class="dropdown-item" href="#">Add to Library</a></li>
+                                                <li><a class="dropdown-item" href="#">Play Now</a></li>
+                                                <li><a class="dropdown-item" href="#">Add to Queue</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/music/music-list-4.jpg" class="rounded-circle avatar sm" alt="">
+                                            <div class="ms-2 mb-0">Top gym 10</div>
+                                        </div>
+                                    </td>
+                                    <td>Charli XCX</td>
+                                    <td>CRASH (Deluxe)</td>
+                                    <td>3:18</td>
+                                    <td>
+                                        <div class="dropdown morphing scale-left">
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"><i class="fa fa-heart"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Playlist"><i class="fa fa-music"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                            <ul class="dropdown-menu shadow border-0 p-2">
+                                                <li><a class="dropdown-item" href="#">Add to Library</a></li>
+                                                <li><a class="dropdown-item" href="#">Play Now</a></li>
+                                                <li><a class="dropdown-item" href="#">Add to Queue</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/music/music-list-5.jpg" class="rounded-circle avatar sm" alt="">
+                                            <div class="ms-2 mb-0">Top Wake up</div>
+                                        </div>
+                                    </td>
+                                    <td>42 Dugg, EST Gee</td>
+                                    <td>Free The Shiners</td>
+                                    <td>4:02</td>
+                                    <td>
+                                        <div class="dropdown morphing scale-left">
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"><i class="fa fa-heart"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Playlist"><i class="fa fa-music"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                            <ul class="dropdown-menu shadow border-0 p-2">
+                                                <li><a class="dropdown-item" href="#">Add to Library</a></li>
+                                                <li><a class="dropdown-item" href="#">Play Now</a></li>
+                                                <li><a class="dropdown-item" href="#">Add to Queue</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/music/music-list-6.jpg" class="rounded-circle avatar sm" alt="">
+                                            <div class="ms-2 mb-0">Top Justin Bieber</div>
+                                        </div>
+                                    </td>
+                                    <td>Sabrina Claudio</td>
+                                    <td>Better Version</td>
+                                    <td>3:35</td>
+                                    <td>
+                                        <div class="dropdown morphing scale-left">
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"><i class="fa fa-heart"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Playlist"><i class="fa fa-music"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                            <ul class="dropdown-menu shadow border-0 p-2">
+                                                <li><a class="dropdown-item" href="#">Add to Library</a></li>
+                                                <li><a class="dropdown-item" href="#">Play Now</a></li>
+                                                <li><a class="dropdown-item" href="#">Add to Queue</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/music/music-list-7.jpg" class="rounded-circle avatar sm" alt="">
+                                            <div class="ms-2 mb-0">Top 90's</div>
+                                        </div>
+                                    </td>
+                                    <td>Red Hot Chili Peppers</td>
+                                    <td>Not the One</td>
+                                    <td>4:26</td>
+                                    <td>
+                                        <div class="dropdown morphing scale-left">
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"><i class="fa fa-heart"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Playlist"><i class="fa fa-music"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                            <ul class="dropdown-menu shadow border-0 p-2">
+                                                <li><a class="dropdown-item" href="#">Add to Library</a></li>
+                                                <li><a class="dropdown-item" href="#">Play Now</a></li>
+                                                <li><a class="dropdown-item" href="#">Add to Queue</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/music/music-list-8.jpg" class="rounded-circle avatar sm" alt="">
+                                            <div class="ms-2 mb-0">Top Attention</div>
+                                        </div>
+                                    </td>
+                                    <td>FINNEAS</td>
+                                    <td>Naked</td>
+                                    <td>3:29</td>
+                                    <td>
+                                        <div class="dropdown morphing scale-left">
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"><i class="fa fa-heart"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Playlist"><i class="fa fa-music"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                            <ul class="dropdown-menu shadow border-0 p-2">
+                                                <li><a class="dropdown-item" href="#">Add to Library</a></li>
+                                                <li><a class="dropdown-item" href="#">Play Now</a></li>
+                                                <li><a class="dropdown-item" href="#">Add to Queue</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/music/music-list-9.jpg" class="rounded-circle avatar sm" alt="">
+                                            <div class="ms-2 mb-0">Top Party</div>
+                                        </div>
+                                    </td>
+                                    <td>Nicky Romero</td>
+                                    <td>Lose My Mind</td>
+                                    <td>3:07</td>
+                                    <td>
+                                        <div class="dropdown morphing scale-left">
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"><i class="fa fa-heart"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Playlist"><i class="fa fa-music"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                            <ul class="dropdown-menu shadow border-0 p-2">
+                                                <li><a class="dropdown-item" href="#">Add to Library</a></li>
+                                                <li><a class="dropdown-item" href="#">Play Now</a></li>
+                                                <li><a class="dropdown-item" href="#">Add to Queue</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/music/music-list-4.jpg" class="rounded-circle avatar sm" alt="">
+                                            <div class="ms-2 mb-0">Top Disko</div>
+                                        </div>
+                                    </td>
+                                    <td>Sheff G</td>
+                                    <td>Break From It</td>
+                                    <td>1:56</td>
+                                    <td>
+                                        <div class="dropdown morphing scale-left">
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"><i class="fa fa-heart"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Playlist"><i class="fa fa-music"></i></button>
+                                            <button type="button" class="btn py-0 btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                            <ul class="dropdown-menu shadow border-0 p-2">
+                                                <li><a class="dropdown-item" href="#">Add to Library</a></li>
+                                                <li><a class="dropdown-item" href="#">Play Now</a></li>
+                                                <li><a class="dropdown-item" href="#">Add to Queue</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- .row end -->
+                
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables":true,
+})
+<script>
+    // project data table
+    $('#myList')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+    });
+</script>
+</body>
+</html>

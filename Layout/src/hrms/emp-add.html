@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "HRMS Add Employee",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-black">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hrms.html', {"page": "emp-add"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">Employees</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Add</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- Body: Body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Add New Employees</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Employee Name</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Email Id</label>
+                                        <input type="email" class="form-control form-control-lg" placeholder="Email ID">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">Phone Number</label>
+                                        <input type="number" class="form-control form-control-lg" placeholder="Phone Number">
+                                    </div>    
+                                    <div class="col-md-4">
+                                        <label class="form-label">Employee ID</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Employee ID">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Join Date</label>
+                                        <input type="date" class="form-control form-control-lg" placeholder="Join Date">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Role</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Role">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">Select avatar</label>
+                                        <label for="formFile" class="form-label">Default file input example</label>
+                                        <input class="form-control" type="file" id="formFile">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Facebook</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Facebook">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Twitter</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Twitter">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Linkedin</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Linkedin">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">instagram</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="instagram">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="button" class="btn btn-primary">Add</button>
+                                <button type="button" class="btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

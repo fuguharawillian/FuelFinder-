@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Crypto portfolio",
+        "dataTables": true
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-red">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-crypto.html', {"page": "portfolio"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Portfolio</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-4">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Current Graph<small class="text-muted d-block">Or you can <a href="#">sync data to Dashboard</a> to ensure your data is always up-to-date.</small></h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div class="mt-3 ac-line-transparent" id="apex-CurrentGraph"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="card fieldset border border-primary mb-5">
+                    <span class="fieldset-tile text-primary bg-body">Coin Holding</span>
+                    <div class="row g-2 row-deck">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="card ribbon">
+                                <div class="option-9 position-absolute text-light"><i class="fa fa-star"></i></div>
+                                <div class="card-body">
+                                    <span class="text-muted text-uppercase">Ethereum</span>
+                                    <div><span class="fs-4 me-2 fw-bold">$41,548</span><span class="text-success">4.15% <i class="fa fa-angle-up"></i></span></div>
+                                    <div class="mt-3 ac-line-transparent" id="apexspark-chart1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <span class="text-muted text-uppercase">BitCoin</span>
+                                    <div><span class="fs-4 me-2 fw-bold">$54,800.54</span><span class="text-success">7.41% <i class="fa fa-angle-up"></i></span></div>
+                                    <div class="mt-3 ac-line-transparent" id="apexspark-chart2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <span class="text-muted text-uppercase">LiteCoin</span>
+                                    <div><span class="fs-4 me-2 fw-bold">$14,091.8</span><span class="text-danger">14.15% <i class="fa fa-angle-down"></i></span></div>
+                                    <div class="mt-3 ac-line-transparent" id="apexspark-chart3"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <span class="text-muted text-uppercase">Monero</span>
+                                    <div><span class="fs-4 me-2 fw-bold">$12,548</span><span class="text-success">4.15% <i class="fa fa-angle-up"></i></span></div>
+                                    <div class="mt-3 ac-line-transparent" id="apexspark-chart4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- .row end -->
+                </div>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-12">
+                        <h5 class="fw-bold mb-2">My Activity</h5>
+                    </div>
+                    <div class="col-xl-12">
+                        <ul class="nav nav-tabs tab-card border-0" role="tablist">
+                            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#Activity-day" role="tab">Day</a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#Activity-week" role="tab">Week</a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#Activity-month" role="tab">Month</a></li>
+                        </ul>
+                        <div class="tab-content border rounded-4">
+                            <div class="tab-pane fade card-body show active" id="Activity-day" role="tabpanel">
+                                <table class="myDataTable table align-middle table-bordered mb-0 custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Transaction ID</th>
+                                            <th>Date</th>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>Coin</th>
+                                            <th>Amount</th>
+                                            <th>Note</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>#AS45453279</td>
+                                            <td>2 May 2021</td>
+                                            <td>Chris Fox</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                    <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">
+                                                    <div class="flex-fill ms-3">
+                                                        <div class="mb-0 h6">Maryam Amiri</div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>Bitcoin</td>
+                                            <td>$1597.78</td>
+                                            <td>None</td>
+                                            <td><span class="badge bg-success">COMPLETED</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#AS45459933</td>
+                                            <td>3 May 2021</td>
+                                            <td>Brad Simmons</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                    <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                                    <div class="flex-fill ms-3">
+                                                        <div class="mb-0 h6">Rose Gold</div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>Ethereum</td>
+                                            <td>$8712.34</td>
+                                            <td>None</td>
+                                            <td><span class="badge bg-success">COMPLETED</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#AS41159922</td>
+                                            <td>3 May 2021</td>
+                                            <td>Ja Morant</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                    <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="">
+                                                    <div class="flex-fill ms-3">
+                                                        <div class="mb-0 h6">Brad Simmons</div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>Ripple</td>
+                                            <td>$2468.56</td>
+                                            <td>None</td>
+                                            <td><span class="badge bg-danger">CANCELED</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade card-body" id="Activity-week" role="tabpanel">
+                                <table class="myDataTable table align-middle table-bordered mb-0 custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Transaction ID</th>
+                                            <th>Date</th>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>Coin</th>
+                                            <th>Amount</th>
+                                            <th>Note</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>#AS45453279</td>
+                                            <td>2 May 2021</td>
+                                            <td>Chris Fox</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                    <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">
+                                                    <div class="flex-fill ms-3">
+                                                        <div class="mb-0 h6">Maryam Amiri</div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>Bitcoin</td>
+                                            <td>$1597.78</td>
+                                            <td>None</td>
+                                            <td><span class="badge bg-success">COMPLETED</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#AS45459944</td>
+                                            <td>3 May 2021</td>
+                                            <td>Brad Simmons</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                    <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                                    <div class="flex-fill ms-3">
+                                                        <div class="mb-0 h6">Rose Gold</div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>Ripple</td>
+                                            <td>$6565.00</td>
+                                            <td>None</td>
+                                            <td><span class="badge bg-danger">CANCELED</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#AS45453279</td>
+                                            <td>2 May 2021</td>
+                                            <td>Chris Fox</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                    <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">
+                                                    <div class="flex-fill ms-3">
+                                                        <div class="mb-0 h6">Maryam Amiri</div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>Bitcoin</td>
+                                            <td>$1597.78</td>
+                                            <td>None</td>
+                                            <td><span class="badge bg-success">COMPLETED</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#AS45459979</td>
+                                            <td>2 May 2021</td>
+                                            <td>Barbara Kelly</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                    <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar9.jpg" alt="">
+                                                    <div class="flex-fill ms-3">
+                                                        <div class="mb-0 h6">Maryam Amiri</div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>Litecoin</td>
+                                            <td>$9877.78</td>
+                                            <td>None</td>
+                                            <td><span class="badge bg-primary">PENDING</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#AS45459944</td>
+                                            <td>3 May 2021</td>
+                                            <td>Brad Simmons</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                    <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                                    <div class="flex-fill ms-3">
+                                                        <div class="mb-0 h6">Rose Gold</div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>Ripple</td>
+                                            <td>$6565.00</td>
+                                            <td>None</td>
+                                            <td><span class="badge bg-danger">CANCELED</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#AS45459933</td>
+                                            <td>3 May 2021</td>
+                                            <td>Brad Simmons</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                    <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                                    <div class="flex-fill ms-3">
+                                                        <div class="mb-0 h6">Rose Gold</div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>Ethereum</td>
+                                            <td>$8712.34</td>
+                                            <td>None</td>
+                                            <td><span class="badge bg-success">COMPLETED</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+    "apexcharts": true,
+})
+<script>
+    $(document).ready(function () {
+        var options = {
+            series: [{
+                name: 'BTC',
+                data: [44, 55, 41, 67, 22, 43, 23, 20, 8, 13, 27, 33]
+            }, {
+                name: 'LTC',
+                data: [13, 23, 20, 8, 13, 27, 55, 41, 67, 22, 43, 23]
+            }, {
+                name: 'XRP',
+                data: [11, 17, 15, 15, 21, 14, 8, 13, 27, 55, 41, 16]
+            }, {
+                name: 'DASH',
+                data: [21, 7, 25, 13, 22, 8, 15, 15, 21, 14, 8, 13]
+            }],
+            chart: {
+                type: 'bar',
+                height: 250,
+                stacked: true,
+                toolbar: {
+                    show: false
+                },
+                zoom: {
+                    enabled: true
+                }
+            },
+            colors: ['var(--chart-color1)', 'var(--chart-color2)', 'var(--chart-color3)', 'var(--chart-color4)'],
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    legend: {
+                        position: 'bottom',
+                        offsetX: -10,
+                        offsetY: 0
+                    }
+                }
+            }],
+            plotOptions: {
+                bar: {
+                    borderRadius: 8,
+                    horizontal: false,
+                },
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            xaxis: {
+                categories: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+            },
+            legend: {
+                position: 'bottom',
+            },
+            fill: {
+                opacity: 1
+            }
+        };
+        var chart = new ApexCharts(document.querySelector("#apex-CurrentGraph"), options); chart.render();
+    });
+
+    // top small line chart
+    $(document).ready(function () {
+
+        var options1 = {
+            chart: {
+                type: 'line',
+                width: 160,
+                height: 35,
+
+                sparkline: {
+                    enabled: true
+                }
+            },
+            grid: {
+                xaxis: {
+                    lines: {
+                        show: false
+                    }
+                }
+            },
+            stroke: {
+                width: 3,
+                curve: 'smooth',
+                colors: ['var(--chart-color1)']
+            },
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shade: 'dark',
+                    gradientToColors: ["var(--chart-color2)"],
+                    shadeIntensity: 1,
+                    type: 'horizontal',
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [0, 50, 100],
+                    colorStops: []
+                },
+            },
+            series: [{
+                data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
+            }],
+            tooltip: {
+                fixed: {
+                    enabled: false
+                },
+                x: {
+                    show: false
+                },
+                y: {
+                    title: {
+                        formatter: function (seriesName) {
+                            return ''
+                        }
+                    }
+                },
+                marker: {
+                    show: false,
+                }
+            }
+        }
+        new ApexCharts(document.querySelector("#apexspark-chart1"), options1).render();
+
+        var options2 = {
+            chart: {
+                type: 'line',
+                width: 160,
+                height: 35,
+
+                sparkline: {
+                    enabled: true
+                }
+            },
+            grid: {
+                xaxis: {
+                    lines: {
+                        show: true
+                    }
+                }
+            },
+            stroke: {
+                width: 3,
+                curve: 'smooth',
+                colors: ['var(--chart-color2)']
+            },
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shade: 'dark',
+                    gradientToColors: ["var(--chart-color3)"],
+                    shadeIntensity: 1,
+                    type: 'horizontal',
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [0, 50, 100],
+                    colorStops: []
+                },
+            },
+            series: [{
+                data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
+            }],
+            tooltip: {
+                fixed: {
+                    enabled: false
+                },
+                x: {
+                    show: false
+                },
+                y: {
+                    title: {
+                        formatter: function (seriesName) {
+                            return ''
+                        }
+                    }
+                },
+                marker: {
+                    show: false,
+                }
+            }
+        }
+        new ApexCharts(document.querySelector("#apexspark-chart2"), options2).render();
+
+        var options3 = {
+            chart: {
+                type: 'line',
+                width: 160,
+                height: 35,
+
+                sparkline: {
+                    enabled: true
+                }
+            },
+            grid: {
+                xaxis: {
+                    lines: {
+                        show: true
+                    }
+                }
+            },
+            stroke: {
+                width: 3,
+                curve: 'smooth',
+                colors: ['var(--chart-color3)']
+            },
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shade: 'dark',
+                    gradientToColors: ["var(--chart-color4)"],
+                    shadeIntensity: 1,
+                    type: 'horizontal',
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [0, 50, 100],
+                    colorStops: []
+                },
+            },
+            series: [{
+                data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
+            }],
+            tooltip: {
+                fixed: {
+                    enabled: false
+                },
+                x: {
+                    show: false
+                },
+                y: {
+                    title: {
+                        formatter: function (seriesName) {
+                            return ''
+                        }
+                    }
+                },
+                marker: {
+                    show: false,
+                }
+            }
+        }
+        new ApexCharts(document.querySelector("#apexspark-chart3"), options3).render();
+
+        var options4 = {
+            chart: {
+                type: 'line',
+                width: 160,
+                height: 35,
+
+                sparkline: {
+                    enabled: true
+                }
+            },
+            grid: {
+                xaxis: {
+                    lines: {
+                        show: true
+                    }
+                }
+            },
+            stroke: {
+                width: 3,
+                curve: 'smooth',
+                colors: ['var(--chart-color1)']
+            },
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shade: 'dark',
+                    gradientToColors: ["var(--chart-color2)"],
+                    shadeIntensity: 1,
+                    type: 'horizontal',
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [0, 50, 100],
+                    colorStops: []
+                },
+            },
+            series: [{
+                data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
+            }],
+            tooltip: {
+                fixed: {
+                    enabled: false
+                },
+                x: {
+                    show: false
+                },
+                y: {
+                    title: {
+                        formatter: function (seriesName) {
+                            return ''
+                        }
+                    }
+                },
+                marker: {
+                    show: false,
+                }
+            }
+        }
+        new ApexCharts(document.querySelector("#apexspark-chart4"), options4).render();
+
+    });
+
+    $(document).ready(function () {
+        $('.myDataTable')
+        .addClass('nowrap')
+        .dataTable({
+            responsive: true,
+        });
+        $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+			$($.fn.dataTable.tables(true)).DataTable()
+			.columns.adjust()
+			.responsive.recalc();
+		});
+    });
+</script>
+</body>
+</html>

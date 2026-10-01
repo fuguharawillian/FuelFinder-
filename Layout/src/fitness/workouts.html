@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Fitness Workout",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-fitness.html', {"page": "workouts"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Workout</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="row g-4">
+                                    <div class="col-xl-2 col-lg-3 col-md-2">
+                                        <label class="form-label">Select Month</label>
+                                        <select class="form-control form-control-lg">
+                                            <option>Select</option>
+                                            <option>January</option>
+                                            <option>February</option>
+                                            <option>March</option>
+                                            <option>April</option>
+                                            <option>May</option>
+                                            <option>June</option>
+                                            <option>July</option>
+                                            <option>August</option>
+                                            <option>September</option>
+                                            <option>October</option>
+                                            <option>November</option>
+                                            <option>December</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4">
+                                        <label class="form-label">Search...</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Search...">
+                                    </div>
+                                    <div class="col-xl-6 col-lg-5 col-md-6 text-md-end">
+                                        <label class="form-label">Action</label>
+                                        <div>
+                                            <button type="button" class="btn btn-lg btn-outline-secondary" data-bs-toggle="tooltip" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                            <button type="button" class="btn btn-lg btn-outline-secondary" data-bs-toggle="tooltip" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                            <button type="button" class="btn btn-lg btn-outline-secondary" data-bs-toggle="tooltip" title="Download"><i class="fa fa-download"></i></button>
+                                            <button type="button" class="btn btn-lg btn-primary" data-bs-toggle="modal" data-bs-target="#add_workout">Add Workout</button>
+                                        </div>
+                                    </div>
+                                </div> <!-- Row end  -->
+                            </div>
+                            <ul class="nav nav-tabs tab-card" role="tablist">
+                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#nav-week-1" role="tab">Week 1</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav-week-2" role="tab">Week 2</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav-week-3" role="tab">Week 3</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav-week-4" role="tab">Week 4</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="nav-week-1" role="tabpanel">
+                                <div class="card fieldset border border-primary">
+                                    <span class="fieldset-tile text-primary bg-body">Workout Week 1</span>
+                                    <table class="table myDataTable custom-table mb-0">
+                                        <thead>
+                                            <tr>                                       
+                                                <th>ID:</th>
+                                                <th>Athlete</th>
+                                                <th>Monday</th>
+                                                <th>Tuesday</th>
+                                                <th>Wednesday</th>
+                                                <th>Thursday</th>
+                                                <th>Friday</th>
+                                                <th>Saturday</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>LA-0211</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Marshall Nichols</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Lower-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0212</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar2.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Susie Willis</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Lower-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0213</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Francisco Vasquez</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Strenngth Workout 1</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cardio intervals</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0215</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar4.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Jane Hunt</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Strenngth Workout 2</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0217</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar5.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Susie Willis</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Strenngth Workout 1</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cardio intervals</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0220</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar6.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Debra Stewart</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Lower-Body</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0212</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar7.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Susie Willis</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Lower-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0213</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar8.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Francisco Vasquez</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Strenngth Workout 1</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cardio intervals</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0215</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar9.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Jane Hunt</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Strenngth Workout 2</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nav-week-2" role="tabpanel">
+                                <div class="card fieldset border border-primary">
+                                    <span class="fieldset-tile text-primary bg-body">Workout Week 2</span>
+                                    <table class="table myDataTable custom-table mb-0">
+                                        <thead>
+                                            <tr>                                       
+                                                <th>ID:</th>
+                                                <th>Athlete</th>
+                                                <th>Monday</th>
+                                                <th>Tuesday</th>
+                                                <th>Wednesday</th>
+                                                <th>Thursday</th>
+                                                <th>Friday</th>
+                                                <th>Saturday</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>LA-0212</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar2.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Susie Willis</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Lower-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0213</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Francisco Vasquez</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Strenngth Workout 1</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cardio intervals</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0211</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Marshall Nichols</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Lower-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0215</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar4.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Jane Hunt</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Strenngth Workout 2</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nav-week-3" role="tabpanel">
+                                <div class="card fieldset border border-primary">
+                                    <span class="fieldset-tile text-primary bg-body">Workout Week 3</span>
+                                    <table class="table myDataTable custom-table mb-0">
+                                        <thead>
+                                            <tr>                                       
+                                                <th>ID:</th>
+                                                <th>Athlete</th>
+                                                <th>Monday</th>
+                                                <th>Tuesday</th>
+                                                <th>Wednesday</th>
+                                                <th>Thursday</th>
+                                                <th>Friday</th>
+                                                <th>Saturday</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>LA-0212</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar2.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Susie Willis</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Lower-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0213</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Francisco Vasquez</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Strenngth Workout 1</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cardio intervals</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0220</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar6.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Debra Stewart</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Lower-Body</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0212</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar7.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Susie Willis</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Lower-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0211</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Marshall Nichols</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Lower-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0215</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar4.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Jane Hunt</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Strenngth Workout 2</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nav-week-4" role="tabpanel">
+                                <div class="card fieldset border border-primary">
+                                    <span class="fieldset-tile text-primary bg-body">Workout Week 4</span>
+                                    <table class="table myDataTable custom-table mb-0">
+                                        <thead>
+                                            <tr>                                       
+                                                <th>ID:</th>
+                                                <th>Athlete</th>
+                                                <th>Monday</th>
+                                                <th>Tuesday</th>
+                                                <th>Wednesday</th>
+                                                <th>Thursday</th>
+                                                <th>Friday</th>
+                                                <th>Saturday</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>LA-0212</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar2.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Susie Willis</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Lower-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0213</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Francisco Vasquez</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Strenngth Workout 1</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cardio intervals</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0220</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar6.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Debra Stewart</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Lower-Body</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0212</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar7.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Susie Willis</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Lower-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0211</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Marshall Nichols</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Lower-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LA-0215</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="@@webRoot/assets/img/xs/avatar4.jpg" class="rounded sm avatar" alt="">
+                                                        <h6 class="ms-2 mb-0">Jane Hunt</h6>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Upper-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Rest</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Strenngth Workout 2</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">abs</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Full-Body</a></td>
+                                                <td><a href="#" class="text-muted d-block" data-bs-toggle="modal" data-bs-target="#workout-details">Cross-Training</a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal: Workout detail -->
+                        <div class="modal fade" id="workout-details" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Workout Details</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="table myDataTable card-table">
+                                            <thead>
+                                                <tr>                                       
+                                                    <th>Workout name</th>
+                                                    <th>Start time</th>
+                                                    <th>End time</th>
+                                                    <th>Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>30 Jumping Jacks</td>
+                                                    <td>07:00 AM</td>
+                                                    <td>07:20 AM</td>
+                                                    <td>20 Mins</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10 Push-Ups</td>
+                                                    <td>07:20 AM</td>
+                                                    <td>07:50 AM</td>
+                                                    <td>30 Mins</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>30 Crunches</td>
+                                                    <td>08:00 AM</td>
+                                                    <td>08:25 AM</td>
+                                                    <td>35 Mins</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10 Burpees</td>
+                                                    <td>08:25 AM</td>
+                                                    <td>08:58 AM</td>
+                                                    <td>33 Mins</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>30 Second Side Plank</td>
+                                                    <td>09:00 AM</td>
+                                                    <td>09:30 AM</td>
+                                                    <td>30 Mins</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal: Add Workout -->
+                        @@include('modals/_modal-add-workout.html')
+                    </div>
+                </div> <!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    // project data table
+    $('.myDataTable').addClass( 'nowrap' );
+    $('.myDataTable')
+    .dataTable( {
+        responsive: true,
+        searching: false,
+        paging: false,
+        info: false,
+    });
+
+    $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+        $($.fn.dataTable.tables(true)).DataTable()
+        .columns.adjust()
+        .responsive.recalc();
+    });
+</script>
+</body>
+</html>

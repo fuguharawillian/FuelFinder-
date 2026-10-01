@@ -7,7 +7,8 @@ const status = document.getElementById("page-status");
 const list = document.getElementById("station-list");
 
 document.addEventListener("DOMContentLoaded", async () => {
-  await initializeShell();
+  const user = await initializeShell({ requiredAuth: true });
+  if (!user) return;
   initMap("map");
   document.getElementById("search-form").addEventListener("submit", searchFromForm);
   document.getElementById("gps-button").addEventListener("click", useGps);
@@ -76,7 +77,8 @@ function renderStationList(stations) {
     }
     metadata.append(makeElement("span", `${Number(station.averageRating || 0).toFixed(1)} ★ · ${station.totalReviews || 0} avaliações`));
     card.append(metadata);
-    const link = makeElement("a", "Ver preços, avaliações e rotas", "button secondary");
+    const link = makeElement("a", "Ver preços, avaliações e rotas", "btn btn-outline-primary");
+    link.classList.add("mt-2");
     link.href = `/station-detail.html?id=${encodeURIComponent(station.id)}`;
     card.append(link);
     list.append(card);

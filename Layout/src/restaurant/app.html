@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Restaurant APP",
+    })
+
+    <!-- do not use in project -->
+    <style>
+        .app-demo{position: relative;overflow: hidden;}
+        .app-demo .card-overlay {position: absolute;top: -60px;left: -60px;width: 60px;height: 60px;border-radius: 50%;background: var(--secondary-color);-webkit-transform: scale(1);transform: scale(1);-webkit-transition: all .5s;transition: all .5s;z-index: 1;}
+        .app-demo:hover .card-overlay{-webkit-transform: scale(35);transform: scale(35);}
+        .app-demo:hover .demo-text{opacity: 1;transform: translateY(0);}
+        .app-demo .demo-text{transition: all .3s;transition-delay: .1s;transform: translateY(20px);display: flex;flex-direction: column;position: absolute;z-index: 2;text-align: center;justify-content: center;width: calc(100% - 1rem);height: calc(100% - 1rem);align-items: center;color: #fff;opacity: 0;}
+    </style>
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-restaurant.html', {"page": "app"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Applications</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h3 class="fw-light"><i class="fa fa-thumbs-o-up me-2"></i>Handcrafted Applications</h3>
+                        <div class="rating mt-2">
+                            <span class="me-2">
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            </span>
+                            Rated 4.7/5 in Customer Satisfaction  |  <a href="https://themeforest.net/user/wrraptheme" title="wrraptheme" target="_blank">Wrraptheme</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-3 row-deck row-cols-xxl-3 row-cols-xl-2 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1">
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/app-shoot/calendar.jpg" alt="app calendar">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">Calendar</h4>
+                                <p>An App to schedule and manage all your events and appoinments.</p>
+                                <a class="btn bg-white" target="_blank" href="app-calendar.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/app-shoot/calendar-tui.jpg" alt="app calendar tui">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">Calendar Tui</h4>
+                                <p>An unique app the manage all your events beautifully.</p>
+                                <a class="btn bg-white" target="_blank" href="app-calendar-tui.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/app-shoot/inbox.jpg" alt="app Inbox">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">Inbox App</h4>
+                                <p>An app to check all your emails.</p>
+                                <a class="btn bg-white" target="_blank" href="app-email.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/app-shoot/chat.jpg" alt="app Chat">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">Chat App</h4>
+                                <p>An app to chat with all the individuals and the groups.</p>
+                                <a class="btn bg-white" target="_blank" href="app-chat.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/app-shoot/campaigns.jpg" alt="app Campaigns">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">Campaigns</h4>
+                                <p>Do you want to manage your campaigns? This is the best in class app for the campaigns.</p>
+                                <a class="btn bg-white" target="_blank" href="app-campaigns.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/app-shoot/social.jpg" alt="app Social">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">Social App</h4>
+                                <p>Manage all the social media campaigns within the admin panel.</p>
+                                <a class="btn bg-white" target="_blank" href="app-social.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/app-shoot/file-manager.jpg" alt="app File Manager">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">File Manager</h4>
+                                <p>A Dashboard to manage all your files within.</p>
+                                <a class="btn bg-white" target="_blank" href="app-file-manager.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/app-shoot/todo.jpg" alt="app Todo">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">Todo list</h4>
+                                <p>Track everything that needs to be done and which is already done.</p>
+                                <a class="btn bg-white" target="_blank" href="app-todo.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/app-shoot/contact.jpg" alt="app Contact">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">Contact List</h4>
+                                <p>Manage a list of contacts in a beautful design.</p>
+                                <a class="btn bg-white" target="_blank" href="app-contacts.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/app-shoot/tasks.jpg" alt="app Taks">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">My Taks</h4>
+                                <p>An app to see, track, update status and assign tasks to team and get updates from the team.</p>
+                                <a class="btn bg-white" target="_blank" href="app-tasks.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/app-shoot/project.jpg" alt="app Project">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">My Project</h4>
+                                <p>A unique handcrafted app to track status and progress of the project.</p>
+                                <a class="btn bg-white" target="_blank" href="app-project.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/app-shoot/kanban.jpg" alt="Kanban Board">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">Kanban Board</h4>
+                                <p>Manage your tasks in a beautiful KanBan application.</p>
+                                <a class="btn bg-white" target="_blank" href="app-jkanban.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/app-shoot/blog.jpg" alt="My Blog">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">My Blog</h4>
+                                <p>A full app to manage blog activities.</p>
+                                <a class="btn bg-white" target="_blank" href="app-blog.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

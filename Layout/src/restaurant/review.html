@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Restaurant Reviews",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-restaurant.html', {"page": "review"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Review</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <ul class="list-unstyled row g-3">
+                    <li class="col-12 card">
+                        <div class="card-body d-flex">
+                            <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">
+                            <div class="flex-fill ms-3 text-truncate">
+                                <h6 class="mb-0 d-flex justify-content-between">
+                                    <span>Nellie Maxwell</span>
+                                    <span class="text-warning small">
+                                        <label class="fw-bold me-2 h6 mb-0">4.5 / 5</label>
+                                        <i class="fa fa-star fa-lg"></i>
+                                        <i class="fa fa-star fa-lg"></i>
+                                        <i class="fa fa-star fa-lg"></i>
+                                        <i class="fa fa-star fa-lg"></i>
+                                        <i class="fa fa-star-half-empty fa-lg"></i>
+                                    </span>
+                                </h6>
+                                <span class="text-muted">Posted a Review: 3 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="timeline-item-post">
+                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+                                <div class="mb-2 mt-4">
+                                    <a class="me-lg-4 me-2 text-primary" href="#"><i class="fa fa-thumbs-up"></i> Like (55)</a>
+                                    <a class="me-lg-4 me-2 text-primary" href="#"><i class="fa fa-comment"></i> Comment (2)</a>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <textarea class="form-control" placeholder="Replay"></textarea>
+                            </div>
+                        </div>
+                    </li> <!-- .Card End -->
+                    <li class="col-12 card">
+                        <div class="card-body d-flex">
+                            <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                            <div class="flex-fill ms-3 text-truncate">
+                                <h6 class="mb-0 d-flex justify-content-between">
+                                    <span>Nellie Maxwell</span>
+                                    <span class="text-warning small">
+                                        <label class="fw-bold me-2 h6 mb-0">4.5 / 5</label>
+                                        <i class="fa fa-star fa-lg"></i>
+                                        <i class="fa fa-star fa-lg"></i>
+                                        <i class="fa fa-star fa-lg"></i>
+                                        <i class="fa fa-star fa-lg"></i>
+                                        <i class="fa fa-star-half-empty fa-lg"></i>
+                                    </span>
+                                </h6>
+                                <span class="text-muted">Posted a Review: 3 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="timeline-item-post">
+                                <p>Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+                                <div class="mb-2 mt-4">
+                                    <a class="me-lg-4 me-2 text-primary" href="#"><i class="fa fa-thumbs-up"></i> Like (55)</a>
+                                    <a class="me-lg-4 me-2 text-primary" href="#"><i class="fa fa-comment"></i> Comment (2)</a>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <textarea class="form-control" placeholder="Replay"></textarea>
+                            </div>
+                        </div>
+                    </li> <!-- .Card End -->
+                </ul> <!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

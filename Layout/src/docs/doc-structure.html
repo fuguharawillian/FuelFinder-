@@ -1,0 +1,293 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Structure",
+        "jstree": true
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "doc-structure"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">File Structure</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="doc-setup.html"><i class="fa fa-long-arrow-left me-2"></i>Development Setup</a>
+                        <a class="btn btn-secondary" href="doc-references.html">References<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+                
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0"><i class="fa fa-folder me-2"></i>File Structure</h5>
+                            </div>
+                            <style>
+                                #JsDataTree ul li{font-size: 15px; min-height: 28px;}
+                                .jstree-open > .jstree-anchor > .fa-folder:before {content: "\f07c"; margin-left: 2px;}
+                            </style>
+                            <div class="card-body">
+                                <div class="JsDataTree">
+                                    <ul>
+                                        <li data-jstree='{ "opened" : "true" }'><span style="min-width: 120px; display: inline-block;">src</span>
+                                            <ul>
+                                                <li data-jstree='{ "opened" : "true" }'>Assets
+                                                    <ul>
+                                                        <li>bundles <span class="text-muted small">- Bundling plugins JS file</span></li>
+                                                        <li>css <span class="text-muted small">- Compiled CSS</span></li>
+                                                        <li>fonts <span class="text-muted small">- Google Font and Fontawesome</span></li>
+                                                        <li>img <span class="text-muted small">- Image assets</span></li>
+                                                        <li>js <span class="text-muted small">-  Javascript source</span></li>
+                                                        <li>scss <span class="text-muted small">- SCSS source for theme</span>
+                                                            <ul>
+                                                                <li>bootstrap <span class="text-muted small">-- Custom bootstrap components</span></li>
+                                                                <li>generic <span class="text-muted small">-- Animation, Helpers class</span></li>
+                                                                <li>global <span class="text-muted small">-- variables, mixins</span></li>
+                                                                <li>plugin <span class="text-muted small">-- all plugin scss file</span></li>
+                                                                <li>skeleton</li>
+                                                                <li>theme <span class="text-muted small">-- core, high-contrast, themes-dark</span></li>
+                                                                <li>widgets <span class="text-muted small">-- All widgets</span></li>
+                                                                <li data-jstree='{ "type" : "file" }'>main.scss</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>vendor <span class="text-muted small">- Third party plugins</span></li>
+                                                    </ul>
+                                                </li>
+                                                <li data-jstree='{ "opened" : "true" }'>CRM
+                                                    <ul>
+                                                        <li>Landing one page
+                                                            <ul>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>index.html</li>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>blog.html</li>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>blog-detail.html</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'><a href="../crm/index.html" target="_blank">index.html</a></li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'>More HTML pages</li>
+                                                    </ul>
+                                                </li>
+                                                <li data-jstree='{ "opened" : "true" }'>Cryptocurrency
+                                                    <ul>
+                                                        <li>Landing one page
+                                                            <ul>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>index.html</li>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>blog.html</li>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>blog-detail.html</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'><a href="../crypto/index.html" target="_blank">index.html</a></li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'>More HTML pages</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Documentation</li>
+                                                <li data-jstree='{ "opened" : "true" }'>eCommerce
+                                                    <ul>
+                                                        <li>Landing one page
+                                                            <ul>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>index.html</li>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>blog.html</li>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>blog-detail.html</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'><a href="../ecommerce/index.html" target="_blank">index.html</a></li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'>More HTML pages</li>
+                                                    </ul>
+                                                </li>
+                                                <li data-jstree='{ "opened" : "true" }'>Event management
+                                                    <ul>
+                                                        <li>Landing one page
+                                                            <ul>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>index.html</li>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>blog.html</li>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>blog-detail.html</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'><a href="../event/index.html" target="_blank">index.html</a></li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'>More HTML pages</li>
+                                                    </ul>
+                                                </li>
+                                                <li data-jstree='{ "opened" : "true" }'>Fitness Analytics
+                                                    <ul>
+                                                        <li>Landing one page
+                                                            <ul>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>index.html</li>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>blog.html</li>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>blog-detail.html</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'><a href="../fitness/index.html" target="_blank">index.html</a></li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'>More HTML pages</li>
+                                                    </ul>
+                                                </li>
+                                                <li data-jstree='{ "opened" : "true" }'>Hospital
+                                                    <ul>
+                                                        <li>Landing one page
+                                                            <ul>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>index.html</li>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>blog.html</li>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>blog-detail.html</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'><a href="../hospital/index.html" target="_blank">index.html</a></li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'>More HTML pages</li>
+                                                    </ul>
+                                                </li>
+                                                <li data-jstree='{ "opened" : "true" }'>HRMS
+                                                    <ul>
+                                                        <li>Landing one page
+                                                            <ul>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>index.html</li>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>blog.html</li>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>blog-detail.html</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'><a href="../hrms/index.html" target="_blank">index.html</a></li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'>More HTML pages</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Inventory Management
+                                                    <ul>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'><a href="../inventory/index.html" target="_blank">index.html</a></li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'>More HTML pages</li>
+                                                    </ul>
+                                                </li>
+                                                <li data-jstree='{ "opened" : "true" }'>Job Portal
+                                                    <ul>
+                                                        <li>Landing one page
+                                                            <ul>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>index.html</li>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>blog.html</li>
+                                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>blog-detail.html</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'><a href="../job-portal/index.html" target="_blank">index.html</a></li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'>More HTML pages</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Music Admin
+                                                    <ul>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'><a href="../music/index.html" target="_blank">index.html</a></li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'>More HTML pages</li>
+                                                    </ul>
+                                                </li>
+                                                <li>NFT Admin
+                                                    <ul>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'><a href="../nft/index.html" target="_blank">index.html</a></li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'>More HTML pages</li>
+                                                    </ul>
+                                                </li>
+                                                <li>onepgae-uikit</li>
+                                                <li class="text-danger">partials (Template components)</li>
+                                                <li>Real-Estate
+                                                    <ul>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'><a href="../real-estate/index.html" target="_blank">index.html</a></li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'>More HTML pages</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Restaurant
+                                                    <ul>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'><a href="../restaurant/index.html" target="_blank">index.html</a></li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'>More HTML pages</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Server
+                                                    <ul>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'><a href="../server/index.html" target="_blank">index.html</a></li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'>More HTML pages</li>
+                                                    </ul>
+                                                </li>
+                                                <li>University
+                                                    <ul>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'><a href="../university/index.html" target="_blank">index.html</a></li>
+                                                        <li class="text-primary" data-jstree='{ "type" : "file" }'>More HTML pages</li>
+                                                    </ul>
+                                                </li>
+                                                <li class="text-primary" data-jstree='{ "type" : "file" }'><a href="../index.html" target="_blank">index.html</a></li>
+                                                <li class="text-primary" data-jstree='{ "type" : "file" }'>More HTML pages</li>
+                                            </ul>
+                                        </li>
+                                        <li  class="text-danger"><span style="min-width: 120px; display: inline-block;">node_modules</span> <small class="text-muted d-none d-lg-inline-block">( NPM dependencies (by default the folder is not included) <code>npm</code> installs dependencies. )</small>
+                                        <li data-jstree='{ "type" : "file" }'>.gitignore</li>
+                                        <li data-jstree='{ "type" : "file" }'>gulpfile.js</li>
+                                        <li data-jstree='{ "type" : "file" }'>package.json</li>
+                                        <li data-jstree='{ "type" : "file" }'>README.md</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="doc-setup.html"><i class="fa fa-long-arrow-left me-3"></i>Development Setup</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="doc-references.html"><i class="fa fa-long-arrow-right me-3"></i>References</a>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('docs/_scripts.html',{
+    "jstree": true,
+})
+<script>
+    // inline data demo	
+    $(".JsDataTree").jstree({
+		"core": {
+			"themes": {
+				"responsive": false
+			}
+		},
+		"types": {
+			"default": {
+				"icon": "fa fa-folder"
+			},
+			"file": {
+				"icon": "fa fa-file-text"
+			},
+		},
+		"plugins": ["types"]
+	});
+    
+</script>
+</body>
+</html>

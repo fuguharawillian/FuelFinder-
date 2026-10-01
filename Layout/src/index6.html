@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('_head.html',{
+        "pageTitle": "Dashboard",
+        "daterangepicker": true,
+    })
+</head>
+
+<body class="layout-2" data-luno="theme-blue">
+
+    <!-- start: sidebar -->
+	@@include('_compact-sidebar.html', {"page": "index", "cardClass": "sidebar-mini"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="dashboard.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">My Dashboard</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 row-deck">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <i class="fa fa-user fa-lg position-absolute top-0 end-0 p-3"></i>
+                                <div class="mb-2 text-uppercase">NEW EMPLOYEE</div>
+                                <div><span class="h4">51</span> <span class="small text-muted"><i class="fa fa-level-up"></i> 13%</span></div>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                            <div class="progress" style="height: 4px;">
+                                <div class="progress-bar bg-secondary" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <i class="fa fa-credit-card fa-lg position-absolute top-0 end-0 p-3"></i>
+                                <div class="mb-2 text-uppercase">EXPENSE</div>
+                                <div><span class="h4">$3,251</span> <span class="small text-muted"><i class="fa fa-level-up"></i> 13%</span></div>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                            <div class="progress" style="height: 4px;">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 13%" aria-valuenow="13" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <i class="fa fa-dollar fa-lg position-absolute top-0 end-0 p-3"></i>
+                                <div class="mb-2 text-uppercase">Revenue</div>
+                                <div><span class="h4">$18,925</span> <span class="small text-muted"><i class="fa fa-level-up"></i> 78%</span></div>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                            <div class="progress" style="height: 4px;">
+                                <div class="progress-bar bg-secondary" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <i class="fa fa-briefcase fa-lg position-absolute top-0 end-0 p-3"></i>
+                                <div class="mb-2 text-uppercase">NEW LEADS</div>
+                                <div><span class="h4">125</span> <span class="small text-muted"><i class="fa fa-level-up"></i> 55%</span></div>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                            <div class="progress" style="height: 4px;">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 55%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-12">
+                        <div class="card text-center bg-primary-gradient">
+                            <div class="card-body d-flex align-items-center justify-content-center">
+                                <div>
+                                    <h4 class="mt-4">Wellcome Back, Chris!!</h4>
+                                    <p class="card-text fs-6 mb-5">If you are going to use a passage of Lorem Ipsum, you need to be sure anything embarrassing.</p>
+                                    <a class="btn btn-lg bg-white text-uppercase" href="page-pricing.html" title="">Update now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-6 col-xl-8 col-lg-8">
+                        <div class="card bg-body text-light">
+                            <div class="card-header bg-transparent">
+                                <h6 class="card-title m-0">LUNO Revenue</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div id="apex-AudienceOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Sales by Category</h6>
+                            </div>
+                            <div class="card-body">
+                                <div id="apex-SalesbyCategory"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                        @@include('widgets/_card-transactions.html')
+                    </div>
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                        @@include('widgets/_card-recent-files.html')
+                    </div>
+                    <div class="col-xxl-6 col-xl-12 col-lg-12 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Reports overview</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <span class="h2 d-block mb-3">$7,431.14 USD</span>
+                                <!-- Progress -->
+                                <div class="progress rounded-pill mb-2" style="height: 5px;">
+                                    <div class="progress-bar chart-color1" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar chart-color2" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar chart-color3" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                
+                                <div class="d-flex justify-content-between mb-4">
+                                    <span>0%</span>
+                                    <span>100%</span>
+                                </div>
+                                <!-- End Progress -->
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-nowrap mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <td><i class="fa fa-circle me-2 chart-text-color1"></i>Gross value</td>
+                                                <td>$3,500.71</td>
+                                                <td><span class="badge bg-success">+12.1%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fa fa-circle me-2 chart-text-color2"></i>Net volume from sales</td>
+                                                <td>$2,980.45</td>
+                                                <td><span class="badge bg-warning">+6.9%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fa fa-circle me-2 chart-text-color3"></i>New volume from sales</td>
+                                                <td>$950.00</td>
+                                                <td><span class="badge bg-danger">-1.5%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fa fa-circle me-2"></i>Other</td>
+                                                <td>32</td>
+                                                <td><span class="badge bg-success">1.9%</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "apexcharts": true,
+})
+<!-- Jquery Page Js -->
+<script>
+$(function() {
+"use strict";
+    // LUNO Revenue
+    var options = {
+        chart: {
+            height: 260,
+            type: 'line',
+            toolbar: {
+                show: false,
+            },
+        },
+        colors: ['var(--chart-color1)', 'var(--chart-color5)'],
+        series: [{
+            name: 'Income',
+            type: 'line',
+            data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
+        }, {
+            name: 'Expenses',
+            type: 'line',
+            data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
+        }],
+        stroke: {
+            width: [2, 2]
+        },        
+        // labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: ['01 Jan 2001', '02 Jan 2001', '03 Jan 2001', '04 Jan 2001', '05 Jan 2001', '06 Jan 2001', '07 Jan 2001', '08 Jan 2001', '09 Jan 2001', '10 Jan 2001', '11 Jan 2001', '12 Jan 2001'],
+        xaxis: {
+            type: 'datetime'
+        },
+        yaxis: [{
+            title: {
+                text: 'Income',
+            },
+
+        }, {
+            opposite: true,
+            title: {
+                text: 'Expenses'
+            }
+        }]
+    }
+    var chart = new ApexCharts(document.querySelector("#apex-AudienceOverview"),options); chart.render();
+
+    // Sales by Category
+    var options = {
+        chart: {
+            height: 280,
+            type: 'donut',
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        legend: {
+            position: 'bottom',
+            horizontalAlign: 'center',
+            show: true,
+        },
+        colors: ['var(--chart-color1)', 'var(--chart-color2)', 'var(--chart-color3)'],
+        series: [55, 35, 10],
+    }
+    var chart = new ApexCharts(document.querySelector("#apex-SalesbyCategory"),options); chart.render();
+});
+</script>
+</body>
+</html>

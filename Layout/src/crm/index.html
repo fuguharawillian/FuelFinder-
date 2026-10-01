@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "CRM Dashboard",
+        "daterangepicker": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-crm.html', {"page": "index"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row row-cols-xxl-5 row-cols-xxl-4 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 g-3 mb-3 row-deck">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar rounded-circle no-thumbnail bg-light"><i class="fa fa-address-book fa-lg"></i></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="small text-uppercase">New Customers</div>
+                                    <div><span class="h6 mb-0 fw-bold">925</span> <small class="text-success">+34%</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar rounded-circle no-thumbnail bg-light"><i class="fa fa-product-hunt fa-lg"></i></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="small text-uppercase">New Products</div>
+                                    <div><span class="h6 mb-0 fw-bold">18</span> <small class="text-danger">-17%</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar rounded-circle no-thumbnail bg-light"><i class="fa fa-briefcase fa-lg"></i></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="small text-uppercase">New Leads</div>
+                                    <div><span class="h6 mb-0 fw-bold">89</span> <small class="text-success">+8%</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar rounded-circle no-thumbnail bg-light"><i class="fa fa-dollar fa-lg"></i>
+                                </div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="small text-uppercase">Today's Profit</div>
+                                    <div><span class="h6 mb-0 fw-bold">$8,925</span> <small class="text-danger">-3%</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar rounded-circle no-thumbnail bg-light"><i class="fa fa-file-text fa-lg"></i></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="small text-uppercase">Contracts closed</div>
+                                    <div><span class="h6 mb-0 fw-bold">25</span> <small class="text-danger">-12%</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar rounded-circle no-thumbnail bg-light"><i class="fa fa-user-plus fa-lg"></i></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="small text-uppercase">Active Client</div>
+                                    <div><span class="h6 mb-0 fw-bold">11</span> <small class="text-danger">-4%</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar rounded-circle no-thumbnail bg-light"><i class="fa fa-copy fa-lg"></i></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="small text-uppercase">Running Projects</div>
+                                    <div><span class="h6 mb-0 fw-bold">23</span> <small class="text-success">+7%</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar rounded-circle no-thumbnail bg-light"><i class="fa fa-user-secret fa-lg"></i></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="small text-uppercase">Active Admin</div>
+                                    <div><span class="h6 mb-0 fw-bold">3</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar rounded-circle no-thumbnail bg-light"><i class="fa fa-money fa-lg"></i></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="small text-uppercase">Total Expenses</div>
+                                    <div><span class="h6 mb-0 fw-bold">$2,908</span> <small class="text-danger">-6%</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar rounded-circle no-thumbnail bg-light"><i class="fa fa-money fa-lg"></i></div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="small text-uppercase">Avg Contract Value</div>
+                                    <div><span class="h6 mb-0 fw-bold">$4,580</span> <small class="text-danger">-10%</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-3 mb-5 row-deck">
+                    <div class="col-xl-6 col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Sales Statistics</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="card p-3">
+                                            <div class="fw-bold"><span class="h4 mb-0">11.54k USD</span></div>
+                                            <div class="text-muted small">Revenue</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="card p-3">
+                                            <div class="fw-bold"><span class="h4 mb-0">5.87k USD</span></div>
+                                            <div class="text-muted small">Cost</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="apex-SalesStatistics" class="ac-line-transparent"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Outbound Calls & Contact Rate per weekday</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div id="apex-OutboundCalls" class="ac-line-transparent"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Top Selling Plans</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body d-flex justify-content-center">
+                                <div id="apex-TopSellingPlans"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Running Project</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <span class="text-muted d-block">Yearly Income</span>
+                                    <h4>$22,652.35</h4>
+                                </div>
+                                <ul class="list-unstyled">
+                                    <li class="mb-3 mt-3">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Database configuration</span>
+                                            <span>89K</span>
+                                        </div>
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 89%;" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-3">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Design iOS app</span>
+                                            <span>76K</span>
+                                        </div>
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 76%;" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-3">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Internet configuration</span>
+                                            <span>52K</span>
+                                        </div>
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 52%;" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-3">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Angular Admin</span>
+                                            <span>46K</span>
+                                        </div>
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 46%;" aria-valuenow="46" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex justify-content-between">
+                                            <span>Web Solution</span>
+                                            <span>34K</span>
+                                        </div>
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 34%;" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Work Deadlines</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-sm table-bordered align-middle mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <td>Design task for App</td>
+                                                <td>22 May 2021</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Angular login page</td>
+                                                <td>22 May 2021</td>
+                                            </tr>
+                                            <tr>
+                                                <td>React Video tools</td>
+                                                <td>11 May 2021</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Figma Design</td>
+                                                <td>9 June 2021</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Logo vector design</td>
+                                                <td>13 June 2021</td>
+                                            </tr>
+                                            <tr>
+                                                <td>iOs and Android App</td>
+                                                <td>18 June 2021</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Login page figma design</td>
+                                                <td>25 June 2021</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "apexcharts": true,
+})
+<script>
+    $(function() {
+        // Outbound Calls & Contact Rate per weekday
+        var options = {
+            series: [{
+                name: 'Outbound Calls',
+                type: 'column',
+                data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
+            }, {
+                name: 'Contact Rate',
+                type: 'line',
+                data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
+            }],
+            colors: ['var(--chart-color1)', 'var(--chart-color5)'],
+            chart: {
+                height: 320,
+                type: 'line',
+                toolbar: {
+                    show: false,
+                },
+            },
+            stroke: {
+                width: [0, 4]
+            },
+            dataLabels: {
+                enabled: true,
+                enabledOnSeries: [1]
+            },
+            labels: ['01 Jan 2001', '02 Jan 2001', '03 Jan 2001', '04 Jan 2001', '05 Jan 2001', '06 Jan 2001', '07 Jan 2001', '08 Jan 2001', '09 Jan 2001', '10 Jan 2001', '11 Jan 2001', '12 Jan 2001'],
+            xaxis: {
+                type: 'datetime'
+            },
+            yaxis: [{
+                title: {
+                text: 'Outbound Calls',
+                },
+            
+            }, {
+                opposite: true,
+                title: {
+                text: 'Contact Rate'
+                }
+            }]
+        };
+        var chart = new ApexCharts(document.querySelector("#apex-OutboundCalls"), options); chart.render();
+
+        // Sales Statistics
+        var options = {
+            series: [{
+                name: 'Revenue',
+                data: [13, 23, 20, 8, 13, 27, 33, 12, 67, 22, 43, 21, 49, 13, 23]
+            }, {
+                name: 'Cost',
+                data: [44, 55, 41, 67, 22, 43, 21, 49, 13, 23, 20, 8, 13, 27, 33]
+            }],
+            chart: {
+                type: 'bar',
+                height: 240,
+                stacked: true,
+                //stackType: '100%',
+                toolbar: {
+                    show: false,
+                },
+            },
+            colors: ['var(--chart-color1)', 'var(--chart-color5)'],
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    legend: {
+                        position: 'bottom',
+                        offsetX: -10,
+                        offsetY: 0
+                    }
+                }
+            }],
+            xaxis: {
+                categories: ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15',],
+            },
+            fill: {
+                opacity: 1
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            legend: {
+                position: 'bottom',
+            },
+            tooltip: {
+                y: [{
+                    title: {
+                        formatter: function (val) {
+                            return val + " (K)"
+                        }
+                    }
+                },{
+                    title: {
+                        formatter: function (val) {
+                            return val + " (K)"
+                        }
+                    }
+                }]
+            },
+        };
+        var chart = new ApexCharts(document.querySelector("#apex-SalesStatistics"), options); chart.render();
+        
+        // Top Selling Plans
+        var options = {
+            series: [32, 56, 12],
+            chart: {
+                type: 'donut',
+                width: 340,
+                toolbar: {
+                    show: false,
+                },
+            },
+            responsive: [{
+                breakpoint: 1200,
+                options: {
+                    chart: {
+                        width: 260
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }],
+            labels: ['Plan 1', 'Plan 2', 'Plan 3'],
+            colors: ['var(--chart-color1)', 'var(--chart-color2)', 'var(--chart-color3)'],
+            dataLabels: {
+                enabled: false
+            },
+            legend: {
+                position: 'bottom', // top, bottom
+                enabled: false
+            }
+        };
+        var chart = new ApexCharts(document.querySelector("#apex-TopSellingPlans"), options); chart.render();
+    })
+</script>
+</body>
+</html>

@@ -6,7 +6,12 @@ O **FuelFinder** é uma plataforma web responsiva para consulta, localização e
 
 Login e cadastro são as áreas funcionais públicas. O mapa e todas as funcionalidades internas exigem autenticação; endpoints de dados seguem a mesma regra, além das permissões administrativas. Ao tentar abrir uma área interna sem sessão, o usuário é encaminhado ao login e, após autenticar, pode continuar para o destino interno solicitado se estiver autorizado.
 
-Como inspiração de composição responsiva, usar [a imagem de referência](./img_exemplo.png), observando somente os elementos visíveis — organização em cartões, hierarquia, respiro e uso de cor — sem inferir telas ou conteúdos não representados.
+Como referência visual para a evolução do frontend, usar o template
+[LUNO Bootstrap 5](../Layout/README.md), na raiz do repositório, conforme a
+análise, os limites de reutilização e as orientações por tela documentados em
+[Fase 9 — Frontend](./09-frontend-integracao.md). A migração para Bootstrap
+5.2.3 foi aprovada e está em andamento; Tailwind é substituído, sem combinação
+dos frameworks.
 
 ---
 
@@ -19,7 +24,8 @@ Como inspiração de composição responsiva, usar [a imagem de referência](./i
 | **Banco de Dados** | PostgreSQL 16+ | ACID, funções trigonométricas nativas para Haversine |
 | **Migrações** | Flyway 10.x+ | Versionamento declarativo do esquema |
 | **Build** | Maven 3.9+ | Gerenciamento padronizado de dependências |
-| **Frontend** | HTML5 + Tailwind CSS 3.4+ + Vanilla JS ES2023+ | Leve, responsivo, sem overhead de SPA |
+| **Frontend** | HTML5 + Bootstrap 5.2.3 via CDN + CSS próprio + Vanilla JS ES modules + Leaflet 1.9.4 | Migração visual em andamento; preservar funcionalidades e integrações existentes, conforme Fase 9 |
+| **Direção visual** | LUNO / Bootstrap 5 | Referência disponível em `../Layout/`; usar apenas os padrões adequados ao FuelFinder, sem copiar conteúdo demonstrativo nem importar plugins/assets não auditados |
 | **Mapas** | Leaflet 1.9.4 + OpenStreetMap | Gratuito, leve, compatível com mobile |
 | **Autenticação** | JWT (JJWT 0.12.6+) + Spring Security 6.4+ | Access JWT curto e sessões server-side para refresh rotativo e revogação; RBAC com BCrypt |
 | **Validação** | Jakarta Bean Validation 3.0+ | Validação declarativa nos DTOs |
@@ -49,7 +55,7 @@ As variáveis opcionais de integrações externas não são pré-requisitos para
 ## 4. Arquitetura de Alto Nível
 
 ```text
-[ Cliente Web Responsivo ] (HTML5 / Tailwind CSS / Vanilla JS / Leaflet 1.9.4)
+[ Cliente Web Responsivo ] (HTML5 / Bootstrap 5.2.3 / CSS próprio / Vanilla JS / Leaflet 1.9.4)
               │
               │ HTTPS / JSON (Bearer JWT)
               ▼
@@ -80,7 +86,7 @@ O projeto está organizado em **9 fases incrementais**, cada uma com escopo defi
 | **6** | [Avaliações & Moderação](06-avaliacoes-moderacao.md) | Reviews 1-5 estrelas, nota média, moderação admin |
 | **7** | [Recomendações](07-recomendacoes.md) | Paridade etanol/gasolina, custo/km personalizado |
 | **8** | [Integração ANP](08-integracao-anp.md) | Pipeline ETL para ZIP/CSV semestral, cadastro controlado de postos, idempotência e auditoria |
-| **9** | [Frontend & Integração](09-frontend-integracao.md) | Interface web, Leaflet, Tailwind, deep links |
+| **9** | [Frontend & Integração](09-frontend-integracao.md) | Home pública, mapa autenticado, navegação por sessão e migração visual Bootstrap/LUNO |
 
 ---
 
@@ -118,7 +124,7 @@ flowchart LR
 
 ### Ajustes planejados após validação de uso
 
-A implementação inicial das Fases 1 a 9 foi entregue. Os requisitos recentes de acesso, navegação responsiva, busca automática pela localização consentida e importação ZIP/CSV com ano/semestre separados são correções planejadas, ainda não implementadas. A Fase 9 depende da Fase 2 para proteção de páginas e retorno após login; a geolocalização automática depende da Fase 4 e de seus endpoints; a importação revisada depende da Fase 8 e do modelo de auditoria. Ver listas de trabalho pendente nos documentos dessas fases.
+A implementação funcional inicial das Fases 1 a 9 foi entregue. Os requisitos recentes de acesso, retorno pós-login, busca automática pela localização consentida e importação ZIP/CSV com ano/semestre separados são correções planejadas, ainda não implementadas. A Fase 9 depende da Fase 2 para proteção de páginas e retorno após login; a geolocalização automática depende da Fase 4 e de seus endpoints; a importação revisada depende da Fase 8 e do modelo de auditoria. A atualização visual LUNO/Bootstrap 5.2.3 está em andamento na branch `feature/Danilo`; as pendências de validação e licenciamento constam na Fase 9.
 
 ---
 

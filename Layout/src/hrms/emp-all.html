@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "HRMS All Employee",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-black">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hrms.html', {"page": "emp-all"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">Employees</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">List</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- Body: Body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Employees List</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <table class="table myDataTable table-hover align-middle mb-0 card-table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                </div>
+                                            </th>
+                                            <th>Name</th>
+                                            <th>Employee ID</th>
+                                            <th>Phone</th>
+                                            <th>Join Date</th>
+                                            <th>Role</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Marshall Nichols</h6>
+                                                        <span class="text-muted">marshall-n@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span>LA-0215</span></td>
+                                            <td><span>+ 264-625-2583</span></td>
+                                            <td>24 Jun, 2015</td>
+                                            <td>Web Designer</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar2.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Susie Willis</h6>
+                                                        <span class="text-muted">sussie-w@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span>LA-0216</span></td>
+                                            <td><span>+ 264-625-2583</span></td>
+                                            <td>28 Jun, 2015</td>
+                                            <td>Web Developer</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Debra Stewart</h6>
+                                                        <span class="text-muted">debra@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span>LA-0218</span></td>
+                                            <td><span>+ 264-625-2583</span></td>
+                                            <td>21 July, 2015</td>
+                                            <td>Web Developer</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar4.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Francisco Vasquez</h6>
+                                                        <span class="text-muted">francis-v@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span>LA-0222</span></td>
+                                            <td><span>+ 264-625-2583</span></td>
+                                            <td>18 Jan, 2016</td>
+                                            <td>Team Leader</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar5.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Jane Hunt</h6>
+                                                        <span class="text-muted">jane-hunt@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span>LA-0232</span></td>
+                                            <td><span>+ 264-625-2583</span></td>
+                                            <td>08 Mar, 2016</td>
+                                            <td>Android Developer</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar6.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Darryl Day</h6>
+                                                        <span class="text-muted">darryl.day@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span>LA-0233</span></td>
+                                            <td><span>+ 264-625-2583</span></td>
+                                            <td>13 Nov, 2016</td>
+                                            <td>IOS Developer</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar7.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Marshall Nichols</h6>
+                                                        <span class="text-muted">marshall-n@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span>LA-0215</span></td>
+                                            <td><span>+ 264-625-2583</span></td>
+                                            <td>24 Jun, 2015</td>
+                                            <td>Web Designer</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar8.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Susie Willis</h6>
+                                                        <span class="text-muted">sussie-w@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span>LA-0216</span></td>
+                                            <td><span>+ 264-625-2583</span></td>
+                                            <td>28 Jun, 2015</td>
+                                            <td>Web Developer</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar9.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Debra Stewart</h6>
+                                                        <span class="text-muted">debra@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span>LA-0218</span></td>
+                                            <td><span>+ 264-625-2583</span></td>
+                                            <td>21 July, 2015</td>
+                                            <td>Web Developer</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar10.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Francisco Vasquez</h6>
+                                                        <span class="text-muted">francis-v@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span>LA-0222</span></td>
+                                            <td><span>+ 264-625-2583</span></td>
+                                            <td>18 Jan, 2016</td>
+                                            <td>Team Leader</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Jane Hunt</h6>
+                                                        <span class="text-muted">jane-hunt@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span>LA-0232</span></td>
+                                            <td><span>+ 264-625-2583</span></td>
+                                            <td>08 Mar, 2016</td>
+                                            <td>Android Developer</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar6.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Darryl Day</h6>
+                                                        <span class="text-muted">darryl.day@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span>LA-0233</span></td>
+                                            <td><span>+ 264-625-2583</span></td>
+                                            <td>13 Nov, 2016</td>
+                                            <td>IOS Developer</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables":true,
+})
+<script>
+    $('.myDataTable')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+    });
+
+</script>
+</body>
+</html>

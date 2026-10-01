@@ -1,0 +1,52 @@
+<!-- <button class="btn btn-primary px-4 text-uppercase" data-bs-toggle="modal" data-bs-target="#new_task" type="button">Add New Contact</button> -->
+
+<!-- Modal: New Task -->
+<div class="modal fade" id="new_task" tabindex="-1"  aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Task</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label">Task Title</label>
+                        <input class="form-control" type="text" required="" autocomplete="off">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Task Detail</label>
+                        <textarea class="form-control" type="text" required="" autocomplete="off" rows="3"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Select Date/Time</label>
+                        <div class="input-group">
+                            <input type="date" class="form-control">
+                            <input type="time" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Remindon">
+                            <label class="form-check-label" for="Remindon">Remind on</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Task tag</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">Design</option>
+                            <option value="2">BugFix</option>
+                            <option value="3">Help</option>
+                            <option value="3">R&D</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

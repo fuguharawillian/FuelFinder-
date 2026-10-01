@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Fitness Videos",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-fitness.html', {"page": "videos"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Video Tutorial</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12 d-flex justify-content-between">
+                        <div class="h4">Newst Videos</div>
+                        <button type="button" class="btn px-4 btn-primary">View All</button>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <div class="card-body position-relative hover-show p-0">
+                                <a href="#" class="hover-div position-absolute top-50 start-50 translate-middle py-1 px-2 bg-light rounded shadow-sm text-muted">
+                                    <i class="fa fa-play-circle fa-3x"></i>
+                                </a>
+                                <div class="position-absolute top-100 translate-middle start-50 bg-info px-2 py-1 rounded text-light small">Aerobics</div>
+                                <img src="@@webRoot/assets/img/fitness/1.jpg" alt="" class="card-img-top">
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="mb-0 fw-bold">Tony Horton's P90X</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <div class="card-body position-relative hover-show p-0">
+                                <a href="#" class="hover-div position-absolute top-50 start-50 translate-middle py-1 px-2 bg-light rounded shadow-sm text-muted">
+                                    <i class="fa fa-play-circle fa-3x"></i>
+                                </a>
+                                <div class="position-absolute top-100 translate-middle start-50 bg-primary px-2 py-1 rounded text-light small">Body Building</div>
+                                <img src="@@webRoot/assets/img/fitness/2.jpg" alt="" class="card-img-top">
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="mb-0 fw-bold">Dumbbell rows</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <div class="card-body position-relative hover-show p-0">
+                                <a href="#" class="hover-div position-absolute top-50 start-50 translate-middle py-1 px-2 bg-light rounded shadow-sm text-muted">
+                                    <i class="fa fa-play-circle fa-3x"></i>
+                                </a>
+                                <div class="position-absolute top-100 translate-middle start-50 bg-primary px-2 py-1 rounded text-light small">Body Building</div>
+                                <img src="@@webRoot/assets/img/fitness/3.jpg" alt="" class="card-img-top">
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="mb-0 fw-bold">Insanity Sweat Fest</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <div class="card-body position-relative hover-show p-0">
+                                <a href="#" class="hover-div position-absolute top-50 start-50 translate-middle py-1 px-2 bg-light rounded shadow-sm text-muted">
+                                    <i class="fa fa-play-circle fa-3x"></i>
+                                </a>
+                                <div class="position-absolute top-100 translate-middle start-50 bg-dark px-2 py-1 rounded text-light small">Yoga</div>
+                                <img src="@@webRoot/assets/img/fitness/4.jpg" alt="" class="card-img-top">
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="mb-0 fw-bold">Brazil Butt Lift</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <h5 class="fw-bold">Best Workout Videos</h5>
+                        <ul class="nav nav-tabs tab-card" role="tablist">
+                            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#nav-All" role="tab" aria-selected="true">All</a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav-Yoga" role="tab" aria-selected="false">Yoga</a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav-Fitness" role="tab" aria-selected="false">Fitness</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade active show" id="nav-All" role="tabpanel">
+                                <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 g-2 mb-2">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-body position-relative hover-show p-0">
+                                                <a href="#" class="hover-div position-absolute top-50 start-50 translate-middle py-1 px-2 bg-light rounded shadow-sm text-muted">
+                                                    <i class="fa fa-play-circle fa-3x"></i>
+                                                </a>
+                                                <div class="position-absolute top-100 translate-middle start-50 bg-primary px-2 py-1 rounded text-light small">Aerobics</div>
+                                                <img src="@@webRoot/assets/img/fitness/6.jpg" alt="" class="card-img-top">
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <div class="mb-0 fw-bold">Single-leg deadlifts</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-body position-relative hover-show p-0">
+                                                <a href="#" class="hover-div position-absolute top-50 start-50 translate-middle py-1 px-2 bg-light rounded shadow-sm text-muted">
+                                                    <i class="fa fa-play-circle fa-3x"></i>
+                                                </a>
+                                                <div class="position-absolute top-100 translate-middle start-50 bg-warning px-2 py-1 rounded text-light small">Fat Loss</div>
+                                                <img src="@@webRoot/assets/img/fitness/8.jpg" alt="" class="card-img-top">
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <div class="mb-0 fw-bold">Side planks</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-body position-relative hover-show p-0">
+                                                <a href="#" class="hover-div position-absolute top-50 start-50 translate-middle py-1 px-2 bg-light rounded shadow-sm text-muted">
+                                                    <i class="fa fa-play-circle fa-3x"></i>
+                                                </a>
+                                                <div class="position-absolute top-100 translate-middle start-50 bg-danger px-2 py-1 rounded text-light small">Fitness</div>
+                                                <img src="@@webRoot/assets/img/fitness/7.jpg" alt="" class="card-img-top">
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <div class="mb-0 fw-bold">Torso Twist</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-body position-relative hover-show p-0">
+                                                <a href="#" class="hover-div position-absolute top-50 start-50 translate-middle py-1 px-2 bg-light rounded shadow-sm text-muted">
+                                                    <i class="fa fa-play-circle fa-3x"></i>
+                                                </a>
+                                                <div class="position-absolute top-100 translate-middle start-50 bg-info px-2 py-1 rounded text-light small">Aerobics</div>
+                                                <img src="@@webRoot/assets/img/fitness/1.jpg" alt="" class="card-img-top">
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <div class="mb-0 fw-bold">Extended Triangle Pose</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-body position-relative hover-show p-0">
+                                                <a href="#" class="hover-div position-absolute top-50 start-50 translate-middle py-1 px-2 bg-light rounded shadow-sm text-muted">
+                                                    <i class="fa fa-play-circle fa-3x"></i>
+                                                </a>
+                                                <div class="position-absolute top-100 translate-middle start-50 bg-primary px-2 py-1 rounded text-light small">Weight loss</div>
+                                                <img src="@@webRoot/assets/img/fitness/2.jpg" alt="" class="card-img-top">
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <div class="mb-0 fw-bold">Extended Puppy Pose</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-body position-relative hover-show p-0">
+                                                <a href="#" class="hover-div position-absolute top-50 start-50 translate-middle py-1 px-2 bg-light rounded shadow-sm text-muted">
+                                                    <i class="fa fa-play-circle fa-3x"></i>
+                                                </a>
+                                                <div class="position-absolute top-100 translate-middle start-50 bg-danger px-2 py-1 rounded text-light small">Fitness</div>
+                                                <img src="@@webRoot/assets/img/fitness/7.jpg" alt="" class="card-img-top">
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <div class="mb-0 fw-bold">Yoga Poses to Promote Digestion</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-body position-relative hover-show p-0">
+                                                <a href="#" class="hover-div position-absolute top-50 start-50 translate-middle py-1 px-2 bg-light rounded shadow-sm text-muted">
+                                                    <i class="fa fa-play-circle fa-3x"></i>
+                                                </a>
+                                                <div class="position-absolute top-100 translate-middle start-50 bg-danger px-2 py-1 rounded text-light small">Fitness</div>
+                                                <img src="@@webRoot/assets/img/fitness/8.jpg" alt="" class="card-img-top">
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <div class="mb-0 fw-bold">Side squats</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-body position-relative hover-show p-0">
+                                                <a href="#" class="hover-div position-absolute top-50 start-50 translate-middle py-1 px-2 bg-light rounded shadow-sm text-muted">
+                                                    <i class="fa fa-play-circle fa-3x"></i>
+                                                </a>
+                                                <div class="position-absolute top-100 translate-middle start-50 bg-warning px-2 py-1 rounded text-light small">Fat Loss</div>
+                                                <img src="@@webRoot/assets/img/fitness/9.jpg" alt="" class="card-img-top">
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <div class="mb-0 fw-bold">Single-leg bridge</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-body position-relative hover-show p-0">
+                                                <a href="#" class="hover-div position-absolute top-50 start-50 translate-middle py-1 px-2 bg-light rounded shadow-sm text-muted">
+                                                    <i class="fa fa-play-circle fa-3x"></i>
+                                                </a>
+                                                <div class="position-absolute top-100 translate-middle start-50 bg-warning px-2 py-1 rounded text-light small">Fat Loss</div>
+                                                <img src="@@webRoot/assets/img/fitness/3.jpg" alt="" class="card-img-top">
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <div class="mb-0 fw-bold">Scissor planks</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- .row end -->
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

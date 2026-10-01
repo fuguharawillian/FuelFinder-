@@ -1,0 +1,144 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Swiper",
+        "swiper": true
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "plugin-swiper"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Swiper</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="plugin-x-editable.html"><i class="fa fa-long-arrow-left me-2"></i>X-editable</a>
+                        <a class="btn btn-secondary" href="plugin-jspreadsheet.html">jspreadsheet<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Swiper</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="fs-5">Swiper is not compatible with all platforms, it is a modern touch slider which is focused only on modern apps/platforms to bring the best experience and simplicity. <a href="https://swiperjs.com/demos" rel="nofollow">Live Demo</a></p>
+                            </div>
+                            <div class="card-body pt-0">
+<pre class=" language-html m-0" data-lang="html"><code class=" language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/bundles/swiper.min.css&quot; /&gt;
+&lt;script src=&quot;assets/vendor/prismjs/prism.js&quot;&gt;&lt;/script&gt;
+
+&lt;div class=&quot;spring-slider&quot;&gt;
+    &lt;div class=&quot;swiper mySwiper mb-3&quot;&gt;
+        &lt;div class=&quot;swiper-wrapper&quot;&gt;
+            &lt;div class=&quot;swiper-slide&quot;&gt;&lt;img class=&quot;img-fluid rounded&quot; src=&quot;@@webRoot/assets/img/gallery/1.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;swiper-slide&quot;&gt;&lt;img class=&quot;img-fluid rounded&quot; src=&quot;@@webRoot/assets/img/gallery/2.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;swiper-slide&quot;&gt;&lt;img class=&quot;img-fluid rounded&quot; src=&quot;@@webRoot/assets/img/gallery/3.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;swiper-button-prev&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;swiper-button-next&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;swiper-pagination&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-2 mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body spring-slider">
+                                <div class="swiper mySwiper mb-3">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide"><img class="img-fluid rounded" src="@@webRoot/assets/img/gallery/1.jpg" alt=""></div>
+                                        <div class="swiper-slide"><img class="img-fluid rounded" src="@@webRoot/assets/img/gallery/2.jpg" alt=""></div>
+                                        <div class="swiper-slide"><img class="img-fluid rounded" src="@@webRoot/assets/img/gallery/3.jpg" alt=""></div>
+                                        <div class="swiper-slide"><img class="img-fluid rounded" src="@@webRoot/assets/img/gallery/4.jpg" alt=""></div>
+                                        <div class="swiper-slide"><img class="img-fluid rounded" src="@@webRoot/assets/img/gallery/5.jpg" alt=""></div>
+                                        <div class="swiper-slide"><img class="img-fluid rounded" src="@@webRoot/assets/img/gallery/6.jpg" alt=""></div>
+                                        <div class="swiper-slide"><img class="img-fluid rounded" src="@@webRoot/assets/img/gallery/7.jpg" alt=""></div>
+                                        <div class="swiper-slide"><img class="img-fluid rounded" src="@@webRoot/assets/img/gallery/8.jpg" alt=""></div>
+                                        <div class="swiper-slide"><img class="img-fluid rounded" src="@@webRoot/assets/img/gallery/9.jpg" alt=""></div>
+                                    </div>
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-button-next"></div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="plugin-x-editable.html"><i class="fa fa-long-arrow-left me-3"></i>X-editable</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="plugin-jspreadsheet.html">jspreadsheet<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Core Js -->
+@@include('docs/_scripts.html',{
+    "swiper": true
+})
+<script>
+   var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        slidesPerGroup: 3,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+    });
+</script>
+</body>
+</html>

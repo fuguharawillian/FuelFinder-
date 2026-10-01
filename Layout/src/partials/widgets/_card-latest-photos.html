@@ -1,0 +1,69 @@
+<div class="card @@cardClass">
+    <div class="card-header pb-0">
+        <h6 class="card-title mb-0">Latest Photos</h6>
+        @@include('widgets/_card-action.html')
+    </div>
+    <div class="card-body">
+        <div class="row g-1">
+            <div class="col-4">
+                <a class="fancybox rounded d-block" rel="ligthbox" href="@@webRoot/assets/img/gallery/1.jpg">
+                    <img class="img-fluid rounded" alt="" src="@@webRoot/assets/img/gallery/1.jpg" />
+                </a>
+            </div>
+            <div class="col-4">
+                <a class="fancybox rounded d-block" rel="ligthbox" href="@@webRoot/assets/img/gallery/2.jpg">
+                    <img class="img-fluid rounded" alt="" src="@@webRoot/assets/img/gallery/2.jpg" />
+                </a>
+            </div>
+            <div class="col-4">
+                <a class="fancybox rounded d-block" rel="ligthbox" href="@@webRoot/assets/img/gallery/3.jpg">
+                    <img class="img-fluid rounded" alt="" src="@@webRoot/assets/img/gallery/3.jpg" />
+                </a>
+            </div>
+            <div class="col-4">
+                <a class="fancybox rounded d-block" rel="ligthbox" href="@@webRoot/assets/img/gallery/4.jpg">
+                    <img class="img-fluid rounded" alt="" src="@@webRoot/assets/img/gallery/4.jpg" />
+                </a>
+            </div>
+            <div class="col-4">
+                <a class="fancybox rounded d-block" rel="ligthbox" href="@@webRoot/assets/img/gallery/5.jpg">
+                    <img class="img-fluid rounded" alt="" src="@@webRoot/assets/img/gallery/5.jpg" />
+                </a>
+            </div>
+            <div class="col-4">
+                <a class="fancybox rounded d-block" rel="ligthbox" href="@@webRoot/assets/img/gallery/6.jpg">
+                    <img class="img-fluid rounded" alt="" src="@@webRoot/assets/img/gallery/6.jpg" />
+                </a>
+            </div>
+            <div class="col-4">
+                <a class="fancybox rounded d-block" rel="ligthbox" href="@@webRoot/assets/img/gallery/7.jpg">
+                    <img class="img-fluid rounded" alt="" src="@@webRoot/assets/img/gallery/7.jpg" />
+                </a>
+            </div>
+            <div class="col-4">
+                <a class="fancybox rounded d-block" rel="ligthbox" href="@@webRoot/assets/img/gallery/8.jpg">
+                    <img class="img-fluid rounded" alt="" src="@@webRoot/assets/img/gallery/8.jpg" />
+                </a>
+            </div>
+            <div class="col-4">
+                <a class="fancybox rounded d-block" rel="ligthbox" href="@@webRoot/assets/img/gallery/9.jpg">
+                    <img class="img-fluid rounded" alt="" src="@@webRoot/assets/img/gallery/9.jpg" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Plugin Js -->
+<script src="@@webRoot/assets/js/bundle/fancybox.bundle.js"></script>
+
+<!-- Jquery Page Js -->
+<script>
+    /*	end gallery */
+    $(document).ready(function() {
+        $(".fancybox").fancybox({
+            openEffect: "none",
+            closeEffect: "none"
+        });
+    });
+</script>

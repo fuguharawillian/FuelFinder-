@@ -76,7 +76,7 @@ function renderRecommendation(result) {
     details.append(makeElement("div", `${option.fuelType} · ${Number(option.distanceKm).toFixed(1)} km · ${option.brand || "Bandeira não informada"}`, "muted"));
     details.append(makeElement("div", `Tanque: ${formatCurrency(option.estimatedFullTankCost)} · Ida e volta: ${formatCurrency(option.estimatedRoundTripCost)}`, "muted"));
     row.append(details, makeElement("span", formatCurrency(option.price, option.unitOfMeasure?.replace("R$/", "") || ""), "price"));
-    const link = makeElement("a", "Ver posto", "button secondary");
+    const link = makeElement("a", "Ver posto", "btn btn-outline-primary");
     link.href = `/station-detail.html?id=${encodeURIComponent(option.stationId)}`;
     row.append(link);
     list.append(row);

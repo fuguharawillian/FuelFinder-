@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Inventory Bills",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-inventory.html', {"page": "bills"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Bills</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Date</a></li>
+                                        <li><a class="dropdown-item" href="#">Bill No.</a></li>
+                                        <li><a class="dropdown-item" href="#">Reference</a></li>
+                                        <li><a class="dropdown-item" href="#">Vendor Name</a></li>
+                                        <li><a class="dropdown-item" href="#">Status</a></li>
+                                        <li><a class="dropdown-item" href="#">Amount</a></li>
+                                    </ul>
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <button class="btn btn-secondary" type="button">Search</button>
+                                </div>
+                            </div>
+                            <table id="myDataTable_no_filter" class="table card-table myDataTable mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Date</th>
+                                        <th>Bill No.</th>
+                                        <th>Reference</th>
+                                        <th>Vendor Name</th>
+                                        <th>Status</th>
+                                        <th>Due Date</th>
+                                        <th>Amount</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>22 Feb 2021</td>
+                                        <td>E088</td>
+                                        <td>-</td>
+                                        <td>Chris Fox</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                        <td>22 Feb 2021</td>
+                                        <td>$880</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>24 Feb 2021</td>
+                                        <td>R091</td>
+                                        <td>-</td>
+                                        <td>Petey Cruiser</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                        <td>24 Feb 2021</td>
+                                        <td>$200</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>25 Feb 2021</td>
+                                        <td>D077</td>
+                                        <td>-</td>
+                                        <td>Chris Fox</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                        <td>25 Feb 2021</td>
+                                        <td>$250</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>11 March 2021</td>
+                                        <td>W055</td>
+                                        <td>-</td>
+                                        <td>Anna Sthesia</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                        <td>11 March 2021</td>
+                                        <td>$200</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>15 March 2021</td>
+                                        <td>E088</td>
+                                        <td>-</td>
+                                        <td>Anna Sthesia</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                        <td>15 March 2021</td>
+                                        <td>$300</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>17 March 2021</td>
+                                        <td>R076</td>
+                                        <td>-</td>
+                                        <td>Gail Forcewind</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                        <td>17 March 2021</td>
+                                        <td>$150</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>20 April 2021</td>
+                                        <td>R099</td>
+                                        <td>-</td>
+                                        <td>Paige Turner</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                        <td>20 Feb 2021</td>
+                                        <td>$300</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    // DataTable
+    $('#myDataTable_no_filter')
+    .addClass('nowrap')
+    .dataTable({
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: false,
+        info: false,
+    });
+</script>
+</body>
+</html>

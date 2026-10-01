@@ -1,0 +1,66 @@
+<div class="section @@cardClass">
+    <div class="container">
+
+        <div class="row @@RowcardClass">
+            <div class="col-lg-8 col-md-12">
+                <h2 class="@@SectionTitleClass">@@SectionTitle</h2>
+                <p class="@@SectionSubTitleClass">@@SectionSubTitle</p>
+            </div>
+        </div> <!-- .row end -->
+
+        <div class="owl-carousel owl-theme" id="owl_basic_autoplay">
+            <div class="item card">
+                <a class="card-body" href="#">
+                    <img class="img-fluid p-2" src="@@webRoot/assets/img/sponsors/3docean-center.png" alt="" />
+                </a>
+            </div>
+            <div class="item card">
+                <a class="card-body" href="#">
+                    <img class="img-fluid p-2" src="@@webRoot/assets/img/sponsors/audiojungle-center.png" alt="" />
+                </a>
+            </div>
+            <div class="item card">
+                <a class="card-body" href="#">
+                    <img class="img-fluid p-2" src="@@webRoot/assets/img/sponsors/codecanyon-center.png" alt="" />
+                </a>
+            </div>
+            <div class="item card">
+                <a class="card-body" href="#">
+                    <img class="img-fluid p-2" src="@@webRoot/assets/img/sponsors/graphicriver-center.png" alt="" />
+                </a>
+            </div>
+            <div class="item card">
+                <a class="card-body" href="#">
+                    <img class="img-fluid p-2" src="@@webRoot/assets/img/sponsors/themeforest-center.png" alt="" />
+                </a>
+            </div>
+            <div class="item card">
+                <a class="card-body" href="#">
+                    <img class="img-fluid p-2" src="@@webRoot/assets/img/sponsors/videohive-center.png" alt="" />
+                </a>
+            </div>
+        </div> <!-- .row end -->
+        
+    </div>
+</div>
+
+<!-- Vendor JS Files -->
+<script src="@@webRoot/assets/js/bundle/owlcarousel.bundle.js"></script>
+
+<!-- Template Main JS File -->
+<script>
+    var owl = $('#owl_basic_autoplay');
+    owl.owlCarousel({
+        items: 4,
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 2000,
+        autoplayHoverPause: true,
+        responsive:{
+            0:{items:1},
+            600:{items:2},
+            1000:{items:4}
+        }
+    });
+</script>

@@ -17,9 +17,11 @@ export function isAdmin() {
 export async function restoreSession() {
   try {
     const data = await api.post("auth/refresh");
-    if (!data?.accessToken || !data.user) return false;
-    setAccessToken(data.accessToken);
-    currentUser = data.user;
+    if (!data?.accessToken || !data.user) {
+      clearSession();
+      return false;
+    }
+    setAuthenticatedSession(data);
     return true;
   } catch (error) {
     if (error.status === 401) {
@@ -43,17 +45,14 @@ export async function register(fullName, email, password) {
 }
 
 export async function logout() {
-  try {
-    await api.post("auth/logout");
-  } finally {
-    clearSession();
-    window.location.assign("/login.html");
-  }
+  await api.post("auth/logout");
+  clearSession();
 }
 
 export function clearSession() {
   setAccessToken(null);
   currentUser = null;
+  notifySessionChange();
 }
 
 export function setSessionExpirationHandler(handler) {
@@ -63,4 +62,11 @@ export function setSessionExpirationHandler(handler) {
 function setAuthenticatedSession(data) {
   setAccessToken(data.accessToken);
   currentUser = data.user;
+  notifySessionChange();
+}
+
+function notifySessionChange() {
+  window.dispatchEvent(new CustomEvent("fuelfinder:sessionchange", {
+    detail: { user: currentUser },
+  }));
 }

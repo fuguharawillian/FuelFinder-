@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "University Hostel",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-indigo">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-university.html', {"page": "admin-hostel"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">Admin</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Hostel</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Hostel<a class="btn btn-link color-400" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#card-search"><i class="fa fa-search"></i></a></h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="collapse bg-dark w-100" id="card-search">
+                                <div class="input-group py-2 px-lg-4 px-3">
+                                    <input type="text" class="form-control border-0 p-0 bg-transparent" placeholder="Search...">
+                                    <div class="input-group-append ms-3">
+                                        <button class="btn btn-light" type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table myDataTable_no_filter card-table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Block</th>
+                                        <th>Room No</th>
+                                        <th>Type</th>
+                                        <th>No of Bed</th>
+                                        <th>Availability</th>
+                                        <th>Cost Per Bed</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>A</td>
+                                        <td>201</td>
+                                        <td>Medium</td>
+                                        <td>4</td>
+                                        <td>1</td>
+                                        <td>$20</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>A</td>
+                                        <td>305</td>
+                                        <td>Big</td>
+                                        <td>10</td>
+                                        <td>3</td>
+                                        <td>$12</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>B</td>
+                                        <td>404</td>
+                                        <td>Medium</td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td>$20</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>A</td>
+                                        <td>201</td>
+                                        <td>Medium</td>
+                                        <td>4</td>
+                                        <td>1</td>
+                                        <td>$20</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>A</td>
+                                        <td>201</td>
+                                        <td>Medium</td>
+                                        <td>4</td>
+                                        <td>1</td>
+                                        <td>$20</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>C</td>
+                                        <td>701</td>
+                                        <td>Small</td>
+                                        <td>3</td>
+                                        <td>2</td>
+                                        <td>$35</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>A</td>
+                                        <td>804</td>
+                                        <td>Medium</td>
+                                        <td>4</td>
+                                        <td>1</td>
+                                        <td>$20</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>A</td>
+                                        <td>201</td>
+                                        <td>Medium</td>
+                                        <td>4</td>
+                                        <td>3</td>
+                                        <td>$20</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>A</td>
+                                        <td>603</td>
+                                        <td>Small</td>
+                                        <td>4</td>
+                                        <td>1</td>
+                                        <td>$20</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>A</td>
+                                        <td>402</td>
+                                        <td>Small</td>
+                                        <td>4</td>
+                                        <td>4</td>
+                                        <td>$20</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    // project data table
+    $('.myDataTable_no_filter')
+    .addClass('nowrap')
+    .dataTable({
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: true,
+        info: false,
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "CRM Vendors",
+        "dataTables": true
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-crm.html', {"page": "vendors"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Vendors</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <button class="btn btn-secondary" type="button">Search</button>
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_vendors" type="button">Add Vendors</button>
+                                </div>
+                                <!-- Modal: Add Vendors -->
+                                @@include('modals/_modal-add-vendor.html')
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <table id="myDataTable_no_filter" class="table myDataTable align-middle table-bordered mb-0 custom-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Company Name</th>
+                                    <th>Mobile</th>
+                                    <th>Email</th>
+                                    <th>Country</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td class="d-flex align-items-center">
+                                        <img src="@@webRoot/assets/img/google.svg" class="rounded-circle avatar" alt="">
+                                        <div class="ms-2 mb-0 fw-bold">Googlyio llc</div>
+                                    </td>
+                                    <td>+1 1234 567 789</td>
+                                    <td>chris.fox@example.com</td>
+                                    <td>USA</td>
+                                    <td><span class="badge bg-success">Active</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td class="d-flex align-items-center">
+                                        <img src="@@webRoot/assets/img/icon-facebook.svg" class="rounded-circle avatar" ="">
+                                        <div class="ms-2 mb-0 fw-bold">Facebage info</div>
+                                    </td>
+                                    <td>+1 1234 567 454</td>
+                                    <td>Facebage.fox@example.com</td>
+                                    <td>USA</td>
+                                    <td><span class="badge bg-success">Active</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td class="d-flex align-items-center">
+                                        <img src="@@webRoot/assets/img/icon-google-ads.svg" class="rounded-circle avatar" ="">
+                                        <div class="ms-2 mb-0 fw-bold">Gumolio web</div>
+                                    </td>
+                                    <td>+1 1234 567 666</td>
+                                    <td>Gumolio.fox@example.com</td>
+                                    <td>UK</td>
+                                    <td><span class="badge bg-success">Active</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td class="d-flex align-items-center">
+                                        <img src="@@webRoot/assets/img/icon-google-analytics.svg" class="rounded-circle avatar" ="">
+                                        <div class="ms-2 mb-0 fw-bold">analytics llp</div>
+                                    </td>
+                                    <td>+1 1234 567 222</td>
+                                    <td>analytics.fox@example.com</td>
+                                    <td>Germany</td>
+                                    <td><span class="badge bg-success">Active</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables" :true,
+})
+<script>
+    // Data Table
+    $('#myDataTable_no_filter')
+    .addClass('nowrap')
+    .dataTable({
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: false,
+        info: false,
+    });
+</script>
+</body>
+</html>

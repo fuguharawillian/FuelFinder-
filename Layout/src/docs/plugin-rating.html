@@ -1,0 +1,363 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Rating",
+        "rating": true
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "plugin-rating"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">jQuery Bar Rating</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="plugin-jspreadsheet.html"><i class="fa fa-long-arrow-left me-2"></i>jspreadsheet</a>
+                        <a class="btn btn-secondary" href="plugin-stepper.html">Bootstrap Stepper<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">jQuery Bar Rating</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="fs-5">jQuery Bar Rating Plugin works by transforming a standard select field into a rating widget. The rating widget can be flexibly styled with CSS. <a href="https://antennaio.github.io/jquery-bar-rating/" rel="nofollow">Live Demo</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-2 mt-4 row-deck">
+                    <!-- 1/10 Rating -->
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">1/10 Rating</h6>
+                                <select id="bar_rating_1to10" name="rating" autocomplete="off">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7" selected="selected">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Movie Rating -->
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Movie Rating</h6>
+                                <select id="bar_rating_movie" name="rating" autocomplete="off">
+                                    <option value="Bad">Bad</option>
+                                    <option value="Mediocre">Mediocre</option>
+                                    <option value="Good" selected="selected">Good</option>
+                                    <option value="Awesome">Awesome</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Square Rating -->
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Square Rating</h6>
+                                <select id="bar_rating_square" name="rating" autocomplete="off">
+                                    <option value=""></option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pill Rating -->
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Pill Rating</h6>
+                                <select id="bar_rating_pill" name="rating" autocomplete="off">
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Reversed Rating -->
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Reversed Rating</h6>
+                                <select id="bar_rating_reversed" name="rating" autocomplete="off">
+                                    <option value="Strongly Agree">Strongly Agree</option>
+                                    <option value="Agree">Agree</option>
+                                    <option value="Neither Agree or Disagree" selected="selected">Neither Agree or Disagree</option>
+                                    <option value="Disagree">Disagree</option>
+                                    <option value="Strongly Disagree">Strongly Disagree</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Horizontal Rating -->
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Reversed Rating</h6>
+                                <select id="bar_rating_horizontal" name="rating" autocomplete="off">
+                                    <option value="10">10</option>
+                                    <option value="9">9</option>
+                                    <option value="8">8</option>
+                                    <option value="7">7</option>
+                                    <option value="6">6</option>
+                                    <option value="5">5</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2</option>
+                                    <option value="1" selected="selected">1</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Font Awesome -->
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Font Awesome Star</h6>
+                                <select id="bar_rating_fontawesome" name="rating" autocomplete="off">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CSS Stars -->
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">CSS Stars</h6>
+                                <select id="bar_rating_css" name="rating" autocomplete="off">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Your rating -->
+                    <div class="col-lg-6">
+                        <div class="card star-ratings">
+                            <div class="card-body">
+                                <h6 class="card-title">It can be used to display fractional star ratings.</h6>
+                                <div class="stars stars-example-fontawesome-o">
+                                    <select id="example-fontawesome-o" name="rating" data-current-rating="5.6" autocomplete="off">
+                                      <option value=""></option>
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                      <option value="6">6</option>
+                                      <option value="7">7</option>
+                                      <option value="8">8</option>
+                                      <option value="9">9</option>
+                                      <option value="10">10</option>
+                                    </select>
+                                    <span class="title your-rating hidden">Your rating: <span class="value"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="plugin-jspreadsheet.html"><i class="fa fa-long-arrow-left me-3"></i>jspreadsheet</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="plugin-stepper.html">Bootstrap Stepper<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Core Js -->
+@@include('docs/_scripts.html',{
+    "rating": true
+})
+<script>
+    $(function() {
+        function ratingEnable() {
+            $('#bar_rating_1to10').barrating('show', {
+                theme: 'bars-1to10'
+            });
+
+            $('#bar_rating_movie').barrating('show', {
+                theme: 'bars-movie'
+            });
+
+            $('#bar_rating_movie').barrating('set', 'Mediocre');
+
+            $('#bar_rating_square').barrating('show', {
+                theme: 'bars-square',
+                showValues: true,
+                showSelectedRating: false
+            });
+
+            $('#bar_rating_pill').barrating('show', {
+                theme: 'bars-pill',
+                initialRating: 'A',
+                showValues: true,
+                showSelectedRating: false,
+                allowEmpty: true,
+                emptyValue: '-- no rating selected --',
+                onSelect: function(value, text) {
+                    alert('Selected rating: ' + value);
+                }
+            });
+
+            $('#bar_rating_reversed').barrating('show', {
+                theme: 'bars-reversed',
+                showSelectedRating: true,
+                reverse: true
+            });
+
+            $('#bar_rating_horizontal').barrating('show', {
+                theme: 'bars-horizontal',
+                reverse: true,
+                hoverState: false
+            });
+
+            $('#bar_rating_fontawesome').barrating({
+                theme: 'fontawesome-stars',
+                showSelectedRating: false
+            });
+
+            $('#bar_rating_css').barrating({
+                theme: 'css-stars',
+                showSelectedRating: false
+            });
+
+
+            var currentRating = $('#example-fontawesome-o').data('current-rating');
+
+        $('.stars-example-fontawesome-o .current-rating')
+            .find('span')
+            .html(currentRating);
+
+        $('.stars-example-fontawesome-o .clear-rating').on('click', function(event) {
+            event.preventDefault();
+
+            $('#example-fontawesome-o')
+                .barrating('clear');
+        });
+
+        $('#example-fontawesome-o').barrating({
+            theme: 'fontawesome-stars-o',
+            showSelectedRating: false,
+            initialRating: currentRating,
+            onSelect: function(value, text) {
+                if (!value) {
+                    $('#example-fontawesome-o')
+                        .barrating('clear');
+                } else {
+                    $('.stars-example-fontawesome-o .current-rating')
+                        .addClass('hidden');
+
+                    $('.stars-example-fontawesome-o .your-rating')
+                        .removeClass('hidden')
+                        .find('span')
+                        .html(value);
+                }
+            },
+            onClear: function(value, text) {
+                $('.stars-example-fontawesome-o')
+                    .find('.current-rating')
+                    .removeClass('hidden')
+                    .end()
+                    .find('.your-rating')
+                    .addClass('hidden');
+            }
+        });
+        }
+
+        function ratingDisable() {
+            $('select').barrating('destroy');
+        }
+
+        $('.rating-enable').click(function(event) {
+            event.preventDefault();
+
+            ratingEnable();
+
+            $(this).addClass('deactivated');
+            $('.rating-disable').removeClass('deactivated');
+        });
+
+        $('.rating-disable').click(function(event) {
+            event.preventDefault();
+
+            ratingDisable();
+
+            $(this).addClass('deactivated');
+            $('.rating-enable').removeClass('deactivated');
+        });
+
+        ratingEnable();
+    });
+</script>
+</body>
+</html>

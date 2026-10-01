@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Crypto Transaction",
+        "dataTables": true
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-red">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-crypto.html', {"page": "transactions"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Transaction</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-2">
+                    <div class="col-12">
+                        <table id="myDataTable" class="myDataTable table align-middle table-bordered mb-0 custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Transaction ID</th>
+                                    <th>Date</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Coin</th>
+                                    <th>Amount</th>
+                                    <th>Note</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#AS45453279</td>
+                                    <td>2 May 2021</td>
+                                    <td>Chris Fox</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">
+                                            <div class="flex-fill ms-3">
+                                                <div class="mb-0 h6">Maryam Amiri</div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>Bitcoin</td>
+                                    <td>$1597.78</td>
+                                    <td>None</td>
+                                    <td><span class="badge bg-success">COMPLETED</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#AS45459979</td>
+                                    <td>2 May 2021</td>
+                                    <td>Barbara Kelly</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar9.jpg" alt="">
+                                            <div class="flex-fill ms-3">
+                                                <div class="mb-0 h6">Maryam Amiri</div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>Litecoin</td>
+                                    <td>$9877.78</td>
+                                    <td>None</td>
+                                    <td><span class="badge bg-primary">PENDING</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#AS45459944</td>
+                                    <td>3 May 2021</td>
+                                    <td>Brad Simmons</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                            <div class="flex-fill ms-3">
+                                                <div class="mb-0 h6">Rose Gold</div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>Ripple</td>
+                                    <td>$6565.00</td>
+                                    <td>None</td>
+                                    <td><span class="badge bg-danger">CANCELED</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#AS45459933</td>
+                                    <td>3 May 2021</td>
+                                    <td>Brad Simmons</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                            <div class="flex-fill ms-3">
+                                                <div class="mb-0 h6">Rose Gold</div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>Ethereum</td>
+                                    <td>$8712.34</td>
+                                    <td>None</td>
+                                    <td><span class="badge bg-success">COMPLETED</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#AS41159922</td>
+                                    <td>3 May 2021</td>
+                                    <td>Ja Morant</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="">
+                                            <div class="flex-fill ms-3">
+                                                <div class="mb-0 h6">Brad Simmons</div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>Ripple</td>
+                                    <td>$2468.56</td>
+                                    <td>None</td>
+                                    <td><span class="badge bg-danger">CANCELED</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#AS45453279</td>
+                                    <td>2 May 2021</td>
+                                    <td>Chris Fox</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">
+                                            <div class="flex-fill ms-3">
+                                                <div class="mb-0 h6">Maryam Amiri</div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>Bitcoin</td>
+                                    <td>$1597.78</td>
+                                    <td>None</td>
+                                    <td><span class="badge bg-success">COMPLETED</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#AS45459979</td>
+                                    <td>2 May 2021</td>
+                                    <td>Barbara Kelly</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar9.jpg" alt="">
+                                            <div class="flex-fill ms-3">
+                                                <div class="mb-0 h6">Maryam Amiri</div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>Litecoin</td>
+                                    <td>$9877.78</td>
+                                    <td>None</td>
+                                    <td><span class="badge bg-primary">PENDING</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#AS45459944</td>
+                                    <td>3 May 2021</td>
+                                    <td>Brad Simmons</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                            <div class="flex-fill ms-3">
+                                                <div class="mb-0 h6">Rose Gold</div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>Ripple</td>
+                                    <td>$6565.00</td>
+                                    <td>None</td>
+                                    <td><span class="badge bg-danger">CANCELED</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#AS45459933</td>
+                                    <td>3 May 2021</td>
+                                    <td>Brad Simmons</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                            <div class="flex-fill ms-3">
+                                                <div class="mb-0 h6">Rose Gold</div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>Ethereum</td>
+                                    <td>$8712.34</td>
+                                    <td>None</td>
+                                    <td><span class="badge bg-success">COMPLETED</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#AS41159922</td>
+                                    <td>3 May 2021</td>
+                                    <td>Ja Morant</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="">
+                                            <div class="flex-fill ms-3">
+                                                <div class="mb-0 h6">Brad Simmons</div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>Ripple</td>
+                                    <td>$2468.56</td>
+                                    <td>None</td>
+                                    <td><span class="badge bg-danger">CANCELED</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true
+})
+<script>
+    $(document).ready(function () {
+    $('#myDataTable')
+        .addClass('nowrap')
+        .dataTable({
+            responsive: true,
+        });
+    });
+</script>
+</body>
+</html>

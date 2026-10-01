@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "HRMS Attendance",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-black">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hrms.html', {"page": "hr-attendance"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">HR</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Attendance</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- Body: Body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Employee Attendance</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div id="apex-Attendance"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "apexcharts": true,
+})
+<script>
+    var options = {
+        chart: {
+            height: 500,
+            type: 'heatmap',
+            toolbar: {
+                show: false,
+            },
+        },
+        plotOptions: {
+            heatmap: {
+                shadeIntensity: 0.7,
+                radius: 0,
+                useFillColorAsStroke: false,
+                colorScale: {
+                    ranges: [{
+                        from: 0,
+                        to: 0,
+                        name: 'Absent',
+                        color: '#E73957'
+                    },{
+                        from: 1,
+                        to: 1,
+                        name: 'Present',
+                        color: '#79B989'
+                        }
+                    ]
+                }
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            width: 2,
+        },
+        series: [
+            {
+                name: 'Joseph',
+                data: generateData(30, {
+                    min: 0,
+                    max: 1
+                })
+            },{
+                name: 'Mark',
+                data: generateData(30, {
+                    min: 0,
+                    max: 1
+                })
+            },{
+                name: 'Jessia',
+                data: generateData(30, {
+                    min: 0,
+                    max: 1
+                })
+            },{
+                name: 'charlie',
+                data: generateData(30, {
+                    min: 0,
+                    max: 1
+                })
+            },{
+                name: 'Kozma',
+                data: generateData(30, {
+                    min: 0,
+                    max: 1
+                })
+            },{
+                name: 'Mark',
+                data: generateData(30, {
+                    min: 0,
+                    max: 1
+                })
+            },{
+                name: 'Calvin',
+                data: generateData(30, {
+                    min: 0,
+                    max: 1
+                })
+            },{
+                name: 'Scott',
+                data: generateData(30, {
+                    min: 0,
+                    max: 1
+                })
+            },{
+                name: 'Jack',
+                data: generateData(30, {
+                    min: 0,
+                    max: 1
+                })
+            },{
+                name: 'Alex',
+                data: generateData(30, {
+                    min: 0,
+                    max: 1
+                })
+            },{
+                name: 'Cameron',
+                data: generateData(30, {
+                    min: 0,
+                    max: 1
+                })
+            },{
+                name: 'Vincent',
+                data: generateData(30, {
+                    min: 0,
+                    max: 1
+                })
+            },{
+                name: 'Aaliyah',
+                data: generateData(30, {
+                    min: 0,
+                    max: 1
+                })
+            }
+        ],
+    };
+
+    var chart = new ApexCharts(document.querySelector("#apex-Attendance"), options);
+    chart.render();
+
+    function generateData(rangeLength, minMax) {
+        var data = [];
+        for(i=0;i<rangeLength;i++) {
+            console.log(Math.round(Math.random()));
+            data.push(Math.round(Math.random()));
+        }
+        return data;
+    }
+</script>
+</body>
+</html>

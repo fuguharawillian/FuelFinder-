@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('_head.html',{
+        "pageTitle": "Sign In",
+    })
+</head>
+
+<body id="layout-1" data-luno="theme-blue">
+
+    <!-- start: body area -->
+    <div class="wrapper">
+        
+        <!-- Sign In version 1 -->
+        @@include('authentication/_signin.html')
+        
+    </div>
+
+    <!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+    <a class="page-setting" href="#" title="Settings" data-bs-toggle="modal" data-bs-target="#SettingsModal"><i class="fa fa-gear text-light"></i></a>
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+
+</body>
+</html>

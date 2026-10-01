@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "HRMS Employee Profile",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-black">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hrms.html', {"page": "emp-profile"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">Employees</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- Body: Body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                                <img src="@@webRoot/assets/img/lg/avatar2.jpg" alt="" class="rounded" style="width: 210px;">
+                                <div class="ms-md-5 m-0 mt-4 mt-md-0 text-md-start text-center">
+                                    <h5 class="fw-boldSmith <span class="text-danger small">#P0015</span></h5>
+                                    <p><strong>Address:</strong> 83 Bay Drive, New Port Richey, FL 34653</p>
+                                    <div class="d-flex justify-content-center align-items-center mb-3 mt-2">
+                                        <div class="me-3 me-md-5">
+                                            <small class="text-muted">Department</small>
+                                            <div class="mb-0 fw-bold">PHP</div>
+                                        </div>
+                                        <div class="me-3 me-md-5">
+                                            <small class="text-muted">Phone</small>
+                                            <div class="mb-0 fw-bold">+123 456 789</div>
+                                        </div>
+                                        <div class="me-3 me-md-5">
+                                            <small class="text-muted">Email ID</small>
+                                            <div class="mb-0 fw-bold">eliana.smith@info.com</div>
+                                        </div>
+                                    </div>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-3">
+                                            <div class="small">PHP</div>
+                                            <div class="progress" style="height: 2px;">
+                                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%"> <span class="sr-only">40% Complete (success)</span> </div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-3">
+                                            <div class="small">Laravel</div>
+                                            <div class="progress" style="height: 2px;">
+                                                <div class="progress-bar bg-info" role="progressbar" aria-valuenow="81" aria-valuemin="0" aria-valuemax="100" style="width: 81%"> <span class="sr-only">20% Complete</span> </div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-3">
+                                            <div class="small">HTML</div>
+                                            <div class="progress" style="height: 2px;">
+                                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 55%"> <span class="sr-only">60% Complete (warning)</span> </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="small">CSS</div>
+                                            <div class="progress" style="height: 2px;">
+                                                <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"> <span class="sr-only">80% Complete (danger)</span> </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div> <!-- .Card End -->
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold"><i class="fa fa-pencil"></i> Note for Employee</h6>
+                                <span>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

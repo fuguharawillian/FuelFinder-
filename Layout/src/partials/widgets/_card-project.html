@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="mb-1"><a href="app-project-detail.html" class="color-600">@@projectTitle</a></h5>
+        <p class="text-muted">@@projectSubTitle</p>
+        <ul class="list-inline d-flex my-4">
+            <li class="list-inline-item card py-2 px-xxl-3 px-xl-2 px-3">
+                <h6 class="mb-0">7</h6>
+                <small class="text-uppercase text-muted">Issues</small>
+            </li>
+            <li class="list-inline-item card py-2 px-xxl-3 px-xl-2 px-3">
+                <h6 class="mb-0">4</h6>
+                <small class="text-uppercase text-muted">Resolved</small>
+            </li>
+            <li class="list-inline-item card py-2 px-xxl-3 px-xl-2 px-3">
+                <h6 class="mb-0">3</h6>
+                <small class="text-uppercase text-muted">Comment</small>
+            </li>
+        </ul>
+        <div class="project-members mb-4">
+            <label class="me-2">Team:</label>
+            <a href="#" title=""><img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar3.jpg" data-bs-toggle="tooltip" data-bs-placement="top" title="Team Lead" alt="friend"> </a>
+            <a href="#" title=""><img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" data-bs-toggle="tooltip" data-bs-placement="top" title="Designer" alt="friend"> </a>
+            <a href="#" title=""><img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar7.jpg" data-bs-toggle="tooltip" data-bs-placement="top" title="Developer" alt="friend"> </a>
+            <a href="#" title=""><img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar9.jpg" data-bs-toggle="tooltip" data-bs-placement="top" title="Developer" alt="friend"> </a>
+        </div>
+        <label class="small d-flex justify-content-between">@@projectProgress <span class="text-custom">Done</span></label>
+        <div class="progress mt-1" style="height: 3px;">
+            <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: @@projectProgress;"></div>
+        </div>
+    </div>
+    <div class="card-footer py-3">
+        <span>Due date: <strong>@@projectDate</strong></span>
+        <span class="px-3">|</span>
+        <span>Budget: <strong>@@projectBudget</strong></span>
+    </div>
+</div>

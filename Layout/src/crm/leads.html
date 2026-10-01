@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('_head.html',{
+        "pageTitle": "CRM Leads",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-crm.html', {"page": "leads"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Leads</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <button class="btn btn-secondary" type="button">Search</button>
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_leads" type="button">Add new Leads</button>
+                                </div>
+                                <!-- Modal: Add new Leads -->
+                                @@include('modals/_modal-add-leads.html')
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <table id="myDataTable_no_filter" class="table myDataTable align-middle custom-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Company</th>
+                                    <th>Email</th>
+                                    <th>Date</th>
+                                    <th>Value</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="rounded-circle avatar" alt="">
+                                            <h6 class="ms-2 mb-0 fw-bold">Chris Fox</h6>
+                                        </div>
+                                    </td>
+                                    <td>TKU info LLC.</td>
+                                    <td>chris.fox@example.com</td>
+                                    <td>12 April 2021</td>
+                                    <td><span class="badge bg-light text-dark">$ 986</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/xs/avatar2.jpg" class="rounded-circle avatar" alt="">
+                                            <h6 class="ms-2 mb-0 fw-bold">Marshall Nichols</h6>
+                                        </div>
+                                    </td>
+                                    <td>plo info llp.</td>
+                                    <td>Marshall .fox@example.com</td>
+                                    <td>13 April 2021</td>
+                                    <td><span class="badge bg-light text-dark">$ 810</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="rounded-circle avatar" alt="">
+                                            <h6 class="ms-2 mb-0 fw-bold">Nellie Maxwell</h6>
+                                        </div>
+                                    </td>
+                                    <td>bbb softwar LLC.</td>
+                                    <td>Nellie.fox@example.com</td>
+                                    <td>21 April 2021</td>
+                                    <td><span class="badge bg-light text-dark">$ 450</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/xs/avatar4.jpg" class="rounded-circle avatar" alt="">
+                                            <h6 class="ms-2 mb-0 fw-bold">Orlando Lentz</h6>
+                                        </div>
+                                    </td>
+                                    <td>kku system llp.</td>
+                                    <td>Orlando.fox@example.com</td>
+                                    <td>27 April 2021</td>
+                                    <td><span class="badge bg-light text-dark">$ 850</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/xs/avatar5.jpg" class="rounded-circle avatar" alt="">
+                                            <h6 class="ms-2 mb-0 fw-bold">Chris Fox</h6>
+                                        </div>
+                                    </td>
+                                    <td>hht info LLC.</td>
+                                    <td>chris.fox@example.com</td>
+                                    <td>9 May 2021</td>
+                                    <td><span class="badge bg-light text-dark">$ 672</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/xs/avatar6.jpg" class="rounded-circle avatar" alt="">
+                                            <h6 class="ms-2 mb-0 fw-bold">Dean Otto</h6>
+                                        </div>
+                                    </td>
+                                    <td>uopl system llp.</td>
+                                    <td>Dean.fox@example.com</td>
+                                    <td>12 May 2021</td>
+                                    <td><span class="badge bg-light text-dark">$ 230</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/xs/avatar7.jpg" class="rounded-circle avatar" alt="">
+                                            <h6 class="ms-2 mb-0 fw-bold">Chris Fox</h6>
+                                        </div>
+                                    </td>
+                                    <td>ww info LLC.</td>
+                                    <td>chris.fox@example.com</td>
+                                    <td>16 May 2021</td>
+                                    <td><span class="badge bg-light text-dark">$ 500</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/xs/avatar8.jpg" class="rounded-circle avatar" alt="">
+                                            <h6 class="ms-2 mb-0 fw-bold">Fidel Tonn</h6>
+                                        </div>
+                                    </td>
+                                    <td>dfaa info ltd.</td>
+                                    <td>Fidel.fox@example.com</td>
+                                    <td>23 May 2021</td>
+                                    <td><span class="badge bg-light text-dark">$ 1,983</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/xs/avatar9.jpg" class="rounded-circle avatar" alt="">
+                                            <h6 class="ms-2 mb-0 fw-bold">Maryam Amiri</h6>
+                                        </div>
+                                    </td>
+                                    <td>uuok web LLC.</td>
+                                    <td>Maryam.fox@example.com</td>
+                                    <td>4 Jun 2021</td>
+                                    <td><span class="badge bg-light text-dark">$ 566</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    // Data Table
+    $('#myDataTable_no_filter')
+    .addClass('nowrap')
+    .dataTable({
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: false,
+        info: false,
+    });
+</script>
+</body>
+</html>

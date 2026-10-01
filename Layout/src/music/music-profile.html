@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Music Profile",
+        "dataTables":true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-red">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-music.html', {"page": "music-profile"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">My Account</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body border-bottom">
+                                <div class="d-flex align-items-md-start align-items-center flex-column flex-md-row">
+                                    <img src="@@webRoot/assets/img/profile_av.png" alt="" class="rounded-4">
+                                    <div class="media-body ms-md-5 m-0 mt-4 mt-md-0 text-md-start text-center">
+                                        <h4 class="mb-1 fw-light">Allie Grater <span class="badge bg-primary fs-6">Pro</span></h4>
+                                        <p>alliegrater@luno.com</p>
+                                        <span class="text-muted">It is a long established fact that a reader will be distracted by the readable<br> content of a page when looking at its layout.</span>
+                                        <div class="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-md-start">
+                                            <div class="card py-2 px-3 me-2 mt-2">
+                                                <small class="text-muted">Songs</small>
+                                                <div class="fs-5">50+</div>
+                                            </div>
+                                            <div class="card py-2 px-3 me-2 mt-2">
+                                                <small class="text-muted">Tracks</small>
+                                                <div class="fs-5">30+</div>
+                                            </div>
+                                            <div class="card py-2 px-3 me-2 mt-2">
+                                                <small class="text-muted">Licenses</small>
+                                                <div class="fs-5">Pro</div>
+                                            </div>
+                                            <div class="card py-2 px-3 me-2 mt-2">
+                                                <small class="text-muted">Download</small>
+                                                <div class="fs-5">80+</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="nav nav-tabs tab-card border-bottom-0 pt-2 fs-6 justify-content-center justify-content-md-start" role="tablist">
+                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#Playlists" role="tab"><i class="fa fa-music"></i><span class="d-none d-md-inline-block ms-2">Playlists</span></a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#Songs" role="tab"><i class="fa fa-play-circle-o"></i><span class="d-none d-sm-inline-block ms-2">Songs</span></a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#Albums" role="tab"><i class="fa fa-folder-open"></i><span class="d-none d-sm-inline-block ms-2">Albums</span></a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#Artists" role="tab"><i class="fa fa-user"></i><span class="d-none d-md-inline-block ms-2">Artists</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <div class="tab-content">
+                            <!-- Tab: Playlists -->
+                            <div class="tab-pane fade show active" id="Playlists" role="tabpanel">
+                                <div class="row-title mb-3">
+                                    <h5>Playlists</h5>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="card">
+                                            <a class="color-400" href="music-all.html">
+                                                <img src="@@webRoot/assets/img/music/music-list-8.jpg" class="card-img-top" alt="">
+                                                <div class="card-body text-center">
+                                                    <h6 class="mb-0">International Top</h6>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="card">
+                                            <a class="color-400" href="music-all.html">
+                                                <img src="@@webRoot/assets/img/music/music-list-4.jpg" class="card-img-top" alt="">
+                                                <div class="card-body text-center">
+                                                    <h6 class="mb-0">Baby Story</h6>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="card">
+                                            <a class="color-400" href="music-all.html">
+                                                <img src="@@webRoot/assets/img/music/music-list-9.jpg" class="card-img-top" alt="">
+                                                <div class="card-body text-center">
+                                                    <h6 class="mb-0">Party</h6>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="card">
+                                            <a class="color-400" href="music-all.html">
+                                                <img src="@@webRoot/assets/img/music/music-list-7.jpg" class="card-img-top" alt="">
+                                                <div class="card-body text-center">
+                                                    <h6 class="mb-0">Long Drive</h6>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div> <!-- Row end  -->
+                            </div>
+                            <!-- Tab: Songs -->
+                            <div class="tab-pane fade" id="Songs" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <table id="SongsList" class="table songs-list myDataTable align-middle custom-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Duration</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Heat Waves</td>
+                                                    <td>3:59</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>We Don't Talk About Bruno</td>
+                                                    <td>3:36</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>abcdefu</td>
+                                                    <td>2:48</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>Super Gremlin</td>
+                                                    <td>3:20</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>Cool For The Summer</td>
+                                                    <td>5:20</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td>Bam Bam</td>
+                                                    <td>4:51</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td>MIDDLE OF THE NIGHT</td>
+                                                    <td>2:58</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td>Cold Heart (PNAU Remix)</td>
+                                                    <td>3:45</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td>Wait A Minute!</td>
+                                                    <td>1:15</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td>Tom's Diner</td>
+                                                    <td>2:00</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>11</td>
+                                                    <td>In The Dark</td>
+                                                    <td>3:15</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12</td>
+                                                    <td>Another Love</td>
+                                                    <td>4:15</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>13</td>
+                                                    <td>Big Energy</td>
+                                                    <td>3:20</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>14</td>
+                                                    <td>Yo Voy</td>
+                                                    <td>2:20</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-link btn-sm text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Favorite"><i class="fa fa-star-o"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                                        <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div> <!-- Row end  -->
+                            </div>
+                            <!-- Tab: Albums -->
+                            <div class="tab-pane fade" id="Albums" role="tabpanel">
+                                <div class="row-title mb-3">
+                                    <h5>Album</h5>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="card">
+                                            <a class="color-400" href="music-all.html">
+                                                <img src="@@webRoot/assets/img/music/music-list-8.jpg" class="card-img-top" alt="">
+                                                <div class="card-body text-center">
+                                                    <h6 class="mb-0">Back in Black</h6>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="card">
+                                            <a class="color-400" href="music-all.html">
+                                                <img src="@@webRoot/assets/img/music/music-list-4.jpg" class="card-img-top" alt="">
+                                                <div class="card-body text-center">
+                                                    <h6 class="mb-0">Come On Over</h6>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="card">
+                                            <a class="color-400" href="music-all.html">
+                                                <img src="@@webRoot/assets/img/music/music-list-9.jpg" class="card-img-top" alt="">
+                                                <div class="card-body text-center">
+                                                    <h6 class="mb-0">Fearless</h6>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="card">
+                                            <a class="color-400" href="music-all.html">
+                                                <img src="@@webRoot/assets/img/music/music-list-7.jpg" class="card-img-top" alt="">
+                                                <div class="card-body text-center">
+                                                    <h6 class="mb-0">Certified Lover Boy</h6>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div> <!-- Row end  -->
+                            </div>
+                            <!-- Tab: Artists -->
+                            <div class="tab-pane fade" id="Artists" role="tabpanel">
+                                <div class="row-title mb-3">
+                                    <h5>Artists</h5>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="card">
+                                            <a class="color-400" href="music-all.html">
+                                                <img src="@@webRoot/assets/img/music/music-list-8.jpg" class="card-img-top" alt="">
+                                                <div class="card-body text-center">
+                                                    <h6 class="mb-0">Lil Durk</h6>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="card">
+                                            <a class="color-400" href="music-all.html">
+                                                <img src="@@webRoot/assets/img/music/music-list-4.jpg" class="card-img-top" alt="">
+                                                <div class="card-body text-center">
+                                                    <h6 class="mb-0">The Weeknd</h6>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="card">
+                                            <a class="color-400" href="music-all.html">
+                                                <img src="@@webRoot/assets/img/music/music-list-9.jpg" class="card-img-top" alt="">
+                                                <div class="card-body text-center">
+                                                    <h6 class="mb-0">Morgan Wallen</h6>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="card">
+                                            <a class="color-400" href="music-all.html">
+                                                <img src="@@webRoot/assets/img/music/music-list-7.jpg" class="card-img-top" alt="">
+                                                <div class="card-body text-center">
+                                                    <h6 class="mb-0">Kanye West</h6>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div> <!-- Row end  -->
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables":true,
+})
+<script>
+    $('.songs-list')
+    .addClass('nowrap')
+    .dataTable({
+        responsive: true,
+        searching: true,
+        paging: true,
+        ordering: false,
+        info: false,
+    });
+    $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+        $($.fn.dataTable.tables(true)).DataTable()
+        .columns.adjust()
+        .responsive.recalc();
+    });
+</script>
+</body>
+</html>

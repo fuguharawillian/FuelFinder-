@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "HRMS Departments",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-black">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hrms.html', {"page": "hr-departments"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">HR</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Departments</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- Body: Body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Departments</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <table class="table myDataTable table-hover align-middle mb-0 card-table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Dep. Name</th>
+                                            <th>Dep. Head</th>
+                                            <th>Total Employee</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>01</td>
+                                            <td><h6 class="mb-0">Web Development</h6></td>
+                                            <td>John Smith</td>
+                                            <td>78</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>02</td>
+                                            <td><h6 class="mb-0">Marketing</h6></td>
+                                            <td>Maryam Amiri</td>
+                                            <td>26</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>03</td>
+                                            <td><h6 class="mb-0">App Development</h6></td>
+                                            <td>Frank Camly</td>
+                                            <td>38</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>04</td>
+                                            <td><h6 class="mb-0">Support</h6></td>
+                                            <td>Gary Camara</td>
+                                            <td>45</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>05</td>
+                                            <td><h6 class="mb-0">Accounts</h6></td>
+                                            <td>Fidel Tonn</td>
+                                            <td>8</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables":true,
+})
+<script>
+    $('.myDataTable')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+    });
+</script>
+</body>
+</html>

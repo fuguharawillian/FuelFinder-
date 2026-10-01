@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "University Departments",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-indigo">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-university.html', {"page": "mgmt-departments"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">Management</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Department</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Departments</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <table class="table myDataTable card-table mb-0 align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>no</th>
+                                        <th>Dept. Name</th>
+                                        <th>Brief</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>No. of Students</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>                            
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>MBA</td>
+                                        <td>Lorem Ipsum is simply dummy text of the printing</td>
+                                        <td>info@gamil.com</td>
+                                        <td>+123 456 7890</td>
+                                        <td>55</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>MBA</td>
+                                        <td>web page editors now use Lorem Ipsum as their</td>
+                                        <td>info@gamil.com</td>
+                                        <td>+123 456 7890</td>
+                                        <td>78</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>MBA</td>
+                                        <td>There are many variations of passages of Lorem Ipsum</td>
+                                        <td>info@gamil.com</td>
+                                        <td>+123 456 7890</td>
+                                        <td>25</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>MBA</td>
+                                        <td>Contrary to popular belief, Lorem Ipsum is not simply random</td>
+                                        <td>info@gamil.com</td>
+                                        <td>+123 456 7890</td>
+                                        <td>35</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>MBA</td>
+                                        <td>Lorem Ipsum is simply dummy text of the printing</td>
+                                        <td>info@gamil.com</td>
+                                        <td>+123 456 7890</td>
+                                        <td>44</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>M.COM</td>
+                                        <td>All the Lorem Ipsum generators on the Internet</td>
+                                        <td>info@gamil.com</td>
+                                        <td>+123 456 7890</td>
+                                        <td>74</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>MBA</td>
+                                        <td>Lorem Ipsum is simply dummy text of the printing</td>
+                                        <td>info@gamil.com</td>
+                                        <td>+123 456 7890</td>
+                                        <td>102</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>B.COM</td>
+                                        <td>All the Lorem Ipsum generators on the Internet</td>
+                                        <td>info@gamil.com</td>
+                                        <td>+123 456 7890</td>
+                                        <td>47</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>MBA</td>
+                                        <td>Lorem Ipsum is simply dummy text of the printing</td>
+                                        <td>info@gamil.com</td>
+                                        <td>+123 456 7890</td>
+                                        <td>50</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>BBA</td>
+                                        <td>It is a long established fact that a reader</td>
+                                        <td>info@gamil.com</td>
+                                        <td>+123 456 7890</td>
+                                        <td>52</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>11</td>
+                                        <td>MBA</td>
+                                        <td>Lorem Ipsum is simply dummy text of the printing</td>
+                                        <td>info@gamil.com</td>
+                                        <td>+123 456 7890</td>
+                                        <td>55</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>MCA</td>
+                                        <td>It is a long established fact that a reader</td>
+                                        <td>info@gamil.com</td>
+                                        <td>+123 456 7890</td>
+                                        <td>55</td>
+                                        <td>
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    // project data table
+    $('.myDataTable')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: true,
+        info: false,
+    });
+</script>
+</body>
+</html>

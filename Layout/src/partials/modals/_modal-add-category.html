@@ -1,0 +1,50 @@
+<!-- <button class="btn btn-primary px-4 text-uppercase" data-bs-toggle="modal" data-bs-target="#add_category" type="button">Add Category</button> -->
+
+<div class="modal fade" id="add_category" tabindex="-1" aria-labelledby="add_category" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-lg-12">
+                        <label for="formFile" class="form-label">Select Image</label>
+                        <input class="form-control" type="file" id="formFile">
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" placeholder="Product Name *">
+                            <label>Product Name *</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
+                            <select class="form-select">
+                                <option>Beauty</option>
+                                <option>Grocery</option>
+                                <option>Food</option>
+                                <option>Furniture</option>
+                                <option>Shoes</option>
+                                <option>Frames</option>
+                                <option>Jewellery</option>
+                            </select>
+                            <label for="floatingSelect">Category *</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" placeholder="Code *">
+                            <label>Code *</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

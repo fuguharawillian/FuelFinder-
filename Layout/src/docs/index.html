@@ -1,0 +1,246 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Documentation",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "index"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="../index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Overview</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-secondary" href="doc-setup.html">Development Setup<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+                
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0"><i class="fa fa-thumbs-up me-2"></i>Getting Started</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="lead">This guide will help you get started with <strong class="text-danger">LUNO</strong>!</p>
+                                <p class="lead">All the important stuff –&nbsp;compiling the source, file structure, build tools, file includes –&nbsp;is documented here, but should you have any questions, always feel free to reach out to <span class="text-primary fw-bold">wraptheme@gmail.com</span></p>
+                                <p class="lead">If you really like our work, design, performance and support then <a href="https://themeforest.net/downloads"> please don't forgot to rate us</a> on Themeforest,<br> it really motivate us to provide something better.
+                                    <span class="ms-2">
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">LUNO - in 2 minutes Explainer + Code + Intro Video</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-lg-6">
+                                        <iframe class="rounded-4" style="width: 100%; height: auto; min-height: 460px;" src="https://www.youtube.com/embed/9_PV-f87xPw" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <iframe class="rounded-4" style="width: 100%; height: auto; min-height: 460px;" src="https://www.youtube.com/embed/gjb4rbNrg7U" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card fieldset border border-dark mb-4">
+                            <span class="fieldset-tile text-dark bg-body">Getting Started:</span>
+                            <ul class="mb-0 list-unstyled d-flex flex-wrap">
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="doc-setup.html">Dev Setup</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="doc-structure.html">File Structure</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="doc-references.html">References</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="doc-helperclass.html">Helper Class</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="doc-staterpage.html">Stater Page</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="doc-animation.html">Animation</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card fieldset border border-primary mb-4">
+                            <span class="fieldset-tile text-primary bg-body">Handcrafted Widget Card:</span>
+                            <ul class="mb-0 list-unstyled d-flex flex-wrap">
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="w-cards.html"><span>Basic Card</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="w-cards-tiles.html"><span>Card Tiles</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="w-cards-user.html"><span>User's Card</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="w-cards-tabbed.html"><span>Tabbed Card</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="w-cards-ribbons.html"><span>Card Ribbons</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="w-cards-list.html"><span>Card List</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="w-cards-charts.html"><span>Chart Widget</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card fieldset border border-secondary mb-4">
+                            <span class="fieldset-tile text-secondary bg-body">Luno Advanced Elements:</span>
+                            <ul class="mb-0 list-unstyled d-flex flex-wrap">
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-clipboard.html"><span>Clipboard</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-colorpicker.html"><span>Colorpicker</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-daterange.html"><span>Date Range Picker</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-datepicker.html"><span>Datepicker</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-dropify.html"><span>Dropify</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-flatpickr.html"><span>Flatpickr</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-inputmask.html"><span>Inputmask</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-imageinput.html"><span>Image Input</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-maxlength.html"><span>Maxlength</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-nouislider.html"><span>nouislider</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-passwordmeter.html"><span>Password Meter</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-rangeslider.html"><span>Rangeslider</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-sweetalert2.html"><span>Sweetalert 2</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-tagsinput.html"><span>Tagsinput</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-select2.html"><span>Select 2</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-multiselectsplitter.html"><span>Multiselect Splitter</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="element-jkanban.html"><span>jKanban Board</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card fieldset border border-info mb-4">
+                            <span class="fieldset-tile text-info bg-body">Charts:</span>
+                            <ul class="mb-0 list-unstyled d-flex flex-wrap">
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="chart-apex.html"><span>Apex Chart</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="chart-chartjs.html"><span>ChartJS</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="chart-knob.html"><span>JQuery Knob</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="chart-sparkline.html"><span>Sparkline</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card fieldset border border-dark mb-4">
+                            <span class="fieldset-tile text-dark bg-body">Form Elements:</span>
+                            <ul class="mb-0 list-unstyled d-flex flex-wrap">
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="form-bootstrap.html"><span>Bootstrap Form</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="form-wizard-h.html"><span>Form Wizard horizontal</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="form-wizard-v.html"><span>Form Wizard Vertical</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="form-wizard-validate.html"><span>Form Wizard Validate</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="form-custome.html"><span>Custome Form</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card fieldset border border-danger mb-4">
+                            <span class="fieldset-tile text-danger bg-body">Plugins (install with NPM):</span>
+                            <ul class="mb-0 list-unstyled d-flex flex-wrap">
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="plugin-table.html"><span>DataTables</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="plugin-jsgrid.html"><span>jsGrid Table</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="plugin-summernote.html"><span>Summernote</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="plugin-owlcarousel.html"><span>Owl Carousel</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="plugin-masonrygallery.html"><span>Masonry Gallery</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="plugin-fancybox.html"><span>FancyBox Gallery</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="plugin-dropify.html"><span>Drag & Drop</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="plugin-nestable.html"><span>jquery Nestable</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="plugin-skedtape.html"><span>jQuery skedTape</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="plugin-typedjs.html"><span>Typed.js</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="plugin-fullcalendar.html"><span>Fullcalendar</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="plugin-countup.html"><span>CountUp</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="plugin-imagecropper.html"><span>Cropper</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="plugin-tabledragger.html"><span>Table Dragger</span></a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="plugin-x-editable.html"><span>X-editable</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card fieldset border border-warning mb-4">
+                            <span class="fieldset-tile text-warning bg-body">Font icon (5000+):</span>
+                            <ul class="mb-0 list-unstyled d-flex flex-wrap">
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="icon-fontawesome.html">Font Awesome</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="icon-linear.html">Simple line</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="icon-weather.html">Weather Icons</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="icon-feather.html">Feather Icons</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="icon-8.html">Icons8 Line Awesome</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="icon-bootstrap.html">Bootstrap Icon</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="icon-flag.html">Flag Icon</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card fieldset border border-success mb-4">
+                            <span class="fieldset-tile text-success bg-body">Bootstrap 5 Components:</span>
+                            <ul class="mb-0 list-unstyled d-flex flex-wrap">
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-alerts.html">Alerts</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-avatar.html">Avatar</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-badge.html">Badge</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-border.html">Borders</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-breadcrumb.html">Breadcrumb</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-buttons.html">Buttons</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-card.html">Card</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-carousel.html">Carousel</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-collapse.html">Collapse</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-dropdowns.html">Dropdowns</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-listgroup.html">List group</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-modal.html">Modal</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-navbar.html">Navbar</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-navs.html">Navs</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-pagination.html">Pagination</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-popovers.html">Popovers</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-progress.html">Progress</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-scrollspy.html">Scrollspy</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-spinners.html">Spinners</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-toasts.html">Toasts</a></li>
+                                <li><a class="card p-3 fs-5 fw-light m-1 color-600 lift" href="ui-tooltips.html">Tooltips</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="doc-setup.html"><i class="fa fa-long-arrow-right me-3"></i>Development Setup</a>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('docs/_scripts.html',{
+
+})
+</body>
+</html>

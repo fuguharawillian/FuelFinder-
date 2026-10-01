@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Event Management Details",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-event.html', {"page": "event-myevent"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="event-myevent.html">My Event</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Details</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col d-flex justify-content-lg-end mt-2 mt-md-0">
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">8.18K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 1.3%</small></div>
+                            <small class="text-muted text-uppercase">Income</small>
+                        </div>
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">1.11K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 4.1%</small></div>
+                            <small class="text-muted text-uppercase">Expense</small>
+                        </div>
+                        <div class="p-2 pe-lg-0">
+                            <div><span class="h6 mb-0">3.66K</span> <small class="text-danger"><i class="fa fa-angle-down"></i> 7.5%</small></div>
+                            <small class="text-muted text-uppercase">Revenue</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <img src="@@webRoot/assets/img/fronend-uikit/hero-2-bg.jpg" class="img-fluid rounded-4" alt="">
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-column">
+                                    <h5 class="h5 mb-0">Event name here </h5>
+                                    <p class="text-muted">Vanue: 603 Jennifer Ln, PA, 19525</p>
+                                </div>
+                                <div class="d-flex align-items-center my-2">
+                                    <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                    <div class="flex-fill ms-2">
+                                        <div class="h6 mb-0">By Saul R. Lopez</div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between py-2">
+                                    <p class="mb-0">Date: <strong>29 June 2021</strong></p>
+                                    <p class="mb-0">Time: <strong>5 HR</strong></p>
+                                </div>
+                                <div class="alert alert-success mt-3" role="alert">
+                                    <h4 class="alert-heading">Well done!</h4>
+                                    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                                    <hr>
+                                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                                </div>
+                                <p class="lead mb-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                <h3>The Guitar Legends</h3>
+                                <p class="lead mb-3">On top of that, all the <a class="luno-link line-through" href="#"><span data-content="landing pages">landing pages</span></a> has different theme and <a class="luno-link dashed" href="#"><span data-content="color options">color options</span></a>, gives you freedom to adjust the design suitable to your brand.</p>
+                                <ul>
+                                    <li class="fs-6 py-1">Lorem Ipsum has been the industry's standard dummy</li>
+                                    <li class="fs-6 py-1">Many desktop publishing packages and web page editors now use Lorem</li>
+                                    <li class="fs-6 py-1">If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything</li>
+                                    <li class="fs-6 py-1">Contrary to popular belief, Lorem Ipsum is not simply random text.</li>
+                                    <li class="fs-6 py-1">Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia</li>
+                                </ul>
+                                <p class="lead mb-0">Praesent eget vulputate posuere ridiculus quis sodales vitae malesuada massa sagittis cras nisi feugiat montes nulla ornare ut vehicula per leo mattis</p>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table align-middle text-center card-table mb-0">
+                                    <thead>
+                                        <tr class="bg-light-gray">
+                                            <th>Monday</th>
+                                            <th>Tuesday</th>
+                                            <th>Wednesday</th>
+                                            <th>Thursday</th>
+                                            <th>Friday</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span class="badge bg-info">Intro</span>
+                                                <div class="mt-2">11:00-11:20</div>
+                                                <div class="small text-muted">Saul R. Lopez</div>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-danger">Topic 1</span>
+                                                <div class="mt-2">11:00-12:30</div>
+                                                <div class="small text-muted">Jack Bird</div>
+                                            </td>
+            
+                                            <td>
+                                                <span class="badge bg-secondary">Topic 3</span>
+                                                <div class="mt-2">11:00-01:00</div>
+                                                <div class="small text-muted">Chris Fox</div>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-success">Intro</span>
+                                                <div class="mt-2">9:00-10:00</div>
+                                                <div class="small text-muted">Chris Fox</div>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-primary">Topic 4</span>
+                                                <div class="mt-2">9:00-10:00</div>
+                                                <div class="small text-muted">Dean Otto</div>
+                                            </td>
+                                        </tr>
+            
+                                        <tr>
+                                            <td>
+                                                <span class="badge bg-danger">Topic 1</span>
+                                                <div class="mt-2">11:20-12:00</div>
+                                                <div class="small text-muted">Jack Bird</div>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-light text-dark">Break</span>
+                                                <div class="mt-2">12:30-1:30</div>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-light text-dark">Tea Break</span>
+                                                <div class="mt-2">1:30-1:40</div>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-warning text-dark">Topic 1</span>
+                                                <div class="mt-2">10:00-11:00</div>
+                                                <div class="small text-muted">Jack Bird</div>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-dark">Topic 5</span>
+                                                <div class="mt-2">10:00-11:00</div>
+                                                <div class="small text-muted">James Smith</div>
+                                            </td>
+                                        </tr>
+            
+                                        <tr>
+                                            <td>
+                                                <span class="badge bg-light text-dark">Break</span>
+                                                <div class="mt-2">12:00-12:30</div>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-primary">Topic 2</span>
+                                                <div class="mt-2">1:30-2:30</div>
+                                                <div class="small text-muted">Dean Otto</div>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-primary">Topic 4</span>
+                                                <div class="mt-2">1:40-2:40</div>
+                                                <div class="small text-muted">Dean Otto</div>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-light text-dark">Break</span>
+                                                <div class="mt-2">11:00-12:00</div>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-light text-dark">Break</span>
+                                                <div class="mt-2">11:00-12:00</div>
+                                            </td>
+                                        </tr>
+            
+                                        <tr>
+                                            <td>
+                                                <span class="badge bg-primary">Topic 2</span>
+                                                <div class="mt-2">12:30-2:30</div>
+                                                <div class="small text-muted">Dean Otto</div>
+                                            </td>
+                                            <td>
+                                                
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-warning text-dark">Topic 5</span>
+                                                <div class="mt-2">2:40-3:40</div>
+                                                <div class="small text-muted">Dean Otto</div>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-danger">Topic 3</span>
+                                                <div class="mt-2">12:00-1:00</div>
+                                                <div class="small text-muted">Chris Fox</div>
+                                            </td>
+                                            <td>
+
+                                            </td>
+                                        </tr>
+            
+                                        <tr>
+                                            <td>
+                                                <span class="badge bg-dark">Doubt Clearing</span>
+                                                <div class="mt-2">2:30-4:00</div>
+                                                <div class="small text-muted">James Smith</div>
+                                            </td>
+                                            <td>
+                                                
+                                            </td>
+                                            <td class="">
+                                                <span class="badge bg-dark">Revision</span>
+                                                <div class="mt-2">3:40-4:00</div>
+                                                <div class="small text-muted">James Smith</div>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-dark">Topic 4</span>
+                                                <div class="mt-2">1:00-2:00</div>
+                                                <div class="small text-muted">James Smith</div>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-warning text-dark">Doubt Clearing</span>
+                                                <div class="mt-2">1:00-2:00</div>
+                                                <div class="small text-muted">Jack Bird</div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Latest Events</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled mb-0">
+                                    <li>
+                                        <div class="d-flex flex-column">
+                                            <a href="e-event-details.html" class="fs-5" title="">Event name here</a>
+                                            <p class="mb-0">Date: <strong>29 June 2022</strong></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex flex-column mt-3">
+                                            <a href="e-event-details.html" class="fs-5" title="">Event name here</a>
+                                            <p class="mb-0">Date: <strong>29 June 2022</strong></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex flex-column mt-3">
+                                            <a href="e-event-details.html" class="fs-5" title="">Event name here</a>
+                                            <p class="mb-0">Date: <strong>29 June 2022</strong></p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Speakers</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-3">
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/xs/avatar6.jpg" data-bs-toggle="tooltip" title="" alt="Avatar" class="rounded-circle avatar" data-original-title="Avatar Name" data-bs-original-title="">
+                                            <div class="ms-3">
+                                                <a href="#" title="">Kevin Gill</a>
+                                                <p class="mb-0">Manager</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-3">
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/xs/avatar4.jpg" data-bs-toggle="tooltip" title="" alt="Avatar" class="rounded-circle avatar" data-original-title="Avatar Name" data-bs-original-title="">
+                                            <div class="ms-3">
+                                                <a href="#" title="">Manuella Nevoresky</a>
+                                                <p class="mb-0">CEO - FOUNDER</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-3">
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/xs/avatar1.jpg" data-bs-toggle="tooltip" title="" alt="Avatar" class="rounded-circle avatar" data-original-title="Avatar Name" data-bs-original-title="">
+                                            <div class="ms-3">
+                                                <a href="#" title="">Rachel Roth</a>
+                                                <p class="mb-0">Developer</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex align-items-center">
+                                            <img src="@@webRoot/assets/img/xs/avatar5.jpg" data-bs-toggle="tooltip" title="" alt="Avatar" class="rounded-circle avatar" data-original-title="Avatar Name" data-bs-original-title="">
+                                            <div class="ms-3">
+                                                <a href="#" title="">Helen Maggie</a>
+                                                <p class="mb-0">Support Team</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Sponsors</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled row g-1 mb-0">
+                                    <li class="col-6">
+                                        <img class="rounded img-thumbnail" src="@@webRoot/assets/img/events/sponsor-1.png" alt="Orange County Department on Aging" data-bs-toggle="tooltip" data-bs-placement="top" title="Orange County Department on Aging">
+                                    </li>
+                                    <li class="col-6">
+                                        <img class="rounded img-thumbnail" src="@@webRoot/assets/img/events/sponsor-2.png" alt="Small Business Expo" data-bs-toggle="tooltip" data-bs-placement="top" title="Small Business Expo">
+                                    </li>
+                                    <li class="col-6">
+                                        <img class="rounded img-thumbnail" src="@@webRoot/assets/img/events/sponsor-3.png" alt="Indonesia Business Center" data-bs-toggle="tooltip" data-bs-placement="top" title="Indonesia Business Center">
+                                    </li>
+                                    <li class="col-6">
+                                        <img class="rounded img-thumbnail" src="@@webRoot/assets/img/events/sponsor-4.png" alt="Northern Lincolmshire Business" data-bs-toggle="tooltip" data-bs-placement="top" title="Northern Lincolmshire Business">
+                                    </li>
+                                    <li class="col-6">
+                                        <img class="rounded img-thumbnail" src="@@webRoot/assets/img/events/sponsor-5.png" alt="Small Business Entrepreneur Expo" data-bs-toggle="tooltip" data-bs-placement="top" title="Small Business Entrepreneur Expo">
+                                    </li>
+                                    <li class="col-6">
+                                        <img class="rounded img-thumbnail" src="@@webRoot/assets/img/events/sponsor-6.png" alt="Philippine SME Business Expo" data-bs-toggle="tooltip" data-bs-placement="top" title="Philippine SME Business Expo">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Onepage UiKit Contact Form",
+        "onepage": true
+    })
+</head>
+
+<body class="landing-page" data-luno="theme-blue">
+
+    <!-- Page Wrapper Start -->
+    <div class="wrapper">
+
+        <!-- Contact Section #1  -->
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-lg-12">
+                    <span class="bg-dark px-2 py-1 color-fff">Contact Section #1</span>
+                </div>
+            </div> <!-- .row end -->
+        </div>
+        <!-- Start -->
+        <div class="section bg-card">
+            <div class="container">
+                
+                @@include('onepage/contact/_contact-form1.html', {
+                    "rowClass": "g-3",
+                    "SectionTag": "Contact Information",
+                    "SectionTitle": "Get in touch",
+                })
+
+            </div>
+        </div>
+
+        <!-- Contact Section #2  -->
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-lg-12">
+                    <span class="bg-dark px-2 py-1 color-fff">Contact Section #2</span>
+                </div>
+            </div> <!-- .row end -->
+        </div>
+        <!-- Start -->
+        <div class="section bg-card">
+            <div class="container">
+
+                @@include('onepage/contact/_contact-form2.html', {
+                    "rowClass": "g-3",
+                    "SectionTag": "Contact Information",
+                    "SectionTitle": "Get in touch",
+                })
+
+            </div>
+        </div>
+
+    </div>
+    <!-- Page Wrapper End -->
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

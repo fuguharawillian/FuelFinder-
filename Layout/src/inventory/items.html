@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Inventory Items",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-inventory.html', {"page": "items"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Items</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#add_items" type="button">Add Item</button>
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Product Name</a></li>
+                                        <li><a class="dropdown-item" href="#">Brand Name</a></li>
+                                        <li><a class="dropdown-item" href="#">Category</a></li>
+                                        <li><a class="dropdown-item" href="#">Quantity</a></li>
+                                        <li><a class="dropdown-item" href="#">Code</a></li>
+                                        <li><a class="dropdown-item" href="#">Price</a></li>
+                                    </ul>
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <button class="btn btn-secondary" type="button">Search</button>
+                                </div>
+                            </div>
+                            <table id="myDataTable_no_filter" class="table card-table myDataTable mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Product Name</th>
+                                        <th>Brand Name</th>
+                                        <th>Code</th>
+                                        <th>Category</th>
+                                        <th>Quantity</th>
+                                        <th>Cost</th>
+                                        <th>Price</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/ecommerce/1.png" alt="">
+                                                <div class="flex-fill ms-3">
+                                                    <div class="mb-0 h6">Organic Cream</div>
+                                                    <span class="text-muted small">This is test Product</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>Sun</td>
+                                        <td>P0122</td>
+                                        <td>Beauty</td>
+                                        <td>223</td>
+                                        <td>$22</td>
+                                        <td>$28</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/ecommerce/2.png" alt="">
+                                                <div class="flex-fill ms-3">
+                                                    <div class="mb-0 h6">Organic Cream</div>
+                                                    <span class="text-muted small">This is test Product</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>Blushing</td>
+                                        <td>P0122</td>
+                                        <td>Jewellery</td>
+                                        <td>44</td>
+                                        <td>$52</td>
+                                        <td>$33</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/ecommerce/3.png" alt="">
+                                                <div class="flex-fill ms-3">
+                                                    <div class="mb-0 h6">Organic Cream</div>
+                                                    <span class="text-muted small">This is test Product</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>Dove</td>
+                                        <td>P0222</td>
+                                        <td>Beauty</td>
+                                        <td>200</td>
+                                        <td>$60</td>
+                                        <td>$55</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/ecommerce/4.png" alt="">
+                                                <div class="flex-fill ms-3">
+                                                    <div class="mb-0 h6">Organic Cream</div>
+                                                    <span class="text-muted small">This is test Product</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>Nike</td>
+                                        <td>P0120</td>
+                                        <td>Shoes</td>
+                                        <td>223</td>
+                                        <td>$22</td>
+                                        <td>$28</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/ecommerce/5.png" alt="">
+                                                <div class="flex-fill ms-3">
+                                                    <div class="mb-0 h6">Organic Cream</div>
+                                                    <span class="text-muted small">This is test Product</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>Ray-Ban</td>
+                                        <td>P0192</td>
+                                        <td>Shoes</td>
+                                        <td>150</td>
+                                        <td>$15</td>
+                                        <td>$9</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/ecommerce/6.png" alt="">
+                                                <div class="flex-fill ms-3">
+                                                    <div class="mb-0 h6">Organic Cream</div>
+                                                    <span class="text-muted small">This is test Product</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>Ray-Ban</td>
+                                        <td>P0322</td>
+                                        <td>Frames</td>
+                                        <td>665</td>
+                                        <td>$78</td>
+                                        <td>$66</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/ecommerce/7.png" alt="">
+                                                <div class="flex-fill ms-3">
+                                                    <div class="mb-0 h6">Organic Cream</div>
+                                                    <span class="text-muted small">This is test Product</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>Nescafe</td>
+                                        <td>P0162</td>
+                                        <td>Food</td>
+                                        <td>223</td>
+                                        <td>$22</td>
+                                        <td>$28</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/ecommerce/8.png" alt="">
+                                                <div class="flex-fill ms-3">
+                                                    <div class="mb-0 h6">Organic Cream</div>
+                                                    <span class="text-muted small">This is test Product</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>Ray-Ban</td>
+                                        <td>P0124</td>
+                                        <td>Grocery</td>
+                                        <td>550</td>
+                                        <td>$158</td>
+                                        <td>$123</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/ecommerce/9.png" alt="">
+                                                <div class="flex-fill ms-3">
+                                                    <div class="mb-0 h6">Organic Cream</div>
+                                                    <span class="text-muted small">This is test Product</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>Polaris</td>
+                                        <td>P0132</td>
+                                        <td>Grocery</td>
+                                        <td>223</td>
+                                        <td>$22</td>
+                                        <td>$28</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/ecommerce/10.png" alt="">
+                                                <div class="flex-fill ms-3">
+                                                    <div class="mb-0 h6">Organic Cream</div>
+                                                    <span class="text-muted small">This is test Product</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>Ray-Ban</td>
+                                        <td>P0188</td>
+                                        <td>Beauty</td>
+                                        <td>810</td>
+                                        <td>$341</td>
+                                        <td>$301</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Modal: Add new Items -->
+                        @@include('modals/_modal-add-items.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    // DataTable
+    $('#myDataTable_no_filter')
+    .addClass('nowrap')
+    .dataTable({
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: false,
+        info: false,
+    });
+</script>
+</body>
+</html>

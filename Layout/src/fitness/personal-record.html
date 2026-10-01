@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Fitness Personal Record",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-fitness.html', {"page": "record"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Personal Record</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-2">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Personal Record List</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <table class="table myDataTable card-table mb-0">
+                                <thead>
+                                    <tr>                                       
+                                        <th>Date</th>
+                                        <th>Workout</th>
+                                        <th>Goal / Distance</th>
+                                        <th>Target</th>
+                                        <th>Time</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>6 March 2021</td>
+                                        <td>Running</td>
+                                        <td>11 km</td>
+                                        <td>40 mins</td>
+                                        <td>30 mins</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>22 March 2021</td>
+                                        <td>Swimming</td>
+                                        <td>1 km</td>
+                                        <td>1 h/mins</td>
+                                        <td>1.2 h/mins</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>15 March 2021</td>
+                                        <td>Cycling</td>
+                                        <td>8 km</td>
+                                        <td>40 mins</td>
+                                        <td>55 mins</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>17 March 2021</td>
+                                        <td>Yoga</td>
+                                        <td>2 Session</td>
+                                        <td>55 mins</td>
+                                        <td>55 mins</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>11 March 2021</td>
+                                        <td>Cricket</td>
+                                        <td>100 run</td>
+                                        <td>5 Over</td>
+                                        <td>1.2 h/mins</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>8 March 2021</td>
+                                        <td>Running</td>
+                                        <td>5 mk</td>
+                                        <td>1.30 h/mins</td>
+                                        <td>1 h/mins</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7 March 2021</td>
+                                        <td>Cycling</td>
+                                        <td>11 mk</td>
+                                        <td>40 mins</td>
+                                        <td>30 mins</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>11 March 2021</td>
+                                        <td>Running</td>
+                                        <td>11 mk</td>
+                                        <td>40 mins</td>
+                                        <td>30 mins</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Reports"><i class="fa fa-area-chart"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    // project data table
+    $('.myDataTable')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: false,
+        info: false,
+    });
+</script>
+</body>
+</html>

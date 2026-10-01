@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "HRMS Office Staff",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-black">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hrms.html', {"page": "hr-officestaff"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">HR</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Office Staff</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- Body: Body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Office Staff</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <table class="table myDataTable table-hover align-middle mb-0 card-table">
+                                    <thead>
+                                        <tr>                                        
+                                            <th>Name</th>
+                                            <th></th>
+                                            <th>Created Date</th>
+                                            <th>Role</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="d-flex">
+                                                <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="avatar rounded-circle" alt="">
+                                                <div class="ms-2">
+                                                    <div class="mb-0">Marshall Nichols</div>
+                                                    <span class="text-muted">marshall-n@gmail.com</span>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-danger">Super Admin</span></td>
+                                            <td>24 Jun, 2015</td>
+                                            <td>CEO and Founder</td>
+                                            <td>
+                                                
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar2.jpg" class="avatar rounded-circle" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Susie Willis</h6>
+                                                        <span class="text-muted">sussie-w@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-info">Admin</span></td>
+                                            <td>28 Jun, 2015</td>
+                                            <td>Team Lead</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="avatar rounded-circle" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Debra Stewart</h6>
+                                                        <span class="text-muted">debra@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-info">Admin</span></td>
+                                            <td>21 July, 2018</td>
+                                            <td>Team Lead</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar4.jpg" class="avatar rounded-circle" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Erin Gonzales</h6>
+                                                        <span class="text-muted">Erinonzales@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-secondary">Employee</span></td>
+                                            <td>21 July, 2015</td>
+                                            <td>Web Developer</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar5.jpg" class="avatar rounded-circle" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Ava Alexander</h6>
+                                                        <span class="text-muted">alexander@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-success">HR Admin</span></td>
+                                            <td>21 July, 2017</td>
+                                            <td>HR</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar6.jpg" class="avatar rounded-circle" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Debra Stewart</h6>
+                                                        <span class="text-muted">debra@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-info">Admin</span></td>
+                                            <td>21 July, 2018</td>
+                                            <td>Team Lead</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar8.jpg" class="avatar rounded-circle" alt="">
+                                                    <div class="ms-3">
+                                                        <h6 class="mb-0">Erin Gonzales</h6>
+                                                        <span class="text-muted">Erinonzales@gmail.com</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-secondary">Employee</span></td>
+                                            <td>21 July, 2015</td>
+                                            <td>Web Developer</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables":true,
+})
+<script>
+    $('.myDataTable')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+    });
+</script>
+</body>
+</html>

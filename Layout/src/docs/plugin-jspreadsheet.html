@@ -1,0 +1,128 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "js PreadSheet",
+        "jspreadsheet": true
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "plugin-jspreadsheet"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">jspreadsheet</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="plugin-swiper.html"><i class="fa fa-long-arrow-left me-2"></i>Swiper</a>
+                        <a class="btn btn-secondary" href="plugin-rating.html">jQuery Bar Rating<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">jspreadsheet</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="fs-5">jSuites is a collection of lightweight common JavaScript responsive plugins and webcomponents. It helps to maintain the same codebase for different platforms and devices. It brings a great user experience to any web-based projects. <a href="https://jsuites.net/v4/" rel="nofollow">Live Demo</a></p>
+                            </div>
+                            <div class="card-body pt-0">
+<pre class=" language-html m-0" data-lang="html"><code class=" language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/vendor/jspreadsheet/style.css&quot; /&gt;
+&lt;script src=&quot;assets/bundles/jspreadsheet.bundle.js&quot;&gt;&lt;/script&gt;
+
+&lt;div id=&quot;spreadsheet&quot;&gt;&lt;/div&gt;
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-2 mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive-lg">
+                                    <div id="spreadsheet"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="plugin-swiper.html"><i class="fa fa-long-arrow-left me-3"></i>Swiper</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="plugin-rating.html">jQuery Bar Rating<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Core Js -->
+@@include('docs/_scripts.html',{
+    "jspreadsheet": true
+})
+<script>
+   var data = [
+        ['Luno',        'Admin Template', '2022-02-12', '', true, '$ 35.00', '#777700'],
+        ['ALUI',        'Admin Template', '2022-07-11', '', true, '$ 35.00', '#007777'],
+        ['Lucid HR',    'Admin Template', '2022-07-11', '', true, '$ 35.00', '#007777'],
+        ['Lucid VueJs', 'Admin Template', '2022-07-11', '', true, '$ 35.00', '#007777'],
+        ['Aero',        'Admin Template', '2022-07-11', '', true, '$ 35.00', '#007777'],
+        ['Alpino',      'Admin Template', '2022-07-11', '', true, '$ 35.00', '#007777'],
+        ['Nexa',        'Admin Template', '2022-07-11', '', true, '$ 35.00', '#007777'],
+        ['Lucid React', 'Admin Template', '2022-07-11', '', true, '$ 35.00', '#007777'],
+    ];
+
+    jspreadsheet(document.getElementById('spreadsheet'), {
+        data:data,
+        columns: [
+            { type: 'text',     title:'Template',   width:200, align: 'left' },
+            { type: 'dropdown', title:'Make',       width:180, source:[ "WrrapTheme", "ThemeMakker" ], align: 'left' },
+            { type: 'calendar', title:'Available',  width:160, },
+            { type: 'image',    title:'Photo',      width:120, },
+            { type: 'checkbox', title:'Stock',      width:60, },
+            { type: 'numeric',  title:'Price',      width:100, decimal:',', align: 'right' },
+            { type: 'color',    title:'Color',      width:100, render:'square', }
+        ]
+    });
+</script>
+</body>
+</html>

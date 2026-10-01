@@ -1,0 +1,243 @@
+<div class="sidebar p-2 py-md-3 @@cardClass">
+    <div class="container-fluid">
+        <!-- sidebar: title-->
+        @@include('sidebar/_sidebar-title.html', {"sidebarTitleLatter": "C", "sidebarTitle": "rypto Admin"})
+        
+        <!-- sidebar: Create new -->
+        @@include('sidebar/_sidebar-new-project.html')
+        
+        <!-- sidebar: menu list -->
+        <div class="main-menu flex-grow-1">
+            <ul class="menu-list">
+                <li class="divider py-2 lh-sm"><span class="small">MAIN</span><br> <small class="text-muted">Unique dashboard designs </small></li>
+                <li>
+                    <a @@if (context.page === 'index') {class="m-link active"} @@if (context.page !== 'index') {class="m-link"} href="index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                            <path class="fill-secondary" fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                        </svg>
+                        <span class="ms-2">My Dashboard</span>
+                    </a>
+                </li>
+                <li class="collapsed">
+                    <a @@if (
+                            context.page === 'app-calendar' 
+                            || context.page === 'app-calendar-tui'
+                            || context.page === 'app-email'
+                            || context.page === 'app-chat'
+                            || context.page === 'app-campaigns'
+                            || context.page === 'app-social'
+                            || context.page === 'app-file-manager'
+                            || context.page === 'app-todo'
+                            || context.page === 'app-contacts'
+                            || context.page === 'app-tasks'
+                            || context.page === 'app-jkanban'
+                            || context.page === 'app-blog'
+                        ) {class="m-link active"}
+                        @@if (!(
+                            context.page === 'app-calendar' 
+                            || context.page === 'app-calendar-tui'
+                            || context.page === 'app-email'
+                            || context.page === 'app-chat'
+                            || context.page === 'app-campaigns'
+                            || context.page === 'app-social'
+                            || context.page === 'app-file-manager'
+                            || context.page === 'app-todo'
+                            || context.page === 'app-contacts'
+                            || context.page === 'app-tasks'
+                            || context.page === 'app-jkanban'
+                            || context.page === 'app-blog'
+                        )) {class="m-link"} data-bs-toggle="collapse" data-bs-target="#menu-Applications" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z"/>
+                            <path class="fill-secondary" d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                        </svg>
+                        <span class="ms-2">Applications</span>
+                        <span class="arrow fa fa-angle-right ms-auto text-end"></span>
+                    </a>
+    
+                    <!-- Menu: Sub menu ul -->
+                    <ul @@if (
+                            context.page === 'app-calendar' 
+                            || context.page === 'app-calendar-tui'
+                            || context.page === 'app-email'
+                            || context.page === 'app-chat'
+                            || context.page === 'app-campaigns'
+                            || context.page === 'app-social'
+                            || context.page === 'app-file-manager'
+                            || context.page === 'app-todo'
+                            || context.page === 'app-contacts'
+                            || context.page === 'app-tasks'
+                            || context.page === 'app-jkanban'
+                            || context.page === 'app-blog'
+                        ) {class="sub-menu collapse show"}
+                        @@if (!(
+                            context.page === 'app-calendar' 
+                            || context.page === 'app-calendar-tui'
+                            || context.page === 'app-email'
+                            || context.page === 'app-chat'
+                            || context.page === 'app-campaigns'
+                            || context.page === 'app-social'
+                            || context.page === 'app-file-manager'
+                            || context.page === 'app-todo'
+                            || context.page === 'app-contacts'
+                            || context.page === 'app-tasks'
+                            || context.page === 'app-jkanban'
+                            || context.page === 'app-blog'
+                        )) {class="sub-menu collapse"} id="menu-Applications">
+                        <li><a @@if (context.page === 'app-calendar') {class="ms-link active"} @@if (context.page !== 'app-calendar') {class="ms-link"} href="app-calendar.html">Calendar</a></li>
+                        <li><a @@if (context.page === 'app-calendar-tui') {class="ms-link active"} @@if (context.page !== 'app-calendar-tui') {class="ms-link"} href="app-calendar-tui.html">tui Calendar</a></li>
+                        <li><a @@if (context.page === 'app-email') {class="ms-link active"} @@if (context.page !== 'app-email') {class="ms-link"} href="app-email.html">Email App</a></li>
+                        <li><a @@if (context.page === 'app-chat') {class="ms-link active"} @@if (context.page !== 'app-chat') {class="ms-link"} href="app-chat.html">Chat app</a></li>
+                        <li><a @@if (context.page === 'app-campaigns') {class="ms-link active"} @@if (context.page !== 'app-campaigns') {class="ms-link"} href="app-campaigns.html">Campaigns</a></li>
+                        <li><a @@if (context.page === 'app-social') {class="ms-link active"} @@if (context.page !== 'app-social') {class="ms-link"} href="app-social.html">Social App</a></li>
+                        <li><a @@if (context.page === 'app-file-manager') {class="ms-link active"} @@if (context.page !== 'app-file-manager') {class="ms-link"} href="app-file-manager.html">File Manager</a></li>
+                        <li><a @@if (context.page === 'app-todo') {class="ms-link active"} @@if (context.page !== 'app-todo') {class="ms-link"} href="app-todo.html">Todo App</a></li>
+                        <li><a @@if (context.page === 'app-contacts') {class="ms-link active"} @@if (context.page !== 'app-contacts') {class="ms-link"} href="app-contacts.html">Contacts</a></li>
+                        <li><a @@if (context.page === 'app-tasks') {class="ms-link active"} @@if (context.page !== 'app-tasks') {class="ms-link"} href="app-tasks.html">Tasks</a></li>
+                        <li><a @@if (context.page === 'app-jkanban') {class="ms-link active"} @@if (context.page !== 'app-jkanban') {class="ms-link"} href="app-jkanban.html">Kanban Board</a></li>
+                        <li><a @@if (context.page === 'app-blog') {class="ms-link active"} @@if (context.page !== 'app-blog') {class="ms-link"} href="app-blog.html">Blog</a></li>
+                    </ul>
+                </li>
+                <li class="collapsed">
+                    <a @@if (
+                            context.page === 'account-settings'
+                            || context.page === 'account-invoices'
+                            || context.page === 'account-create-invoice'
+                            || context.page === 'account-billing'
+                        ) {class="m-link active"}
+                        @@if (!(
+                            context.page === 'account-settings'
+                            || context.page === 'account-invoices'
+                            || context.page === 'account-create-invoice'
+                            || context.page === 'account-billing'
+                        )) {class="m-link"} data-bs-toggle="collapse" data-bs-target="#menu-Account" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M2 1C1.46957 1 0.960859 1.21071 0.585786 1.58579C0.210714 1.96086 0 2.46957 0 3L0 13C0 13.5304 0.210714 14.0391 0.585786 14.4142C0.960859 14.7893 1.46957 15 2 15H14C14.5304 15 15.0391 14.7893 15.4142 14.4142C15.7893 14.0391 16 13.5304 16 13V3C16 2.46957 15.7893 1.96086 15.4142 1.58579C15.0391 1.21071 14.5304 1 14 1H2ZM1 3C1 2.73478 1.10536 2.48043 1.29289 2.29289C1.48043 2.10536 1.73478 2 2 2H14C14.2652 2 14.5196 2.10536 14.7071 2.29289C14.8946 2.48043 15 2.73478 15 3V13C15 13.2652 14.8946 13.5196 14.7071 13.7071C14.5196 13.8946 14.2652 14 14 14H2C1.73478 14 1.48043 13.8946 1.29289 13.7071C1.10536 13.5196 1 13.2652 1 13V3ZM2 5.5C2 5.36739 2.05268 5.24021 2.14645 5.14645C2.24021 5.05268 2.36739 5 2.5 5H6C6.13261 5 6.25979 5.05268 6.35355 5.14645C6.44732 5.24021 6.5 5.36739 6.5 5.5C6.5 5.63261 6.44732 5.75979 6.35355 5.85355C6.25979 5.94732 6.13261 6 6 6H2.5C2.36739 6 2.24021 5.94732 2.14645 5.85355C2.05268 5.75979 2 5.63261 2 5.5ZM2 8.5C2 8.36739 2.05268 8.24021 2.14645 8.14645C2.24021 8.05268 2.36739 8 2.5 8H6C6.13261 8 6.25979 8.05268 6.35355 8.14645C6.44732 8.24021 6.5 8.36739 6.5 8.5C6.5 8.63261 6.44732 8.75979 6.35355 8.85355C6.25979 8.94732 6.13261 9 6 9H2.5C2.36739 9 2.24021 8.94732 2.14645 8.85355C2.05268 8.75979 2 8.63261 2 8.5ZM2 10.5C2 10.3674 2.05268 10.2402 2.14645 10.1464C2.24021 10.0527 2.36739 10 2.5 10H6C6.13261 10 6.25979 10.0527 6.35355 10.1464C6.44732 10.2402 6.5 10.3674 6.5 10.5C6.5 10.6326 6.44732 10.7598 6.35355 10.8536C6.25979 10.9473 6.13261 11 6 11H2.5C2.36739 11 2.24021 10.9473 2.14645 10.8536C2.05268 10.7598 2 10.6326 2 10.5Z"/>
+                            <path class="fill-secondary" d="M8.5 11C8.5 11 8 11 8 10.5C8 10 8.5 8.5 11 8.5C13.5 8.5 14 10 14 10.5C14 11 13.5 11 13.5 11H8.5ZM11 8C11.3978 8 11.7794 7.84196 12.0607 7.56066C12.342 7.27936 12.5 6.89782 12.5 6.5C12.5 6.10218 12.342 5.72064 12.0607 5.43934C11.7794 5.15804 11.3978 5 11 5C10.6022 5 10.2206 5.15804 9.93934 5.43934C9.65804 5.72064 9.5 6.10218 9.5 6.5C9.5 6.89782 9.65804 7.27936 9.93934 7.56066C10.2206 7.84196 10.6022 8 11 8V8Z"/>
+                        </svg>
+                        <span class="ms-2">Account</span>
+                        <span class="arrow fa fa-angle-right ms-auto text-end"></span>
+                    </a>
+    
+                    <!-- Menu: Sub menu ul -->
+                    <ul @@if (
+                        context.page === 'account-settings'
+                        || context.page === 'account-invoices'
+                        || context.page === 'account-create-invoice'
+                        || context.page === 'account-billing'
+                    ) {class="sub-menu collapse show"}
+                    @@if (!(
+                        context.page === 'account-settings'
+                        || context.page === 'account-invoices'
+                        || context.page === 'account-create-invoice'
+                        || context.page === 'account-billing'
+                    )) {class="sub-menu collapse"} id="menu-Account">
+                        <li><a @@if (context.page === 'account-settings') {class="ms-link active"} @@if (context.page !== 'account-settings') {class="ms-link"} href="account-settings.html">Settings</a></li>
+                        <li><a @@if (context.page === 'account-invoices') {class="ms-link active"} @@if (context.page !== 'account-invoices') {class="ms-link"} href="account-invoices.html">Invoice List</a></li>
+                        <li><a @@if (context.page === 'account-create-invoice') {class="ms-link active"} @@if (context.page !== 'account-create-invoice') {class="ms-link"} href="account-create-invoice.html">Create Invoices</a></li>
+                        <li><a @@if (context.page === 'account-billing') {class="ms-link active"} @@if (context.page !== 'account-billing') {class="ms-link"} href="account-billing.html">Billing</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a @@if (context.page === 'transactions') {class="m-link active"} @@if (context.page !== 'transactions') {class="m-link"} href="transactions.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M0 3H16V4H0V3Z"/>
+                            <path d="M9 1H14V6H9V1Z"/>
+                            <path d="M0 13H16V14H0V13Z"/>
+                            <path d="M9 11H14V16H9V11Z"/>
+                            <path class="fill-secondary" d="M0 8H16V9H0V8Z"/>
+                            <path class="fill-secondary" d="M2 6H7V11H2V6Z"/>
+                        </svg>
+                        <span class="ms-2">Transactions</span>
+                    </a>
+                </li>
+                <li>
+                    <a @@if (context.page === 'portfolio') {class="m-link active"} @@if (context.page !== 'portfolio') {class="m-link"} href="portfolio.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path class="fill-secondary" d="M6.5 1C6.10218 1 5.72064 1.15804 5.43934 1.43934C5.15804 1.72064 5 2.10218 5 2.5V3H1.5C1.10218 3 0.720644 3.15804 0.43934 3.43934C0.158035 3.72064 0 4.10218 0 4.5L0 5.884L7.614 7.914C7.86693 7.98135 8.13307 7.98135 8.386 7.914L16 5.884V4.5C16 4.10218 15.842 3.72064 15.5607 3.43934C15.2794 3.15804 14.8978 3 14.5 3H11V2.5C11 2.10218 10.842 1.72064 10.5607 1.43934C10.2794 1.15804 9.89782 1 9.5 1H6.5ZM6.5 2H9.5C9.63261 2 9.75979 2.05268 9.85355 2.14645C9.94732 2.24021 10 2.36739 10 2.5V3H6V2.5C6 2.36739 6.05268 2.24021 6.14645 2.14645C6.24021 2.05268 6.36739 2 6.5 2Z"/>
+                            <path d="M0 13.5C0 13.8978 0.158035 14.2793 0.43934 14.5606C0.720644 14.8419 1.10218 15 1.5 15H14.5C14.8978 15 15.2794 14.8419 15.5607 14.5606C15.842 14.2793 16 13.8978 16 13.5V6.84998L8.129 8.94698C8.04448 8.96955 7.95552 8.96955 7.871 8.94698L0 6.84998V13.5Z"/>
+                        </svg>
+                        <span class="ms-2">Portfolio</span>
+                    </a>
+                </li>
+                <li>
+                    <a @@if (context.page === 'coin') {class="m-link active"} @@if (context.page !== 'coin') {class="m-link"} href="coin-details.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M10.5 14C11.4283 14 12.3185 13.6313 12.9749 12.9749C13.6313 12.3185 14 11.4283 14 10.5L14 5.5C14 4.57174 13.6313 3.6815 12.9749 3.02513C12.3185 2.36875 11.4283 2 10.5 2L5.5 2C4.57174 2 3.6815 2.36875 3.02513 3.02513C2.36875 3.6815 2 4.57174 2 5.5L2 8C2 8.13261 1.94732 8.25979 1.85355 8.35355C1.75979 8.44732 1.63261 8.5 1.5 8.5C1.36739 8.5 1.24021 8.44732 1.14645 8.35355C1.05268 8.25979 0.999999 8.13261 0.999999 8L0.999999 5.5C0.999999 4.30653 1.47411 3.16193 2.31802 2.31802C3.16193 1.47411 4.30652 1 5.5 1L10.5 1C11.6935 1 12.8381 1.47411 13.682 2.31802C14.5259 3.16193 15 4.30653 15 5.5L15 10.5C15 11.6935 14.5259 12.8381 13.682 13.682C12.8381 14.5259 11.6935 15 10.5 15L10 15C9.86739 15 9.74021 14.9473 9.64645 14.8536C9.55268 14.7598 9.5 14.6326 9.5 14.5C9.5 14.3674 9.55268 14.2402 9.64645 14.1464C9.74021 14.0527 9.86739 14 10 14L10.5 14Z"/>
+                            <path class="fill-secondary" d="M4.70156 13.8462V14.8077C4.70156 14.9138 4.78633 15 4.89079 15H5.64771C5.69789 15 5.74603 14.9797 5.78151 14.9437C5.817 14.9076 5.83694 14.8587 5.83694 14.8077V13.8462H6.2154V14.8077C6.2154 14.9138 6.30017 15 6.40463 15H7.16155C7.21174 15 7.25987 14.9797 7.29535 14.9437C7.33084 14.9076 7.35078 14.8587 7.35078 14.8077V13.8462H7.41436C8.92215 13.8462 10 13.0515 10 11.6769C10 10.5215 9.23778 9.89 8.34537 9.8V9.73231C9.07958 9.54615 9.61927 8.98308 9.61927 8.04769C9.61927 6.86923 8.74881 6.15385 7.42042 6.15385H7.35078V5.19231C7.35078 5.1413 7.33084 5.09239 7.29535 5.05633C7.25987 5.02026 7.21174 5 7.16155 5H6.40463C6.35444 5 6.30631 5.02026 6.27082 5.05633C6.23533 5.09239 6.2154 5.1413 6.2154 5.19231V6.15385H5.78168V5.19231C5.78168 5.1413 5.76175 5.09239 5.72626 5.05633C5.69077 5.02026 5.64264 5 5.59245 5H4.89079C4.8406 5 4.79247 5.02026 4.75698 5.05633C4.72149 5.09239 4.70156 5.1413 4.70156 5.19231V6.15385L3.18923 6.16231C3.13904 6.16231 3.09091 6.18257 3.05542 6.21863C3.01994 6.2547 3 6.30361 3 6.35462V7.11538C3 7.22077 3.08326 7.30769 3.18772 7.30769L3.75919 7.30385C3.9091 7.30486 4.05252 7.36609 4.15816 7.47418C4.26381 7.58226 4.3231 7.72842 4.3231 7.88077V12.1154C4.3231 12.2684 4.26329 12.4151 4.15682 12.5233C4.05036 12.6315 3.90597 12.6923 3.75541 12.6923L3.18923 12.7008C3.13904 12.7008 3.09091 12.721 3.05542 12.7571C3.01994 12.7932 3 12.8421 3 12.8931V13.6623C3 13.7685 3.08478 13.8546 3.18923 13.8546L4.70156 13.8462ZM5.78168 7.29769H7.08283C7.7686 7.29769 8.17128 7.68077 8.17128 8.30692C8.17128 8.97692 7.73605 9.35462 6.75054 9.35462H5.78168V7.29769V7.29769ZM5.78168 10.4138H7.17442C8.03503 10.4138 8.50357 10.86 8.50357 11.5862C8.50357 12.3192 8.02974 12.7015 6.87013 12.7015H5.78168V10.4146V10.4138Z"/>
+                        </svg>
+                        <span class="ms-2">Coin Details</span>
+                    </a>
+                </li>
+                <li>
+                    <a @@if (context.page === 'capital') {class="m-link active"} @@if (context.page !== 'capital') {class="m-link"} href="market-capital.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M1 11C1 10.7348 1.10536 10.4804 1.29289 10.2929C1.48043 10.1054 1.73478 10 2 10H4C4.26522 10 4.51957 10.1054 4.70711 10.2929C4.89464 10.4804 5 10.7348 5 11V14C5 14.2652 4.89464 14.5196 4.70711 14.7071C4.51957 14.8946 4.26522 15 4 15H2C1.73478 15 1.48043 14.8946 1.29289 14.7071C1.10536 14.5196 1 14.2652 1 14V11ZM6 7C6 6.73478 6.10536 6.48043 6.29289 6.29289C6.48043 6.10536 6.73478 6 7 6H9C9.26522 6 9.51957 6.10536 9.70711 6.29289C9.89464 6.48043 10 6.73478 10 7V14C10 14.2652 9.89464 14.5196 9.70711 14.7071C9.51957 14.8946 9.26522 15 9 15H7C6.73478 15 6.48043 14.8946 6.29289 14.7071C6.10536 14.5196 6 14.2652 6 14V7Z"/>
+                            <path class="fill-secondary" d="M11.2929 1.29289C11.1054 1.48043 11 1.73478 11 2V14C11 14.2652 11.1054 14.5196 11.2929 14.7071C11.4804 14.8946 11.7348 15 12 15H14C14.2652 15 14.5196 14.8946 14.7071 14.7071C14.8946 14.5196 15 14.2652 15 14V2C15 1.73478 14.8946 1.48043 14.7071 1.29289C14.5196 1.10536 14.2652 1 14 1H12C11.7348 1 11.4804 1.10536 11.2929 1.29289Z"/>
+                        </svg>
+                        <span class="ms-2">Market Capital</span>
+                    </a>
+                </li>
+                <li>
+                    <a @@if (context.page === 'accounts') {class="m-link active"} @@if (context.page !== 'accounts') {class="m-link"} href="accounts.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M2 1C1.46957 1 0.960859 1.21071 0.585786 1.58579C0.210714 1.96086 0 2.46957 0 3L0 13C0 13.5304 0.210714 14.0391 0.585786 14.4142C0.960859 14.7893 1.46957 15 2 15H14C14.5304 15 15.0391 14.7893 15.4142 14.4142C15.7893 14.0391 16 13.5304 16 13V3C16 2.46957 15.7893 1.96086 15.4142 1.58579C15.0391 1.21071 14.5304 1 14 1H2ZM1 3C1 2.73478 1.10536 2.48043 1.29289 2.29289C1.48043 2.10536 1.73478 2 2 2H14C14.2652 2 14.5196 2.10536 14.7071 2.29289C14.8946 2.48043 15 2.73478 15 3V13C15 13.2652 14.8946 13.5196 14.7071 13.7071C14.5196 13.8946 14.2652 14 14 14H2C1.73478 14 1.48043 13.8946 1.29289 13.7071C1.10536 13.5196 1 13.2652 1 13V3ZM2 5.5C2 5.36739 2.05268 5.24021 2.14645 5.14645C2.24021 5.05268 2.36739 5 2.5 5H6C6.13261 5 6.25979 5.05268 6.35355 5.14645C6.44732 5.24021 6.5 5.36739 6.5 5.5C6.5 5.63261 6.44732 5.75979 6.35355 5.85355C6.25979 5.94732 6.13261 6 6 6H2.5C2.36739 6 2.24021 5.94732 2.14645 5.85355C2.05268 5.75979 2 5.63261 2 5.5ZM2 8.5C2 8.36739 2.05268 8.24021 2.14645 8.14645C2.24021 8.05268 2.36739 8 2.5 8H6C6.13261 8 6.25979 8.05268 6.35355 8.14645C6.44732 8.24021 6.5 8.36739 6.5 8.5C6.5 8.63261 6.44732 8.75979 6.35355 8.85355C6.25979 8.94732 6.13261 9 6 9H2.5C2.36739 9 2.24021 8.94732 2.14645 8.85355C2.05268 8.75979 2 8.63261 2 8.5ZM2 10.5C2 10.3674 2.05268 10.2402 2.14645 10.1464C2.24021 10.0527 2.36739 10 2.5 10H6C6.13261 10 6.25979 10.0527 6.35355 10.1464C6.44732 10.2402 6.5 10.3674 6.5 10.5C6.5 10.6326 6.44732 10.7598 6.35355 10.8536C6.25979 10.9473 6.13261 11 6 11H2.5C2.36739 11 2.24021 10.9473 2.14645 10.8536C2.05268 10.7598 2 10.6326 2 10.5Z"></path>
+                            <path class="fill-secondary" d="M8.5 11C8.5 11 8 11 8 10.5C8 10 8.5 8.5 11 8.5C13.5 8.5 14 10 14 10.5C14 11 13.5 11 13.5 11H8.5ZM11 8C11.3978 8 11.7794 7.84196 12.0607 7.56066C12.342 7.27936 12.5 6.89782 12.5 6.5C12.5 6.10218 12.342 5.72064 12.0607 5.43934C11.7794 5.15804 11.3978 5 11 5C10.6022 5 10.2206 5.15804 9.93934 5.43934C9.65804 5.72064 9.5 6.10218 9.5 6.5C9.5 6.89782 9.65804 7.27936 9.93934 7.56066C10.2206 7.84196 10.6022 8 11 8V8Z"></path>
+                        </svg>
+                        <span class="ms-2">Bank Accounts</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="menu-list">
+                <li class="divider py-2 lh-sm"><span class="small">RESOURCES</span><br> <small class="text-muted">you need to know about LUNO</small></li>
+                <li class="collapsed">
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-Authentication" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M5.33801 1.59C4.38559 1.85248 3.43965 2.1379 2.50101 2.446C2.41529 2.47376 2.3391 2.52504 2.28111 2.59399C2.22312 2.66295 2.18567 2.7468 2.17301 2.836C1.61901 6.993 2.89901 10.026 4.42601 12.024C5.07252 12.8784 5.84341 13.6311 6.71301 14.257C7.05901 14.501 7.36501 14.677 7.60601 14.79C7.72601 14.847 7.82401 14.885 7.89901 14.908C7.93181 14.9195 7.96562 14.9279 8.00001 14.933C8.03398 14.9275 8.06743 14.9191 8.10001 14.908C8.17601 14.885 8.27401 14.847 8.39401 14.79C8.63401 14.677 8.94101 14.5 9.28701 14.257C10.1566 13.6311 10.9275 12.8784 11.574 12.024C13.101 10.027 14.381 6.993 13.827 2.836C13.8145 2.74676 13.777 2.66285 13.719 2.59388C13.661 2.52491 13.5848 2.47366 13.499 2.446C12.848 2.233 11.749 1.886 10.662 1.591C9.55201 1.29 8.53101 1.067 8.00001 1.067C7.47001 1.067 6.44801 1.289 5.33801 1.59ZM5.07201 0.56C6.15701 0.265 7.31001 0 8.00001 0C8.69001 0 9.84301 0.265 10.928 0.56C12.038 0.86 13.157 1.215 13.815 1.43C14.0901 1.52085 14.334 1.68747 14.5187 1.9107C14.7034 2.13394 14.8213 2.40474 14.859 2.692C15.455 7.169 14.072 10.487 12.394 12.682C11.6824 13.621 10.834 14.4479 9.87701 15.135C9.5461 15.3728 9.19549 15.5819 8.82901 15.76C8.54901 15.892 8.24801 16 8.00001 16C7.75201 16 7.45201 15.892 7.17101 15.76C6.80452 15.5819 6.45391 15.3728 6.12301 15.135C5.16603 14.4478 4.31759 13.621 3.60601 12.682C1.92801 10.487 0.545005 7.169 1.14101 2.692C1.17869 2.40474 1.29665 2.13394 1.48132 1.9107C1.666 1.68747 1.9099 1.52085 2.18501 1.43C3.1402 1.11681 4.10281 0.826725 5.07201 0.56Z"/>
+                            <path class="fill-secondary" d="M8 5.38462C8.21217 5.38462 8.41566 5.46566 8.56569 5.60992C8.71571 5.75418 8.8 5.94983 8.8 6.15385V6.53846H7.2V6.15385C7.2 5.94983 7.28429 5.75418 7.43431 5.60992C7.58434 5.46566 7.78783 5.38462 8 5.38462ZM9.2 6.53846V6.15385C9.2 5.84783 9.07357 5.55434 8.84853 5.33795C8.62348 5.12157 8.31826 5 8 5C7.68174 5 7.37652 5.12157 7.15147 5.33795C6.92643 5.55434 6.8 5.84783 6.8 6.15385V6.53846C6.58783 6.53846 6.38434 6.61951 6.23431 6.76376C6.08429 6.90802 6 7.10368 6 7.30769V9.23077C6 9.43478 6.08429 9.63044 6.23431 9.7747C6.38434 9.91896 6.58783 10 6.8 10H9.2C9.41217 10 9.61566 9.91896 9.76569 9.7747C9.91571 9.63044 10 9.43478 10 9.23077V7.30769C10 7.10368 9.91571 6.90802 9.76569 6.76376C9.61566 6.61951 9.41217 6.53846 9.2 6.53846Z"/>
+                        </svg>
+                        <span class="ms-2">Authentication</span>
+                        <span class="arrow fa fa-angle-right ms-auto text-end"></span>
+                    </a>
+    
+                    <!-- Menu: Sub menu ul -->
+                    <ul class="sub-menu collapse" id="menu-Authentication">
+                        <li><a class="ms-link" href="@@webRoot/auth-404.html">404</a></li>
+                        <li><a class="ms-link" href="@@webRoot/auth-403.html">403</a></li>
+                        <li><a class="ms-link" href="@@webRoot/auth-500.html">500</a></li>
+                        <li><a class="ms-link" href="@@webRoot/auth-signin.html">Sign in</a></li>
+                        <li><a class="ms-link" href="@@webRoot/auth-signup.html">Sign up</a></li>
+                        <li><a class="ms-link" href="@@webRoot/auth-password-reset.html">Password reset</a></li>
+                        <li><a class="ms-link" href="@@webRoot/auth-two-step.html">2-Step Authentication</a></li>
+                        <li><a class="ms-link" href="@@webRoot/auth-lockscreen.html">Lockscreen</a></li>
+                        <li><a class="ms-link" href="@@webRoot/auth-maintenance.html">Maintenance</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="m-link" href="@@webRoot/docs/index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path class="fill-secondary" d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                            <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                            <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                        </svg>
+                        <span class="ms-2">Documentation</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="m-link" href="@@webRoot/docs/doc-changelog.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path class="fill-secondary" d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                        </svg>
+                        <span class="ms-2">Changelog</span>
+                        <span id="Changelog"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- sidebar: footer link -->
+        @@include('sidebar/_sidebar-footer-link.html')
+    </div>
+</div>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Real-Estate Agent Profile",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-red">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-realestate.html', {"page": "agent-profile"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item">Agent</li>
+                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col d-flex justify-content-lg-end mt-2 mt-md-0">
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">8.18K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 1.3%</small></div>
+                            <small class="text-muted text-uppercase">Income</small>
+                        </div>
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">1.11K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 4.1%</small></div>
+                            <small class="text-muted text-uppercase">Expense</small>
+                        </div>
+                        <div class="p-2 pe-lg-0">
+                            <div><span class="h6 mb-0">3.66K</span> <small class="text-danger"><i class="fa fa-angle-down"></i> 7.5%</small></div>
+                            <small class="text-muted text-uppercase">Revenue</small>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card mb-1">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center flex-column flex-md-row">
+                                    <img src="@@webRoot/assets/img/profile_av.png" alt="" class="rounded-circle">
+                                    <div class="media-body ms-md-5 m-0 mt-4 mt-md-0 text-md-start text-center">
+                                        <h5 class="fw-bold mb-1">Nellie Maxwell</h5>
+                                        <div class="text-muted mb-1"><i class="fa fa-phone"></i> +(123)
+                                            123-456</div>
+                                        <div class="text-muted mb-3"><i class="fa fa-envelope"></i>
+                                            michael@gmail.com</div>
+                                        <ul class="d-md-flex d-none list-unstyled">
+                                            <li><a title="facebook" href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
+                                            <li class="mx-3"><a title="twitter" href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a title="instagram" href="javascript:void(0);"><i class="fa fa-instagram"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <ul class="d-lg-flex d-block ms-3 resume-box agent-profile">
+                                        <li class="d-flex mb-lg-0 mb-3">
+                                            <div class="icon text-center">
+                                                <i class="fa fa-building"></i>
+                                            </div>
+                                            <div class="ms-2">
+                                                <div class="fw-bold mb-0">PROPERTY</div>
+                                                <span>418</span>
+                                            </div>
+                                        </li>
+                                        <li class="d-flex mb-lg-0 mb-3">
+                                            <div class="icon text-center">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                            <div class="ms-2">
+                                                <div class="fw-bold mb-0">CLIENTS</div>
+                                                <span>282</span>
+                                            </div>
+                                        </li>
+                                        <li class="d-flex mb-lg-0 mb-3">
+                                            <div class="icon text-center">
+                                                <i class="fa fa-dollar"></i>
+                                            </div>
+                                            <div class="ms-2">
+                                                <div class="fw-bold mb-0">INCOME</div>
+                                                <span>$3,295</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tab: navbar -->
+                        <div class="card ps-2">
+                            <ul class="nav nav-tabs tab-card border-bottom-0 tab-card" role="tablist">
+                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#profile-post" role="tab">My Post</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#profile-timeline" role="tab">Timeline</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#profile-setting" role="tab">Setting</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="tab-content mt-4">
+                            <!-- Tab: Post -->
+                            <div class="tab-pane fade show active" id="profile-post" role="tabpanel">
+                                <div class="row g-3">
+                                    <div class="col-lg-8 col-md-12">
+                                        <div class="card mb-2">
+                                            <div class="card-body">
+                                                <div class="post">
+                                                    <textarea class="form-control" placeholder="Post" rows="4"></textarea>
+                                                    <div class="py-3">
+                                                        <a href="#" class="px-3"><i class="fa fa-camera"></i></a>
+                                                        <a href="#" class="px-3"><i class="fa fa-video-camera"></i></a>
+                                                        <a href="#" class="px-3"><i class="fa fa-music"></i></a>
+                                                        <button class="btn btn-outline-primary float-right">Post</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> <!-- .Card End -->
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="card mb-2 post-card">
+                                                <div class="card-body p-lg-5 p-3">
+                                                    <div class="d-flex mb-3 pb-3 border-bottom">
+                                                        <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">
+                                                        <div class="flex-fill ms-3 text-truncate">
+                                                            <h6 class="mb-0"><span class="author">Nellie Maxwell</span> <span
+                                                                    class="text-muted small">posted a status</span></h6>
+                                                            <span class="text-muted">3 hours ago</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item-post">
+                                                        <h6>Hampden-Sydney College in Virginia, looked up one of the more obscure</h6>
+                                                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+                                                            piece of classical Latin literature from 45 BC, making it over 2000 years old.
+                                                            Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked
+                                                            up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+                                                            going through the cites of the word in classical literature, discovered the
+                                                            undoubtable source.</p>
+                                                        <div class="mb-2 mt-4">
+                                                            <a class="me-lg-4 me-2 text-primary" href="#"><i class="fa fa-thumbs-up"></i> Like
+                                                                (105)</a>
+                                                            <a class="me-lg-4 me-2 text-primary" href="#"><i class="fa fa-comment"></i> Comment
+                                                                (2)</a>
+                                                            <a class="me-lg-4 me-2 text-primary" href="#"><i class="fa fa-share"></i> Share
+                                                                (6)</a>
+                                                        </div>
+                                                        <div>
+                                                            <div class="d-flex mt-3 pt-3 border-top">
+                                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                                                <div class="flex-fill ms-3 text-truncate">
+                                                                    <p class="mb-0"><span class="author">Rose Rivera</span> <small
+                                                                            class="msg-time">1 hour ago</small></p>
+                                                                    <span class="text-muted">It is a long established fact that a reader will be
+                                                                        distracted by the readable content of a page when looking at its
+                                                                        layout.</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="d-flex mt-3 pt-3 border-top">
+                                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="">
+                                                                <div class="flex-fill ms-3 text-truncate">
+                                                                    <p class="mb-0"><span class="author">Robert Hammer</span> <small
+                                                                            class="msg-time">1 hour ago</small></p>
+                                                                    <span class="text-muted">If you are going to use a passage of Lorem Ipsum,
+                                                                        you need to be sure there isn't anything embarrassing</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-4">
+                                                        <textarea class="form-control" placeholder="Replay"></textarea>
+                                                    </div>
+                                                </div>
+                                            </li> <!-- .Card End -->
+                                            <li class="card mb-2 post-card">
+                                                <div class="card-body p-lg-5 p-3">
+                                                    <div class="d-flex mb-3 pb-3 border-bottom">
+                                                        <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">
+                                                        <div class="flex-fill ms-3 text-truncate">
+                                                            <h6 class="mb-0"><span class="author">Nellie Maxwell</span> <span
+                                                                    class="text-muted small">posted a status</span></h6>
+                                                            <span class="text-muted">5 hours ago</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item-post">
+                                                        <h6>Hampden-Sydney College in Virginia, looked up one of the more obscure</h6>
+                                                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
+                                                        <p>Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked
+                                                            up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+                                                            going through the cites of the word in classical literature, discovered the
+                                                            undoubtable source.</p>
+                                                        <div class="mb-2 mt-4">
+                                                            <a class="me-lg-4 me-2 text-primary" href="#"><i class="fa fa-thumbs-up"></i> Like
+                                                                (26)</a>
+                                                            <a class="me-lg-4 me-2 text-primary" href="#"><i class="fa fa-comment"></i> Comment
+                                                                (1)</a>
+                                                            <a class="me-lg-4 me-2 text-primary" href="#"><i class="fa fa-share"></i> Share
+                                                                (12)</a>
+                                                        </div>
+                                                        <div>
+                                                            <div class="d-flex mt-3 pt-3 border-top">
+                                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                                                <div class="flex-fill ms-3 text-truncate">
+                                                                    <p class="mb-0"><span class="author">Rose Rivera</span> <small
+                                                                            class="msg-time">1 hour ago</small></p>
+                                                                    <span class="text-muted">It is a long established fact that a reader will be
+                                                                        distracted by the readable content of a page when looking at its
+                                                                        layout.</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-4">
+                                                        <textarea class="form-control" placeholder="Replay"></textarea>
+                                                    </div>
+                                                </div>
+                                            </li> <!-- .Card End -->
+                                            <li class="card mb-2 post-card">
+                                                <div class="card-body p-lg-5 p-3">
+                                                    <div class="d-flex mb-3 pb-3 border-bottom">
+                                                        <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">
+                                                        <div class="flex-fill ms-3 text-truncate">
+                                                            <h6 class="mb-0"><span class="author">Nellie Maxwell</span> <span
+                                                                    class="text-muted small">posted a status</span></h6>
+                                                            <span class="text-muted">3 hours ago</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item-post">
+                                                        <h6>Hampden-Sydney College in Virginia, looked up one of the more obscure</h6>
+                                                        <p>Contrary to popular belief, BC, making it over 2000 years old. Richard McClintock, a
+                                                            Latin professor at Hampden-Sydney College in Virginia, looked up one of the more
+                                                            obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the
+                                                            cites of the word in classical literature, discovered the undoubtable source.</p>
+                                                        <div class="mb-2 mt-4">
+                                                            <a class="me-lg-4 me-2 text-primary" href="#"><i class="fa fa-thumbs-up"></i> Like
+                                                                (0)</a>
+                                                            <a class="me-lg-4 me-2 text-primary" href="#"><i class="fa fa-comment"></i> Comment
+                                                                (0)</a>
+                                                            <a class="me-lg-4 me-2 text-primary" href="#"><i class="fa fa-share"></i> Share
+                                                                (0)</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-4">
+                                                        <textarea class="form-control" placeholder="Replay"></textarea>
+                                                    </div>
+                                                </div>
+                                            </li> <!-- .Card End -->
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-4 col-md-12">
+                                        <div class="card mb-2">
+                                            <div class="card-body">
+                                                <h6 class="card-title mb-3">Categories</h6>
+                                                <ul class="list-group list-group-custom">
+                                                    <li class="list-group-item"><a class="color-600" href="#">Rent</a></li>
+                                                    <li class="list-group-item"><a class="color-600" href="#">Sale</a></li>
+                                                    <li class="list-group-item"><a class="color-600" href="#">Top Rating</a></li>
+                                                    <li class="list-group-item"><a class="color-600" href="#">Trending</a></li>
+                                                    <li class="list-group-item"><a class="color-600" href="#">Newest Properties</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h6 class="card-title mb-3">Latest News</h6>
+                                                <ul class="list-group list-group-custom">
+                                                    <li class="list-group-item">
+                                                        <a href="javascript:void(0);" class="d-flex">
+                                                            <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar7.jpg" alt="">
+                                                            <div class="flex-fill ms-3">
+                                                                <span class="text-primary">There are many variations of passages</span>
+                                                                <div><small class="text-muted">10:11 AM</small></div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <a href="javascript:void(0);" class="d-flex">
+                                                            <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="">
+                                                            <div class="flex-fill ms-3">
+                                                                <span class="text-primary">Contrary to popular belief, Lorem Ipsum is not simply
+                                                                    random text</span>
+                                                                <div><small class="text-muted">10:11 AM</small></div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <a href="javascript:void(0);" class="d-flex">
+                                                            <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">
+                                                            <div class="flex-fill ms-3">
+                                                                <span class="text-primary">There are many variations of passages</span>
+                                                                <div><small class="text-muted">10:11 AM</small></div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <a href="javascript:void(0);" class="d-flex">
+                                                            <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                                            <div class="flex-fill ms-3">
+                                                                <span class="text-primary">Contrary to popular belief, Lorem Ipsum is not simply
+                                                                    random text</span>
+                                                                <div><small class="text-muted">10:11 AM</small></div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- Row end  -->
+                            </div>
+                        
+                            <!-- Tab: Timeline -->
+                            <div class="tab-pane fade" id="profile-timeline" role="tabpanel">
+                                @@include('widgets/_user-activity.html')
+                            </div>
+                        
+                            <!-- Tab: Setting -->
+                            <div class="tab-pane fade" id="profile-setting" role="tabpanel">
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h6 class="card-title mb-0">Security Settings</h6>
+                                                @@include('widgets/_card-action.html')
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row g-3 mb-4">
+                                                    <div class="col-md-4">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" placeholder="Username">
+                                                            <label>Username</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-floating">
+                                                            <input type="password" class="form-control" placeholder="Current Password">
+                                                            <label>Current Password</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-floating">
+                                                            <input type="password" class="form-control" placeholder="New Password">
+                                                            <label>New Password</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-primary" type="button">Save Changes</button>
+                                                <button class="btn btn-secondary" type="button">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h6 class="card-title mb-0">Account Settings</h6>
+                                                @@include('widgets/_card-action.html')
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row clearfix">
+                                                    <div class="col-md-6 mb-4">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" placeholder="First Name">
+                                                            <label>First Name</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-4">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" placeholder="Last Name">
+                                                            <label>Last Name</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-4">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" placeholder="City">
+                                                            <label>City</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-4">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" placeholder="E-mail">
+                                                            <label>E-mail</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-4">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" placeholder="Country">
+                                                            <label>Country</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 mb-4">
+                                                        <div class="form-floating mb-2">
+                                                            <textarea class="form-control" placeholder="Description" style="height: 100px"></textarea>
+                                                            <label>Description</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 mb-3">
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="checkbox" name="font" id="Everyone" value="font-opensans" checked="">
+                                                            <label class="form-check-label" for="Everyone">
+                                                                Profile Visibility For Everyone
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 mb-3">
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="checkbox" name="font" id="New" value="font-opensans">
+                                                            <label class="form-check-label" for="New">
+                                                                New task notifications
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 mb-3">
+                                                        <div class="form-check mb-0">
+                                                            <input class="form-check-input" type="checkbox" name="font" id="friend" value="font-opensans">
+                                                            <label class="form-check-label" for="friend">
+                                                                New friend request notifications
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-primary" type="button"> Save Changes </button>
+                                                <button class="btn" type="button"> Cancel </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- Row end  -->
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables":true,
+})
+<script>
+    // project data table
+    $('#myAllAgents')
+    .addClass('nowrap')
+    .dataTable({
+        responsive: true,
+    });
+</script>
+</body>
+</html>

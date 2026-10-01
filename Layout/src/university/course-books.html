@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "University Course Books",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-indigo">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-university.html', {"page": "course-books"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">Course</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Books</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12 d-flex justify-content-between">
+                        <div class="h5">Featured Books</div>
+                        <button type="button" class="btn btn-primary btn-sm">View All</button>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <img src="@@webRoot/assets/img/gallery/1.jpg" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <div class="mb-0 fw-bold">PHP for Beginners</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <img src="@@webRoot/assets/img/gallery/4.jpg" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <div class="mb-0 fw-bold">React for Beginners</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <img src="@@webRoot/assets/img/gallery/7.jpg" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <div class="mb-0 fw-bold">Vue.JS for Beginners</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <img src="@@webRoot/assets/img/gallery/2.jpg" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <div class="mb-0 fw-bold">HTML5 for Beginners</div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-3 mb-2 mt-4">
+                    <div class="col-12">
+                        <div class="h6 fw-bold">By Category</div>
+                        <ul class="nav nav-tabs tab-card" role="tablist">
+                            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#nav-html" role="tab">HTML</a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav-angular" role="tab">Angular</a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav-react" role="tab">React</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="nav-html" role="tabpanel">
+                                <div class="row g-3">
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <img src="@@webRoot/assets/img/gallery/3.jpg" alt="" class="card-img-top">
+                                            <div class="card-body">
+                                                <div class="mb-0 fw-bold">PHP for Beginners</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <img src="@@webRoot/assets/img/gallery/9.jpg" alt="" class="card-img-top">
+                                            <div class="card-body">
+                                                <div class="mb-0 fw-bold">React for Beginners</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <img src="@@webRoot/assets/img/gallery/10.jpg" alt="" class="card-img-top">
+                                            <div class="card-body">
+                                                <div class="mb-0 fw-bold">Vue.JS for Beginners</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <img src="@@webRoot/assets/img/gallery/4.jpg" alt="" class="card-img-top">
+                                            <div class="card-body">
+                                                <div class="mb-0 fw-bold">HTML5 for Beginners</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <img src="@@webRoot/assets/img/gallery/1.jpg" alt="" class="card-img-top">
+                                            <div class="card-body">
+                                                <div class="mb-0 fw-bold">PHP for Beginners</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <img src="@@webRoot/assets/img/gallery/8.jpg" alt="" class="card-img-top">
+                                            <div class="card-body">
+                                                <div class="mb-0 fw-bold">PHP for Beginners</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <img src="@@webRoot/assets/img/gallery/6.jpg" alt="" class="card-img-top">
+                                            <div class="card-body">
+                                                <div class="mb-0 fw-bold">CSS3 for Beginners</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <img src="@@webRoot/assets/img/gallery/5.jpg" alt="" class="card-img-top">
+                                            <div class="card-body">
+                                                <div class="mb-0 fw-bold">Angular for Beginners</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- .row end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

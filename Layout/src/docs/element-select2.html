@@ -1,0 +1,219 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Select2",
+        "select2": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "element-select2"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+                
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Select2</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="element-tagsinput.html"><i class="fa fa-long-arrow-left me-2"></i>Tagsinput</a>
+                        <a class="btn btn-secondary" href="element-multiselectsplitter.html">Multiselect Splitter<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Introduction</h6>
+                            </div>
+                            <div class="card-body">
+                                <h4>Select 2</h4>
+                                <p class="fs-6">Select2 is a jQuery-based replacement for select boxes. It supports searching, remote data sets, and pagination of results. For more info, please visit the <a href="https://select2.org/" target="_blank">plugin's site</a></p>
+                            </div>
+                            <div class="card-body pt-0">
+<pre class="language-html m-0" data-lang="html"><code class=" language-html">&lt;!-- plugin css file  --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/bundles/select2.min.css&quot;&gt;
+
+&lt;!-- Plugin Js --&gt;
+&lt;script src=&quot;assets/bundles/select2.bundle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Jquery Page Js --&gt;
+&lt;script&gt;
+    $('.select2').select2();
+&lt;/script&gt;
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-lg-3 col-md-6">
+                                        <label class="form-label">Basic</label>
+                                        <select class="form-control show-tick ms select2" data-placeholder="Select">
+                                            <option></option>
+                                            <option>Mustard</option>
+                                            <option>Ketchup</option>
+                                            <option>Relish</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <label class="form-label">With OptGroups</label>
+                                        <select class="form-control show-tick ms select2" data-placeholder="Select">
+                                            <option></option>
+                                            <optgroup label="Picnic">
+                                            <option>Mustard</option>
+                                            <option>Ketchup</option>
+                                            <option>Relish</option>
+                                            </optgroup>
+                                            <optgroup label="Camping">
+                                            <option>Tent</option>
+                                            <option>Flashlight</option>
+                                            <option>Toilet Paper</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <label class="form-label">Multiple Select</label>
+                                        <select class="form-control show-tick ms select2" multiple data-placeholder="Select">
+                                            <option>Mustard</option>
+                                            <option>Ketchup</option>
+                                            <option>Relish</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <label class="form-label">With Clear Button</label>
+                                        <select class="form-control show-tick ms search-select" data-placeholder="Select">
+                                            <option></option>
+                                            <option>Hot Dog, Fries and a Soda</option>
+                                            <option>Burger, Shake and a Smile</option>
+                                            <option>Sugar, Spice and all things nice</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <label class="form-label">Max Selection Limit: 2</label>
+                                        <select id="max-select" class="form-control show-tick ms" multiple>
+                                            <option></option>
+                                            <optgroup label="Condiments" data-max-options="2">
+                                                <option>Mustard</option>
+                                                <option>Ketchup</option>
+                                                <option>Relish</option>
+                                            </optgroup>
+                                            <optgroup label="Breads" data-max-options="2">
+                                                <option>Plain</option>
+                                                <option>Steamed</option>
+                                                <option>Toasted</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <label class="form-label">Loading Data</label>
+                                        <input type="hidden" id="loading-select" class="form-control"/>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <label class="form-label">Loading Array Data</label>
+                                        <input type="hidden" id="array-select" class="form-control">
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <label class="form-label">Disabled Option</label>
+                                        <select class="form-control show-tick ms select2" data-placeholder="Select">
+                                            <option></option>
+                                            <option>Mustard</option>
+                                            <option disabled>Ketchup</option>
+                                            <option>Relish</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+               <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="element-tagsinput.html"><i class="fa fa-long-arrow-left me-3"></i>Tagsinput</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="element-multiselectsplitter.html">Multiselect Splitter<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('docs/_scripts.html',{
+    "select2": true,
+})
+<script>
+    
+    // Select2 selectbox
+    $('.select2').select2();
+
+    $(".search-select").select2({
+        allowClear: true
+    });
+
+    $("#max-select").select2({
+        placeholder: "Select",
+        maximumSelectionSize: 2,
+    });
+
+    $("#loading-select").select2({
+        placeholder: "Select",
+        minimumInputLength: 1,
+        query: function (query) {
+            var data = {results: []}, i, j, s;
+            for (i = 1; i < 5; i++) {
+                s = "";
+                for (j = 0; j < i; j++) {s = s + query.term;}
+                data.results.push({id: query.term + i, text: s});
+            }
+            query.callback(data);
+        }
+    });
+    var data=[{id:0,tag:'enhancement'},{id:1,tag:'bug'},{id:2,tag:'duplicate'},{id:3,tag:'invalid'},{id:4,tag:'wontfix'}];
+    function format(item) { return item.tag; }
+
+    $("#array-select").select2({
+        placeholder: "Select",
+        data:{ results: data, text: 'tag' },
+        formatSelection: format,
+        formatResult: format
+    });
+
+</script>
+</body>
+</html>

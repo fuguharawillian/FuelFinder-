@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Hospital Patient Profile",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-cyan">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hospital.html', {"page": "patient-profile"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item">Patient</li>
+                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center flex-column flex-md-row">
+                                    <img src="@@webRoot/assets/img/lg/avatar2.jpg" alt="" class="rounded" style="width: 210px;">
+                                    <div class="ms-md-5 m-0 mt-4 mt-md-0 text-md-start text-center">
+                                        <h5 class="fw-bold">Will Smith<span class="text-danger small"> #P0015</span></h5>
+                                        <p><strong>Address:</strong> 83 Bay Drive, New Port Richey, FL 34653</p>
+                                        <div class="d-flex justify-content-center align-items-center mb-3 mt-2">
+                                            <div class="me-3 me-md-5">
+                                                <small class="text-muted">Phone</small>
+                                                <div class="mb-0 fw-bold">+123 456 789</div>
+                                            </div>
+                                            <div class="me-3 me-md-5">
+                                                <small class="text-muted">Email ID</small>
+                                                <div class="mb-0 fw-bold">will.smith@info.com</div>
+                                            </div>
+                                        </div>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-3">
+                                                <div class="small">Blood Pressure</div>
+                                                <div class="progress" style="height: 1px;">
+                                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
+                                                </div>
+                                            </li>
+                                            <li class="mb-3">
+                                                <div class="small">Heart Beat</div>
+                                                <div class="progress" style="height: 1px;">
+                                                    <div class="progress-bar bg-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"> <span class="sr-only">20% Complete</span> </div>
+                                                </div>
+                                            </li>
+                                            <li class="mb-3">
+                                                <div class="small">Haemoglobin</div>
+                                                <div class="progress" style="height: 1px;">
+                                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"> <span class="sr-only">60% Complete (warning)</span> </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="small">Sugar</div>
+                                                <div class="progress" style="height: 1px;">
+                                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"> <span class="sr-only">80% Complete (danger)</span> </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- .Card End -->
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold"><i class="fa fa-pencil"></i> Note for Patient</h6>
+                                <span>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</span>
+                            </div>
+                            <!-- Tab: navbar -->
+                            <ul class="nav nav-tabs tab-card border-bottom-0 tab-card px-4" role="tablist">
+                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#Activity-Patient" role="tab">Activity</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#Billings-Patient" role="tab">Billings</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Settings</a>
+                                    <ul class="dropdown-menu border-0 shadow">
+                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card tab-content">
+                            <!-- Tab: Activity -->
+                            <div class="tab-pane fade card-body show active" id="Activity-Patient" role="tabpanel">
+                                <div class="timeline-item ti-danger border-bottom ms-2">
+                                    <div class="d-flex">
+                                        <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">
+                                        <div class="flex-fill ms-3">
+                                            <div class="mb-0 fw-bold">Dr. Frank Camly</div>
+                                            <span class="d-flex text-muted mb-3">Sat, 23 Jan 2021, 01:24 PM</span>
+                                            <h5 class="text-success fw-bold">Discharge</h6>
+                                            <div class="card border-0 bg-transparent">
+                                                <div class="card-body alert-success alert ">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar lg rounded no-thumbnail bg-success text-light"><i class="fa  fa-dollar fa-lg"></i></div>
+                                                        <div class="flex-fill ms-3 text-truncate">
+                                                            <div class="fs-6 mb-0">Payment received $860</div>
+                                                            <span class="small">23 Jan 2021</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- timeline item end  -->
+                                <div class="timeline-item ti-info border-bottom ms-2">
+                                    <div class="d-flex">
+                                        <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                        <div class="flex-fill ms-3">
+                                            <div class="mb-0 fw-bold">Dr. Gary Camara</div>
+                                            <span class="d-flex text-muted mb-3">Sat, 23 Jul 2020, 01:24 PM</span>
+                                            <div>
+                                                <strong class="text-danger">Spinal Osteomyelitis Surgery</strong>
+                                                <div class="project-members mb-3 mt-1">
+                                                    <label class="me-3">Team :</label>
+                                                    <a href="#" title=""><img class="avatar xs rounded" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="dr."> </a>
+                                                    <a href="#" title=""><img class="avatar xs rounded" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="dr."> </a>
+                                                    <a href="#" title=""><img class="avatar xs rounded" src="@@webRoot/assets/img/xs/avatar7.jpg" alt="dr."> </a>
+                                                    <a href="#" title=""><img class="avatar xs rounded" src="@@webRoot/assets/img/xs/avatar9.jpg" alt="dr."> </a>
+                                                </div>
+                                                <p>web by far While that's mock-ups and this is politics, are they really so different? I think the only card she has is the Lorem card.</p>
+                                                <div class="timeline_img">
+                                                    <img class="w-25" src="@@webRoot/assets/img/gallery/1.jpg" alt="Awesome Image">
+                                                    <img class="w-25" src="@@webRoot/assets/img/gallery/2.jpg" alt="Awesome Image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- timeline item end  -->
+                                <div class="timeline-item ti-success border-bottom ms-2">
+                                    <div class="d-flex">
+                                        <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">
+                                        <div class="flex-fill ms-3">
+                                            <div class="mb-0 fw-bold">Dr. Frank Camly</div>
+                                            <span class="d-flex text-muted mb-3">Sat, 23 Jul 2020, 01:24 PM</span>
+                                            <div>
+                                                <strong>Blood Report</strong>
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <strong>Analysis IDFB-3</strong>
+                                                        <table class="table table-bordered table-sm">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Down Cluster</td>
+                                                                    <td>90.9% </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Down Fiber</td>
+                                                                    <td>1.8%</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Waterfowl Feathers </td>
+                                                                    <td>1.7%</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Quill</td>
+                                                                    <td>0.0%</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Landfowl</td>
+                                                                    <td>0.1%</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Total</td>
+                                                                    <td>100.0%</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <strong>Species IDFB-12</strong>
+                                                        <table class="table table-bordered table-sm">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Goose Down </td>
+                                                                    <td>90.9% </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Duck Down</td>
+                                                                    <td>1.8%</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Goose Feathers</td>
+                                                                    <td>1.7%</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Duck Feathers</td>
+                                                                    <td>0.0%</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Total Duck</td>
+                                                                    <td>0.1%</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Total Goose</td>
+                                                                    <td>100.0%</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- timeline item end  -->
+                                <div class="timeline-item ti-primary border-bottom ms-2">
+                                    <div class="d-flex">
+                                        <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar4.jpg" alt="">
+                                        <div class="flex-fill ms-3">
+                                            <div class="mb-0 fw-bold">Dr. Maryam Amiri</div>
+                                            <span class="d-flex text-muted mb-3">Sat, 23 Jul 2020, 01:24 PM</span>
+                                            <div class="card p-2 rounded">
+                                                <p class="fw-bold mb-1">Blood checkup test</p>
+                                                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- timeline item end  -->
+                                <div class="timeline-item ti-warning border-bottom ms-2">
+                                    <div class="d-flex">
+                                        <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar4.jpg" alt="">
+                                        <div class="flex-fill ms-3">
+                                            <div class="mb-0 fw-bold">Dr. Maryam Amiri</div>
+                                            <span class="d-flex text-muted mb-3">Sat, 23 Jul 2020, 01:24 PM</span>
+                                            <div class="card p-2 bg-light rounded">
+                                                Admit patient ward no. 21
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- timeline item end  -->
+                            </div>
+                            <!-- Tab: Billings -->
+                            <div class="tab-pane fade card-body" id="Billings-Patient" role="tabpanel">
+                                <div class="mb-4">
+                                    <h6>Payment Method</h6>
+                                    <div class="payment-info">
+                                        <h3 class="payment-name"><i class="fa fa-cc-paypal"></i> PayPal ****2222</h3>
+                                        <span>Next billing charged $29</span>
+                                        <br>
+                                        <em class="text-muted">Autopay on May 12, 2021</em>
+                                        <a href="javascript:void(0);" class="edit-payment-info">Edit Payment Info</a>
+                                    </div>
+                                    <p class="mt-3"><a href="javascript:void(0);"><i class="fa fa-plus-circle"></i> Add Payment Info</a></p>
+                                </div>
+                                <h6 class="card-title">Billing History</h6>
+                                <table class="table billing-history">
+                                    <thead>
+                                        <tr>
+                                            <th>Plan</th>
+                                            <th>Amount</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <h6 class="mb-0">Basic Plan <span class="invoice-number">#LA35628</span></h6>
+                                                <span class="text-muted font-12">Charged at April 17, 2020</span>
+                                            </td>
+                                            <td class="amount">$29</td>
+                                            <td class="action"><a href="javascript:void(0);">View</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h6 class="mb-0">Pro Plan <span class="invoice-number">#LA3599</span></h6>
+                                                <span class="text-muted font-12">Charged at March 18, 2020</span>
+                                            </td>
+                                            <td class="amount">$59</td>
+                                            <td class="action"><a href="javascript:void(0);">View</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h6 class="mb-0">Platinum Plan <span class="invoice-number">#LA1245</span></h6>
+                                                <span class="text-muted font-12">Charged at Feb 02, 2020</span>
+                                            </td>
+                                            <td class="amount">$89</td>
+                                            <td class="action"><a href="javascript:void(0);">View</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="button" class="btn btn-primary">Update</button>
+                                <button type="button" class="btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

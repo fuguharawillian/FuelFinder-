@@ -3,26 +3,27 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Moderação de avaliações — FuelFinder</title>
-  <script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"><link rel="stylesheet" href="/css/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <script type="module" src="/js/admin-page.js"></script>
 </head>
 <body data-admin-page="reviews">
   <header class="site-header"><div data-site-nav></div></header>
-  <main class="page-narrow">
-    <div class="page-heading"><div><h1>Moderação de avaliações</h1><p class="muted">Aprove ou rejeite uma avaliação pelo ID.</p></div><a class="button secondary" href="/admin/index.html">Painel</a></div>
+  <main class="page container-fluid px-3 px-xl-4 py-4">
+    <div class="page-heading mb-4"><div><p class="eyebrow mb-1">Administração</p><h1>Moderação de avaliações</h1><p class="text-secondary mb-0">Revise avaliações e acompanhe as decisões.</p></div><a class="btn btn-outline-primary" href="/admin/index.html">Painel</a></div>
     <p id="page-status" class="result-state" role="status" aria-live="polite" data-shell-status></p>
-    <section class="panel stack">
-      <div class="form-actions">
-        <label for="review-status-filter">Filtrar por status<select id="review-status-filter"><option value="PENDING">Pendentes</option><option value="APPROVED">Aprovadas</option><option value="REJECTED">Rejeitadas</option></select></label>
-        <button id="refresh-reviews" type="button" class="secondary">Atualizar lista</button>
+    <section class="card border-0 shadow-sm"><div class="card-body p-3 p-lg-4 stack">
+      <div class="row g-3 align-items-end">
+        <label class="col-12 col-md-5" for="review-status-filter">Filtrar por status<select class="form-select" id="review-status-filter"><option value="PENDING">Pendentes</option><option value="APPROVED">Aprovadas</option><option value="REJECTED">Rejeitadas</option></select></label>
+        <div class="col-12 col-md-auto d-grid"><button id="refresh-reviews" type="button" class="btn btn-outline-primary">Atualizar lista</button></div>
       </div>
       <div id="moderation-list" class="stack" aria-live="polite"></div>
-      <form id="review-moderation-form" class="stack">
-        <label for="review-id">ID da avaliação (UUID)<input id="review-id" name="reviewId" autocomplete="off" required></label>
-        <label for="review-status">Decisão<select id="review-status" name="reviewStatus"><option value="APPROVED">Aprovar</option><option value="REJECTED">Rejeitar</option></select></label>
-        <button type="submit">Salvar decisão</button>
+      <form id="review-moderation-form" class="row g-3 align-items-end border-top pt-3">
+        <label class="col-12 col-lg-6" for="review-id">ID da avaliação (UUID)<input class="form-control" id="review-id" name="reviewId" autocomplete="off" required></label>
+        <label class="col-12 col-md-6 col-lg-3" for="review-status">Decisão<select class="form-select" id="review-status" name="reviewStatus"><option value="APPROVED">Aprovar</option><option value="REJECTED">Rejeitar</option></select></label>
+        <div class="col-12 col-md-auto"><button type="submit" class="btn btn-primary">Salvar decisão</button></div>
       </form>
-    </section>
+    </div></section>
   </main>
 </body>
 </html>

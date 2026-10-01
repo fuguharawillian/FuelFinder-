@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Crypto Bank Account",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-red">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-crypto.html', {"page": "accounts"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Accounts</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 row-deck mb-5">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <img class="avatar xl rounded-circle mb-3" src="@@webRoot/assets/img/profile_av.png" alt="avatar lg" title="">
+                                <p class="text-muted mb-1 text-uppercase small">Hello, I'm</p>
+                                <h4 class="fw-bold">Rachel Roth</h4>
+                                <p class="mb-1 mt-3"><i class="fa fa-phone"></i> : +11 234 234 6789</p>
+                                <p><i class="fa fa-envelope"></i> : hello@example.com</p>
+                                <ul class="social mb-0 list-inline mt-3 border-bottom pb-3">
+                                    <li class="list-inline-item"><a href="#" class="p-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Website"><i class="fa fa-globe"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2" data-bs-toggle="tooltip" data-bs-placement="top" title="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2" data-bs-toggle="tooltip" data-bs-placement="top" title="facebook"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2" data-bs-toggle="tooltip" data-bs-placement="top" title="twitter"><i class="fa fa-twitter"></i></a></li>
+                                </ul>
+                                <div class="mb-3 mt-4">
+                                    <div class="fs-6">795 Folsom Ave, San Francisco, USA</div>
+                                    <small class="text-muted text-uppercase">Address</small>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="fs-6">174 Time (Today 8 Times)</div>
+                                    <small class="text-muted text-uppercase">Total Log</small>
+                                </div>
+                                <div>
+                                    <div class="fs-6 text-danger">22 May, 2021, 04:27 PM</div>
+                                    <small class="text-muted text-uppercase">Last Log</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="row g-3 row-deck">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body d-flex align-items-start">
+                                        <div class="avatar lg rounded no-thumbnail">
+                                            <i class="fa fa-dollar fa-lg"></i>
+                                        </div>
+                                        <div class="flex-fill ms-3">
+                                            <div class="fw-bold"><span class="h4 mb-0">$142k</span><span class="text-success ms-1">9.22% <i class="fa fa-caret-up"></i></span></div>
+                                            <div class="text-muted text-uppercase">Total Balance</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="card-title m-0">Coin Overview</h6>
+                                        @@include('widgets/_card-action.html')
+                                    </div>
+                                    <div class="card-body">
+                                        <span class="h2 d-block mb-3">$97,431.14 USD</span>
+                                        <!-- Progress -->
+                                        <div class="progress rounded-pill mb-2" style="height: 10px;">
+                                            <div class="progress-bar chart-color1" role="progressbar" style="width: 32%" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar chart-color2" role="progressbar" style="width: 23%" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar chart-color3" role="progressbar" style="width: 13%" aria-valuenow="13" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar chart-color4" role="progressbar" style="width: 7%" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+        
+                                        <div class="d-flex justify-content-between mb-4">
+                                            <span>0%</span>
+                                            <span>100%</span>
+                                        </div>
+                                    </div>
+                                    <!-- End Progress -->
+                                    <div class="table-responsive">
+                                        <table class="table table-nowrap mb-0 card-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td><i class="fa fa-square chart-text-color1"></i> BTC</td>
+                                                    <td>5.71095643</td>
+                                                    <td><span class="badge bg-success">+12.1%</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="fa fa-square chart-text-color2"></i> LTC</td>
+                                                    <td>2.409425</td>
+                                                    <td><span class="badge bg-warning">+6.9%</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="fa fa-square chart-text-color3"></i> XRP</td>
+                                                    <td>0.0906654</td>
+                                                    <td><span class="badge bg-danger">-1.5%</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="fa fa-square chart-text-color4"></i> DASH</td>
+                                                    <td>0.007653</td>
+                                                    <td><span class="badge bg-success">1.9%</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="row g-3 row-deck">
+                            <div class="col-12">
+                                <div class="card border border-primary">
+                                    <div class="card-header bg-primary">
+                                        <h6 class="card-title mb-0 text-light">My Wallet</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div>Available BTC</div>
+                                        <h3>0.0386245 BTC</h3>
+                                        <div class="mt-2 text-uppercase text-muted border-top pt-2 small">Buy this month</div>
+                                        <h5 class="fw-bold">3.0675432 BTC</h5>
+                                        <div class="mt-3 text-uppercase text-muted small">Sell this month</div>
+                                        <h5 class="fw-bold">2.0345618 BTC</h5>
+                                        <div class="btn-group d-flex mt-4">
+                                            <input type="radio" class="btn-check" name="gm-btnradio" id="gm-btnradio1" autocomplete="off" checked="">
+                                            <label class="btn btn-outline-secondary" for="gm-btnradio1">Buy</label>
+                                            <input type="radio" class="btn-check" name="gm-btnradio" id="gm-btnradio2" autocomplete="off">
+                                            <label class="btn btn-outline-secondary" for="gm-btnradio2">Sell</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-floating mb-1">
+                                            <input type="number" class="form-control" placeholder="Enter Amount">
+                                            <label>Enter Amount</label>
+                                        </div>
+                                        <div class="form-floating mb-2">
+                                            <select class="form-select"
+                                                aria-label="Floating label select example">
+                                                <option>Bank of America ********65657</option>
+                                                <option>Master Card ***********12012</option>
+                                                <option>Pay with Paypal</option>
+                                            </select>
+                                            <label>Payment Method</label>
+                                        </div>
+                                        <button type="button" class="btn btn-primary px-4">Withdraw Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <h5 class="fw-bold mb-2">All Activities</h5>
+                    </div>
+                    <div class="col-12">
+                        <table id="myDataTable" class="myDataTable table align-middle table-bordered mb-0 custom-table-2">
+                            <thead>
+                                <tr>
+                                    <th>Transaction ID</th>
+                                    <th>Date</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Coin</th>
+                                    <th>Amount</th>
+                                    <th>Note</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#AS45453279</td>
+                                    <td>2 May 2021</td>
+                                    <td>Chris Fox</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">
+                                            <div class="flex-fill ms-3">
+                                                <div class="mb-0 h6">Maryam Amiri</div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>Bitcoin</td>
+                                    <td>$1597.78</td>
+                                    <td>None</td>
+                                    <td><span class="badge bg-success">COMPLETED</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#AS45459979</td>
+                                    <td>2 May 2021</td>
+                                    <td>Barbara Kelly</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar9.jpg" alt="">
+                                            <div class="flex-fill ms-3">
+                                                <div class="mb-0 h6">Maryam Amiri</div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>Litecoin</td>
+                                    <td>$9877.78</td>
+                                    <td>None</td>
+                                    <td><span class="badge bg-primary">PENDING</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#AS45459944</td>
+                                    <td>3 May 2021</td>
+                                    <td>Brad Simmons</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                            <div class="flex-fill ms-3">
+                                                <div class="mb-0 h6">Rose Gold</div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>Ripple</td>
+                                    <td>$6565.00</td>
+                                    <td>None</td>
+                                    <td><span class="badge bg-danger">CANCELED</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#AS45459933</td>
+                                    <td>3 May 2021</td>
+                                    <td>Brad Simmons</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                            <div class="flex-fill ms-3">
+                                                <div class="mb-0 h6">Rose Gold</div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>Ethereum</td>
+                                    <td>$8712.34</td>
+                                    <td>None</td>
+                                    <td><span class="badge bg-success">COMPLETED</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#AS41159922</td>
+                                    <td>3 May 2021</td>
+                                    <td>Ja Morant</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="">
+                                            <div class="flex-fill ms-3">
+                                                <div class="mb-0 h6">Brad Simmons</div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>Ripple</td>
+                                    <td>$2468.56</td>
+                                    <td>None</td>
+                                    <td><span class="badge bg-danger">CANCELED</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+   $(document).ready(function () {
+        $('.myDataTable')
+        .addClass('nowrap')
+        .dataTable({
+            responsive: true,
+        });
+    });
+</script>
+</body>
+</html>

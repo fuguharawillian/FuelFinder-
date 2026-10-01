@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Hospital Landing Page",
+        "swiper": true,
+        "onepage": true,
+    })
+</head>
+
+<body class="landing-page" data-luno="theme-cyan">
+    
+    <!-- Section: Top Bar -->
+    <div class="topbar py-2 bg-card" id="topbar">
+        <div class="container">
+
+            <div class="row g-2">
+                <div class="col-md-8">
+                    <div class="text-muted d-flex align-items-center small">
+                        <a class="me-4 text-muted" href="#"><i class="fa fa-envelope me-2"></i>contact@example.com</a>
+                        <span><i class="fa fa-phone me-2"></i>+1 1234 5678 990</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-none d-md-flex social-links align-items-center justify-content-end">
+                        <a href="#" class="text-muted ps-3 ms-1"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="text-muted ps-3 ms-1"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="text-muted ps-3 ms-1"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="text-muted ps-3 ms-1"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!-- Section: Header -->
+    <header class="section sticky-top shadow-sm border-top py-0 bg-card">
+        @@include('onepage/_navbar.html', {
+            "navbarClass": "navbar-expand-lg navbar-light py-3",
+            "brandName": "LUNO",
+            "tagLine": "Hospital Management",
+        })
+    </header>
+
+    <!--  Section: Hero Section  -->
+    <div class="section hero d-flex align-items-center" id="hero">
+        <div class="container">
+
+            <div class="row g-3 py-5 align-items-center justify-content-between">
+                <div class="col-xxl-5 col-lg-6 col-md-12">
+                    <h5 class="color-900">Bootstrap 5 powered</h5>
+                    <h2 class="bg-text color-900"><span class="text-gradient fw-bold">Hospital</span> Admin template</h2>
+                    <p class="color-500 lead mb-4">Build a beautiful, modern website with flexible Bootstrap components built from scratch.</p>
+                    <a href="@@webRoot/hospital/doctor-appointment.html" class="btn btn-lg px-5 bg-secondary text-white text-uppercase fs-6">Book Appointment</a>
+                    <ul class="social mb-0 list-inline mt-5">
+                        <li class="list-inline-item"><a href="#" class="pe-3 color-900 fs-6">Terms of use</a></li>
+                        <li class="list-inline-item"><a href="#" class="pe-3 color-900 fs-6">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#" class="pe-3 color-900 fs-6">FAQs</a></li>
+                        <li class="list-inline-item"><a href="#" class="pe-3 color-900 fs-6">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-xxl-6 col-lg-6 col-md-12">
+                    <svg class="img-fluid d-none d-lg-block"  viewBox="0 0 600 449" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path class="fill-primary" fill-rule="evenodd" clip-rule="evenodd" d="M457.559 52.7163C450.334 49.4569 442.708 48.3882 437.171 48.4057C435.791 48.4101 434.597 47.3772 434.5 45.9999V45.9999C434.403 44.6226 435.441 43.4224 436.822 43.4082C443.014 43.3447 451.513 44.5037 459.615 48.1586C468.935 52.3629 477.824 59.9261 481.883 72.7452C489.473 96.7143 542.361 253.344 567.868 328.698L567.883 328.742L567.896 328.787C570.988 339.179 572.298 354.704 565.541 367.015C562.123 373.243 556.679 378.564 548.562 381.898C540.489 385.215 529.902 386.516 516.221 384.984C463.462 379.078 365.926 360.148 321.4 350.947C320.048 350.667 319.219 349.352 319.5 348V348C319.78 346.648 321.065 345.772 322.417 346.051C366.956 355.255 464.278 374.139 516.778 380.015C529.897 381.484 539.586 380.181 546.662 377.273C553.695 374.384 558.276 369.861 561.158 364.61C566.993 353.978 566.014 340.029 563.116 330.257C537.618 254.927 484.724 98.2807 477.116 74.2546C473.576 63.0737 465.881 56.4703 457.559 52.7163Z" fill="black"/>
+                        <path d="M358 11.5L201.5 60.5C181.334 66.5 135.2 80.1 112 86.5C88.8 92.9 76.3333 118.833 73 131C64.6668 164.667 44.3004 248.4 29.5004 314C14.7004 379.6 57.0004 388.667 80.0004 385C202 368.667 464.4 333.9 538 325.5C611.6 317.1 599.667 271 584.5 249C546 194.5 462.6 76.2 437 39C411.4 1.8 373.667 5.16667 358 11.5Z" fill="url(#pattern0)"/>
+                        <path class="fill-primary" fill-rule="evenodd" clip-rule="evenodd" d="M123.217 82.4818C136.917 51.7616 164.945 44 177.5 44H240.5C241.881 44 243 45.1193 243 46.5V46.5C243 47.8807 241.881 49 240.5 49H177.5C166.39 49 140.484 56.0384 127.784 84.5182C114.508 114.288 58.1532 208.436 31.6798 251.728C29.5847 255.793 27.2381 262.706 27.0622 270.109C26.9035 276.79 28.5055 283.702 33.4799 289.382C34.3896 290.421 34.4476 291.995 33.5004 293V293C32.5533 294.005 30.961 294.057 30.0349 293.033C23.7787 286.115 21.8806 277.694 22.0636 269.991C22.2616 261.657 24.8867 253.96 27.2817 249.348C27.3086 249.296 27.3372 249.245 27.3676 249.196C53.9139 205.787 110.101 111.895 123.217 82.4818Z" fill="black"/>
+                        <path class="fill-secondary" d="M56.5 23L69.0574 44.75H43.9426L56.5 23Z" fill="#C4C4C4"/>
+                        <path class="fill-secondary" d="M319 401.5L270.25 429.646L270.25 373.354L319 401.5Z" fill="#C4C4C4"/>
+                        <path class="fill-secondary" d="M37 43L44.7942 56.5H29.2058L37 43Z" fill="#C4C4C4"/>
+                        <path class="fill-secondary" d="M275 358.5L244.25 376.254L244.25 340.746L275 358.5Z" fill="#C4C4C4"/>
+                        <path class="fill-secondary" d="M55 61L62.7942 74.5H47.2058L55 61Z" fill="#C4C4C4"/>
+                        <path class="fill-secondary" d="M234 399.5L203.25 417.254L203.25 381.746L234 399.5Z" fill="#C4C4C4"/>
+                        <defs>
+                            <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                            <use xlink:href="#image0_54_6" transform="translate(0 -0.00197126) scale(0.000444444 0.000669295)"/>
+                            </pattern>
+                            <image id="image0_54_6" width="2250" height="1500" xlink:href="@@webRoot/assets/img/hospital/banner-img.png" />
+                        </defs>
+                    </svg>
+                </div>
+            </div><!-- .row end -->
+
+        </div>
+    </div><!-- End Hero -->
+
+    <!-- Section: Why Us -->
+    <div class="section why-us pt-0" id="why-us">
+        <div class="container">
+
+            <div class="row g-3 row-deck text-center">
+                <div class="col-12">
+                    <div class="card bg-secondary text-white py-4">
+                        <div class="card-body">
+                            <h2 class="fw-bold">Why Choose LUNO?</h2>
+                            <p class="lead">Our goal is to make sure with advances in technology</p>
+                            <p class="px-xl-5 px-lg-4 m-auto lead mb-5">Professional dental clinic 32roDent offers the whole range of dentistry services: treatment of caries, gum diseases, dentures (crowns installation), surgery, correction (braces) etc.</p>
+                            <a class="btn btn-lg px-4 btn-light text-uppercase" href="#">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <svg class="mb-4" width="60" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                                <path class="fill-muted" fill-rule="evenodd" clip-rule="evenodd" d="M13.5 4.5C14.5 5.5 14.8958 4.16351 14.8958 5.81323C14.8958 7.17269 16 7 14.8958 7.86936C14.9492 9.24213 14.9661 10.5596 14.7708 11.8964C14.5612 13.3424 14.125 14.5873 13.345 15.4954C12.5299 16.4448 11.3802 17 9.78511 17C7.50775 17 6.21998 15.9854 5.49732 14.5487C4.90356 13.369 4.73169 11.9323 4.69913 10.5782C4.37361 10.3439 4.04678 10.0243 3.72647 9.64484C3.26162 9.09227 2.79938 8.40389 2.38531 7.67423C2.26813 7.46652 2.26162 7.22419 2.34755 7.02047C2.32542 6.97653 2.30328 6.93393 2.28115 6.88999C1.3788 5.08315 0.790252 3.11388 1.0702 2.25373C1.20171 1.84896 1.51682 1.58266 1.98036 1.43487C2.35537 1.31636 2.84105 1.27642 3.41527 1.30571C3.46605 1.25911 3.52465 1.21384 3.59235 1.17123C3.66657 1.1233 3.7421 1.08602 3.81631 1.05805C4.52856 0.787762 5.25773 1.5081 4.9296 2.25107C4.78117 2.58794 4.45304 2.83293 4.10017 2.82361C3.76944 2.81429 3.51032 2.59326 3.32152 2.33362L3.3098 2.30966C2.8736 2.29235 2.52073 2.31898 2.26943 2.39887C2.11839 2.4468 2.02594 2.50405 2.0038 2.5693C1.80719 3.17246 2.35797 4.83017 3.15746 6.42929C3.19001 6.49453 3.22256 6.55978 3.25641 6.62369C3.40485 6.68094 3.53506 6.78879 3.621 6.94058C3.9934 7.59834 4.40226 8.20949 4.8046 8.6875C5.01684 8.93915 5.22127 9.1482 5.41008 9.30265C5.43482 9.30265 5.45956 9.30398 5.48299 9.30664C5.66268 9.17483 5.8619 8.98309 6.07024 8.74875C6.49602 8.27207 6.92832 7.64095 7.32155 6.96189C7.40749 6.81409 7.53509 6.7089 7.68092 6.65165C8.51687 5.07117 9.11974 3.38151 8.99604 2.71576C8.96739 2.56397 8.83588 2.46544 8.64447 2.4002C8.39968 2.31631 8.08067 2.28303 7.73431 2.27371C7.7252 2.29368 7.71478 2.31365 7.70436 2.33495C7.51556 2.5946 7.25644 2.81562 6.92571 2.82494C6.57284 2.83426 6.24602 2.58927 6.09628 2.2524C5.76815 1.50943 6.49732 0.789093 7.20957 1.05805C7.28509 1.08602 7.35931 1.12463 7.43353 1.17123C7.4804 1.20052 7.52207 1.23248 7.56113 1.2631C8.06634 1.26444 8.55593 1.30438 8.95567 1.44286C9.48042 1.62394 9.85672 1.95415 9.96349 2.52935C10.1236 3.39615 9.49344 5.31217 8.59109 7.0471C8.67703 7.25348 8.66921 7.49715 8.54942 7.70619C8.10931 8.46647 7.61582 9.18148 7.12363 9.73272C6.7968 10.0989 6.46086 10.4025 6.12623 10.6142C6.15748 11.7699 6.30071 12.9629 6.76165 13.879C7.24993 14.8496 8.15098 15.5367 9.7799 15.5367C10.9244 15.5367 11.7239 15.1679 12.2669 14.5354C12.8463 13.8617 13.1784 12.8697 13.3515 11.686C13.5299 10.4597 13.5143 9.22748 13.4648 7.92395C12.1471 7.63635 13 6.93668 13 5.5C14 5 13.5 6 13.5 4.5Z"/>
+                                <path class="fill-secondary" d="M16.1213 7.12132C15.5587 7.68393 14.7956 8 14 8C13.2044 8 12.4413 7.68393 11.8787 7.12132C11.3161 6.55871 11 5.79565 11 5C11 4.20435 11.3161 3.44129 11.8787 2.87868C12.4413 2.31607 13.2044 2 14 2C14.7956 2 15.5587 2.31607 16.1213 2.87868C16.6839 3.44129 17 4.20435 17 5C17 5.79565 16.6839 6.55871 16.1213 7.12132Z"/>
+                            </svg>
+                            <h5>Qualified Doctors</h5>
+                            <p class="text-muted">It is a long established fact that a reader will be distracted by looking at its layout.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <svg class="mb-4" width="60" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                                <path class="fill-muted" d="M9 1.125C6.50816 1.125 5.07742 1.71763 4.02252 2.77252C2.96763 3.82742 2.375 5.25816 2.375 6.75V7.875H3.5C3.79837 7.875 4.08452 7.99353 4.2955 8.2045C4.50647 8.41548 4.625 8.70163 4.625 9V12.375C4.625 12.6734 4.50647 12.9595 4.2955 13.1705C4.08452 13.3815 3.79837 13.5 3.5 13.5H2.375C2.07663 13.5 1.79048 13.3815 1.5795 13.1705C1.36853 12.9595 1.25 12.6734 1.25 12.375V6.75C1.25 5.86358 1.42459 4.98583 1.76381 4.16689C2.10303 3.34794 2.60023 2.60382 3.22703 1.97703C3.85382 1.35023 4.59794 0.853032 5.41689 0.513813C6.23583 0.174594 7.11358 0 9 0C10.8864 0 11.7642 0.174594 12.5831 0.513813C13.4021 0.853032 14.1462 1.35023 14.773 1.97703C15.3998 2.60382 15.897 3.34794 16.2362 4.16689C16.5754 4.98583 16.75 5.86358 16.75 6.75V13.5C16.75 14.2459 16.4537 14.9613 15.9262 15.4887C15.3988 16.0162 14.6834 16.3125 13.9375 16.3125H11.5367C11.438 16.4835 11.296 16.6255 11.125 16.7243C10.954 16.823 10.76 16.875 10.5625 16.875H9.4375C9.13913 16.875 8.85298 16.7565 8.642 16.5455C8.43103 16.3345 8.3125 16.0484 8.3125 15.75C8.3125 15.4516 8.43103 15.1655 8.642 14.9545C8.85298 14.7435 9.13913 14.625 9.4375 14.625H10.5625C10.76 14.625 10.954 14.677 11.125 14.7757C11.296 14.8745 11.438 15.0165 11.5367 15.1875H13.9375C14.3851 15.1875 14.8143 15.0097 15.1307 14.6932C15.4472 14.3768 15.625 13.9476 15.625 13.5H14.5C14.2016 13.5 13.9155 13.3815 13.7045 13.1705C13.4935 12.9595 13.375 12.6734 13.375 12.375V9C13.375 8.70163 13.4935 8.41548 13.7045 8.2045C13.9155 7.99353 14.2016 7.875 14.5 7.875H15.625V6.75C15.625 6.01131 15.4795 5.27986 15.1968 4.59741C14.9141 3.91495 14.4998 3.29485 13.9775 2.77252C13.4551 2.25019 12.8351 1.83586 12.1526 1.55318C11.4701 1.2705 9.73869 1.125 9 1.125Z" />
+                                <path class="fill-secondary" d="M6.5 13C6.5 13 6 13 6 12.5333C6 12.0667 6.5 10.6667 9 10.6667C11.5 10.6667 12 12.0667 12 12.5333C12 13 11.5 13 11.5 13H6.5ZM9 10.2C9.39782 10.2 9.77936 10.0525 10.0607 9.78995C10.342 9.5274 10.5 9.1713 10.5 8.8C10.5 8.4287 10.342 8.0726 10.0607 7.81005C9.77936 7.5475 9.39782 7.4 9 7.4C8.60218 7.4 8.22064 7.5475 7.93934 7.81005C7.65804 8.0726 7.5 8.4287 7.5 8.8C7.5 9.1713 7.65804 9.5274 7.93934 9.78995C8.22064 10.0525 8.60218 10.2 9 10.2Z"/>
+                                <path class="fill-secondary" d="M7.07322 6.39832C7.02634 6.35457 7 6.29522 7 6.23333C7 6.17145 7.02634 6.1121 7.07322 6.06834C7.12011 6.02458 7.1837 6 7.25 6H10.75C10.8163 6 10.8799 6.02458 10.9268 6.06834C10.9737 6.1121 11 6.17145 11 6.23333C11 6.29522 10.9737 6.35457 10.9268 6.39832C10.8799 6.44208 10.8163 6.46667 10.75 6.46667H7.25C7.1837 6.46667 7.12011 6.44208 7.07322 6.39832Z"/>
+                            </svg>
+                            <h5>24x7 Service</h5>
+                            <p class="text-muted">The point of using Lorem is that it has a more-or-less normal distribution of letters</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <svg class="mb-4" width="60" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                                <path class="fill-muted" d="M14.7175 2.35666H11.7491V0.392379C11.7491 0.175676 11.5735 0 11.3567 0H6.64325C6.42651 0 6.25087 0.175676 6.25087 0.392379V2.3567H3.28252C2.4555 2.3567 1.78271 3.02948 1.78271 3.8565V17.6077C1.78271 17.8244 1.95836 18 2.17509 18C2.79184 18 15.4249 18 15.8249 18C16.0416 18 16.2173 17.8244 16.2173 17.6077V3.85646C16.2173 3.02952 15.5444 2.35666 14.7175 2.35666ZM7.03563 0.784723H10.9643C10.9643 1.35482 10.9643 4.14404 10.9643 4.7134H7.03563C7.03563 4.14373 7.03563 1.35461 7.03563 0.784723ZM8.6076 17.2152H6.51507V15.1227H8.6076V17.2152ZM11.4849 17.2152H9.39236V15.1227H11.4849V17.2152ZM12.2696 17.2152V14.7303C12.2696 14.5136 12.094 14.3379 11.8772 14.3379C11.0307 14.3379 6.97755 14.3379 6.12269 14.3379C5.90595 14.3379 5.73031 14.5136 5.73031 14.7303V17.2152H2.56747V3.85646C2.56747 3.46215 2.88827 3.14142 3.28252 3.14142H6.25087V5.10578C6.25087 5.32248 6.42651 5.49816 6.64325 5.49816H11.3567C11.5735 5.49816 11.7491 5.32248 11.7491 5.10578V3.14142H14.7175C15.1117 3.14142 15.4325 3.46219 15.4325 3.85646V17.2152H12.2696Z" />
+                                <path class="fill-secondary" d="M6.05106 6.77929H4.20117C4.04824 6.77929 3.92432 6.90322 3.92432 7.05615V8.90603C3.92432 9.05896 4.04824 9.18289 4.20117 9.18289H6.05106C6.20399 9.18289 6.32791 9.05896 6.32791 8.90603V7.05615C6.32791 6.90322 6.20399 6.77929 6.05106 6.77929Z" />
+                                <path class="fill-secondary" d="M9.92503 6.77929H8.07511C7.92218 6.77929 7.79825 6.90322 7.79825 7.05615V8.90603C7.79825 9.05896 7.92218 9.18289 8.07511 9.18289H9.925C10.0779 9.18289 10.2019 9.05896 10.2019 8.90603V7.05615C10.2019 6.90322 10.0779 6.77929 9.92503 6.77929Z" />
+                                <path class="fill-secondary" d="M13.7989 6.77929H11.949C11.7961 6.77929 11.6722 6.90322 11.6722 7.05615V8.90603C11.6722 9.05896 11.7961 9.18289 11.949 9.18289H13.7989C13.9518 9.18289 14.0757 9.05896 14.0757 8.90603V7.05615C14.0757 6.90322 13.9518 6.77929 13.7989 6.77929Z" />
+                                <path class="fill-secondary" d="M6.05106 10.6532H4.20117C4.04824 10.6532 3.92432 10.7771 3.92432 10.93V12.7799C3.92432 12.9329 4.04824 13.0568 4.20117 13.0568H6.05106C6.20399 13.0568 6.32791 12.9329 6.32791 12.7799V10.93C6.32791 10.7772 6.20399 10.6532 6.05106 10.6532Z" />
+                                <path class="fill-secondary" d="M9.92503 10.6532H8.07511C7.92218 10.6532 7.79825 10.7771 7.79825 10.93V12.7799C7.79825 12.9329 7.92218 13.0568 8.07511 13.0568H9.925C10.0779 13.0568 10.2019 12.9329 10.2019 12.7799V10.93C10.2019 10.7772 10.0779 10.6532 9.92503 10.6532Z" />
+                                <path class="fill-secondary" d="M13.7989 10.6532H11.949C11.7961 10.6532 11.6722 10.7771 11.6722 10.93V12.7799C11.6722 12.9329 11.7961 13.0568 11.949 13.0568H13.7989C13.9518 13.0568 14.0757 12.9329 14.0757 12.7799V10.93C14.0757 10.7772 13.9518 10.6532 13.7989 10.6532Z" />
+                                <path class="fill-secondary" d="M9.75111 1.53855C9.53438 1.53855 9.35873 1.71422 9.35873 1.93093V2.35674H8.64134V1.93089C8.64134 1.71419 8.46569 1.53851 8.24896 1.53851C8.03222 1.53851 7.85658 1.71419 7.85658 1.93089V3.56717C7.85658 3.78387 8.03225 3.95955 8.24896 3.95955C8.46569 3.95955 8.64134 3.78387 8.64134 3.56717V3.14139H9.35873V3.5672C9.35873 3.78391 9.53434 3.95958 9.75111 3.95958C9.96789 3.95958 10.1435 3.78391 10.1435 3.5672V1.93089C10.1435 1.71422 9.96785 1.53855 9.75111 1.53855Z"/>
+                            </svg>
+                                
+                            <h5>Modren Clinic</h5>
+                            <p class="text-muted">There are many variations of passages of but the majority have suffered alteration</p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: About  -->
+    <div class="section about" id="about">
+        <div class="container">
+
+            <div class="row g-3">
+                <div class="col-xl-5 col-lg-6">
+                    <div class="video-box d-flex justify-content-center align-items-stretch position-relative rounded-4 me-xl-5 me-0">
+                        <a href="https://www.youtube.com/watch?v=2XUtCcrhQmw" class="glightbox play-btn mb-4"></a>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-6">
+                    <span class="bg-dark px-2 py-1 color-fff">LUNO</span>
+                    <h2 class="mb-1 mt-4 color-900"><strong> Hospital</strong> isIt is a long established fact by the readable content.</h2>
+                    <p class="lead">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem</p>
+                    <ul class="resume-box ps-0 pt-2">
+                        <li>
+                            <div class="icon text-center">
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <h6 class="fw-bold">Our Mission</h6>
+                            <span>Reader will be distracted by the readable content of a page when looking at its layout the point of using more or less normal distribution.</span>
+                        </li>
+                        <li>
+                            <div class="icon text-center">
+                                <i class="fa fa-eye"></i>
+                            </div>
+                            <h6 class="fw-bold">Our Vision</h6>
+                            <span>Reader will be distracted by the readable content of a page when looking at its layout the point of using more or less normal distribution.</span>
+                            <div class="ps-3 pt-3">
+                                <h6><i class="fa fa-thumbs-o-up me-2"></i><span>Idea of denouncing pleasure and praising.</span></h6>
+                                <h6><i class="fa fa-thumbs-o-up me-2"></i><span>Pleasure and praising pain was complete system.</span></h6>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="ps-3">
+                        <h5 class="fw-bold">Opening Hours</h5>
+                        <ul class="list-unstyled fs-6">
+                            <li class="py-1">
+                                <label><i class="fa fa-angle-right me-2"></i>Saturday</label>
+                                <span>9:00 - 20:00</span>
+                            </li>
+                            <li class="py-1">
+                                <label><i class="fa fa-angle-right me-2"></i>Sunday</label>
+                                <span>9:00 - 20:00</span>
+                            </li>
+                            <li class="py-1">
+                                <label><i class="fa fa-angle-right me-2"></i>Monday - Friday</label>
+                                <span>9:00 - 20:00</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: Fun fact  -->
+    <div class="section counts bg-dark text-center">
+        <div class="container">
+            
+            @@include('onepage/_fun-fact.html', {
+                "cardClass": "border-0 bg-transparent text-muted",
+                "rowClass": "row-cols-lg-4 row-cols-md-2 row-cols-sm-2 row-cols-1 g-1 text-center",
+                "funFact1": "10+",
+                "funFactLabel1": "Years of Experience",
+                "funFact2": "50+",
+                "funFactLabel2": "DEPARTMENTS",
+                "funFact3": "20+",
+                "funFactLabel3": "RESEARCH LABS",
+                "funFact4": "50+",
+                "funFactLabel4": "AWARDS",
+            })
+
+        </div>
+    </div>
+
+    <!--  Section: Services  -->
+    <div class="section services-2" id="services">
+        <div class="container">
+            
+            <div class="row justify-content-center mb-3 text-center">
+                <div class="col-lg-12">
+                    <span class="bg-dark px-2 py-1 color-fff">World class</span>
+                    <h2 class="mb-1 mt-4 color-900">Our Services</h2>
+                    <p class="lead">There are many variations of passages of the majority have suffered alteration.</p>
+                </div>
+            </div><!-- .row end -->
+
+            <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 g-0 row-deck">
+                <div class="col">
+                    <div class="card p-lg-5 p-4 text-center">
+                        <div class="icon"><i class="fa fa-heartbeat"></i></div>
+                        <h4><a href="#" class="color-600">Cardio Monitoring</a></h4>
+                        <p class="mb-0 text-muted">It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-lg-5 p-4 text-center">
+                        <div class="icon"><i class="fa fa-delicious"></i></div>
+                        <h4><a href="#" class="color-600">Orthodontics</a></h4>
+                        <p class="mb-0 text-muted">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-lg-5 p-4 text-center">
+                        <div class="icon"><i class="fa fa-hospital-o"></i></div>
+                        <h4><a href="#" class="color-600">Traumatology</a></h4>
+                        <p class="mb-0 text-muted">It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-lg-5 p-4 text-center">
+                        <div class="icon"><i class="fa fa-renren"></i></div>
+                        <h4><a href="#" class="color-600">Cardiology</a></h4>
+                        <p class="mb-0 text-muted">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-lg-5 p-4 text-center">
+                        <div class="icon"><i class="fa fa-empire"></i></div>
+                        <h4><a href="#" class="color-600">Prostheses</a></h4>
+                        <p class="mb-0 text-muted">It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-lg-5 p-4 text-center">
+                        <div class="icon"><i class="fa fa-h-square"></i></div>
+                        <h4><a href="#" class="color-600">Pulmonary</a></h4>
+                        <p class="mb-0 text-muted">It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old</p>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: Book Appointment  -->
+    <div class="section appointment bg-card" id="appointment">
+        <div class="container">
+            
+            <form class="row g-3">
+                <div class="col-lg-12">
+                    <span class="bg-dark px-2 py-1 color-fff">Online</span>
+                    <h2 class="mb-1 mt-4 color-900">Book an Appointment</h2>
+                    <p class="lead">There are many variations of passages of the majority have suffered alteration.</p>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" placeholder="Your Name">
+                        <label>Your Name</label>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="form-floating">
+                        <input type="email" class="form-control" placeholder="Your email">
+                        <label>Your email</label>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="form-floating">
+                        <input type="tel" class="form-control" placeholder="Your Phone">
+                        <label>Your Phone</label>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="form-floating">
+                        <input type="date" class="form-control">
+                        <label>Appointment Date</label>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="form-floating">
+                        <select class="form-select">
+                            <option selected>Open this select menu</option>
+                            <option value="Department 1">Department 1</option>
+                            <option value="Department 2">Department 2</option>
+                            <option value="Department 3">Department 3</option>
+                        </select>
+                        <label>Select Department</label>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="form-floating">
+                        <select class="form-select">
+                            <option selected>Open this select menu</option>
+                            <option value="Doctor 1">Doctor 1</option>
+                            <option value="Doctor 2">Doctor 2</option>
+                            <option value="Doctor 3">Doctor 3</option>
+                        </select>
+                        <label>Select Doctor</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Message (Optional)" style="height: 120px"></textarea>
+                        <label>Message (Optional)</label>
+                    </div>
+                </div>
+                <div class="col-12 text-center text-md-end">
+                    <button type="submit" class="btn btn-lg btn-primary text-uppercase px-5">Book an Appointment</button>
+                </div>
+            </form> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: Departments  -->
+    <div class="section departments" id="departments">
+        <div class="container">
+            
+            <div class="row justify-content-center mb-3">
+                <div class="col-lg-12">
+                    <span class="bg-secondary px-2 py-1 color-fff">Hospital</span>
+                    <h2 class="mb-1 mt-4 color-900">Departments</h2>
+                    <p class="lead">It was popularised in the 1960s with the release of Letraset sheets containing.</p>
+                </div>
+            </div><!-- .row end -->
+
+            <div class="row g-0">
+                <div class="col-lg-3">
+                    <ul class="nav nav-tabs flex-column mt-3">
+                        <li class="nav-item">
+                            <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
+                                <div class="fs-5">Cardiology</div>
+                                <span class="small">Omnis blanditiis saepe debitis porro quia.</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+                                <div class="fs-5">Neurology</div>
+                                <span class="small">If you are going to use a passage</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
+                                <div class="fs-5">Pulmonology</div>
+                                <span class="small">Various versions have evolved</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
+                                <div class="fs-5">Pediatrics</div>
+                                <span class="small">Lorem Ipsum comes from sections</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-5">
+                                <div class="fs-5">Gynaecology</div>
+                                <span class="small">It is a long established fact</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-9 mt-4 mt-lg-0">
+                    <div class="tab-content card p-4">
+                        <div class="tab-pane active show" id="tab-1">
+                            <div class="row">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <div class="me-lg-5">
+                                        <h3>Cardiology</h3>
+                                        <h5 class="mb-4 text-muted">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</h5>
+                                        <p class="lh-lg">Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+                                        <div class="pt-3">
+                                            <h6><i class="fa fa-thumbs-o-up me-2"></i><span>Idea of denouncing pleasure and praising.</span></h6>
+                                            <h6><i class="fa fa-thumbs-o-up me-2"></i><span>Pleasure and praising pain was complete system.</span></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img class="img-fluid img-thumbnail mb-3 mb-lg-0" src="@@webRoot/assets/img/hospital/departments-1.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-2">
+                            <div class="row">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <div class="me-lg-5">
+                                        <h3>Neurology</h3>
+                                        <h5 class="mb-4 text-muted">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h5>
+                                        <p class="lh-lg">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                        <div class="pt-3">
+                                            <h6><i class="fa fa-thumbs-o-up me-2"></i><span>Idea of denouncing pleasure and praising.</span></h6>
+                                            <h6><i class="fa fa-thumbs-o-up me-2"></i><span>Pleasure and praising pain was complete system.</span></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img class="img-fluid img-thumbnail mb-3 mb-lg-0" src="@@webRoot/assets/img/hospital/departments-2.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-3">
+                            <div class="row">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <div class="me-lg-5">
+                                        <h3>Pulmonology</h3>
+                                        <h5 class="mb-4 text-muted">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</h5>
+                                        <p class="lh-lg">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+                                        <div class="pt-3">
+                                            <h6><i class="fa fa-thumbs-o-up me-2"></i><span>Idea of denouncing pleasure and praising.</span></h6>
+                                            <h6><i class="fa fa-thumbs-o-up me-2"></i><span>Pleasure and praising pain was complete system.</span></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img class="img-fluid img-thumbnail mb-3 mb-lg-0" src="@@webRoot/assets/img/hospital/departments-3.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-4">
+                            <div class="row">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <div class="me-lg-5">
+                                        <h3>Pediatrics</h3>
+                                        <h5 class="mb-4 text-muted">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</h5>
+                                        <p class="lh-lg">Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+                                        <div class="pt-3">
+                                            <h6><i class="fa fa-thumbs-o-up me-2"></i><span>Idea of denouncing pleasure and praising.</span></h6>
+                                            <h6><i class="fa fa-thumbs-o-up me-2"></i><span>Pleasure and praising pain was complete system.</span></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img class="img-fluid img-thumbnail mb-3 mb-lg-0" src="@@webRoot/assets/img/hospital/departments-4.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-5">
+                            <div class="row">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <div class="me-lg-5">
+                                        <h3>Gynaecology</h3>
+                                        <h5 class="mb-4 text-muted">It was popularised in the 1960s with the release of Letraset sheets containing</h5>
+                                        <p class="lh-lg">Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC.</p>
+                                        <div class="pt-3">
+                                            <h6><i class="fa fa-thumbs-o-up me-2"></i><span>Idea of denouncing pleasure and praising.</span></h6>
+                                            <h6><i class="fa fa-thumbs-o-up me-2"></i><span>Pleasure and praising pain was complete system.</span></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img class="img-fluid img-thumbnail mb-3 mb-lg-0" src="@@webRoot/assets/img/hospital/departments-5.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: Doctors  -->
+    <div class="section doctors" id="doctors">
+        <div class="container">
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-lg-12">
+                    <span class="chart-color4 px-2 py-1 color-fff">Doctors</span>
+                    <h3 class="mb-1 mt-4 color-900">Meet Our Team</h3>
+                    <p class="lead">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem</p>
+                </div>
+            </div><!-- .row end -->
+
+            <div class="row g-3">
+                <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                            <img class="w240 rounded" src="@@webRoot/assets/img/hospital/doctors/doctors-1.jpg" alt="">
+                            <div class="media-body ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                <h5 class="fw-bold mb-2">Edit Toke</h5>
+                                <div class="mb-3">
+                                    <p class="mt-2">I have been a Personal trainer for 2 years building a women's fitness company Bootcamp company in 2018.</p>
+                                </div>
+                                <div class="row row-cols-md-2 row-cols-sm-2 row-cols-2 g-1 mb-2">
+                                    <div class="col">
+                                        <strong>11 year</strong>
+                                        <div class="text-muted small">Experience</div>
+                                    </div>
+                                    <div class="col">
+                                        <strong>Anesthesiologist</strong>
+                                        <div class="text-muted small">Speciality</div>
+                                    </div>
+                                </div>
+                                <ul class="social mb-0 list-inline mt-3">
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                            <img class="w240 rounded" src="@@webRoot/assets/img/hospital/doctors/doctors-2.jpg" alt="">
+                            <div class="media-body ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                <h5 class="fw-bold mb-2">Brian Swader</h5>
+                                <div class="mb-3">
+                                    <p class="mt-2">I have been a Personal trainer for 2 years building a women's fitness company Bootcamp company in 2018.</p>
+                                </div>
+                                <div class="row row-cols-md-2 row-cols-sm-2 row-cols-2 g-1 mb-2">
+                                    <div class="col">
+                                        <strong>11 year</strong>
+                                        <div class="text-muted small">Experience</div>
+                                    </div>
+                                    <div class="col">
+                                        <strong>Chief Medical Officer</strong>
+                                        <div class="text-muted small">Speciality</div>
+                                    </div>
+                                </div>
+                                <ul class="social mb-0 list-inline mt-3">
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                            <img class="w240 rounded" src="@@webRoot/assets/img/hospital/doctors/doctors-3.jpg" alt="">
+                            <div class="media-body ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                <h5 class="fw-bold mb-2">Maryam Amiri</h5>
+                                <div class="mb-3">
+                                    <p class="mt-2">I have been a Personal trainer for 2 years building a women's fitness company Bootcamp company in 2018.</p>
+                                </div>
+                                <div class="row row-cols-md-2 row-cols-sm-2 row-cols-2 g-1 mb-2">
+                                    <div class="col">
+                                        <strong>11 year</strong>
+                                        <div class="text-muted small">Experience</div>
+                                    </div>
+                                    <div class="col">
+                                        <strong>Neurosurgeon</strong>
+                                        <div class="text-muted small">Speciality</div>
+                                    </div>
+                                </div>
+                                <ul class="social mb-0 list-inline mt-3">
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                            <img class="w240 rounded" src="@@webRoot/assets/img/hospital/doctors/doctors-4.jpg" alt="">
+                            <div class="media-body ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                <h5 class="fw-bold mb-2">Manuella Nevoresky</h5>
+                                <div class="mb-3">
+                                    <p class="mt-2">I have been a Personal trainer for 2 years building a women's fitness company Bootcamp company in 2018.</p>
+                                </div>
+                                <div class="row row-cols-md-2 row-cols-sm-2 row-cols-2 g-1 mb-2">
+                                    <div class="col">
+                                        <strong>11 year</strong>
+                                        <div class="text-muted small">Experience</div>
+                                    </div>
+                                    <div class="col">
+                                        <strong>Cardiology</strong>
+                                        <div class="text-muted small">Speciality</div>
+                                    </div>
+                                </div>
+                                <ul class="social mb-0 list-inline mt-3">
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: FAQa  -->
+    <div class="section" id="faq">
+        <div class="container">
+
+            @@include('onepage/_faqs.html', {
+                "rowClass": "g-3",
+                "sectionTag": "FAQs",
+                "sectionTitle": "Frequently Asked Questions",
+                "sectionSubTitle": "It was popularised in the 1960s with the release of Letraset sheets containing."
+            })
+
+        </div>
+    </div>
+
+    <!--  Section: Testimonials  -->
+    @@include('onepage/sliders/_sliders-testimonials.html', { "cardClass": "sliders-2 bg-body", })
+
+    <!--  Section: Gallery  -->
+    <div class="section pb-0">
+        <div class="container">
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-lg-12">
+                    <span class="bg-dark px-2 py-1 color-fff">Gallery</span>
+                    <h2 class="mb-1 mt-4 color-900">Awesome Portfolio</h2>
+                    <p class="lead">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem</p>
+                </div>
+            </div><!-- .row end -->
+
+        </div>
+        <div class="container-fluid">
+
+            @@include('onepage/_img-gallery.html',{
+                "imgGalleryPath": "@@webRoot/assets/img/hospital/gallery"
+            })
+
+        </div>
+    </div>
+
+    <!-- Section: call to action -->
+    <div class="section call-action">
+        <div class="container">
+
+            <div class="row justify-content-center text-center text-white">
+                <div class="col-xl-7 col-lg-10 col-12">
+                    <span class="bg-white px-3 py-2 text-dark">GETTING STARTED TO WORK</span>
+                    <h2 class="mb-3 mt-4">Take a look at All the layouts of LUNO</h2>
+                    <p class="lead">It helps you to increase your chances of finding a suitable job and let recruiters contact you about jobs that are not needed to pay for advertising.</p>
+                    <div class="mt-5">
+                        <a href="https://themeforest.net/checkout/from_item/36214125?license=extended&size=source&ref=phpbits" class="btn lift btn-lg px-5  btn-light fs-6">Buy a License</a>
+                        <a class="btn lift btn-lg px-5  bg-dark text-white fs-6" href="https://themeforest.net/item/luno-bootstrap-5-responsive-admin-dashboard-template/36214125">Download Now</a>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: contact us form  -->
+    <div class="section">
+        <div class="container">
+
+            @@include('onepage/contact/_contact-form.html', {
+                "rowClass": "g-2",
+                "SectionTag": "Contact Information",
+                "SectionTitle": "Get in touch",
+            })
+
+        </div>
+    </div>
+
+    <!-- Section: call-to-action app download -->
+    <div class="section bg-dark text-light">
+        <div class="container">
+
+            @@include('onepage/call-to-action/_call-to-action-app.html', {
+                "rowClass": "g-3 align-items-center justify-content-center",
+                "sectionTitle": "Download Our Best Apps",
+            })
+
+        </div>
+    </div>
+
+    <!-- Section: Footer -->
+    @@include('onepage/_footer.html', {
+        "sectionClass": "footer",
+        "rowClass": "g-2",
+        "SectionTag": "Contact Information",
+        "SectionTitle": "Get in touch",
+    })    
+    
+    <!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+    <a class="page-setting" href="#" title="Settings" data-bs-toggle="modal" data-bs-target="#SettingsModal"><i class="fa fa-gear text-light"></i></a>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fa fa-arrow-up"></i></a>
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "swiper": true,
+})
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Badge",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "ui-badge"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Badge</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="ui-alerts.html"><i class="fa fa-long-arrow-left me-2"></i>Bootstrap alerts</a>
+                        <a class="btn btn-secondary" href="ui-border.html">Bootstrap border<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+
+                <div class="col-12">
+                    <div class="bd-content">
+
+                        <h2 id="example">Example</h2>
+                        <p>Badges scale to match the size of the immediate parent element by using relative font sizing and <code>em</code> units. As of v5, badges no longer have focus or hover styles for links.</p>
+                        <div class="bd-example mb-5">
+                            <h1>Example heading <span class="badge bg-secondary">New</span></h1>
+                            <h2>Example heading <span class="badge bg-secondary">New</span></h2>
+                            <h3>Example heading <span class="badge bg-secondary">New</span></h3>
+                            <h4>Example heading <span class="badge bg-secondary">New</span></h4>
+                            <h5>Example heading <span class="badge bg-secondary">New</span></h5>
+                            <h6>Example heading <span class="badge bg-secondary">New</span></h6>
+<pre>
+<code class="language-html" data-lang="html">&lt;h1&gt;Example heading &lt;span class=&quot;badge bg-secondary&quot;&gt;New&lt;/span&gt;&lt;/h1&gt;
+&lt;h2&gt;Example heading &lt;span class=&quot;badge bg-secondary&quot;&gt;New&lt;/span&gt;&lt;/h2&gt;
+&lt;h3&gt;Example heading &lt;span class=&quot;badge bg-secondary&quot;&gt;New&lt;/span&gt;&lt;/h3&gt;
+&lt;h4&gt;Example heading &lt;span class=&quot;badge bg-secondary&quot;&gt;New&lt;/span&gt;&lt;/h4&gt;
+&lt;h5&gt;Example heading &lt;span class=&quot;badge bg-secondary&quot;&gt;New&lt;/span&gt;&lt;/h5&gt;
+&lt;h6&gt;Example heading &lt;span class=&quot;badge bg-secondary&quot;&gt;New&lt;/span&gt;&lt;/h6&gt;</code>
+</pre>
+                        </div> <!-- example end  -->
+
+                        <p>Badges can be used as part of links or buttons to provide a counter.</p>
+                        <div class="bd-example mb-5">
+                            <button type="button" class="btn btn-primary">
+                                Notifications <span class="badge bg-secondary">4</span>
+                            </button>
+<pre>
+<code class="language-html" data-lang="html">&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;
+    Notifications &lt;span class=&quot;badge bg-secondary&quot;&gt;4&lt;/span&gt;
+&lt;/button&gt;</code>
+</pre>
+                        </div> <!-- example end  -->
+                        
+                        <p>Note that depending on how they are used, badges may be confusing for users of screen readers and similar assistive technologies. While the styling of badges provides a visual cue as to their purpose, these users will simply be presented with the content of the badge. Depending on the specific situation, these badges may seem like random additional words or numbers at the end of a sentence, link, or button.</p>
+                        <p>Unless the context is clear (as with the “Notifications” example, where it is understood that the “4” is the number of notifications), consider including additional context with a visually hidden piece of additional text.</p>
+                        <div class="bd-example mb-5">
+                            <button type="button" class="btn btn-primary">
+                                Profile <span class="badge bg-secondary">9</span>
+                            </button>
+<pre>
+<code class="language-html" data-lang="html">&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;
+    Profile &lt;span class=&quot;badge bg-secondary&quot;&gt;9&lt;/span&gt;
+    &lt;span class=&quot;visually-hidden&quot;&gt;unread messages&lt;/span&gt;
+&lt;/button&gt;</code>
+</pre>
+                        </div> <!-- example end  -->
+
+                        <h2 id="background-colors">Background colors</h2>
+                        <p>Use our background utility classes to quickly change the appearance of a badge. Please note that when using Bootstrap’s default <code>.bg-light</code>, you’ll likely need a text color utility like <code>.text-dark</code> for proper styling. This is because background utilities do not set anything but <code>background-color</code>.</p>                        
+                        <div class="bd-example mb-5">
+                            <span class="badge bg-primary">Primary</span>
+                            <span class="badge bg-secondary">Secondary</span>
+                            <span class="badge bg-success">Success</span>
+                            <span class="badge bg-danger">Danger</span>
+                            <span class="badge bg-warning text-dark">Warning</span>
+                            <span class="badge bg-info">Info</span>
+                            <span class="badge bg-light text-dark">Light</span>
+                            <span class="badge bg-dark">Dark</span>
+<pre>
+<code class="language-html" data-lang="html">&lt;span class=&quot;badge bg-primary&quot;&gt;Primary&lt;/span&gt;
+&lt;span class=&quot;badge bg-secondary&quot;&gt;Secondary&lt;/span&gt;
+&lt;span class=&quot;badge bg-success&quot;&gt;Success&lt;/span&gt;
+&lt;span class=&quot;badge bg-danger&quot;&gt;Danger&lt;/span&gt;
+&lt;span class=&quot;badge bg-warning text-dark&quot;&gt;Warning&lt;/span&gt;
+&lt;span class=&quot;badge bg-info&quot;&gt;Info&lt;/span&gt;
+&lt;span class=&quot;badge bg-light text-dark&quot;&gt;Light&lt;/span&gt;
+&lt;span class=&quot;badge bg-dark&quot;&gt;Dark&lt;/span&gt;</code>
+</pre>
+                        </div> <!-- example end  -->
+                        
+                        <div class="bd-callout bd-callout-info">
+                            <h5 id="conveying-meaning-to-assistive-technologies">Conveying meaning to assistive technologies</h5>
+                            <p>Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the <code>.visually-hidden</code> class.</p>
+                        </div>
+                        
+                        <h2 id="pill-badges">Pill badges</h2>
+                        <p>Use the <code>.rounded-pill</code> utility class to make badges more rounded with a larger <code>border-radius</code>.</p>
+                        <div class="bd-example mb-5">
+                            <span class="badge rounded-pill bg-primary">Primary</span>
+                            <span class="badge rounded-pill bg-secondary">Secondary</span>
+                            <span class="badge rounded-pill bg-success">Success</span>
+                            <span class="badge rounded-pill bg-danger">Danger</span>
+                            <span class="badge rounded-pill bg-warning text-dark">Warning</span>
+                            <span class="badge rounded-pill bg-info">Info</span>
+                            <span class="badge rounded-pill bg-light text-dark">Light</span>
+                            <span class="badge rounded-pill bg-dark">Dark</span>
+<pre>
+<code class="language-html" data-lang="html">&lt;span class=&quot;badge rounded-pill bg-primary&quot;&gt;Primary&lt;/span&gt;
+&lt;span class=&quot;badge rounded-pill bg-secondary&quot;&gt;Secondary&lt;/span&gt;
+&lt;span class=&quot;badge rounded-pill bg-success&quot;&gt;Success&lt;/span&gt;
+&lt;span class=&quot;badge rounded-pill bg-danger&quot;&gt;Danger&lt;/span&gt;
+&lt;span class=&quot;badge rounded-pill bg-warning text-dark&quot;&gt;Warning&lt;/span&gt;
+&lt;span class=&quot;badge rounded-pill bg-info&quot;&gt;Info&lt;/span&gt;
+&lt;span class=&quot;badge rounded-pill bg-light text-dark&quot;&gt;Light&lt;/span&gt;
+&lt;span class=&quot;badge rounded-pill bg-dark&quot;&gt;Dark&lt;/span&gt;</code>
+</pre>
+                        </div> <!-- example end  -->
+
+                    </div>
+                </div> <!-- .row end -->
+
+                <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="ui-avatar.html"><i class="fa fa-long-arrow-left me-3"></i>Bootstrap avatar</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="ui-border.html">Bootstrap border<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div> <!-- .row end -->
+                
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Core Js -->
+@@include('docs/_scripts.html',{
+
+})
+</body>
+</html>

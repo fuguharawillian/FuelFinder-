@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Restaurant Orders",
+        "dataTables": true
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-restaurant.html', {"page": "orders"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page body -->
+        <div class="page-body body-layout-1">
+            <div class="d-flex flex-nowrap">
+                <div class="order-1 custom_scroll" style="min-width: 360px;">
+                    <ul class="nav nav-tabs tab-body-header rounded d-flex mt-2 text-center" role="tablist">
+                        <li class="nav-item flex-fill"><a class="nav-link active" data-bs-toggle="tab" href="#nav-Items" role="tab">Items</a></li>
+                        <li class="nav-item flex-fill"><a class="nav-link" data-bs-toggle="tab" href="#nav-Progress" role="tab">Progress</a></li>
+                        <li class="nav-item flex-fill"><a class="nav-link" data-bs-toggle="tab" href="#nav-Reviews" role="tab">Reviews</a></li>
+                    </ul>
+                    
+                    <div class="tab-content mt-2">
+                        <div class="tab-pane fade show active" id="nav-Items" role="tabpanel">
+                            <ul class="list-unstyled list-group list-group-custom list-group-flush mb-0">
+                                <li class="list-group-item py-3 px-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar lg no-thumbnail bg-transparent">
+                                            <img class="img-fluid rounded" src="@@webRoot/assets/img/fitness/food-1.jpg" alt="" />    
+                                        </div>
+                                        <div class="flex-fill ms-3 text-truncate">
+                                            <h6 class="mb-0">Fresh salad bowl (2)</h6>
+                                            <span class="text-muted">Extra Cheese</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item py-3 px-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar lg no-thumbnail bg-transparent">
+                                            <img class="img-fluid rounded" src="@@webRoot/assets/img/fitness/food-2.jpg" alt="" />    
+                                        </div>
+                                        <div class="flex-fill ms-3 text-truncate">
+                                            <h6 class="mb-0">Cheese Garlic Bread (10)</h6>
+                                            <span class="text-muted">Extra Cheese</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item py-3 px-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar lg no-thumbnail bg-transparent">
+                                            <img class="img-fluid rounded" src="@@webRoot/assets/img/fitness/food-3.jpg" alt="" />    
+                                        </div>
+                                        <div class="flex-fill ms-3 text-truncate">
+                                            <h6 class="mb-0">Fresh salad bowl (3)</h6>
+                                            <span class="text-muted">Extra Cheese</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item py-3 px-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar lg no-thumbnail bg-transparent">
+                                            <img class="img-fluid rounded" src="@@webRoot/assets/img/fitness/food-4.jpg" alt="" />    
+                                        </div>
+                                        <div class="flex-fill ms-3 text-truncate">
+                                            <h6 class="mb-0">Fresh salad bowl (2)</h6>
+                                            <span class="text-muted">Extra Cheese</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item py-3 px-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar lg no-thumbnail bg-transparent">
+                                            <img class="img-fluid rounded" src="@@webRoot/assets/img/fitness/food-1.jpg" alt="" />    
+                                        </div>
+                                        <div class="flex-fill ms-3 text-truncate">
+                                            <h6 class="mb-0">Fresh salad bowl (2)</h6>
+                                            <span class="text-muted">Extra Cheese</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="nav-Progress" role="tabpanel">
+                            <div class="custom_scroll" style="height: 380px; scroll-behavior: smooth;">
+                                <ul class="timeline-activity list-unstyled mb-0">
+                                    <li class="activity px-3 py-2 mb-1" data-date="12:30 - Sun">
+                                        <div class="fw-bold small d-flex justify-content-between align-items-center">New Order <span class="badge bg-warning">ID: 215</span></div>
+                                        <div>
+                                            <small class="text-muted">1 Burger, 1 Corn Rice curd</small>
+                                        </div>
+                                    </li>
+                                    <li class="activity px-3 py-2 mb-1" data-date="12:31 - Sun">
+                                        <div class="fw-bold small">Order Received</div>
+                                        <div>
+                                            
+                                        </div>
+                                    </li>
+                                    <li class="activity px-3 py-2 mb-1" data-date="12:32 - Sun">
+                                        <div class="fw-bold small">Payment Verify</div>
+                                        <div>
+                                            <h5 class="mb-0 text-success">$80.5 - Done</h5>
+                                            <small class="text-muted">NetBanking</small>
+                                        </div>
+                                    </li>
+                                    <li class="activity px-3 py-2 mb-1" data-date="12:35 - Sun">
+                                        <div class="fw-bold small">Order inprogress</div>
+                                        <div>
+                                            <label class="me-2">Team:</label>
+                                            <a href="#" title="avatar"><img class="avatar xs rounded" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="friend"> </a>
+                                            <a href="#" title="avatar"><img class="avatar xs rounded" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="friend"> </a>
+                                            <a href="#" title="avatar"><img class="avatar xs rounded" src="@@webRoot/assets/img/xs/avatar7.jpg" alt="friend"> </a>
+                                        </div>
+                                    </li>
+                                    <li class="activity px-3 py-2 mb-1" data-date="12:55 - Sun">
+                                        <div class="fw-bold small">Delivery on the way</div>
+                                        <div>
+                                            <p class="mb-1 small text-muted"><i class="fa fa-map-marker ps-1"></i> 123 6th St. Melbourne, FL 32904</p>
+                                            <a href="#" title="avatar"><img class="avatar xs rounded" src="@@webRoot/assets/img/xs/avatar5.jpg" alt="friend"> </a>
+                                            <label class="ms-1">Robert Hammer</label>
+                                        </div>
+                                    </li>
+                                    <li class="activity px-3 py-2 mb-1" data-date="01:10 - Sun">
+                                        <div class="fw-bold small d-flex justify-content-between align-items-center">Delivery<span class="badge bg-success">Done</span></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-Reviews" role="tabpanel">
+                            ....
+                        </div>
+                    </div>
+                </div>
+                <div class="order-2 flex-grow-1 px-lg-3 px-0 custom_scroll">
+                    <!-- start: page toolbar -->
+                    <div class="page-toolbar py-2">
+                        <div class="container-fluid">
+                            <div class="row g-3 mb-3 align-items-center">
+                                <div class="col">
+                                    <ol class="breadcrumb bg-transparent mb-0">
+                                        <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Orders List</li>
+                                    </ol>
+                                </div>
+                            </div> <!-- .row end -->
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row g-3">
+                            <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6">
+                                <label class="form-label">Select Month</label>
+                                <select class="form-control">
+                                    <option>Select</option>
+                                    <option>January</option>
+                                    <option>February</option>
+                                    <option>March</option>
+                                    <option>April</option>
+                                    <option>May</option>
+                                    <option>June</option>
+                                    <option>July</option>
+                                    <option>August</option>
+                                    <option>September</option>
+                                    <option>October</option>
+                                    <option>November</option>
+                                    <option>December</option>
+                                </select>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                                <label class="form-label">Search...</label>
+                                <input type="text" class="form-control" placeholder="Search...">
+                            </div>
+                            <div class="col-xl-6 col-lg-5 col-md-12 text-lg-end">
+                                <label class="form-label">Action</label>
+                                <div>
+                                    <button type="button" class="btn btn-sm btn-primary d-inline-block d-sm-none btn-detail"><i class="fa fa-area-chart"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-envelope"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-download"></i></button>
+                                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#add-workout">Create New</button>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-5 col-md-12">
+                                <table class="table table-hover myDataTable table-bordered align-middle mb-0 custom-table">
+                                    <thead>
+                                        <tr>                                       
+                                            <th>Order ID:</th>
+                                            <th>Customers</th>
+                                            <th>Address</th>
+                                            <th>Menu</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>LA-0211</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex link-secondary">
+                                                    <img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">
+                                                    <div class="h6 mb-0 ms-2">Maryam Amiri</div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div>44 Shirley Ave. West Chicago, IL 60185</div>
+                                                <span class="text-muted">3km</span>
+                                            </td>
+                                            <td>
+                                                <div>Fresh salad bowl (2)</div>
+                                                <span class="text-muted">$80.5</span>
+                                            </td>
+                                            <td><span class="badge bg-success">Completed</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>LA-0212</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex link-secondary">
+                                                    <img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                                    <div class="h6 mb-0 ms-2">jonathan hope</div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div>123 6th St. Melbourne, FL 32904</div>
+                                                <span class="text-muted">4km</span>
+                                            </td>
+                                            <td>
+                                                <div>Fresh salad bowl (2)</div>
+                                                <span class="text-muted">$80.5</span>
+                                            </td>
+                                            <td><span class="badge bg-success">Completed</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-secondary">
+                                            <td>LA-0213</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex link-secondary">
+                                                    <img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="">
+                                                    <div class="h6 mb-0 ms-2">Francisco Vasquez</div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div>44 Shirley Ave. West Chicago, IL 60185</div>
+                                                <span class="text-muted">3km</span>
+                                            </td>
+                                            <td>
+                                                <div>Fresh salad bowl (2)</div>
+                                                <span class="text-muted">$80.5</span>
+                                            </td>
+                                            <td><span class="badge bg-success">Completed</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>LA-0215</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex link-secondary">
+                                                    <img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar4.jpg" alt="">
+                                                    <div class="h6 mb-0 ms-2">Maryam Amiri</div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div>514 S. Magnolia St. Orlando, FL 32806</div>
+                                                <span class="text-muted">2.7km</span>
+                                            </td>
+                                            <td>
+                                                <div>Fresh salad bowl (2)</div>
+                                                <span class="text-muted">$80.5</span>
+                                            </td>
+                                            <td><span class="badge bg-info">Delivering</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>LA-0217</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex link-secondary">
+                                                    <img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar5.jpg" alt="">
+                                                    <div class="h6 mb-0 ms-2">Debra Stewart</div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div>44 Shirley Ave. West Chicago, IL 60185</div>
+                                                <span class="text-muted">3km</span>
+                                            </td>
+                                            <td>
+                                                <div>Cheese Garlic Bread (10)</div>
+                                                <span class="text-muted">$257</span>
+                                            </td>
+                                            <td><span class="badge bg-warning">Preparing</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>LA-0220</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex link-secondary">
+                                                    <img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar6.jpg" alt="">
+                                                    <div class="h6 mb-0 ms-2">Jane Hunt</div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div>25 6th St. Melbourne, FL 32904</div>
+                                                <span class="text-muted">6km</span>
+                                            </td>
+                                            <td>
+                                                <div>Fresh salad bowl (2)</div>
+                                                <span class="text-muted">$80.5</span>
+                                            </td>
+                                            <td><span class="badge bg-danger">Cencal</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>LA-0212</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex link-secondary">
+                                                    <img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar7.jpg" alt="">
+                                                    <div class="h6 mb-0 ms-2">Francisco Vasquez</div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div>23 Shirley Ave. West Chicago, IL 60185</div>
+                                                <span class="text-muted">3km</span>
+                                            </td>
+                                            <td>
+                                                <div>Crispy Calamari (3)</div>
+                                                <span class="text-muted">$180.5</span>
+                                            </td>
+                                            <td><span class="badge bg-warning">Preparing</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>LA-0213</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex link-secondary">
+                                                    <img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar8.jpg" alt="">
+                                                    <div class="h6 mb-0 ms-2">Susie Willis</div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div>73 Bowman St. South Windsor, CT 06074</div>
+                                                <span class="text-muted">3km</span>
+                                            </td>
+                                            <td>
+                                                <div>Fresh salad bowl (2)</div>
+                                                <span class="text-muted">$80.5</span>
+                                            </td>
+                                            <td><span class="badge bg-warning">Preparing</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>LA-0215</td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="d-flex link-secondary">
+                                                    <img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar9.jpg" alt="">
+                                                    <div class="h6 mb-0 ms-2">Debra Stewart</div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div>11 Shirley Ave. West Chicago, IL 60185</div>
+                                                <span class="text-muted">2.9km</span>
+                                            </td>
+                                            <td>
+                                                <div>Fresh salad bowl (2)</div>
+                                                <span class="text-muted">$80.5</span>
+                                            </td>
+                                            <td><span class="badge bg-info">Delivering</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Reports"><i class="fa fa-envelope"></i></button>
+                                                <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="fa fa-download"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> <!-- Row end  -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true
+})
+<script>
+    // project data table
+    $('.myDataTable').addClass( 'nowrap' );
+    $('.myDataTable') .dataTable({
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: false,
+        info: false,
+    });
+
+    $('.btn-detail').on('click', function () {
+        $('.details').toggleClass('open');
+    });
+</script>
+</body>
+</html>

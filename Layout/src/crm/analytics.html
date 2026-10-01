@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "CRM Analytics",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-crm.html', {"page": "analytics"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Analytics</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <div class="input-group">
+                            <input type="text" name="daterange" class="form-control">
+                            <button class="btn btn-outline-secondary" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Report"><i class="fa fa-envelope"></i></button>
+                            <button class="btn btn-outline-secondary" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Download Reports"><i class="fa fa-download"></i></button>
+                            <button class="btn btn-outline-secondary" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Generate PDF"><i class="fa fa-file-pdf-o"></i></button>
+                            <button class="btn btn-outline-secondary" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Share Dashboard"><i class="fa fa-share-alt"></i></button>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 g-3 mb-3">
+                    <div class="col">
+                        <div class="card lift">
+                            <div class="card-body">
+                                <span class="text-uppercase">New Sessions</span>
+                                <h4 class="mb-0 mt-2">22,500</h4>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                            <div id="apex-wc-1"></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card lift">
+                            <div class="card-body">
+                                <span class="text-uppercase">TIME ON SITE</span>
+                                <h4 class="mb-0 mt-2">1,070</h4>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                            <div id="apex-wc-2"></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card lift">
+                            <div class="card-body">
+                                <span class="text-uppercase">BOUNCE RATE</span>
+                                <h4 class="mb-0 mt-2">10K</h4>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                            <div id="apex-wc-3"></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card lift">
+                            <div class="card-body">
+                                <span class="text-uppercase">GOAL COMPLETIONS</span>
+                                <h4 class="mb-0 mt-2">$1,22,500</h4>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                            <div id="apex-wc-4"></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card lift">
+                            <div class="card-body py-xl-4 py-3">
+                                <span class="text-muted">Unique Purchases</span>
+                                <div><span class="fs-3 me-2">1,548</span><span class="text-success">4.15% <i class="fa fa-angle-up"></i></span></div>
+                                <div class="mt-3 ac-line-transparent" id="apex-wc-5"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card lift">
+                            <div class="card-body py-xl-4 py-3">
+                                <span class="text-muted">Shipping</span>
+                                <div><span class="fs-3 me-2">$548</span><span class="text-success">7.41% <i class="fa fa-angle-up"></i></span></div>
+                                <div class="mt-3 ac-line-transparent" id="apex-wc-6"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card lift">
+                            <div class="card-body py-xl-4 py-3">
+                                <span class="text-muted">Average QTY</span>
+                                <div><span class="fs-3 me-2">4.8</span><span class="text-danger">14.15% <i class="fa fa-angle-down"></i></span></div>
+                                <div class="mt-3 ac-line-transparent" id="apex-wc-7"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card lift">
+                            <div class="card-body py-xl-4 py-3">
+                                <span class="text-muted">Sessions</span>
+                                <div><span class="fs-3 me-2">12,548</span><span class="text-success">4.15% <i class="fa fa-angle-up"></i></span></div>
+                                <div class="mt-3 ac-line-transparent" id="apex-wc-8"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-3 row-deck">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div>
+                                    <h6 class="card-title mb-0">Revenue and Sales</h6>
+                                    <small class="text-muted">Or you can <a href="#">sync data to Dashboard</a> to ensure your data is always up-to-date.</small>
+                                </div>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex flex-wrap flex-row align-items-center">
+                                    <div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar rounded no-thumbnail lift">
+                                                <i class="fa fa-money fa-lg"></i>
+                                            </div>
+                                            <div class="flex-fill ms-3 text-truncate">
+                                                <div>Revenue</div>
+                                                <div><span class="h6 fw-bold">245</span> <small class="text-muted">Hours</small></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ms-lg-4 ms-lg-4 ms-3">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar rounded no-thumbnail lift">
+                                                <i class="fa fa-money fa-lg"></i>
+                                            </div>
+                                            <div class="flex-fill ms-3 text-truncate">
+                                                <div>Sales</div>
+                                                <div><span class="h6 fw-bold">45</span> <small class="text-muted">Session</small></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-none d-sm-block ms-auto">
+                                        <div class="btn-group" role="group">
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1">
+                                            <label class="btn btn-sm btn-outline-secondary" for="btnradio1">Week</label>
+                                        
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2">
+                                            <label class="btn btn-sm btn-outline-secondary" for="btnradio2">Month</label>
+                                        
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" checked="">
+                                            <label class="btn btn-sm btn-outline-secondary" for="btnradio3">Year</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="revenue_sales"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">LUNO Analytics</h6>
+                                <div class="dropdown morphing scale-left">
+                                    <div class="btn-group me-3" role="group">
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1">
+                                        <label class="btn btn-sm btn-outline-secondary" for="btnradio1">Week</label>
+                                    
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2">
+                                        <label class="btn btn-sm btn-outline-secondary" for="btnradio2">Month</label>
+                                    
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" checked="">
+                                        <label class="btn btn-sm btn-outline-secondary" for="btnradio3">Year</label>
+                                    </div>
+                                    <a href="#" class="card-fullscreen" data-bs-toggle="tooltip" title="" data-bs-original-title="Card Full-Screen" aria-label="Card Full-Screen"><i class="icon-size-fullscreen"></i></a>
+                                    <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                    <ul class="dropdown-menu shadow border-0 p-2">
+                                        <li><a class="dropdown-item" href="#">File Info</a></li>
+                                        <li><a class="dropdown-item" href="#">Copy to</a></li>
+                                        <li><a class="dropdown-item" href="#">Move to</a></li>
+                                        <li><a class="dropdown-item" href="#">Rename</a></li>
+                                        <li><a class="dropdown-item" href="#">Block</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex flex-row align-items-center text-center text-sm-start">
+                                    <div class="p-2">
+                                        <h6 class="mb-0 fw-bold">$5,154</h6>
+                                        <small class="text-muted">Users</small>
+                                    </div>
+                                    <div class="p-2 ms-4">
+                                        <h6 class="mb-0 fw-bold">$2,058</h6>
+                                        <small class="text-muted">Sessions</small>
+                                    </div>
+                                    <div class="p-2 ms-4">
+                                        <h6 class="mb-0 fw-bold">$1,805</h6>
+                                        <small class="text-muted">Bounce Rate</small>
+                                    </div>
+                                </div>
+                                <div id="analytics"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">LUNO Sales</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div class="ac-line-transparent" id="sales"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "apexcharts": true,
+})
+<script>
+    // Apex-wc-1
+    var apexwc1 = {
+        chart: {
+            type: 'area',
+            height: 50,
+            sparkline: {
+                enabled: true
+            },
+        },
+        series: [{
+            data: [47, 45, 54, 38, 56, 24, 65, 31]
+        }],
+        stroke: {
+            width: 1
+        },
+        fill: {
+            type: "gradient",
+            gradient: {
+                gradientToColors: ['var(--chart-color1)'],
+                shadeIntensity: 2,
+                opacityFrom: 0.7,
+                opacityTo: 0.2,
+                stops: [0, 100]
+            },
+        },
+        colors: ['var(--chart-color1)'],
+    }
+    new ApexCharts(document.querySelector("#apex-wc-1"), apexwc1).render();
+
+    // Apex-wc-2
+    var apexwc2 = {
+        chart: {
+            type: 'area',
+            height: 50,
+            sparkline: {
+                enabled: true
+            },
+        },
+        series: [{
+            data: [47, 45, 54, 38, 56, 24, 65, 31]
+        }],
+        stroke: {
+            width: 1
+        },
+        fill: {
+            type: "gradient",
+            gradient: {
+                gradientToColors: ['var(--chart-color2)'],
+                shadeIntensity: 2,
+                opacityFrom: 0.7,
+                opacityTo: 0.2,
+                stops: [0, 100]
+            },
+        },
+        colors: ['var(--chart-color2)'],
+    }
+    new ApexCharts(document.querySelector("#apex-wc-2"), apexwc2).render();
+
+    // Apex-wc-3
+    var apexwc3 = {
+        chart: {
+            type: 'area',
+            height: 50,
+            sparkline: {
+                enabled: true
+            },
+        },
+        series: [{
+            data: [47, 45, 54, 38, 56, 24, 65, 31]
+        }],
+        stroke: {
+            width: 1
+        },
+        fill: {
+            type: "gradient",
+            gradient: {
+                gradientToColors: ['var(--chart-color3)'],
+                shadeIntensity: 2,
+                opacityFrom: 0.7,
+                opacityTo: 0.2,
+                stops: [0, 100]
+            },
+        },
+        colors: ['var(--chart-color3)'],
+    }
+    new ApexCharts(document.querySelector("#apex-wc-3"), apexwc3).render();
+
+    // Apex-wc-4
+    var apexwc4 = {
+        chart: {
+            type: 'area',
+            height: 50,
+            sparkline: {
+                enabled: true
+            },
+        },
+        series: [{
+            data: [47, 56, 24, 65, 31, 45, 54, 38]
+        }],
+        stroke: {
+            width: 1
+        },
+        fill: {
+            type: "gradient",
+            gradient: {
+                gradientToColors: ['var(--chart-color4)'],
+                shadeIntensity: 2,
+                opacityFrom: 0.7,
+                opacityTo: 0.2,
+                stops: [0, 100]
+            },
+        },
+        colors: ['var(--chart-color4)'],
+    }
+    new ApexCharts(document.querySelector("#apex-wc-4"), apexwc4).render();
+
+    // Apex-wc-5
+    var apexwc5 = {
+        chart: {
+            type: 'line',            
+            width: 160,
+            height: 35,
+
+            sparkline: {
+                enabled: true
+            }
+        },
+        grid: {
+            xaxis: {
+                lines: {
+                    show: false
+                }
+            }
+        },
+        stroke: {
+            width: 3,
+            curve: 'smooth',
+            colors: ['var(--chart-color1)']
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shade: 'dark',
+                gradientToColors: [ "var(--chart-color2)" ],
+                shadeIntensity: 1,
+                type: 'horizontal',
+                opacityFrom: 1,
+                opacityTo: 1,
+                stops: [0, 50, 100],
+                colorStops: []
+            },
+        },
+        series: [{
+            data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
+        }],        
+        tooltip: {
+            fixed: {
+                enabled: false
+            },
+            x: {
+                show: false
+            },
+            y: {
+                title: {
+                    formatter: function (seriesName) {
+                        return ''
+                    }
+                }
+            },
+            marker: {
+                show: false,
+            }
+        }
+    }
+    new ApexCharts(document.querySelector("#apex-wc-5"), apexwc5).render();
+
+    // Apex-wc-6
+    var apexwc6 = {
+        chart: {
+            type: 'line',            
+            width: 160,
+            height: 35,
+
+            sparkline: {
+                enabled: true
+            }
+        },
+        grid: {
+            xaxis: {
+                lines: {
+                    show: true
+                }
+            }
+        },
+        stroke: {
+            width: 3,
+            curve: 'smooth',
+            colors: ['var(--chart-color2)']
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shade: 'dark',
+                gradientToColors: [ "var(--chart-color3)" ],
+                shadeIntensity: 1,
+                type: 'horizontal',
+                opacityFrom: 1,
+                opacityTo: 1,
+                stops: [0, 50, 100],
+                colorStops: []
+            },
+        },
+        series: [{
+            data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
+        }],        
+        tooltip: {
+            fixed: {
+                enabled: false
+            },
+            x: {
+                show: false
+            },
+            y: {
+                title: {
+                    formatter: function (seriesName) {
+                        return ''
+                    }
+                }
+            },
+            marker: {
+                show: false,
+            }
+        }
+    }
+    new ApexCharts(document.querySelector("#apex-wc-6"), apexwc6).render();
+
+    // Apex-wc-7
+    var apexwc7 = {
+        chart: {
+            type: 'line',            
+            width: 160,
+            height: 35,
+
+            sparkline: {
+                enabled: true
+            }
+        },
+        grid: {
+            xaxis: {
+                lines: {
+                    show: true
+                }
+            }
+        },
+        stroke: {
+            width: 3,
+            curve: 'smooth',
+            colors: ['var(--chart-color3)']
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shade: 'dark',
+                gradientToColors: [ "var(--chart-color4)" ],
+                shadeIntensity: 1,
+                type: 'horizontal',
+                opacityFrom: 1,
+                opacityTo: 1,
+                stops: [0, 50, 100],
+                colorStops: []
+            },
+        },
+        series: [{
+            data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
+        }],        
+        tooltip: {
+            fixed: {
+                enabled: false
+            },
+            x: {
+                show: false
+            },
+            y: {
+                title: {
+                    formatter: function (seriesName) {
+                        return ''
+                    }
+                }
+            },
+            marker: {
+                show: false,
+            }
+        }
+    }
+    new ApexCharts(document.querySelector("#apex-wc-7"), apexwc7).render();
+
+    // Apex-wc-8
+    var apexwc8 = {
+        chart: {
+            type: 'line',            
+            width: 160,
+            height: 35,
+
+            sparkline: {
+                enabled: true
+            }
+        },
+        grid: {
+            xaxis: {
+                lines: {
+                    show: true
+                }
+            }
+        },
+        stroke: {
+            width: 3,
+            curve: 'smooth',
+            colors: ['var(--chart-color1)']
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shade: 'dark',
+                gradientToColors: [ "var(--chart-color2)" ],
+                shadeIntensity: 1,
+                type: 'horizontal',
+                opacityFrom: 1,
+                opacityTo: 1,
+                stops: [0, 50, 100],
+                colorStops: []
+            },
+        },
+        series: [{
+            data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
+        }],        
+        tooltip: {
+            fixed: {
+                enabled: false
+            },
+            x: {
+                show: false
+            },
+            y: {
+                title: {
+                    formatter: function (seriesName) {
+                        return ''
+                    }
+                }
+            },
+            marker: {
+                show: false,
+            }
+        }
+    }
+    new ApexCharts(document.querySelector("#apex-wc-8"), apexwc8).render();
+    
+    // Analytics
+    var analytics = {
+        series: [{
+            name: 'Users',
+            data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+        }, {
+            name: 'Sessions',
+            data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+        }, {
+            name: 'Bounce Rate',
+            data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+        }],
+        colors: ['var(--chart-color1)', 'var(--chart-color2)', 'var(--chart-color3)'],
+        chart: {
+            type: 'bar',
+            height: 280,
+            toolbar: {
+                show: false,
+            },
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '55%',
+                //endingShape: 'rounded'
+            },
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            show: true,
+            width: 1,
+            colors: ['transparent']
+        },
+        xaxis: {
+            categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        },
+        yaxis: {
+            title: {
+                text: '$ (thousands)'
+            }
+        },
+        legend: {
+            position: 'bottom', // left, right, top, bottom
+            horizontalAlign: 'left',  // left, right, top, bottom
+        },
+        fill: {
+            opacity: 1
+        },
+        tooltip: {
+            y: {
+                formatter: function (val) {
+                return "$ " + val + " thousands"
+                }
+            }
+        },
+    };
+    new ApexCharts(document.querySelector("#analytics"), analytics).render();
+
+    // Sales
+    var sales = {
+        series: [{
+            name: 'Ordered',
+            data: [44, 55, 41, 67, 22, 43, 21, 49, 33, 29, 44, 38]
+        }, {
+            name: 'On Call',
+            data: [13, 23, 20, 8, 13, 27, 21, 49, 33, 29, 33, 12]
+        }, {
+            name: 'Pending',
+            data: [11, 17, 21, 49, 33, 29, 15, 15, 21, 14, 15, 13]
+        }],
+        chart: {
+            type: 'bar',
+            height: 280,
+            stacked: true,
+            stackType: '100%',
+            toolbar: {
+                show: false,
+            },
+        },
+        colors: ['var(--chart-color4)', 'var(--chart-color5)', 'var(--chart-color1)'],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                legend: {
+                    position: 'bottom',
+                    offsetX: -10,
+                    offsetY: 0
+                }
+            }
+        }],
+        xaxis: {
+            categories: ['Jan', 'Feb',  'March', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+        },
+        fill: {
+            opacity: 1
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        legend: {
+            position: 'bottom',
+            horizontalAlign: 'center',
+        },
+    };
+    new ApexCharts(document.querySelector("#sales"), sales).render();
+
+    // Revenue Sales
+    var revenue_sales = {
+        series: [{
+            name: "Revenue",
+            data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
+        },{
+            name: 'Sales',
+            data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
+        }],
+
+        chart: {
+            height: 280,
+            type: 'line', // line, bar, area
+            toolbar: {
+                show: false,
+            },
+            zoom: {
+                enabled: false
+            },
+        },
+        colors: ['var(--chart-color1)', 'var(--chart-color3)'],
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            width: [5, 7],
+            curve: 'smooth', // straight, smooth
+            dashArray: [8, 5]
+        },
+        legend: {
+            tooltipHoverFormatter: function(val, opts) {
+            return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+            }
+        },
+        markers: {
+            size: 0,
+            hover: {
+                sizeOffset: 6
+            }
+        },
+        xaxis: {
+            categories: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+        },
+        tooltip: {
+            y: [{
+                title: {
+                    formatter: function (val) {
+                        return val + " (Hours)"
+                    }
+                }
+            },{
+                title: {
+                    formatter: function (val) {
+                        return val + " (Hours)"
+                    }
+                }
+            },{
+                title: {
+                    formatter: function (val) {
+                        return val + " (Session)"
+                    }
+                }
+            }]
+        },
+    };
+    new ApexCharts(document.querySelector("#revenue_sales"), revenue_sales).render();
+</script>
+</body>
+</html>

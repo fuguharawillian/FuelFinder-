@@ -1,0 +1,79 @@
+<!-- <button class="btn btn-primary px-4 text-uppercase" data-bs-toggle="modal" data-bs-target="#add_leads" type="button">Add new Leads</button> -->
+
+<div class="modal fade" id="add_leads" tabindex="-1" aria-labelledby="add_leads" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add new Lead</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6 class="fw-bold">Basic Information</h6>
+                <div class="row g-3">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" placeholder="Name">
+                            <label>Enter Name</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" placeholder="Company">
+                            <label>Enter Company</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
+                            <input type="date" class="form-control" placeholder="Date of Birth">
+                            <label>Date of Birth </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
+                            <select class="form-select form-control">
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                            </select>
+                            <label for="floatingSelect">Gender</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label for="formFile" class="form-label">Select Avatar</label>
+                        <input class="form-control" type="file" id="formFile">
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-floating">
+                            <textarea type="text" class="form-control" placeholder="Description" style="height: 100px"></textarea>
+                            <label>Description</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <h6 class="fw-bold">Leads's Account Information</h6>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" placeholder="Email">
+                            <label>Enter Email</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" placeholder="Phone">
+                            <label>Enter Phone</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-floating">
+                            <textarea type="text" class="form-control" placeholder="Description" style="height: 100px"></textarea>
+                            <label>Address</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

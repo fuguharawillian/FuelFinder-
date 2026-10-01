@@ -50,7 +50,7 @@ async function searchStations() {
       const summary = makeElement("div");
       summary.append(makeElement("strong", station.tradeName || station.corporateName));
       summary.append(makeElement("div", `${station.address || ""} · ${station.city}/${station.state}`, "muted"));
-      const deactivate = makeElement("button", "Desativar", "danger");
+      const deactivate = makeElement("button", "Desativar", "btn btn-outline-danger");
       deactivate.type = "button";
       deactivate.addEventListener("click", async () => {
         if (!window.confirm("Desativar este posto?")) return;
@@ -107,7 +107,7 @@ async function loadStationPrices() {
       const row = makeElement("div", undefined, "price-row");
       row.append(makeElement("span", `${price.fuelTypeName} · coleta ${formatDate(price.collectionDate)}`));
       row.append(makeElement("strong", formatCurrency(price.saleValue, price.unitOfMeasure?.replace("R$/", "") || "")));
-      const edit = makeElement("button", "Editar preço", "secondary");
+      const edit = makeElement("button", "Editar preço", "btn btn-outline-primary");
       edit.type = "button";
       edit.addEventListener("click", () => editPrice(price));
       row.append(edit);
@@ -190,7 +190,7 @@ async function loadReviews() {
       details.append(makeElement("strong", `${review.userName} · ${review.rating}/5`));
       details.append(makeElement("div", review.comment || "Sem comentário.", "muted"));
       details.append(makeElement("code", review.id));
-      const moderate = makeElement("button", "Selecionar", "secondary");
+      const moderate = makeElement("button", "Selecionar", "btn btn-outline-primary");
       moderate.type = "button";
       moderate.addEventListener("click", () => {
         document.getElementById("review-id").value = review.id;

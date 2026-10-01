@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Real-Estate Agent List",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-red">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-realestate.html', {"page": "agent-list"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item">Agent</li>
+                            <li class="breadcrumb-item active" aria-current="page">List</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col d-flex justify-content-lg-end mt-2 mt-md-0">
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">8.18K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 1.3%</small></div>
+                            <small class="text-muted text-uppercase">Income</small>
+                        </div>
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">1.11K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 4.1%</small></div>
+                            <small class="text-muted text-uppercase">Expense</small>
+                        </div>
+                        <div class="p-2 pe-lg-0">
+                            <div><span class="h6 mb-0">3.66K</span> <small class="text-danger"><i class="fa fa-angle-down"></i> 7.5%</small></div>
+                            <small class="text-muted text-uppercase">Revenue</small>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Agents List</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="myAllAgents" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th># ID</th>
+                                                <th>Agent</th>
+                                                <th>Contact</th>
+                                                <th>City</th>
+                                                <th>Rating</th>
+                                                <th>Rank</th>
+                                                <th>Properties</th>
+                                                <th>Earnings</th>
+                                                <th>Revenue</th>
+                                                <th>Profit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>01</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="avatar rounded me-3" alt="profile-image">
+                                                        <div>
+                                                            <div class="fw-bold">Hossein Shams</div>
+                                                            <span class="small text-muted">+ 44 123 456 2121</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-phone"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-linkedin"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-whatsapp"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-globe"></i></button>
+                                                </td>
+                                                <td>Manchester</td>
+                                                <td>
+                                                    <div class="rating">
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                    </div>
+                                                </td>
+                                                <td>3</td>
+                                                <td>22</td>
+                                                <td>$203,121</td>
+                                                <td>$458,800</td>
+                                                <td>$741,800</td>
+                                            </tr>
+                                            <tr>
+                                                <td>02</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <img src="@@webRoot/assets/img/xs/avatar2.jpg" class="avatar rounded me-3" alt="profile-image">
+                                                        <div>
+                                                            <div class="fw-bold">Maryam Amiri</div>
+                                                            <span class="small text-muted">+ 44 123 456 1414</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-phone"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-linkedin"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-whatsapp"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-globe"></i></button>
+                                                </td>
+                                                <td>New York</td>
+                                                <td>
+                                                    <div class="rating">
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                    </div>
+                                                </td>
+                                                <td>3</td>
+                                                <td>22</td>
+                                                <td>$203,121</td>
+                                                <td>$458,800</td>
+                                                <td>$741,800</td>
+                                            </tr>
+                                            <tr>
+                                                <td>03</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="avatar rounded me-3" alt="profile-image">
+                                                        <div>
+                                                            <div class="fw-bold">Frank Camly</div>
+                                                            <span class="small text-muted">+ 44 123 456 2626</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-phone"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-linkedin"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-whatsapp"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-globe"></i></button>
+                                                </td>
+                                                <td>Los Angeles</td>
+                                                <td>
+                                                    <div class="rating">
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                    </div>
+                                                </td>
+                                                <td>3</td>
+                                                <td>22</td>
+                                                <td>$203,121</td>
+                                                <td>$458,800</td>
+                                                <td>$741,800</td>
+                                            </tr>
+                                            <tr>
+                                                <td>04</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <img src="@@webRoot/assets/img/xs/avatar4.jpg" class="avatar rounded me-3" alt="profile-image">
+                                                        <div>
+                                                            <div class="fw-bold">Tim Hank</div>
+                                                            <span class="small text-muted">+ 44 123 456 5926</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-phone"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-linkedin"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-whatsapp"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-globe"></i></button>
+                                                </td>
+                                                <td>Chicago</td>
+                                                <td>
+                                                    <div class="rating">
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                    </div>
+                                                </td>
+                                                <td>3</td>
+                                                <td>22</td>
+                                                <td>$203,121</td>
+                                                <td>$458,800</td>
+                                                <td>$741,800</td>
+                                            </tr>
+                                            <tr>
+                                                <td>05</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <img src="@@webRoot/assets/img/xs/avatar5.jpg" class="avatar rounded me-3" alt="profile-image">
+                                                        <div>
+                                                            <div class="fw-bold">Cindy Anderson</div>
+                                                            <span class="small text-muted">+ 44 123 456 4848</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-phone"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-linkedin"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-whatsapp"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-globe"></i></button>
+                                                </td>
+                                                <td>Houston</td>
+                                                <td>
+                                                    <div class="rating">
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                    </div>
+                                                </td>
+                                                <td>3</td>
+                                                <td>22</td>
+                                                <td>$203,121</td>
+                                                <td>$458,800</td>
+                                                <td>$741,800</td>
+                                            </tr>
+                                            <tr>
+                                                <td>06</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <img src="@@webRoot/assets/img/xs/avatar6.jpg" class="avatar rounded me-3" alt="profile-image">
+                                                        <div>
+                                                            <div class="fw-bold">David Lee</div>
+                                                            <span class="small text-muted">+ 44 123 456 7575</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-phone"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-linkedin"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-whatsapp"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-globe"></i></button>
+                                                </td>
+                                                <td>Texas</td>
+                                                <td>
+                                                    <div class="rating">
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                    </div>
+                                                </td>
+                                                <td>3</td>
+                                                <td>22</td>
+                                                <td>$203,121</td>
+                                                <td>$458,800</td>
+                                                <td>$741,800</td>
+                                            </tr>
+                                            <tr>
+                                                <td>07</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <img src="@@webRoot/assets/img/xs/avatar7.jpg" class="avatar rounded me-3" alt="profile-image">
+                                                        <div>
+                                                            <div class="fw-bold">Hossein Shams</div>
+                                                            <span class="small text-muted">+ 44 123 456 4545</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-phone"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-linkedin"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-whatsapp"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-globe"></i></button>
+                                                </td>
+                                                <td>Tucson</td>
+                                                <td>
+                                                    <div class="rating">
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                    </div>
+                                                </td>
+                                                <td>3</td>
+                                                <td>22</td>
+                                                <td>$203,121</td>
+                                                <td>$458,800</td>
+                                                <td>$741,800</td>
+                                            </tr>
+                                            <tr>
+                                                <td>08</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <img src="@@webRoot/assets/img/xs/avatar8.jpg" class="avatar rounded me-3" alt="profile-image">
+                                                        <div>
+                                                            <div class="fw-bold">Brian Swader</div>
+                                                            <span class="small text-muted">+ 44 123 456 1425</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-phone"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-linkedin"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-whatsapp"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-globe"></i></button>
+                                                </td>
+                                                <td>Manchester</td>
+                                                <td>
+                                                    <div class="rating">
+                                                        <i class="fa fa-star text-warning"></i>
+                                                    </div>
+                                                </td>
+                                                <td>3</td>
+                                                <td>22</td>
+                                                <td>$203,121</td>
+                                                <td>$458,800</td>
+                                                <td>$741,800</td>
+                                            </tr>
+                                            <tr>
+                                                <td>10</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <img src="@@webRoot/assets/img/xs/avatar5.jpg" class="avatar rounded me-3" alt="profile-image">
+                                                        <div>
+                                                            <div class="fw-bold">Anderson Lentz</div>
+                                                            <span class="small text-muted">+ 44 123 456 2525</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-phone"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-linkedin"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-whatsapp"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-globe"></i></button>
+                                                </td>
+                                                <td>Manchester</td>
+                                                <td>
+                                                    <div class="rating">
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                    </div>
+                                                </td>
+                                                <td>3</td>
+                                                <td>22</td>
+                                                <td>$203,121</td>
+                                                <td>$458,800</td>
+                                                <td>$741,800</td>
+                                            </tr>
+                                            <tr>
+                                                <td>11</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <img src="@@webRoot/assets/img/xs/avatar6.jpg" class="avatar rounded me-3" alt="profile-image">
+                                                        <div>
+                                                            <div class="fw-bold">Shams Lentz</div>
+                                                            <span class="small text-muted">+ 44 123 456 2525</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-phone"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-linkedin"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-whatsapp"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-globe"></i></button>
+                                                </td>
+                                                <td>Manchester</td>
+                                                <td>
+                                                    <div class="rating">
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                    </div>
+                                                </td>
+                                                <td>3</td>
+                                                <td>22</td>
+                                                <td>$840,987</td>
+                                                <td>$545,354</td>
+                                                <td>$168,849</td>
+                                            </tr>
+                                            <tr>
+                                                <td>09</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <img src="@@webRoot/assets/img/xs/avatar9.jpg" class="avatar rounded me-3" alt="profile-image">
+                                                        <div>
+                                                            <div class="fw-bold">Orlando Lentz</div>
+                                                            <span class="small text-muted">+ 44 123 456 2525</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-phone"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-envelope"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-linkedin"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-whatsapp"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-globe"></i></button>
+                                                </td>
+                                                <td>Manchester</td>
+                                                <td>
+                                                    <div class="rating">
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                    </div>
+                                                </td>
+                                                <td>3</td>
+                                                <td>22</td>
+                                                <td>$203,121</td>
+                                                <td>$458,800</td>
+                                                <td>$741,800</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables":true,
+})
+<script>
+    // project data table
+    $('#myAllAgents')
+    .addClass('nowrap')
+    .dataTable({
+        responsive: true,
+    });
+</script>
+</body>
+</html>

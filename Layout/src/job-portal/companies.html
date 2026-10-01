@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Job Portal Companies",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-orange">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-job.html', {"page": "companies"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Companies</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12 mb-4">
+                        <div class="card p-3">
+                            <div class="row g-3">
+                                <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="floatingSelect">
+                                            <option selected>Australia</option>
+                                            <option value="1">Austria</option>
+                                            <option value="2">Belgium</option>
+                                            <option value="3">Italy</option>
+                                            <option value="4">Germany</option>
+                                            <option value="5">Cyprus</option>
+                                        </select>
+                                        <label for="floatingSelect">Location</label>
+                                    </div>
+                                </div>
+                                <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="floatingInput" placeholder="Search by company, Location etc...">
+                                        <label>Search...</label>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-lg-3 col-md-12">
+                                    <button type="button" class="btn w-100 btn-lg btn-primary">Fillter</button>
+                                </div>
+                            </div> <!-- Row end  -->
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-7">
+                        <h6 class="fw-bold mb-0">Showing 45 Applicants</h6>
+                        <span class="text-muted">Based your preferences</span>
+                    </div>
+                    <div class="col-lg-6 col-sm-5 text-md-end">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Newest</button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            </ul>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-outline-primary"><i class="fa fa-align-left"></i></button>
+                            <button type="button" class="btn btn-primary"><i class="fa fa-th"></i></button>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 g-3 mt-1">
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-google fa-2x"></i></div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">ThemeMakker Inc.</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, IND)</span>
+                                    <div class="mt-3">
+                                        4.9
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-dashcube fa-2x"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">Trilofa tech</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, IND)</span>
+                                    <div class="mt-3">
+                                        4.0
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-cubes fa-2x"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">DeltaForce</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, IND)</span>
+                                    <div class="mt-3">
+                                        4.2
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-fonticons fa-2x"></i></div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">Fonticons Inc.</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, USA)</span>
+                                    <div class="mt-3">
+                                        4.5
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-product-hunt fa-2x"></i></div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">ThemeMakker Inc.</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, USA)</span>
+                                    <div class="mt-3">
+                                        4.9
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-snapchat-square fa-2x"></i></div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">ThemeMakker Inc.</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, IND)</span>
+                                    <div class="mt-3">
+                                        4.9
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-yelp fa-2x"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">ThemeMakker Inc.</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, UK)</span>
+                                    <div class="mt-3">
+                                        4.9
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-qq fa-2x"></i></div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">ThemeMakker Inc.</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, IND)</span>
+                                    <div class="mt-3">
+                                        4.9
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-pagelines fa-2x"></i></div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">Pagelines</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, USA)</span>
+                                    <div class="mt-3">
+                                        4.5
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-modx fa-2x"></i> </div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">MODX Inc.</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, IND)</span>
+                                    <div class="mt-3">
+                                        4.9
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-codiepie fa-2x"></i></div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">CodiePie Inc.</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, UAE)</span>
+                                    <div class="mt-3">
+                                        4.1
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-bug fa-2x"></i></div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">BugCode Inc.</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, CA)</span>
+                                    <div class="mt-3">
+                                        4.3
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-bomb fa-2x"></i></div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">ItBomb Tech</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, USA)</span>
+                                    <div class="mt-3">
+                                        4.4
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-asterisk fa-2x"></i></div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">Asterisk</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, AUS)</span>
+                                    <div class="mt-3">
+                                        4.8
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-diamond fa-2x"></i></div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">Diamond Inc.</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, NYZ)</span>
+                                    <div class="mt-3">
+                                        4.7
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-envira fa-2x"></i></div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">Envira Inc.</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, IND)</span>
+                                    <div class="mt-3">
+                                        4.9
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-google fa-2x"></i></div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">ThemeMakker Inc.</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, IND)</span>
+                                    <div class="mt-3">
+                                        4.9
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col lift">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="avatar lg rounded no-thumbnail"><i class="fa fa-google fa-2x"></i></div>
+                                </div>
+                                <div class="mt-3 py-2">
+                                    <h6 class="mb-0">ThemeMakker Inc.</h6>
+                                    <span class="text-muted text-uppercase small">(Software company, IND)</span>
+                                    <div class="mt-3">
+                                        4.9
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        Reviews
+                                    </div>
+                                    <ul class="social mb-0 list-inline mt-3">
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-globe"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

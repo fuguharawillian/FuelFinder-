@@ -11,7 +11,7 @@ Ele foi estruturado especificamente como a **especificação arquitetural execut
 O FuelFinder adota a arquitetura de **Monolito Modular em Camadas**, expondo uma **API REST** consumida por uma interface **Web Responsiva** com visualização cartográfica interativa. A autenticação usa access tokens JWT e sessões mantidas no servidor para suportar rotação e revogação de refresh tokens e invalidação imediata de sessões. No comportamento-alvo da interface, a tela inicial é o login; mapa e funcionalidades internas exigem autenticação. A situação atual da implementação e o trabalho planejado para alinhar o acesso estão registrados em `Plano/09-frontend-integracao.md`.
 
 ```text
-[ Cliente Web Responsivo ] (HTML5 / Tailwind CSS / Vanilla JS / Leaflet 1.9.4)
+[ Cliente Web Responsivo ] (HTML5 / Bootstrap 5.2.3 + CSS próprio / Vanilla JS / Leaflet 1.9.4)
               │
               │ HTTPS / JSON (Bearer JWT)
               ▼
@@ -29,7 +29,7 @@ O FuelFinder adota a arquitetura de **Monolito Modular em Camadas**, expondo uma
 ### 1.1 Justificativa Arquitetural
 * **Entrega Ágil no MVP:** O monólito modular permite desenvolver e testar rapidamente todas as funcionalidades em uma única base de código, com deploy simples e transações ACID nativas no PostgreSQL, sem o overhead operacional e latência de microsserviços.
 * **Fronteiras Claras de Domínio:** Cada domínio de negócio (`auth`, `user`, `vehicle`, `station`, `fuel`, `price`, `review`, `recommendation`, `anp`) é isolado em seu próprio módulo, com interfaces públicas explícitas (`Service`), facilitando a futura extração para microsserviços caso a volumetria justifique.
-* **Desacoplamento:** O backend concentra as regras de negócio. A API é stateless para os recursos de domínio; a autenticação mantém estado de sessão no servidor para permitir rotação e revogação imediata de tokens. O frontend é uma aplicação web leve e responsiva, focada na experiência do motorista e renderização de mapas via Leaflet 1.9.4.
+* **Desacoplamento:** O backend concentra as regras de negócio. A API é stateless para os recursos de domínio; a autenticação mantém estado de sessão no servidor para permitir rotação e revogação imediata de tokens. O frontend é uma aplicação web leve e responsiva, focada na experiência do motorista e renderização de mapas via Leaflet 1.9.4; usa Bootstrap 5.2.3 e CSS próprio orientado pela referência LUNO, conforme [`Plano/09-frontend-integracao.md`](../Plano/09-frontend-integracao.md).
 
 ### 1.2 Áreas Públicas e Autenticadas
 
@@ -48,7 +48,7 @@ O diagrama abaixo ilustra a segregação entre as camadas de Frontend, Backend, 
 flowchart TB
     subgraph FRONTEND["1. Camada Frontend (Web Responsiva)"]
         LOGIN["Login / Cadastro (área pública)"]
-        UI["Áreas internas autenticadas (HTML5 / Tailwind CSS)"]
+        UI["Áreas internas autenticadas (HTML5 / Bootstrap 5.2.3 / CSS próprio)"]
         LEAFLET["Leaflet 1.9.4 (Renderizador de Mapa)"]
         OSM_TILES[("OpenStreetMap (Camada de Tiles Abertos)")]
         LEAFLET -. Consome Camada Cartográfica .-> OSM_TILES

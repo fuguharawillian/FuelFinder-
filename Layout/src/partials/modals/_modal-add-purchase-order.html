@@ -1,0 +1,80 @@
+<!-- <button class="btn btn-primary px-4 text-uppercase" data-bs-toggle="modal" data-bs-target="#add_purchase_order" type="button">Add Purchase</button> -->
+
+<div class="modal fade" id="add_purchase_order" tabindex="-1" aria-labelledby="add_purchase_order" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Purchase</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
+                            <input type="date" class="form-control datepicker" placeholder="Date">
+                            <label>Date</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" placeholder="Purchase No *">
+                            <label>Purchase No *</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" placeholder="Supplier *">
+                            <label>Supplier *</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
+                            <select class="form-select">
+                                <option value="1">Received</option>
+                                <option value="2">Not Received yet</option>
+                            </select>
+                            <label for="floatingSelect">Received *</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
+                            <select class="form-select">
+                                <option value="1">GST 5%</option>
+                                <option value="2">Vat 5%</option>
+                            </select>
+                            <label for="floatingSelect">Tax *</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" placeholder="Payment *">
+                            <label>Payment *</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" placeholder="Order Discount">
+                            <label>Order Discount</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" placeholder="Shipping *">
+                            <label>Shipping</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-floating">
+                            <textarea type="text" class="form-control" placeholder="Description" style="height: 100px"></textarea>
+                            <label>Purchase Note *</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

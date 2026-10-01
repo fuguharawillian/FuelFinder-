@@ -28,6 +28,7 @@ function updateConsumptionFields() {
   options.forEach(([name, labelText]) => {
     const label = makeElement("label", labelText);
     const input = document.createElement("input");
+    input.className = "form-control";
     input.name = name;
     input.type = "number";
     input.min = "1";
@@ -94,10 +95,10 @@ function renderVehicles(vehicles) {
     const tankUnit = vehicle.tankCapacity?.unit === "CUBIC_METER" ? "m³" : "L";
     detail.append(makeElement("p", `Tanque: ${vehicle.tankCapacity?.value} ${tankUnit}`, "muted"));
     const actions = makeElement("div", undefined, "form-actions");
-    const edit = makeElement("button", "Editar apelido", "secondary");
+    const edit = makeElement("button", "Editar apelido", "btn btn-outline-primary");
     edit.type = "button";
     edit.addEventListener("click", () => editNickname(vehicle));
-    const remove = makeElement("button", "Excluir", "danger");
+    const remove = makeElement("button", "Excluir", "btn btn-outline-danger");
     remove.type = "button";
     remove.addEventListener("click", () => deleteVehicle(vehicle.id));
     actions.append(edit, remove);

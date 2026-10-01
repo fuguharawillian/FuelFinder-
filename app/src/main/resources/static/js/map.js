@@ -1,4 +1,4 @@
-import { makeElement } from "./ui.js";
+import { formatDate, makeElement } from "./ui.js";
 import { api } from "./api.js";
 
 let map;
@@ -7,7 +7,11 @@ let userMarker;
 
 export function initMap(containerId, latitude = -23.5505, longitude = -46.6333, zoom = 11) {
   if (!window.L) throw new Error("A biblioteca Leaflet não foi carregada.");
-  map = window.L.map(containerId).setView([latitude, longitude], zoom);
+  map = window.L.map(containerId, { zoomControl: false }).setView([latitude, longitude], zoom);
+  window.L.control.zoom({
+    zoomInTitle: "Aumentar zoom",
+    zoomOutTitle: "Diminuir zoom",
+  }).addTo(map);
   window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     maxZoom: 19,
@@ -67,7 +71,7 @@ function createStationPopup(station, prices) {
       prices.forEach((price) => {
         content.append(makeElement(
           "span",
-          `${price.fuelTypeName}: ${new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(Number(price.saleValue))} (${price.collectionDate})`,
+          `${price.fuelTypeName}: ${new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(Number(price.saleValue))} (${formatDate(price.collectionDate)})`,
         ));
       });
     } else {
@@ -87,7 +91,7 @@ function createStationPopup(station, prices) {
 }
 
 function routeButton(label, url) {
-  const link = makeElement("a", label, "button secondary");
+  const link = makeElement("a", label, "btn btn-outline-primary");
   link.href = url;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
