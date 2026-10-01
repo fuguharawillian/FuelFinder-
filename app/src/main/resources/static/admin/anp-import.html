@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Importação ANP — FuelFinder</title>
+  <script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="/css/styles.css">
+  <script type="module" src="/js/admin-page.js"></script>
+</head>
+<body data-admin-page="anp">
+  <header class="site-header"><div data-site-nav></div></header>
+  <main class="page">
+    <div class="page-heading"><div><h1>Importação ANP</h1><p class="muted">Inicie uma carga histórica autorizada e acompanhe sua auditoria.</p></div><a class="button secondary" href="/admin/index.html">Painel</a></div>
+    <p id="page-status" class="result-state" role="status" aria-live="polite" data-shell-status></p>
+    <div class="home-grid">
+      <section class="panel stack">
+        <h2>Nova importação</h2>
+        <p class="notice">Somente HTTPS em domínios oficiais permitidos pelo backend. Redirecionamentos são bloqueados. A chave Geoapify é opcional; sem ela, postos sem coordenadas serão incluídos com status parcial.</p>
+        <form id="anp-import-form" class="stack">
+          <label for="source-url">URL oficial do arquivo CSV/TSV<input id="source-url" name="sourceUrl" type="url" maxlength="500" placeholder="https://www.gov.br/..." required></label>
+          <label for="reference-period">Período de referência<input id="reference-period" name="referencePeriod" maxlength="20" placeholder="2026-S1" required></label>
+          <button type="submit">Executar importação</button>
+        </form>
+        <div id="import-result" class="panel hidden" aria-live="polite"></div>
+      </section>
+      <section class="panel">
+        <div class="page-heading"><h2>Histórico</h2><button id="refresh-imports" type="button" class="secondary">Atualizar</button></div>
+        <div id="import-history" class="stack"></div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
