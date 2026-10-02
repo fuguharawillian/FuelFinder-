@@ -1,6 +1,5 @@
 package com.fuelfinder.modules.anp.service;
 
-import com.fuelfinder.common.exception.ExternalServiceException;
 import com.fuelfinder.modules.fuel.entity.FuelType;
 import com.fuelfinder.modules.fuel.repository.FuelTypeRepository;
 import com.fuelfinder.modules.price.entity.DataSource;
@@ -8,8 +7,6 @@ import com.fuelfinder.modules.price.entity.FuelPrice;
 import com.fuelfinder.modules.price.repository.FuelPriceRepository;
 import com.fuelfinder.modules.station.entity.Station;
 import com.fuelfinder.modules.station.repository.StationRepository;
-import com.fuelfinder.modules.station.service.GeoapifyGeocodingService;
-import com.fuelfinder.modules.station.service.GeoapifyRateLimitException;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -48,8 +45,6 @@ class AnpImportProcessorTest {
     @Mock
     private FuelTypeRepository fuelTypeRepository;
     @Mock
-    private GeoapifyGeocodingService geocodingService;
-    @Mock
     private EntityManager entityManager;
 
     private AnpImportProcessor processor;
@@ -60,7 +55,6 @@ class AnpImportProcessorTest {
                 stationRepository,
                 fuelPriceRepository,
                 fuelTypeRepository,
-                geocodingService,
                 entityManager);
         lenient().when(stationRepository.save(any(Station.class))).thenAnswer(invocation -> {
             Station station = invocation.getArgument(0);
@@ -73,8 +67,7 @@ class AnpImportProcessorTest {
     }
 
     @Test
-    void importsAllMappedProductsAndLeavesStationsWithoutGeoapifyCoordinates() {
-        when(geocodingService.isConfigured()).thenReturn(false);
+    void importsAllMappedProductsWithoutDependingOnGeocoding() {
         stubFuelType("GASOLINE_REGULAR", "R$/litro", true);
         stubFuelType("GASOLINE_PREMIUM", "R$/litro", true);
         stubFuelType("ETHANOL", "R$/litro", true);
@@ -94,9 +87,8 @@ class AnpImportProcessorTest {
 
         assertEquals(8, result.totalRecordsRead());
         assertEquals(8, result.totalRecordsImported());
-        assertEquals(8, result.errors().size());
+        assertTrue(result.errors().isEmpty());
         verify(fuelPriceRepository, times(8)).save(any(FuelPrice.class));
-        verify(geocodingService, never()).geocode(anyString());
     }
 
     @Test
@@ -129,11 +121,22 @@ class AnpImportProcessorTest {
     }
 
     @Test
-    void importsGeocodedCoordinatesAndCachesResultsByCnpj() {
-        when(geocodingService.isConfigured()).thenReturn(true);
-        when(geocodingService.geocode("Rua 10 10, Centro, 01000-000, Sao Paulo, SP, Brasil"))
-                .thenReturn(Optional.of(
-                        new GeoapifyGeocodingService.GeoPoint(-23.5, -46.6)));
+    void reportsConflictingDuplicatePriceRowsAndAppliesTheLastCsvValue() {
+        stubFuelType("ETHANOL", "R$/litro", true);
+
+        AnpImportResult result = processor.process(csv(
+                row("12345678000195", "ETANOL", "4,199", "R$/L", "29/09/2026"),
+                row("12345678000195", "ETANOL", "4,299", "R$/L", "29/09/2026")));
+
+        assertEquals(2, result.pricesAssociated());
+        assertEquals(2, result.totalRecordsImported());
+        assertTrue(result.errors().stream()
+                .anyMatch(error -> error.contains("valores divergentes")));
+        verify(fuelPriceRepository, times(2)).save(any(FuelPrice.class));
+    }
+
+    @Test
+    void preparesOneStationForMultipleFuelTypesAndReturnsNormalizedCnpj() {
         stubFuelType("ETHANOL", "R$/litro", true);
         stubFuelType("GASOLINE_REGULAR", "R$/litro", true);
 
@@ -143,21 +146,15 @@ class AnpImportProcessorTest {
 
         assertEquals(2, result.totalRecordsImported());
         assertEquals(List.of(), result.errors());
-        verify(geocodingService, times(1))
-                .geocode("Rua 10 10, Centro, 01000-000, Sao Paulo, SP, Brasil");
         verify(stationRepository, times(1)).save(any(Station.class));
         verify(stationRepository, never()).findByCnpj(anyString());
-        verify(fuelTypeRepository, times(1)).findByCode("ETHANOL");
-        verify(fuelTypeRepository, times(1)).findByCode("GASOLINE_REGULAR");
+        verify(fuelTypeRepository, times(2)).findByCode("ETHANOL");
+        verify(fuelTypeRepository, times(2)).findByCode("GASOLINE_REGULAR");
+        assertEquals(Set.of("12345678000195"), result.importedCnpjs());
     }
 
     @Test
-    void recordsMissingUnmatchedFailedAndInvalidGeoapifyResultsAsPartial() {
-        when(geocodingService.isConfigured()).thenReturn(true);
-        when(geocodingService.geocode(anyString()))
-                .thenReturn(Optional.empty())
-                .thenThrow(new ExternalServiceException("service failed", new RuntimeException()))
-                .thenReturn(Optional.of(new GeoapifyGeocodingService.GeoPoint(95, 200)));
+    void pricesAreImportedEvenWhenCoordinatesAreNotPresentYet() {
         stubFuelType("ETHANOL", "R$/litro", true);
 
         AnpImportResult result = processor.process(csv(
@@ -166,9 +163,9 @@ class AnpImportProcessorTest {
                 row("12345678000197", "ETANOL", "4,199", "R$/L", "29/09/2026")));
 
         assertEquals(3, result.totalRecordsImported());
-        assertEquals(3, result.errors().size());
-        assertEquals(3L, result.errors().stream()
-                .filter(error -> error.contains("Geoapify")).count());
+        assertTrue(result.errors().isEmpty());
+        assertEquals(3, result.stationsCreated());
+        assertEquals(3, result.rowsImportedFromSaoPaulo());
     }
 
     @Test
@@ -177,7 +174,6 @@ class AnpImportProcessorTest {
         when(fuelTypeRepository.findByCode("DIESEL_S10")).thenReturn(Optional.empty());
         when(fuelTypeRepository.findByCode("DIESEL_S500"))
                 .thenReturn(Optional.of(fuelType("DIESEL_S500", "R$/litro", false)));
-        when(geocodingService.isConfigured()).thenReturn(false);
 
         AnpImportResult result = processor.process(csv(
                 row("invalid", "ETANOL", "4.199", "R$/L", "29/09/2026"),
@@ -193,9 +189,9 @@ class AnpImportProcessorTest {
                 row("12345678000204", "ETANOL", "4.199", "R$/L", "29/09/2026", "S"),
                 row("12345678000205", "GASOLINA COMUM", "5.899", "R$/L", "29/09/2026")));
 
-        assertEquals(10, result.totalRecordsRead());
+        assertEquals(12, result.totalRecordsRead());
         assertEquals(1, result.totalRecordsImported());
-        assertEquals(14, result.errors().size());
+        assertEquals(11, result.errors().size());
     }
 
     @Test
@@ -219,7 +215,6 @@ class AnpImportProcessorTest {
     @Test
     void boundsPersistenceContextWhileProcessingLargeImports() {
         stubFuelType("ETHANOL", "R$/litro", true);
-        when(geocodingService.isConfigured()).thenReturn(false);
         List<AnpCsvRow> rows = java.util.stream.IntStream.range(0, 201)
                 .mapToObj(index -> row(
                         "12345678000195", "ETANOL", "4,199", "R$/L", "29/09/2026"))
@@ -238,11 +233,8 @@ class AnpImportProcessorTest {
         Station station = station("12345678000196");
         station.setLatitude(BigDecimal.ZERO);
         station.setLongitude(BigDecimal.ZERO);
-        when(stationRepository.findByCnpjIn(Set.of("12345678000195", "12345678000196")))
+        when(stationRepository.findByCnpjIn(Set.of("12345678000196")))
                 .thenReturn(List.of(station));
-        when(geocodingService.isConfigured()).thenReturn(true);
-        when(geocodingService.geocode(anyString()))
-                .thenReturn(Optional.of(new GeoapifyGeocodingService.GeoPoint(-23.5, -46.6)));
         stubFuelType("GASOLINE_REGULAR", "R$/litro", true);
 
         AnpImportResult result = processor.process(csv(
@@ -250,15 +242,13 @@ class AnpImportProcessorTest {
                 row("12345678000196", "GASOLINA COMUM", "5.899", "R$/L", "29/09/2026")));
 
         assertEquals(1, result.totalRecordsImported());
-        assertEquals(1, result.errors().size());
-        verify(geocodingService, times(1)).geocode(anyString());
+        assertEquals(2, result.errors().size());
+        assertTrue(result.errors().stream()
+                .anyMatch(error -> error.contains("dados cadastrais atualizados")));
     }
 
     @Test
-    void filtersNonSpRowsAndGeocodesOnlyOnceForEachDistinctCnpj() {
-        when(geocodingService.isConfigured()).thenReturn(true);
-        when(geocodingService.geocode(anyString()))
-                .thenReturn(Optional.of(new GeoapifyGeocodingService.GeoPoint(-23.5, -46.6)));
+    void filtersNonSpRowsAndDeduplicatesStationsByNormalizedCnpj() {
         stubFuelType("ETHANOL", "R$/litro", true);
 
         AnpImportResult result = processor.process(csv(
@@ -266,18 +256,20 @@ class AnpImportProcessorTest {
                 row("12345678000195", "ETANOL", "4,299", "R$/L", "30/09/2026"),
                 row("12345678000196", "ETANOL", "4,399", "R$/L", "29/09/2026", "RJ")));
 
-        assertEquals(2, result.totalRecordsRead());
+        assertEquals(3, result.totalRecordsRead());
         assertEquals(2, result.totalRecordsImported());
         assertEquals(List.of(), result.errors());
-        verify(geocodingService, times(1))
-                .geocode("Rua 10 10, Centro, 01000-000, Sao Paulo, SP, Brasil");
+        assertEquals(1, result.rowsIgnoredOtherStates());
+        assertEquals(2, result.rowsImportedFromSaoPaulo());
+        assertEquals(1, result.stationsCreated());
+        assertEquals(1, result.importedCnpjs().size());
         verify(stationRepository, times(1)).save(any(Station.class));
         verify(fuelPriceRepository, times(2)).save(any(FuelPrice.class));
         verify(stationRepository).findByCnpjIn(Set.of("12345678000195"));
     }
 
     @Test
-    void reusesPersistedCoordinatesAndDoesNotCallGeocoderAgain() {
+    void reusesPersistedStationCoordinatesWhenUpdatingCsvFields() {
         Station existingStation = station("12345678000195");
         existingStation.setLatitude(new BigDecimal("-23.5"));
         existingStation.setLongitude(new BigDecimal("-46.6"));
@@ -289,13 +281,14 @@ class AnpImportProcessorTest {
                 row("12345678000195", "ETANOL", "4,199", "R$/L", "29/09/2026")));
 
         assertEquals(1, result.totalRecordsImported());
-        assertEquals(List.of(), result.errors());
-        verify(geocodingService, never()).geocode(anyString());
+        assertEquals(1, result.errors().size());
+        assertTrue(result.errors().get(0).contains("dados cadastrais atualizados"));
+        assertEquals(new BigDecimal("-23.5"), existingStation.getLatitude());
+        assertEquals(new BigDecimal("-46.6"), existingStation.getLongitude());
     }
 
     @Test
-    void preservesFuelPricesWhenAddressIsIncompleteAndSkipsGeocoding() {
-        when(geocodingService.isConfigured()).thenReturn(true);
+    void preservesFuelPricesWhenAddressIsIncomplete() {
         stubFuelType("ETHANOL", "R$/litro", true);
         Map<String, String> values = new HashMap<>(row(
                 "12345678000195", "ETANOL", "4,199", "R$/L", "29/09/2026").values());
@@ -307,27 +300,23 @@ class AnpImportProcessorTest {
         AnpImportResult result = processor.process(csv(new AnpCsvRow(2, Map.copyOf(values))));
 
         assertEquals(1, result.totalRecordsImported());
-        assertEquals(1, result.errors().size());
-        assertTrue(result.errors().get(0).contains("Endereço incompleto"));
-        verify(geocodingService, never()).geocode(anyString());
+        assertTrue(result.errors().isEmpty());
         verify(fuelPriceRepository).save(any(FuelPrice.class));
     }
 
     @Test
-    void stopsGeocodingAfterRateLimitButContinuesImportingFuelPrices() {
-        when(geocodingService.isConfigured()).thenReturn(true);
-        when(geocodingService.geocode(anyString()))
-                .thenThrow(new GeoapifyRateLimitException(new RuntimeException()));
+    void reportsCsvProgressAndImportsRowsWithoutCoordinateLookups() {
         stubFuelType("ETHANOL", "R$/litro", true);
 
+        List<Integer> processedRows = new java.util.ArrayList<>();
         AnpImportResult result = processor.process(csv(
                 row("12345678000195", "ETANOL", "4,199", "R$/L", "29/09/2026"),
-                row("12345678000196", "ETANOL", "4,299", "R$/L", "29/09/2026")));
+                row("12345678000196", "ETANOL", "4,299", "R$/L", "29/09/2026")),
+                (processed, total) -> processedRows.add(processed));
 
         assertEquals(2, result.totalRecordsImported());
-        assertEquals(2, result.errors().size());
-        assertTrue(result.errors().stream().anyMatch(error -> error.contains("limite")));
-        verify(geocodingService, times(1)).geocode(anyString());
+        assertTrue(result.errors().isEmpty());
+        assertEquals(List.of(2), processedRows);
         verify(fuelPriceRepository, times(2)).save(any(FuelPrice.class));
     }
 

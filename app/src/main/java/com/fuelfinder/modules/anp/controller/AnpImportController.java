@@ -34,7 +34,7 @@ public class AnpImportController {
     public ResponseEntity<AnpImportLogDTO> triggerImport(
             @Valid @RequestBody AnpImportRequestDTO request,
             @AuthenticationPrincipal AuthPrincipal principal) {
-        AnpImportLog result = anpImportService.executeImport(
+        AnpImportLog result = anpImportService.startImport(
                 request.sourceUrl(),
                 request.referencePeriod(),
                 principal.userId());

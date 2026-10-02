@@ -15,12 +15,13 @@
     <div class="row g-4">
       <section class="col-12 col-xl-6"><div class="card border-0 shadow-sm h-100"><div class="card-body p-3 p-lg-4 stack">
         <h2 class="h5">Nova importação</h2>
-        <p class="alert alert-warning mb-0">Somente HTTPS em domínios oficiais permitidos pelo backend. Redirecionamentos são bloqueados. A chave Geoapify é opcional; sem ela, postos sem coordenadas serão incluídos com status parcial.</p>
+        <p class="alert alert-warning mb-0">A importação grava primeiro os preços válidos de SP do CSV e depois consulta as páginas da API de revendedores da ANP para atualizar as coordenadas por CNPJ. Uma falha na API não desfaz os preços importados.</p>
         <form id="anp-import-form" class="stack">
           <label for="source-url">URL oficial do arquivo CSV/TSV ou ZIP contendo CSV<input class="form-control" id="source-url" name="sourceUrl" type="url" maxlength="500" placeholder="https://www.gov.br/..." required></label>
           <label for="reference-period">Período de referência<input class="form-control" id="reference-period" name="referencePeriod" maxlength="20" placeholder="2026-S1" required></label>
           <button type="submit" class="btn btn-primary align-self-start">Executar importação</button>
         </form>
+        <p class="small text-secondary mb-0">Uma carga parcial pode ser retomada repetindo a mesma URL e período; postos e preços são atualizados de forma idempotente.</p>
         <div id="import-result" class="card bg-light border-0 p-3 hidden" aria-live="polite"></div>
       </div></div></section>
       <section class="col-12 col-xl-6"><div class="card border-0 shadow-sm"><div class="card-body p-3 p-lg-4">

@@ -8,8 +8,6 @@ import com.fuelfinder.modules.price.entity.FuelPrice;
 import com.fuelfinder.modules.price.repository.FuelPriceRepository;
 import com.fuelfinder.modules.station.entity.Station;
 import com.fuelfinder.modules.station.repository.StationRepository;
-import com.fuelfinder.modules.station.service.GeoapifyGeocodingService;
-import com.fuelfinder.modules.station.service.GeoapifyRateLimitException;
 import jakarta.persistence.EntityManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,9 +24,9 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.function.BiConsumer;
 
 @Service
 public class AnpImportProcessor {
@@ -40,34 +38,45 @@ public class AnpImportProcessor {
     private final StationRepository stationRepository;
     private final FuelPriceRepository fuelPriceRepository;
     private final FuelTypeRepository fuelTypeRepository;
-    private final GeoapifyGeocodingService geocodingService;
     private final EntityManager entityManager;
 
     public AnpImportProcessor(
             StationRepository stationRepository,
             FuelPriceRepository fuelPriceRepository,
             FuelTypeRepository fuelTypeRepository,
-            GeoapifyGeocodingService geocodingService,
             EntityManager entityManager) {
         this.stationRepository = stationRepository;
         this.fuelPriceRepository = fuelPriceRepository;
         this.fuelTypeRepository = fuelTypeRepository;
-        this.geocodingService = geocodingService;
         this.entityManager = entityManager;
     }
 
     @Transactional
     public AnpImportResult process(ParsedAnpCsv csv) {
+        return process(csv, (processed, total) -> { });
+    }
+
+    @Transactional
+    public AnpImportResult process(
+            ParsedAnpCsv csv,
+            BiConsumer<Integer, Integer> progress) {
         Set<String> errors = new LinkedHashSet<>(csv.errors());
-        List<AnpCsvRow> spRows = filterSpRows(csv.records(), errors);
-        Map<String, StationRecord> stationRecords = collectStationRecords(spRows, errors);
-        Map<String, Station> stations = prepareStations(stationRecords, errors);
+        StateFilteredRows filteredRows = filterSpRows(csv.records(), errors);
+        List<AnpCsvRow> spRows = filteredRows.rows();
         Map<String, FuelType> fuelTypeCache = new HashMap<>();
+        Map<String, StationRecord> stationRecords =
+                collectStationRecords(spRows, errors, fuelTypeCache);
+        StationPreparation stationPreparation = prepareStations(stationRecords, errors);
+        Map<String, Station> stations = stationPreparation.stations();
         entityManager.flush();
         entityManager.clear();
+        fuelTypeCache.clear();
         Map<PriceKey, FuelPrice> existingPrices = loadExistingPrices(spRows);
+        Map<PriceKey, BigDecimal> csvPrices = new HashMap<>();
         int importedRecords = 0;
+        int pricesAssociated = 0;
         int recordsSinceFlush = 0;
+        int processedRows = 0;
         for (AnpCsvRow row : spRows) {
             try {
                 AnpPriceRecord record = parseRecord(row);
@@ -78,6 +87,16 @@ public class AnpImportProcessor {
                     throw new AnpRecordException(
                             "cadastro do posto não pôde ser preparado para o CNPJ "
                                     + record.cnpj() + ".");
+                }
+                pricesAssociated++;
+                PriceKey key = new PriceKey(
+                        record.cnpj(), record.fuelCode(), record.collectionDate());
+                BigDecimal previousCsvPrice = csvPrices.putIfAbsent(key, record.saleValue());
+                if (previousCsvPrice != null
+                        && previousCsvPrice.compareTo(record.saleValue()) != 0) {
+                    errors.add("Combinação duplicada CNPJ + combustível + data com valores divergentes "
+                            + "na linha " + row.lineNumber()
+                            + "; prevaleceu a última linha válida do arquivo.");
                 }
                 if (savePriceIfChanged(station, fuelType, record, existingPrices)) {
                     importedRecords++;
@@ -90,16 +109,29 @@ public class AnpImportProcessor {
                 entityManager.clear();
                 recordsSinceFlush = 0;
             }
+            processedRows++;
+            if (processedRows % 1_000 == 0 || processedRows == spRows.size()) {
+                progress.accept(processedRows, spRows.size());
+            }
         }
         entityManager.flush();
         return new AnpImportResult(
-                spRows.size(),
+                csv.totalRecordsRead(),
                 importedRecords,
+                pricesAssociated,
+                filteredRows.otherStateRows(),
+                countInvalidRows(errors),
+                stationPreparation.created(),
+                stationPreparation.updated(),
+                stationPreparation.withoutCoordinates(),
+                pricesAssociated,
+                Set.copyOf(stationRecords.keySet()),
                 List.copyOf(errors));
     }
 
-    private List<AnpCsvRow> filterSpRows(List<AnpCsvRow> rows, Set<String> errors) {
+    private StateFilteredRows filterSpRows(List<AnpCsvRow> rows, Set<String> errors) {
         List<AnpCsvRow> spRows = new ArrayList<>();
+        int otherStateRows = 0;
         for (AnpCsvRow row : rows) {
             String state = trimToNull(row.values().get("estado sigla"));
             if (state == null) {
@@ -110,24 +142,36 @@ public class AnpImportProcessor {
             } else if (!state.matches("[A-Za-z]{2}")) {
                 errors.add("Linha " + row.lineNumber()
                         + ": estado sigla inválido; linha ignorada.");
+            } else {
+                otherStateRows++;
             }
         }
-        return List.copyOf(spRows);
+        return new StateFilteredRows(List.copyOf(spRows), otherStateRows);
     }
 
     private Map<String, StationRecord> collectStationRecords(
             List<AnpCsvRow> rows,
-            Set<String> errors) {
+            Set<String> errors,
+            Map<String, FuelType> fuelTypeCache) {
         Map<String, StationRecord> stationRecords = new java.util.LinkedHashMap<>();
         for (AnpCsvRow row : rows) {
             try {
-                parseRecord(row);
+                AnpPriceRecord priceRecord = parseRecord(row);
+                fuelTypeCache.computeIfAbsent(priceRecord.fuelCode(), this::findActiveFuelType);
                 StationRecord candidate = parseStationRecord(row);
                 stationRecords.merge(
                         candidate.cnpj(),
                         candidate,
-                        (current, next) -> addressCompleteness(next) > addressCompleteness(current)
-                                ? next : current);
+                        (current, next) -> {
+                            if (!sameStationDetails(current, next)) {
+                                errors.add("CNPJ " + candidate.cnpj()
+                                        + " possui dados cadastrais divergentes em linhas do CSV; "
+                                        + "foi escolhido o registro com endereço mais completo"
+                                        + " (empate: primeira ocorrência).");
+                            }
+                            return addressCompleteness(next) > addressCompleteness(current)
+                                    ? next : current;
+                        });
             } catch (AnpRecordException exception) {
                 errors.add("Linha " + row.lineNumber() + ": " + exception.getMessage());
             }
@@ -135,41 +179,81 @@ public class AnpImportProcessor {
         return stationRecords;
     }
 
-    private Map<String, Station> prepareStations(
+    private StationPreparation prepareStations(
             Map<String, StationRecord> stationRecords,
             Set<String> errors) {
         if (stationRecords.isEmpty()) {
-            return Map.of();
+            return new StationPreparation(Map.of(), 0, 0, 0);
         }
         Map<String, Station> stations = new HashMap<>();
         for (Station station : stationRepository.findByCnpjIn(stationRecords.keySet())) {
             stations.put(station.getCnpj(), station);
         }
 
-        boolean rateLimitReached = false;
+        int created = 0;
+        int updated = 0;
+        int withoutCoordinates = 0;
         for (StationRecord record : stationRecords.values()) {
-            Station station = stations.computeIfAbsent(record.cnpj(), ignored -> createStation(record));
-            applyStationDetails(station, record);
-            if (!hasCoordinates(station)) {
-                if (rateLimitReached) {
-                    errors.add("Geoapify atingiu o limite de requisições; posto pendente para nova tentativa: CNPJ "
-                            + record.cnpj() + ".");
-                } else {
-                    GeocodingResolution resolution = geocode(record);
-                    if (resolution.rateLimitReached()) {
-                        rateLimitReached = true;
-                    }
-                    if (resolution.point() != null) {
-                        station.setLatitude(BigDecimal.valueOf(resolution.point().latitude()));
-                        station.setLongitude(BigDecimal.valueOf(resolution.point().longitude()));
-                    } else {
-                        errors.add(resolution.error());
-                    }
+            Station station = stations.get(record.cnpj());
+            boolean persistStation = false;
+            if (station == null) {
+                station = createStation(record);
+                created++;
+                persistStation = true;
+            } else {
+                List<String> changedFields = differingStationFields(station, record);
+                if (!changedFields.isEmpty()) {
+                    updated++;
+                    persistStation = true;
+                    errors.add("CNPJ " + record.cnpj()
+                            + " teve dados cadastrais atualizados pelo CSV nos campos: "
+                            + String.join(", ", changedFields) + ".");
                 }
             }
-            stations.put(record.cnpj(), stationRepository.save(station));
+            if (persistStation) {
+                applyStationDetails(station, record);
+                station = stationRepository.save(station);
+            }
+            if (station.getLatitude() == null || station.getLongitude() == null) {
+                withoutCoordinates++;
+            }
+            stations.put(record.cnpj(), station);
         }
-        return stations;
+        return new StationPreparation(stations, created, updated, withoutCoordinates);
+    }
+
+    private boolean sameStationDetails(StationRecord first, StationRecord second) {
+        return java.util.Objects.equals(first.corporateName(), second.corporateName())
+                && java.util.Objects.equals(first.brand(), second.brand())
+                && java.util.Objects.equals(first.street(), second.street())
+                && java.util.Objects.equals(first.number(), second.number())
+                && java.util.Objects.equals(first.neighborhood(), second.neighborhood())
+                && java.util.Objects.equals(first.postalCode(), second.postalCode())
+                && java.util.Objects.equals(first.city(), second.city())
+                && java.util.Objects.equals(first.state(), second.state());
+    }
+
+    private List<String> differingStationFields(Station station, StationRecord record) {
+        List<String> fields = new ArrayList<>();
+        addChangedField(fields, "revenda", station.getCorporateName(), record.corporateName());
+        addChangedField(fields, "bandeira", station.getBrand(), record.brand());
+        addChangedField(fields, "rua", station.getStreet(), record.street());
+        addChangedField(fields, "número", station.getNumber(), record.number());
+        addChangedField(fields, "bairro", station.getNeighborhood(), record.neighborhood());
+        addChangedField(fields, "CEP", station.getPostalCode(), record.postalCode());
+        addChangedField(fields, "município", station.getCity(), record.city());
+        addChangedField(fields, "UF", station.getState(), record.state());
+        return fields;
+    }
+
+    private void addChangedField(
+            List<String> fields,
+            String label,
+            String currentValue,
+            String nextValue) {
+        if (!java.util.Objects.equals(trimToNull(currentValue), trimToNull(nextValue))) {
+            fields.add(label);
+        }
     }
 
     private StationRecord parseStationRecord(AnpCsvRow row) {
@@ -349,62 +433,6 @@ public class AnpImportProcessor {
         station.setPostalCode(record.postalCode());
     }
 
-    private boolean hasCoordinates(Station station) {
-        return station.getLatitude() != null && station.getLongitude() != null;
-    }
-
-    private GeocodingResolution geocode(StationRecord record) {
-        if (!geocodingService.isConfigured()) {
-            return new GeocodingResolution(
-                    null,
-                    "Geoapify desabilitada (GEOAPIFY_API_KEY ausente) para o CNPJ "
-                            + record.cnpj() + ".",
-                    false);
-        }
-        if (!hasGeocodableAddress(record)) {
-            return new GeocodingResolution(
-                    null,
-                    "Endereço incompleto; posto não geocodificado: CNPJ "
-                            + record.cnpj() + ".",
-                    false);
-        }
-        String address = buildAddress(record);
-        try {
-            Optional<GeoapifyGeocodingService.GeoPoint> point = geocodingService.geocode(address);
-            if (point.isEmpty()) {
-                return new GeocodingResolution(
-                        null, "Geoapify não encontrou coordenadas para o CNPJ "
-                                + record.cnpj() + ".", false);
-            }
-            GeoapifyGeocodingService.GeoPoint geoPoint = point.get();
-            if (!Double.isFinite(geoPoint.latitude())
-                    || geoPoint.latitude() < -90 || geoPoint.latitude() > 90
-                    || !Double.isFinite(geoPoint.longitude())
-                    || geoPoint.longitude() < -180 || geoPoint.longitude() > 180) {
-                return new GeocodingResolution(
-                        null, "Geoapify retornou coordenadas inválidas para o CNPJ "
-                                + record.cnpj() + ".", false);
-            }
-            return new GeocodingResolution(geoPoint, null, false);
-        } catch (GeoapifyRateLimitException exception) {
-            return new GeocodingResolution(
-                    null,
-                    "Geoapify atingiu o limite de requisições; posto pendente para nova tentativa: CNPJ "
-                            + record.cnpj() + ".",
-                    true);
-        } catch (ExternalServiceException exception) {
-            return new GeocodingResolution(
-                    null, "Falha na geocodificação Geoapify para o CNPJ "
-                            + record.cnpj() + ".", false);
-        }
-    }
-
-    private boolean hasGeocodableAddress(StationRecord record) {
-        return record.street() != null
-                || record.neighborhood() != null
-                || record.postalCode() != null;
-    }
-
     private int addressCompleteness(StationRecord record) {
         int score = 0;
         if (record.street() != null) score += 4;
@@ -412,27 +440,6 @@ public class AnpImportProcessor {
         if (record.neighborhood() != null) score += 2;
         if (record.postalCode() != null) score++;
         return score;
-    }
-
-    private String buildAddress(StationRecord record) {
-        List<String> parts = new ArrayList<>();
-        String street = record.street();
-        if (street != null && record.number() != null) {
-            street += " " + record.number();
-        }
-        addIfPresent(parts, street);
-        addIfPresent(parts, record.neighborhood());
-        addIfPresent(parts, record.postalCode());
-        addIfPresent(parts, record.city());
-        addIfPresent(parts, record.state());
-        parts.add("Brasil");
-        return String.join(", ", parts);
-    }
-
-    private void addIfPresent(List<String> parts, String value) {
-        if (value != null && !value.isBlank()) {
-            parts.add(value);
-        }
     }
 
     private boolean savePriceIfChanged(
@@ -534,10 +541,22 @@ public class AnpImportProcessor {
             String state) {
     }
 
-    private record GeocodingResolution(
-            GeoapifyGeocodingService.GeoPoint point,
-            String error,
-            boolean rateLimitReached) {
+    private int countInvalidRows(Set<String> errors) {
+        return (int) errors.stream()
+                .filter(error -> error.startsWith("Linha "))
+                .map(error -> error.substring("Linha ".length(), error.indexOf(':')))
+                .distinct()
+                .count();
+    }
+
+    private record StateFilteredRows(List<AnpCsvRow> rows, int otherStateRows) {
+    }
+
+    private record StationPreparation(
+            Map<String, Station> stations,
+            int created,
+            int updated,
+            int withoutCoordinates) {
     }
 
     private record PriceKey(String cnpj, String fuelCode, LocalDate collectionDate) {

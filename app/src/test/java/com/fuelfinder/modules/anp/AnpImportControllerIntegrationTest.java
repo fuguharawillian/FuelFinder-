@@ -4,6 +4,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fuelfinder.common.exception.BusinessException;
 import com.fuelfinder.modules.anp.repository.AnpImportLogRepository;
+import com.fuelfinder.modules.anp.service.AnpRetailerApiClient;
+import com.fuelfinder.modules.anp.service.AnpRetailerPage;
+import com.fuelfinder.modules.anp.service.AnpRetailerRecord;
 import com.fuelfinder.modules.anp.service.AnpCsvDownloader;
 import com.fuelfinder.modules.auth.repository.AuthSessionRepository;
 import com.fuelfinder.modules.auth.repository.RefreshTokenRepository;
@@ -12,7 +15,6 @@ import com.fuelfinder.modules.fuel.repository.FuelTypeRepository;
 import com.fuelfinder.modules.price.repository.FuelPriceRepository;
 import com.fuelfinder.modules.station.entity.Station;
 import com.fuelfinder.modules.station.repository.StationRepository;
-import com.fuelfinder.modules.station.service.GeoapifyGeocodingService;
 import com.fuelfinder.modules.user.entity.Role;
 import com.fuelfinder.modules.user.entity.User;
 import com.fuelfinder.modules.user.repository.UserRepository;
@@ -33,6 +35,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.when;
@@ -85,7 +88,7 @@ class AnpImportControllerIntegrationTest {
     @MockitoBean
     private AnpCsvDownloader csvDownloader;
     @MockitoBean
-    private GeoapifyGeocodingService geocodingService;
+    private AnpRetailerApiClient anpRetailerApiClient;
 
     @BeforeEach
     void resetDatabaseAndMocks() {
@@ -98,30 +101,39 @@ class AnpImportControllerIntegrationTest {
         userRepository.deleteAll();
         seedFuelType("ETHANOL", "Etanol", "R$/litro");
         seedFuelType("GASOLINE_PREMIUM", "Gasolina Premium", "R$/litro");
-        reset(csvDownloader, geocodingService);
+        reset(csvDownloader, anpRetailerApiClient);
         when(csvDownloader.validateSourceUrl(SOURCE_URL)).thenReturn(SOURCE_URI);
         when(csvDownloader.sanitizeSourceUrl(SOURCE_URI))
                 .thenReturn("https://www.gov.br/anp/historico.csv");
         when(csvDownloader.download(SOURCE_URL)).thenReturn(csv(
                 row("12345678000195", "ETANOL", "4,199"),
                 row("12345678000196", "GASOLINA ADITIVADA", "5,899")));
-        when(geocodingService.isConfigured()).thenReturn(false);
+        when(anpRetailerApiClient.getSaoPauloPage(1))
+                .thenReturn(new AnpRetailerPage(java.util.List.of()));
     }
 
     @Test
     void adminCanImportAndReimportIdempotentlyWithCompleteAudit() throws Exception {
         String adminToken = createAdminAndLogin();
 
-        MvcResult imported = triggerImport(adminToken, SOURCE_URL)
+        MvcResult started = triggerImport(adminToken, SOURCE_URL)
                 .andExpect(status().isAccepted())
-                .andExpect(jsonPath("$.status").value("PARTIAL"))
-                .andExpect(jsonPath("$.totalRecordsRead").value(2))
-                .andExpect(jsonPath("$.totalRecordsImported").value(2))
+                .andExpect(jsonPath("$.status").value("RUNNING"))
                 .andExpect(jsonPath("$.sourceUrl")
                         .value("https://www.gov.br/anp/historico.csv"))
                 .andReturn();
-        UUID importId = UUID.fromString(objectMapper.readTree(
-                imported.getResponse().getContentAsString()).get("id").asText());
+        UUID importId = importId(started);
+        MvcResult imported = awaitImport(adminToken, importId);
+        assertEquals("PARTIAL", objectMapper.readTree(
+                imported.getResponse().getContentAsString()).get("status").asText());
+        assertEquals(2, objectMapper.readTree(
+                imported.getResponse().getContentAsString()).get("totalRecordsRead").asInt());
+        assertEquals(2, objectMapper.readTree(
+                imported.getResponse().getContentAsString()).get("totalRecordsImported").asInt());
+        assertEquals(2, objectMapper.readTree(
+                imported.getResponse().getContentAsString()).get("apiCnpjsUnmatched").asInt());
+        assertEquals(1, objectMapper.readTree(
+                imported.getResponse().getContentAsString()).get("apiPagesProcessed").asInt());
         assertEquals(2, stationRepository.count());
         assertEquals(2, fuelPriceRepository.count());
         assertEquals(2, importLogRepository.findById(importId).orElseThrow()
@@ -132,10 +144,14 @@ class AnpImportControllerIntegrationTest {
         when(csvDownloader.download(SOURCE_URL)).thenReturn(csv(
                 row("12345678000195", "ETANOL", "4,199"),
                 row("12345678000196", "GASOLINA ADITIVADA", "5,899")));
-        triggerImport(adminToken, SOURCE_URL)
+        MvcResult secondStarted = triggerImport(adminToken, SOURCE_URL)
                 .andExpect(status().isAccepted())
-                .andExpect(jsonPath("$.status").value("PARTIAL"))
-                .andExpect(jsonPath("$.totalRecordsImported").value(0));
+                .andReturn();
+        MvcResult secondResult = awaitImport(adminToken, importId(secondStarted));
+        assertEquals("PARTIAL", objectMapper.readTree(
+                secondResult.getResponse().getContentAsString()).get("status").asText());
+        assertEquals(0, objectMapper.readTree(
+                secondResult.getResponse().getContentAsString()).get("totalRecordsImported").asInt());
         assertEquals(2, stationRepository.count());
         assertEquals(2, fuelPriceRepository.count());
 
@@ -153,23 +169,30 @@ class AnpImportControllerIntegrationTest {
     }
 
     @Test
-    void storesGeoapifyCoordinatesWhenConfiguredAndMarksUnknownProductsPartial()
+    void storesAnpApiCoordinatesAndMarksUnknownProductsPartial()
             throws Exception {
         String adminToken = createAdminAndLogin();
-        when(geocodingService.isConfigured()).thenReturn(true);
-        when(geocodingService.geocode(
-                "Rua Um 10, Centro, 01000-000, Sao Paulo, SP, Brasil"))
-                .thenReturn(java.util.Optional.of(
-                        new GeoapifyGeocodingService.GeoPoint(-23.5, -46.6)));
+        when(anpRetailerApiClient.getSaoPauloPage(1)).thenReturn(new AnpRetailerPage(
+                java.util.List.of(new AnpRetailerRecord(
+                        "12345678000195", "SP", "-23.5", "-46.6"))));
+        when(anpRetailerApiClient.getSaoPauloPage(2))
+                .thenReturn(new AnpRetailerPage(java.util.List.of()));
         when(csvDownloader.download(SOURCE_URL)).thenReturn(csv(
                 row("12345678000195", "ETANOL", "4,199"),
                 row("12345678000196", "COMBUSTIVEL DESCONHECIDO", "5,899")));
 
-        triggerImport(adminToken, SOURCE_URL)
+        MvcResult started = triggerImport(adminToken, SOURCE_URL)
                 .andExpect(status().isAccepted())
-                .andExpect(jsonPath("$.status").value("PARTIAL"))
-                .andExpect(jsonPath("$.totalRecordsRead").value(2))
-                .andExpect(jsonPath("$.totalRecordsImported").value(1));
+                .andReturn();
+        MvcResult result = awaitImport(adminToken, importId(started));
+        assertEquals("PARTIAL", objectMapper.readTree(
+                result.getResponse().getContentAsString()).get("status").asText());
+        assertEquals(1, objectMapper.readTree(
+                result.getResponse().getContentAsString()).get("totalRecordsImported").asInt());
+        assertEquals(1, objectMapper.readTree(
+                result.getResponse().getContentAsString()).get("coordinatesUpdated").asInt());
+        assertEquals(2, objectMapper.readTree(
+                result.getResponse().getContentAsString()).get("apiPagesProcessed").asInt());
 
         Station geocoded = stationRepository.findByCnpj("12345678000195").orElseThrow();
         assertEquals(0, new BigDecimal("-23.5").compareTo(geocoded.getLatitude()));
@@ -182,14 +205,21 @@ class AnpImportControllerIntegrationTest {
     void failedLayoutCreatesFailureAuditAndPreservesExistingImportedPrices()
             throws Exception {
         String adminToken = createAdminAndLogin();
-        triggerImport(adminToken, SOURCE_URL).andExpect(status().isAccepted());
+        MvcResult started = triggerImport(adminToken, SOURCE_URL)
+                .andExpect(status().isAccepted())
+                .andReturn();
+        awaitImport(adminToken, importId(started));
         when(csvDownloader.download(SOURCE_URL))
                 .thenReturn("invalid;layout".getBytes(StandardCharsets.UTF_8));
 
-        triggerImport(adminToken, SOURCE_URL)
+        MvcResult failedStarted = triggerImport(adminToken, SOURCE_URL)
                 .andExpect(status().isAccepted())
-                .andExpect(jsonPath("$.status").value("FAILED"))
-                .andExpect(jsonPath("$.errorDetails").exists());
+                .andReturn();
+        MvcResult failed = awaitImport(adminToken, importId(failedStarted));
+        assertEquals("FAILED", objectMapper.readTree(
+                failed.getResponse().getContentAsString()).get("status").asText());
+        assertNotNull(objectMapper.readTree(
+                failed.getResponse().getContentAsString()).get("errorDetails"));
 
         assertEquals(2, fuelPriceRepository.count());
         assertEquals(2, importLogRepository.count());
@@ -233,6 +263,26 @@ class AnpImportControllerIntegrationTest {
                 .content("""
                         {"sourceUrl":"%s","referencePeriod":"2026-S1"}
                         """.formatted(sourceUrl)));
+    }
+
+    private UUID importId(MvcResult result) throws Exception {
+        return UUID.fromString(objectMapper.readTree(
+                        result.getResponse().getContentAsString()).get("id").asText());
+    }
+
+    private MvcResult awaitImport(String token, UUID importId) throws Exception {
+        for (int attempt = 0; attempt < 200; attempt++) {
+            MvcResult result = mockMvc.perform(get("/admin/anp/imports/" + importId)
+                                    .header("Authorization", bearer(token)))
+                            .andExpect(status().isOk())
+                            .andReturn();
+            if (!"RUNNING".equals(objectMapper.readTree(
+                            result.getResponse().getContentAsString()).get("status").asText())) {
+                        return result;
+            }
+            Thread.sleep(50);
+        }
+        throw new AssertionError("Importação ANP não terminou dentro do tempo esperado.");
     }
 
     private String createAdminAndLogin() throws Exception {

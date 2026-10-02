@@ -206,21 +206,34 @@ async function loadReviews() {
 
 function setupAnp() {
   const form = document.getElementById("anp-import-form");
+  const submitButton = form.querySelector('button[type="submit"]');
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const values = new FormData(form);
-    showMessage(status, "Executando importação ANP…");
+    submitButton.disabled = true;
+    showMessage(status, "Iniciando importação ANP…");
     try {
-      const result = await api.post("/admin/anp/import", {
+      let result = await api.post("/admin/anp/import", {
         sourceUrl: values.get("sourceUrl"),
         referencePeriod: values.get("referencePeriod"),
       });
       renderImportResult(result);
-      form.reset();
+      while (result.status === "RUNNING") {
+        await new Promise((resolve) => window.setTimeout(resolve, 1200));
+        result = await api.get(`/admin/anp/imports/${encodeURIComponent(result.id)}`);
+        renderImportResult(result);
+        await loadImportHistory();
+      }
       await loadImportHistory();
-      showMessage(status, `Importação finalizada: ${result.status}.`, result.status === "FAILED" ? "error" : "success");
+      showMessage(
+        status,
+        `Importação finalizada: ${result.status}.`,
+        result.status === "FAILED" ? "error" : result.status === "PARTIAL" ? "warning" : "success",
+      );
     } catch (error) {
       showMessage(status, error.message, "error");
+    } finally {
+      submitButton.disabled = false;
     }
   });
   document.getElementById("refresh-imports").addEventListener("click", loadImportHistory);
@@ -236,7 +249,12 @@ async function loadImportHistory() {
     imports.forEach((item) => {
       const row = makeElement("article", undefined, "admin-row");
       row.append(makeElement("div", `${item.fileName} · ${item.referencePeriod} · ${formatDate(item.importStart)}`));
-      row.append(makeElement("span", `${item.status} · ${item.totalRecordsImported}/${item.totalRecordsRead}`, "pill"));
+      const progress = item.progressPercent == null ? "em andamento" : `${item.progressPercent}%`;
+      const summary = `${item.status} · ${item.totalRecordsImported}/${item.totalRecordsRead} · ${progress}`;
+      row.append(makeElement("span", summary, "pill"));
+      if (item.status === "RUNNING" && item.progressMessage) {
+        row.append(makeElement("small", item.progressMessage, "muted"));
+      }
       host.append(row);
     });
   } catch (error) {
@@ -248,7 +266,45 @@ function renderImportResult(result) {
   const host = document.getElementById("import-result");
   host.replaceChildren();
   host.append(makeElement("h3", `Status: ${result.status}`));
-  host.append(makeElement("p", `Lidos: ${result.totalRecordsRead} · Importados: ${result.totalRecordsImported}`));
-  if (result.errorDetails) host.append(makeElement("pre", result.errorDetails));
+  if (result.progressMessage) host.append(makeElement("p", result.progressMessage));
+  const progress = makeElement("div", undefined, "progress");
+  progress.setAttribute("role", "progressbar");
+  progress.setAttribute("aria-label", "Progresso da importação ANP");
+  const bar = makeElement("div", undefined, "progress-bar progress-bar-striped");
+  if (result.status === "RUNNING") bar.classList.add("progress-bar-animated");
+  if (Number.isInteger(result.progressPercent)) {
+    bar.style.width = `${Math.max(0, Math.min(100, result.progressPercent))}%`;
+    bar.setAttribute("aria-valuenow", String(result.progressPercent));
+    bar.setAttribute("aria-valuemin", "0");
+    bar.setAttribute("aria-valuemax", "100");
+  } else {
+    bar.style.width = "100%";
+    bar.setAttribute("aria-busy", "true");
+  }
+  progress.append(bar);
+  host.append(progress);
+
+  const summary = makeElement("ul", undefined, "small mb-0");
+  [
+    `Linhas lidas do CSV: ${result.totalRecordsRead ?? 0}`,
+    `Linhas SP associadas: ${result.rowsImportedFromSaoPaulo ?? 0}`,
+    `Linhas ignoradas por outro estado: ${result.rowsIgnoredOtherStates ?? 0}`,
+    `Linhas inválidas: ${result.invalidRows ?? 0}`,
+    `Postos criados / atualizados: ${result.stationsCreated ?? 0} / ${result.stationsUpdated ?? 0}`,
+    `Preços associados (CNPJ + combustível): ${result.pricesAssociated ?? 0}`,
+    `Preços novos ou atualizados: ${result.totalRecordsImported ?? 0}`,
+    `Coordenadas atualizadas pela API: ${result.coordinatesUpdated ?? 0}`,
+    `CNPJs sem correspondência na API: ${result.apiCnpjsUnmatched ?? 0}`,
+    `Registros da API sem coordenadas válidas: ${result.apiStationsWithoutCoordinates ?? 0}`,
+    `Postos ainda sem coordenadas: ${result.stationsWithoutCoordinates ?? 0}`,
+    `Páginas da API processadas: ${result.apiPagesProcessed ?? 0}`,
+  ].forEach((text) => summary.append(makeElement("li", text)));
+  host.append(summary);
+  if (result.errorDetails) {
+    const details = makeElement("pre", result.errorDetails, "small text-wrap");
+    details.style.maxHeight = "16rem";
+    details.style.overflowY = "auto";
+    host.append(details);
+  }
   host.classList.remove("hidden");
 }

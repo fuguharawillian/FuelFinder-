@@ -25,31 +25,38 @@ e não prometer preços em tempo real.
   limitado a 1.000 entradas, 100 MB descompactados por entrada e 200 MB no
   total; quando há mais de um CSV/TSV com layout ANP válido, a importação falha
   com os nomes das entradas para que a fonte seja desambiguada.
-- Os casos específicos de números com vírgula decimal e a robustez adicional
-  de detecção do delimitador descrita abaixo continuam pendentes.
-- A detecção do delimitador deve usar cabeçalhos conhecidos e consistência do
-  número de colunas; `;` é delimitador quando esse for o formato, sem confundir
-  a vírgula decimal no valor com separador de campo. Interpretar formatos
-  numéricos conforme amostras oficiais (inclusive decimal com vírgula quando
-  presente), sem conversões ambíguas. Um CSV válido separado por `;` não pode
-  falhar com a mensagem genérica “Não foi possível identificar o separador do
-  CSV ANP”; o diagnóstico deve indicar causa útil quando o layout realmente
-  não puder ser reconhecido. Casos concretos devem ser cobertos por amostras de
-  teste da ANP.
-- A importação processa somente registros cuja UF seja SP. Primeiro identifica
-  postos distintos pelo CNPJ normalizado, atualiza seu cadastro e tenta
-  geocodificar uma vez por posto sem coordenadas; em seguida importa todas as
-  linhas de combustível válidas, sem descartar preços por falha de geocodificação.
-- Coordenadas persistidas são reutilizadas nas importações seguintes. Endereços
-  incompletos, respostas sem coordenadas, falhas de serviço e limite HTTP 429
-  ficam registrados no log por posto. Ao receber 429, novas chamadas são
-  suspensas naquela execução; uma nova importação pode retomar os postos ainda
-  sem coordenadas sem consultar novamente os que já foram geocodificados.
+- O parser identifica o delimitador pelo cabeçalho e consistência das colunas,
+  interpreta decimal com vírgula quando separado por `;` e reporta linhas
+  inválidas sem descartar os demais registros válidos.
+- A importação processa somente linhas `SP` do CSV. Normaliza o CNPJ e o
+  combustível, prepara os postos distintos e importa cada preço com data e
+  origem `ANP_IMPORT`. A chave histórica é
+  `(station_id, fuel_type_id, collection_date)`; reimportações idênticas são
+  ignoradas e valores alterados seguem a regra de atualização existente. Se o
+  arquivo repetir a mesma chave com valores divergentes, prevalece a última
+  linha válida e a divergência fica registrada no relatório.
+- Somente após o commit do CSV, consulta
+  `https://revendedoresapi.anp.gov.br/v1/combustivel?uf=SP`. O Swagger
+  (`/swagger/v1/swagger.json`) documenta o parâmetro `numeropagina`, inteiro
+  iniciado em 1. A resposta usa o envelope `status`, `title`, `succeeded` e
+  `data`; a leitura termina quando `data` é um array vazio. A API não informa
+  total de páginas. Na verificação da fonte, as páginas 1 e 2 retornaram 5.000
+  e 3.427 registros e a página 3 encerrou com `data: []`; o código não fixa
+  esses totais e avança até a resposta vazia.
+- Cada item é validado novamente para `uf == SP`; CNPJ pontuado é normalizado
+  para 14 dígitos e usado somente para atualizar latitude/longitude do posto.
+  Coordenadas devem ser numéricas e estar nos intervalos geográficos válidos;
+  valores ausentes ou inválidos não apagam coordenadas salvas. A importação
+  reporta CNPJs sem correspondência, registros conflitantes e coordenadas
+  ausentes. O array `produtos` da API não é usado para formar preços.
+- As chamadas de página são sequenciais, com intervalo curto entre páginas.
+  Falhas HTTP/limite interrompem a etapa da API e deixam os preços do CSV
+  preservados; repetir a mesma importação é idempotente para postos e preços.
 
 ## Endpoints administrativos
 
-Todos os endpoints exigem `ROLE_ADMIN`. A implementação atual recebe `sourceUrl`
-e `referencePeriod`; a forma-alvo do pedido substitui o campo único por
+Todos os endpoints exigem `ROLE_ADMIN`. A implementação recebe `sourceUrl`
+e `referencePeriod`; a evolução planejada substitui o campo único por
 `sourceUrl`, `referenceYear` e `referenceSemester`. O usuário autenticado é
 registrado como autor da importação.
 
@@ -64,6 +71,12 @@ caiba no semestre informado precisam ser decididas antes da implementação.
 | `POST` | `/admin/anp/import` | `202 Accepted` com o log da importação |
 | `GET` | `/admin/anp/imports` | `200 OK` com logs ordenados do mais recente |
 | `GET` | `/admin/anp/imports/{id}` | `200 OK` com o log solicitado; `404` se não existir |
+
+O `POST` inicia o trabalho em segundo plano e retorna `RUNNING`. A interface
+consulta `GET /admin/anp/imports/{id}` para exibir as etapas CSV e API. A
+porcentagem é determinada apenas durante o processamento das linhas do CSV,
+cujo total é conhecido; na consulta paginada sem total conhecido, a interface
+usa um indicador indeterminado e mostra a página concluída.
 
 Contrato de entrada planejado para `POST /admin/anp/import`:
 
@@ -90,6 +103,7 @@ somente `1` ou `2`. Não aceitar novamente um único campo como `2026-S1`.
 | `Produto` | Código canônico do catálogo |
 | `Data da Coleta`, `Valor de Venda` | Data e valor em `FuelPrice` |
 | `Unidade de Medida` | Validada contra o combustível: `R$/litro` ou `R$/m³` |
+| `latitude`, `longitude` da API de revendedores | `Station.latitude`, `Station.longitude`, após validação |
 
 | Produto ANP | `FuelType.code` |
 |---|---|
@@ -105,53 +119,35 @@ somente `1` ou `2`. Não aceitar novamente um único campo como `2026-S1`.
 - A identidade do posto é seu CNPJ normalizado. A chave de preço é
   `(station_id, fuel_type_id, collection_date)`. Uma nova execução não cria
   duplicatas; se o preço existente mudou, ele é atualizado.
-- O pipeline futuro deve procurar o posto pelo CNPJ normalizado antes de criar
-  qualquer registro. Se o CNPJ corresponder a um posto existente, vincular o
-  preço a esse posto. Se não existir, criar somente quando CNPJ válido, razão
-  social, município e UF — campos obrigatórios do cadastro — estiverem
-  disponíveis e coerentes; coordenadas podem permanecer nulas conforme a regra
-  atual e a exceção de coordenadas ausentes para importação da ANP descrita na
-  Fase 4. Isso não altera os requisitos do cadastro manual de posto.
-- Não usar correspondência aproximada por endereço/nome para criar postos e
-  não criar duplicatas silenciosamente. Sem CNPJ válido ou sem campos
-  obrigatórios suficientes, não criar posto nem preço vinculado; classificar a
-  linha como falha e explicar o campo ausente/inválido. Divergência cadastral
-  para CNPJ já existente deve ser reportada sem sobrescrever silenciosamente.
-  A política de reconciliação/atualização de metadados do posto existente
-  permanece pendente.
+- A importação procura postos pelo CNPJ normalizado; não usa correspondência
+  aproximada por endereço/nome. Sem CNPJ válido, razão social, município, UF,
+  produto ou preço válidos, não cria um preço vinculado e registra a linha.
+  Dados cadastrais divergentes entre linhas do CSV ou diferentes do cadastro
+  existente são atualizados conforme a fonte CSV e descritos no log.
 - Produto desconhecido, preço/data/unidade inválidos, CNPJ inválido e outros
   problemas por registro são armazenados como erros e resultam em `PARTIAL`
   quando houver linhas válidas processadas.
-- Se `GEOAPIFY_API_KEY` estiver configurada, postos de SP sem coordenadas e com
-  endereço suficiente podem ser geocodificados uma vez por CNPJ. Os preços são
-  importados mesmo se a geocodificação falhar. Coordenadas já persistidas são
-  reutilizadas em novas importações. Sem a chave, o posto e o preço ainda são
-  salvos, latitude/longitude permanecem nulas e o resultado é `PARTIAL`, sem
-  bloquear a inicialização ou outras funcionalidades.
 - `AnpImportLog` registra arquivo, período, URL sem query string, início/fim,
-  contagens, status, erros e UUID do administrador. Os status são `SUCCESS`,
-  `PARTIAL` e `FAILED`.
-- O resultado-alvo distingue registros lidos, importados, ignorados e falhos.
-  Cada linha de dados deve receber uma classificação única e explicação quando
-  ignorada/falha; a definição de se “importado” conta linha ou preço e os
-  critérios exatos de “ignorado” devem ser fechados no contrato antes de
-  implementar os novos contadores. Manter erro de posto associado à linha e
-  não persistir o preço daquela linha se o posto não puder ser resolvido ou
-  cadastrado com segurança.
-- Download ou layout inválido gera um log `FAILED`. Falha interna do
-  processamento reverte a transação de dados, registra a falha fora dela e
-  propaga o erro; assim, os dados válidos anteriores permanecem disponíveis.
+  contagens por etapa, progresso, status, erros e UUID do administrador. Os
+  status são `RUNNING`, `SUCCESS`, `PARTIAL` e `FAILED`. O resumo distingue
+  linhas lidas, linhas SP associadas, outros estados, inválidas, postos
+  criados/atualizados, preços associados/alterados, coordenadas atualizadas,
+  CNPJs sem correspondência e páginas consultadas.
+- Download ou layout inválido gera um log `FAILED`. Falha interna do CSV
+  reverte essa etapa; erro durante a API resulta em `PARTIAL` e preserva o
+  commit do CSV para uma repetição idempotente.
 - A migração V5 torna latitude e longitude anuláveis em `stations`, permitindo
   armazenar postos ainda não geocodificados. Consultas geográficas não incluem
   postos sem coordenadas.
 
-## Configuração Geoapify
+## Geocodificação manual com Geoapify
 
 Leia a chave exclusivamente da variável de ambiente `GEOAPIFY_API_KEY`. Para
 testar chamadas reais, configure-a no ambiente do processo que inicia a
 aplicação; nunca a grave no código, em arquivos versionados ou no frontend. Sem
-a variável, a aplicação continua operando sem geocodificação. Os limites e
-condições do serviço devem ser verificados na documentação vigente da Geoapify.
+a variável, o cadastro manual de postos continua operando sem geocodificação.
+Essa integração não é usada na importação ANP, que consulta as coordenadas da
+API de revendedores da própria ANP.
 
 ## Implementação entregue
 
@@ -160,30 +156,24 @@ condições do serviço devem ser verificados na documentação vigente da Geoap
   transacional por linha.
 - Serviço de importação, atualização idempotente de preços e endpoints
   administrativos protegidos por `ROLE_ADMIN`.
-- Geocodificação opcional Geoapify e migração V5 para coordenadas nulas.
-- Testes unitários do parser, downloader, processador e serviço; teste de
-  integração dos endpoints, RBAC, importação, geocodificação opcional e
-  idempotência.
+- Atualização de coordenadas pela API paginada de revendedores da ANP; Geoapify
+  permanece disponível para o fluxo de cadastro manual.
+- Execução assíncrona com etapa e progresso consultáveis, resumo persistido e
+  possibilidade de repetir a mesma URL para retomar uma carga parcial sem
+  duplicar preços.
+- Testes unitários do parser, downloader, processador, paginação da API e
+  atualização de coordenadas; teste de integração dos endpoints, RBAC,
+  importação e idempotência.
 
 ## Trabalho futuro planejado (não implementado)
 
-1. Evoluir entrada para aceitar ZIP oficial e CSV/TSV direto, com validação
-   segura do arquivo compactado e seleção não ambígua do CSV.
-2. Ajustar e testar parser para delimitador identificado pelo cabeçalho/
-   consistência, com `;` preservado como delimitador e suporte aos formatos
-   numéricos reais da ANP, inclusive decimal com vírgula.
-3. Criar ou localizar postos de forma controlada pelo CNPJ normalizado antes
-   de importar o preço, verificando dados obrigatórios e reportando
-   inconsistências sem duplicação ou sobrescrita silenciosa.
-4. Alterar contrato de entrada, log e interface para `referenceYear` e
-   `referenceSemester`; planejar migração progressiva dos dados atuais de
-   `reference_period`, sem editar migrações já aplicadas.
-5. Acrescentar resumo consistente de lidos/importados/ignorados/falhos,
-   explicações por linha e testes para formatos, duplicidades, postos novos e
-   erros de cadastro.
+1. Alterar o contrato para `referenceYear` e `referenceSemester`; definir a
+   faixa histórica permitida e como validar se as datas do CSV pertencem ao
+   semestre declarado. Migrar os dados de `reference_period` sem editar
+   migrações já aplicadas.
 
-As tarefas acima são incrementais sobre a importação entregue. Não significam
-que o backend, banco ou formulário já tenham sido atualizados.
+Essa mudança de contrato é independente da importação SP e da atualização das
+coordenadas entregues nesta etapa.
 
 ## Critérios de aceitação
 
@@ -191,19 +181,18 @@ que o backend, banco ou formulário já tenham sido atualizados.
 - [x] Falhas internas revertem os dados parciais e preservam dados existentes.
 - [x] Auditoria inclui período, URL segura, usuário, contagens, status e erros.
 - [x] CNPJ normalizado e validado; produtos e unidades mapeados ao catálogo.
-- [x] Geocodificação opcional, sem chave obrigatória para iniciar a aplicação.
-- [x] Coordenadas ausentes persistidas como nulas e reportadas como importação parcial.
+- [x] Atualizar coordenadas pela API paginada da ANP, validando UF, CNPJ e coordenadas.
+- [x] Preservar preços importados quando a etapa de coordenadas falhar.
+- [x] Coordenadas ausentes preservadas/registradas no resumo e nos detalhes.
 - [x] Endpoints de importação e histórico restritos a `ROLE_ADMIN`.
+- [x] Acompanhar as etapas do CSV e da API sem inventar percentual para paginação desconhecida.
+- [x] Exibir resumo de linhas, postos, preços, coordenadas, divergências e páginas.
 - [x] Testes unitários e de integração direcionados passam.
-- [x] `mvn -q clean verify` passa com o gate de 100% de cobertura de linhas.
-- [ ] Aceitar e validar arquivo ZIP contendo CSV, além dos formatos diretos já suportados.
-- [ ] Validar delimitador e números com amostras oficiais ANP, incluindo `;` e vírgula decimal.
-- [ ] Criar posto novo apenas após validação de CNPJ e dados obrigatórios; não gravar preço órfão.
-- [ ] Exibir contadores de registros lidos, importados, ignorados e falhos com mensagens úteis.
+- [ ] Executar `mvn -q clean verify` completo, incluindo o gate de cobertura de linhas.
 - [ ] Receber, validar, armazenar e apresentar ano e semestre em campos separados.
 
 ## Testes executados
 
 ```powershell
-mvn -q "-Dtest=AnpCsvParserTest,AnpCsvDownloaderTest,AnpImportProcessorTest,AnpImportServiceTest,AnpImportControllerIntegrationTest" test
+mvn -q "-Dtest=AnpCsvParserTest,AnpCsvDownloaderTest,AnpImportProcessorTest,AnpImportServiceTest,AnpImportControllerIntegrationTest,AnpRetailerApiClientTest,AnpRetailerImportServiceTest,AnpCoordinateUpdaterTest" -DforkCount=0 test
 ```

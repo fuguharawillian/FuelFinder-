@@ -18,8 +18,11 @@ import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneOffset;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -46,36 +49,54 @@ class AnpImportServiceTest {
     @Mock
     private AnpImportProcessor processor;
     @Mock
+    private AnpRetailerImportService retailerImportService;
+    @Mock
     private AnpImportLogRepository repository;
+    @Mock
+    private AnpImportProgressUpdater progressUpdater;
     private AnpCsvParser parser;
     private AnpImportService service;
+    private final Map<UUID, AnpImportLog> logs = new ConcurrentHashMap<>();
 
     @BeforeEach
     void setUp() {
         parser = new AnpCsvParser();
+        logs.clear();
         service = new AnpImportService(
                 downloader,
                 parser,
                 processor,
+                retailerImportService,
                 repository,
+                progressUpdater,
+                Runnable::run,
                 Clock.fixed(Instant.parse("2026-09-29T12:00:00Z"), ZoneOffset.UTC));
+        lenient().when(retailerImportService.updateCoordinates(any(), any()))
+                .thenReturn(new AnpCoordinateUpdateResult(0, 0, 0, 0, 0, List.of()));
         lenient().when(downloader.validateSourceUrl(SOURCE_URL)).thenReturn(SOURCE_URI);
         lenient().when(downloader.sanitizeSourceUrl(SOURCE_URI))
                 .thenReturn("https://www.gov.br/anp.csv");
         lenient().when(repository.saveAndFlush(any(AnpImportLog.class))).thenAnswer(invocation -> {
             AnpImportLog log = invocation.getArgument(0);
             log.setId(UUID.randomUUID());
+            logs.put(log.getId(), log);
             return log;
         });
         lenient().when(repository.save(any(AnpImportLog.class)))
-                .thenAnswer(invocation -> invocation.getArgument(0));
+                .thenAnswer(invocation -> {
+                    AnpImportLog log = invocation.getArgument(0);
+                    logs.put(log.getId(), log);
+                    return log;
+                });
+        lenient().when(repository.findById(any()))
+                .thenAnswer(invocation -> Optional.ofNullable(logs.get(invocation.getArgument(0))));
     }
 
     @Test
     void savesSuccessfulAuditAndSanitizesSourceQueryBeforeReturningDto() {
         byte[] csv = validCsv();
         when(downloader.download(SOURCE_URL)).thenReturn(csv);
-        when(processor.process(any(ParsedAnpCsv.class)))
+        when(processor.process(any(ParsedAnpCsv.class), any()))
                 .thenReturn(new AnpImportResult(1, 1, List.of()));
 
         AnpImportLog result = service.executeImport(SOURCE_URL, "2026-S1", TRIGGERED_BY);
@@ -87,13 +108,13 @@ class AnpImportServiceTest {
         assertEquals("https://www.gov.br/anp.csv", result.getSourceUrl());
         assertEquals(TRIGGERED_BY, dto.triggeredBy());
         assertNotNull(result.getImportEnd());
-        verify(processor).process(any(ParsedAnpCsv.class));
+        verify(processor).process(any(ParsedAnpCsv.class), any());
     }
 
     @Test
     void recordsPartialImportErrorsAndFailedDownloadOrInvalidCsv() {
         doReturn(validCsv()).when(downloader).download(SOURCE_URL);
-        when(processor.process(any(ParsedAnpCsv.class)))
+        when(processor.process(any(ParsedAnpCsv.class), any()))
                 .thenReturn(new AnpImportResult(1, 0, List.of("Geoapify indisponível.")));
         AnpImportLog partial = service.executeImport(SOURCE_URL, "2026-S1", TRIGGERED_BY);
         assertEquals(ImportStatus.PARTIAL, partial.getStatus());
@@ -117,7 +138,7 @@ class AnpImportServiceTest {
     @Test
     void marksUnexpectedTransactionalFailureAndRethrowsIt() {
         doReturn(validCsv()).when(downloader).download(SOURCE_URL);
-        when(processor.process(any(ParsedAnpCsv.class)))
+        when(processor.process(any(ParsedAnpCsv.class), any()))
                 .thenThrow(new IllegalStateException("database unavailable"));
 
         assertThrows(IllegalStateException.class,
@@ -125,6 +146,36 @@ class AnpImportServiceTest {
 
         verify(repository).saveAndFlush(any(AnpImportLog.class));
         verify(repository).save(any(AnpImportLog.class));
+    }
+
+    @Test
+    void preservesCsvSummaryWhenAnpApiFailsAfterThePriceImport() {
+        doReturn(validCsv()).when(downloader).download(SOURCE_URL);
+        when(processor.process(any(ParsedAnpCsv.class), any()))
+                .thenReturn(new AnpImportResult(
+                        1,
+                        1,
+                        1,
+                        0,
+                        0,
+                        1,
+                        0,
+                        1,
+                        1,
+                        Set.of("12345678000195"),
+                        List.of()));
+        doThrow(new ExternalServiceException("API indisponível", new RuntimeException()))
+                .when(retailerImportService)
+                .updateCoordinates(any(), any());
+
+        AnpImportLog result = service.executeImport(SOURCE_URL, "2026-S1", TRIGGERED_BY);
+
+        assertEquals(ImportStatus.PARTIAL, result.getStatus());
+        assertEquals(1, result.getRowsImportedFromSaoPaulo());
+        assertEquals(1, result.getTotalRecordsImported());
+        assertEquals(1, result.getStationsCreated());
+        assertTrue(result.getErrorDetails().contains("API indisponível"));
+        assertEquals(0, result.getApiPagesProcessed());
     }
 
     @Test
@@ -147,7 +198,7 @@ class AnpImportServiceTest {
         when(downloader.validateSourceUrl("https://www.gov.br/")).thenReturn(rootUrl);
         when(downloader.sanitizeSourceUrl(rootUrl)).thenReturn("https://www.gov.br/");
         doReturn(validCsv()).when(downloader).download("https://www.gov.br/");
-        when(processor.process(any(ParsedAnpCsv.class))).thenReturn(new AnpImportResult(
+        when(processor.process(any(ParsedAnpCsv.class), any())).thenReturn(new AnpImportResult(
                 1, 0, List.of("x".repeat(1_010_000))));
 
         AnpImportLog result = service.executeImport(
@@ -166,7 +217,7 @@ class AnpImportServiceTest {
         when(downloader.validateSourceUrl("https://www.gov.br")).thenReturn(rootUrl);
         when(downloader.sanitizeSourceUrl(rootUrl)).thenReturn("https://www.gov.br");
         doReturn(validCsv()).when(downloader).download("https://www.gov.br");
-        when(processor.process(any(ParsedAnpCsv.class)))
+        when(processor.process(any(ParsedAnpCsv.class), any()))
                 .thenReturn(new AnpImportResult(1, 1, List.of()));
 
         AnpImportLog result = service.executeImport(
