@@ -4,7 +4,6 @@ services:
     container_name: fuelfinder-db
     environment:
       POSTGRES_DB: fuelfinder
-      # Development defaults only; use environment variables for other environments.
       POSTGRES_USER: ${DB_USERNAME:-fuelfinder}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-fuelfinder123}
     ports:
@@ -16,6 +15,24 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+    restart: unless-stopped
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fuelfinder-app
+    ports:
+      - "8080:8080"
+    environment:
+      # Sobrescreve as propriedades do Spring Boot para apontar pro container do Postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/fuelfinder
+      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME:-fuelfinder}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD:-fuelfinder123}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      postgres:
+        condition: service_healthy # Espera o Postgres estar 100% pronto antes de ligar a app
     restart: unless-stopped
 
 volumes:

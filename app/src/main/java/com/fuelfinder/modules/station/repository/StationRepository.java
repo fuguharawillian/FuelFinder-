@@ -52,4 +52,14 @@ public interface StationRepository extends JpaRepository<Station, UUID> {
     List<Station> searchByText(
             @Param("status") StationStatus status,
             @Param("query") String query);
+
+    @Query("""
+            SELECT station FROM Station station
+            WHERE station.status = :status
+              AND REPLACE(COALESCE(station.postalCode, ''), '-', '') = :postalCode
+            ORDER BY station.city, station.corporateName
+            """)
+    List<Station> searchByPostalCode(
+            @Param("status") StationStatus status,
+            @Param("postalCode") String postalCode);
 }

@@ -12,11 +12,23 @@ document.addEventListener("DOMContentLoaded", async () => {
   const user = await initializeShell({ requiredAuth: true });
   if (!user) return;
   initMap("map");
+  document.getElementById("location-query").addEventListener("input", formatPostalCode);
   document.getElementById("search-form").addEventListener("submit", searchFromForm);
   document.getElementById("gps-button").addEventListener("click", useGps);
   document.getElementById("radius").value = "5";
   useGps();
 });
+
+function formatPostalCode(event) {
+  const input = event.currentTarget;
+  const value = input.value;
+  if (!/^[\d-]*$/.test(value)) return;
+
+  const digits = value.replace(/\D/g, "").slice(0, 8);
+  input.value = digits.length > 5
+    ? `${digits.slice(0, 5)}-${digits.slice(5)}`
+    : digits;
+}
 
 async function searchFromForm(event) {
   event.preventDefault();

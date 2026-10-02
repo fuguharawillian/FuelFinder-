@@ -141,6 +141,10 @@ class StationControllerIntegrationTest {
                 .andExpect(jsonPath("$.length()").value(1))
                 .andExpect(jsonPath("$[0].corporateName").value("Far"));
 
+        mockMvc.perform(get("/stations").param("query", "01000-000"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()").value(2));
+
         mockMvc.perform(patch("/stations/" + stationId)
                         .header("Authorization", bearer(adminToken))
                         .contentType(MediaType.APPLICATION_JSON)

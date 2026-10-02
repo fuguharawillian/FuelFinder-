@@ -4,14 +4,20 @@
 
 O **FuelFinder** é uma plataforma web responsiva para consulta, localização e comparação de preços de combustíveis no Brasil. Permite que motoristas encontrem postos próximos com os melhores preços, recebam recomendações personalizadas de combustível (etanol vs gasolina) e avaliem os estabelecimentos.
 
-Login e cadastro são as áreas funcionais públicas. O mapa e todas as funcionalidades internas exigem autenticação; endpoints de dados seguem a mesma regra, além das permissões administrativas. Ao tentar abrir uma área interna sem sessão, o usuário é encaminhado ao login e, após autenticar, pode continuar para o destino interno solicitado se estiver autorizado.
+**Acesso-alvo:** login e cadastro são as áreas funcionais públicas; o mapa e
+as demais funcionalidades internas exigem autenticação, além das permissões
+administrativas. Na implementação atual, o frontend guarda essas telas por
+sessão/papel, mas os HTML estáticos são públicos no servidor. Também são
+públicas as rotas `GET /stations/**` e `GET /fuel-prices/compare`. Após
+autenticar, o usuário pode continuar para um caminho interno permitido.
 
 Como referência visual para a evolução do frontend, usar o template
 [LUNO Bootstrap 5](../Layout/README.md), na raiz do repositório, conforme a
 análise, os limites de reutilização e as orientações por tela documentados em
 [Fase 9 — Frontend](./09-frontend-integracao.md). A migração para Bootstrap
-5.2.3 foi aprovada e está em andamento; Tailwind é substituído, sem combinação
-dos frameworks.
+5.2.3 foi aprovada e aplicada às telas; Tailwind é substituído, sem combinação
+dos frameworks. A validação visual abrangente e a integração de todos os estados
+com backend/sessão reais continuam pendentes e estão detalhadas na Fase 9.
 
 ---
 
@@ -24,7 +30,7 @@ dos frameworks.
 | **Banco de Dados** | PostgreSQL 16+ | ACID, funções trigonométricas nativas para Haversine |
 | **Migrações** | Flyway 10.x+ | Versionamento declarativo do esquema |
 | **Build** | Maven 3.9+ | Gerenciamento padronizado de dependências |
-| **Frontend** | HTML5 + Bootstrap 5.2.3 via CDN + CSS próprio + Vanilla JS ES modules + Leaflet 1.9.4 | Migração visual em andamento; preservar funcionalidades e integrações existentes, conforme Fase 9 |
+| **Frontend** | HTML5 + Bootstrap 5.2.3 via CDN + CSS próprio + Vanilla JS ES modules + Leaflet 1.9.4 | Bootstrap aplicado; validação visual/funcional ampla pendente, conforme Fase 9 |
 | **Direção visual** | LUNO / Bootstrap 5 | Referência disponível em `../Layout/`; usar apenas os padrões adequados ao FuelFinder, sem copiar conteúdo demonstrativo nem importar plugins/assets não auditados |
 | **Mapas** | Leaflet 1.9.4 + OpenStreetMap | Gratuito, leve, compatível com mobile |
 | **Autenticação** | JWT (JJWT 0.12.6+) + Spring Security 6.4+ | Access JWT curto e sessões server-side para refresh rotativo e revogação; RBAC com BCrypt |
@@ -124,7 +130,7 @@ flowchart LR
 
 ### Ajustes planejados após validação de uso
 
-A implementação funcional inicial das Fases 1 a 9 foi entregue. Os requisitos recentes de acesso, retorno pós-login, busca automática pela localização consentida e importação ZIP/CSV com ano/semestre separados são correções planejadas, ainda não implementadas. A Fase 9 depende da Fase 2 para proteção de páginas e retorno após login; a geolocalização automática depende da Fase 4 e de seus endpoints; a importação revisada depende da Fase 8 e do modelo de auditoria. A atualização visual LUNO/Bootstrap 5.2.3 está em andamento na branch `feature/Danilo`; as pendências de validação e licenciamento constam na Fase 9.
+A implementação funcional inicial das Fases 1 a 9 foi entregue. Na Fase 9, a home pública, o redirecionamento pós-login para caminhos internos permitidos, a guarda de páginas no cliente, a busca automática após consentimento de geolocalização e a interface Bootstrap foram implementados. A proteção server-side dos arquivos HTML e a exigência de autenticação para todas as leituras de dados continuam pendentes: atualmente os arquivos estáticos são públicos e `GET /stations/**` e `GET /fuel-prices/compare` também são públicos. A validação visual/funcional ampla, a integração de sessão/API reais e as decisões operacionais sobre CDNs/licenças estão detalhadas na Fase 9.
 
 ---
 

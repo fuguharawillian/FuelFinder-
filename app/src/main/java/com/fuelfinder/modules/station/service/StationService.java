@@ -54,13 +54,24 @@ public class StationService {
             throw new BusinessException("O raio de busca deve ser maior que zero.");
         }
         if (query != null && !query.isBlank()) {
-            var point = geocodingService.geocode(query.trim());
-            if (point.isPresent()) {
-                validateCoordinates(point.get().latitude(), point.get().longitude());
-                return findNearby(point.get().latitude(), point.get().longitude(), radius);
+            String trimmedQuery = query.trim();
+            String postalCode = normalizePostalCode(trimmedQuery);
+            if (postalCode != null) {
+                if (!hasCoordinates) {
+                    return stationRepository.searchByPostalCode(StationStatus.ACTIVE, postalCode)
+                            .stream()
+                            .map(station -> toResponse(station, null))
+                            .toList();
+                }
+            } else {
+                var point = geocodingService.geocode(trimmedQuery);
+                if (point.isPresent()) {
+                    validateCoordinates(point.get().latitude(), point.get().longitude());
+                    return findNearby(point.get().latitude(), point.get().longitude(), radius);
+                }
             }
             if (!hasCoordinates) {
-                return stationRepository.searchByText(StationStatus.ACTIVE, query.trim())
+                return stationRepository.searchByText(StationStatus.ACTIVE, trimmedQuery)
                         .stream()
                         .map(station -> toResponse(station, null))
                         .toList();
@@ -71,6 +82,14 @@ public class StationService {
                     "Informe latitude e longitude ou um termo de busca.");
         }
         return findNearby(latitude, longitude, radius);
+    }
+
+    private String normalizePostalCode(String query) {
+        if (!query.matches("[\\d\\s.-]+")) {
+            return null;
+        }
+        String digits = query.replaceAll("\\D", "");
+        return digits.length() == 8 ? digits : null;
     }
 
     public StationResponseDTO findActiveById(UUID stationId) {

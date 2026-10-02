@@ -6,9 +6,9 @@ Entregar uma interface web responsiva para os fluxos do motorista e do
 administrador, consumindo os endpoints reais das Fases 2 a 8. O frontend é
 servido pelo Spring Boot a partir de `src/main/resources/static`, usa HTML
 semântico, Vanilla JavaScript ES modules, Bootstrap 5.2.3 via CDN e Leaflet
-1.9.4. A decisão de substituir Tailwind por Bootstrap foi aprovada; a migração
-visual está em andamento e esta documentação distingue a direção aprovada do
-que ainda precisa de validação funcional e visual.
+1.9.4. A decisão de substituir Tailwind por Bootstrap foi aprovada e aplicada
+às telas da aplicação. Esta documentação distingue o que já está integrado e
+verificado do que ainda requer validação funcional e visual mais ampla.
 
 ## Referência visual e decisão de integração
 
@@ -105,12 +105,15 @@ implementadas pelos módulos próprios já descritos neste documento.
   1200px; plugins jQuery, exemplos de CRM/e-commerce, tabelas de demonstração,
   imagens e ícones/fontes adicionais não são copiados. Conteúdo da API e os
   fluxos de autenticação, GPS, Leaflet e autorização permanecem na lógica atual.
-- **Ainda pendente:** teste visual e funcional em navegador; confirmar os
-  estados renderizados dinamicamente em cada página, o mapa em larguras
-  estreitas, a interação do menu, a legibilidade das filas administrativas e a
-  experiência de teclado/touch. A carga por CDN depende de rede externa; a
-  migração não deve ser considerada concluída antes da validação e da decisão
-  operacional sobre a dependência externa.
+- **Validação já registrada:** smoke visual do mapa em larguras de 360 a
+  1440px, ausência de overflow horizontal nas larguras verificadas e abertura
+  do menu móvel, inclusive fechamento com Escape. Home, login e navegação
+  também foram verificadas no navegador com sessão simulada.
+- **Ainda pendente:** validação visual/funcional de todas as páginas e dos
+  estados dinâmicos com backend e sessão reais, além de revisão de teclado e
+  touch nas telas administrativas. Os testes com sessão simulada não substituem
+  a integração real. A carga por CDN depende de rede externa; decidir se os
+  recursos continuarão externos ou serão fornecidos localmente.
 
 ### Estrutura e recursos que podem ser adaptados
 
@@ -201,8 +204,10 @@ reorganizados em celular.
 ### Responsividade e experiência móvel
 
 Usar o grid Bootstrap e validar os breakpoints nativos junto aos pontos próprios
-do LUNO. O comportamento abaixo é o direcionamento a implementar e testar; não
-declara que a interface atual já o cumpra integralmente.
+do LUNO. A tabela define o comportamento esperado e a cobertura visual ainda
+necessária; as verificações executadas até aqui estão registradas em
+[Verificações executadas](#verificações-executadas) e não representam validação
+completa de todas as telas.
 
 | Largura/contexto | Navegação e conteúdo | Componentes e interação |
 |---|---|---|
@@ -274,6 +279,7 @@ src/main/resources/static/
     ├── station-detail.js
     ├── vehicles-page.js
     ├── recommendations-page.js
+    ├── login-page.js
     └── admin-page.js
 ```
 
@@ -295,10 +301,15 @@ src/main/resources/static/
 
 ## Fluxos integrados
 
-- **Busca entregue atualmente:** consulta por cidade/bairro/CEP com fallback textual e
-  localização GPS com consentimento explícito, escolha de raio, mapa/lista de
-  postos e marcadores. Ao abrir um popup, os preços são carregados pelo endpoint
-  do posto; coordenadas nulas não geram marcadores.
+- **Busca entregue atualmente:** consulta por cidade/bairro/CEP com fallback
+  textual e localização GPS com consentimento do navegador, escolha de raio,
+  mapa/lista de postos e marcadores. Quando a entrada contém somente números
+  e hífens, o campo aplica a máscara `00000-000` e limita o CEP a oito dígitos,
+  inclusive ao colar um valor maior. O backend normaliza CEP com ou sem hífen
+  e pesquisa os postos pelo CEP sem chamar o geocodificador. Os raios
+  selecionáveis no mapa são 5, 10, 20 e 50 km; 5 km é o padrão. Ao abrir um
+  popup, os preços são carregados pelo endpoint do posto; coordenadas nulas não
+  geram marcadores.
 - **Detalhe do posto:** preços e datas de coleta, avaliações publicadas,
   submissão de avaliação por `ROLE_DRIVER`, gestão da própria avaliação e links
   externos para Google Maps e Waze.
@@ -328,9 +339,9 @@ src/main/resources/static/
 - Conteúdo vindo da API é inserido usando `textContent`/elementos DOM, não como
   HTML executável.
 - **Situação atual da implementação:** páginas e assets estáticos podem ser
-  carregados sem autenticação; APIs aplicam as regras por endpoint, e algumas
-  rotas de leitura de postos/preços/avaliações ainda aceitam acesso público.
-  A lista de origens padrão inclui
+  carregados sem autenticação; APIs aplicam as regras por endpoint.
+  `GET /stations/**` e `GET /fuel-prices/compare` aceitam acesso público;
+  leituras de avaliações por posto exigem autenticação. A lista de origens padrão inclui
   `http://localhost:8080` para que refresh/logout com cookie funcionem quando a
   UI é servida pelo próprio backend. Em ambientes externos, definir
   `APP_SECURITY_ALLOWED_ORIGINS` explicitamente e configurar o cookie seguro
@@ -372,9 +383,11 @@ descritos acima.
 - O arquivo HTML do mapa continua acessível como asset estático público sob a
   configuração atual; a guarda de sessão do navegador não substitui
   autorização server-side.
-- Atualmente, algumas APIs `GET` de domínio são públicas conforme o contrato
-  herdado das Fases 4 a 6; migrá-las para autenticação faz parte deste trabalho
-  planejado.
+- Atualmente, `GET /stations/**` e `GET /fuel-prices/compare` são públicos na
+  configuração de segurança. Outras rotas de leitura, como avaliações por
+  posto, exigem autenticação; operações administrativas e de motorista usam
+  as permissões correspondentes. A guarda do frontend não protege os arquivos
+  HTML estáticos no servidor.
 
 ### Layout e estados de interface
 
@@ -383,13 +396,12 @@ descritos acima.
   desta fase. O LUNO orienta composição e adaptação; telas/conteúdo de outros
   domínios não são requisitos do FuelFinder.
 - A navegação atual é um cabeçalho FuelFinder compacto (em vez da sidebar
-  administrativa LUNO), com menu colapsável por controle em larguras abaixo de
-  1200px. Em telas menores, iniciar recolhido;
-  expor o estado pelo botão (`aria-expanded`) e permitir fechar pelo controle,
-  ao navegar e pela tecla Escape. Definir e testar estados aberto e fechado,
-  indicação da seção atual, foco do teclado, retorno de foco e fechamento
-  acessível. Usar os breakpoints Bootstrap e customizações LUNO documentados na
-  seção de responsividade, sem presumir equivalência entre eles.
+  administrativa LUNO), com menu colapsável abaixo de 1200px. O botão expõe o
+  estado por `aria-expanded`; o menu fecha ao navegar e com Escape, devolvendo
+  foco ao botão. Esse comportamento foi verificado no smoke test; a revisão
+  completa de teclado e touch ainda é necessária. Usar os breakpoints
+  Bootstrap e customizações LUNO documentados na seção de responsividade, sem
+  presumir equivalência entre eles.
 - Aplicar espaçamento consistente e suficiente entre textos, campos, cartões
   e botões; dimensionar áreas clicáveis para toque móvel sem controles
   excessivamente próximos. Aplicar pt-BR a todo texto de interface e validar
@@ -406,26 +418,29 @@ descritos acima.
   geolocalização. Se concedido, mostrar estado de carregamento, centralizar o
   mapa na posição atual e buscar automaticamente postos próximos, sem exigir
   uma primeira busca manual.
-- O raio da busca deve ser configurável. Preservar como referência o padrão de
-  5 km documentado na Fase 4; opções adicionais e eventual configuração
-  administrativa ainda precisam de decisão.
+- O raio da busca é configurável pelo seletor do mapa: 5, 10, 20 ou 50 km,
+  com padrão de 5 km. Ainda não existe configuração administrativa do raio.
 - Em permissão negada, localização indisponível ou erro, informar a causa sem
   bloquear a aplicação e permitir pesquisa ou seleção manual de localização.
   Nunca obter coordenadas sem consentimento.
 
 ### Pendências de decisão e validação
 
-- Definir opções de raio além do padrão atual, validar o breakpoint final do
-  menu e a escala de espaçamento após testes de usabilidade.
-- Definir se os recursos de Bootstrap e Nunito permanecerão em CDN ou serão
-  fornecidos localmente, considerando rede, CSP, disponibilidade e privacidade.
+- Realizar revisão visual e funcional de todas as telas, inclusive listas
+  administrativas, estados dinâmicos e integração com backend/sessão reais.
+- Validar acessibilidade de teclado e touch de ponta a ponta e a legibilidade
+  das filas administrativas em dispositivos móveis.
+- Definir se Bootstrap, Leaflet, tiles OpenStreetMap e Nunito continuarão em
+  CDN ou serão fornecidos localmente, considerando rede, CSP, disponibilidade
+  e privacidade.
 - Validar licença antes de redistribuir qualquer asset do LUNO.
-- Executar validação visual em todas as larguras documentadas, em paisagem e
-  nos estados de carregamento/vazio/sucesso/erro; garantir interface pt-BR sem
-  cortes nem rolagem horizontal global.
+- Completar validação visual em todas as larguras documentadas, orientação
+  paisagem e estados de carregamento/vazio/sucesso/erro; as verificações atuais
+  cobrem o mapa e alguns fluxos de home/login/menu, não todas as páginas.
 - Planejar testes de autorização server-side para navegação direta,
   redirecionamento de retorno, sessão expirada e papel insuficiente, além de
-  testes visuais desktop/mobile e dos estados da geolocalização.
+  confirmar a política desejada para páginas estáticas e leituras públicas de
+  postos/preços.
 
 ## Critérios de aceitação
 
@@ -441,12 +456,13 @@ descritos acima.
 - [x] Fluxos de login/registro, veículos, avaliações e recomendações integrados.
 - [x] Painel admin com postos, preços, moderação por status e importação ANP.
 - [x] JWT somente em memória e refresh cookie limitado aos endpoints necessários.
-- [x] Assets estáticos acessíveis sem autenticação; APIs permanecem protegidas.
+- [x] Assets estáticos acessíveis sem autenticação; a autorização das APIs é
+  por endpoint, com leituras públicas de postos e comparação de preços.
 - [x] Estrutura responsiva, semântica e com feedback acessível para operações.
 - [x] Teste de integração confirma entrega das páginas/assets sem autenticação e
   autorização administrativa para a fila de moderação.
-- [ ] Migração visual LUNO/Bootstrap 5.2.3 aprovada e aplicada; falta revisão
-  visual/funcional completa e validação integrada antes de considerá-la concluída.
+- [x] Migração visual LUNO/Bootstrap 5.2.3 aplicada às telas; a revisão
+  visual/funcional completa e a validação integrada permanecem pendentes.
 
 ## Verificações executadas
 

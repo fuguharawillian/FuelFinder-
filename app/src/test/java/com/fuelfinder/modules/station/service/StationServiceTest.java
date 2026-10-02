@@ -217,6 +217,19 @@ class StationServiceTest {
     }
 
     @Test
+    void searchesPostalCodeWithoutMaskAndSkipsGeocoding() {
+        Station match = station("Posto CEP", decimal("-23.55"), decimal("-46.63"));
+        when(stationRepository.searchByPostalCode(StationStatus.ACTIVE, "06132000"))
+                .thenReturn(List.of(match));
+
+        var results = stationService.search(null, null, null, " 06132-000 ");
+
+        assertEquals("Posto CEP", results.getFirst().corporateName());
+        verify(geocodingService, never()).geocode(any());
+        verify(stationRepository).searchByPostalCode(StationStatus.ACTIVE, "06132000");
+    }
+
+    @Test
     void hidesInactiveStationsAndDeactivatesWithoutDeleting() {
         Station station = station("Station", decimal("0"), decimal("0"));
         when(stationRepository.findByIdAndStatus(STATION_ID, StationStatus.ACTIVE))

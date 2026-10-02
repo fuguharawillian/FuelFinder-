@@ -7,7 +7,7 @@ Implementar o CRUD de postos de combustível com busca por proximidade geográfi
 **Branch:** `feature/postos-geolocalizacao`
 **Dependência:** Fase 2 (Autenticação e Usuários)
 
-**Acesso-alvo:** mapa, busca e detalhes de postos estão disponíveis somente após login; endpoints de consulta também exigem autenticação. A aplicação atual pode servir as páginas estáticas sem sessão, e esse alinhamento é trabalho planejado, não comportamento já entregue.
+**Acesso-alvo:** mapa, busca e detalhes de postos estão disponíveis somente após login. **Estado atual:** as páginas estáticas são entregues publicamente e a UI faz a guarda no cliente; `GET /stations/**` também está público na configuração de segurança. A guarda no cliente não substitui autorização no servidor.
 
 ---
 
@@ -15,8 +15,8 @@ Implementar o CRUD de postos de combustível com busca por proximidade geográfi
 
 | Método | Rota | Objetivo | Acesso | Status HTTP |
 |--------|------|----------|--------|-------------|
-| `GET`  | `/stations` | Busca postos por geolocalização ou texto | `ROLE_DRIVER` / `ROLE_ADMIN` | `200 OK` |
-| `GET`  | `/stations/{id}` | Detalhes do posto ativo | `ROLE_DRIVER` / `ROLE_ADMIN` | `200 OK` |
+| `GET`  | `/stations` | Busca postos por geolocalização ou texto | Público atualmente; alvo `ROLE_DRIVER` / `ROLE_ADMIN` | `200 OK` |
+| `GET`  | `/stations/{id}` | Detalhes do posto ativo | Público atualmente; alvo `ROLE_DRIVER` / `ROLE_ADMIN` | `200 OK` |
 | `POST` | `/stations` | Cadastra novo posto revendedor | `ROLE_ADMIN` | `201 Created` |
 | `PATCH`| `/stations/{id}` | Atualiza informações do posto | `ROLE_ADMIN` | `200 OK` |
 | `DELETE`| `/stations/{id}` | Inativa logicamente um posto | `ROLE_ADMIN` | `204 No Content` |
@@ -44,7 +44,7 @@ Implementar o CRUD de postos de combustível com busca por proximidade geográfi
 
 1. Após autenticar e abrir a área do mapa, solicitar permissão para geolocalização pelo navegador/dispositivo; não obter coordenadas sem consentimento.
 2. Enquanto aguarda a localização, apresentar estado de carregamento. Com a permissão concedida, centralizar o mapa na posição obtida e iniciar automaticamente a busca de postos próximos no raio selecionado, sem exigir uma busca manual inicial.
-3. O raio deve ser configurável. O padrão de 5 km já definido nesta fase permanece como referência; a lista de opções disponíveis ainda precisa ser decidida.
+3. O raio é configurável no mapa; o seletor oferece 5, 10, 20 e 50 km, com 5 km como padrão. Ainda não existe configuração administrativa.
 4. Apresentar estados de carregamento, lista vazia, resultados e erro para busca/localização.
 5. Se a permissão for negada, a posição estiver indisponível ou ocorrer erro, explicar a situação e permitir pesquisar ou selecionar local manualmente. Não bloquear o restante das áreas autenticadas.
 
@@ -53,6 +53,7 @@ Implementar o CRUD de postos de combustível com busca por proximidade geográfi
 2. Quando `GEOAPIFY_API_KEY` está configurada, a consulta textual também pode ser geocodificada no backend e usada para busca por proximidade
 3. Sem a chave, a busca textual local continua disponível e a aplicação inicia normalmente
 4. A chave é lida exclusivamente da variável de ambiente; chamadas reais ao serviço não são necessárias para os testes locais
+5. Entradas numéricas no campo de busca são formatadas como CEP `00000-000` e limitadas a oito dígitos; o backend normaliza valores com ou sem hífen e consulta os CEPs cadastrados sem geocodificação.
 
 ### Inativação Lógica
 1. `DELETE /stations/{id}` **não exclui** fisicamente o registro

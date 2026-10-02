@@ -100,7 +100,7 @@ flowchart LR
 
 **Execução da Fase 9:** A construção inicial de telas e componentes pode começar em paralelo após a Fase 1, usando os contratos de API documentados e dados simulados. A integração com a API real e a validação final do frontend dependem da conclusão das Fases 2 a 8, incluindo os endpoints de avaliações (Fase 6) e os dados/importação ANP (Fase 8).
 
-**Andamento da Fase 9 — migração visual:** em andamento na branch `feature/Danilo`. Bootstrap 5.2.3 foi adotado para substituir Tailwind; as páginas de busca/mapa, autenticação, veículos, recomendação, detalhe do posto e administração foram adaptadas ao grid e componentes Bootstrap. `mvn -q -f app\pom.xml test`, validação sintática dos módulos JavaScript e `git diff --check` passaram. Smoke visual em servidor estático confirmou ausência de overflow horizontal no mapa nas larguras testadas de 360 a 1440px e abertura do menu móvel; integração real de sessão/API e revisão visual de todos os estados continuam pendentes. A referência `Layout/` permanece somente para leitura.
+**Estado da Fase 9 — frontend e integração:** Bootstrap 5.2.3 e CSS próprio inspirado pelo LUNO estão aplicados às páginas de busca/mapa, autenticação, veículos, recomendação, detalhe do posto e administração. O campo de busca formata entrada numérica como CEP `00000-000`, limita-a a oito dígitos e o backend pesquisa CEP com ou sem hífen sem chamar o geocodificador. O seletor de raio oferece 5, 10, 20 e 50 km (padrão 5 km). `mvn -q -f app\pom.xml test`, validação sintática dos módulos JavaScript e `git diff --check` foram registrados como aprovados. Smoke visual em servidor estático confirmou ausência de overflow horizontal no mapa nas larguras testadas de 360 a 1440px e abertura/fechamento do menu móvel; home, login e navegação também foram exercitadas com sessão simulada. A validação visual de todas as telas, a integração de sessão/API reais e a revisão de todos os estados continuam pendentes. A referência `Layout/` permanece somente para leitura.
 
 ---
 
@@ -586,7 +586,7 @@ Ver detalhes do contrato, comportamento e validação em
 
 ### `Plano/09-frontend-integracao.md`
 
-**Objetivo:** Interface web responsiva com mapa Leaflet, consumo da API REST, autenticação JWT no cliente, deep links de navegação e direção visual orientada pelo LUNO/Bootstrap 5. A decisão de substituir Tailwind por Bootstrap 5.2.3 via CDN foi aprovada; migração visual em andamento, sem carregar ambos os frameworks em conjunto.
+**Objetivo:** Interface web responsiva com mapa Leaflet, consumo da API REST, autenticação JWT no cliente, deep links de navegação e direção visual orientada pelo LUNO/Bootstrap 5. A substituição do Tailwind por Bootstrap 5.2.3 via CDN foi aplicada às telas; a validação visual/funcional completa ainda está pendente.
 
 **Tarefas:**
 
@@ -624,21 +624,21 @@ Ver detalhes do contrato, comportamento e validação em
 - ✅ Interface responsiva, semântica, teclado acessível e feedback `aria-live`
 - ✅ Testes de integração verificam acesso público a assets e RBAC da moderação
 
-**Critérios adicionais planejados, ainda não implementados:**
+**Estado dos critérios adicionais:**
 - [x] Home pública é a página inicial padrão; botão Entrar abre login e o login não duplica essa ação no cabeçalho
 - [x] Busca/mapa movido para `map.html`, com sessão requerida no controle do frontend; login/registro retorna ao mapa por padrão
 - [x] Navegação e conteúdo reagem a mudanças de sessão; links e ações são condicionados à autenticação e papel
 - [ ] Validar integração da home e navegação com sessão/API real e confirmar autorização server-side das páginas internas
-- [ ] Retorno após login funciona apenas para destino interno autorizado, sem open redirect
+- [x] Retorno após login limitado a caminhos internos permitidos; a validação visual registrada usou sessão simulada
 - [ ] APIs de leitura de postos, preços e avaliações exigem `ROLE_DRIVER` ou `ROLE_ADMIN`
-- [ ] Navegação responsiva no cabeçalho, com comportamento desktop/mobile e acessibilidade verificados
-- [ ] Mapa solicita permissão ao entrar; após autorização centra na posição e carrega postos automaticamente
-- [ ] Recusa/erro/indisponibilidade de GPS permite localização manual e não bloqueia o restante do sistema
+- [ ] Completar validação de teclado/touch e dos estados aberto/fechado do menu em desktop/mobile
+- [x] Mapa solicita permissão ao entrar; após autorização centra na posição e carrega postos automaticamente
+- [x] Recusa/erro/indisponibilidade de GPS informa o problema e mantém disponível a busca manual por texto
 - [ ] Espaçamento consistente, áreas de toque adequadas e estados loading/empty/success/error validados
-- [ ] Concluir a migração e validar todas as telas FuelFinder com o sistema visual LUNO/Bootstrap, sem copiar conteúdo demonstrativo e com toda a interface em pt-BR
+- [x] Aplicar o sistema visual LUNO/Bootstrap às telas FuelFinder sem copiar conteúdo demonstrativo; validar visualmente todas as telas ainda está pendente
 - [ ] Validar a versão Bootstrap 5.2.3 carregada e avaliar integridade/reprodutibilidade da dependência CDN para o modo de entrega do projeto
 - [ ] Validar os estados de autenticação, formulários, administração e respostas da API em ambiente integrado; o smoke test estático não fornece endpoints reais
-- [ ] Validar licenças antes de reutilizar assets/fontes do template e preferir CSS próprio enxuto aos bundles e plugins não usados
+- [x] Não importar bundles, plugins ou assets demonstrativos do template; a implementação usa CSS próprio
 
 Estado atual, diretrizes de referência e instruções de validação em
 [`09-frontend-integracao.md`](./09-frontend-integracao.md).

@@ -28,7 +28,7 @@ A matriz tecnológica está estruturada em três níveis:
 | **Biblioteca de Mapas** | **Leaflet** | **1.9.4** | Definida | Visualização cartográfica interativa, leve, gratuita e responsiva no navegador. |
 | **Provedor de Mapas** | **OpenStreetMap** | — | Definida | Camada de tiles gratuita e aberta consumida diretamente pelo Leaflet sem custos de licença no MVP. |
 | **Estrutura Frontend** | **HTML5 Semântico + CSS3** | Padrão W3C | Definida | Interface web responsiva para dispositivos móveis e desktop, com conformidade WCAG/W3C. |
-| **Estilização frontend** | **Bootstrap 5 via CDN + CSS próprio** | **5.2.3** | Migração visual em andamento | Substitui Tailwind em todas as telas; adaptação da identidade visual LUNO conforme [`../Plano/09-frontend-integracao.md`](../Plano/09-frontend-integracao.md). Não carregar os dois frameworks simultaneamente. |
+| **Estilização frontend** | **Bootstrap 5 via CDN + CSS próprio** | **5.2.3** | Implementada; validação visual ampla pendente | Substitui Tailwind nas telas; adaptação da identidade visual LUNO conforme [`../Plano/09-frontend-integracao.md`](../Plano/09-frontend-integracao.md). Não carregar os dois frameworks simultaneamente. |
 | **Scripts Frontend** | **Vanilla JavaScript** | **ES2023+** | Homologada | Modularidade nativa, consumo da API Fetch, manipulação do Leaflet e captura da Geolocation API. |
 | **Autenticação & Token** | **JWT (JJWT)** | **0.12.6+** | Homologada | Access JWT de curta duração com assinatura HMAC-SHA256 e sessões server-side para rotação e revogação de refresh tokens. |
 | **Segurança Backend** | **Spring Security** | **6.4+** | Homologada | Proteção de rotas com RBAC (`ROLE_DRIVER` e `ROLE_ADMIN`), filtros de segurança e hash BCrypt com custo mínimo 12; senha exige maiúscula, minúscula, número e caractere especial. |
@@ -54,7 +54,7 @@ A matriz tecnológica está estruturada em três níveis:
 - **Base funcional preservada:** HTML semântico, Vanilla JS em módulos ES, Leaflet 1.9.4 para o mapa e integrações existentes com a API.
 - **Referência visual:** O template [`../Layout/`](../Layout/README.md) declara Bootstrap `^5.2.0`, usa SCSS próprio, Gulp e um conjunto amplo de plugins. Não há lockfile no diretório da referência para determinar a versão instalada exata. A análise e os mapeamentos de componentes estão em [`../Plano/09-frontend-integracao.md`](../Plano/09-frontend-integracao.md).
 - **Decisão de migração:** aprovada pelo usuário; Bootstrap 5.2.3 via CDN substitui Tailwind. O CSS próprio implementa tokens LUNO, sem importar os bundles de plugins, jQuery ou os assets demonstrativos do template.
-- **Estado da migração:** páginas de busca/mapa, login/cadastro, veículos, recomendações, detalhe do posto e administração estão adaptadas ao grid/componentes Bootstrap; revisão visual mais ampla e validação funcional ainda estão pendentes.
+- **Estado da implementação:** páginas de busca/mapa, login/cadastro, veículos, recomendações, detalhe do posto e administração usam o grid/componentes Bootstrap e o CSS próprio inspirado no LUNO. Há smoke tests visuais registrados para o mapa, home, login e menu; validação de todas as telas e integração com backend/sessão reais ainda estão pendentes.
 - **Limites:** não copiar bundles de plugins, jQuery, conteúdo de demonstração, fontes ou imagens antes de avaliar necessidade, acessibilidade e licença. Toda interface derivada deve estar em português do Brasil (pt-BR); detalhes responsivos devem seguir a Fase 9.
 
 ### 3.3 Banco de Dados: PostgreSQL 16 com Flyway

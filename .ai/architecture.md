@@ -33,10 +33,9 @@ O FuelFinder adota a arquitetura de **Monolito Modular em Camadas**, expondo uma
 
 ### 1.2 Áreas Públicas e Autenticadas
 
-- **Público:** tela de login, cadastro e endpoints mínimos para registro, login e renovação de sessão. Assets estritamente necessários para essas telas também podem ser entregues sem sessão.
-- **Autenticado (`ROLE_DRIVER` ou `ROLE_ADMIN`):** mapa, busca e detalhes de postos, preços, avaliações, veículos, recomendações e as demais telas internas. Endpoints de dados correspondentes também exigem autenticação; operações administrativas continuam exigindo `ROLE_ADMIN`.
+- **Acesso-alvo:** tela de login, cadastro e endpoints mínimos para registro, login e renovação de sessão são públicos. Mapa e demais telas internas, assim como os endpoints de dados, devem exigir autenticação; operações administrativas exigem `ROLE_ADMIN`.
 - **Acesso direto sem sessão:** redirecionar para o login e preservar somente o caminho interno solicitado, quando seguro. Após autenticação bem-sucedida, retornar à área originalmente solicitada; se a sessão expirar, a conta não tiver o papel necessário ou o destino não for válido, mostrar mensagem adequada e encaminhar para uma área autorizada. Destinos externos não são aceitos como retorno.
-- **Estado atual:** a interface implementada anteriormente entrega páginas estáticas publicamente; a proteção visual por cliente não substitui autorização no backend. A restrição de páginas internas e das APIs de leitura é uma alteração futura planejada, não uma descrição do comportamento já entregue.
+- **Estado atual:** páginas HTML e assets estáticos são públicos no servidor; a interface aplica guardas de sessão/papel no cliente, mas isso não substitui autorização server-side. A configuração permite publicamente `GET /stations/**` e `GET /fuel-prices/compare`; outras rotas de dados exigem autenticação ou papel conforme endpoint. Essa diferença em relação ao acesso-alvo deve ser considerada ao avaliar exposição e planejar mudanças.
 
 ---
 
@@ -362,7 +361,7 @@ O navegador envia automaticamente o cookie `refreshToken`; o cliente não o lê 
 | `DELETE`| `/stations/{id}` | Inativa logicamente um posto | `ROLE_ADMIN` | `204 No Content` |
 
 #### Exemplo: `GET /stations?latitude=-23.5505&longitude=-46.6333&radiusKm=5`
-Para busca textual (endereço, bairro, município ou CEP), o cliente envia `GET /stations?query={texto}&radiusKm={raioKm}`. Chamadas reais de geocodificação usam Geoapify no backend e exigem `GEOAPIFY_API_KEY`, lida exclusivamente do ambiente. A variável é necessária somente para testar essas chamadas; sem ela, a aplicação inicia normalmente e os fluxos que não dependem do serviço continuam disponíveis. A chave nunca deve ser exposta ao cliente nem armazenada no código/Git. Os limites do plano gratuito podem mudar.
+Para busca textual (endereço, bairro, município ou CEP), o cliente envia `GET /stations?query={texto}&radiusKm={raioKm}`. A busca do frontend formata entradas numéricas como CEP no padrão `00000-000`, limitando-as a oito dígitos; o backend normaliza CEP com ou sem hífen e pesquisa diretamente sem geocodificação. Para os demais termos, chamadas reais de geocodificação usam Geoapify no backend e exigem `GEOAPIFY_API_KEY`, lida exclusivamente do ambiente. A variável é necessária somente para testar essas chamadas; sem ela, a aplicação inicia normalmente e os fluxos que não dependem do serviço continuam disponíveis. A chave nunca deve ser exposta ao cliente nem armazenada no código/Git. Os limites do plano gratuito podem mudar.
 
 **Response Payload (200 OK):**
 ```json
@@ -480,7 +479,7 @@ sequenceDiagram
     Browser-->>Condutor: Exibe postos com preços, distâncias e botão 'Rotas'
 ```
 
-**Comportamento-alvo da localização:** somente após autenticação e entrada na área do mapa, solicitar permissão explícita do navegador. Com a permissão concedida, centralizar o mapa e iniciar automaticamente a consulta de postos próximos. Enquanto localização e resultados carregam, exibir estados de carregamento. Em caso de recusa, indisponibilidade ou erro, explicar o ocorrido e permitir pesquisa/seleção manual sem bloquear as demais funções autenticadas. O raio deve ser configurável; mantém-se o padrão de 5 km já registrado na Fase 4, sem definir novas opções de raio nesta revisão.
+**Comportamento implementado da localização:** ao abrir o mapa com sessão válida, solicitar permissão do navegador; com consentimento, centralizar o mapa e iniciar automaticamente a busca. Em caso de recusa, indisponibilidade ou erro, informar a causa e manter disponível a busca manual. O seletor oferece raios de 5, 10, 20 e 50 km, com 5 km como padrão; ainda não há configuração administrativa dessas opções. A validação completa com backend e sessão reais permanece pendente.
 
 ### 6.2 Fluxo: Redirecionamento de Rotas para Waze / Google Maps
 ```mermaid

@@ -13,7 +13,7 @@ Implementar autenticação com access JWT de curta duração e refresh token rot
 - Quando uma pessoa sem sessão tenta abrir diretamente uma rota interna, encaminhá-la à tela de login e preservar somente a rota interna solicitada como destino de retorno.
 - Após autenticação, continuar para o destino solicitado se a sessão e o papel do usuário autorizarem o acesso; caso contrário, exibir mensagem e encaminhar para uma área autorizada. Nunca aceitar URLs externas como destino de retorno.
 - O controle de acesso do backend é obrigatório; ocultar links ou redirecionar no navegador não substitui a proteção das rotas e dados.
-- A aplicação atual ainda serve páginas estáticas internas sem autenticação. O alinhamento desses comportamentos será planejado na Fase 9; esta seção descreve o comportamento-alvo, não afirma que já está implementado.
+- **Estado atual:** o servidor serve as páginas estáticas internas sem autenticação; a UI faz redirecionamento/guarda por sessão e papel no cliente. Isso não equivale a proteger as páginas no servidor. O comportamento-alvo continua sendo proteger páginas e dados server-side.
 
 ---
 

@@ -4,7 +4,7 @@ Este documento formaliza as regras de negócio, invariantes operacionais, fórmu
 
 Esta versão consolida a revisão técnica completa, servindo como **especificação executável e base de implementação para a próxima aula**.
 
-> **Acesso-alvo da aplicação:** login e cadastro são as únicas áreas funcionais públicas. Mapa e demais telas internas, bem como seus endpoints de dados, exigem autenticação. A implementação atual ainda permite carregar páginas estáticas sem sessão; o alinhamento é trabalho futuro documentado na Fase 9, não funcionalidade já entregue.
+> **Acesso-alvo da aplicação:** login e cadastro são as únicas áreas funcionais públicas; mapa e demais telas internas e seus endpoints exigem autenticação. **Estado atual:** o servidor entrega páginas estáticas sem sessão e permite `GET /stations/**` e `GET /fuel-prices/compare` publicamente. A UI guarda as telas por sessão/papel no cliente, o que não substitui autorização no servidor. Consulte [Fase 9](../Plano/09-frontend-integracao.md) para o inventário atualizado.
 
 ---
 
@@ -121,9 +121,10 @@ flowchart LR
 ### 3.2 Busca de Proximidade e Visualização
 * **Autenticação prévia:** O mapa e a busca de postos ficam disponíveis somente após autenticação (`ROLE_DRIVER` ou `ROLE_ADMIN`).
 * **Permissão de Geolocalização:** Ao abrir a área do mapa, o sistema solicita consentimento do navegador para obter a localização atual. Sem consentimento, não tenta coletar coordenadas.
-* **Busca próxima automática:** Quando a localização é obtida, o mapa é centralizado e a busca de postos próximos inicia automaticamente, sem exigir uma primeira busca manual. O raio deve permanecer configurável; a Fase 4 documenta atualmente 5 km como padrão. As opções de raio e eventual configuração administrativa ainda não estão definidas.
+* **Busca próxima automática:** Quando a localização é obtida, o mapa é centralizado e a busca de postos próximos inicia automaticamente. O seletor atual oferece 5, 10, 20 e 50 km, usando 5 km como padrão; não há configuração administrativa para essas opções.
 * **Estados e fallback:** A interface apresenta estados de carregamento, vazio, sucesso e erro para localização e resultados. Caso a permissão seja negada, a localização esteja indisponível ou ocorra erro, informa claramente e permite pesquisar/selecionar uma localização manualmente, sem bloquear outras funcionalidades autenticadas.
 * **Geocodificação textual:** Chamadas reais de geocodificação usam Geoapify no backend e só são habilitadas quando `GEOAPIFY_API_KEY` está configurada no ambiente; sem a variável, a aplicação continua iniciando e as funcionalidades que não dependem do serviço permanecem disponíveis.
+* **Busca por CEP:** A busca formata entradas numéricas no padrão `00000-000`, limita o valor a oito dígitos (inclusive ao colar) e pesquisa CEP com ou sem hífen por comparação de dígitos no backend, sem depender do serviço de geocodificação.
 * **Geocodificação de Postos da ANP:** Quando um registro importado não possuir latitude/longitude, o backend usa Geoapify se `GEOAPIFY_API_KEY` estiver configurada no ambiente. A chave é necessária somente para testar chamadas reais ao serviço; sem ela, registra o resultado parcial e mantém o posto sem coordenadas. Falhas devem ser rastreáveis. A chave nunca pode ser armazenada no código ou no Git nem exposta ao frontend. Os limites do plano gratuito podem mudar.
 * **Apresentação Visual Dupla:** Os resultados são exibidos simultaneamente em:
   1. **Mapa Interativo:** Renderizado via biblioteca **Leaflet 1.9.4** com tiles do **OpenStreetMap**.
