@@ -157,7 +157,8 @@ class AnpImportControllerIntegrationTest {
             throws Exception {
         String adminToken = createAdminAndLogin();
         when(geocodingService.isConfigured()).thenReturn(true);
-        when(geocodingService.geocode("Rua Um 10, Centro, Sao Paulo, SP, Brasil"))
+        when(geocodingService.geocode(
+                "Rua Um 10, Centro, 01000-000, Sao Paulo, SP, Brasil"))
                 .thenReturn(java.util.Optional.of(
                         new GeoapifyGeocodingService.GeoPoint(-23.5, -46.6)));
         when(csvDownloader.download(SOURCE_URL)).thenReturn(csv(

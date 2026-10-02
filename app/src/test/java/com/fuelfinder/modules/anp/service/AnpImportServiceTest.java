@@ -148,15 +148,15 @@ class AnpImportServiceTest {
         when(downloader.sanitizeSourceUrl(rootUrl)).thenReturn("https://www.gov.br/");
         doReturn(validCsv()).when(downloader).download("https://www.gov.br/");
         when(processor.process(any(ParsedAnpCsv.class))).thenReturn(new AnpImportResult(
-                1, 0, List.of("x".repeat(11_000))));
+                1, 0, List.of("x".repeat(1_010_000))));
 
         AnpImportLog result = service.executeImport(
                 "https://www.gov.br/", "2026-S1", TRIGGERED_BY);
 
         assertEquals("anp-import.csv", result.getFileName());
-        assertEquals(10_000, result.getErrorDetails().length());
+        assertEquals(1_000_000, result.getErrorDetails().length());
         assertTrue(result.getErrorDetails().endsWith(
-                "[Detalhes truncados pelo limite de 10000 caracteres.]"));
+                "[Detalhes truncados pelo limite de 1000000 caracteres.]"));
         assertEquals(ImportStatus.PARTIAL, result.getStatus());
     }
 

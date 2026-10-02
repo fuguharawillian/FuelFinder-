@@ -9,8 +9,7 @@ import com.fuelfinder.modules.price.repository.FuelPriceRepository;
 import com.fuelfinder.modules.station.entity.Station;
 import com.fuelfinder.modules.station.repository.StationRepository;
 import com.fuelfinder.modules.station.service.GeoapifyGeocodingService;
-import com.fuelfinder.modules.vehicle.entity.FuelTypeAccepted;
-import com.fuelfinder.modules.vehicle.entity.VolumeUnit;
+import com.fuelfinder.modules.station.service.GeoapifyRateLimitException;
 import jakarta.persistence.EntityManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,25 +59,26 @@ public class AnpImportProcessor {
     @Transactional
     public AnpImportResult process(ParsedAnpCsv csv) {
         Set<String> errors = new LinkedHashSet<>(csv.errors());
-        Map<String, GeocodingResolution> geocodingCache = new HashMap<>();
+        List<AnpCsvRow> spRows = filterSpRows(csv.records(), errors);
+        Map<String, StationRecord> stationRecords = collectStationRecords(spRows, errors);
+        Map<String, Station> stations = prepareStations(stationRecords, errors);
         Map<String, FuelType> fuelTypeCache = new HashMap<>();
-        Map<String, Station> stationCache = new HashMap<>();
-        Map<PriceKey, FuelPrice> existingPrices = loadExistingPrices(csv.records());
+        entityManager.flush();
+        entityManager.clear();
+        Map<PriceKey, FuelPrice> existingPrices = loadExistingPrices(spRows);
         int importedRecords = 0;
         int recordsSinceFlush = 0;
-        for (AnpCsvRow row : csv.records()) {
+        for (AnpCsvRow row : spRows) {
             try {
                 AnpPriceRecord record = parseRecord(row);
                 FuelType fuelType = fuelTypeCache.computeIfAbsent(
                         record.fuelCode(), this::findActiveFuelType);
-                Station station = stationCache.computeIfAbsent(
-                        record.cnpj(),
-                        cnpj -> stationRepository.findByCnpj(cnpj)
-                                .orElseGet(() -> createStation(record)));
-                applyStationDetails(station, record);
-                geocodeIfNeeded(station, record, geocodingCache, errors);
-                station = stationRepository.save(station);
-                stationCache.put(record.cnpj(), station);
+                Station station = stations.get(record.cnpj());
+                if (station == null) {
+                    throw new AnpRecordException(
+                            "cadastro do posto não pôde ser preparado para o CNPJ "
+                                    + record.cnpj() + ".");
+                }
                 if (savePriceIfChanged(station, fuelType, record, existingPrices)) {
                     importedRecords++;
                 }
@@ -93,9 +93,102 @@ public class AnpImportProcessor {
         }
         entityManager.flush();
         return new AnpImportResult(
-                csv.totalRecordsRead(),
+                spRows.size(),
                 importedRecords,
                 List.copyOf(errors));
+    }
+
+    private List<AnpCsvRow> filterSpRows(List<AnpCsvRow> rows, Set<String> errors) {
+        List<AnpCsvRow> spRows = new ArrayList<>();
+        for (AnpCsvRow row : rows) {
+            String state = trimToNull(row.values().get("estado sigla"));
+            if (state == null) {
+                errors.add("Linha " + row.lineNumber()
+                        + ": estado sigla ausente; linha ignorada.");
+            } else if ("SP".equalsIgnoreCase(state)) {
+                spRows.add(row);
+            } else if (!state.matches("[A-Za-z]{2}")) {
+                errors.add("Linha " + row.lineNumber()
+                        + ": estado sigla inválido; linha ignorada.");
+            }
+        }
+        return List.copyOf(spRows);
+    }
+
+    private Map<String, StationRecord> collectStationRecords(
+            List<AnpCsvRow> rows,
+            Set<String> errors) {
+        Map<String, StationRecord> stationRecords = new java.util.LinkedHashMap<>();
+        for (AnpCsvRow row : rows) {
+            try {
+                parseRecord(row);
+                StationRecord candidate = parseStationRecord(row);
+                stationRecords.merge(
+                        candidate.cnpj(),
+                        candidate,
+                        (current, next) -> addressCompleteness(next) > addressCompleteness(current)
+                                ? next : current);
+            } catch (AnpRecordException exception) {
+                errors.add("Linha " + row.lineNumber() + ": " + exception.getMessage());
+            }
+        }
+        return stationRecords;
+    }
+
+    private Map<String, Station> prepareStations(
+            Map<String, StationRecord> stationRecords,
+            Set<String> errors) {
+        if (stationRecords.isEmpty()) {
+            return Map.of();
+        }
+        Map<String, Station> stations = new HashMap<>();
+        for (Station station : stationRepository.findByCnpjIn(stationRecords.keySet())) {
+            stations.put(station.getCnpj(), station);
+        }
+
+        boolean rateLimitReached = false;
+        for (StationRecord record : stationRecords.values()) {
+            Station station = stations.computeIfAbsent(record.cnpj(), ignored -> createStation(record));
+            applyStationDetails(station, record);
+            if (!hasCoordinates(station)) {
+                if (rateLimitReached) {
+                    errors.add("Geoapify atingiu o limite de requisições; posto pendente para nova tentativa: CNPJ "
+                            + record.cnpj() + ".");
+                } else {
+                    GeocodingResolution resolution = geocode(record);
+                    if (resolution.rateLimitReached()) {
+                        rateLimitReached = true;
+                    }
+                    if (resolution.point() != null) {
+                        station.setLatitude(BigDecimal.valueOf(resolution.point().latitude()));
+                        station.setLongitude(BigDecimal.valueOf(resolution.point().longitude()));
+                    } else {
+                        errors.add(resolution.error());
+                    }
+                }
+            }
+            stations.put(record.cnpj(), stationRepository.save(station));
+        }
+        return stations;
+    }
+
+    private StationRecord parseStationRecord(AnpCsvRow row) {
+        Map<String, String> values = row.values();
+        String cnpj = normalizeCnpj(values.get("cnpj da revenda"));
+        String state = requiredText(values.get("estado sigla"), "estado").toUpperCase(Locale.ROOT);
+        if (!"SP".equals(state)) {
+            throw new AnpRecordException("a importação aceita somente postos do estado SP.");
+        }
+        return new StationRecord(
+                cnpj,
+                requiredText(values.get("revenda"), "revenda"),
+                trimToNull(values.get("bandeira")),
+                trimToNull(values.get("nome da rua")),
+                trimToNull(values.get("numero rua")),
+                trimToNull(values.get("bairro")),
+                trimToNull(values.get("cep")),
+                requiredText(values.get("municipio"), "município"),
+                state);
     }
 
     private AnpPriceRecord parseRecord(AnpCsvRow row) {
@@ -228,7 +321,7 @@ public class AnpImportProcessor {
         return fuelType;
     }
 
-    private Station createStation(AnpPriceRecord record) {
+    private Station createStation(StationRecord record) {
         return new Station(
                 record.cnpj(),
                 record.corporateName(),
@@ -244,7 +337,7 @@ public class AnpImportProcessor {
                 null);
     }
 
-    private void applyStationDetails(Station station, AnpPriceRecord record) {
+    private void applyStationDetails(Station station, StationRecord record) {
         station.setCorporateName(record.corporateName());
         station.setTradeName(record.corporateName());
         station.setBrand(record.brand());
@@ -256,30 +349,24 @@ public class AnpImportProcessor {
         station.setPostalCode(record.postalCode());
     }
 
-    private void geocodeIfNeeded(
-            Station station,
-            AnpPriceRecord record,
-            Map<String, GeocodingResolution> cache,
-            Set<String> errors) {
-        if (station.getLatitude() != null && station.getLongitude() != null) {
-            return;
-        }
-        GeocodingResolution resolution = cache.computeIfAbsent(
-                record.cnpj(), ignored -> geocode(record));
-        if (resolution.point() != null) {
-            station.setLatitude(BigDecimal.valueOf(resolution.point().latitude()));
-            station.setLongitude(BigDecimal.valueOf(resolution.point().longitude()));
-        } else {
-            errors.add(resolution.error());
-        }
+    private boolean hasCoordinates(Station station) {
+        return station.getLatitude() != null && station.getLongitude() != null;
     }
 
-    private GeocodingResolution geocode(AnpPriceRecord record) {
+    private GeocodingResolution geocode(StationRecord record) {
         if (!geocodingService.isConfigured()) {
             return new GeocodingResolution(
                     null,
                     "Geoapify desabilitada (GEOAPIFY_API_KEY ausente) para o CNPJ "
-                            + record.cnpj() + ".");
+                            + record.cnpj() + ".",
+                    false);
+        }
+        if (!hasGeocodableAddress(record)) {
+            return new GeocodingResolution(
+                    null,
+                    "Endereço incompleto; posto não geocodificado: CNPJ "
+                            + record.cnpj() + ".",
+                    false);
         }
         String address = buildAddress(record);
         try {
@@ -287,7 +374,7 @@ public class AnpImportProcessor {
             if (point.isEmpty()) {
                 return new GeocodingResolution(
                         null, "Geoapify não encontrou coordenadas para o CNPJ "
-                                + record.cnpj() + ".");
+                                + record.cnpj() + ".", false);
             }
             GeoapifyGeocodingService.GeoPoint geoPoint = point.get();
             if (!Double.isFinite(geoPoint.latitude())
@@ -296,17 +383,38 @@ public class AnpImportProcessor {
                     || geoPoint.longitude() < -180 || geoPoint.longitude() > 180) {
                 return new GeocodingResolution(
                         null, "Geoapify retornou coordenadas inválidas para o CNPJ "
-                                + record.cnpj() + ".");
+                                + record.cnpj() + ".", false);
             }
-            return new GeocodingResolution(geoPoint, null);
+            return new GeocodingResolution(geoPoint, null, false);
+        } catch (GeoapifyRateLimitException exception) {
+            return new GeocodingResolution(
+                    null,
+                    "Geoapify atingiu o limite de requisições; posto pendente para nova tentativa: CNPJ "
+                            + record.cnpj() + ".",
+                    true);
         } catch (ExternalServiceException exception) {
             return new GeocodingResolution(
                     null, "Falha na geocodificação Geoapify para o CNPJ "
-                            + record.cnpj() + ".");
+                            + record.cnpj() + ".", false);
         }
     }
 
-    private String buildAddress(AnpPriceRecord record) {
+    private boolean hasGeocodableAddress(StationRecord record) {
+        return record.street() != null
+                || record.neighborhood() != null
+                || record.postalCode() != null;
+    }
+
+    private int addressCompleteness(StationRecord record) {
+        int score = 0;
+        if (record.street() != null) score += 4;
+        if (record.number() != null) score += 2;
+        if (record.neighborhood() != null) score += 2;
+        if (record.postalCode() != null) score++;
+        return score;
+    }
+
+    private String buildAddress(StationRecord record) {
         List<String> parts = new ArrayList<>();
         String street = record.street();
         if (street != null && record.number() != null) {
@@ -314,6 +422,7 @@ public class AnpImportProcessor {
         }
         addIfPresent(parts, street);
         addIfPresent(parts, record.neighborhood());
+        addIfPresent(parts, record.postalCode());
         addIfPresent(parts, record.city());
         addIfPresent(parts, record.state());
         parts.add("Brasil");
@@ -413,9 +522,22 @@ public class AnpImportProcessor {
             BigDecimal saleValue) {
     }
 
+    private record StationRecord(
+            String cnpj,
+            String corporateName,
+            String brand,
+            String street,
+            String number,
+            String neighborhood,
+            String postalCode,
+            String city,
+            String state) {
+    }
+
     private record GeocodingResolution(
             GeoapifyGeocodingService.GeoPoint point,
-            String error) {
+            String error,
+            boolean rateLimitReached) {
     }
 
     private record PriceKey(String cnpj, String fuelCode, LocalDate collectionDate) {

@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class AnpImportService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AnpImportService.class);
-    private static final int MAX_ERROR_DETAILS_LENGTH = 10_000;
+    private static final int MAX_ERROR_DETAILS_LENGTH = 1_000_000;
     private final AnpCsvDownloader csvDownloader;
     private final AnpCsvParser csvParser;
     private final AnpImportProcessor importProcessor;

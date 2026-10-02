@@ -2,12 +2,10 @@
 
 ## Objetivo e estado
 
-**Objetivo-alvo da evolução:** ampliar o pipeline administrativo auditável,
-validado, idempotente e transacional para receber CSV/TSV direto ou ZIP que
-contenha CSV. A implementação entregue atualmente baixa CSV/TSV direto; o
-suporte a ZIP está planejado abaixo e ainda não foi implementado. Os preços são
-históricos e informativos; a interface deve exibir a data de coleta da ANP e não
-prometer preços em tempo real.
+**Objetivo:** manter o pipeline administrativo auditável, validado, idempotente
+e transacional para receber CSV/TSV direto ou ZIP que contenha CSV. Os preços
+são históricos e informativos; a interface deve exibir a data de coleta da ANP
+e não prometer preços em tempo real.
 
 **Dependência:** Fase 5 (Preços de Combustíveis).
 
@@ -20,15 +18,15 @@ prometer preços em tempo real.
   nas portas padrão 443 (ou não especificadas); não segue redirecionamentos. O
   tamanho é limitado a 50 MB e há timeouts de conexão e leitura.
 - A entrega atual baixa CSV/TSV diretamente, reconhece ponto e vírgula,
-  tabulação ou vírgula, BOM UTF-8 e UTF-8/Windows-1252. ZIP, os casos
-  específicos de números com vírgula decimal e a robustez de detecção do
-  delimitador descrita abaixo são trabalho planejado, ainda não implementado.
-- O comportamento-alvo deve aceitar um CSV/TSV direto ou um ZIP da ANP
-  contendo CSV. Para ZIP: validar o arquivo, inspecionar as entradas sem
-  confiar em caminhos internos, aplicar limites de tamanho/expansão e processar
-  o CSV elegível. Falhas de integridade, ausência de CSV ou layout incompatível
-  devem produzir erro útil e auditável. Limites de descompactação e critério
-  para selecionar entre múltiplos CSVs válidos permanecem pendentes.
+  tabulação ou vírgula, BOM UTF-8/UTF-16 e UTF-8/Windows-1252. Layouts
+  incompatíveis registram os cabeçalhos lidos e o delimitador detectado.
+  Também aceita um ZIP com CSV/TSV e nomes de entradas UTF-8 ou CP437, sem
+  extrair caminhos do arquivo. O ZIP é
+  limitado a 1.000 entradas, 100 MB descompactados por entrada e 200 MB no
+  total; quando há mais de um CSV/TSV com layout ANP válido, a importação falha
+  com os nomes das entradas para que a fonte seja desambiguada.
+- Os casos específicos de números com vírgula decimal e a robustez adicional
+  de detecção do delimitador descrita abaixo continuam pendentes.
 - A detecção do delimitador deve usar cabeçalhos conhecidos e consistência do
   número de colunas; `;` é delimitador quando esse for o formato, sem confundir
   a vírgula decimal no valor com separador de campo. Interpretar formatos
@@ -38,6 +36,15 @@ prometer preços em tempo real.
   CSV ANP”; o diagnóstico deve indicar causa útil quando o layout realmente
   não puder ser reconhecido. Casos concretos devem ser cobertos por amostras de
   teste da ANP.
+- A importação processa somente registros cuja UF seja SP. Primeiro identifica
+  postos distintos pelo CNPJ normalizado, atualiza seu cadastro e tenta
+  geocodificar uma vez por posto sem coordenadas; em seguida importa todas as
+  linhas de combustível válidas, sem descartar preços por falha de geocodificação.
+- Coordenadas persistidas são reutilizadas nas importações seguintes. Endereços
+  incompletos, respostas sem coordenadas, falhas de serviço e limite HTTP 429
+  ficam registrados no log por posto. Ao receber 429, novas chamadas são
+  suspensas naquela execução; uma nova importação pode retomar os postos ainda
+  sem coordenadas sem consultar novamente os que já foram geocodificados.
 
 ## Endpoints administrativos
 
@@ -115,11 +122,12 @@ somente `1` ou `2`. Não aceitar novamente um único campo como `2026-S1`.
 - Produto desconhecido, preço/data/unidade inválidos, CNPJ inválido e outros
   problemas por registro são armazenados como erros e resultam em `PARTIAL`
   quando houver linhas válidas processadas.
-- Se `GEOAPIFY_API_KEY` estiver configurada, postos sem coordenadas podem ser
-  geocodificados; os resultados são reutilizados durante a importação. Sem a
-  chave, o posto e o preço ainda são salvos, latitude/longitude permanecem
-  nulas e o resultado é `PARTIAL`, sem bloquear a inicialização ou outras
-  funcionalidades.
+- Se `GEOAPIFY_API_KEY` estiver configurada, postos de SP sem coordenadas e com
+  endereço suficiente podem ser geocodificados uma vez por CNPJ. Os preços são
+  importados mesmo se a geocodificação falhar. Coordenadas já persistidas são
+  reutilizadas em novas importações. Sem a chave, o posto e o preço ainda são
+  salvos, latitude/longitude permanecem nulas e o resultado é `PARTIAL`, sem
+  bloquear a inicialização ou outras funcionalidades.
 - `AnpImportLog` registra arquivo, período, URL sem query string, início/fim,
   contagens, status, erros e UUID do administrador. Os status são `SUCCESS`,
   `PARTIAL` e `FAILED`.

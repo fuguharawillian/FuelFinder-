@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestClientResponseException;
 
 import java.util.List;
 import java.util.Optional;
@@ -51,6 +52,15 @@ public class GeoapifyGeocodingService {
                     .filter(result -> result.lat() != null && result.lon() != null)
                     .findFirst()
                     .map(result -> new GeoPoint(result.lat(), result.lon()));
+        } catch (RestClientResponseException exception) {
+            if (exception.getStatusCode().value() == 429) {
+                LOGGER.warn("Geoapify request limit reached.");
+                throw new GeoapifyRateLimitException(exception);
+            }
+            LOGGER.warn("Geoapify geocoding request failed with HTTP status {}.",
+                    exception.getStatusCode().value());
+            throw new ExternalServiceException(
+                    "Não foi possível concluir a busca geográfica neste momento.", exception);
         } catch (RestClientException exception) {
             LOGGER.warn("Geoapify geocoding request failed.");
             throw new ExternalServiceException(
