@@ -12,3 +12,15 @@
 # Sistema operacional
 .DS_Store
 Thumbs.db
+
+# Saidas geradas por builds (incluindo projetos dentro de app/)
+**/target/
+**/build/
+**/dist/
+**/logs/
+*.log
+
+# Configuracoes locais e segredos
+.env
+.env.*
+!.env.example

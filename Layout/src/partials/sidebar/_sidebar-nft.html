@@ -1,0 +1,235 @@
+<div class="sidebar p-2 py-md-3 @@cardClass">
+    <div class="container-fluid">
+        <!-- sidebar: title-->
+        @@include('sidebar/_sidebar-title.html', {"sidebarTitleLatter": "N", "sidebarTitle": "FT Admin"})
+        
+        <!-- sidebar: Create new -->
+        @@include('sidebar/_sidebar-new-project.html')
+        
+        <!-- sidebar: menu list -->
+        <div class="main-menu flex-grow-1">
+            <ul class="menu-list">
+                <li class="divider py-2 lh-sm"><span class="small">MAIN</span><br> <small class="text-muted">Unique dashboard designs </small></li>
+                <li>
+                    <a @@if (context.page === 'index') {class="m-link active"} @@if (context.page !== 'index') {class="m-link"} href="index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                            <path class="fill-secondary" fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                        </svg>
+                        <span class="ms-2">My Dashboard</span>
+                    </a>
+                </li>
+                <li class="collapsed">
+                    <a @@if (
+                            context.page === 'app-calendar' 
+                            || context.page === 'app-calendar-tui'
+                            || context.page === 'app-email'
+                            || context.page === 'app-chat'
+                            || context.page === 'app-campaigns'
+                            || context.page === 'app-social'
+                            || context.page === 'app-file-manager'
+                            || context.page === 'app-todo'
+                            || context.page === 'app-contacts'
+                            || context.page === 'app-tasks'
+                            || context.page === 'app-project'
+                            || context.page === 'app-jkanban'
+                            || context.page === 'app-blog'
+                        ) {class="m-link active"}
+                        @@if (!(
+                            context.page === 'app-calendar' 
+                            || context.page === 'app-calendar-tui'
+                            || context.page === 'app-email'
+                            || context.page === 'app-chat'
+                            || context.page === 'app-campaigns'
+                            || context.page === 'app-social'
+                            || context.page === 'app-file-manager'
+                            || context.page === 'app-todo'
+                            || context.page === 'app-contacts'
+                            || context.page === 'app-tasks'
+                            || context.page === 'app-project'
+                            || context.page === 'app-jkanban'
+                            || context.page === 'app-blog'
+                        )) {class="m-link"} data-bs-toggle="collapse" data-bs-target="#menu-Applications" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z"/>
+                            <path class="fill-secondary" d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                        </svg>
+                        <span class="ms-2">Applications</span>
+                        <span class="arrow fa fa-angle-right ms-auto text-end"></span>
+                    </a>
+                    <!-- Menu: Sub menu ul -->
+                    <ul @@if (
+                            context.page === 'app-calendar' 
+                            || context.page === 'app-calendar-tui'
+                            || context.page === 'app-email'
+                            || context.page === 'app-chat'
+                            || context.page === 'app-campaigns'
+                            || context.page === 'app-social'
+                            || context.page === 'app-file-manager'
+                            || context.page === 'app-todo'
+                            || context.page === 'app-contacts'
+                            || context.page === 'app-tasks'
+                            || context.page === 'app-project'
+                            || context.page === 'app-jkanban'
+                            || context.page === 'app-blog'
+                        ) {class="sub-menu collapse show"}
+                        @@if (!(
+                            context.page === 'app-calendar' 
+                            || context.page === 'app-calendar-tui'
+                            || context.page === 'app-email'
+                            || context.page === 'app-chat'
+                            || context.page === 'app-campaigns'
+                            || context.page === 'app-social'
+                            || context.page === 'app-file-manager'
+                            || context.page === 'app-todo'
+                            || context.page === 'app-contacts'
+                            || context.page === 'app-tasks'
+                            || context.page === 'app-project'
+                            || context.page === 'app-jkanban'
+                            || context.page === 'app-blog'
+                        )) {class="sub-menu collapse"} id="menu-Applications">
+                        <li><a @@if (context.page === 'app-calendar') {class="ms-link active"} @@if (context.page !== 'app-calendar') {class="ms-link"} href="app-calendar.html">Calendar</a></li>
+                        <li><a @@if (context.page === 'app-calendar-tui') {class="ms-link active"} @@if (context.page !== 'app-calendar-tui') {class="ms-link"} href="app-calendar-tui.html">tui Calendar</a></li>
+                        <li><a @@if (context.page === 'app-email') {class="ms-link active"} @@if (context.page !== 'app-email') {class="ms-link"} href="app-email.html">Email App</a></li>
+                        <li><a @@if (context.page === 'app-chat') {class="ms-link active"} @@if (context.page !== 'app-chat') {class="ms-link"} href="app-chat.html">Chat app</a></li>
+                        <li><a @@if (context.page === 'app-campaigns') {class="ms-link active"} @@if (context.page !== 'app-campaigns') {class="ms-link"} href="app-campaigns.html">Campaigns</a></li>
+                        <li><a @@if (context.page === 'app-social') {class="ms-link active"} @@if (context.page !== 'app-social') {class="ms-link"} href="app-social.html">Social App</a></li>
+                        <li><a @@if (context.page === 'app-file-manager') {class="ms-link active"} @@if (context.page !== 'app-file-manager') {class="ms-link"} href="app-file-manager.html">File Manager</a></li>
+                        <li><a @@if (context.page === 'app-todo') {class="ms-link active"} @@if (context.page !== 'app-todo') {class="ms-link"} href="app-todo.html">Todo App</a></li>
+                        <li><a @@if (context.page === 'app-contacts') {class="ms-link active"} @@if (context.page !== 'app-contacts') {class="ms-link"} href="app-contacts.html">Contacts</a></li>
+                        <li><a @@if (context.page === 'app-tasks') {class="ms-link active"} @@if (context.page !== 'app-tasks') {class="ms-link"} href="app-tasks.html">Tasks</a></li>
+                        <li><a @@if (context.page === 'app-project') {class="ms-link active"} @@if (context.page !== 'app-project') {class="ms-link"} href="app-project.html">Projects</a></li>
+                        <li><a @@if (context.page === 'app-jkanban') {class="ms-link active"} @@if (context.page !== 'app-jkanban') {class="ms-link"} href="app-jkanban.html">Kanban Board</a></li>
+                        <li><a @@if (context.page === 'app-blog') {class="ms-link active"} @@if (context.page !== 'app-blog') {class="ms-link"} href="app-blog.html">Blog</a></li>
+                    </ul>
+                </li>
+                <li class="collapsed">
+                    <a @@if (
+                            context.page === 'account-settings'
+                            || context.page === 'account-invoices'
+                            || context.page === 'account-create-invoice'
+                            || context.page === 'account-billing'
+                        ) {class="m-link active"}
+                        @@if (!(
+                            context.page === 'account-settings'
+                            || context.page === 'account-invoices'
+                            || context.page === 'account-create-invoice'
+                            || context.page === 'account-billing'
+                        )) {class="m-link"} data-bs-toggle="collapse" data-bs-target="#menu-Account" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M2 1C1.46957 1 0.960859 1.21071 0.585786 1.58579C0.210714 1.96086 0 2.46957 0 3L0 13C0 13.5304 0.210714 14.0391 0.585786 14.4142C0.960859 14.7893 1.46957 15 2 15H14C14.5304 15 15.0391 14.7893 15.4142 14.4142C15.7893 14.0391 16 13.5304 16 13V3C16 2.46957 15.7893 1.96086 15.4142 1.58579C15.0391 1.21071 14.5304 1 14 1H2ZM1 3C1 2.73478 1.10536 2.48043 1.29289 2.29289C1.48043 2.10536 1.73478 2 2 2H14C14.2652 2 14.5196 2.10536 14.7071 2.29289C14.8946 2.48043 15 2.73478 15 3V13C15 13.2652 14.8946 13.5196 14.7071 13.7071C14.5196 13.8946 14.2652 14 14 14H2C1.73478 14 1.48043 13.8946 1.29289 13.7071C1.10536 13.5196 1 13.2652 1 13V3ZM2 5.5C2 5.36739 2.05268 5.24021 2.14645 5.14645C2.24021 5.05268 2.36739 5 2.5 5H6C6.13261 5 6.25979 5.05268 6.35355 5.14645C6.44732 5.24021 6.5 5.36739 6.5 5.5C6.5 5.63261 6.44732 5.75979 6.35355 5.85355C6.25979 5.94732 6.13261 6 6 6H2.5C2.36739 6 2.24021 5.94732 2.14645 5.85355C2.05268 5.75979 2 5.63261 2 5.5ZM2 8.5C2 8.36739 2.05268 8.24021 2.14645 8.14645C2.24021 8.05268 2.36739 8 2.5 8H6C6.13261 8 6.25979 8.05268 6.35355 8.14645C6.44732 8.24021 6.5 8.36739 6.5 8.5C6.5 8.63261 6.44732 8.75979 6.35355 8.85355C6.25979 8.94732 6.13261 9 6 9H2.5C2.36739 9 2.24021 8.94732 2.14645 8.85355C2.05268 8.75979 2 8.63261 2 8.5ZM2 10.5C2 10.3674 2.05268 10.2402 2.14645 10.1464C2.24021 10.0527 2.36739 10 2.5 10H6C6.13261 10 6.25979 10.0527 6.35355 10.1464C6.44732 10.2402 6.5 10.3674 6.5 10.5C6.5 10.6326 6.44732 10.7598 6.35355 10.8536C6.25979 10.9473 6.13261 11 6 11H2.5C2.36739 11 2.24021 10.9473 2.14645 10.8536C2.05268 10.7598 2 10.6326 2 10.5Z"/>
+                            <path class="fill-secondary" d="M8.5 11C8.5 11 8 11 8 10.5C8 10 8.5 8.5 11 8.5C13.5 8.5 14 10 14 10.5C14 11 13.5 11 13.5 11H8.5ZM11 8C11.3978 8 11.7794 7.84196 12.0607 7.56066C12.342 7.27936 12.5 6.89782 12.5 6.5C12.5 6.10218 12.342 5.72064 12.0607 5.43934C11.7794 5.15804 11.3978 5 11 5C10.6022 5 10.2206 5.15804 9.93934 5.43934C9.65804 5.72064 9.5 6.10218 9.5 6.5C9.5 6.89782 9.65804 7.27936 9.93934 7.56066C10.2206 7.84196 10.6022 8 11 8V8Z"/>
+                        </svg>
+                        <span class="ms-2">Account</span>
+                        <span class="arrow fa fa-angle-right ms-auto text-end"></span>
+                    </a>
+                    <!-- Menu: Sub menu ul -->
+                    <ul @@if (
+                        context.page === 'account-settings'
+                        || context.page === 'account-invoices'
+                        || context.page === 'account-create-invoice'
+                        || context.page === 'account-billing'
+                    ) {class="sub-menu collapse show"}
+                    @@if (!(
+                        context.page === 'account-settings'
+                        || context.page === 'account-invoices'
+                        || context.page === 'account-create-invoice'
+                        || context.page === 'account-billing'
+                    )) {class="sub-menu collapse"} id="menu-Account">
+                        <li><a @@if (context.page === 'account-settings') {class="ms-link active"} @@if (context.page !== 'account-settings') {class="ms-link"} href="account-settings.html">Settings</a></li>
+                        <li><a @@if (context.page === 'account-invoices') {class="ms-link active"} @@if (context.page !== 'account-invoices') {class="ms-link"} href="account-invoices.html">Invoice List</a></li>
+                        <li><a @@if (context.page === 'account-create-invoice') {class="ms-link active"} @@if (context.page !== 'account-create-invoice') {class="ms-link"} href="account-create-invoice.html">Create Invoices</a></li>
+                        <li><a @@if (context.page === 'account-billing') {class="ms-link active"} @@if (context.page !== 'account-billing') {class="ms-link"} href="account-billing.html">Billing</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a @@if (context.page === 'nft-bids') {class="m-link active"} @@if (context.page !== 'nft-bids') {class="m-link"} href="nft-bids.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path class="fill-secondary" d="M8 8.5L0.5 6.5V13H15.5V6.5L8 8.5Z"/>
+                            <path d="M6.5 1C6.10218 1 5.72064 1.15804 5.43934 1.43934C5.15804 1.72064 5 2.10218 5 2.5V3H1.5C1.10218 3 0.720644 3.15804 0.43934 3.43934C0.158035 3.72064 0 4.10218 0 4.5L0 12.5C0 12.8978 0.158035 13.2794 0.43934 13.5607C0.720644 13.842 1.10218 14 1.5 14H14.5C14.8978 14 15.2794 13.842 15.5607 13.5607C15.842 13.2794 16 12.8978 16 12.5V4.5C16 4.10218 15.842 3.72064 15.5607 3.43934C15.2794 3.15804 14.8978 3 14.5 3H11V2.5C11 2.10218 10.842 1.72064 10.5607 1.43934C10.2794 1.15804 9.89782 1 9.5 1H6.5ZM6.5 2H9.5C9.63261 2 9.75979 2.05268 9.85355 2.14645C9.94732 2.24021 10 2.36739 10 2.5V3H6V2.5C6 2.36739 6.05268 2.24021 6.14645 2.14645C6.24021 2.05268 6.36739 2 6.5 2V2ZM8.386 8.914L15 7.151V12.5C15 12.6326 14.9473 12.7598 14.8536 12.8536C14.7598 12.9473 14.6326 13 14.5 13H1.5C1.36739 13 1.24021 12.9473 1.14645 12.8536C1.05268 12.7598 1 12.6326 1 12.5V7.15L7.614 8.914C7.86693 8.98135 8.13307 8.98135 8.386 8.914V8.914ZM1.5 4H14.5C14.6326 4 14.7598 4.05268 14.8536 4.14645C14.9473 4.24021 15 4.36739 15 4.5V6.116L8.129 7.948C8.04448 7.97057 7.95552 7.97057 7.871 7.948L1 6.116V4.5C1 4.36739 1.05268 4.24021 1.14645 4.14645C1.24021 4.05268 1.36739 4 1.5 4V4Z"/>
+                        </svg>
+                        <span class="ms-2">Bids</span>
+                    </a>
+                </li>
+                <li>
+                    <a @@if (context.page === 'nft-collection') {class="m-link active"} @@if (context.page !== 'nft-collection') {class="m-link"} href="nft-collection.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M2 3C2 3.13261 2.05268 3.25979 2.14645 3.35355C2.24021 3.44732 2.36739 3.5 2.5 3.5H13.5C13.6326 3.5 13.7598 3.44732 13.8536 3.35355C13.9473 3.25979 14 3.13261 14 3C14 2.86739 13.9473 2.74021 13.8536 2.64645C13.7598 2.55268 13.6326 2.5 13.5 2.5H2.5C2.36739 2.5 2.24021 2.55268 2.14645 2.64645C2.05268 2.74021 2 2.86739 2 3ZM4 1C4 1.13261 4.05268 1.25979 4.14645 1.35355C4.24021 1.44732 4.36739 1.5 4.5 1.5H11.5C11.6326 1.5 11.7598 1.44732 11.8536 1.35355C11.9473 1.25979 12 1.13261 12 1C12 0.867392 11.9473 0.740215 11.8536 0.646447C11.7598 0.552678 11.6326 0.5 11.5 0.5H4.5C4.36739 0.5 4.24021 0.552678 4.14645 0.646447C4.05268 0.740215 4 0.867392 4 1Z"/>
+                            <path class="fill-secondary" d="M0.43934 14.0607C0.158035 13.7794 0 13.3978 0 13V6C0 5.60218 0.158035 5.22064 0.43934 4.93934C0.720644 4.65804 1.10218 4.5 1.5 4.5H14.5C14.8978 4.5 15.2794 4.65804 15.5607 4.93934C15.842 5.22064 16 5.60218 16 6V13C16 13.3978 15.842 13.7794 15.5607 14.0607C15.2794 14.342 14.8978 14.5 14.5 14.5H1.5C1.10218 14.5 0.720644 14.342 0.43934 14.0607Z"/>
+                        </svg>
+                        <span class="ms-2">Collection</span>
+                    </a>
+                </li>
+                <li>
+                    <a @@if (context.page === 'nft-wallet') {class="m-link active"} @@if (context.page !== 'nft-wallet') {class="m-link"} href="nft-wallet.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M12.136 0.326024C12.3571 0.270728 12.5878 0.266523 12.8107 0.313728C13.0337 0.360933 13.2429 0.458308 13.4226 0.59846C13.6023 0.738612 13.7476 0.917858 13.8477 1.12259C13.9477 1.32732 13.9998 1.55215 14 1.78002V3.00002H14.5C14.8978 3.00002 15.2794 3.15806 15.5607 3.43936C15.842 3.72067 16 4.1022 16 4.50002V13.5C16 13.8978 15.842 14.2794 15.5607 14.5607C15.2794 14.842 14.8978 15 14.5 15H1.5C1.10218 15 0.720644 14.842 0.43934 14.5607C0.158035 14.2794 9.80916e-08 13.8978 9.80916e-08 13.5V4.50002C-0.000139461 4.11388 0.148642 3.74255 0.415377 3.46334C0.682113 3.18412 1.04625 3.01853 1.432 3.00102L12.136 0.326024ZM5.562 3.00002H13V1.78002C12.9998 1.70416 12.9824 1.62933 12.949 1.5612C12.9156 1.49307 12.8672 1.43343 12.8074 1.38679C12.7475 1.34016 12.6779 1.30775 12.6036 1.29202C12.5294 1.2763 12.4526 1.27767 12.379 1.29602L5.562 3.00002ZM1.5 4.00002C1.36739 4.00002 1.24021 4.0527 1.14645 4.14647C1.05268 4.24024 1 4.36742 1 4.50002V13.5C1 13.6326 1.05268 13.7598 1.14645 13.8536C1.24021 13.9473 1.36739 14 1.5 14H14.5C14.6326 14 14.7598 13.9473 14.8536 13.8536C14.9473 13.7598 15 13.6326 15 13.5V4.50002C15 4.36742 14.9473 4.24024 14.8536 4.14647C14.7598 4.0527 14.6326 4.00002 14.5 4.00002H1.5Z"/>
+                            <path class="fill-secondary" d="M5 10.9864C5.10683 12.1771 6.09216 13.0221 7.59216 13.1314V14H8.34504V13.1314C9.98364 13.0036 11 12.1043 11 10.7743C11 9.63857 10.3164 8.98143 8.86622 8.61143L8.34504 8.47786V5.76214C9.15496 5.84071 9.7014 6.27214 9.83927 6.91643H10.9004C10.7806 5.77357 9.78874 4.95357 8.34504 4.86286V4H7.59216V4.88071C6.19249 5.045 5.23171 5.93214 5.23171 7.135C5.23171 8.17357 5.92902 8.90857 7.15255 9.21857L7.59288 9.33429V12.2136C6.76347 12.0921 6.19249 11.6421 6.05462 10.9864H5V10.9864ZM7.44779 8.24643C6.6949 8.05857 6.29283 7.65714 6.29283 7.09214C6.29283 6.41786 6.80101 5.92 7.59216 5.78643V8.28286L7.44779 8.24714V8.24643ZM8.59625 9.58357C9.52526 9.81429 9.93311 10.1971 9.93311 10.8471C9.93311 11.6307 9.33686 12.1529 8.34504 12.2321V9.52143L8.59625 9.58286V9.58357Z"/>
+                        </svg>
+                        <span class="ms-2">Wallet</span>
+                    </a>
+                </li>
+                <li>
+                    <a @@if (context.page === 'nft-profile') {class="m-link active"} @@if (context.page !== 'nft-profile') {class="m-link"} href="nft-profile.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M12 15.1111L13 15.1111C13.5304 15.1111 14.0391 14.9004 14.4142 14.5253C14.7893 14.1502 15 13.6415 15 13.1111L15 2.61108C15 2.08065 14.7893 1.57194 14.4142 1.19687C14.0391 0.821798 13.5304 0.611084 13 0.611084L3 0.611085C2.46957 0.611085 1.96086 0.821799 1.58579 1.19687C1.21071 1.57194 0.999999 2.08065 0.999999 2.61109L1 13.1111C1 13.6415 1.21071 14.1502 1.58579 14.5253C1.96086 14.9004 2.46957 15.1111 3 15.1111L4 15.1111L4 14.1111L3 14.1111C2.73478 14.1111 2.48043 14.0057 2.29289 13.8182C2.10536 13.6307 2 13.3763 2 13.1111L2 2.61109C2 2.34587 2.10536 2.09151 2.29289 1.90398C2.48043 1.71644 2.73478 1.61109 3 1.61109L13 1.61108C13.2652 1.61108 13.5196 1.71644 13.7071 1.90398C13.8946 2.09151 14 2.34587 14 2.61108L14 13.1111C14 13.3763 13.8946 13.6307 13.7071 13.8182C13.5196 14.0057 13.2652 14.1111 13 14.1111L12 14.1111L12 15.1111Z"/>
+                            <path class="fill-secondary" d="M3.55564 16C3.55564 16 2.66675 16 2.66675 15.1111C2.66675 14.2222 3.55564 11.5556 8.00008 11.5556C12.4445 11.5556 13.3334 14.2222 13.3334 15.1111C13.3334 16 12.4445 16 12.4445 16H3.55564ZM8.00008 10.6667C8.70732 10.6667 9.3856 10.3857 9.8857 9.88564C10.3858 9.38554 10.6667 8.70726 10.6667 8.00002C10.6667 7.29278 10.3858 6.6145 9.8857 6.1144C9.3856 5.61431 8.70732 5.33335 8.00008 5.33335C7.29284 5.33335 6.61456 5.61431 6.11446 6.1144C5.61437 6.6145 5.33341 7.29278 5.33341 8.00002C5.33341 8.70726 5.61437 9.38554 6.11446 9.88564C6.61456 10.3857 7.29284 10.6667 8.00008 10.6667Z"/>
+                            <path class="fill-secondary" d="M4.5747 3.4254C4.49135 3.34205 4.44453 3.22901 4.44453 3.11113C4.44453 2.99326 4.49135 2.88021 4.5747 2.79686C4.65805 2.71351 4.7711 2.66669 4.88897 2.66669H11.1112C11.2291 2.66669 11.3421 2.71351 11.4255 2.79686C11.5088 2.88021 11.5556 2.99326 11.5556 3.11113C11.5556 3.22901 11.5088 3.34205 11.4255 3.4254C11.3421 3.50875 11.2291 3.55558 11.1112 3.55558H4.88897C4.7711 3.55558 4.65805 3.50875 4.5747 3.4254Z"/>
+                        </svg>
+                        <span class="ms-2">My Profile</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu-list">
+                <li class="divider py-2 lh-sm"><span class="small">RESOURCES</span><br> <small class="text-muted">you need to know about LUNO</small></li>
+                <li class="collapsed">
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-Authentication" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M5.33801 1.59C4.38559 1.85248 3.43965 2.1379 2.50101 2.446C2.41529 2.47376 2.3391 2.52504 2.28111 2.59399C2.22312 2.66295 2.18567 2.7468 2.17301 2.836C1.61901 6.993 2.89901 10.026 4.42601 12.024C5.07252 12.8784 5.84341 13.6311 6.71301 14.257C7.05901 14.501 7.36501 14.677 7.60601 14.79C7.72601 14.847 7.82401 14.885 7.89901 14.908C7.93181 14.9195 7.96562 14.9279 8.00001 14.933C8.03398 14.9275 8.06743 14.9191 8.10001 14.908C8.17601 14.885 8.27401 14.847 8.39401 14.79C8.63401 14.677 8.94101 14.5 9.28701 14.257C10.1566 13.6311 10.9275 12.8784 11.574 12.024C13.101 10.027 14.381 6.993 13.827 2.836C13.8145 2.74676 13.777 2.66285 13.719 2.59388C13.661 2.52491 13.5848 2.47366 13.499 2.446C12.848 2.233 11.749 1.886 10.662 1.591C9.55201 1.29 8.53101 1.067 8.00001 1.067C7.47001 1.067 6.44801 1.289 5.33801 1.59ZM5.07201 0.56C6.15701 0.265 7.31001 0 8.00001 0C8.69001 0 9.84301 0.265 10.928 0.56C12.038 0.86 13.157 1.215 13.815 1.43C14.0901 1.52085 14.334 1.68747 14.5187 1.9107C14.7034 2.13394 14.8213 2.40474 14.859 2.692C15.455 7.169 14.072 10.487 12.394 12.682C11.6824 13.621 10.834 14.4479 9.87701 15.135C9.5461 15.3728 9.19549 15.5819 8.82901 15.76C8.54901 15.892 8.24801 16 8.00001 16C7.75201 16 7.45201 15.892 7.17101 15.76C6.80452 15.5819 6.45391 15.3728 6.12301 15.135C5.16603 14.4478 4.31759 13.621 3.60601 12.682C1.92801 10.487 0.545005 7.169 1.14101 2.692C1.17869 2.40474 1.29665 2.13394 1.48132 1.9107C1.666 1.68747 1.9099 1.52085 2.18501 1.43C3.1402 1.11681 4.10281 0.826725 5.07201 0.56Z"/>
+                            <path class="fill-secondary" d="M8 5.38462C8.21217 5.38462 8.41566 5.46566 8.56569 5.60992C8.71571 5.75418 8.8 5.94983 8.8 6.15385V6.53846H7.2V6.15385C7.2 5.94983 7.28429 5.75418 7.43431 5.60992C7.58434 5.46566 7.78783 5.38462 8 5.38462ZM9.2 6.53846V6.15385C9.2 5.84783 9.07357 5.55434 8.84853 5.33795C8.62348 5.12157 8.31826 5 8 5C7.68174 5 7.37652 5.12157 7.15147 5.33795C6.92643 5.55434 6.8 5.84783 6.8 6.15385V6.53846C6.58783 6.53846 6.38434 6.61951 6.23431 6.76376C6.08429 6.90802 6 7.10368 6 7.30769V9.23077C6 9.43478 6.08429 9.63044 6.23431 9.7747C6.38434 9.91896 6.58783 10 6.8 10H9.2C9.41217 10 9.61566 9.91896 9.76569 9.7747C9.91571 9.63044 10 9.43478 10 9.23077V7.30769C10 7.10368 9.91571 6.90802 9.76569 6.76376C9.61566 6.61951 9.41217 6.53846 9.2 6.53846Z"/>
+                        </svg>
+                        <span class="ms-2">Authentication</span>
+                        <span class="arrow fa fa-angle-right ms-auto text-end"></span>
+                    </a>
+    
+                    <!-- Menu: Sub menu ul -->
+                    <ul class="sub-menu collapse" id="menu-Authentication">
+                        <li><a class="ms-link" href="@@webRoot/auth-404.html">404</a></li>
+                        <li><a class="ms-link" href="@@webRoot/auth-403.html">403</a></li>
+                        <li><a class="ms-link" href="@@webRoot/auth-500.html">500</a></li>
+                        <li><a class="ms-link" href="@@webRoot/auth-signin.html">Sign in</a></li>
+                        <li><a class="ms-link" href="@@webRoot/auth-signup.html">Sign up</a></li>
+                        <li><a class="ms-link" href="@@webRoot/auth-password-reset.html">Password reset</a></li>
+                        <li><a class="ms-link" href="@@webRoot/auth-two-step.html">2-Step Authentication</a></li>
+                        <li><a class="ms-link" href="@@webRoot/auth-lockscreen.html">Lockscreen</a></li>
+                        <li><a class="ms-link" href="@@webRoot/auth-maintenance.html">Maintenance</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="m-link" href="@@webRoot/docs/index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path class="fill-secondary" d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                            <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                            <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                        </svg>
+                        <span class="ms-2">Documentation</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="m-link" href="@@webRoot/docs/doc-changelog.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path class="fill-secondary" d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                        </svg>
+                        <span class="ms-2">Changelog</span>
+                        <span id="Changelog"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- sidebar: footer link -->
+        @@include('sidebar/_sidebar-footer-link.html')
+    </div>
+</div>

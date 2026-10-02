@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "eCommerce Dashboard",
+        "daterangepicker": true,
+        "jvectormap": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-ecommerce.html', {"page": "index"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 row-deck">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <span>Orders Received</span>
+                                <h4 class="mb-0">47,012</h4>
+                                <small>23% Average <i class="fa fa-level-up"></i></small>
+                            </div>
+                            <div id="apexspark1"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <span>Total Sales</span>
+                                <h4 class="mb-0">512</h4>
+                                <small>18% Average <i class="fa fa-level-down"></i></small>
+                            </div>
+                            <div id="apexspark2"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <span>Total Unit Sold</span>
+                                <h4 class="mb-0">1,675</h4>
+                                <small>57% Average <i class="fa fa-level-up"></i></small>
+                            </div>
+                            <div id="apexspark3"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <span>Revenue</span>
+                                <h4 class="mb-0">1,612</h4>
+                                <small>13% Average <i class="fa fa-level-up"></i></small>
+                            </div>
+                            <div id="apexspark4"></div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-titlem-0">Product Report</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div id="apex-Product-Report"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Total Revenue</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="text-center">
+                                    <h5 class="mb-0">Total Sale</h5>
+                                    <span class="text-muted text-uppercase">2,45,124</span>
+                                </div>
+                                <div id="apex-Total-Revenue"></div>
+                                <div class="text-center">
+                                    <h6 class="mb-0">Satisfaction Rate</h6>
+                                    <span class="text-muted text-uppercase small">47% Average <i class="fa fa-level-up"></i></span>
+                                </div>
+                            </div>
+                            <div id="apex-Satisfaction-Rate"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">New Customer Ratings</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <ul class="list-group list-group-flush list-group-custom custom_scroll mb-0" style="height: 430px;">
+                                <li class="list-group-item py-3">
+                                    <div class="d-flex">
+                                        <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar7.jpg" alt="">
+                                        <div class="flex-fill ms-3">
+                                            <span>There are many variations of passages</span>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star-half-empty text-warning"></i>
+                                            <i class="fa fa-star-o text-warning"></i>
+                                            <div><small class="text-muted">10:11 AM</small></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item py-3">
+                                    <div class="d-flex">
+                                        <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="">
+                                        <div class="flex-fill ms-3">
+                                            <span>Contrary to popular belief, Lorem Ipsum is not simply random text</span>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star-half-empty text-warning"></i>
+                                            <div><small class="text-muted">10:11 AM</small></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item py-3">
+                                    <div class="d-flex">
+                                        <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">
+                                        <div class="flex-fill ms-3">
+                                            <span>There are many variations of passages</span>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <div><small class="text-muted">10:11 AM</small></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item py-3">
+                                    <div class="d-flex">
+                                        <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">
+                                        <div class="flex-fill ms-3">
+                                            <span>Contrary to popular belief, Lorem Ipsum is not simply random text</span>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star-half-empty text-warning"></i>
+                                            <i class="fa fa-star-o text-warning"></i>
+                                            <div><small class="text-muted">10:11 AM</small></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item py-3">
+                                    <div class="d-flex">
+                                        <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar6.jpg" alt="">
+                                        <div class="flex-fill ms-3">
+                                            <span>There are many variations of passages</span>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star-half-empty text-warning"></i>
+                                            <div><small class="text-muted">10:11 AM</small></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item py-3">
+                                    <div class="d-flex">
+                                        <img class="avatar rounded-circle" src="@@webRoot/assets/img/xs/avatar8.jpg" alt="">
+                                        <div class="flex-fill ms-3">
+                                            <span>There are many variations of passages</span>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <div><small class="text-muted">10:11 AM</small></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Top Selling Country</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-xl-8 col-lg-8 col-md-12">
+                                        <div id="Top-Country" style="height: 360px;"></div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-12">
+                                        <div class="table-responsive">
+                                            <table class="table custom-table-2 table-hover mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Contrary</th>
+                                                        <th>2016</th>
+                                                        <th>2017</th>
+                                                        <th>Change</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>USA</td>
+                                                        <td>2,009</td>
+                                                        <td>3,591</td>
+                                                        <td>7.01% <i class="fa fa-level-up text-success"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>India</td>
+                                                        <td>1,129</td>
+                                                        <td>1,361</td>
+                                                        <td>3.01% <i class="fa fa-level-up text-success"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Canada</td>
+                                                        <td>2,009</td>
+                                                        <td>2,901</td>
+                                                        <td>9.01% <i class="fa fa-level-up text-success"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Australia</td>
+                                                        <td>954</td>
+                                                        <td>901</td>
+                                                        <td>5.71% <i class="fa fa-level-down text-warning"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Germany</td>
+                                                        <td>594</td>
+                                                        <td>500</td>
+                                                        <td>6.11% <i class="fa fa-level-down text-warning"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>UK</td>
+                                                        <td>1,500</td>
+                                                        <td>1,971</td>
+                                                        <td>8.50% <i class="fa fa-level-up text-success"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Other</td>
+                                                        <td>4,236</td>
+                                                        <td>4,591</td>
+                                                        <td>9.15% <i class="fa fa-level-up text-success"></i>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Recent Orders</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table card-table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Item</th>
+                                            <th>Address</th>
+                                            <th>Quantity</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><img src="@@webRoot/assets/img/ecommerce/1.png" class="w30 rounded-circle" alt="Product img"></td>
+                                            <td>Hossein</td>
+                                            <td>IPONE-7</td>
+                                            <td>Porterfield 508 Virginia Street Chicago, IL 60653</td>
+                                            <td>3</td>
+                                            <td><span class="badge bg-success">DONE</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="@@webRoot/assets/img/ecommerce/2.png" class="w30 rounded-circle" alt="Product img"></td>
+                                            <td>Camara</td>
+                                            <td>NOKIA-8</td>
+                                            <td>2595 Pearlman Avenue Sudbury, MA 01776 </td>
+                                            <td>3</td>
+                                            <td><span class="badge bg-info">Delivered</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="@@webRoot/assets/img/ecommerce/3.png" class="w30 rounded-circle" alt="Product img"></td>
+                                            <td>Maryam</td>
+                                            <td>NOKIA-456</td>
+                                            <td>Porterfield 508 Virginia Street Chicago, IL 60653</td>
+                                            <td>4</td>
+                                            <td><span class="badge bg-success">DONE</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="@@webRoot/assets/img/ecommerce/4.png" class="w30 rounded-circle" alt="Product img"></td>
+                                            <td>Micheal</td>
+                                            <td>SAMSANG PRO</td>
+                                            <td>508 Virginia Street Chicago, IL 60653</td>
+                                            <td>1</td>
+                                            <td><span class="badge bg-success">DONE</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="@@webRoot/assets/img/ecommerce/5.png" class="w30 rounded-circle" alt="Product img"></td>
+                                            <td>Frank</td>
+                                            <td>NOKIA-456</td>
+                                            <td>1516 Holt Street West Palm Beach, FL 33401</td>
+                                            <td>13</td>
+                                            <td><span class="badge bg-warning">PENDING</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "apexcharts": true,
+    "jvectormap": true,
+    "jvectormapWorld": true,
+})
+<script>
+    // top sparklines
+    var randomizeArray = function (arg) {
+        var array = arg.slice();
+        var currentIndex = array.length,
+        temporaryValue,
+        randomIndex;
+
+        while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+        }
+        return array;
+    };
+
+    // data for the sparklines that appear below header area
+    var sparklineData = [47, 45, 54, 38, 56, 24, 65, 31, 54, 38, 56];
+
+    // topb big chart
+    var spark1 = {
+        chart: {
+            type: "area",
+            height: 60,
+            sparkline: {
+                enabled: true,
+            },
+        },
+        stroke: {
+            width: 1,
+        },
+        series: [{
+            data: randomizeArray(sparklineData),
+        },],
+        fill: {
+            type: "gradient",
+            gradient: {
+                gradientToColors: ["var(--chart-color3)"],
+                shadeIntensity: 2,
+                opacityFrom: 0.7,
+                opacityTo: 0.2,
+                stops: [0, 100],
+            },
+        },
+        colors: ["var(--chart-color3)"],
+    };
+    var spark1 = new ApexCharts(document.querySelector("#apexspark1"), spark1); spark1.render();
+
+    var spark2 = {
+        chart: {
+            type: "area",
+            height: 60,
+            sparkline: {
+                enabled: true,
+            },
+        },
+        stroke: {
+            width: 1,
+        },
+        series: [{
+            data: randomizeArray(sparklineData),
+        },],
+        fill: {
+            type: "gradient",
+            gradient: {
+                gradientToColors: ["var(--chart-color5)"],
+                shadeIntensity: 2,
+                opacityFrom: 0.7,
+                opacityTo: 0.2,
+                stops: [0, 100],
+            },
+        },
+        colors: ["var(--chart-color5)"],
+    };
+    var spark2 = new ApexCharts(document.querySelector("#apexspark2"), spark2); spark2.render();
+
+    var spark3 = {
+        chart: {
+            type: "area",
+            height: 60,
+            sparkline: {
+                enabled: true,
+            },
+        },
+        stroke: {
+            width: 1,
+        },
+        series: [{
+            data: randomizeArray(sparklineData),
+        },],
+        fill: {
+            type: "gradient",
+            gradient: {
+                gradientToColors: ["var(--chart-color1)"],
+                shadeIntensity: 2,
+                opacityFrom: 0.7,
+                opacityTo: 0.2,
+                stops: [0, 100],
+            },
+        },
+        colors: ["var(--chart-color1)"],
+    };
+    var spark3 = new ApexCharts(document.querySelector("#apexspark3"), spark3); spark3.render();
+
+    var spark4 = {
+        chart: {
+            type: "area",
+            height: 60,
+            sparkline: {
+                enabled: true,
+            },
+        },
+        stroke: {
+            width: 1,
+        },
+        series: [{
+            data: randomizeArray(sparklineData),
+        },],
+        fill: {
+            type: "gradient",
+            gradient: {
+                gradientToColors: ["var(--chart-color2)"],
+                shadeIntensity: 2,
+                opacityFrom: 0.7,
+                opacityTo: 0.2,
+                stops: [0, 100],
+            },
+        },
+        colors: ["var(--chart-color2)"],
+    };
+    var spark4 = new ApexCharts(document.querySelector("#apexspark4"), spark4); spark4.render();
+
+    // WordMap
+    var randomizeArray = function (arg) {
+    var array = arg.slice();
+    var currentIndex = array.length,
+    temporaryValue,
+    randomIndex;
+
+    while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+    return array;
+    };
+
+    // data for the sparklines that appear below header area
+    var sparklineData = [47, 45, 54, 38, 56, 24, 65, 31, 54, 38, 56];
+
+    // Worldwide Analytics
+    $("#Top-Country").vectorMap({
+        map: "world_mill",
+        normalizeFunction: "polynomial",
+        hoverOpacity: 0.2,
+        hoverColor: false,
+        backgroundColor: "var(--card-color)",
+        regionStyle: {
+            initial: {
+                fill: "var(--color-400)",
+                stroke: "var(--card-color)",
+            },
+        },
+        markerStyle: {
+            initial: {
+                fill: "var(--primary-color)",
+                stroke: "var(--card-color)",
+            },
+        },
+        markers: [
+            { latLng: [36.77, -119.41], name: "USA : 7.01%" },
+            { latLng: [21.0, 78.0], name: "INDIA : 3.01%" },
+            { latLng: [-33.0, 151.0], name: "Australia : 11k" },
+            { latLng: [55.37, -3.41], name: "UK : 8.50%" },
+            { latLng: [41.9, 12.45], name: "Vatican City : 1.2%" },
+            { latLng: [1.3, 103.8], name: "Singapore : 2.8%" },
+            { latLng: [26.02, 50.55], name: "Bahrain : 0.8%" },
+        ],
+        series: {
+            regions: [{
+                values: {
+                US: "var(--chart-color2)",
+                AU: "var(--chart-color3)",
+                IN: "var(--chart-color4)",
+                UK: "var(--chart-color5)",
+                },
+                attribute: "fill",
+            },],
+        },
+    });
+
+    // Product Report
+    $(document).ready(function () {
+        var options = {
+            chart: {
+                height: 300,
+                type: "area",
+                stacked: true,
+                toolbar: {
+                show: false,
+                },
+                events: {
+                    selection: function (chart, e) {
+                        console.log(new Date(e.xaxis.min));
+                    },
+                },
+            },
+            colors: ["#ffd55d", "#ff7f81", "#e4bd51"],
+            dataLabels: {
+                enabled: false,
+            },
+            series: [{
+                name: "Mobile",
+                data: generateDayWiseTimeSeries(
+                    new Date("11 Feb 2017 GMT").getTime(),
+                    20,
+                    {
+                        min: 10,
+                        max: 60,
+                    }
+                ),},
+                {
+                    name: "Laptop",
+                    data: generateDayWiseTimeSeries(
+                        new Date("11 Feb 2017 GMT").getTime(),
+                        20,
+                        {
+                            min: 10,
+                            max: 20,
+                        }
+                    ),
+                },
+                {
+                    name: "Tablet",
+                    data: generateDayWiseTimeSeries(
+                        new Date("11 Feb 2017 GMT").getTime(),
+                        20,
+                        {
+                            min: 10,
+                            max: 15,
+                        }
+                    ),
+                },
+            ],
+            fill: {
+                type: "gradient",
+                gradient: {
+                    opacityFrom: 0.6,
+                    opacityTo: 0.8,
+                },
+            },
+            legend: {
+                position: "top",
+                horizontalAlign: "right",
+                show: true,
+            },
+            xaxis: {
+                type: "datetime",
+            },
+            grid: {
+                yaxis: {
+                    lines: {
+                        show: false,
+                    },
+                },
+                padding: {
+                    top: 20,
+                    right: 0,
+                    bottom: 0,
+                    left: 0,
+                },
+            },
+            stroke: {
+                show: true,
+                curve: "smooth",
+                width: 2,
+            },
+        };
+
+        var chart = new ApexCharts(
+        document.querySelector("#apex-Product-Report"), options);
+        chart.render();
+        function generateDayWiseTimeSeries(baseval, count, yrange) {
+        var i = 0;
+        var series = [];
+        while (i < count) {
+            var x = baseval;
+            var y =
+            Math.floor(Math.random() * (yrange.max - yrange.min + 1)) +
+            yrange.min;
+
+            series.push([x, y]);
+            baseval += 86400000;
+            i++;
+        }
+        return series;
+        }
+    });
+
+    // Total Revenue
+    var apexwc17 = {
+        series: [67],
+        chart: {
+        height: 200,
+        type: "radialBar",
+        offsetY: -10,
+        },
+        plotOptions: {
+            radialBar: {
+                startAngle: -135,
+                endAngle: 135,
+                dataLabels: {
+                    name: {
+                        fontSize: "14px",
+                        color: undefined,
+                    },
+                    value: {
+                        offsetY: 76,
+                        fontSize: "22px",
+                        color: undefined,
+                        formatter: function (val) {
+                        return val + "%";
+                        },
+                    },
+                },
+            },
+        },
+        fill: {
+            type: "gradient",
+            gradient: {
+                gradientToColors: ["var(--chart-color5)", "var(--chart-color4)"],
+                opacityFrom: 0.9,
+                opacityTo: 0.3,
+                stops: [0, 100],
+            },
+        },
+        colors: ["var(--chart-color5)", "var(--chart-color4)"],
+        stroke: {
+            dashArray: 4,
+        },
+        labels: ["Total Revenue"],
+    };
+    new ApexCharts( document.querySelector("#apex-Total-Revenue"), apexwc17 ).render();
+
+    // Number of Cases
+    $(document).ready(function () {
+        var options = {
+            chart: {
+                height: 100,
+                type: "bar",
+                sparkline: {
+                enabled: true,
+                },
+            },
+            colors: ["var(--chart-color1)"],
+            plotOptions: {
+                bar: {
+                horizontal: false,
+                },
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            stroke: {
+                show: false,
+            },
+            series: [
+                {
+                name: "CONFIRMED",
+                data: [44, 55, 57, 56, 61, 58, 63, 60, 66,44, 55, 57, 56, 61, 58, 63, 60],
+                },
+            ],
+            yaxis: {
+                title: {
+                text: "Satisfaction Rate",
+                },
+            },
+            fill: {
+                opacity: 1,
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        //return "$ " + val + " thousands"
+                    },
+                },
+            },
+        };
+        var chart = new ApexCharts( document.querySelector("#apex-Satisfaction-Rate"), options ); chart.render();
+    });
+
+</script>
+</body>
+</html>

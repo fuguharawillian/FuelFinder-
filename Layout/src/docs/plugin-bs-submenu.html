@@ -1,0 +1,349 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Bootstrap 5 Toast",
+        "bsSubmenu": "true"
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "plugin-bs-submenu"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">bs5-toast</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="plugin-stepper.html"><i class="fa fa-long-arrow-left me-2"></i>Bootstrap Stepper</a>
+                        <a class="btn btn-secondary" href="ui-alerts.html">Alerts<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Dropdown with submenu</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="fs-5">Bootstrap submenu. <a href="https://vsn4ik.github.io/bootstrap-submenu/#html-examples" rel="nofollow">Live Demo</a></p>
+                                <div class="row g-3 mb-5">
+                                    <div class="col-md-6">
+                                        <div class="dropdown m-1">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-submenu>Dropdown</button>
+                                            <!-- .dropdown menu level 1 -->
+                                            <ul class="dropdown-menu p-2 shadow-sm border-0">
+                                                <li class="dropdown dropright dropdown-submenu">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">Action</a>
+                                                    <!-- .dropdown menu level 2 -->
+                                                    <ul class="dropdown-menu p-2 shadow border-0">
+                                                        <li><a class="dropdown-item" href="#">Sub action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Another Sub action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                        <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                        <li><hr class="dropdown-divider"></li>
+                                                        <li class="dropdown dropright dropdown-submenu">
+                                                            <a class="dropdown-item dropdown-toggle" href="#">Sub action</a>
+                                                            <!-- .dropdown menu level 3 -->
+                                                            <ul class="dropdown-menu p-2 shadow-lg border-0">
+                                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                                <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                                <li><hr class="dropdown-divider"></li>
+                                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li class="dropdown dropright dropdown-submenu">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">Something else here</a>
+                                                    <!-- .dropdown menu level 2 -->
+                                                    <ul class="dropdown-menu p-2 shadow border-0">
+                                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="dropdown m-1">
+                                            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-submenu>Dropdown</button>
+                                            <!-- .dropdown menu level 1 -->
+                                            <ul class="dropdown-menu p-2 shadow-sm border-0">
+                                                <li class="dropdown dropright dropdown-submenu">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">Action</a>
+                                                    <!-- .dropdown menu level 2 -->
+                                                    <ul class="dropdown-menu p-2 shadow border-0">
+                                                        <li><a class="dropdown-item" href="#">Sub action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Another Sub action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                        <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                        <li><hr class="dropdown-divider"></li>
+                                                        <li class="dropdown dropright dropdown-submenu">
+                                                            <a class="dropdown-item dropdown-toggle" href="#">Sub action</a>
+                                                            <!-- .dropdown menu level 3 -->
+                                                            <ul class="dropdown-menu p-2 shadow-lg border-0">
+                                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                                <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                                <li><hr class="dropdown-divider"></li>
+                                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li class="dropdown dropright dropdown-submenu">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">Something else here</a>
+                                                    <!-- .dropdown menu level 2 -->
+                                                    <ul class="dropdown-menu p-2 shadow border-0">
+                                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group m-1">
+                                            <button type="button" class="btn btn-danger">Split button</button>
+                                            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" data-submenu>
+                                                <span class="visually-hidden">Toggle Dropdown</span>
+                                            </button>
+                                            <!-- .dropdown menu level 1 -->
+                                            <ul class="dropdown-menu p-2 shadow-sm border-0">
+                                                <li class="dropdown dropright dropdown-submenu">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">Action</a>
+                                                    <!-- .dropdown menu level 2 -->
+                                                    <ul class="dropdown-menu p-2 shadow border-0">
+                                                        <li><a class="dropdown-item" href="#">Sub action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Another Sub action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                        <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                        <li><hr class="dropdown-divider"></li>
+                                                        <li class="dropdown dropright dropdown-submenu">
+                                                            <a class="dropdown-item dropdown-toggle" href="#">Sub action</a>
+                                                            <!-- .dropdown menu level 3 -->
+                                                            <ul class="dropdown-menu p-2 shadow-lg border-0">
+                                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                                <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                                <li><hr class="dropdown-divider"></li>
+                                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li class="dropdown dropright dropdown-submenu">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">Something else here</a>
+                                                    <!-- .dropdown menu level 2 -->
+                                                    <ul class="dropdown-menu p-2 shadow border-0">
+                                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 text-end">
+                                        <div class="dropdown m-1">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-submenu>Dropdown</button>
+                                            <!-- .dropdown menu level 1 -->
+                                            <ul class="dropdown-menu dropdown-menu-end p-2 shadow-sm border-0">
+                                                <li class="dropdown dropleft dropdown-submenu">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">Action</a>
+                                                    <!-- .dropdown menu level 2 -->
+                                                    <ul class="dropdown-menu p-2 shadow border-0">
+                                                        <li><a class="dropdown-item" href="#">Sub action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Another Sub action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                        <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                        <li><hr class="dropdown-divider"></li>
+                                                        <li class="dropdown dropleft dropdown-submenu">
+                                                            <a class="dropdown-item dropdown-toggle" href="#">Sub action</a>
+                                                            <!-- .dropdown menu level 3 -->
+                                                            <ul class="dropdown-menu p-2 shadow-lg border-0">
+                                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                                <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                                <li><hr class="dropdown-divider"></li>
+                                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li class="dropdown dropleft dropdown-submenu">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">Something else here</a>
+                                                    <!-- .dropdown menu level 2 -->
+                                                    <ul class="dropdown-menu p-2 shadow border-0">
+                                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="dropdown m-1">
+                                            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-submenu>Dropdown</button>
+                                            <!-- .dropdown menu level 1 -->
+                                            <ul class="dropdown-menu dropdown-menu-end p-2 shadow-sm border-0">
+                                                <li class="dropdown dropleft dropdown-submenu">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">Action</a>
+                                                    <!-- .dropdown menu level 2 -->
+                                                    <ul class="dropdown-menu p-2 shadow border-0">
+                                                        <li><a class="dropdown-item" href="#">Sub action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Another Sub action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                        <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                        <li><hr class="dropdown-divider"></li>
+                                                        <li class="dropdown dropleft dropdown-submenu">
+                                                            <a class="dropdown-item dropdown-toggle" href="#">Sub action</a>
+                                                            <!-- .dropdown menu level 3 -->
+                                                            <ul class="dropdown-menu p-2 shadow-lg border-0">
+                                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                                <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                                <li><hr class="dropdown-divider"></li>
+                                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li class="dropdown dropleft dropdown-submenu">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">Something else here</a>
+                                                    <!-- .dropdown menu level 2 -->
+                                                    <ul class="dropdown-menu p-2 shadow border-0">
+                                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group m-1">
+                                            <button type="button" class="btn btn-danger">Split button</button>
+                                            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" data-submenu>
+                                                <span class="visually-hidden">Toggle Dropdown</span>
+                                            </button>
+                                            <!-- .dropdown menu level 1 -->
+                                            <ul class="dropdown-menu dropdown-menu-end p-2 shadow-sm border-0">
+                                                <li class="dropdown dropleft dropdown-submenu">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">Action</a>
+                                                    <!-- .dropdown menu level 2 -->
+                                                    <ul class="dropdown-menu p-2 shadow border-0">
+                                                        <li><a class="dropdown-item" href="#">Sub action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Another Sub action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                        <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                        <li><hr class="dropdown-divider"></li>
+                                                        <li class="dropdown dropleft dropdown-submenu">
+                                                            <a class="dropdown-item dropdown-toggle" href="#">Sub action</a>
+                                                            <!-- .dropdown menu level 3 -->
+                                                            <ul class="dropdown-menu p-2 shadow-lg border-0">
+                                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                                <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                                <li><hr class="dropdown-divider"></li>
+                                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li><a class="dropdown-item disabled">Disabled link</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li class="dropdown dropleft dropdown-submenu">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">Something else here</a>
+                                                    <!-- .dropdown menu level 2 -->
+                                                    <ul class="dropdown-menu p-2 shadow border-0">
+                                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="plugin-stepper.html"><i class="fa fa-long-arrow-left me-3"></i>Bootstrap Stepper</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="ui-alerts.html">Alerts<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Core Js -->
+@@include('docs/_scripts.html',{
+    "bsSubmenu": "true"
+})
+
+<script>
+
+    $('[data-submenu]').submenupicker();
+    
+</script>
+
+</body>
+</html>

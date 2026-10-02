@@ -1,0 +1,61 @@
+<!-- <button class="btn btn-primary px-4 text-uppercase" data-bs-toggle="modal" data-bs-target="#CreateBookmarks" type="button">Create Bookmarks</button> -->
+
+<!-- Modal: Create Bookmarks -->
+<div class="modal fade" id="CreateBookmarks" tabindex="-1" aria-labelledby="CreateBookmarks" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content needs-validation">
+            <div class="modal-header">
+                <h5 class="modal-title">Add new Bookmark</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-2">
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" placeholder="Bookmark Url">
+                            <label>Bookmark Url</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" placeholder="Bookmark Title">
+                            <label>Bookmark Title</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" placeholder="Description">
+                            <label>Description</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <select class="form-select">
+                                <option selected>Open this select menu</option>
+                                <option value="1">Created by me</option>
+                                <option value="2">Favourites</option>
+                                <option value="3">Admin Template</option>
+                            </select>
+                            <label>Bookmark List</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <select class="form-select">
+                                <option selected>Open this select menu</option>
+                                <option value="1">Thememakker</option>
+                                <option value="2">UI8</option>
+                                <option value="3">Themeforest</option>
+                            </select>
+                            <label>Bookmark Tags</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" type="submit">Save Bookmark</button>
+            </div>
+        </div>
+    </div>
+</div>

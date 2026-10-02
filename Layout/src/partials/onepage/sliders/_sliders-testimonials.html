@@ -1,0 +1,85 @@
+<div class="section @@cardClass">
+    <div class="container">
+
+        <div class="testimonials-slider swiper swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="testimonial-wrap">
+                        <div class="testimonial-item">
+                            <img src="@@webRoot/assets/img/avatar.png" class="testimonial-img" alt="">
+                            <h4 class="mb-0">Manuella Nevoresky</h4>
+                            <h6 class="text-muted mb-3">Ceo &amp; Founder</h6>
+                            <h6 class="lh-lg">
+                                <i class="fa fa-quote-left"></i>
+                                it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, many web sites still in their infancy.
+                                <i class="fa fa-quote-right"></i>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="testimonial-wrap">
+                        <div class="testimonial-item">
+                            <img src="@@webRoot/assets/img/avatar.png" class="testimonial-img" alt="">
+                            <h4 class="mb-0">Brian Swader</h4>
+                            <h6 class="text-muted mb-3">UI/UX Designer</h6>
+                            <h6 class="lh-lg">
+                                <i class="fa fa-quote-left"></i>
+                                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.
+                                <i class="fa fa-quote-right"></i>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="testimonial-wrap">
+                        <div class="testimonial-item">
+                            <img src="@@webRoot/assets/img/avatar.png" class="testimonial-img" alt="">
+                            <h4 class="mb-0">Maryam Amiri</h4>
+                            <h6 class="text-muted mb-3">Ceo &amp; Founder</h6>
+                            <h6 class="lh-lg">
+                                <i class="fa fa-quote-left"></i>
+                                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+                                <i class="fa fa-quote-right"></i>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        
+    </div>
+</div>
+
+<script src="@@webRoot/assets/js/bundle/swiper.bundle.js"></script>
+
+<script>
+
+    // Testimonials slider
+    new Swiper('.testimonials-slider', {
+        speed: 600,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false
+        },
+        slidesPerView: 'auto',
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 20
+            },
+
+            1200: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            }
+        }
+    });
+</script>

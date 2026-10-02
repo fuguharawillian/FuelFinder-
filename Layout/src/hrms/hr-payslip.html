@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "HRMS Payslip",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-black">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hrms.html', {"page": "hr-payslip"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">Account</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Payslip</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row g-1">
+                                    <div class="col-md-12">
+                                        <table class="table table-bordered mb-0">
+                                            <tbody>
+                                                <tr>
+                                                <td colspan="2" class="bg-primary text-light">
+                                                        <h4 class="mb-0">PAYSLIP #45124</h4>
+                                                        <span>Salary Month: Jun, 2020</span>
+                                                </td> 
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5 class="fw-bold">From:</h5>
+                                                        <strong>Lucid Infoweb LLC.</strong> <br>
+                                                        Branch: Lorem Ipsum<br>
+                                                        Plot No - 38, LoremIpsum,<br>
+                                                        Email: LoremIpsum@gmail.com<br>
+                                                        Phone: +91 9XXXXXXXXXX<br>
+                                                    </td>
+                                                    <td>
+                                                        <h5 class="fw-bold">To:</h5>
+                                                        <strong>Francisco Vasquez</strong><br>
+                                                        Plot No - 38, LoremIpsum,<br>
+                                                        Email: LoremIpsum@gmail.com<br>
+                                                        Phone: +91 9XXXXXXXXXX<br>
+                                                    </td>
+                                                </tr>
+                                            </tbody>                                            
+                                        </table>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <table class="table table-hover table-bordered mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 40px;">#</th>
+                                                    <th>Earnings</th>
+                                                    <th style="width: 100px; text-align: right;">Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Basic Salary</td>
+                                                    <td class="text-success text-end">$1,500</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>House Rent Allowance (H.R.A.)</td>
+                                                    <td class="text-success text-end">$50</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Bonus</td>
+                                                    <td class="text-success text-end">$150</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Conveyance</td>
+                                                    <td class="text-success text-end">$80</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>Other Allowance</td>
+                                                    <td class="text-success text-end">$80</td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><strong>Total Earnings</strong></td>
+                                                    <td class="text-success text-end"><strong>$1,860</strong></td>
+                                                </tr>
+                                            </tbody>                                            
+                                        </table>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <table class="table table-hover table-bordered mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 40px;">#</th>
+                                                    <th>Deductions</th>
+                                                    <th style="width: 100px; text-align: right;">Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Tax Deducted at Source (T.D.S.)</td>
+                                                    <td class="text-danger text-end">$10</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>ESI</td>
+                                                    <td class="text-danger text-end">$0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Provident Fund</td>
+                                                    <td class="text-danger text-end">$150</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>C/Bank Loan</td>
+                                                    <td class="text-danger text-end">$120</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>Other Deductions</td>
+                                                    <td class="text-danger text-end">$8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><strong>Total Deductions</strong></td>
+                                                    <td class="text-danger text-end"><strong>$288</strong></td>
+                                                </tr>
+                                            </tbody>                                            
+                                        </table>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <table class="table table-bordered mb-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-end">
+                                                        <div class="fs-6 text-success">Total Earnings:- <strong style="width: 100px; display: inline-block;">$1,860</strong></div>
+                                                        <div class="fs-6 text-danger">Total Deductions:- <strong style="width: 100px; display: inline-block;">$288</strong></div>
+                                                        <div class="fs-5 mt-3">Net Salary:- <strong style="width: 100px; display: inline-block;">$1572.00</strong></div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h6 class="fw-bold">Note:</h6>
+                                                        <span class="text-muted">Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,<br> weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>                                            
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

@@ -1,0 +1,83 @@
+// Admin Layout (LUNO)
+// @author: WrrapTheme ( https://themeforest.net/user/wrraptheme )
+// @design by: ThemeMakker Infotech LLP.
+// @event-namespace: LUNO
+// Copyright 2022 WrrapTheme
+
+.landing-page{
+
+    // section: 
+    .section{
+
+        &.services{
+            .list{
+                i{
+                    font-size: 0.8rem;
+                }
+                li{
+                    line-height: 32px;
+                }
+                a{
+                    color: var(--color-600);
+                    font-size: 1rem;
+                    &:hover{
+                        color: var(--primary-color);
+                    }
+                }
+            }
+            &.more{
+                .list{
+                    li{
+                        line-height: 40px;
+                    }
+                }
+            }
+        }
+
+        &.services-2 {
+            .icon {
+                background: var(--secondary-color);
+                transition: all .3s ease-out 0s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transform-style: preserve-3d;
+                margin: 0 auto;
+                width: 64px;
+                height: 64px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+        
+                i {
+                    color: var(--white-color);
+                    font-size: 28px;
+                }
+                &:before {
+                    background: var(--secondary-color);
+                    position: absolute;
+                    content: '';
+                    left: -10px;
+                    top: -10px;
+                    height: calc(100% + 20px);
+                    width: calc(100% + 20px);
+                    opacity: .25;
+                    border-radius: 5px;
+                    transition: all .3s ease-out 0s;
+                    transform: translateZ(-1px);
+                }
+            }
+            .card:hover {
+                .icon {
+                    background: var(--white-color);
+                    i {
+                        color: var(--secondary-color);
+                    }
+                    &:before {
+                        background: var(--secondary-color);
+                    }
+                }
+            }
+        }
+        
+    }
+}

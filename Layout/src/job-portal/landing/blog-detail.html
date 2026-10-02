@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Job Portal Blog",
+        "fancybox": true,
+    })
+</head>
+
+<body class="landing-page" data-luno="theme-cyan">
+
+    <!-- Section: Top Bar -->
+    <div class="topbar py-2 bg-card" id="topbar">
+        <div class="container">
+
+            <div class="row g-2">
+                <div class="col-md-8">
+                    <div class="text-muted d-flex align-items-center small">
+                        <a class="me-4 text-muted" href="#"><i class="fa fa-envelope me-2"></i>contact@example.com</a>
+                        <span><i class="fa fa-phone me-2"></i>+1 1234 5678 990</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-none d-md-flex social-links align-items-center justify-content-end">
+                        <a href="#" class="text-muted ps-3 ms-1"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="text-muted ps-3 ms-1"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="text-muted ps-3 ms-1"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="text-muted ps-3 ms-1"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!-- Section: Header -->
+    <header class="section sticky-top shadow-sm border-top py-0 bg-card">
+        @@include('onepage/_navbar.html', {
+            "navbarClass": "navbar-expand-lg navbar-light py-3",
+            "brandName": "LUNO",
+            "tagLine": "Hospital Management",
+        })
+    </header>
+
+    @@include('app/_app-blog-detail.html')
+
+    <!-- Section: Footer -->
+    @@include('onepage/_footer.html', {
+        "sectionClass": "footer",
+        "rowClass": "g-2",
+        "SectionTag": "Contact Information",
+        "SectionTitle": "Get in touch",
+    })
+    
+    <!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+    <a class="page-setting" href="#" title="Settings" data-bs-toggle="modal" data-bs-target="#SettingsModal"><i class="fa fa-gear text-light"></i></a>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fa fa-arrow-up"></i></a>
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "fancybox":true,
+})
+<script>
+    /*	end gallery */
+    $(document).ready(function() {
+        $(".fancybox").fancybox({
+            openEffect: "none",
+            closeEffect: "none"
+        });
+    });
+</script>
+</body>
+</html>

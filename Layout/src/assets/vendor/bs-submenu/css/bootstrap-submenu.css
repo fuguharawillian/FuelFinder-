@@ -1,0 +1,37 @@
+.dropdown-submenu.dropright .dropdown-menu {
+    margin-left: 1px;
+    left: 100%;
+    top: 0;
+}
+
+.dropdown-submenu.dropleft .dropdown-menu {
+    margin-right: 1px;
+    right: 100%;
+    top: 0;
+}
+
+[x-placement^="bottom-"] .dropdown-submenu .dropdown-menu,
+.navbar .dropdown-submenu .dropdown-menu {
+    bottom: auto;
+    margin-top: calc(-0.5rem - 1px);
+}
+
+[x-placement^="top-"] .dropdown-submenu .dropdown-menu {
+    top: auto;
+    bottom: 0;
+    margin-bottom: calc(-0.5rem - 1px); 
+}
+
+.dropdown-submenu.dropright > .dropdown-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 768px) { 
+    .dropdown-submenu.dropright .dropdown-menu,
+    .dropdown-submenu.dropleft .dropdown-menu {
+        left: 0;
+        position: relative;
+    }
+}

@@ -1,0 +1,76 @@
+<div class="owl-carousel owl-theme @@cardClass" id="OwlBasic">
+    <div class="item card">
+        <div class="card-body">
+            <span class="text-truncate">Users</span>
+            <div class="fs-3">$15.48</div>
+            <span class="text-muted">No data</span>
+        </div>
+    </div>
+    <div class="item card">
+        <div class="card-body">
+            <span>New Users</span>
+            <div class="fs-3">250</div>
+            <span class="text-danger"><i class="fa fa-angle-down"></i> 11.63%</span>
+        </div>
+    </div>
+    <div class="item card">
+        <div class="card-body">
+            <span>Session Duration</span>
+            <div class="fs-3">$18</div>
+            <span class="text-success"><i class="fa fa-angle-up"></i> 1.03%</span>
+        </div>
+    </div>
+    <div class="item card">
+        <div class="card-body">
+            <span>Transactions</span>
+            <div class="fs-3">218</div>
+            <span class="text-success"><i class="fa fa-angle-up"></i> 2.23%</span>
+        </div>
+    </div>
+    <div class="item card">
+        <div class="card-body">
+            <span>Conversion Rate</span>
+            <div class="fs-3">0</div>
+            <span class="text-danger"><i class="fa fa-angle-down"></i> 6.44%</span>
+        </div>
+    </div>
+    <div class="item card">
+        <div class="card-body">
+            <span>Revenue <a href="#" class="fa fa-info-circle"></a></span>
+            <div class="fs-3">$24,750</div>
+            <span class="text-muted">No data</span>
+        </div>
+    </div>
+    <div class="item card">
+        <div class="card-body">
+            <span>Revenue <a href="#" class="fa fa-info-circle"></a></span>
+            <div class="fs-3">$24,750</div>
+            <span class="text-muted">No data</span>
+        </div>
+    </div>
+    <div class="item card">
+        <div class="card-body">
+            <span>Revenue <a href="#" class="fa fa-info-circle"></a></span>
+            <div class="fs-3">$24,750</div>
+            <span class="text-muted">No data</span>
+        </div>
+    </div>
+</div>
+
+<!-- Vendor JS Files -->
+<script src="@@webRoot/assets/js/bundle/owlcarousel.bundle.js"></script>
+
+<!-- Template Main JS File -->
+<script>
+    var owl = $('#OwlBasic');
+    owl.owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        responsive:{
+            0:{items:1},
+            600:{items:2},
+            1000:{items:4}
+        }
+    });
+</script>

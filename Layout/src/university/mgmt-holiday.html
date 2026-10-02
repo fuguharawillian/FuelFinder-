@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "University Holidays",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-indigo">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-university.html', {"page": "mgmt-holiday"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">Management</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Holiday</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Holiday List</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <table class="table myDataTable table-hover align-middle mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Holiday Name</th>
+                                            <th>Type</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>PRE2209</td>
+                                            <td>Annual Day</td>
+                                            <td>College Holiday</td>
+                                            <td>17 Aug 2021</td>
+                                            <td>19 Aug 2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PRE2213</td>
+                                            <td>Sports Day</td>
+                                            <td>Public Holiday</td>
+                                            <td>05 Aug 2021</td>
+                                            <td>06 Aug 2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PRE2143</td>
+                                            <td>Exam Holiday</td>
+                                            <td>College Holiday</td>
+                                            <td>04 Sept 2021</td>
+                                            <td>07 Sept 2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PRE2431</td>
+                                            <td>Annual Day</td>
+                                            <td>Semester leave</td>
+                                            <td>17 Sept 2021</td>
+                                            <td>30 Sept 2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PRE2209</td>
+                                            <td>Memorial Day</td>
+                                            <td>College Holiday</td>
+                                            <td>17 Aug 2021</td>
+                                            <td>19 Aug 2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PRE2213</td>
+                                            <td>Exam Holiday</td>
+                                            <td>Public Holiday</td>
+                                            <td>05 Aug 2021</td>
+                                            <td>06 Aug 2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PRE2143</td>
+                                            <td>Sports Day</td>
+                                            <td>College Holiday</td>
+                                            <td>04 Sept 2021</td>
+                                            <td>07 Sept 2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PRE2431</td>
+                                            <td>Memorial Day</td>
+                                            <td>Semester leave</td>
+                                            <td>17 Sept 2021</td>
+                                            <td>30 Sept 2021</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    // project data table
+    $('.myDataTable')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: true,
+        info: false,
+    });
+</script>
+</body>
+</html>

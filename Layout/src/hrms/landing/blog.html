@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "HRMS Landing Page",
+        "fancybox": true,
+    })
+	@@include('_meta.html')
+	<title>:: LUNO Landing Page :: Blog</title>
+
+	<!-- plugin css file  -->
+    <link rel="stylesheet" href="@@webRoot/assets/cssbundle/fancybox.min.css">
+    
+	<!-- project css file  -->
+	<link rel="stylesheet" href="@@webRoot/assets/css/luno-style.css">
+
+    <!-- Jquery Core Js -->
+    <script src="@@webRoot/assets/js/plugins.js"></script>
+
+</head>
+
+<body class="landing-page" data-luno="theme-black">
+    
+    <!-- Section: Navbar menu -->
+    @@include('onepage/_navbar.html', {
+        "navbarClass": "navbar-expand-lg navbar-light py-3",
+        "brandName": "LUNO",
+        "tagLine": "HR & Project Management",
+        "navLink1": "Overview",
+        "navLink2": "Risks Management",
+        "navLink2Class": "",
+        "dashboardURL": "@@webRoot/hrms/index.html",
+    })
+
+    @@include('app/_app-blog.html')
+
+    <!-- Section: Footer -->
+    @@include('onepage/_footer.html', {
+        "sectionClass": "footer",
+        "rowClass": "g-2",
+        "SectionTag": "Contact Information",
+        "SectionTitle": "Get in touch",
+    })
+    
+    <!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+    <a class="page-setting" href="#" title="Settings" data-bs-toggle="modal" data-bs-target="#SettingsModal"><i class="fa fa-gear text-light"></i></a>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fa fa-arrow-up"></i></a>
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "fancybox": true,
+})
+<script>
+    /*	end gallery */
+    $(document).ready(function() {
+        $(".fancybox").fancybox({
+            openEffect: "none",
+            closeEffect: "none"
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<div class="sidebar px-xl-4 px-3 py-2 py-md-3 document dark">
+    <!-- sidebar: title-->
+    <div class="title-text d-flex align-items-center mb-4 mt-1">
+        <h4 class="sidebar-title mb-0 flex-grow-1"><span class="sm-txt">L</span><span>UNO</span></h4>
+    </div>
+    <!-- sidebar: menu list -->
+    <div class="main-menu flex-grow-1">
+        <!-- sidebar: Documentation -->
+        <ul class="menu-list">
+            <li class="divider py-2 lh-sm"><span class="text-primary small fw-bold text-uppercase">Documentation</span><br><small class="text-muted">Getting Started</small></li>
+            <li><a @@if (context.page === 'index') {class="m-link active"} @@if (context.page !== 'index') {class="m-link"} href="@@webRoot/docs/index.html"><i class="fa fa-angle-right"></i>Overview</a></li>
+            <li><a @@if (context.page === 'doc-setup') {class="m-link active"} @@if (context.page !== 'doc-setup') {class="m-link"} href="@@webRoot/docs/doc-setup.html"><i class="fa fa-angle-right"></i>Dev Setup</a></li>
+            <li><a @@if (context.page === 'doc-structure') {class="m-link active"} @@if (context.page !== 'doc-structure') {class="m-link"} href="@@webRoot/docs/doc-structure.html"><i class="fa fa-angle-right"></i>File Structure</a></li>
+            <li><a @@if (context.page === 'doc-references') {class="m-link active"} @@if (context.page !== 'doc-references') {class="m-link"} href="@@webRoot/docs/doc-references.html"><i class="fa fa-angle-right"></i>References</a></li>
+            <li><a @@if (context.page === 'doc-helperclass') {class="m-link active"} @@if (context.page !== 'doc-helperclass') {class="m-link"} href="@@webRoot/docs/doc-helperclass.html"><i class="fa fa-angle-right"></i>Helper Class</a></li>
+            <li><a @@if (context.page === 'doc-staterpage') {class="m-link active"} @@if (context.page !== 'doc-staterpage') {class="m-link"} href="@@webRoot/docs/doc-staterpage.html"><i class="fa fa-angle-right"></i>Stater Page</a></li>
+            <li><a @@if (context.page === 'doc-animation') {class="m-link active"} @@if (context.page !== 'doc-animation') {class="m-link"} href="@@webRoot/docs/doc-animation.html"><i class="fa fa-angle-right"></i>Animation</a></li>
+            <li><a @@if (context.page === 'doc-changelog') {class="m-link active"} @@if (context.page !== 'doc-changelog') {class="m-link"} href="@@webRoot/docs/doc-changelog.html"><i class="fa fa-angle-right"></i>Changelog<span id="Changelog"></span></a></li>
+        </ul>
+        <!-- sidebar: Widget -->
+        <ul class="menu-list">
+            <li class="divider py-2 lh-sm"><span class="text-primary small fw-bold text-uppercase">Widget Card's</span><br><small class="text-muted">Handcrafted Cards</small></li>
+            <li><a @@if (context.page === 'w-cards') {class="m-link active"} @@if (context.page !== 'w-cards') {class="m-link"} href="@@webRoot/docs/w-cards.html"><i class="fa fa-angle-right"></i><span>Basic Card</span></a></li>
+            <li><a @@if (context.page === 'w-cards-tiles') {class="m-link active"} @@if (context.page !== 'w-cards-tiles') {class="m-link"} href="@@webRoot/docs/w-cards-tiles.html"><i class="fa fa-angle-right"></i><span>Card Tiles</span></a></li>
+            <li><a @@if (context.page === 'w-cards-user') {class="m-link active"} @@if (context.page !== 'w-cards-user') {class="m-link"} href="@@webRoot/docs/w-cards-user.html"><i class="fa fa-angle-right"></i><span>User's Card</span></a></li>
+            <li><a @@if (context.page === 'w-cards-tabbed') {class="m-link active"} @@if (context.page !== 'w-cards-tabbed') {class="m-link"} href="@@webRoot/docs/w-cards-tabbed.html"><i class="fa fa-angle-right"></i><span>Tabbed Card</span></a></li>
+            <li><a @@if (context.page === 'w-cards-ribbons') {class="m-link active"} @@if (context.page !== 'w-cards-ribbons') {class="m-link"} href="@@webRoot/docs/w-cards-ribbons.html"><i class="fa fa-angle-right"></i><span>Card Ribbons</span></a></li>
+            <li><a @@if (context.page === 'w-cards-list') {class="m-link active"} @@if (context.page !== 'w-cards-list') {class="m-link"} href="@@webRoot/docs/w-cards-list.html"><i class="fa fa-angle-right"></i><span>Card List</span></a></li>
+            <li><a @@if (context.page === 'w-cards-charts') {class="m-link active"} @@if (context.page !== 'w-cards-charts') {class="m-link"} href="@@webRoot/docs/w-cards-charts.html"><i class="fa fa-angle-right"></i><span>Widget Chart</span></a></li>
+            <li><a @@if (context.page === 'w-cards-tables') {class="m-link active"} @@if (context.page !== 'w-cards-tables') {class="m-link"} href="@@webRoot/docs/w-cards-tables.html"><i class="fa fa-angle-right"></i><span>Card Table</span></a></li>
+        </ul>
+        <!-- sidebar: Charts -->
+        <ul class="menu-list">
+            <li class="divider py-2 lh-sm"><span class="text-primary small fw-bold text-uppercase">Charts</span><br><small class="text-muted">Getting Started</small></li>
+            <li><a @@if (context.page === 'chart-apex') {class="m-link active"} @@if (context.page !== 'chart-apex') {class="m-link"} href="@@webRoot/docs/chart-apex.html"><i class="fa fa-angle-right"></i><span>Apex Chart</span></a></li>
+            <li><a @@if (context.page === 'chart-chartjs') {class="m-link active"} @@if (context.page !== 'chart-chartjs') {class="m-link"} href="@@webRoot/docs/chart-chartjs.html"><i class="fa fa-angle-right"></i><span>ChartJS</span></a></li>
+            <li><a @@if (context.page === 'chart-knob') {class="m-link active"} @@if (context.page !== 'chart-knob') {class="m-link"} href="@@webRoot/docs/chart-knob.html"><i class="fa fa-angle-right"></i><span>JQuery Knob</span></a></li>
+            <li><a @@if (context.page === 'chart-sparkline') {class="m-link active"} @@if (context.page !== 'chart-sparkline') {class="m-link"} href="@@webRoot/docs/chart-sparkline.html"><i class="fa fa-angle-right"></i><span>Sparkline</span></a></li>
+        </ul>
+        <!-- sidebar: Advanced Elements -->
+        <ul class="menu-list">
+            <li class="divider py-2 lh-sm"><span class="text-primary small fw-bold text-uppercase">Advanced Elements</span><br><small class="text-muted">Getting Started</small></li>
+            <li><a @@if (context.page === 'element-clipboard') {class="m-link active"} @@if (context.page !== 'element-clipboard') {class="m-link"} href="@@webRoot/docs/element-clipboard.html"><i class="fa fa-angle-right"></i><span>Clipboard</span></a></li>
+            <li><a @@if (context.page === 'element-colorpicker') {class="m-link active"} @@if (context.page !== 'element-colorpicker') {class="m-link"} href="@@webRoot/docs/element-colorpicker.html"><i class="fa fa-angle-right"></i><span>Colorpicker</span></a></li>
+            <li><a @@if (context.page === 'element-daterange') {class="m-link active"} @@if (context.page !== 'element-daterange') {class="m-link"} href="@@webRoot/docs/element-daterange.html"><i class="fa fa-angle-right"></i><span>Date Range Picker</span></a></li>
+            <li><a @@if (context.page === 'element-datepicker') {class="m-link active"} @@if (context.page !== 'element-datepicker') {class="m-link"} href="@@webRoot/docs/element-datepicker.html"><i class="fa fa-angle-right"></i><span>Datepicker</span></a></li>
+            <li><a @@if (context.page === 'element-dropify') {class="m-link active"} @@if (context.page !== 'element-dropify') {class="m-link"} href="@@webRoot/docs/element-dropify.html"><i class="fa fa-angle-right"></i><span>Dropify</span></a></li>
+            <li><a @@if (context.page === 'element-flatpickr') {class="m-link active"} @@if (context.page !== 'element-flatpickr') {class="m-link"} href="@@webRoot/docs/element-flatpickr.html"><i class="fa fa-angle-right"></i><span>Flatpickr</span></a></li>
+            <li><a @@if (context.page === 'element-inputmask') {class="m-link active"} @@if (context.page !== 'element-inputmask') {class="m-link"} href="@@webRoot/docs/element-inputmask.html"><i class="fa fa-angle-right"></i><span>Inputmask</span></a></li>
+            <li><a @@if (context.page === 'element-imageinput') {class="m-link active"} @@if (context.page !== 'element-imageinput') {class="m-link"} href="@@webRoot/docs/element-imageinput.html"><i class="fa fa-angle-right"></i><span>Image Input</span></a></li>
+            <li><a @@if (context.page === 'element-maxlength') {class="m-link active"} @@if (context.page !== 'element-maxlength') {class="m-link"} href="@@webRoot/docs/element-maxlength.html"><i class="fa fa-angle-right"></i><span>Maxlength</span></a></li>
+            <li><a @@if (context.page === 'element-nouislider') {class="m-link active"} @@if (context.page !== 'element-nouislider') {class="m-link"} href="@@webRoot/docs/element-nouislider.html"><i class="fa fa-angle-right"></i><span>nouislider</span></a></li>
+            <li><a @@if (context.page === 'element-passwordmeter') {class="m-link active"} @@if (context.page !== 'element-passwordmeter') {class="m-link"} href="@@webRoot/docs/element-passwordmeter.html"><i class="fa fa-angle-right"></i><span>Password Meter</span></a></li>
+            <li><a @@if (context.page === 'element-rangeslider') {class="m-link active"} @@if (context.page !== 'element-rangeslider') {class="m-link"} href="@@webRoot/docs/element-rangeslider.html"><i class="fa fa-angle-right"></i><span>Rangeslider</span></a></li>
+            <li><a @@if (context.page === 'element-sweetalert2') {class="m-link active"} @@if (context.page !== 'element-sweetalert2') {class="m-link"} href="@@webRoot/docs/element-sweetalert2.html"><i class="fa fa-angle-right"></i><span>Sweetalert 2</span></a></li>
+            <li><a @@if (context.page === 'element-tagsinput') {class="m-link active"} @@if (context.page !== 'element-tagsinput') {class="m-link"} href="@@webRoot/docs/element-tagsinput.html"><i class="fa fa-angle-right"></i><span>Tagsinput</span></a></li>
+            <li><a @@if (context.page === 'element-select2') {class="m-link active"} @@if (context.page !== 'element-select2') {class="m-link"} href="@@webRoot/docs/element-select2.html"><i class="fa fa-angle-right"></i><span>Select 2</span></a></li>
+            <li><a @@if (context.page === 'element-multiselectsplitter') {class="m-link active"} @@if (context.page !== 'element-multiselectsplitter') {class="m-link"} href="@@webRoot/docs/element-multiselectsplitter.html"><i class="fa fa-angle-right"></i><span>Multiselect Splitter</span></a></li>
+            <li><a @@if (context.page === 'element-jkanban') {class="m-link active"} @@if (context.page !== 'element-jkanban') {class="m-link"} href="@@webRoot/docs/element-jkanban.html"><i class="fa fa-angle-right"></i><span>jKanban Board</span></a></li>
+        </ul>
+        <!-- sidebar: Form Elements -->
+        <ul class="menu-list">
+            <li class="divider py-2 lh-sm"><span class="text-primary small fw-bold text-uppercase">Form Elements</span><br><small class="text-muted">Getting Started</small></li>
+            <li><a @@if (context.page === 'form-bootstrap') {class="m-link active"} @@if (context.page !== 'form-bootstrap') {class="m-link"} href="@@webRoot/docs/form-bootstrap.html"><i class="fa fa-angle-right"></i><span>Bootstrap Form</span></a></li>
+            <li><a @@if (context.page === 'form-wizard-h') {class="m-link active"} @@if (context.page !== 'form-wizard-h') {class="m-link"} href="@@webRoot/docs/form-wizard-h.html"><i class="fa fa-angle-right"></i><span>Form Wizard horizontal</span></a></li>
+            <li><a @@if (context.page === 'form-wizard-v') {class="m-link active"} @@if (context.page !== 'form-wizard-v') {class="m-link"} href="@@webRoot/docs/form-wizard-v.html"><i class="fa fa-angle-right"></i><span>Form Wizard Vertical</span></a></li>
+            <li><a @@if (context.page === 'form-wizard-validate') {class="m-link active"} @@if (context.page !== 'form-wizard-validate') {class="m-link"} href="@@webRoot/docs/form-wizard-validate.html"><i class="fa fa-angle-right"></i><span>Form Wizard Validate</span></a></li>
+            <li><a @@if (context.page === 'form-custome') {class="m-link active"} @@if (context.page !== 'form-custome') {class="m-link"} href="@@webRoot/docs/form-custome.html"><i class="fa fa-angle-right"></i><span>Custome Form</span></a></li>
+        </ul>
+        <!-- sidebar: Font Icons -->
+        <ul class="menu-list">
+            <li class="divider py-2 lh-sm"><span class="text-primary small fw-bold text-uppercase">Font Icons</span><br><small class="text-muted">Getting Started</small></li>
+            <li><a @@if (context.page === 'icon-fontawesome') {class="m-link active"} @@if (context.page !== 'icon-fontawesome') {class="m-link"} href="@@webRoot/docs/icon-fontawesome.html"><i class="fa fa-angle-right"></i>Font Awesome</a></li>
+            <li><a @@if (context.page === 'icon-linear') {class="m-link active"} @@if (context.page !== 'icon-linear') {class="m-link"} href="@@webRoot/docs/icon-linear.html"><i class="fa fa-angle-right"></i>Simple line</a></li>
+            <li><a @@if (context.page === 'icon-weather') {class="m-link active"} @@if (context.page !== 'icon-weather') {class="m-link"} href="@@webRoot/docs/icon-weather.html"><i class="fa fa-angle-right"></i>Weather Icons</a></li>
+            <li><a @@if (context.page === 'icon-feather') {class="m-link active"} @@if (context.page !== 'icon-feather') {class="m-link"} href="@@webRoot/docs/icon-feather.html"><i class="fa fa-angle-right"></i>Feather Icons</a></li>
+            <li><a @@if (context.page === 'icon-8') {class="m-link active"} @@if (context.page !== 'icon-8') {class="m-link"} href="@@webRoot/docs/icon-8.html"><i class="fa fa-angle-right"></i>Icons8 Line Awesome</a></li>
+            <li><a @@if (context.page === 'icon-bootstrap') {class="m-link active"} @@if (context.page !== 'icon-bootstrap') {class="m-link"} href="@@webRoot/docs/icon-bootstrap.html"><i class="fa fa-angle-right"></i>Bootstrap Icon</a></li>
+            <li><a @@if (context.page === 'icon-flag') {class="m-link active"} @@if (context.page !== 'icon-flag') {class="m-link"} href="@@webRoot/docs/icon-flag.html"><i class="fa fa-angle-right"></i>Flag Icon</a></li>
+            <li><a @@if (context.page === 'icon-custom') {class="m-link active"} @@if (context.page !== 'icon-custom') {class="m-link"} href="@@webRoot/docs/icon-custom.html"><i class="fa fa-angle-right"></i>SVG Custom Icon</a></li>
+        </ul>
+        <!-- sidebar: Plugins -->
+        <ul class="menu-list">
+            <li class="divider py-2 lh-sm"><span class="text-primary small fw-bold text-uppercase">Plugins</span><br><small class="text-muted">Manage with npm install</small></li>
+            <li><a @@if (context.page === 'plugin-table') {class="m-link active"} @@if (context.page !== 'plugin-table') {class="m-link"} href="@@webRoot/docs/plugin-table.html"><i class="fa fa-angle-right"></i><span>DataTables</span></a></li>
+            <li><a @@if (context.page === 'plugin-jsgrid') {class="m-link active"} @@if (context.page !== 'plugin-jsgrid') {class="m-link"} href="@@webRoot/docs/plugin-jsgrid.html"><i class="fa fa-angle-right"></i><span>jsGrid Table</span></a></li>
+            <li><a @@if (context.page === 'plugin-summernote') {class="m-link active"} @@if (context.page !== 'plugin-summernote') {class="m-link"} href="@@webRoot/docs/plugin-summernote.html"><i class="fa fa-angle-right"></i><span>Summernote</span></a></li>
+            <li><a @@if (context.page === 'plugin-owlcarousel') {class="m-link active"} @@if (context.page !== 'plugin-owlcarousel') {class="m-link"} href="@@webRoot/docs/plugin-owlcarousel.html"><i class="fa fa-angle-right"></i><span>Owl Carousel</span></a></li>
+            <li><a @@if (context.page === 'plugin-masonrygallery') {class="m-link active"} @@if (context.page !== 'plugin-masonrygallery') {class="m-link"} href="@@webRoot/docs/plugin-masonrygallery.html"><i class="fa fa-angle-right"></i><span>Masonry Gallery</span></a></li>
+            <li><a @@if (context.page === 'plugin-fancybox') {class="m-link active"} @@if (context.page !== 'plugin-fancybox') {class="m-link"} href="@@webRoot/docs/plugin-fancybox.html"><i class="fa fa-angle-right"></i><span>FancyBox Gallery</span></a></li>
+            <li><a @@if (context.page === 'plugin-dropify') {class="m-link active"} @@if (context.page !== 'plugin-dropify') {class="m-link"} href="@@webRoot/docs/plugin-dropify.html"><i class="fa fa-angle-right"></i><span>Drag & Drop</span></a></li>
+            <li><a @@if (context.page === 'plugin-nestable') {class="m-link active"} @@if (context.page !== 'plugin-nestable') {class="m-link"} href="@@webRoot/docs/plugin-nestable.html"><i class="fa fa-angle-right"></i><span>jquery Nestable</span></a></li>
+            <li><a @@if (context.page === 'plugin-skedtape') {class="m-link active"} @@if (context.page !== 'plugin-skedtape') {class="m-link"} href="@@webRoot/docs/plugin-skedtape.html"><i class="fa fa-angle-right"></i><span>jQuery skedTape</span></a></li>
+            <li><a @@if (context.page === 'plugin-typedjs') {class="m-link active"} @@if (context.page !== 'plugin-typedjs') {class="m-link"} href="@@webRoot/docs/plugin-typedjs.html"><i class="fa fa-angle-right"></i><span>Typed.js</span></a></li>
+            <li><a @@if (context.page === 'plugin-fullcalendar') {class="m-link active"} @@if (context.page !== 'plugin-fullcalendar') {class="m-link"} href="@@webRoot/docs/plugin-fullcalendar.html"><i class="fa fa-angle-right"></i><span>Fullcalendar</span></a></li>
+            <li><a @@if (context.page === 'plugin-countup') {class="m-link active"} @@if (context.page !== 'plugin-countup') {class="m-link"} href="@@webRoot/docs/plugin-countup.html"><i class="fa fa-angle-right"></i><span>CountUp</span></a></li>
+            <li><a @@if (context.page === 'plugin-imagecropper') {class="m-link active"} @@if (context.page !== 'plugin-imagecropper') {class="m-link"} href="@@webRoot/docs/plugin-imagecropper.html"><i class="fa fa-angle-right"></i><span>Cropper</span></a></li>
+            <li><a @@if (context.page === 'plugin-tabledragger') {class="m-link active"} @@if (context.page !== 'plugin-tabledragger') {class="m-link"} href="@@webRoot/docs/plugin-tabledragger.html"><i class="fa fa-angle-right"></i><span>Table Dragger</span></a></li>
+            <li><a @@if (context.page === 'plugin-tagify') {class="m-link active"} @@if (context.page !== 'plugin-tagify') {class="m-link"} href="@@webRoot/docs/plugin-tagify.html"><i class="fa fa-angle-right"></i><span>Tagify</span></a></li>
+            <li><a @@if (context.page === 'plugin-x-editable') {class="m-link active"} @@if (context.page !== 'plugin-x-editable') {class="m-link"} href="@@webRoot/docs/plugin-x-editable.html"><i class="fa fa-angle-right"></i><span>X-editable</span></a></li>
+            <li><a @@if (context.page === 'plugin-swiper') {class="m-link active"} @@if (context.page !== 'plugin-swiper') {class="m-link"} href="@@webRoot/docs/plugin-swiper.html"><i class="fa fa-angle-right"></i><span>Swiper</span></a></li>
+            <li><a @@if (context.page === 'plugin-jspreadsheet') {class="m-link active"} @@if (context.page !== 'plugin-jspreadsheet') {class="m-link"} href="@@webRoot/docs/plugin-jspreadsheet.html"><i class="fa fa-angle-right"></i><span>JSpreadSheet</span></a></li>
+            <li><a @@if (context.page === 'plugin-rating') {class="m-link active"} @@if (context.page !== 'plugin-rating') {class="m-link"} href="@@webRoot/docs/plugin-rating.html"><i class="fa fa-angle-right"></i><span>jQuery Bar Rating</span></a></li>
+            <li><a @@if (context.page === 'plugin-stepper') {class="m-link active"} @@if (context.page !== 'plugin-stepper') {class="m-link"} href="@@webRoot/docs/plugin-stepper.html"><i class="fa fa-angle-right"></i><span>Bootstrap stepper</span></a></li>
+            <li><a @@if (context.page === 'plugin-bs5-toast') {class="m-link active"} @@if (context.page !== 'plugin-bs5-toast') {class="m-link"} href="@@webRoot/docs/plugin-bs5-toast.html"><i class="fa fa-angle-right"></i><span>Bootstrap 5 Toast</span></a></li>
+            <li><a @@if (context.page === 'plugin-bs-submenu') {class="m-link active"} @@if (context.page !== 'plugin-bs-submenu') {class="m-link"} href="@@webRoot/docs/plugin-bs-submenu.html"><i class="fa fa-angle-right"></i><span>Bootstrap submenu</span></a></li>
+        </ul>
+        <!-- sidebar: Components -->
+        <ul class="menu-list pb-4">
+            <li class="divider py-2 lh-sm"><span class="text-primary small fw-bold text-uppercase">Components</span><br><small class="text-muted">Bootstrap 5 Components</small></li>
+            <li><a @@if (context.page === 'ui-alerts') {class="m-link active"} @@if (context.page !== 'ui-alerts') {class="m-link"} href="@@webRoot/docs/ui-alerts.html"><i class="fa fa-angle-right"></i>Alerts</a></li>
+            <li><a @@if (context.page === 'ui-avatar') {class="m-link active"} @@if (context.page !== 'ui-avatar') {class="m-link"} href="@@webRoot/docs/ui-avatar.html"><i class="fa fa-angle-right"></i>Avatar</a></li>
+            <li><a @@if (context.page === 'ui-badge') {class="m-link active"} @@if (context.page !== 'ui-badge') {class="m-link"} href="@@webRoot/docs/ui-badge.html"><i class="fa fa-angle-right"></i>Badge</a></li>
+            <li><a @@if (context.page === 'ui-border') {class="m-link active"} @@if (context.page !== 'ui-border') {class="m-link"} href="@@webRoot/docs/ui-border.html"><i class="fa fa-angle-right"></i>Borders</a></li>
+            <li><a @@if (context.page === 'ui-breadcrumb') {class="m-link active"} @@if (context.page !== 'ui-breadcrumb') {class="m-link"} href="@@webRoot/docs/ui-breadcrumb.html"><i class="fa fa-angle-right"></i>Breadcrumb</a></li>
+            <li><a @@if (context.page === 'ui-buttons') {class="m-link active"} @@if (context.page !== 'ui-buttons') {class="m-link"} href="@@webRoot/docs/ui-buttons.html"><i class="fa fa-angle-right"></i>Buttons</a></li>
+            <li><a @@if (context.page === 'ui-card') {class="m-link active"} @@if (context.page !== 'ui-card') {class="m-link"} href="@@webRoot/docs/ui-card.html"><i class="fa fa-angle-right"></i>Card</a></li>
+            <li><a @@if (context.page === 'ui-carousel') {class="m-link active"} @@if (context.page !== 'ui-carousel') {class="m-link"} href="@@webRoot/docs/ui-carousel.html"><i class="fa fa-angle-right"></i>Carousel</a></li>
+            <li><a @@if (context.page === 'ui-collapse') {class="m-link active"} @@if (context.page !== 'ui-collapse') {class="m-link"} href="@@webRoot/docs/ui-collapse.html"><i class="fa fa-angle-right"></i>Collapse</a></li>
+            <li><a @@if (context.page === 'ui-dropdowns') {class="m-link active"} @@if (context.page !== 'ui-dropdowns') {class="m-link"} href="@@webRoot/docs/ui-dropdowns.html"><i class="fa fa-angle-right"></i>Dropdowns</a></li>
+            <li><a @@if (context.page === 'ui-listgroup') {class="m-link active"} @@if (context.page !== 'ui-listgroup') {class="m-link"} href="@@webRoot/docs/ui-listgroup.html"><i class="fa fa-angle-right"></i>List group</a></li>
+            <li><a @@if (context.page === 'ui-modal') {class="m-link active"} @@if (context.page !== 'ui-modal') {class="m-link"} href="@@webRoot/docs/ui-modal.html"><i class="fa fa-angle-right"></i>Modal</a></li>
+            <li><a @@if (context.page === 'ui-navbar') {class="m-link active"} @@if (context.page !== 'ui-navbar') {class="m-link"} href="@@webRoot/docs/ui-navbar.html"><i class="fa fa-angle-right"></i>Navbar</a></li>
+            <li><a @@if (context.page === 'ui-navs') {class="m-link active"} @@if (context.page !== 'ui-navs') {class="m-link"} href="@@webRoot/docs/ui-navs.html"><i class="fa fa-angle-right"></i>Navs</a></li>
+            <li><a @@if (context.page === 'ui-pagination') {class="m-link active"} @@if (context.page !== 'ui-pagination') {class="m-link"} href="@@webRoot/docs/ui-pagination.html"><i class="fa fa-angle-right"></i>Pagination</a></li>
+            <li><a @@if (context.page === 'ui-popovers') {class="m-link active"} @@if (context.page !== 'ui-popovers') {class="m-link"} href="@@webRoot/docs/ui-popovers.html"><i class="fa fa-angle-right"></i>Popovers</a></li>
+            <li><a @@if (context.page === 'ui-progress') {class="m-link active"} @@if (context.page !== 'ui-progress') {class="m-link"} href="@@webRoot/docs/ui-progress.html"><i class="fa fa-angle-right"></i>Progress</a></li>
+            <li><a @@if (context.page === 'ui-scrollspy') {class="m-link active"} @@if (context.page !== 'ui-scrollspy') {class="m-link"} href="@@webRoot/docs/ui-scrollspy.html"><i class="fa fa-angle-right"></i>Scrollspy</a></li>
+            <li><a @@if (context.page === 'ui-spinners') {class="m-link active"} @@if (context.page !== 'ui-spinners') {class="m-link"} href="@@webRoot/docs/ui-spinners.html"><i class="fa fa-angle-right"></i>Spinners</a></li>
+            <li><a @@if (context.page === 'ui-toasts') {class="m-link active"} @@if (context.page !== 'ui-toasts') {class="m-link"} href="@@webRoot/docs/ui-toasts.html"><i class="fa fa-angle-right"></i>Toasts</a></li>
+            <li><a @@if (context.page === 'ui-tooltips') {class="m-link active"} @@if (context.page !== 'ui-tooltips') {class="m-link"} href="@@webRoot/docs/ui-tooltips.html"><i class="fa fa-angle-right"></i>Tooltips</a></li>
+            <li><a @@if (context.page === 'thankyou') {class="m-link active"} @@if (context.page !== 'thankyou') {class="m-link"} href="@@webRoot/docs/thankyou.html"><i class="fa fa-angle-right"></i>Thank You!</a></li>
+        </ul>
+    </div>
+</div>

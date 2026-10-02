@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Restaurant Landing Page",
+        "swiper": true,
+        "onepage": true,
+    })
+</head>
+
+<body class="landing-page" data-luno="theme-red">
+
+    <!-- Section: Header -->
+    <header class="section sticky-top shadow-sm border-top py-0 bg-card">
+        @@include('onepage/_navbar.html', {
+            "navbarClass": "navbar-expand-lg navbar-light py-3",
+            "brandName": "LUNO",
+            "tagLine": "Restaurant Management",
+        })
+    </header>
+
+    <div class="section sliders-5" id="hero_banner">
+        <div class="hero-container d-flex align-items-center justify-content-center flex-column h-100" style="background: url(@@webRoot/assets/img/restaurant/banner.jpg);">
+
+            <div class="carousel-content text-center">
+                <h2 class="display-5 mb-4 fw-bold text-white"><span class="fw-bold bg-primary-gradient rounded px-4">Best food</span> for <span class="fw-bold bg-primary-gradient rounded px-4">Your Taste</span></h2>
+                <p class="lead text-white">Don't miss out! Register today and discover our latest offers!</p>
+                <a href="#type" class="btn btn-lg bg-primary text-uppercase text-white px-5 mt-3">Order Now</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Section: Services -->
+    <div class="section" id="services">
+        <div class="container">
+
+            <div class="row g-3 align-items-center">
+                <div class="col-lg-6 col-md-12">
+                    <span class="bg-dark px-2 py-1 color-fff text-uppercase">Services</span>
+                    <h2 class="fw-bold mt-4">Our Services for You</h2>
+                    <p class="fs-5 fw-normal">Our goal is to make sure with advances in technology</p>
+                    <p class="fs-5 fw-normal">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer</p>
+                    <a class="btn btn-lg btn-primary px-4 text-uppercase" href="#">Learn More</a>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="row g-1 text-center">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="avatar lg rounded no-thumbnail mb-4 p-2 mx-auto">
+                                        <svg width="40" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="fill-secondary" d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                                            <path class="fill-muted" d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                        </svg>
+                                    </div>
+                                    <h5>Online Order</h5>
+                                    <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting text of industry. <a href="#">Read More</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="avatar lg rounded no-thumbnail mb-4 p-2 mx-auto">
+                                        <svg width="40" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="fill-muted" d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                                            <path class="fill-secondary" d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                                        </svg>                       
+                                    </div>
+                                    <h5>Easy To Order</h5>
+                                    <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting text of letters. <a href="#">Read More</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="avatar lg rounded no-thumbnail mb-4 p-2 mx-auto">
+                                        <svg width="40" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="fill-secondary" fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                            <path class="fill-muted" d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                                        </svg>
+                                    </div>
+                                    <h5>Free Delivery</h5>
+                                    <p class="text-muted">The point of using Lorem is that it has a more-or-less normal distribution of letters <a href="#">Read More</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="avatar lg rounded no-thumbnail mb-4 p-2 mx-auto">
+                                        <svg width="40" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="fill-muted" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+                                            <path class="fill-muted" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+                                            <path class="fill-secondary" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+                                        </svg>
+                                    </div>
+                                    <h5>24/7 Support</h5>
+                                    <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting text of industry. <a href="#">Read More</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: Type  -->
+    <div class="section" id="type">
+        <div class="container">
+
+            <div class="row g-3">
+                <div class="col-12">
+                    <span class="bg-dark px-2 py-1 color-fff text-uppercase">Dishes</span>
+                    <h2 class="mb-1 mt-4 color-900">Popular Dishes in Menu</h2>
+                    <p class="lead">There are many variations of passages of the majority have suffered alteration.</p>
+                </div>
+                <div class="col-12 mt-3">
+                    <ul class="nav nav-tabs tab-card border-bottom-0 fs-6 justify-content-start px-0 flex-column flex-md-row" role="tablist">
+                        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#Pizza" role="tab">Pizza</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#BBQ" role="tab">BBQ</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#Burger" role="tab">Burger</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#Sushi" role="tab">Sushi</a></li>
+                    </ul>
+                    <div class="tab-content mt-4">
+                        <div class="tab-pane fade show active" id="Pizza" role="tabpanel">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img class="img-fluid" src="@@webRoot/assets/img/restaurant/gallery/p1.jpg" alt="">
+                                        <div class="p-3">
+                                            <div class="mt-3">
+                                                <h5 class="text-danger fw-bold d-flex justify-content-between">Veg Pizza <span>$11.49</span></h5>
+                                                <p><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint</p>
+                                                <button class="btn btn-primary w-100">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img class="img-fluid" src="@@webRoot/assets/img/restaurant/gallery/p2.jpg" alt="">
+                                        <div class="p-3">
+                                            <div class="mt-3">
+                                                <h5 class="text-danger fw-bold d-flex justify-content-between">Cheese Pizza <span>$19.99</span></h5>
+                                                <p><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint</p>
+                                                <button class="btn btn-primary w-100">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img class="img-fluid" src="@@webRoot/assets/img/restaurant/gallery/p3.jpg" alt="">
+                                        <div class="p-3">
+                                            <div class="mt-3">
+                                                <h5 class="text-danger fw-bold d-flex justify-content-between">Garlic Pizza <span>$13.99</span></h5>
+                                                <p><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint</p>
+                                                <button class="btn btn-primary w-100">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img class="img-fluid" src="@@webRoot/assets/img/restaurant/gallery/p4.jpg" alt="">
+                                        <div class="p-3">
+                                            <div class="mt-3">
+                                                <h5 class="text-danger fw-bold d-flex justify-content-between">Thin Crust Pizza <span>$11.99</span></h5>
+                                                <p><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint</p>
+                                                <button class="btn btn-primary w-100">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="BBQ" role="tabpanel">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img class="img-fluid" src="@@webRoot/assets/img/restaurant/gallery/bb1.jpg" alt="">
+                                        <div class="p-3">
+                                            <div class="mt-3">
+                                                <h5 class="text-danger fw-bold d-flex justify-content-between">Tandoori Panner Tikka <span>$13.99</span></h5>
+                                                <p><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint</p>
+                                                <button class="btn btn-primary w-100">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img class="img-fluid" src="@@webRoot/assets/img/restaurant/gallery/bb3.jpg" alt="">
+                                        <div class="p-3">
+                                            <div class="mt-3">
+                                                <h5 class="text-danger fw-bold d-flex justify-content-between">Cajun Spiced Potato <span>$19.49</span></h5>
+                                                <p><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint</p>
+                                                <button class="btn btn-primary w-100">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img class="img-fluid" src="@@webRoot/assets/img/restaurant/gallery/bb4.jpg" alt="">
+                                        <div class="p-3">
+                                            <div class="mt-3">
+                                                <h5 class="text-danger fw-bold d-flex justify-content-between">Kalmi Fish Tikka <span>$22.25</span></h5>
+                                                <p><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint</p>
+                                                <button class="btn btn-primary w-100">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img class="img-fluid" src="@@webRoot/assets/img/restaurant/gallery/bb6.jpg" alt="">
+                                        <div class="p-3">
+                                            <div class="mt-3">
+                                                <h5 class="text-danger fw-bold d-flex justify-content-between">Reshmi Chicken Wings <span>$22.25</span></h5>
+                                                <p><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint</p>
+                                                <button class="btn btn-primary w-100">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="Burger" role="tabpanel">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img class="img-fluid" src="@@webRoot/assets/img/restaurant/gallery/b1.jpg" alt="">
+                                        <div class="p-3">
+                                            <div class="mt-3">
+                                                <h5 class="text-danger fw-bold d-flex justify-content-between">Burger + Chips <span>$15.55</span></h5>
+                                                <p><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint</p>
+                                                <button class="btn btn-primary w-100">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img class="img-fluid" src="@@webRoot/assets/img/restaurant/gallery/b2.jpg" alt="">
+                                        <div class="p-3">
+                                            <div class="mt-3">
+                                                <h5 class="text-danger fw-bold d-flex justify-content-between">Burger Combo <span>$11.99</span></h5>
+                                                <p><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint</p>
+                                                <button class="btn btn-primary w-100">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img class="img-fluid" src="@@webRoot/assets/img/restaurant/gallery/b3.jpg" alt="">
+                                        <div class="p-3">
+                                            <div class="mt-3">
+                                                <h5 class="text-danger fw-bold d-flex justify-content-between">Burger <span>$09.90</span></h5>
+                                                <p><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint</p>
+                                                <button class="btn btn-primary w-100">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img class="img-fluid" src="@@webRoot/assets/img/restaurant/gallery/b4.jpg" alt="">
+                                        <div class="p-3">
+                                            <div class="mt-3">
+                                                <h5 class="text-danger fw-bold d-flex justify-content-between">Chicken Burger <span>$13.00</span></h5>
+                                                <p><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint</p>
+                                                <button class="btn btn-primary w-100">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="Sushi" role="tabpanel">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img class="img-fluid" src="@@webRoot/assets/img/restaurant/gallery/s1.jpg" alt="">
+                                        <div class="p-3">
+                                            <div class="mt-3">
+                                                <h5 class="text-danger fw-bold d-flex justify-content-between">Temaki <span>$15.99</span></h5>
+                                                <p><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint</p>
+                                                <button class="btn btn-primary w-100">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img class="img-fluid" src="@@webRoot/assets/img/restaurant/gallery/s2.jpg" alt="">
+                                        <div class="p-3">
+                                            <div class="mt-3">
+                                                <h5 class="text-danger fw-bold d-flex justify-content-between">Narezushi <span>$11.99</span></h5>
+                                                <p><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint</p>
+                                                <button class="btn btn-primary w-100">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img class="img-fluid" src="@@webRoot/assets/img/restaurant/gallery/s3.jpg" alt="">
+                                        <div class="p-3">
+                                            <div class="mt-3">
+                                                <h5 class="text-danger fw-bold d-flex justify-content-between">Nigiri <span>$18.49</span></h5>
+                                                <p><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint</p>
+                                                <button class="btn btn-primary w-100">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img class="img-fluid" src="@@webRoot/assets/img/restaurant/gallery/s4.jpg" alt="">
+                                        <div class="p-3">
+                                            <div class="mt-3">
+                                                <h5 class="text-danger fw-bold d-flex justify-content-between">Sasazushi <span>$15.49</span></h5>
+                                                <p><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></p>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint</p>
+                                                <button class="btn btn-primary w-100">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: Agents  -->
+    <div class="section">
+        <div class="container">
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-lg-12">
+                    <span class="chart-color4 px-2 py-1 color-fff">Chefs</span>
+                    <h3 class="mb-1 mt-4 color-900">Meet Our Chefs</h3>
+                    <p class="lead">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem</p>
+                </div>
+            </div> <!-- .row end -->
+
+            <div class="row g-3">
+                <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                            <img class="w240 rounded" src="@@webRoot/assets/img/lg/avatar1.jpg" alt="">
+                            <div class="media-body ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                <h5 class="fw-bold mb-2">Hossein Shams</h5>
+                                <div class="mb-3">
+                                    <p class="mt-2">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s</p>
+                                </div>
+                                <div class="row row-cols-md-2 row-cols-sm-2 row-cols-2 g-1 mb-2">
+                                    <div class="col">
+                                        <strong>11 year</strong>
+                                        <div class="text-muted small">Experience</div>
+                                    </div>
+                                    <div class="col">
+                                        <strong>Pizza</strong>
+                                        <div class="text-muted small">Speciality</div>
+                                    </div>
+                                </div>
+                                <ul class="social mb-0 list-inline mt-3">
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                            <img class="w240 rounded" src="@@webRoot/assets/img/lg/avatar2.jpg" alt="">
+                            <div class="media-body ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                <h5 class="fw-bold mb-2">Brian Swader</h5>
+                                <div class="mb-3">
+                                    <p class="mt-2">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s</p>
+                                </div>
+                                <div class="row row-cols-md-2 row-cols-sm-2 row-cols-2 g-1 mb-2">
+                                    <div class="col">
+                                        <strong>09 year</strong>
+                                        <div class="text-muted small">Experience</div>
+                                    </div>
+                                    <div class="col">
+                                        <strong>Burger</strong>
+                                        <div class="text-muted small">Speciality</div>
+                                    </div>
+                                </div>
+                                <ul class="social mb-0 list-inline mt-3">
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                            <img class="w240 rounded" src="@@webRoot/assets/img/lg/avatar3.jpg" alt="">
+                            <div class="media-body ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                <h5 class="fw-bold mb-2">Maryam Amiri</h5>
+                                <div class="mb-3">
+                                    <p class="mt-2">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s</p>
+                                </div>
+                                <div class="row row-cols-md-2 row-cols-sm-2 row-cols-2 g-1 mb-2">
+                                    <div class="col">
+                                        <strong>15 year</strong>
+                                        <div class="text-muted small">Experience</div>
+                                    </div>
+                                    <div class="col">
+                                        <strong>Sushi</strong>
+                                        <div class="text-muted small">Speciality</div>
+                                    </div>
+                                </div>
+                                <ul class="social mb-0 list-inline mt-3">
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                            <img class="w240 rounded" src="@@webRoot/assets/img/lg/avatar6.jpg" alt="">
+                            <div class="media-body ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                <h5 class="fw-bold mb-2">Manuella Nevoresky</h5>
+                                <div class="mb-3">
+                                    <p class="mt-2">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s</p>
+                                </div>
+                                <div class="row row-cols-md-2 row-cols-sm-2 row-cols-2 g-1 mb-2">
+                                    <div class="col">
+                                        <strong>03 year</strong>
+                                        <div class="text-muted small">Experience</div>
+                                    </div>
+                                    <div class="col">
+                                        <strong>BBQ</strong>
+                                        <div class="text-muted small">Speciality</div>
+                                    </div>
+                                </div>
+                                <ul class="social mb-0 list-inline mt-3">
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: FAQa  -->
+    <div class="section" id="faq">
+        <div class="container">
+
+            @@include('onepage/_faqs.html', {
+                "rowClass": "g-3",
+                "sectionTag": "FAQs",
+                "sectionTitle": "Frequently Asked Questions",
+                "sectionSubTitle": "It was popularised in the 1960s with the release of Letraset sheets containing."
+            })
+
+        </div>
+    </div>
+
+    <!--  Section: Testimonials  -->
+    @@include('onepage/sliders/_sliders-testimonials.html', { "cardClass": "sliders-2 bg-body", })
+
+    <!--  Section: Gallery  -->
+    <div class="section pb-0">
+        <div class="container">
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-lg-12">
+                    <span class="bg-dark px-2 py-1 color-fff">Gallery</span>
+                    <h2 class="mb-1 mt-4 color-900">Awesome Dishes</h2>
+                    <p class="lead">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem</p>
+                </div>
+            </div><!-- .row end -->
+
+        </div>
+        <div class="container-fluid">
+
+            @@include('onepage/_img-gallery.html',{
+                "imgGalleryPath": "@@webRoot/assets/img/restaurant/gallery"
+            })
+
+        </div>
+    </div>
+
+    <!-- Section: call to action -->
+    <div class="section call-action">
+        <div class="container">
+
+            <div class="row justify-content-center text-center text-white">
+                <div class="col-xl-7 col-lg-10 col-12">
+                    <span class="bg-white px-3 py-2 text-dark">GETTING STARTED TO WORK</span>
+                    <h2 class="mb-3 mt-4">Take a look at All the layouts of LUNO</h2>
+                    <p class="lead">It helps you to increase your chances of finding a suitable job and let recruiters contact you about jobs that are not needed to pay for advertising.</p>
+                    <div class="mt-5">
+                        <a href="https://themeforest.net/checkout/from_item/36214125?license=extended&size=source&ref=phpbits" class="btn lift btn-lg px-5  btn-light fs-6">Buy a License</a>
+                        <a class="btn lift btn-lg px-5  bg-dark text-white fs-6" href="https://themeforest.net/item/luno-bootstrap-5-responsive-admin-dashboard-template/36214125">Download Now</a>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: contact us form  -->
+    <div class="section">
+        <div class="container">
+
+            @@include('onepage/contact/_contact-form.html', {
+                "rowClass": "g-2",
+                "SectionTag": "Contact Information",
+                "SectionTitle": "Get in touch",
+            })
+
+        </div>
+    </div>
+
+    <!-- Section: call-to-action app download -->
+    <div class="section bg-dark text-light">
+        <div class="container">
+
+            @@include('onepage/call-to-action/_call-to-action-app.html', {
+                "rowClass": "g-3 align-items-center justify-content-center",
+                "sectionTitle": "Download Our Best Apps",
+            })
+
+        </div>
+    </div>
+
+    <!-- Section: Footer -->
+    @@include('onepage/_footer.html', {
+        "sectionClass": "footer",
+        "rowClass": "g-2",
+        "SectionTag": "Contact Information",
+        "SectionTitle": "Get in touch",
+    })    
+    
+    <!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+    <a class="page-setting" href="#" title="Settings" data-bs-toggle="modal" data-bs-target="#SettingsModal"><i class="fa fa-gear text-light"></i></a>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fa fa-arrow-up"></i></a>
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "swiper": true,
+})
+<script src="@@webRoot/assets/js/bundle/owlcarousel.bundle.js"></script>
+<script>
+    var owl = $('#owl_banner');
+    owl.owlCarousel({
+        loop: true,
+        margin: 10,
+        autoplay:true,
+        autoplayTimeout:3000,
+        autoplayHoverPause:true,
+        nav: true,
+        dots: false,
+        responsive:{
+            320:{items:1},
+        }
+    });
+
+    var owl = $('#owl_apartment, #owl_bungalows, #owl_farm, #owl_corporate, #owl_success');
+    owl.owlCarousel({
+        loop: true,
+        margin: 10,
+        autoplay:true,
+        autoplayTimeout:3000,
+        autoplayHoverPause:true,
+        nav: true,
+        dots: false,
+        responsive:{
+            320:{items:1},
+            800:{items:2},
+            1200:{items:3},
+        }
+    });
+</script>
+</body>
+</html>

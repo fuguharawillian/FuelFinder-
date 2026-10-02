@@ -1,0 +1,181 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "TypedJs",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "plugin-typedjs"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Typed.js</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="plugin-tagify.html"><i class="fa fa-long-arrow-left me-2"></i>Tagify</a>
+                        <a class="btn btn-secondary" href="plugin-fullcalendar.html">Full calendar<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Typed.js</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="fs-5">Typed.js is a library that types. Enter in any string, and watch it type at the speed you've set, backspace what it's typed, and begin a new sentence for however many strings you've set.. <a href="https://mattboldt.com/demos/typed-js/" rel="nofollow">typed-js</a></p>
+                                <div class="fs-5">
+                                    <a href="http://www.mattboldt.com/demos/typed-js/" rel="nofollow">Live Demo</a> | <a href="http://mattboldt.github.io/typed.js/" rel="nofollow">View All Demos</a> | <a href="http://mattboldt.github.io/typed.js/docs" rel="nofollow">View Full Docs</a> | <a href="http://www.mattboldt.com" rel="nofollow">mattboldt.com</a>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0">
+<pre class=" language-html m-0" data-lang="html"><code class=" language-html">&lt;!-- Plugin Js --&gt;
+&lt;script src=&quot;assets/bundles/typedjs.bundle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Setup --&gt;
+&lt;script&gt;
+    var typed = new Typed('.element', {
+        strings: [&quot;First sentence.&quot;, &quot;Second sentence.&quot;],
+        typeSpeed: 30
+    });
+&lt;/script&gt;
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-2 mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Basic Demo</h5>
+                                <div class="border rounded-4 mb-2 p-3 type-wrap">
+                                    <div id="typed-strings">
+                                        <span>Typed.js^10 is a <strong>JavaScript</strong> library.</span>
+                                        <p>It <em>types</em> out sentences.</p>
+                                        <p>And then deletes them.</p>
+                                        <p>Try it out!</p>
+                                    </div>
+                                    <span id="typed" style="white-space:pre;"></span>
+                                </div>
+                                <button class="btn btn-sm btn-outline-secondary toggle">Toggle</button>
+                                <button class="btn btn-sm btn-outline-secondary start">Start</button>
+                                <button class="btn btn-sm btn-outline-secondary stop">Stop</button>
+                                <button class="btn btn-sm btn-outline-secondary reset">Reset</button>
+                                <button class="btn btn-sm btn-outline-secondary destroy">Destroy</button>
+                                <button class="btn btn-sm btn-outline-secondary loop">Toggle Loop</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Fade Out</h5>
+                                <div class="border rounded-4 mb-2 p-3 type-wrap">
+                                    <span id="typed2" style="white-space:pre;"></span>
+                                </div>
+                                <button class="btn btn-sm btn-outline-secondary loop2">Toggle Loop</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Smart Backspace</h5>
+                                <div class="border rounded-4 mb-2 p-3 type-wrap">
+                                    <span id="typed3"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>In an input</h5>
+                                <div class="type-wrap">
+                                    <input id="typed4" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Shuffled</h5>
+                                <div class="border rounded-4 mb-2 p-3 type-wrap">
+                                    <span id="typed5" style="white-space:pre;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Bulk Typing</h5>
+                                <div class="border rounded-4 mb-2 p-3 type-wrap" style="height: 120px;">
+                                    <span id="typed6" style="white-space:pre;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="plugin-tagify.html"><i class="fa fa-long-arrow-left me-3"></i>Tagify</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="plugin-fullcalendar.html">Full Calendar<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Core Js -->
+@@include('docs/_scripts.html',{
+    "typedjs": true
+})
+<script>
+    var typed = new Typed('.element', {
+        strings: ["First sentence.", "Second sentence."],
+        typeSpeed: 30
+    });
+</script>
+</body>
+</html>

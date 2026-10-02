@@ -8,12 +8,37 @@ Configurar o projeto Spring Boot 3.4 com Java 21 LTS, banco de dados PostgreSQL 
 
 ---
 
-## Pré-requisitos
+## Pré-requisitos do Ambiente Local
 
-- JDK 21 LTS instalado
-- Maven 3.9+ instalado
-- Docker e Docker Compose instalados
-- IDE configurada (IntelliJ IDEA recomendado)
+Estes itens são necessários para executar os comandos e critérios de aceitação da fase 1; não são decisões pendentes.
+
+- JDK 21 LTS instalado e ativo
+- Maven 3.9 ou superior instalado
+- Docker e Docker Compose instalados e disponíveis
+
+Verificar o ambiente antes de começar:
+
+```bash
+java --version
+mvn --version
+docker --version
+docker compose version
+```
+
+`GEOAPIFY_API_KEY` não é necessária para a fase 1 nem para a inicialização local; será usada somente ao testar chamadas reais à Geoapify. Consulte a Fase 8 para habilitar a integração.
+
+Para iniciar a aplicação localmente, `JWT_SECRET` deve estar definido e conter pelo menos 32 bytes. No PowerShell, gere um segredo temporário para a sessão atual antes de executar `mvn spring-boot:run`:
+
+```powershell
+$bytes = New-Object byte[] 32
+$rng = [Security.Cryptography.RandomNumberGenerator]::Create()
+$rng.GetBytes($bytes)
+$env:JWT_SECRET = [Convert]::ToBase64String($bytes)
+$rng.Dispose()
+mvn spring-boot:run
+```
+
+O segredo não é salvo no repositório; gere outro ao abrir uma nova sessão local.
 
 ---
 
@@ -33,7 +58,11 @@ Configurar o projeto Spring Boot 3.4 com Java 21 LTS, banco de dados PostgreSQL 
 | Name | `FuelFinder` |
 | Package name | `com.fuelfinder` |
 | Packaging | Jar |
-| Java | 21 |
+| Java | 21 LTS |
+
+Configurar o build Maven com `<java.version>21</java.version>` e compilar/executar usando o JDK 21 LTS.
+
+Não incluir configuração obrigatória de provedor Spring AI nesta fase. A escolha do provedor e do modelo será feita futuramente; manter a integração desacoplada e opcional para que a aplicação e os fluxos essenciais iniciem sem credenciais de IA.
 
 **Dependências Spring Initializr:**
 - Spring Web
@@ -174,8 +203,13 @@ spring:
 
 # JWT Configuration
 jwt:
-  secret: ${JWT_SECRET:chave-secreta-dev-fuelfinder-2026-trocar-em-producao}
-  expiration: 86400000  # 24 horas em milissegundos
+  secret: ${JWT_SECRET}
+  access-token-expiration: ${JWT_ACCESS_TOKEN_EXPIRATION}
+  refresh-token-expiration: ${JWT_REFRESH_TOKEN_EXPIRATION}
+
+# Geocodificação opcional; sem a variável, a aplicação inicia com a integração desabilitada.
+geoapify:
+  api-key: ${GEOAPIFY_API_KEY:}
 
 # Swagger/OpenAPI
 springdoc:
@@ -249,12 +283,12 @@ CREATE TABLE users (
     email VARCHAR(255) NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
     full_name VARCHAR(255) NOT NULL,
-    role VARCHAR(30) NOT NULL DEFAULT 'ROLE_MOTORISTA',
+    role VARCHAR(30) NOT NULL DEFAULT 'ROLE_DRIVER',
     status VARCHAR(20) NOT NULL DEFAULT 'ACTIVE',
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
     CONSTRAINT uk_users_email UNIQUE (email),
-    CONSTRAINT ck_users_role CHECK (role IN ('ROLE_MOTORISTA', 'ROLE_ADMIN')),
+    CONSTRAINT ck_users_role CHECK (role IN ('ROLE_DRIVER', 'ROLE_ADMIN')),
     CONSTRAINT ck_users_status CHECK (status IN ('ACTIVE', 'INACTIVE', 'BLOCKED'))
 );
 
@@ -353,12 +387,15 @@ CREATE TABLE reviews (
 CREATE TABLE anp_import_logs (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     file_name VARCHAR(255) NOT NULL,
-    reference_period VARCHAR(20) NOT NULL,
+    reference_year SMALLINT NOT NULL CHECK (reference_year BETWEEN 1000 AND 9999),
+    reference_semester SMALLINT NOT NULL CHECK (reference_semester IN (1, 2)),
     source_url VARCHAR(500),
     import_start TIMESTAMP NOT NULL,
     import_end TIMESTAMP,
     total_records_read INTEGER NOT NULL DEFAULT 0,
     total_records_imported INTEGER NOT NULL DEFAULT 0,
+    total_records_ignored INTEGER NOT NULL DEFAULT 0,
+    total_records_failed INTEGER NOT NULL DEFAULT 0,
     status VARCHAR(20) NOT NULL DEFAULT 'FAILED',
     error_details TEXT,
     triggered_by UUID,
@@ -379,6 +416,20 @@ CREATE INDEX idx_reviews_user ON reviews(user_id);
 CREATE INDEX idx_reviews_status ON reviews(status);
 ```
 
+Este é o modelo-alvo de documentação. A instalação existente mantém
+`reference_period`; substituir a coluna exige migração Flyway futura com
+conversão preservadora dos valores atuais. Não alterar migrações já aplicadas.
+
+Este bloco documenta o esquema inicial da migração V1. A migração V4 evolui
+`vehicles`: renomeia a capacidade para `tank_capacity_value`, adiciona
+`tank_capacity_unit`, transforma os consumos em colunas `*_value` e `*_unit`,
+e inclui campos específicos de diesel e CNG. No esquema atual, líquidos usam
+`LITER`/`KM_PER_LITER` e CNG usa `CUBIC_METER`/`KM_PER_CUBIC_METER`. Valores
+legados de capacidade CNG são convertidos de litros para m³ dividindo por 1.000;
+cinco casas decimais preservam essa conversão para os valores V1. O consumo CNG
+legado é preservado numericamente e classificado como km/m³, conforme decisão
+aprovada para os dados existentes.
+
 ---
 
 ### 1.7 Migração Flyway — Seed de Tipos de Combustível
@@ -388,7 +439,7 @@ CREATE INDEX idx_reviews_status ON reviews(status);
 
 INSERT INTO fuel_types (id, code, name, unit_of_measure, active) VALUES
     (gen_random_uuid(), 'GASOLINE_REGULAR',   'Gasolina Comum',     'R$/litro', true),
-    (gen_random_uuid(), 'GASOLINE_ADDITIVE',  'Gasolina Aditivada', 'R$/litro', true),
+    (gen_random_uuid(), 'GASOLINE_PREMIUM',   'Gasolina Aditivada', 'R$/litro', true),
     (gen_random_uuid(), 'ETHANOL',            'Etanol',             'R$/litro', true),
     (gen_random_uuid(), 'DIESEL_S10',         'Diesel S10',         'R$/litro', true),
     (gen_random_uuid(), 'DIESEL_S500',        'Diesel S500',        'R$/litro', true),

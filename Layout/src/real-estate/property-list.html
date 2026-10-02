@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Real-Estate Property List",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-red">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-realestate.html', {"page": "property-list"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item">Property</li>
+                            <li class="breadcrumb-item active" aria-current="page">List</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col d-flex justify-content-lg-end mt-2 mt-md-0">
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">8.18K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 1.3%</small></div>
+                            <small class="text-muted text-uppercase">Income</small>
+                        </div>
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">1.11K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 4.1%</small></div>
+                            <small class="text-muted text-uppercase">Expense</small>
+                        </div>
+                        <div class="p-2 pe-lg-0">
+                            <div><span class="h6 mb-0">3.66K</span> <small class="text-danger"><i class="fa fa-angle-down"></i> 7.5%</small></div>
+                            <small class="text-muted text-uppercase">Revenue</small>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="propertySearch"><i class="fa fa-search"></i></span>
+                                            <input type="text" class="form-control" placeholder="Search..." aria-label="property-search"
+                                                aria-describedby="propertySearch">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>-- Beds --</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>-- Baths --</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control" id="SqFt" placeholder="Sq Ft">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body border-top">
+                                <table id="PropertyList" class="table dataTable mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-top-0">Property Name</th>
+                                            <th class="border-top-0">Beds</th>
+                                            <th class="border-top-0">Baths</th>
+                                            <th class="border-top-0">Sq Ft</th>
+                                            <th class="border-top-0">Type</th>
+                                            <th class="border-top-0">Agent</th>
+                                            <th class="border-top-0">Price</th>
+                                            <th class="border-top-0">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="d-flex align-items-center">
+                                                <a href="property-detail.html" class="d-block w60"><img class="img-fluid rounded" src="@@webRoot/assets/img/real-estate/1.jpg" alt="property img"></a>
+                                                <div class="ms-3">
+                                                    <strong>Luxury Family Home</strong>
+                                                    <div class="font-13 text-muted hidden-md"><i class="fa fa-map-pin"></i> 1421 San Pedro St, Los Angeles, CA 90015</div>
+                                                </div>
+                                            </td>
+                                            <td>3</td>
+                                            <td>2</td>
+                                            <td>1440</td>
+                                            <td>
+                                                <span>Apartment</span>
+                                                <div class="text-muted">Year built: 2018</div>
+                                            </td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="rounded-circle avatar" alt="">
+                                                <span>Robert</span>
+                                            </td>
+                                            <td><strong class="text-info">$13,000</strong></td>
+                                            <td><span class="badge bg-warning">For Rent</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="d-flex align-items-center">
+                                                <a href="property-detail.html" class="d-block w60"><img class="img-fluid rounded" src="@@webRoot/assets/img/real-estate/2.jpg" alt="property img"></a>
+                                                <div class="ms-3">
+                                                    <strong>Gorgeous Villa Bay View</strong>
+                                                    <div class="font-13 text-muted hidden-md"><i class="fa fa-map-pin"></i> 1421 San Pedro St, Los Angeles, CA 90015</div>
+                                                </div>
+                                            </td>
+                                            <td>3</td>
+                                            <td>2</td>
+                                            <td>1440</td>
+                                            <td>
+                                                <span>Apartment</span>
+                                                <div class="text-muted">Year built: 2018</div>
+                                            </td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar5.jpg" class="rounded-circle avatar" alt="">
+                                                <span>Brian </span>
+                                            </td>
+                                            <td><strong class="text-info">$13,000</strong></td>
+                                            <td><span class="badge bg-warning">For Rent</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="d-flex align-items-center">
+                                                <a href="property-detail.html" class="d-block w60"><img class="img-fluid rounded" src="@@webRoot/assets/img/real-estate/3.jpg" alt="property img"></a>
+                                                <div class="ms-3">
+                                                    <strong>Renovated Apartment</strong>
+                                                    <div class="font-13 text-muted hidden-md"><i class="fa fa-map-pin"></i> 1421 San Pedro St, Los Angeles, CA 90015</div>
+                                                </div>
+                                            </td>
+                                            <td>3</td>
+                                            <td>2</td>
+                                            <td>1440</td>
+                                            <td>
+                                                <span>House</span>
+                                                <div class="text-muted">Year built: 2018</div>
+                                            </td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar5.jpg" class="rounded-circle avatar" alt="">
+                                                <span>Brian </span>
+                                            </td>
+                                            <td><strong class="text-info">$13,000</strong></td>
+                                            <td><span class="badge bg-warning">For Rent</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="d-flex align-items-center">
+                                                <a href="property-detail.html" class="d-block w60"><img class="img-fluid rounded" src="@@webRoot/assets/img/real-estate/4.jpg" alt="property img"></a>
+                                                <div class="ms-3">
+                                                    <strong>Luxury Family Home</strong>
+                                                    <div class="font-13 text-muted hidden-md"><i class="fa fa-map-pin"></i> 123 6th St. Melbourne, FL 32904</div>
+                                                </div>
+                                            </td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>1600</td>
+                                            <td>
+                                                <span>Apartment</span>
+                                                <div class="text-muted">Year built: 2018</div>
+                                            </td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="rounded-circle avatar" alt="">
+                                                <span>Frank </span>
+                                            </td>
+                                            <td><strong class="text-info">$18,000</strong></td>
+                                            <td><span class="badge bg-warning">For Rent</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="d-flex align-items-center">
+                                                <a href="property-detail.html" class="d-block w60"><img class="img-fluid rounded" src="@@webRoot/assets/img/real-estate/5.jpg" alt="property img"></a>
+                                                <div class="ms-3">
+                                                    <strong>Renovated Apartment</strong>
+                                                    <div class="font-13 text-muted hidden-md"><i class="fa fa-map-pin"></i> 1421 San Pedro St, Los Angeles, CA 90015</div>
+                                                </div>
+                                            </td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>1200</td>
+                                            <td>
+                                                <span>Single Family</span>
+                                                <div class="text-muted">Year built: 2016</div>
+                                            </td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="rounded-circle avatar" alt="">
+                                                <span>Frank </span>
+                                            </td>
+                                            <td><strong class="text-info">$13,000</strong></td>
+                                            <td><span class="badge bg-warning">For Rent</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="d-flex align-items-center">
+                                                <a href="property-detail.html" class="d-block w60"><img class="img-fluid rounded" src="@@webRoot/assets/img/real-estate/6.jpg" alt="property img"></a>
+                                                <div class="ms-3">
+                                                    <strong>Comfortable Villa in Green</strong>
+                                                    <div class="font-13 text-muted hidden-md"><i class="fa fa-map-pin"></i> 4 Shirley Ave. West Chicago, IL 60185</div>
+                                                </div>
+                                            </td>
+                                            <td>3</td>
+                                            <td>2</td>
+                                            <td>1440</td>
+                                            <td>
+                                                <span>Apartment</span>
+                                                <div class="text-muted">Year built: 2011</div>
+                                            </td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar6.jpg" class="rounded-circle avatar" alt="">
+                                                <span>Robert</span>
+                                            </td>
+                                            <td><strong class="text-info">$13,000</strong></td>
+                                            <td><span class="badge bg-warning">For Rent</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="d-flex align-items-center">
+                                                <a href="property-detail.html" class="d-block w60"><img class="img-fluid rounded" src="@@webRoot/assets/img/real-estate/7.jpg" alt="property img"></a>
+                                                <div class="ms-3">
+                                                    <strong>House on the beverly hills</strong>
+                                                    <div class="font-13 text-muted hidden-md"><i class="fa fa-map-pin"></i> 1421 San Pedro St, Los Angeles, CA 90015</div>
+                                                </div>
+                                            </td>
+                                            <td>4</td>
+                                            <td>4</td>
+                                            <td>2600</td>
+                                            <td>
+                                                <span>Bungalow</span>
+                                                <div class="text-muted">Year built: 2020</div>
+                                            </td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="rounded-circle avatar" alt="">
+                                                <span>Orlando</span>
+                                            </td>
+                                            <td><strong class="text-info">$29,000</strong></td>
+                                            <td><span class="badge bg-danger">For Sale</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="d-flex align-items-center">
+                                                <a href="property-detail.html" class="d-block w60"><img class="img-fluid rounded" src="@@webRoot/assets/img/real-estate/8.jpg" alt="property img"></a>
+                                                <div class="ms-3">
+                                                    <strong>House on the Hollywood</strong>
+                                                    <div class="font-13 text-muted hidden-md"><i class="fa fa-map-pin"></i> 123 6th St. Melbourne, FL 32904</div>
+                                                </div>
+                                            </td>
+                                            <td>4</td>
+                                            <td>4</td>
+                                            <td>2350</td>
+                                            <td>
+                                                <span>Bungalow</span>
+                                                <div class="text-muted">Year built: 2017</div>
+                                            </td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="rounded-circle avatar" alt="">
+                                                <span>Orlando</span>
+                                            </td>
+                                            <td><strong class="text-info">$19,500</strong></td>
+                                            <td><span class="badge bg-danger">For Sale</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables":true,
+})
+<script>
+    // project data table
+    $('#PropertyList')
+    .addClass('nowrap')
+    .dataTable({
+        responsive: true,
+        pageLength: 5,
+        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
+        searching: false,
+        paging: false,
+        info: false
+    });
+</script>
+</body>
+</html>

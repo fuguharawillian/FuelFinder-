@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Wallet",
+        "daterangepicker": true,
+        "apexcharts": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-red">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-nft.html', {"page": "nft-wallet"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Wallet</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 row-deck">
+                    <div class="col-xl-6 col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <span>Total Balance</span>
+                                <h3 class="fw-bold">$125,500</h3>
+                                <div class="row g-3 row-deck mt-3">
+                                    <div class="col">
+                                        <div class="card alert-success alert mb-0">
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar rounded-circle no-thumbnail bg-success text-light"><i class="fa fa-dollar fa-lg"></i></div>
+                                                <div class="flex-fill ms-3 text-truncate">
+                                                    <div class="h6 mb-0">Revenue</div>
+                                                    <span class="small">$18,925</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card alert-info alert mb-0">
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar rounded-circle no-thumbnail bg-info text-light"><i class="fa fa-credit-card fa-lg"></i></div>
+                                                <div class="flex-fill ms-3 text-truncate">
+                                                    <div class="h6 mb-0">Expense</div>
+                                                    <span class="small">$11,024</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card alert-warning alert mb-0">
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar rounded-circle no-thumbnail bg-warning text-light"><i class="fa fa-dollar fa-lg"></i></div>
+                                                <div class="flex-fill ms-3 text-truncate">
+                                                    <div class="h6 mb-0">Taxes</div>
+                                                    <span class="small">$1,750</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card alert-danger alert mb-0">
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar rounded-circle no-thumbnail bg-danger text-light"><i class="fa fa-credit-card fa-lg"></i></div>
+                                                <div class="flex-fill ms-3 text-truncate">
+                                                    <div class="h6 mb-0">Debt</div>
+                                                    <span class="small">$1,024</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="apex_balance"></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Transactions</h6>
+                                <a href="#" title="">View All</a>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled list mb-0">
+                                    <li class="d-flex align-items-center py-2">
+                                        <div class="avatar rounded no-thumbnail chart-text-color1"><i class="fa fa-bank"></i></div>
+                                        <div class="flex-fill ms-3">
+                                            <div class="h6 mb-0">Wallet</div>
+                                            <small class="text-muted">Starbucks</small>
+                                        </div>
+                                        <div class="flex-end">
+                                            <strong class="text-danger">-$74 </strong>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex align-items-center py-2">
+                                        <div class="avatar rounded no-thumbnail chart-text-color2"><i class="fa fa-check"></i></div>
+                                        <div class="flex-fill ms-3">
+                                            <div class="h6 mb-0">Bank Transfer</div>
+                                            <small class="text-muted">Add Money</small>
+                                        </div>
+                                        <div class="flex-end">
+                                            <strong class="text-success">$1074 </strong>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex align-items-center py-2">
+                                        <div class="avatar rounded no-thumbnail chart-text-color3"><i class="fa fa-cc-mastercard"></i></div>
+                                        <div class="flex-fill ms-3">
+                                            <div class="h6 mb-0">Mastercard</div>
+                                            <small class="text-muted">Ordered Food</small>
+                                        </div>
+                                        <div class="flex-end">
+                                            <strong class="text-success">$94 </strong>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex align-items-center py-2">
+                                        <div class="avatar rounded no-thumbnail chart-text-color4"><i class="fa fa-paypal"></i></div>
+                                        <div class="flex-fill ms-3">
+                                            <div class="h6 mb-0">Paypal</div>
+                                            <small class="text-muted">Add Money</small>
+                                        </div>
+                                        <div class="flex-end">
+                                            <strong class="text-success">$740.50 </strong>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex align-items-center py-2">
+                                        <div class="avatar rounded no-thumbnail chart-text-color2"><i class="fa fa-check"></i></div>
+                                        <div class="flex-fill ms-3">
+                                            <div class="h6 mb-0">Bank Transfer</div>
+                                            <small class="text-muted">Add Money</small>
+                                        </div>
+                                        <div class="flex-end">
+                                            <strong class="text-success">$1074 </strong>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex align-items-center py-2">
+                                        <div class="avatar rounded no-thumbnail chart-text-color3"><i class="fa fa-cc-mastercard"></i></div>
+                                        <div class="flex-fill ms-3">
+                                            <div class="h6 mb-0">Mastercard</div>
+                                            <small class="text-muted">Ordered Food</small>
+                                        </div>
+                                        <div class="flex-end">
+                                            <strong class="text-success">$94 </strong>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "apexcharts": true,
+})
+<script>
+    var options = {
+        chart: {
+            type: 'line',
+            height: 300,
+            toolbar: {
+                show: false,
+            },
+        },
+        colors: ['var(--chart-color1)', 'var(--chart-color5)'],
+        series: [{
+            name: 'Revenue',
+            type: 'column',
+            data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
+        }, {
+            name: 'Expense',
+            type: 'line',
+            data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
+        }],
+        stroke: {
+            width: [0, 4]
+        },
+        labels: ['01 Jan 2022', '02 Jan 2022', '03 Jan 2022', '04 Jan 2022', '05 Jan 2022', '06 Jan 2022', '07 Jan 2022', '08 Jan 2022', '09 Jan 2022', '10 Jan 2022', '11 Jan 2022', '12 Jan 2022'],
+        xaxis: {
+            type: 'datetime'
+        },
+        yaxis: [{
+            title: {
+                text: 'Revenue',
+            },
+        },{
+            opposite: true,
+            title: {
+                text: 'Expense'
+            }
+        }]
+    }
+    var chart = new ApexCharts( document.querySelector("#apex_balance"), options );
+    chart.render();
+</script>
+
+</body>
+</html>

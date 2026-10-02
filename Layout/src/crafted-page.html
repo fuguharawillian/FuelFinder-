@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('_head.html',{
+        "pageTitle": "Crafted Pages",
+    })
+    <!-- do not use in project -->
+    <style>
+        .app-demo{position: relative;overflow: hidden;}
+        .app-demo .card-overlay {position: absolute;top: -60px;left: -60px;width: 60px;height: 60px;border-radius: 50%;background: var(--secondary-color);-webkit-transform: scale(1);transform: scale(1);-webkit-transition: all .5s;transition: all .5s;z-index: 1;}
+        .app-demo:hover .card-overlay{-webkit-transform: scale(35);transform: scale(35);}
+        .app-demo:hover .demo-text{opacity: 1;transform: translateY(0);}
+        .app-demo .demo-text{transition: all .3s;transition-delay: .1s;transform: translateY(20px);display: flex;flex-direction: column;position: absolute;z-index: 2;text-align: center;justify-content: center;width: calc(100% - 1rem);height: calc(100% - 1rem);align-items: center;color: #fff;opacity: 0;}
+    </style>
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-menu.html', {"page": "crafted-pages"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Crafted Pages</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h3 class="fw-light"><i class="fa fa-thumbs-o-up me-2"></i>Handcrafted Pages</h3>
+                        <div class="rating mt-2">
+                            <span class="me-2">
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            </span>
+                            Rated 4.7/5 in Customer Satisfaction  |  <a href="https://themeforest.net/user/wrraptheme" title="wrraptheme" target="_blank">Wrraptheme</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-3 row-deck row-cols-xxl-3 row-cols-xl-2 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1">
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/crafted-page/profile.jpg" alt="app calendar">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">My Profile</h4>
+                                <p>A beautiful page to show all the user related details in well managed ard designs.</p>
+                                <a class="btn bg-white" target="_blank" href="page-profile.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/crafted-page/bookmark.jpg" alt="app calendar tui">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">Bookmark</h4>
+                                <p>An unique page to see and manage all your bookmarks.</p>
+                                <a class="btn bg-white" target="_blank" href="page-bookmark.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/crafted-page/timeline.jpg" alt="app Inbox">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">Timeline</h4>
+                                <p>Have to show timelines? This is the perfect way to show it.</p>
+                                <a class="btn bg-white" target="_blank" href="page-timeline.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/crafted-page/imagegallery.jpg" alt="app Chat">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">Image Gallery</h4>
+                                <p>An simple design to show all the images.</p>
+                                <a class="btn bg-white" target="_blank" href="page-imagegallery.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/crafted-page/pricing.jpg" alt="app Social">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">Pricing Table</h4>
+                                <p>Want to sell plans? You should look at this page.</p>
+                                <a class="btn bg-white" target="_blank" href="page-pricing.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/crafted-page/teamsboard.jpg" alt="app File Manager">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">Teamboard</h4>
+                                <p>A page to track the team activities.</p>
+                                <a class="btn bg-white" target="_blank" href="page-teamsboard.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/crafted-page/supportticket.jpg" alt="app Todo">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">Support Ticket</h4>
+                                <p>A dashboard to see the status of the support app.</p>
+                                <a class="btn bg-white" target="_blank" href="page-support-ticket.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/crafted-page/faqs.jpg" alt="app Contact">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">FAQs</h4>
+                                <p>Answer the queries of your potential customers in the beautiful way.</p>
+                                <a class="btn bg-white" target="_blank" href="page-faqs.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card app-demo p-2">
+                            <img class="img-fluid rounded-4" src="@@webRoot/assets/img/crafted-page/searchpage.jpg" alt="app Project">
+                            <div class="card-overlay"></div>
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-light">Search Page</h4>
+                                <p>Page to show all the search results.</p>
+                                <a class="btn bg-white" target="_blank" href="page-search.html" title="">Go to demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-dark text-light p-2">
+                            <div class="demo-text p-xl-4 p-lg-2 p-0">
+                                <h4 class="fw-bold">Live Chat Support</h4>
+                                <span class="small text-muted">Time zone (IST)</span>
+                                <p class="lead text-muted">You have any Doubt or Any kind of Issue then ask Our Experts Because We’re always here to help you.</p>
+                                <a href="https://tawk.to/chat/5c6d4867f324050cfe342c69/default" target="_blank" class="btn text-uppercase btn-white m-1">Chat Now</a>
+                                <a href="https://www.thememakker.com/contact/" target="_blank" class="btn text-uppercase btn-warning m-1">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+	</div>
+	
+	<!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

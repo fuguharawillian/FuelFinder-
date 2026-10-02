@@ -1,0 +1,20 @@
+<div class="card-body" id='my_calendar'></div>
+
+<!-- Plugin Js -->
+<script src="@@webRoot/assets/js/bundle/fullcalendar.bundle.js"></script>
+
+<!-- Jquery Page Js -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('my_calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            timeZone: 'UTC',
+            initialView: 'dayGridMonth',
+            events: 'https://fullcalendar.io/demo-events.json',
+            editable: true,
+            selectable: true
+        });
+        calendar.render();
+    });
+</script>

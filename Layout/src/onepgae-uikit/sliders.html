@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Onepage UiKit Sliders",
+        "onepage": true,
+        "swiper": true,
+    })
+</head>
+
+<body class="landing-page" data-luno="theme-blue">
+
+    <!-- Page Wrapper Start -->
+    <div class="wrapper">
+
+        <!-- sliders: example 1 -->
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-lg-12">
+                    <span class="bg-dark px-2 py-1 color-fff">Header Slider</span>
+                    <h4 class="mt-2 mb-0 color-900">Example version 1</h4>
+                </div>
+            </div> <!-- .row end -->
+        </div>
+        <!-- Start: sliders Example 1 -->
+        @@include('onepage/sliders/_sliders-banner.html', { "cardClass": "sliders", })
+
+        <!-- sliders: example 2 -->
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-lg-12">
+                    <span class="bg-dark px-2 py-1 color-fff">Testimonial Carousel</span>
+                    <h4 class="mt-2 mb-0 color-900">Example version 2</h4>
+                </div>
+            </div> <!-- .row end -->
+        </div>
+        <!-- Start: sliders Example 2 -->
+        @@include('onepage/sliders/_sliders-testimonials.html', { "cardClass": "sliders-2", })
+
+        <!-- sliders: example 3 -->
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-lg-12">
+                    <span class="bg-dark px-2 py-1 color-fff">Owl Carousel</span>
+                    <h4 class="mt-2 mb-0 color-900">Example version 3</h4>
+                </div>
+            </div> <!-- .row end -->
+        </div>
+        <!-- Start: sliders Example 3 -->
+        <div class="section sliders-3">
+            <div class="container">
+
+                <div class="row g-3 mb-5">
+                    <!-- sliders: Cards Carousels  -->
+                    <div class="col-12">
+                        @@include('onepage/sliders/_sliders-cards.html')
+                    </div>
+                    <!-- sliders: Blog Carousels -->
+                    <div class="col-12">
+                        <h5>Blog Carousels</h5>
+                        @@include('onepage/sliders/_sliders-blog-post.html')
+                    </div>
+                </div> <!-- .row end -->
+
+                <!-- sliders: Cards sliders -->
+                <div class="row g-3">
+                    <div class="col-xl-3 col-lg-6 col-md-12">
+                        <div class="card carousel slide" data-bs-ride="carousel">
+                            <div class="card-body">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item" data-bs-interval="1500">
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-fill me-3 text-truncate">
+                                                <div class="text-muted mb-2 text-uppercase">Expense</div>
+                                                <h4 class="mb-0">35k <div class="fs-6 d-inline"> <small class="text-muted"><i class="fa fa-level-up"></i> 13%</small></div></h4>
+                                            </div>
+                                            <div class="avatar lg rounded-circle no-thumbnail chart-color1 text-light"><i class="fa fa-eye fa-lg"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item active" data-bs-interval="1500">
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-fill me-3 text-truncate">
+                                                <div class="text-muted mb-2 text-uppercase">Income</div>
+                                                <h4 class="mb-0">351k <div class="fs-6 d-inline"> <small class="text-muted"><i class="fa fa-level-up"></i> 8.2%</small></div></h4>
+                                            </div>
+                                            <div class="avatar lg rounded-circle no-thumbnail chart-color2 text-light"><i class="fa fa-eye fa-lg"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-12">
+                        <div class="card carousel slide" data-bs-ride="carousel">
+                            <div class="card-body">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active carousel-item-start" data-bs-interval="2000">
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-fill me-3 text-truncate">
+                                                <div class="text-muted mb-2 text-uppercase">Total Agent</div>
+                                                <h4 class="mb-0">3,251 <div class="fs-6 d-inline"> <small class="text-muted"><i class="fa fa-level-up"></i> 18%</small></div></h4>
+                                            </div>
+                                            <div class="avatar lg rounded-circle no-thumbnail chart-color3 text-light"><i class="fa fa-user fa-lg"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item carousel-item-next carousel-item-start" data-bs-interval="2000">
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-fill me-3 text-truncate">
+                                                <div class="text-muted mb-2 text-uppercase">CORPORATE AGENTS</div>
+                                                <h4 class="mb-0">295 <div class="fs-6 d-inline"> <small class="text-muted"><i class="fa fa-level-up"></i>6.2%</small></div></h4>
+                                            </div>
+                                            <div class="avatar lg rounded-circle no-thumbnail chart-color4 text-light"><i class="fa fa-user fa-lg"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-12">
+                        <div class="card carousel slide" data-bs-ride="carousel">
+                            <div class="card-body">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item" data-bs-interval="1700">
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-fill me-3 text-truncate">
+                                                <div class="text-muted mb-2 text-uppercase">OUR CENTER</div>
+                                                <h4 class="mb-0">654</h4>
+                                            </div>
+                                            <div class="avatar lg rounded-circle no-thumbnail chart-color1 text-light"><i class="fa fa-thumbs-o-up fa-lg"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item active" data-bs-interval="1700">
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-fill me-3 text-truncate">
+                                                <div class="text-muted mb-2 text-uppercase">Smiley Faces</div>
+                                                <h4 class="mb-0">5,212</h4>
+                                            </div>
+                                            <div class="avatar lg rounded-circle no-thumbnail chart-color2 text-light"><i class="fa fa-smile-o fa-lg"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-12">
+                        <div class="card carousel slide" data-bs-ride="carousel">
+                            <div class="card-body">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="2200">
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-fill me-3 text-truncate">
+                                                <div class="text-muted mb-2 text-uppercase">OUR CENTER</div>
+                                                <h4 class="mb-0">654</h4>
+                                            </div>
+                                            <div class="avatar lg rounded-circle no-thumbnail chart-color1 text-light"><i class="fa fa-thumbs-o-up fa-lg"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="2200">
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-fill me-3 text-truncate">
+                                                <div class="text-muted mb-2 text-uppercase">Smiley Faces</div>
+                                                <h4 class="mb-0">5,212</h4>
+                                            </div>
+                                            <div class="avatar lg rounded-circle no-thumbnail chart-color2 text-light"><i class="fa fa-smile-o fa-lg"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+    </div>
+    <!-- Page Wrapper End -->
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

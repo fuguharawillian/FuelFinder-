@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('_head.html',{
+        "pageTitle": "Modal Popups",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-menu.html', {"page": "modals"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Modals</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 row-deck">
+                    <!-- start: Connection Request -->
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                        <div class="card text-center p-2">
+                            <div class="card-body">
+                                <img class="img-fluid mb-4" src="@@webRoot/assets/img/modals/modal-connection.svg" alt="Connection Request" />
+                                <h5>Connection Request</h5>
+                                <p class="text-muted">Click on the below buttons to launch a Connection Request example.</p>
+                                <!-- Modal -->
+                                @@include('modals/_modal-connection-request.html')
+                            </div>
+                        </div>
+                    </div>
+                    <!-- start: Create Event -->
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                        <div class="card text-center p-2">
+                            <div class="card-body">
+                                <img class="img-fluid mb-4" src="@@webRoot/assets/img/modals/modal-event.svg" alt="Create Event" />
+                                <h5>Create Event</h5>
+                                <p class="text-muted">Click on the below buttons to launch a Create Event example.</p>
+                                <!-- Modal -->
+                                @@include('modals/_modal-create-event.html')
+                            </div>
+                        </div>
+                    </div>
+                    <!-- start: Flight Booking -->
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                        <div class="card text-center p-2">
+                            <div class="card-body">
+                                <img class="img-fluid mb-4" src="@@webRoot/assets/img/modals/modal-flightbooking.svg" alt="Flight Booking" />
+                                <h5>Flight Booking</h5>
+                                <p class="text-muted">Click on the below buttons to launch a Flight Booking example.</p>
+                                <!-- Modal -->
+                                @@include('modals/_modal-flight-booking.html')
+                            </div>
+                        </div>
+                    </div>
+                    <!-- start: Job listing -->
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                        <div class="card text-center p-2">
+                            <div class="card-body">
+                                <img class="img-fluid mb-4" src="@@webRoot/assets/img/modals/modal-joblisting.svg" alt="Job listing" />
+                                <h5>Job listing</h5>
+                                <p class="text-muted">Click on the below buttons to launch a Search Users example.</p>
+                                <!-- Modal -->
+                                @@include('modals/_modal-job-listing.html')
+                            </div>
+                        </div>
+                    </div>
+                    <!-- start: Order Tracking -->
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                        <div class="card text-center p-2">
+                            <div class="card-body">
+                                <img class="img-fluid mb-4" src="@@webRoot/assets/img/modals/modal-ordertracking.svg" alt="Order Tracking" />
+                                <h5>Order Tracking</h5>
+                                <p class="text-muted">Click on the below buttons to launch a Order Tracking example.</p>
+                                <!-- Modal -->
+                                @@include('modals/_modal-order-tracking.html')
+                            </div>
+                        </div>
+                    </div>
+                    <!-- start: Request a Quote -->
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                        <div class="card text-center p-2">
+                            <div class="card-body">
+                                <img class="img-fluid mb-4" src="@@webRoot/assets/img/modals/modal-quote.svg" alt="Request a Quote" />
+                                <h5>Request a Quote</h5>
+                                <p class="text-muted">Click on the below buttons to launch a Request a Quote example.</p>
+                                <!-- Modal -->
+                                @@include('modals/_modal-request-quote.html')
+                            </div>
+                        </div>
+                    </div>
+                     <!-- start: Search Users -->
+                     <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                        <div class="card text-center p-2">
+                            <div class="card-body">
+                                <img class="img-fluid mb-4" src="@@webRoot/assets/img/modals/modal-searchusers.svg" alt="Search Users" />
+                                <h5>Search Users</h5>
+                                <p class="text-muted">Click on the below buttons to launch a Search Users example.</p>
+                                <!-- Modal -->
+                                @@include('modals/_modal-search-users.html')
+                            </div>
+                        </div>
+                    </div>
+                    <!-- start: share-earn -->
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                        <div class="card text-center p-2">
+                            <div class="card-body">
+                                <img class="img-fluid mb-4" src="@@webRoot/assets/img/modals/modal-sharelink.svg" alt="Share & Earn" />
+                                <h5>Share & Earn</h5>
+                                <p class="text-muted">Click on the below buttons to launch a Share & Earn example.</p>
+                                <!-- Modal -->
+                                @@include('modals/_modal-share-earn.html')
+                            </div>
+                        </div>
+                    </div>
+                    <!-- start: Upgrade your plan -->
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                        <div class="card text-center p-2">
+                            <div class="card-body">
+                                <img class="img-fluid mb-4" src="@@webRoot/assets/img/modals/modal-plan.svg" alt="Upgrade your plan" />
+                                <h5>Upgrade your plan</h5>
+                                <p class="text-muted">Click on the below buttons to launch a Upgrade plan example.</p>
+                                <!-- Modal -->
+                                @@include('modals/_modal-upgrade-plan.html')
+                            </div>
+                        </div>
+                    </div>
+                    <!-- start: Weather Report -->
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                        <div class="card text-center p-2">
+                            <div class="card-body">
+                                <img class="img-fluid mb-4" src="@@webRoot/assets/img/modals/modal-weather.svg" alt="Weather Report" />
+                                <h5>Weather Report</h5>
+                                <p class="text-muted">Click on the below buttons to launch a Weather Report example.</p>
+                                <!-- Modal -->
+                                @@include('modals/_modal-weather-report.html')
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+	</div>
+	
+	<!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

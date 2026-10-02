@@ -1,0 +1,170 @@
+<!doctype html>
+<html class="no-js " lang="en">
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Dropify",
+        "dropify": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "element-dropify"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+                
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dropify</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="element-datepicker.html"><i class="fa fa-long-arrow-left me-2"></i>Datepicker</a>
+                        <a class="btn btn-secondary" href="element-flatpickr.html">Flatpickr<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Dropify</h6>
+                            </div>
+                            <div class="card-body">
+                                <p>Override your input files with style.</p>
+                                <h6>For full documentation please check the <a href="http://jeremyfagis.github.io/dropify/" target="_blank" class="fw-bold">plugin's site</a></h6>
+                            </div>
+                            <div class="card-body pt-0">
+<pre class=" language-html m-0" data-lang="html"><code class=" language-html">&lt;!-- plugin css file  --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/bundles/dropify.min.css&quot;&gt;
+
+&lt;!-- Plugin Js --&gt;
+&lt;script src=&quot;assets/bundles/dropify.bundle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Jquery Page Js --&gt;
+&lt;script&gt;
+$(function() {
+    $('.dropify').dropify();
+&lt;/script&gt;
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>Default <small>Taken from: https://github.com/JeremyFagis/dropify</small></h6>
+                                <input type="file" class="dropify">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>With event and default file <small>try to remove the image</small></h6>
+                                <input type="file" id="dropify-event" data-default-file="@@webRoot/assets/img/gallery/8.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>Disabled file upload</h6>
+                                <input type="file" class="dropify" disabled="disabled">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>Limit file type <small>try to upload png or pdf only</small></h6>
+                                <input type="file" class="dropify" data-allowed-file-extensions="pdf png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>Limit file size <small>try to upload file larger than 100 KB</small></h6>
+                                <input type="file" class="dropify" data-max-file-size="100K">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>Custom messages for default <small>replace, remove and error</small></h6>
+                                <input type="file" class="dropify-fr">
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+               <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="element-datepicker.html"><i class="fa fa-long-arrow-left me-3"></i>Datepicker</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="element-flatpickr.html">Flatpickr<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('docs/_scripts.html',{
+    "dropify": true,
+})
+<script>
+$(function() {
+    $('.dropify').dropify();
+
+    var drEvent = $('#dropify-event').dropify();
+    drEvent.on('dropify.beforeClear', function(event, element) {
+        return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+    });
+
+    drEvent.on('dropify.afterClear', function(event, element) {
+        alert('File deleted');
+    });
+
+    $('.dropify-fr').dropify({
+        messages: {
+            default: 'Glissez-dÃ©posez un fichier ici ou cliquez',
+            replace: 'Glissez-dÃ©posez un fichier ou cliquez pour remplacer',
+            remove: 'Supprimer',
+            error: 'DÃ©solÃ©, le fichier trop volumineux'
+        }
+    });
+});
+
+</script>
+</body>
+</html>

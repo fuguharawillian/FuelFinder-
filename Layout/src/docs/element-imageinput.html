@@ -1,0 +1,157 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "ImageInput",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "element-imageinput"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+                
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Image Input</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="element-inputmask.html"><i class="fa fa-long-arrow-left me-2"></i>inputmask</a>
+                        <a class="btn btn-secondary" href="element-maxlength.html">Maxlength<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Introduction</h6>
+                            </div>
+                            <div class="card-body">
+                                <h4>Image Input</h4>
+                                <p>Image input is an exclusive plugin of Good that enables a simple, user-friendly and lightweight image input field.</p>
+                                <p>as per your requires useing the class <code>.xxl</code>, <code>.xl</code>, <code>.lg</code> and if you need rounded-circle use with <code>.rounded-circle</code></p>
+                            </div>
+                            <div class="card-body pt-0">
+<pre class="language-html m-0" data-lang="html"><code class=" language-html">&lt;div class=&quot;image-input avatar xxl rounded-4&quot; style=&quot;background-image: url(@@webRoot/assets/img/avatar.png)&quot;&gt;
+    &lt;div class=&quot;avatar-wrapper rounded-4&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;file-input&quot;&gt;
+        &lt;input type=&quot;file&quot; class=&quot;form-control&quot; name=&quot;file-input&quot; id=&quot;file-input&quot;&gt;
+        &lt;label for=&quot;file-input&quot; class=&quot;fa fa-pencil shadow&quot;&gt;&lt;/label&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-sm-4 col-6">
+                                        <div class="image-input avatar xxl rounded-4" style="background-image: url(@@webRoot/assets/img/avatar.png)">
+                                            <div class="avatar-wrapper rounded-4" style="background-image: url(@@webRoot/assets/img/profile_av.png)"></div>
+                                            <div class="file-input">
+                                                <input type="file" class="form-control" name="file-input" id="file-input1">
+                                                <label for="file-input1" class="fa fa-pencil shadow"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-6">
+                                        <div class="image-input avatar xl rounded-4" style="background-image: url(@@webRoot/assets/img/avatar.png)">
+                                            <div class="avatar-wrapper rounded-4"></div>
+                                            <div class="file-input">
+                                                <input type="file" class="form-control" name="file-input" id="file-input2">
+                                                <label for="file-input2" class="fa fa-pencil shadow"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-6">
+                                        <div class="image-input avatar lg rounded-4" style="background-image: url(@@webRoot/assets/img/avatar.png)">
+                                            <div class="avatar-wrapper rounded-4"></div>
+                                            <div class="file-input">
+                                                <input type="file" class="form-control" name="file-input" id="file-input3">
+                                                <label for="file-input3" class="fa fa-pencil shadow"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-6">
+                                        <div class="image-input avatar xxl rounded-circle" style="background-image: url(@@webRoot/assets/img/avatar.png)">
+                                            <div class="avatar-wrapper rounded-circle" style="background-image: url(@@webRoot/assets/img/profile_av.png)"></div>
+                                            <div class="file-input">
+                                                <input type="file" class="form-control" name="file-input" id="file-input4">
+                                                <label for="file-input4" class="fa fa-pencil shadow"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-6">
+                                        <div class="image-input avatar xl rounded-circle" style="background-image: url(@@webRoot/assets/img/avatar.png)">
+                                            <div class="avatar-wrapper rounded-circle"></div>
+                                            <div class="file-input">
+                                                <input type="file" class="form-control" name="file-input" id="file-input5">
+                                                <label for="file-input5" class="fa fa-pencil shadow"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-6">
+                                        <div class="image-input avatar lg rounded-circle" style="background-image: url(@@webRoot/assets/img/avatar.png)">
+                                            <div class="avatar-wrapper rounded-circle"></div>
+                                            <div class="file-input">
+                                                <input type="file" class="form-control" name="file-input" id="file-input6">
+                                                <label for="file-input6" class="fa fa-pencil shadow"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+               <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="element-inputmask.html"><i class="fa fa-long-arrow-left me-3"></i>inputmask</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="element-maxlength.html">Maxlength<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('docs/_scripts.html',{
+
+})
+</body>
+</html>

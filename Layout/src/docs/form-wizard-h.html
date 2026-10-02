@@ -1,0 +1,609 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Wizard Horizontal",
+        "jquerysteps": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "form-wizard-h"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+                
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">jQuery Steps Wizard</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="form-bootstrap.html"><i class="fa fa-long-arrow-left me-2"></i>Bootstrap form</a>
+                        <a class="btn btn-secondary" href="form-wizard-v.html">Form wizard vertical<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+                
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Introduction</h6>
+                            </div>
+                            <div class="card-body">
+                                <h4>jQuery Steps horizontal</h4>
+                                <p class="fs-6">A powerful jQuery wizard plugin that supports accessibility and HTML5.. For more info, please visit the <a href="https://github.com/rstaib/jquery-steps" target="_blank">plugin's site</a></p>
+                            </div>
+                            <div class="card-body pt-0">
+<pre class="language-html m-0" data-lang="html"><code class=" language-html">&lt;!-- Plugin Css --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/bundles/jquerysteps.min.css&quot;&gt;
+
+&lt;!-- Jquery Plugin --&gt;
+&lt;script src=&quot;assets/bundles/jquerysteps.bundle.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-5">
+                        <h6 class="card-title">Form Wizard horizontal demo 1</h6>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="step-app h-wizard-demo1">
+                                    <ul class="step-steps">
+                                        <li data-step-target="step1"><span>1</span> Account Information</li>
+                                        <li data-step-target="step2"><span>2</span> User Information</li>
+                                        <li data-step-target="step3"><span>3</span> Social ID</li>
+                                    </ul>
+                                    <div class="step-content">
+                                        <div class="step-tab-panel" data-step="step1">
+                                            <form class="row g-3">
+                                                <div class="col-md-4 col-12">
+                                                    <label class="form-label">First Name</label>
+                                                    <input type="text" class="form-control" placeholder="Nellie">
+                                                </div>
+                                                <div class="col-md-4 col-12">
+                                                    <label class="form-label">Last Name</label>
+                                                    <input type="text" class="form-control" placeholder="Maxwell">
+                                                </div>
+                                                <div class="col-md-4 col-12">
+                                                    <label class="form-label">User ID</label>
+                                                    <input type="text" class="form-control" placeholder="Nellie_Maxwell">
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <label class="form-label">Password</label>
+                                                    <input type="text" class="form-control" placeholder="Password">
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <label class="form-label">Confirm Password</label>
+                                                    <input type="text" class="form-control" placeholder="Confirm Password">
+                                                </div>
+                                            </form> <!-- .row end -->
+                                        </div>
+                                        <div class="step-tab-panel" data-step="step2">
+                                            <form class="row g-3">
+                                                <div class="col-md-6 col-12">
+                                                    <label class="form-label">First Name</label>
+                                                    <input type="text" class="form-control" placeholder="Nellie">
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <label class="form-label">Last Name</label>
+                                                    <input type="text" class="form-control" placeholder="Maxwell">
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <label class="form-label">Country</label>
+                                                    <select class="country form-control select2" aria-label="example">
+                                                        <option selected>Select Country</option>
+                                                        <option value="Argentina">Argentina</option>
+                                                        <option value="Australia">Australia</option>
+                                                        <option value="Belgium">Belgium</option>
+                                                        <option value="Brazil">Brazil</option>
+                                                        <option value="Canada">Canada</option>
+                                                        <option value="Costa Rica">Costa Rica</option>
+                                                        <option value="Egypt">Egypt</option>
+                                                        <option value="France">France</option>
+                                                        <option value="Germany">Germany</option>
+                                                        <option value="India">India</option>
+                                                        <option value="Japan">Japan</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <label class="form-label">Language</label>
+                                                    <input type="hidden" class="form-control">
+                                                    <fieldset>
+                                                        <select class="language form-control select2" aria-label="example">
+                                                            <option selected>Select Language</option>
+                                                            <option>English</option>
+                                                            <option>Mandari</option>
+                                                            <option>Spanish</option>
+                                                            <option>German</option>
+                                                            <option>Portuguese</option>
+                                                            <option>Arabic</option>
+                                                            <option>French</option>
+                                                            <option>Japanese</option>
+                                                            <option>Russian</option>
+                                                            <option>Hindi</option>
+                                                        </select>
+                                                    </fieldset>
+                                                </div>
+                                            </form> <!-- .row end -->
+                                        </div>
+                                        <div class="step-tab-panel" data-step="step1">
+                                            <form class="row g-3">
+                                                <div class="col-md-6 col-12">
+                                                    <label class="form-label">Facebook</label>
+                                                    <input type="text" class="form-control" placeholder="Facebook Profile Link">
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <label class="form-label">Instagram</label>
+                                                    <input type="text" class="form-control" placeholder="Instagram Profile Link">
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <label class="form-label">Google+</label>
+                                                    <input type="text" class="form-control" placeholder="Google+ Profile Link">
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <label class="form-label">Twitter</label>
+                                                    <input type="text" class="form-control" placeholder="Twitter Profile Link">
+                                                </div>
+                                            </form> <!-- .row end -->
+                                        </div>
+                                    </div>
+                                    <div class="step-footer d-flex">
+                                        <button data-step-action="prev" class="btn btn-primary step-btn">Prev</button>
+                                        <button data-step-action="next" class="btn btn-primary step-btn">Next</button>
+                                        <button data-step-action="finish" class="btn btn-primary step-btn">Finish</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-5">
+                        <h6 class="card-title">Form Wizard horizontal demo 2</h6>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="step-app h-wizard-demo2">
+                                    <ul class="step-steps">
+                                        <li data-step-target="step1">1. Account Information</li>
+                                        <li data-step-target="step2">2. User Information</li>
+                                        <li data-step-target="step3">3. Social ID</li>
+                                    </ul>
+                                    <div class="step-content">
+                                        <div class="step-tab-panel" data-step="step1">
+                                            <form class="row g-2">
+                                                <div class="col-md-4 col-12">
+                                                    <div class="form-floating">
+                                                        <input type="text" class="form-control" placeholder="First Name">
+                                                        <label>First Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-12">
+                                                    <div class="form-floating">
+                                                        <input type="text" class="form-control" placeholder="Last Name">
+                                                        <label>Last Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-12">
+                                                    <div class="form-floating">
+                                                        <input type="text" class="form-control" placeholder="User ID">
+                                                        <label>User ID</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-floating">
+                                                        <input type="password" class="form-control" placeholder="Password">
+                                                        <label>Password</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-floating">
+                                                        <input type="password" class="form-control" placeholder="Confirm Password">
+                                                        <label>Confirm Password</label>
+                                                    </div>
+                                                </div>
+                                            </form> <!-- .row end -->
+                                        </div>
+                                        <div class="step-tab-panel" data-step="step2">
+                                            <form class="row g-2">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-floating">
+                                                        <input type="text" class="form-control" placeholder="First Name">
+                                                        <label>First Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-floating">
+                                                        <input type="text" class="form-control" placeholder="Last Name">
+                                                        <label>Last Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-floating">
+                                                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                                            <option selected>Select Country</option>
+                                                            <option value="Argentina">Argentina</option>
+                                                            <option value="Australia">Australia</option>
+                                                            <option value="Belgium">Belgium</option>
+                                                            <option value="Brazil">Brazil</option>
+                                                            <option value="Canada">Canada</option>
+                                                            <option value="Costa Rica">Costa Rica</option>
+                                                            <option value="Egypt">Egypt</option>
+                                                            <option value="France">France</option>
+                                                            <option value="Germany">Germany</option>
+                                                            <option value="India">India</option>
+                                                            <option value="Japan">Japan</option>
+                                                        </select>
+                                                        <label>Select Country</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-floating">
+                                                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                                            <option selected>Select Language</option>
+                                                            <option>English</option>
+                                                            <option>Mandari</option>
+                                                            <option>Spanish</option>
+                                                            <option>German</option>
+                                                            <option>Portuguese</option>
+                                                            <option>Arabic</option>
+                                                            <option>French</option>
+                                                            <option>Japanese</option>
+                                                            <option>Russian</option>
+                                                            <option>Hindi</option>
+                                                        </select>
+                                                        <label>Select Language</label>
+                                                    </div>
+                                                </div>
+                                            </form> <!-- .row end -->
+                                        </div>
+                                        <div class="step-tab-panel" data-step="step1">
+                                            <form class="row g-2">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-floating">
+                                                        <input type="text" class="form-control" placeholder="Facebook">
+                                                        <label>Facebook</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-floating">
+                                                        <input type="text" class="form-control" placeholder="Instagram">
+                                                        <label>Instagram</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-floating">
+                                                        <input type="text" class="form-control" placeholder="Google+">
+                                                        <label>Google+</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-floating">
+                                                        <input type="text" class="form-control" placeholder="Twitter">
+                                                        <label>Twitter</label>
+                                                    </div>
+                                                </div>
+                                            </form> <!-- .row end -->
+                                        </div>
+                                    </div>
+                                    <div class="step-footer d-flex">
+                                        <button class="btn step-btn" data-step-action="prev">Prev</button>
+                                        <button class="btn step-btn" data-step-action="next">Next</button>
+                                        <button class="btn step-btn" data-step-action="finish">Finish</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-5">
+                        <h6 class="card-title">Form Wizard horizontal demo 3</h6>
+                        <div class="card">
+                            <div class="step-app h-wizard-demo3">
+                                <ul class="step-steps">
+                                    <li data-step-target="step1"><span class="fa fa-credit-card"></span> Account Information</li>
+                                    <li data-step-target="step2"><span class="fa fa-user"></span> User Information</li>
+                                    <li data-step-target="step3"><span class="fa fa-share-alt"></span> Social ID</li>
+                                </ul>
+                                <div class="step-content">
+                                    <div class="step-tab-panel" data-step="step1">
+                                        <form class="row g-3">
+                                            <div class="col-12 mb-3">
+                                                <h2 class="mb-1">Account Settings</h2>
+                                                <span class="text-muted">Update your username and manage your account</span>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <label class="form-label">Username</label>
+                                                <input type="text" class="form-control form-control-lg" placeholder="Nellie">
+                                                <div class="form-text text-muted small">Your Dribbble URL: https://alui.com/thememakker</div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <label class="form-label">Email</label>
+                                                <input type="text" class="form-control form-control-lg" placeholder="info@thememakker.com">
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <label class="form-label">Google Analytics tracking code</label>
+                                                <input type="text" class="form-control form-control-lg" placeholder="UA-115297597-2">
+                                                <div class="form-text text-muted small">Track shot and profile views in your Google Analytics account, e.g. UA-00000000-0 </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <label class="form-label">Password</label>
+                                                <input type="text" class="form-control form-control-lg" placeholder="Password">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <label class="form-label">Confirm Password</label>
+                                                <input type="text" class="form-control form-control-lg" placeholder="Confirm Password">
+                                            </div>
+                                        </form> <!-- .row end -->
+                                    </div>
+                                    <div class="step-tab-panel" data-step="step2">
+                                        <form class="row g-3">
+                                            <div class="col-12 mb-3">
+                                                <h2 class="mb-1">User Information</h2>
+                                                <span class="text-muted">Update your username and manage your account</span>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">First Name</label>
+                                                <input type="text" class="form-control form-control-lg" placeholder="Nellie">
+                                                <div class="form-text text-muted small">We’re big on real names around here, so people know who’s who.</div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Bio</label>
+                                                <textarea type="text" class="form-control" placeholder="Bio"></textarea>
+                                                <div class="form-text text-muted small">Brief description for your profile. URLs are hyperlinked.</div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Country</label>
+                                                <select class="country form-control form-control-lg form-select" aria-label="example">
+                                                    <option selected>Select Country</option>
+                                                    <option value="Argentina">Argentina</option>
+                                                    <option value="Australia">Australia</option>
+                                                    <option value="Belgium">Belgium</option>
+                                                    <option value="Brazil">Brazil</option>
+                                                    <option value="Canada">Canada</option>
+                                                    <option value="Costa Rica">Costa Rica</option>
+                                                    <option value="Egypt">Egypt</option>
+                                                    <option value="France">France</option>
+                                                    <option value="Germany">Germany</option>
+                                                    <option value="India">India</option>
+                                                    <option value="Japan">Japan</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 mt-4">
+                                                <h5 class="border-bottom">Online Presence</h5>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Personal website</label>
+                                                <input type="text" class="form-control form-control-lg" placeholder="https://thememakker.com/">
+                                                <div class="form-text text-muted small">Your home page, blog, or company site.</div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Portfolio URL</label>
+                                                <input type="text" class="form-control form-control-lg" placeholder="https://themeforest.net/user/wrraptheme/portfolio">
+                                                <div class="form-text text-muted small">Only shared with potential employers.</div>
+                                            </div>
+                                        </form> <!-- .row end -->
+                                    </div>
+                                    <div class="step-tab-panel" data-step="step3">
+                                        <form class="row g-3">
+                                            <div class="col-12 mb-3">
+                                                <h2 class="mb-1">Social Profiles</h2>
+                                                <span class="text-muted">Add elsewhere links to your profile</span>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Facebook</label>
+                                                <input type="text" class="form-control form-control-lg" placeholder="Facebook Profile Link">
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Instagram</label>
+                                                <input type="text" class="form-control form-control-lg" placeholder="Instagram Profile Link">
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Google+</label>
+                                                <input type="text" class="form-control form-control-lg" placeholder="Google+ Profile Link">
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Twitter</label>
+                                                <input type="text" class="form-control form-control-lg" placeholder="Twitter Profile Link">
+                                            </div>
+                                        </form> <!-- .row end -->
+                                    </div>
+                                </div>
+                                <div class="step-footer d-flex">
+                                    <button class="btn step-btn" data-step-action="prev">Prev</button>
+                                    <button class="btn step-btn" data-step-action="next">Next</button>
+                                    <button class="btn step-btn" data-step-action="finish">Finish</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-5">
+                        <h6 class="card-title">Form Wizard horizontal demo 4</h6>
+                        <div class="card">
+                            <div class="card-body step-app h-wizard-demo4">
+                                <ul class="step-steps">
+                                    <li data-step-target="step1"><span class="fa fa-credit-card"></span> Account Information</li>
+                                    <li data-step-target="step2"><span class="fa fa-user"></span> User Information</li>
+                                    <li data-step-target="step3"><span class="fa fa-share-alt"></span> Social ID</li>
+                                </ul>
+                                <div class="step-content">
+                                    <div class="step-tab-panel" data-step="step1">
+                                        <form class="row g-2">
+                                            <div class="col-md-4 col-12">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" placeholder="First Name">
+                                                    <label>First Name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-12">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" placeholder="Last Name">
+                                                    <label>Last Name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-12">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" placeholder="User ID">
+                                                    <label>User ID</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-floating">
+                                                    <input type="password" class="form-control" placeholder="Password">
+                                                    <label>Password</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-floating">
+                                                    <input type="password" class="form-control" placeholder="Confirm Password">
+                                                    <label>Confirm Password</label>
+                                                </div>
+                                            </div>
+                                        </form> <!-- .row end -->
+                                    </div>
+                                    <div class="step-tab-panel" data-step="step2">
+                                        <form class="row g-2">
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" placeholder="First Name">
+                                                    <label>First Name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" placeholder="Last Name">
+                                                    <label>Last Name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-floating">
+                                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                                        <option selected>Select Country</option>
+                                                        <option value="Argentina">Argentina</option>
+                                                        <option value="Australia">Australia</option>
+                                                        <option value="Belgium">Belgium</option>
+                                                        <option value="Brazil">Brazil</option>
+                                                        <option value="Canada">Canada</option>
+                                                        <option value="Costa Rica">Costa Rica</option>
+                                                        <option value="Egypt">Egypt</option>
+                                                        <option value="France">France</option>
+                                                        <option value="Germany">Germany</option>
+                                                        <option value="India">India</option>
+                                                        <option value="Japan">Japan</option>
+                                                    </select>
+                                                    <label>Select Country</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-floating">
+                                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                                        <option selected>Select Language</option>
+                                                        <option>English</option>
+                                                        <option>Mandari</option>
+                                                        <option>Spanish</option>
+                                                        <option>German</option>
+                                                        <option>Portuguese</option>
+                                                        <option>Arabic</option>
+                                                        <option>French</option>
+                                                        <option>Japanese</option>
+                                                        <option>Russian</option>
+                                                        <option>Hindi</option>
+                                                    </select>
+                                                    <label>Select Language</label>
+                                                </div>
+                                            </div>
+                                        </form> <!-- .row end -->
+                                    </div>
+                                    <div class="step-tab-panel" data-step="step1">
+                                        <form class="row g-2">
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" placeholder="Facebook">
+                                                    <label>Facebook</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" placeholder="Instagram">
+                                                    <label>Instagram</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" placeholder="Google+">
+                                                    <label>Google+</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" placeholder="Twitter">
+                                                    <label>Twitter</label>
+                                                </div>
+                                            </div>
+                                        </form> <!-- .row end -->
+                                    </div>
+                                </div>
+                                <div class="step-footer d-flex">
+                                    <button class="btn step-btn" data-step-action="prev">Prev</button>
+                                    <button class="btn step-btn" data-step-action="next">Next</button>
+                                    <button class="btn step-btn" data-step-action="finish">Finish</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="form-bootstrap.html"><i class="fa fa-long-arrow-left me-3"></i>Bootstrap form</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="form-wizard-v.html">Form wizard vertical<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+       <!-- start: page footer -->
+       @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('docs/_scripts.html',{
+    "jquerysteps": true
+})
+<script>
+    
+    // Step Demo 1
+    $('.h-wizard-demo1').steps({});
+    // Step Demo 2
+    $('.h-wizard-demo2').steps({});
+    // Step Demo 3
+    $('.h-wizard-demo3').steps({});
+    // Step Demo 4
+    $('.h-wizard-demo4').steps({});
+
+</script>
+</body>
+</html>

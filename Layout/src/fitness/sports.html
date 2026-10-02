@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Fitness Sports",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-fitness.html', {"page": "sports"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Sports</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row row-cols-xl-4 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 g-3 mb-5">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar lg rounded no-thumbnail">
+                                    <svg class="avatar" viewBox="0 0 511.451 511.451">
+                                        <path class="fill-primary" d="m489.02 140.845c-119.142-185.894-66.418-185.788-173.458-8.819-6.4 9.43-25.208 42.91-17.155 75.25 41.902 160.953 264.669 66.19 190.613-66.431z"></path>
+                                        <path class="fill-muted" d="m363.571 323.156c-79.018-20.807-125-110.689-92.294-184.513-109.163-173.981-75.237-171.439-140.009-63.066-76.083 140.275-131.681 203.444-122.883 278.275 25.714 230.396 375.914 197.935 355.186-30.696z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="text-muted">Water</div>
+                                    <div><span class="h6 fw-bold">4</span> <small class="text-muted">Litres</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar lg rounded no-thumbnail">
+                                    <svg class="avatar" viewBox="0 0 24 24">
+                                        <path class="fill-muted" d="m7.25 15.5c-.853 0-1.622-.473-2.007-1.233-.386-.765-.311-1.665.196-2.352l5.823-7.915h-8.512c-1.516 0-2.75 1.233-2.75 2.75v9.5c0 1.517 1.234 2.75 2.75 2.75h5.027l.781-3.5z"></path>
+                                        <path class="fill-muted" d="m22.241 7h-.241v-.25c0-1.517-1.234-2.75-2.75-2.75h-2.783c-.009.084-.016.169-.035.253l-.973 4.247h1.541c.861 0 1.633.479 2.015 1.25.382.769.297 1.673-.222 2.359l-5.22 6.891h5.677c1.516 0 2.75-1.233 2.75-2.75v-.25h.241c.965 0 1.75-.785 1.75-1.75v-5.5c0-.965-.785-1.75-1.75-1.75z"></path>
+                                        <path class="fill-primary" d="m9.803 21c-.106 0-.213-.022-.315-.069-.32-.148-.493-.5-.417-.844l1.358-6.087h-3.179c-.283 0-.542-.159-.669-.412-.127-.252-.103-.555.065-.783l6.989-9.5c.209-.287.592-.388.917-.237.323.148.498.502.418.849l-1.393 6.083h3.423c.285 0 .545.161.671.416.127.255.098.56-.074.787l-7.197 9.5c-.145.192-.368.297-.597.297z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="text-muted">Glucose</div>
+                                    <div><span class="h6 fw-bold">98</span> <small class="text-muted">mg/dl</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar lg rounded no-thumbnail">
+                                    <svg class="avatar" viewBox="0 0 512.039 512.039">
+                                        <path class="fill-primary" d="m255.874 67.497c-111.609-97.618-253.518-11.848-255.845 104.427-.593 29.633 7.961 58.498 24.988 85.109h110.364l19.63-32.718c5.7-9.499 19.494-9.805 25.517-.335l41.417 65.083 60.373-127.451c5.265-11.121 20.956-11.474 26.763-.69l51.752 96.111h125.898c93.262-145.76-91.055-311.811-230.857-189.536z"></path>
+                                        <path class="fill-muted" d="m338.667 279.144-41.936-77.881-59.301 125.19c-5.045 10.651-19.884 11.576-26.211 1.632l-42.97-67.523-11.513 19.188c-2.711 4.518-7.593 7.282-12.862 7.282h-95.128c2.982 3.121-12.911-12.74 196.548 195.634 5.85 5.821 15.307 5.822 21.158 0 206.236-205.168 193.572-192.519 196.548-195.634h-111.126c-5.519.001-10.591-3.029-13.207-7.888z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="text-muted">Heart rate</div>
+                                    <div><span class="h6 fw-bold">104</span> <small class="text-muted">bpm</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar lg rounded no-thumbnail">
+                                    <svg class="avatar" viewBox="0 0 421.47 421.47">
+                                        <path class="fill-primary" d="M415.276,61.627L359.829,6.18C355.841,2.195,350.532,0,344.881,0s-10.96,2.194-14.949,6.181L86.029,250.083   c-8.234,8.243-8.233,21.655,0.003,29.899l10.887,10.882l-93.08,93.08c-0.93,0.84-3.664,3.645-3.831,7.678   c-0.076,1.867,0.385,4.646,3.021,7.281l19.448,19.443c2.581,2.582,5.261,3.124,7.055,3.123c4.228,0,7.114-2.85,8.02-3.881   l93.044-93.048l10.886,10.885c3.986,3.99,9.294,6.188,14.947,6.188c5.651,0,10.961-2.197,14.948-6.186l243.9-243.9   c3.994-3.994,6.194-9.302,6.194-14.948C421.47,70.94,419.272,65.631,415.276,61.627z"></path>
+                                        <path class="fill-muted" d="M344.752,247.03c-24.937,0-45.224,20.287-45.224,45.224c0,24.936,20.287,45.223,45.224,45.223s45.224-20.287,45.224-45.223   C389.975,267.317,369.688,247.03,344.752,247.03z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="text-muted">Cricket</div>
+                                    <div><span class="h6 fw-bold">2.5</span> <small class="text-muted">Hours</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar lg rounded no-thumbnail">
+                                    <svg class="avatar" viewBox="0 0 512.003 512.003">
+                                        <path class="fill-muted" d="m426.31 434.129c-29.44.37-56.42 11.18-77.4 28.88 13.6 28.78 43.13 48.99 77.35 48.99h.05c35.16-.02 65.18-21.36 78.21-50.96-21-16.84-47.65-26.93-76.6-26.93-.54 0-1.08 0-1.61.02z"></path>
+                                        <path class="fill-muted" d="m426.31 340.819h-.05c-50.55 0-88.82 43.57-85.43 90.63 24.31-16.94 53.75-27 85.48-27.32.54-.02 1.07-.02 1.61-.02 30.96 0 59.78 9.26 83.87 25.16 3.35-42.09-33.21-88.42-85.48-88.45z"></path>
+                                        <path class="fill-primary" d="m362.911 315.956c60.714-29.708 109.048-91.69 115.792-161.564 8.974-93.054-60.081-162.603-153.587-153.604-91.078 8.792-171.208 88.913-180.002 180.023-1.45 15.039-.892 29.607 1.568 43.431-5.177 36.014-20.772 61.838-31.024 75.461 0 .001.001.003.001.004-6.919 9.2 1.84-.19-111.273 112.926-5.849 5.86-5.849 15.349 0 21.209 4.483 4.483 37.914 37.919 42.423 42.428 5.839 5.84 15.338 5.87 21.207 0 112.842-113.316 104.134-105.086 112.392-111.496 13.338-10.359 38.976-26.427 74.908-31.921 32.852 5.833 70.968 1.034 107.595-16.897zm-182.606-159.768 33.161 33.165-35.894 35.898c-5.134-21.638-4.138-45.491 2.733-69.063zm9.452 99.3 44.918-44.924 34.279 34.283-44.907 44.912c-13.685-8.205-25.549-19.688-34.29-34.271zm80.506-207.314 42.182 42.187-28.285 28.289-47.642-47.648c10.665-9.096 22.022-16.724 33.745-22.828zm63.392 63.399 17.568 17.57 16.711 16.713-28.285 28.288c-20.818-20.818-13.188-13.188-34.28-34.282zm109.857 67.442-33.157-33.161 35.894-35.898c5.389 22.717 3.796 46.643-2.737 69.059zm-125.07 16.34-28.28 28.284c-17.203-17.205-16.955-16.957-34.279-34.283l28.281-28.284zm-64.165 106.596 35.887-35.891 33.157 33.161c-23.567 6.868-47.412 7.865-69.044 2.73zm99.272-14.917-42.179-42.184 28.28-28.284 47.652 47.657c-10.666 9.094-22.029 16.709-33.753 22.811zm54.959-44.03-47.648-47.649 28.283-28.287 42.181 42.186c-6.101 11.724-13.725 23.083-22.816 33.75zm25.556-163.285-44.918 44.924c-17.203-17.205-16.955-16.957-34.279-34.283l44.918-44.923c14.556 8.726 26.101 20.645 34.279 34.282zm-64.512-46.471-35.895 35.9-33.159-33.163c22.415-6.535 46.336-8.13 69.054-2.737zm-154.246 58.959 47.647 47.652-28.281 28.284-42.177-42.182c6.103-11.723 13.718-23.087 22.811-33.754zm-7.673 222.744c-22.235 8.917-38.573 20.259-48.52 28.374-7.216-7.269-15.619-15.74-22.051-22.198.001-.002.003-.003.004-.005 7.998-10.041 19.11-26.468 27.808-48.765 5.6 9.045 12.895 18.275 22.013 26.789 6.638 6.202 13.52 11.357 20.759 15.801-.005.001-.009.003-.013.004z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="text-muted">Tennis</div>
+                                    <div><span class="h6 fw-bold">1.2</span> <small class="text-muted">hr/min</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar lg rounded no-thumbnail">
+                                    <svg class="avatar" viewBox="-26 0 512 512">
+                                        <path class="fill-primary" d="m390.066406 122.695312-.066406 136.527344c-.011719 39.132813-8.640625 78.972656-24.121094 114.929688l60.902344-81.191406c14.621094-19.480469 25.035156-42.351563 30.941406-66.011719 6.414063-25.648438.761719-52.308594-15.515625-73.152344-13.125-16.808594-31.613281-27.460937-52.140625-31.101563zm0 0"></path>
+                                        <path class="fill-primary" d="m255 0h-150c-57.890625 0-105 48.109375-105 106v142.925781c0 38.324219 7.949219 77.519531 22.304688 113.074219h316.191406c13.792968-32.125 21.417968-67.769531 21.429687-102.792969l.074219-153.207031c0-57.890625-47.109375-106-105-106zm-1.523438 232.578125c-3.625 7.449219-12.632812 10.53125-20.054687 6.898437-2.175781-1.0625-27.347656-13.589843-53.421875-32.949218-26.070312 19.359375-51.246094 31.886718-53.421875 32.949218-7.28125 3.589844-16.382813.652344-20.054687-6.898437-3.632813-7.441406-.542969-16.421875 6.898437-20.054687 13.378906-6.527344 28.507813-15.597657 42.824219-25.765626-20.089844-19.023437-36.246094-41.734374-36.246094-65.757812 0-33.09375 26.90625-60 60-60 33.089844 0 60 26.90625 60 60 0 24.023438-16.15625 46.734375-36.25 65.757812 14.316406 10.167969 29.445312 19.238282 42.824219 25.765626 7.445312 3.632812 10.535156 12.613281 6.902343 20.054687zm0 0"></path>
+                                        <path class="fill-muted" d="m180 91c-16.539062 0-30 13.460938-30 30 0 14.371094 12.648438 31.070312 30 46.804688 17.351562-15.734376 30-32.433594 30-46.804688 0-16.539062-13.460938-30-30-30zm0 0"></path>
+                                        <path class="fill-muted" d="m180 452h-150v45c0 8.285156 6.714844 15 15 15h135c16.570312 0 30-13.433594 30-30 0-16.570312-13.429688-30-30-30zm0 0"></path>
+                                        <path class="fill-muted" d="m30 422h150c33.089844 0 60 26.910156 60 60 0 10.976562-3.175781 21.140625-8.34375 30h83.34375c8.289062 0 15-6.710938 15-15v-105h-300zm0 0"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="text-muted">Boxing</div>
+                                    <div><span class="h6 fw-bold">30</span> <small class="text-muted">Mins</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar lg rounded no-thumbnail">
+                                    <svg class="avatar" viewBox="0 0 512 512">
+                                        <path class="fill-primary" d="M330.667,122.667c23.467,0,42.667-19.2,42.667-42.667s-19.2-42.667-42.667-42.667S288,56.533,288,80     S307.2,122.667,330.667,122.667z"></path>
+                                        <path class="fill-muted" d="M106.667,261.333C48,261.333,0,309.333,0,368s48,106.667,106.667,106.667c58.667,0,106.667-48,106.667-106.667     S165.333,261.333,106.667,261.333z M106.667,442.667C65.067,442.667,32,409.6,32,368s33.067-74.667,74.667-74.667     c41.6,0,74.667,33.067,74.667,74.667S148.267,442.667,106.667,442.667z"></path>
+                                        <path class="fill-primary" d="M404.267,238.933v-42.667c-32,0-58.667-11.733-77.867-30.933L284.8,124.8c-6.4-7.467-17.067-12.8-28.8-12.8     s-22.4,4.267-29.867,12.8l-58.667,58.667c-7.467,7.467-12.8,18.133-12.8,29.867s5.333,22.4,12.8,30.933l67.2,59.733v106.667     h42.667V277.333L230.4,230.4l50.133-51.2l16,16C323.2,222.933,360.533,238.933,404.267,238.933z"></path>
+                                        <path class="fill-muted" d="M405.333,261.333c-58.667,0-106.667,48-106.667,106.667s48,106.667,106.667,106.667C464,474.667,512,426.667,512,368     S464,261.333,405.333,261.333z M405.333,442.667c-41.6,0-74.667-33.067-74.667-74.667s33.067-74.667,74.667-74.667     C446.933,293.333,480,326.4,480,368S446.933,442.667,405.333,442.667z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="text-muted">Cycling</div>
+                                    <div><span class="h6 fw-bold">2</span> <small class="text-muted">Hours</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="avatar lg rounded no-thumbnail">
+                                    <svg class="avatar" viewBox="0 0 512 512">
+                                        <path class="fill-primary" d="m361.88 321.716-24.599-39.647c25.816 32.077 73.585 33.671 101.473 4.016 25.464-27.077 24.164-69.6-2.916-95.068-27.066-25.456-69.598-24.165-95.067 2.917-19.566 20.806-23.115 50.389-12.099 74.259l-59.504-95.904 88.302-25.481c27.423-7.913 40.383-39.303 26.45-64.27-10.117-18.128-31.115-26.77-51.059-21.014l-133.684 38.576c-34.661 10.003-50.183 50.295-31.151 80.971l40.406 65.123-70.863 43.969c85.253 1.959 146.851 27.916 224.311 31.553z"></path>
+                                        <path class="fill-muted" d="m19.105 365.89c193.797-55.09 266.988 56.126 481.68.085 8.016-2.092 12.817-10.287 10.725-18.302s-10.287-12.816-18.302-10.725c-206.264 53.844-279.556-57.55-482.306.085-7.968 2.265-12.592 10.561-10.327 18.53 2.266 7.97 10.565 12.592 18.53 10.327z"></path>
+                                        <path class="fill-muted" d="m493.208 406.948c-206.643 53.942-279.154-57.666-482.306.085-7.968 2.265-12.592 10.561-10.327 18.53s10.564 12.593 18.53 10.327c193.797-55.09 266.988 56.126 481.68.085 8.016-2.092 12.817-10.287 10.725-18.302-2.092-8.016-10.287-12.817-18.302-10.725z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-fill ms-3 text-truncate">
+                                    <div class="text-muted">Swimming</div>
+                                    <div><span class="h6 fw-bold">30</span> <small class="text-muted">Mins</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-3">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <div>
+                            <div class="btn-group me-2">
+                                <a href="#" class="h6 fw-bold text-dark" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i> Sports Analytics</a>
+                                <ul class="dropdown-menu border-0 shadow">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </div>
+                            <p class="text-muted small">Or you can <a href="#">sync data to Dashboard</a> to ensure your data is always up-to-date.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="ac-line-transparent" id="apex-CyclingAnalytics"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <div>
+                            <div class="btn-group me-2">
+                                <a href="#" class="h6 fw-bold text-dark" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i> Season Goal</a>
+                                <ul class="dropdown-menu border-0 shadow">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </div>
+                            <p class="text-muted small">Or you can <a href="#">sync data to Dashboard</a> to ensure your data is always up-to-date.</p>
+                        </div>
+                        <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 g-3">
+                            <div class="col">
+                                <div class="card py-4">
+                                    <div class="card-body text-center">
+                                        <div id="apex-Running"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card py-4">
+                                    <div class="card-body text-center">
+                                        <div id="apex-Cycling"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- .row end -->
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Calories Chart</h6>
+                                <div class="ac-line-transparent" id="apex-CaloriesChart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                        <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 g-3 row-deck">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="avatar lg rounded no-thumbnail mb-4">
+                                            <svg class="avatar" viewBox="0 0 512 512">
+                                                <path class="fill-primary" d="M330.667,122.667c23.467,0,42.667-19.2,42.667-42.667s-19.2-42.667-42.667-42.667S288,56.533,288,80     S307.2,122.667,330.667,122.667z"></path>
+                                                <path class="fill-muted" d="M106.667,261.333C48,261.333,0,309.333,0,368s48,106.667,106.667,106.667c58.667,0,106.667-48,106.667-106.667     S165.333,261.333,106.667,261.333z M106.667,442.667C65.067,442.667,32,409.6,32,368s33.067-74.667,74.667-74.667     c41.6,0,74.667,33.067,74.667,74.667S148.267,442.667,106.667,442.667z"></path>
+                                                <path class="fill-primary" d="M404.267,238.933v-42.667c-32,0-58.667-11.733-77.867-30.933L284.8,124.8c-6.4-7.467-17.067-12.8-28.8-12.8     s-22.4,4.267-29.867,12.8l-58.667,58.667c-7.467,7.467-12.8,18.133-12.8,29.867s5.333,22.4,12.8,30.933l67.2,59.733v106.667     h42.667V277.333L230.4,230.4l50.133-51.2l16,16C323.2,222.933,360.533,238.933,404.267,238.933z"></path>
+                                                <path class="fill-muted" d="M405.333,261.333c-58.667,0-106.667,48-106.667,106.667s48,106.667,106.667,106.667C464,474.667,512,426.667,512,368     S464,261.333,405.333,261.333z M405.333,442.667c-41.6,0-74.667-33.067-74.667-74.667s33.067-74.667,74.667-74.667     C446.933,293.333,480,326.4,480,368S446.933,442.667,405.333,442.667z"></path>
+                                            </svg>
+                                        </div>
+                                        <h6 class="fw-bold">Challenge of 5 km Cycling</h6>
+                                        <p>It is a long established fact that a reader will be distracted</p>
+                                        <div class="project-members mb-4">
+                                            <label class="me-3">participate :</label>
+                                            <a href="#" title=""><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="friend"> </a>
+                                            <a href="#" title=""><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="friend"> </a>
+                                            <a href="#" title=""><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar7.jpg" alt="friend"> </a>
+                                            <a href="#" title=""><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar9.jpg" alt="friend"> </a>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="avatar lg rounded no-thumbnail mb-4">
+                                            <svg class="avatar" viewBox="0 0 512 512">
+                                                <path class="fill-primary" d="m361.88 321.716-24.599-39.647c25.816 32.077 73.585 33.671 101.473 4.016 25.464-27.077 24.164-69.6-2.916-95.068-27.066-25.456-69.598-24.165-95.067 2.917-19.566 20.806-23.115 50.389-12.099 74.259l-59.504-95.904 88.302-25.481c27.423-7.913 40.383-39.303 26.45-64.27-10.117-18.128-31.115-26.77-51.059-21.014l-133.684 38.576c-34.661 10.003-50.183 50.295-31.151 80.971l40.406 65.123-70.863 43.969c85.253 1.959 146.851 27.916 224.311 31.553z"></path>
+                                                <path class="fill-muted" d="m19.105 365.89c193.797-55.09 266.988 56.126 481.68.085 8.016-2.092 12.817-10.287 10.725-18.302s-10.287-12.816-18.302-10.725c-206.264 53.844-279.556-57.55-482.306.085-7.968 2.265-12.592 10.561-10.327 18.53 2.266 7.97 10.565 12.592 18.53 10.327z"></path>
+                                                <path class="fill-muted" d="m493.208 406.948c-206.643 53.942-279.154-57.666-482.306.085-7.968 2.265-12.592 10.561-10.327 18.53s10.564 12.593 18.53 10.327c193.797-55.09 266.988 56.126 481.68.085 8.016-2.092 12.817-10.287 10.725-18.302-2.092-8.016-10.287-12.817-18.302-10.725z"></path>
+                                            </svg>
+                                        </div>
+                                        <h6 class="fw-bold">Challenge of 1 Hours Swimming</h6>
+                                        <p>It is a long established fact that a reader will be distracted</p>
+                                        <div class="project-members mb-4">
+                                            <label class="me-3">participate :</label>
+                                            <a href="#" title=""><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="friend"> </a>
+                                            <a href="#" title=""><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar4.jpg" alt="friend"> </a>
+                                            <a href="#" title=""><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar5.jpg" alt="friend"> </a>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 42%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">42%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- .row end -->
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "apexcharts": true,
+})
+<script>
+    //Sports Analytics
+    var options = {
+        series: [{
+            name: 'Running',
+            data: [11, 22, 43, 21, 27]
+        }, {
+            name: 'Cricket',
+            data: [9, 13, 3, 32, 21]
+        }, {
+            name: 'Cycling',
+            data: [6, 15, 11, 20, 10]
+        }, {
+            name: 'Swimming',
+            data: [5, 14, 9, 4, 12]
+        }, {
+            name: 'Tennis',
+            data: [7, 25, 24, 10, 22]
+        }],
+        colors: ['var(--chart-color1)', 'var(--chart-color2)','var(--chart-color3)', 'var(--chart-color4)', 'var(--chart-color5)'],
+        chart: {
+            type: 'bar',
+            height: 262,
+            stacked: true,
+            stackType: '100%',
+            toolbar: {
+                show: false,
+            },
+        },
+        plotOptions: {
+            bar: {
+                borderRadius: 8,
+                horizontal: true,
+            },
+        },
+        stroke: {
+            width: 2,
+            colors: ['var(--card-color)']
+        },
+        dataLabels: {
+          enabled: false
+        },
+        xaxis: {
+            categories: [2016, 2017, 2018, 2019, 2020],
+            labels: {
+                formatter: function (val) {
+                    return val + "H"
+                }
+            }
+        },
+        yaxis: {
+            title: {
+                text: undefined
+            },
+        },
+        tooltip: {
+            y: {
+                formatter: function (val) {
+                    return val + "H"
+                }
+            }
+        },
+        fill: {
+            opacity: 1
+        },
+        legend: {
+            position: 'bottom', // left, right, top, bottom
+            horizontalAlign: 'center', // left, right, top, bottom
+            //offsetX: 40
+        }
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-CyclingAnalytics"), options);
+    chart.render();
+
+    // Goal - Running
+    var options = {
+        series: [67],
+        chart: {
+            height: 260,
+            type: 'radialBar',
+            offsetY: -10
+        },
+        plotOptions: {
+            radialBar: {
+                startAngle: -135,
+                endAngle: 135,
+                dataLabels: {
+                    name: {
+                        fontSize: '14px',
+                        color: undefined,
+                    },
+                    value: {
+                        offsetY: 76,
+                        fontSize: '22px',
+                        color: undefined,
+                        formatter: function (val) {
+                            return val + "%";
+                        }
+                    }
+                }
+            }
+        },
+        fill: {
+            type: "gradient",
+            gradient: {
+                gradientToColors: ['var(--chart-color5)' , 'var(--chart-color4)'],
+                opacityFrom: 0.9,
+                opacityTo: 0.3,
+                stops: [0, 100]
+            },
+        },
+        colors: ['var(--chart-color5)', 'var(--chart-color4)'],
+        stroke: {
+            dashArray: 4
+        },
+        labels: ['Running'],
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-Running"), options);
+    chart.render();
+
+    // Goal - Cycling
+    var options = {
+        series: [55],
+        chart: {
+            height: 260,
+            type: 'radialBar',
+            offsetY: -10
+        },
+        plotOptions: {
+            radialBar: {
+                startAngle: -135,
+                endAngle: 135,
+                dataLabels: {
+                    name: {
+                        fontSize: '14px',
+                        color: undefined,
+                    },
+                    value: {
+                        offsetY: 76,
+                        fontSize: '22px',
+                        color: undefined,
+                        formatter: function (val) {
+                            return val + "%";
+                        }
+                    }
+                }
+            }
+        },
+        fill: {
+            type: "gradient",
+            gradient: {
+                gradientToColors: ['var(--chart-color1)' , 'var(--chart-color2)'],
+                opacityFrom: 0.9,
+                opacityTo: 0.3,
+                stops: [0, 100]
+            },
+        },
+        colors: ['var(--chart-color1)', 'var(--chart-color2)'],
+        stroke: {
+            dashArray: 4
+        },
+        labels: ['Cycling'],
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-Cycling"), options);
+    chart.render();
+
+    // Calories Chart
+    var options = {
+        series: [{
+            name: 'Calories',
+            data: [2.3, 3.1, -4.0, 10.1, 4.0, -3.6, 3.2, 2.3, 1.4, -0.8, -0.5, 0.2]
+        }],
+        chart: {
+            height: 195,
+            type: 'bar',
+            toolbar: {
+                show: false,
+            },
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    position: 'bottom', // top, center, bottom
+                },
+            }
+        },
+        dataLabels: {
+            enabled: true,
+            formatter: function (val) {
+                return val + "%";
+            },
+            offsetY: -20,
+            style: {
+                fontSize: '12px',
+                colors: ["#304758"]
+            }
+        },
+        
+        colors: ['var(--chart-color2)'],
+        xaxis: {
+            categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            position: 'bottom', // top, bottom
+            axisBorder: {
+                show: false
+            },
+            axisTicks: {
+                show: false
+            },
+        },
+        yaxis: {
+            axisBorder: {
+                show: false
+            },
+            axisTicks: {
+                show: false,
+            },
+            labels: {
+                show: false,
+                formatter: function (val) {
+                    return val + "%";
+                }
+            }
+        },
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-CaloriesChart"), options);
+    chart.render();
+</script>
+</body>
+</html>

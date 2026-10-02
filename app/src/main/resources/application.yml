@@ -1,0 +1,65 @@
+spring:
+  application:
+    name: FuelFinder
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/fuelfinder}
+    # Local development defaults; configure credentials through the environment elsewhere.
+    username: ${DB_USERNAME:fuelfinder}
+    password: ${DB_PASSWORD:fuelfinder123}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        jdbc:
+          batch_size: 100
+        order_inserts: true
+        order_updates: true
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    default-property-inclusion: non_null
+
+jwt:
+  secret: ${JWT_SECRET:change-me-local-development-secret-123}
+  access-token-expiration: ${JWT_ACCESS_TOKEN_EXPIRATION:900000}
+  refresh-token-expiration: ${JWT_REFRESH_TOKEN_EXPIRATION:2592000000}
+
+app:
+  auth:
+    cookie-name: refreshToken
+    cookie-path: /auth
+    cookie-same-site: Lax
+    cookie-secure: ${AUTH_COOKIE_SECURE:false}
+  security:
+    allowed-origins: ${APP_SECURITY_ALLOWED_ORIGINS:http://localhost:8080,http://127.0.0.1:8080,http://localhost:3000,http://127.0.0.1:3000,http://localhost:5500,http://127.0.0.1:5500,http://localhost:8081,http://127.0.0.1:8081,http://localhost:8082,http://127.0.0.1:8082}
+
+# Geoapify is optional; set this environment variable only to test real API calls.
+geoapify:
+  api-key: ${GEOAPIFY_API_KEY:}
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: method
+
+server:
+  port: 8080
+  error:
+    include-message: never
+    include-binding-errors: never

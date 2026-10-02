@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2794eb">
+  <meta name="description" content="Encontre postos próximos, compare preços de combustíveis e escolha melhor onde abastecer com o FuelFinder.">
+  <title>FuelFinder — Encontre e compare postos</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="/js/public-home.js"></script>
+</head>
+<body data-page-type="public-home">
+  <header class="site-header"><div data-site-nav></div></header>
+  <main>
+    <p id="page-status" class="result-state container-fluid px-3 px-xl-4" role="status" aria-live="polite" data-shell-status></p>
+    <section class="public-hero container-fluid px-3 px-xl-4 py-5 py-lg-6">
+      <div class="public-hero-content">
+        <p class="eyebrow mb-3">Mais clareza na hora de abastecer</p>
+        <h1>Encontre combustível com mais confiança.</h1>
+        <p class="public-lead text-secondary">Compare postos próximos, consulte preços e suas datas de coleta e encontre opções que combinam com seu caminho.</p>
+        <div class="d-flex flex-column flex-sm-row gap-3 mt-4">
+          <a class="btn btn-primary btn-lg px-4" href="/login.html" data-visitor-only>Entrar</a>
+          <a class="btn btn-primary btn-lg px-4 hidden" href="/map.html" data-authenticated-only>Acessar o mapa</a>
+          <a class="btn btn-outline-primary btn-lg px-4" href="#como-funciona">Como funciona</a>
+        </div>
+        <p class="small text-secondary mt-3 mb-0">Consulte informações para decidir melhor. Os preços são informativos e podem mudar.</p>
+      </div>
+      <div class="public-hero-art" aria-hidden="true">
+        <div class="hero-orbit hero-orbit-one"></div><div class="hero-orbit hero-orbit-two"></div>
+        <div class="hero-pin"><span>F</span></div>
+        <div class="hero-price-card"><span class="hero-price-dot"></span><div><strong>Compare opções</strong><small>Preços e postos próximos</small></div></div>
+      </div>
+    </section>
+
+    <section class="container-fluid px-3 px-xl-4 py-5" aria-labelledby="benefits-heading">
+      <div class="section-intro text-center mx-auto mb-4">
+        <p class="eyebrow mb-2">Seu caminho, suas escolhas</p>
+        <h2 id="benefits-heading" class="h2">Informação útil para cada abastecimento</h2>
+        <p class="text-secondary mb-0">Encontre o que precisa sem complicar sua próxima parada.</p>
+      </div>
+      <div class="row g-3 g-lg-4 public-benefits">
+        <article class="col-12 col-md-4"><div class="card h-100 border-0 shadow-sm"><div class="card-body p-4"><span class="benefit-icon" aria-hidden="true">⌖</span><h3 class="h5 mt-3">Encontre postos</h3><p class="text-secondary mb-0">Busque por localização ou explore opções próximas no mapa.</p></div></div></article>
+        <article class="col-12 col-md-4"><div class="card h-100 border-0 shadow-sm"><div class="card-body p-4"><span class="benefit-icon benefit-icon-teal" aria-hidden="true">R$</span><h3 class="h5 mt-3">Compare preços</h3><p class="text-secondary mb-0">Consulte os preços informados e confira quando foram coletados.</p></div></div></article>
+        <article class="col-12 col-md-4"><div class="card h-100 border-0 shadow-sm"><div class="card-body p-4"><span class="benefit-icon benefit-icon-amber" aria-hidden="true">✓</span><h3 class="h5 mt-3">Escolha com confiança</h3><p class="text-secondary mb-0">Veja avaliações e informações que ajudam a escolher onde parar.</p></div></div></article>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="public-how container-fluid px-3 px-xl-4 py-5" aria-labelledby="how-heading">
+      <div class="public-how-inner">
+        <div>
+          <p class="eyebrow mb-2">Simples do começo ao fim</p>
+          <h2 id="how-heading" class="h2">Uma busca, mais contexto para decidir.</h2>
+          <p class="text-secondary mb-0">Acesse sua conta para explorar o mapa, consultar detalhes dos postos e usar os recursos do FuelFinder.</p>
+        </div>
+        <a class="btn btn-primary btn-lg px-4" href="/login.html" data-visitor-only>Entrar no FuelFinder</a>
+        <a class="btn btn-primary btn-lg px-4 hidden" href="/map.html" data-authenticated-only>Ir para o mapa</a>
+      </div>
+    </section>
+  </main>
+  <footer class="page-footer border-top py-3 px-3 px-xl-4 text-secondary small">FuelFinder — informação para ajudar você a escolher onde abastecer. Preços informativos; confirme sempre as condições no posto.</footer>
+</body>
+</html>

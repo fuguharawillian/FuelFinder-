@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Onepage UiKit Team section",
+        "onepage": true
+    })
+</head>
+
+<body class="landing-page" data-luno="theme-blue">
+
+    <!-- Page Wrapper Start -->
+    <div class="wrapper">
+
+        <!-- Team Members #1 :  -->
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-lg-12">
+                    <span class="bg-dark px-2 py-1 color-fff">Team Members Design 1</span>
+                </div>
+            </div> <!-- .row end -->
+        </div>
+        <!-- Start -->
+        @@include('onepage/team/_team-d1.html', {
+            "cardClass": "team-1 bg-card",
+            "RowcardClass": "g-3",
+            "SectionTitleClass": "mb-1 color-900",
+            "SectionTitle": "Meet Our Team",
+            "SectionSubTitle": "Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem",
+            "SectionSubTitleClass": "lead"
+        })
+
+        <!-- Team Members #2 :  -->
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-lg-12">
+                    <span class="bg-dark px-2 py-1 color-fff">Team Members Design 2</span>
+                </div>
+            </div> <!-- .row end -->
+        </div>
+        <!-- Start -->
+        @@include('onepage/team/_team-d2.html', {
+            "cardClass": "team-2 bg-card",
+            "RowcardClass": "g-3",
+            "SectionTitleClass": "mb-1 color-900",
+            "SectionTitle": "Meet Our Team",
+            "SectionSubTitle": "Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem",
+            "SectionSubTitleClass": "lead"
+        })
+
+        <!-- Team Members #3 :  -->
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-lg-12">
+                    <span class="bg-dark px-2 py-1 color-fff">Team Members Design 3</span>
+                </div>
+            </div> <!-- .row end -->
+        </div>
+        <!-- Start -->
+        @@include('onepage/team/_team-d3.html', {
+            "cardClass": "team-3 bg-card",
+            "RowcardClass": "g-3",
+            "SectionTitleClass": "mb-1 color-900",
+            "SectionTitle": "Meet Our Team",
+            "SectionSubTitle": "Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem",
+            "SectionSubTitleClass": "lead"
+        })
+        
+    </div>
+    <!-- Page Wrapper End -->
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

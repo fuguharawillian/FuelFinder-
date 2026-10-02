@@ -1,0 +1,62 @@
+<!-- <button class="btn btn-primary px-4 text-uppercase" data-bs-toggle="modal" data-bs-target="#add_vendors" type="button">Add new Vendors</button> -->
+
+<div class="modal fade" id="add_vendors" tabindex="-1" aria-labelledby="add_vendors" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add new Vendors</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6 class="fw-bold">Basic Information</h6>
+                <div class="row g-3">
+                    <div class="col-lg-7 col-md-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" placeholder="Company">
+                            <label>Enter Company</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12">
+                        <div class="form-floating">
+                            <select class="form-select form-control">
+                                <option value="1">USA</option>
+                                <option value="2">UK</option>
+                                <option value="3">Germany</option>
+                            </select>
+                            <label for="floatingSelect">Country</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" placeholder="Name">
+                            <label>Enter Name</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12">
+                        <div class="form-floating">
+                            <select class="form-select form-control">
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                            </select>
+                            <label for="floatingSelect">Gender</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label for="formFile" class="form-label">Select Logo</label>
+                        <input class="form-control" type="file" id="formFile">
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-floating">
+                            <textarea type="text" class="form-control" placeholder="Description" style="height: 100px"></textarea>
+                            <label>Description</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

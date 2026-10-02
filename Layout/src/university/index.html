@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('_head.html',{
+        "pageTitle": "University Admin",
+        "daterangepicker": true,
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-indigo">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-university.html', {"page": "index"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 row-deck">
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <i class="fa fa-credit-card fa-lg position-absolute top-0 end-0 p-3"></i>
+                                <div class="mb-2 text-uppercase">Expense</div>
+                                <div><span class="h4">$3,251</span> <span class="small text-muted"><i class="fa fa-level-up"></i> 13%</span></div>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <i class="fa fa-bank fa-lg position-absolute top-0 end-0 p-3"></i>
+                                <div class="mb-2 text-uppercase">INCOME</div>
+                                <div><span class="h4">$13,251</span> <span class="small text-muted"><i class="fa fa-level-up"></i> 8%</span></div>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <i class="fa fa-group fa-lg position-absolute top-0 end-0 p-3"></i>
+                                <div class="mb-2 text-uppercase">TOTAL STUDENT</div>
+                                <div><span class="h4">1,251</span> <span class="small text-muted"><i class="fa fa-level-up"></i> 2.5%</span></div>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <i class="fa fa-users fa-lg position-absolute top-0 end-0 p-3"></i>
+                                <div class="mb-2 text-uppercase">TOTAL TEACHER</div>
+                                <div><span class="h4">75</span> <span class="small text-muted"><i class="fa fa-level-up"></i> 8%</span></div>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <i class="fa fa-bookmark fa-lg position-absolute top-0 end-0 p-3"></i>
+                                <div class="mb-2 text-uppercase">DEPARTMENT</div>
+                                <div><span class="h4">25</span> <span class="small text-muted"><i class="fa fa-level-up"></i> 12%</span></div>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <i class="fa fa-smile-o fa-lg position-absolute top-0 end-0 p-3"></i>
+                                <div class="mb-2 text-uppercase">SMILEY FACES</div>
+                                <div><span class="h4">32,051</span> <span class="small text-muted"><i class="fa fa-level-up"></i> 26.2%</span></div>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <i class="fa fa-dollar fa-lg position-absolute top-0 end-0 p-3"></i>
+                                <div class="mb-2 text-uppercase">Cost-Per-Lead(CPL)</div>
+                                <div><span class="h4">$5.51</span> <span class="small text-muted"><i class="fa fa-level-up"></i> 12.02%</span></div>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Total Revenue</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div class="bg-light px-4 py-3 d-flex flex-row align-items-center rounded-4">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">$3,056</h6>
+                                        <small class="text-muted font-11">Fees</small>
+                                    </div>
+                                    <div class="ms-lg-5 ms-md-4 ms-3">
+                                        <h6 class="mb-0 fw-bold">$1,998</h6>
+                                        <small class="text-muted font-11">Donation</small>
+                                    </div>
+                                    <div class="d-none d-sm-block ms-auto">
+                                        <div class="btn-group" role="group">
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1">
+                                            <label class="btn btn-outline-secondary" for="btnradio1">Week</label>
+                                        
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2">
+                                            <label class="btn btn-outline-secondary" for="btnradio2">Month</label>
+                                        
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" checked="">
+                                            <label class="btn btn-outline-secondary" for="btnradio3">Year</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="apex-TotalRevenue"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Device use by Student</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex text-center">
+                                    <div class="p-2 flex-fill">
+                                        <span class="text-muted">Desktop</span>
+                                        <h5>1.08K</h5>
+                                        <small class="text-success"><i class="fa fa-angle-up"></i> 1.03%</small>
+                                    </div>
+                                    <div class="p-2 flex-fill">
+                                        <span class="text-muted">Mobile</span>
+                                        <h5>3.20K</h5>
+                                        <small class="text-danger"><i class="fa fa-angle-down"></i> 1.63%</small>
+                                    </div>
+                                    <div class="p-2 flex-fill">
+                                        <span class="text-muted">Tablet</span>
+                                        <h5>8.18K</h5>
+                                        <small class="text-success"><i class="fa fa-angle-up"></i> 4.33%</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="apex-DeviceusebyStudent"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Students by Level</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div id="apex-StudentsbyLevel"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Students by College</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div id="apex-StudentsbyCollege"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xxl-4 col-xl-4 col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Active Student</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="p-2 flex-fill">
+                                        <span class="text-muted">Daily (Avg)</span>
+                                        <h5>1.08K</h5>
+                                        <small class="text-success"><i class="fa fa-angle-up"></i> 1.03%</small>
+                                    </div>
+                                    <div class="p-2 flex-fill">
+                                        <span class="text-muted">Weekly</span>
+                                        <h5>3.20K</h5>
+                                        <small class="text-danger"><i class="fa fa-angle-down"></i> 1.63%</small>
+                                    </div>
+                                    <div class="p-2 flex-fill">
+                                        <span class="text-muted">Monthly</span>
+                                        <h5>8.18K</h5>
+                                        <small class="text-success"><i class="fa fa-angle-up"></i> 4.33%</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="apexcharts-line-0" id="apexspark5"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-card pt-3">
+                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#ExamToppers">Exam Toppers</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#NewAdmission">New Admission</a></li>               
+                            </ul>
+                            <div class="card-body">
+                                <!-- Tab panes -->
+                                <div class="tab-content mt-3">
+                                    <div role="tabpanel" class="tab-pane in active" id="ExamToppers">
+                                        <div class="table-responsive">
+                                            <table class="table myDataTable card-table align-middle table-hover mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Report</th>
+                                                        <th>Year</th>
+                                                        <th>Field</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Dean Otto</td>
+                                                        <td>
+                                                            <div class="progress" style="height: 3px;">
+                                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td>2018</td>
+                                                        <td>MCA</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>K. Thornton</td>
+                                                        <td>
+                                                            <div class="progress" style="height: 3px;">
+                                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td>2018</td>
+                                                        <td>B.E</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Kane D.</td>
+                                                        <td>
+                                                            <div class="progress" style="height: 3px;">
+                                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td>2019</td>
+                                                        <td>B.Pharm</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jack Bird</td>
+                                                        <td>
+                                                            <div class="progress" style="height: 3px;">
+                                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 23%" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td>2018</td>
+                                                        <td>MCA</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Hughe L.</td>
+                                                        <td>
+                                                            <div class="progress" style="height: 3px;">
+                                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 34%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td>2020</td>
+                                                        <td>PHD</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jack Bird</td>
+                                                        <td>
+                                                            <div class="progress" style="height: 3px;">
+                                                                <div class="progress-bar bg-success" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td>2018</td>
+                                                        <td>MCA</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Hughe L.</td>
+                                                        <td>
+                                                            <div class="progress" style="height: 3px;">
+                                                                <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td>2020</td>
+                                                        <td>MBA</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Kane D.</td>
+                                                        <td>
+                                                            <div class="progress" style="height: 3px;">
+                                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td>2019</td>
+                                                        <td>B.Pharm</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jack Bird</td>
+                                                        <td>
+                                                            <div class="progress" style="height: 3px;">
+                                                                <div class="progress-bar bg-success" role="progressbar" style="width: 81%" aria-valuenow="81" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td>2018</td>
+                                                        <td>MCA</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Hughe L.</td>
+                                                        <td>
+                                                            <div class="progress" style="height: 3px;">
+                                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 9%" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td>2020</td>
+                                                        <td>PHD</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="NewAdmission">
+                                        <div class="table-responsive">
+                                            <table class="table myDataTable card-table align-middle table-hover mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Age</th>
+                                                        <th>Number</th>
+                                                        <th>Department</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Dean Otto</td>
+                                                        <td>22</td>
+                                                        <td>+404-447-6013</td>
+                                                        <td><span class="badge bg-primary">MCA</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>K. Thornton</td>
+                                                        <td>23</td>
+                                                        <td>+404-447-6013</td>
+                                                        <td><span class="badge bg-info">MBA</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Kane D.</td>
+                                                        <td>22</td>
+                                                        <td>+404-447-4582</td>
+                                                        <td><span class="badge bg-warning">Medical</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jack Bird</td>
+                                                        <td>24</td>
+                                                        <td>+404-447-3214</td>
+                                                        <td><span class="badge bg-success">BBA</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Hughe L.</td>
+                                                        <td>22</td>
+                                                        <td>+404-447-2589</td>
+                                                        <td><span class="badge bg-primary">MCA</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jack Bird</td>
+                                                        <td>23</td>
+                                                        <td>+404-447-1478</td>
+                                                        <td><span class="badge bg-secondary">M.COM</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Hughe L.</td>
+                                                        <td>22</td>
+                                                        <td>+404-447-7896</td>
+                                                        <td><span class="badge bg-danger">M.COM</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jack Bird</td>
+                                                        <td>24</td>
+                                                        <td>+404-447-3214</td>
+                                                        <td><span class="badge bg-success">BBA</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Hughe L.</td>
+                                                        <td>22</td>
+                                                        <td>+404-447-2589</td>
+                                                        <td><span class="badge bg-primary">MCA</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jack Bird</td>
+                                                        <td>23</td>
+                                                        <td>+404-447-1478</td>
+                                                        <td><span class="badge bg-info">M.COM</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "apexcharts": true,
+    "dataTables": true,
+})
+<script>
+    // project data table
+    $('.myDataTable').addClass( 'nowrap' );
+    $('.myDataTable')
+    .dataTable( {
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: false,
+        info: false,
+    });
+
+    $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+        $($.fn.dataTable.tables(true)).DataTable()
+        .columns.adjust()
+        .responsive.recalc();
+    });
+
+    // top sparklines
+    var randomizeArray = function (arg) {
+        var array = arg.slice();
+        var currentIndex = array.length,
+        temporaryValue, randomIndex;
+  
+        while (0 !== currentIndex) {  
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+    
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }  
+        return array;
+    }
+ 
+    // data for the sparklines that appear below header area
+    var sparklineData = [47, 45, 54, 38, 56, 24, 65, 31];
+ 
+    // topb big chart  
+    var spark5 = {
+        chart: {
+            type: 'line',
+            height: 50,
+            sparkline: {
+            enabled: true
+            },
+        },
+        stroke: {
+            width: 3
+        },
+        colors: ['var(--chart-color4)'],
+        series: [{
+            data: randomizeArray(sparklineData)
+        }],
+        series: [{
+            data: randomizeArray(sparklineData)
+        }],
+    }
+    var spark5 = new ApexCharts(document.querySelector("#apexspark5"), spark5);
+    spark5.render();
+    
+    // Total Revenue
+    var options = {
+        chart: {
+            height: 300,
+            type: 'line',
+            toolbar: {
+                show: false,
+            },
+        },
+        colors: ['var(--chart-color1)', 'var(--chart-color2)'],
+        series: [{
+            name: 'Fees',
+            type: 'column',
+            data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
+        }, {
+            name: 'Donation',
+            type: 'line',
+            data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
+        }],
+        stroke: {
+            width: [0, 4]
+        },        
+        // labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: ['01 Jan 2001', '02 Jan 2001', '03 Jan 2001', '04 Jan 2001', '05 Jan 2001', '06 Jan 2001', '07 Jan 2001', '08 Jan 2001', '09 Jan 2001', '10 Jan 2001', '11 Jan 2001', '12 Jan 2001'],
+        xaxis: {
+            type: 'datetime'
+        },
+        yaxis: [{
+            title: {
+                text: 'Fees',
+            },
+
+        }, {
+            opposite: true,
+            title: {
+                text: 'Donation'
+            }
+        }]
+    }
+    var chart = new ApexCharts(document.querySelector("#apex-TotalRevenue"),options);
+    chart.render();
+
+    // Students by Level
+    var options = {
+        chart: {
+            height: 180,
+            type: 'bar',
+            toolbar: {
+                show: false,
+            },
+        },
+        colors: ['var(--chart-color1)'],
+        grid: {
+            yaxis: {
+                lines: {
+                    show: false,
+                }
+            },
+            padding: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+        },
+        plotOptions: {
+            bar: {
+                horizontal: true,
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        series: [{
+            data: [400, 430, 248, 470,]
+        }],
+        xaxis: {
+            categories: ['Undergraduate','Masters','Doctoral','Post-Bac'],
+        }
+    }
+    var chart = new ApexCharts(document.querySelector("#apex-StudentsbyLevel"),options);
+    chart.render();
+
+    // Students by College
+    var options = {
+        chart: {
+            height: 180,
+            type: 'bar',
+            toolbar: {
+                show: false,
+            },
+        },
+        colors: ['var(--chart-color2)'],
+        grid: {
+            yaxis: {
+                lines: {
+                    show: false,
+                }
+            },
+            padding: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+        },
+        plotOptions: {
+            bar: {
+                horizontal: true,
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        series: [{
+            data: [400, 430, 248, 470,]
+        }],
+        xaxis: {
+            categories: ['Business','Sciences','Arts','Architecture'],
+        }
+    }
+    var chart = new ApexCharts(document.querySelector("#apex-StudentsbyCollege"),options);
+    chart.render();
+
+    // Device use by Student
+    var options = {
+        chart: {
+            height: 270,
+            type: 'donut',
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        legend: {
+            position: 'top',
+            horizontalAlign: 'center',
+            show: false,
+        },
+        colors: ['var(--chart-color1)', 'var(--chart-color2)', 'var(--chart-color3)'],
+        series: [55, 35, 10],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    }
+    var chart = new ApexCharts( document.querySelector("#apex-DeviceusebyStudent"), options );    
+    chart.render();
+</script>
+</body>
+</html>

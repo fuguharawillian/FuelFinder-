@@ -1,0 +1,176 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "MaxLength",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "element-maxlength"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+                
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Maxlength</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="element-imageinput.html"><i class="fa fa-long-arrow-left me-2"></i>Image input</a>
+                        <a class="btn btn-secondary" href="element-nouislider.html">nouislider<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Maxlength</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="fs-6">This plugin integrates by default with Twitter bootstrap using badges to display the maximum length of the field where the user is inserting text. This plugin uses the HTML5 attribute "maxlength" to work. For more info, please visit the <a href="https://github.com/mimo84/bootstrap-maxlength" target="_blank">plugin's site</a></p>
+                            </div>
+                            <div class="card-body pt-0">
+<pre class="language-html m-0" data-lang="html"><code class=" language-html">&lt;!-- Plugin Js --&gt;
+&lt;script src=&quot;assets/bundles/bs-maxlength.bundle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- HTML  --&gt;
+&lt;input type=&quot;text&quot; class=&quot;form-control form-control-lg mb-1&quot; id=&quot;bs_maxlength_basic&quot; maxlength=&quot;10&quot;&gt;
+
+&lt;!-- Jquery Page Js --&gt;
+&lt;script&gt;    
+    // basic
+    $('#bs_maxlength_basic').maxlength({
+        warningClass: &quot;badge bg-primary&quot;,
+        limitReachedClass: &quot;badge bg-success&quot;
+    });
+&lt;/script&gt;
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label">Basic example</label>
+                                        <input type="text" class="form-control form-control-lg mb-1" id="bs_maxlength_basic" maxlength="10">
+                                        <span class="text-muted">The badge will show up by default when the remaining chars are 10 or less</span>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label">Threshold Example</label>
+                                        <input type="text" class="form-control form-control-lg mb-1" id="bs_maxlength_threshold" maxlength="25">
+                                        <span class="text-muted">Set threshold value to show there are 20 chars or less left</span>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label">Textarea Example</label>
+                                        <textarea  type="text" class="form-control form-control-lg mb-1" id="bs_maxlength_textarea" maxlength="50"></textarea>
+                                        <span class="text-muted">Bootstrap maxlength supports textarea as well as inputs</span>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label">Set Position example</label>
+                                        <input type="text" class="form-control form-control-lg mb-1" maxlength="20" id="bs_maxlength_p_top_left" placeholder="top left" />
+                                        <input type="text" class="form-control form-control-lg mb-1" maxlength="20" id="bs_maxlength_p_top_right" placeholder="top right" />
+                                        <input type="text" class="form-control form-control-lg mb-1" maxlength="20" id="bs_maxlength_p_bottom_left" placeholder="bottom left" />
+                                        <input type="text" class="form-control form-control-lg mb-1" maxlength="20" id="bs_maxlength_p_bottom_right"  placeholder="bottom right" />
+                                        <span class="text-muted">The field counter can be positioned at the top, bottom, left or right.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+               <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="element-imageinput.html"><i class="fa fa-long-arrow-left me-3"></i>Image input</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="element-nouislider.html">nouislider<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('docs/_scripts.html',{
+    "bsMaxlength": true,
+})
+<!-- Jquery Page Js -->
+<script>
+    
+    // basic
+    $('#bs_maxlength_basic').maxlength({
+        warningClass: "badge bg-primary",
+        limitReachedClass: "badge bg-success"
+    });
+
+    // Threshold Example
+    $('#bs_maxlength_threshold').maxlength({
+        threshold: 20,
+        warningClass: "badge bg-primary",
+        limitReachedClass: "badge bg-success"
+    });
+
+    // Threshold Example
+    $('#bs_maxlength_textarea').maxlength({
+        warningClass: "badge bg-primary",
+        limitReachedClass: "badge bg-success"
+    });
+
+    // Set Position Example
+    $('#bs_maxlength_p_top_left').maxlength({
+        placement: 'top-left',
+        warningClass: "badge bg-danger",
+        limitReachedClass: "badge bg-primary"
+    });
+    $('#bs_maxlength_p_top_right').maxlength({
+        placement: 'top-right',
+        warningClass: "badge bg-danger",
+        limitReachedClass: "badge bg-primary"
+    });
+    $('#bs_maxlength_p_bottom_left').maxlength({
+        placement: 'bottom-left',
+        warningClass: "badge bg-danger",
+        limitReachedClass: "badge bg-primary"
+    });
+    $('#bs_maxlength_p_bottom_right').maxlength({
+        placement: 'bottom-right',
+        warningClass: "badge bg-danger",
+        limitReachedClass: "badge bg-primary"
+    });
+
+</script>
+</body>
+</html>

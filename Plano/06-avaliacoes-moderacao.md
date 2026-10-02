@@ -13,22 +13,24 @@ Implementar o sistema de avaliações de postos com nota (1-5 estrelas), coment�
 
 | Método | Rota | Objetivo | Acesso | Status HTTP |
 |--------|------|----------|--------|-------------|
-| `GET`  | `/stations/{id}/reviews` | Lista avaliações aprovadas do posto | Público / Autenticado | `200 OK` |
-| `POST` | `/stations/{id}/reviews` | Registra avaliação com nota (1-5) | `ROLE_MOTORISTA` | `201 Created` |
-| `PATCH`| `/reviews/{id}` | Edita a própria avaliação | `ROLE_MOTORISTA` | `200 OK` |
-| `DELETE`| `/reviews/{id}` | Remove avaliação (autor ou admin) | `ROLE_MOTORISTA` / `ROLE_ADMIN` | `204 No Content` |
+| `GET`  | `/stations/{id}/reviews` | Lista avaliações aprovadas do posto | `ROLE_DRIVER` / `ROLE_ADMIN` | `200 OK` |
+| `POST` | `/stations/{id}/reviews` | Registra avaliação com nota (1-5) | `ROLE_DRIVER` | `201 Created` |
+| `PATCH`| `/reviews/{id}` | Edita a própria avaliação | `ROLE_DRIVER` | `200 OK` |
+| `PATCH`| `/reviews/{id}/moderation` | Altera status da avaliação | `ROLE_ADMIN` | `200 OK` |
+| `DELETE`| `/reviews/{id}` | Remove avaliação (autor ou admin) | `ROLE_DRIVER` / `ROLE_ADMIN` | `204 No Content` |
 
 ---
 
 ## Regras de Negócio
 
 ### Submissão de Avaliação
-1. Apenas motoristas autenticados (`ROLE_MOTORISTA`) podem avaliar
+1. Apenas motoristas autenticados (`ROLE_DRIVER`) podem avaliar
 2. **Nota obrigatória:** inteiro de 1 a 5 estrelas
 3. **Comentário opcional:** limitado a 500 caracteres
-4. **Unicidade:** cada motorista mantém **no máximo 1 avaliação ativa por posto**
+4. **Unicidade:** cada motorista mantém **no máximo 1 avaliação por posto**, independentemente do status
 5. Nova avaliação para o mesmo posto **atualiza** a avaliação anterior (upsert)
-6. Status padrão: `APPROVED`
+6. Nova avaliação inicia em `APPROVED`.
+7. Upsert e `PATCH` do autor preservam o status atual; o autor não pode aprovar uma avaliação moderada como `PENDING` ou `REJECTED`.
 
 ### Nota Média Agregada
 
@@ -43,8 +45,9 @@ Onde $N$ é o total de avaliações com status `APPROVED`.
 ### Moderação Administrativa
 1. Admin (`ROLE_ADMIN`) pode alterar o status de qualquer avaliação
 2. Status possíveis: `APPROVED`, `PENDING`, `REJECTED`
-3. Avaliações `REJECTED` não contam na nota média
-4. Admin pode excluir avaliações com conteúdo inadequado
+3. A alteração usa `PATCH /reviews/{id}/moderation` com `{ "status": "APPROVED|PENDING|REJECTED" }`
+4. Apenas avaliações `APPROVED` contam na nota média e são visíveis a usuários autenticados
+5. Admin pode excluir avaliações com conteúdo inadequado
 
 ### Permissões de Exclusão
 - **Motorista:** pode excluir **apenas sua própria** avaliação
@@ -93,6 +96,9 @@ public class Review {
     // Construtores, getters, setters
 }
 ```
+
+A tabela `reviews`, a unicidade por `(user_id, station_id)` e seus índices já
+existem na migração V1, portanto a fase não requer nova migração.
 
 ### 6.2 ReviewRepository
 
@@ -144,6 +150,9 @@ public record ReviewResponseDTO(
 ) {}
 ```
 
+`PATCH /reviews/{id}/moderation` recebe um `ModerateReviewRequestDTO` com status.
+O status não é aceito no DTO de criação/edição do motorista.
+
 ### 6.4 ReviewService
 
 ```java
@@ -193,7 +202,7 @@ public class ReviewService {
                 .orElseThrow(() -> new ResourceNotFoundException("Avaliação não encontrada."));
 
         // Motorista só pode excluir a própria
-        if ("ROLE_MOTORISTA".equals(userRole)
+        if ("ROLE_DRIVER".equals(userRole)
                 && !review.getUserId().equals(userId)) {
             throw new BusinessException("Você só pode excluir sua própria avaliação.");
         }
@@ -242,7 +251,7 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @PostMapping("/stations/{stationId}/reviews")
-    @PreAuthorize("hasRole('MOTORISTA')")
+    @PreAuthorize("hasRole('DRIVER')")
     public ResponseEntity<ReviewResponseDTO> create(
             @PathVariable UUID stationId,
             @Valid @RequestBody CreateReviewRequestDTO request,
@@ -259,7 +268,7 @@ public class ReviewController {
     }
 
     @PatchMapping("/reviews/{id}")
-    @PreAuthorize("hasRole('MOTORISTA')")
+    @PreAuthorize("hasRole('DRIVER')")
     public ResponseEntity<ReviewResponseDTO> update(
             @PathVariable UUID id,
             @Valid @RequestBody CreateReviewRequestDTO request,
@@ -269,7 +278,7 @@ public class ReviewController {
     }
 
     @DeleteMapping("/reviews/{id}")
-    @PreAuthorize("hasAnyRole('MOTORISTA', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('DRIVER', 'ADMIN')")
     public ResponseEntity<Void> delete(
             @PathVariable UUID id,
             @AuthenticationPrincipal String userId,
@@ -319,23 +328,26 @@ flowchart TD
 - `ReviewControllerIntegrationTest`:
   - POST retorna 201
   - GET lista apenas avaliações APPROVED
+  - PATCH atualiza avaliação própria e rejeita outro motorista
+  - Admin transita entre APPROVED, PENDING e REJECTED; motorista não modera
+  - Média e total mudam após moderação e exclusão
   - DELETE por autor retorna 204
-  - DELETE por não-autor (MOTORISTA) retorna 403
+  - DELETE por não-autor com `ROLE_DRIVER` retorna 403
   - DELETE por ADMIN retorna 204
 
 ---
 
 ## Critérios de Aceitação
 
-- [ ] Nova avaliação do mesmo motorista para o mesmo posto atualiza a existente
-- [ ] Nota: inteiro de 1 a 5 estrelas
-- [ ] Comentário opcional, máximo 500 caracteres
-- [ ] Nota média do posto recalculada a cada operação
-- [ ] Apenas avaliações `APPROVED` contam na média
-- [ ] GET lista apenas avaliações `APPROVED`
-- [ ] Admin pode moderar e excluir qualquer avaliação
-- [ ] Motorista só pode excluir sua própria avaliação
-- [ ] Testes passam
+- [x] Nova avaliação do mesmo motorista para o mesmo posto atualiza a existente
+- [x] Nota: inteiro de 1 a 5 estrelas
+- [x] Comentário opcional, máximo 500 caracteres
+- [x] Nota média do posto recalculada a cada operação
+- [x] Apenas avaliações `APPROVED` contam na média
+- [x] GET lista apenas avaliações `APPROVED`
+- [x] Admin pode moderar e excluir qualquer avaliação
+- [x] Motorista só pode editar/excluir sua própria avaliação
+- [x] Testes passam
 
 ---
 

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Fitness & Health Studio Landing Page",
+        "swiper": true,
+        "onepage": true,
+    })
+</head>
+
+<body class="landing-page" data-luno="theme-cyan">
+    
+    <!-- Header  -->
+    <header class="section sticky-top bg-card py-0">
+        @@include('onepage/_navbar.html', {
+            "navbarClass": "navbar-expand-lg navbar-light py-3",
+            "brandName": "LUNO",
+            "tagLine": "Fitness & Health Studio",
+        })
+    </header>
+
+    <!-- Section: Hero -->
+    <div class="section bg-card" id="hero_banner">
+        <div class="container">
+
+            <div class="row g-4 align-items-center justify-content-between">
+                <div class="col-xxl-6 col-lg-6 col-md-12 text-center text-lg-start">
+                    <h5 class="color-900">Keep</h5>
+                    <h2 class="bg-text color-900">Refresh & Strong <span class="text-gradient fw-bold">Your Body</span></h2>
+                    <p class="color-500 lead mb-4">If you want something you've never had, you must be willing to do something you've never done.</p>
+                    <a href="https://themeforest.net/item/luno-bootstrap-5-responsive-admin-dashboard-template/36214125" class="btn btn-lg px-5 bg-secondary text-white text-uppercase fs-6">Download Now</a>
+                    <ul class="social mb-0 list-inline mt-5">
+                        <li class="list-inline-item"><a href="#" class="pe-3 color-900 fs-6">Terms of use</a></li>
+                        <li class="list-inline-item"><a href="#" class="pe-3 color-900 fs-6">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#" class="pe-3 color-900 fs-6">FAQs</a></li>
+                        <li class="list-inline-item"><a href="#" class="pe-3 color-900 fs-6">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-xxl-6 col-lg-6 col-md-12">
+                    <svg class="img-fluid" viewBox="0 0 531 404" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path class="fill-secondary" fill-rule="evenodd" clip-rule="evenodd" d="M150.844 22.2041C154.903 21.6435 159.43 22.4466 163.281 26.308C167.135 30.1714 167.84 34.6173 167.154 38.5733C166.472 42.5061 164.418 45.9647 162.728 47.9581L162.376 48.3727L140.668 26.6102L141.122 26.2637C143.209 24.6694 146.804 22.762 150.844 22.2041ZM142.19 26.7196L162.309 46.8898C163.838 44.9524 165.569 41.8585 166.169 38.4025C166.809 34.707 166.158 30.608 162.573 27.0142C158.987 23.4182 154.796 22.6678 150.981 23.1947C147.429 23.6853 144.218 25.2842 142.19 26.7196Z"></path>
+                        <path class="fill-secondary" d="M149.021 37.1802L169.941 58.1539C165.873 61.2611 155.878 65.6112 148.439 58.1539C141.001 50.6966 145.727 41.0643 149.021 37.1802Z"></path>
+                        <ellipse class="fill-secondary" cx="494.761" cy="349.254" rx="13.2396" ry="14.1138"></ellipse>
+                        <path class="fill-muted" d="M446.31 91.9392C435.895 90.1565 424.323 94.8859 417.959 97.2874C208.511 176.324 195.204 364.704 209.668 373.618C260.584 416.999 367.597 386.104 418.537 337.368C478.5 280 483.215 204.436 477.5 161C471.785 117.564 458.403 94.0093 446.31 91.9392Z"></path>
+                        <path class="fill-secondary" d="M501.389 339.323C501.389 346.565 495.673 352.414 488.65 352.414C481.626 352.414 475.91 346.565 475.91 339.323C475.91 332.08 481.626 326.231 488.65 326.231C495.673 326.231 501.389 332.08 501.389 339.323Z" stroke="black"></path>
+                        <path class="fill-secondary" fill-rule="evenodd" clip-rule="evenodd" d="M443.751 192.404L441.752 192.342C441.81 190.463 441.839 188.577 441.839 186.684C441.839 184.791 441.81 182.905 441.752 181.027L443.751 180.965C443.809 182.864 443.839 184.77 443.839 186.684C443.839 188.598 443.809 190.504 443.751 192.404ZM443.043 169.58L441.052 169.766C440.699 165.996 440.229 162.26 439.647 158.564L441.622 158.253C442.211 161.99 442.686 165.767 443.043 169.58ZM439.489 147.037L437.537 147.472C436.713 143.784 435.775 140.139 434.728 136.544L436.648 135.984C437.707 139.621 438.655 143.306 439.489 147.037ZM433.108 125.136L431.228 125.817C429.942 122.265 428.547 118.768 427.047 115.33L428.88 114.53C430.397 118.007 431.808 121.544 433.108 125.136ZM423.982 104.222L422.204 105.137C420.477 101.784 418.647 98.4958 416.718 95.2764L418.434 94.2485C420.385 97.5045 422.236 100.83 423.982 104.222ZM412.255 84.6495L410.609 85.7857C408.468 82.6842 406.231 79.6576 403.903 76.7104L405.472 75.4706C407.827 78.4515 410.089 81.5127 412.255 84.6495ZM398.11 66.7478L396.625 68.0866C394.104 65.2887 391.495 62.5758 388.803 59.9524L390.199 58.52C392.922 61.1737 395.561 63.9179 398.11 66.7478ZM381.769 50.8256L380.47 52.3461C377.609 49.902 374.67 47.5525 371.656 45.3023L372.853 43.6997C375.902 45.9763 378.875 48.3531 381.769 50.8256ZM363.486 37.1776L362.398 38.8559C359.244 36.8118 356.021 34.8712 352.732 33.0389L353.705 31.2917C357.033 33.1459 360.295 35.1094 363.486 37.1776ZM343.555 26.0755L342.701 27.8841C339.308 26.2821 335.854 24.7915 332.345 23.4168L333.075 21.5546C336.626 22.9458 340.121 24.4544 343.555 26.0755ZM322.31 17.7543L321.709 19.6618C318.137 18.5361 314.515 17.5279 310.848 16.6415L311.318 14.6975C315.03 15.5946 318.695 16.615 322.31 17.7543ZM300.137 12.3962L299.801 14.3677C296.113 13.7389 292.385 13.2318 288.621 12.8507L288.823 10.8609C292.632 11.2466 296.405 11.7597 300.137 12.3962ZM277.443 10.0957L277.376 12.0946C275.5 12.0317 273.616 12 271.724 12C269.833 12 267.949 12.0317 266.073 12.0946L266.006 10.0957C267.904 10.0321 269.811 10 271.724 10C273.638 10 275.544 10.0321 277.443 10.0957ZM254.626 10.8609L254.827 12.8507C251.063 13.2318 247.335 13.7389 243.647 14.3677L243.311 12.3962C247.044 11.7597 250.816 11.2466 254.626 10.8609ZM232.131 14.6975L232.601 16.6415C228.933 17.5278 225.311 18.5361 221.74 19.6618L221.139 17.7543C224.753 16.615 228.419 15.5945 232.131 14.6975ZM210.374 21.5546L211.103 23.4168C207.594 24.7915 204.141 26.2821 200.747 27.8841L199.893 26.0755C203.327 24.4543 206.822 22.9458 210.374 21.5546ZM189.743 31.2917L190.717 33.0388C187.428 34.8712 184.204 36.8118 181.051 38.8559L179.963 37.1775C183.154 35.1093 186.415 33.1458 189.743 31.2917ZM170.596 43.6996L171.792 45.3022C168.778 47.5525 165.839 49.902 162.979 52.346L161.68 50.8255C164.573 48.3531 167.547 45.9762 170.596 43.6996ZM153.25 58.52L154.646 59.9524C151.953 62.5757 149.345 65.2887 146.824 68.0865L145.338 66.7478C147.888 63.9178 150.526 61.1736 153.25 58.52ZM137.976 75.4706L139.546 76.7104C137.217 79.6576 134.981 82.6842 132.84 85.7856L131.194 84.6495C133.359 81.5126 135.621 78.4515 137.976 75.4706ZM125.014 94.2484L126.73 95.2764C124.801 98.4957 122.971 101.784 121.244 105.137L119.466 104.222C121.213 100.83 123.064 97.5045 125.014 94.2484ZM114.569 114.53L116.402 115.33C114.902 118.768 113.507 122.265 112.221 125.817L110.34 125.136C111.641 121.544 113.052 118.007 114.569 114.53ZM106.8 135.984L108.721 136.544C107.673 140.139 106.736 143.784 105.912 147.472L103.96 147.036C104.793 143.306 105.741 139.621 106.8 135.984ZM101.826 158.253L103.802 158.564C103.219 162.26 102.75 165.996 102.397 169.766L100.406 169.58C100.762 165.767 101.237 161.99 101.826 158.253ZM99.6978 180.965C99.639 182.864 99.6094 184.77 99.6094 186.684C99.6094 188.598 99.639 190.504 99.6978 192.403L101.697 192.342C101.639 190.463 101.609 188.577 101.609 186.684C101.609 184.791 101.639 182.905 101.697 181.027L99.6978 180.965ZM100.406 203.789L102.397 203.602C102.75 207.373 103.219 211.108 103.802 214.804L101.826 215.115C101.237 211.378 100.762 207.601 100.406 203.789ZM103.96 226.332L105.912 225.896C106.736 229.585 107.673 233.229 108.721 236.825L106.8 237.384C105.741 233.748 104.793 230.062 103.96 226.332ZM110.34 248.233L112.221 247.552C113.507 251.103 114.902 254.6 116.402 258.038L114.569 258.838C113.052 255.361 111.641 251.824 110.34 248.233ZM119.466 269.147L121.244 268.231C122.971 271.584 124.801 274.872 126.73 278.092L125.014 279.12C123.064 275.864 121.213 272.538 119.466 269.147ZM131.194 288.719L132.84 287.583C134.981 290.684 137.217 293.711 139.546 296.658L137.976 297.898C135.621 294.917 133.359 291.856 131.194 288.719ZM145.338 306.62L146.824 305.282C149.345 308.08 151.953 310.792 154.645 313.416L153.25 314.848C150.526 312.195 147.888 309.45 145.338 306.62ZM161.68 322.543L162.979 321.022C165.839 323.466 168.778 325.816 171.792 328.066L170.596 329.669C167.547 327.392 164.573 325.015 161.68 322.543ZM179.963 336.191L181.05 334.512C184.204 336.556 187.428 338.497 190.717 340.329L189.743 342.077C186.415 340.222 183.154 338.259 179.963 336.191ZM199.893 347.293C203.327 348.914 206.822 350.422 210.374 351.814L211.103 349.952C207.594 348.577 204.141 347.086 200.747 345.484L199.893 347.293ZM221.139 355.614L221.74 353.707C225.311 354.832 228.933 355.84 232.601 356.727L232.131 358.671C228.419 357.774 224.753 356.753 221.139 355.614ZM243.311 360.972L243.647 359.001C247.335 359.629 251.063 360.136 254.827 360.518L254.626 362.507C250.816 362.122 247.043 361.609 243.311 360.972ZM266.006 363.273L266.073 361.274C267.949 361.337 269.833 361.368 271.724 361.368C273.616 361.368 275.5 361.337 277.376 361.274L277.443 363.273C275.544 363.336 273.638 363.368 271.724 363.368C269.811 363.368 267.904 363.336 266.006 363.273ZM288.823 362.507L288.621 360.518C292.385 360.136 296.113 359.629 299.801 359.001L300.137 360.972C296.405 361.609 292.632 362.122 288.823 362.507ZM311.318 358.671C315.029 357.774 318.695 356.753 322.31 355.614L321.709 353.707C318.137 354.832 314.515 355.84 310.848 356.727L311.318 358.671ZM333.075 351.814L332.345 349.952C335.854 348.577 339.308 347.086 342.701 345.484L343.555 347.293C340.121 348.914 336.626 350.422 333.075 351.814ZM353.705 342.077L352.732 340.329C356.02 338.497 359.244 336.557 362.398 334.512L363.486 336.191C360.295 338.259 357.033 340.222 353.705 342.077ZM372.852 329.669L371.656 328.066C374.67 325.816 377.609 323.466 380.469 321.022L381.769 322.543C378.875 325.015 375.902 327.392 372.852 329.669ZM390.199 314.848L388.803 313.416C391.495 310.793 394.104 308.08 396.625 305.282L398.11 306.62C395.561 309.45 392.922 312.195 390.199 314.848ZM405.472 297.898L403.903 296.658C406.231 293.711 408.468 290.684 410.609 287.583L412.255 288.719C410.089 291.856 407.827 294.917 405.472 297.898ZM418.434 279.12L416.718 278.092C418.647 274.873 420.477 271.584 422.204 268.231L423.982 269.147C422.236 272.538 420.385 275.864 418.434 279.12ZM428.88 258.838L427.047 258.038C428.547 254.6 429.942 251.103 431.228 247.552L433.108 248.233C431.808 251.824 430.397 255.361 428.88 258.838ZM436.648 237.384L434.728 236.825C435.775 233.229 436.713 229.585 437.537 225.896L439.489 226.332C438.655 230.062 437.707 233.748 436.648 237.384ZM441.622 215.116L439.647 214.804C440.229 211.108 440.699 207.373 441.052 203.602L443.043 203.789C442.686 207.601 442.211 211.378 441.622 215.116Z"></path>
+                        <circle cx="282.886" cy="195.773" r="175" fill="url(#hero_img)"></circle>
+                        <path class="fill-secondary" d="M131.181 349.812V355.818H98.5908V349.812H131.181ZM117.923 335.141V371.732H111.881V335.141H117.923Z"></path>
+                        <path class="fill-secondary" d="M105.72 369.242V372.502H88.4067V369.242H105.72ZM98.6768 361.277V381.141H95.4674V361.277H98.6768Z"></path>
+                        <defs>
+                            <pattern id="hero_img" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                <use xlink:href="#image0_315_455" transform="translate(-0.25) scale(0.00133333)"></use>
+                            </pattern>
+                            <image id="image0_315_455" width="1125" height="750" xlink:href="@@webRoot/assets/img/fitness/hero-img-350x350.png"></image>
+                        </defs>
+                    </svg>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!-- Section: About us -->
+    <div class="section" id="about_us">
+        <div class="container">
+
+            <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-2 row-cols-1 g-3 mb-5">
+                <div class="col">
+                    <div class="card chart-color1 text-white border-0">
+                        <div class="card-body">
+                            <i class="fa fa-trophy fa-2x mb-3" aria-hidden="true"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="47" data-purecounter-duration="1.5" class="purecounter h2 mb-0 fw-bold"></span>
+                            <p class="lead mb-0 text-uppercase">Award Winning</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card chart-color2 text-white border-0">
+                        <div class="card-body">
+                            <i class="fa fa-delicious fa-2x mb-3"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="65" data-purecounter-duration="2.2" class="purecounter h2 mb-0 fw-bold"></span>
+                            <p class="lead mb-0 text-uppercase">Branch</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card chart-color3 text-white border-0">
+                        <div class="card-body">
+                            <i class="fa fa-life-ring fa-2x mb-3" aria-hidden="true"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="111" data-purecounter-duration="3.3" class="purecounter h2 mb-0 fw-bold"></span>
+                            <p class="lead mb-0 text-uppercase">Yearly Event</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card chart-color4 text-white border-0">
+                        <div class="card-body">
+                            <i class="fa fa-user fa-2x mb-3" aria-hidden="true"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="138" data-purecounter-duration="4.5" class="purecounter h2 mb-0 fw-bold"></span>
+                            <p class="lead mb-0 text-uppercase">Our Clients</p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+            <div class="row g-3 justify-content-lg-between mt-4">
+                <div class="col-xl-6 col-lg-6">
+                    <span class="bg-dark px-2 py-1 color-fff">LUNO</span>
+                    <h2 class="mb-1 mt-4 color-900"><strong> Yoga Studio</strong> isIt is a long established fact by the readable content.</h2>
+                    <p class="lead">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem</p>
+                    <ul class="resume-box ps-0">
+                        <li>
+                            <div class="icon text-center">
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <h6 class="fw-bold">Our Mission</h6>
+                            <span>Nisl tellus morbi ornare suspendisse eget himenaeos lobortis ante ullamcorper dis ipsum</span>
+                        </li>
+                        <li>
+                            <div class="icon text-center">
+                                <i class="fa fa-eye"></i>
+                            </div>
+                            <h6 class="fw-bold">Our Vision</h6>
+                            <span>Vehicula quis integer lectus rutrum ac magna leo blandit dictumst in dui duis pellentesque</span>
+                            <div class="ps-3 pt-3">
+                                <h6><i class="fa fa-thumbs-o-up me-2"></i><span>Aenean consequat metus ipsum a scelerisque ante vivamus nec</span></h6>
+                                <h6><i class="fa fa-thumbs-o-up me-2"></i><span>Arcu netus eget lorem sollicitudin orci</span></h6>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="d-flex flex-wrap justify-content-between align-items-center">
+                        <a href="https://themeforest.net/user/wrraptheme/portfolio" class="btn btn-lg rounded-pill btn-primary px-5 lead text-uppercase">View More</a>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-6 col-md-12 order-1 order-lg-2">
+                    <svg class="img-fluid d-none d-lg-block" viewBox="0 0 600 449" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path class="fill-primary" fill-rule="evenodd" clip-rule="evenodd" d="M457.559 52.7163C450.334 49.4569 442.708 48.3882 437.171 48.4057C435.791 48.4101 434.597 47.3772 434.5 45.9999V45.9999C434.403 44.6226 435.441 43.4224 436.822 43.4082C443.014 43.3447 451.513 44.5037 459.615 48.1586C468.935 52.3629 477.824 59.9261 481.883 72.7452C489.473 96.7143 542.361 253.344 567.868 328.698L567.883 328.742L567.896 328.787C570.988 339.179 572.298 354.704 565.541 367.015C562.123 373.243 556.679 378.564 548.562 381.898C540.489 385.215 529.902 386.516 516.221 384.984C463.462 379.078 365.926 360.148 321.4 350.947C320.048 350.667 319.219 349.352 319.5 348V348C319.78 346.648 321.065 345.772 322.417 346.051C366.956 355.255 464.278 374.139 516.778 380.015C529.897 381.484 539.586 380.181 546.662 377.273C553.695 374.384 558.276 369.861 561.158 364.61C566.993 353.978 566.014 340.029 563.116 330.257C537.618 254.927 484.724 98.2807 477.116 74.2546C473.576 63.0737 465.881 56.4703 457.559 52.7163Z" fill="black"></path>
+                        <path d="M358 11.5L201.5 60.5C181.334 66.5 135.2 80.1 112 86.5C88.8 92.9 76.3333 118.833 73 131C64.6668 164.667 44.3004 248.4 29.5004 314C14.7004 379.6 57.0004 388.667 80.0004 385C202 368.667 464.4 333.9 538 325.5C611.6 317.1 599.667 271 584.5 249C546 194.5 462.6 76.2 437 39C411.4 1.8 373.667 5.16667 358 11.5Z" fill="url(#pattern0)"></path>
+                        <path class="fill-primary" fill-rule="evenodd" clip-rule="evenodd" d="M123.217 82.4818C136.917 51.7616 164.945 44 177.5 44H240.5C241.881 44 243 45.1193 243 46.5V46.5C243 47.8807 241.881 49 240.5 49H177.5C166.39 49 140.484 56.0384 127.784 84.5182C114.508 114.288 58.1532 208.436 31.6798 251.728C29.5847 255.793 27.2381 262.706 27.0622 270.109C26.9035 276.79 28.5055 283.702 33.4799 289.382C34.3896 290.421 34.4476 291.995 33.5004 293V293C32.5533 294.005 30.961 294.057 30.0349 293.033C23.7787 286.115 21.8806 277.694 22.0636 269.991C22.2616 261.657 24.8867 253.96 27.2817 249.348C27.3086 249.296 27.3372 249.245 27.3676 249.196C53.9139 205.787 110.101 111.895 123.217 82.4818Z" fill="black"></path>
+                        <path class="fill-secondary" d="M56.5 23L69.0574 44.75H43.9426L56.5 23Z"></path>
+                        <path class="fill-secondary" d="M319 401.5L270.25 429.646L270.25 373.354L319 401.5Z"></path>
+                        <path class="fill-secondary" d="M37 43L44.7942 56.5H29.2058L37 43Z"></path>
+                        <path class="fill-secondary" d="M275 358.5L244.25 376.254L244.25 340.746L275 358.5Z"></path>
+                        <path class="fill-secondary" d="M55 61L62.7942 74.5H47.2058L55 61Z"></path>
+                        <path class="fill-secondary" d="M234 399.5L203.25 417.254L203.25 381.746L234 399.5Z"></path>
+                        <defs>
+                            <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                            <use xlink:href="#image0_54_6" transform="translate(0 -0.00197126) scale(0.000444444 0.000669295)"></use>
+                            </pattern>
+                            <image id="image0_54_6" width="2250" height="1500" xlink:href="@@webRoot/assets/img/fitness/pexels-1.jpg"></image>
+                        </defs>
+                    </svg>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!-- Classes -->
+    <div class="section" id="classes">
+        <div class="container">
+
+            <div class="row g-3">
+                <div class="col-lg-8 col-md-12">
+                    <h3 class="mb-1 color-900">Our Classes Schedule</h3>
+                    <p class="lead text-muted">Nostra ultricies placerat diam nisi ut semper parturient urna risus nam bibendum</p>
+                </div>
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table card-table align-middle mb-0 text-center">
+                            <thead>
+                                <tr class="bg-light-gray">
+                                    <th>Time</th>
+                                    <th>Monday</th>
+                                    <th>Tuesday</th>
+                                    <th>Wednesday</th>
+                                    <th>Thursday</th>
+                                    <th>Friday</th>
+                                    <th>Saturday</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="align-middle">09:00am</td>
+                                    <td>
+                                        <span class="badge bg-info text-dark">Aerobic</span>
+                                        <div class="mt-2">9:00-10:00</div>
+                                        <div class="small text-muted">Chris Fox</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-warning text-dark">Yoga</span>
+                                        <div class="mt-2">9:00-10:00</div>
+                                        <div class="small text-muted">Jack Bird</div>
+                                    </td>
+    
+                                    <td>
+                                        <span class="badge bg-danger">zumba</span>
+                                        <div class="mt-2">9:00-10:00</div>
+                                        <div class="small text-muted">Chris Fox</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">zumba</span>
+                                        <div class="mt-2">9:00-10:00</div>
+                                        <div class="small text-muted">Chris Fox</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-primary">Running</span>
+                                        <div class="mt-2">9:00-10:00</div>
+                                        <div class="small text-muted">Dean Otto</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-dark">Jumprope</span>
+                                        <div class="mt-2">9:00-10:00</div>
+                                        <div class="small text-muted">James Smith</div>
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <td class="align-middle">10:00am</td>
+                                    <td>
+                                        <span class="badge bg-danger">zumba</span>
+                                        <div class="mt-2">10:00-11:00</div>
+                                        <div class="small text-muted">Chris Fox</div>
+                                    </td>
+                                    <td class="bg-light-gray">
+    
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-primary">Running</span>
+                                        <div class="mt-2">10:00-11:00</div>
+                                        <div class="small text-muted">Dean Otto</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-warning text-dark">Yoga</span>
+                                        <div class="mt-2">10:00-11:00</div>
+                                        <div class="small text-muted">Jack Bird</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-dark">Jumprope</span>
+                                        <div class="mt-2">10:00-11:00</div>
+                                        <div class="small text-muted">James Smith</div>
+                                    </td>
+                                    <td class="bg-light-gray">
+    
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <td class="align-middle">11:00am</td>
+                                    <td>
+                                        <span class="badge bg-light text-dark">Break</span>
+                                        <div class="mt-2">11:00-12:00</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-light text-dark">Break</span>
+                                        <div class="mt-2">11:00-12:00</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-light text-dark">Break</span>
+                                        <div class="mt-2">11:00-12:00</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-light text-dark">Break</span>
+                                        <div class="mt-2">11:00-12:00</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-light text-dark">Break</span>
+                                        <div class="mt-2">11:00-12:00</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-light text-dark">Break</span>
+                                        <div class="mt-2">11:00-12:00</div>
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <td class="align-middle">12:00pm</td>
+                                    <td class="bg-light-gray">
+    
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-primary">Running</span>
+                                        <div class="mt-2">12:00-1:00</div>
+                                        <div class="small text-muted">Dean Otto</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-dark">Aerobic</span>
+                                        <div class="mt-2">12:00-1:00</div>
+                                        <div class="small text-muted">Chris Fox</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">zumba</span>
+                                        <div class="mt-2">12:00-1:00</div>
+                                        <div class="small text-muted">Chris Fox</div>
+                                    </td>
+                                    <td class="bg-light-gray">
+    
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-warning text-dark">Yoga</span>
+                                        <div class="mt-2">12:00-1:00</div>
+                                        <div class="small text-muted">Jack Bird</div>
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <td class="align-middle">01:00pm</td>
+                                    <td>
+                                        <span class="badge bg-dark">Jumprope</span>
+                                        <div class="mt-2">1:00-2:00</div>
+                                        <div class="small text-muted">James Smith</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">zumba</span>
+                                        <div class="mt-2">1:00-2:00</div>
+                                        <div class="small text-muted">Chris Fox</div>
+                                    </td>
+                                    <td class="bg-light-gray">
+    
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-dark">Jumprope</span>
+                                        <div class="mt-2">1:00-2:00</div>
+                                        <div class="small text-muted">James Smith</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-warning text-dark">Yoga</span>
+                                        <div class="mt-2">1:00-2:00</div>
+                                        <div class="small text-muted">Jack Bird</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">zumba</span>
+                                        <div class="mt-2">1:00-2:00</div>
+                                        <div class="small text-muted">Chris Fox</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!-- Section: Trainer -->
+    <div class="section bg-card" id="trainer">
+        <div class="container">
+
+            <div class="row g-3">
+                <div class="col-12 text-center">
+                    <h3 class="mb-1 color-900">Our Trainer</h3>
+                    <p class="lead text-muted">Condimentum enim ante pharetra et eleifend bibendum natoque eu praesent consectetuer vel</p>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card img-effect2">
+                        <div class="team-block">
+                            <div class="team-img" style="background-image: url(@@webRoot/assets/img/fitness/trainer/trainer-1.jpg)"></div>
+                            <div class="team-content flex-column">
+                                <h6 class="team-caption fw-bold">James Smith</h6>
+                                <div class="social">
+                                    <a href="#" class="px-1"><span class="fa fa-twitter"></span></a>
+                                    <a href="#" class="px-1"><span class="fa fa-facebook"></span></a>
+                                    <a href="#" class="px-1"><span class="fa fa-instagram"></span></a>
+                                    <a href="#" class="px-1"><span class="fa fa-linkedin"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card img-effect2">
+                        <div class="team-block">
+                            <div class="team-img" style="background-image: url(@@webRoot/assets/img/fitness/trainer/trainer-2.jpg)"></div>
+                            <div class="team-content flex-column">
+                                <h6 class="team-caption fw-bold">Dean Otto</h6>
+                                <div class="social">
+                                    <a href="#" class="px-1"><span class="fa fa-twitter"></span></a>
+                                    <a href="#" class="px-1"><span class="fa fa-facebook"></span></a>
+                                    <a href="#" class="px-1"><span class="fa fa-instagram"></span></a>
+                                    <a href="#" class="px-1"><span class="fa fa-linkedin"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card img-effect2">
+                        <div class="team-block">
+                            <div class="team-img" style="background-image: url(@@webRoot/assets/img/fitness/trainer/trainer-3.jpg)"></div>
+                            <div class="team-content flex-column">
+                                <h6 class="team-caption fw-bold">Chris Fox</h6>
+                                <div class="social">
+                                    <a href="#" class="px-1"><span class="fa fa-twitter"></span></a>
+                                    <a href="#" class="px-1"><span class="fa fa-facebook"></span></a>
+                                    <a href="#" class="px-1"><span class="fa fa-instagram"></span></a>
+                                    <a href="#" class="px-1"><span class="fa fa-linkedin"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card img-effect2">
+                        <div class="team-block">
+                            <div class="team-img" style="background-image: url(@@webRoot/assets/img/fitness/trainer/trainer-4.jpg)"></div>
+                            <div class="team-content flex-column">
+                                <h6 class="team-caption fw-bold">John laisa do</h6>
+                                <div class="social">
+                                    <a href="#" class="px-1"><span class="fa fa-twitter"></span></a>
+                                    <a href="#" class="px-1"><span class="fa fa-facebook"></span></a>
+                                    <a href="#" class="px-1"><span class="fa fa-instagram"></span></a>
+                                    <a href="#" class="px-1"><span class="fa fa-linkedin"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!-- Section: Video -->
+    <div class="section bg-body" id="overvideo">
+        <div class="container">
+
+            <div class="row g-3">
+                <div class="col-12 text-center">
+                    <h3 class="mb-1 color-900">Our Video Gallery</h3>
+                    <p class="lead text-muted">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem</p>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="card img-effect one text-center">
+                        <img src="@@webRoot/assets/img/fitness/1.jpg" alt="img hover">
+                        <div>
+                            <h2 class="h3">Aerobics</h2>
+                            <p>Tony Horton's P90X</p>
+                            <a href="#" title="">View more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="card img-effect one text-center">
+                        <img src="@@webRoot/assets/img/fitness/2.jpg" alt="img hover">
+                        <div>
+                            <h2 class="h3">Body Building</h2>
+                            <p>Insanity Sweat Fest</p>
+                            <a href="#" title="">View more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="card img-effect one text-center">
+                        <img src="@@webRoot/assets/img/fitness/3.jpg" alt="img hover">
+                        <div>
+                            <h2 class="h3">Yoga</h2>
+                            <p>Dumbbell rows</p>
+                            <a href="#" title="">View more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="card img-effect one text-center">
+                        <img src="@@webRoot/assets/img/fitness/4.jpg" alt="img hover">
+                        <div>
+                            <h2 class="h3">Body Building</h2>
+                            <p>Brazil Butt Lift</p>
+                            <a href="#" title="">View more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="card img-effect one text-center">
+                        <img src="@@webRoot/assets/img/fitness/5.jpg" alt="img hover">
+                        <div>
+                            <h2 class="h3">Aerobics</h2>
+                            <p>Tony Horton's P90X</p>
+                            <a href="#" title="">View more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="card img-effect one text-center">
+                        <img src="@@webRoot/assets/img/fitness/6.jpg" alt="img hover">
+                        <div>
+                            <h2 class="h3">Aerobics</h2>
+                            <p>Dumbbell rows</p>
+                            <a href="#" title="">View more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="card img-effect one text-center">
+                        <img src="@@webRoot/assets/img/fitness/7.jpg" alt="img hover">
+                        <div>
+                            <h2 class="h3">Yoga</h2>
+                            <p>Dumbbell rows</p>
+                            <a href="#" title="">View more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="card img-effect one text-center">
+                        <img src="@@webRoot/assets/img/fitness/8.jpg" alt="img hover">
+                        <div>
+                            <h2 class="h3">Body Building</h2>
+                            <p>Brazil Butt Lift</p>
+                            <a href="#" title="">View more</a>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!-- Section: Joinng -->
+    <div class="section bg-secondary text-white" id="joinng">
+        <div class="container">
+
+            <div class="row g-3">
+                <div class="col-12 d-flex flex-wrap justify-content-between align-items-center py-4">
+                    <div class="mb-3 mb-lg-0">
+                        <h3>Are You Ready Joing Our Challenge programs ?</h3>
+                        <p class="lead mb-0">Malesuada fusce efficitur bibendum porta scelerisque pellentesque leo gravida donec adipiscing platea vitae.</p>
+                    </div>
+                    <button type="button" class="btn px-4 text-uppercase btn-primary btn-lg lift">Join Challenge</button>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!-- Section: upcoming Events -->
+    <div class="section bg-card" id="ourevent">
+        <div class="container">
+
+            <div class="row g-3">
+                <div class="col-12">
+                    <h3 class="mb-1 color-900">Awesome Events</h3>
+                    <p class="lead">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem</p>
+                </div>
+                <div class="col-xl-4 col-lg-12">
+                    <div class="card border-0 bg-transparent">
+                        <img src="@@webRoot/assets/img/fitness/4.jpg" class="img-fluid rounded-4" alt="...">
+                        <div class="card-body px-0">
+                            <span class="text-muted small">March 12 to March 16</span>
+                            <h4 class="card-title">Crow - Bakasana</h4>
+                            <p class="text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary mt-2 lift">Join Event</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <div class="card border-0 bg-transparent">
+                        <img src="@@webRoot/assets/img/fitness/5.jpg" class="img-fluid rounded-4" alt="...">
+                        <div class="card-body px-0">
+                            <span class="text-muted small">March 12 to March 16</span>
+                            <h4 class="card-title">Crow - Bakasana</h4>
+                            <p class="text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary mt-2 lift">Join Event</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <div class="card border-0 bg-transparent">
+                        <img src="@@webRoot/assets/img/fitness/3.jpg" class="img-fluid rounded-4" alt="...">
+                        <div class="card-body px-0">
+                            <span class="text-muted small">March 12 to March 16</span>
+                            <h4 class="card-title">Crow - Bakasana</h4>
+                            <p class="text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary mt-2 lift">Join Event</a>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: Testimonials  -->
+    @@include('onepage/sliders/_sliders-testimonials.html', { "cardClass": "sliders-2 bg-card", })
+
+    <!-- Section: call-to-action app download -->
+    <div class="section bg-dark text-light">
+        <div class="container">
+
+            @@include('onepage/call-to-action/_call-to-action-app.html', {
+                "rowClass": "g-3 align-items-center justify-content-center",
+                "sectionTitle": "Download Our Best Apps",
+            })
+
+        </div>
+    </div>
+
+    <!-- Section: Footer -->
+    @@include('onepage/_footer.html', {
+        "sectionClass": "footer",
+        "rowClass": "g-2",
+        "SectionTag": "Contact Information",
+        "SectionTitle": "Get in touch",
+    })
+    
+    <!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+    <a class="page-setting" href="#" title="Settings" data-bs-toggle="modal" data-bs-target="#SettingsModal"><i class="fa fa-gear text-light"></i></a>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fa fa-arrow-up"></i></a>
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "purecounter": true,
+    "swiper": true,
+})
+<script>
+    new PureCounter();
+</script>
+</body>
+</html>

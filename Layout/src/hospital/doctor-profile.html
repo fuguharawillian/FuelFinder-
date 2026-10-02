@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Hospital Doctor Profile",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-cyan">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hospital.html', {"page": "doctor-profile"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item">Doctor</li>
+                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+                                    <div class="doctor-avatar order-0 order-md-1">
+                                        <img src="@@webRoot/assets/img/lg/avatar1.jpg" class="img-thumbnail" alt="..." style="width: 260px;">
+                                        <ul class="list-unstyled custom d-flex mb-3 mt-3">
+                                            <li class="me-3 text-muted">Follow</li>
+                                            <li class="me-3"><a href="#" class="card-link"><i class="fa fa-lg fa-facebook"></i></a></li>
+                                            <li class="me-3"><a href="#" class="card-link"><i class="fa fa-lg fa-twitter"></i></a></li>
+                                            <li class="me-3"><a href="#" class="card-link"><i class="fa fa-lg fa-instagram"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="doctor-detail order-1 order-md-0">
+                                        <h3>Dr. Hossein Shams</h3>
+                                        <div class="d-flex flex-row flex-wrap align-items-center mb-3 mt-2">
+                                            <div class="me-3 me-md-5">
+                                                <small class="text-muted">Specialist</small>
+                                                <div class="mb-0 fw-bold">Cardiologist</div>
+                                            </div>
+                                            <div class="me-3 me-md-5">
+                                                <small class="text-muted">Awards</small>
+                                                <div class="mb-0 fw-bold">45</div>
+                                            </div>
+                                            <div class="me-3 me-md-5">
+                                                <small class="text-muted">Experience</small>
+                                                <div class="mb-0 fw-bold">8+</div>
+                                            </div>
+                                            <div>
+                                                <small class="text-muted">City</small>
+                                                <div class="mb-0 fw-bold">New york</div>
+                                            </div>
+                                        </div>
+                                        <span>It is a long established fact that a reader will be distracted by the readable<br> content of a page when looking at its layout.</span>
+                                        <ul class="resume-box">
+                                            <li>
+                                                <div class="icon text-center">
+                                                    <i class="fa fa-map-marker"></i>
+                                                </div>
+                                                <div class="fw-bold mb-0">Address</div>
+                                                <span>795 Folsom Ave, Suite 600 San Francisco, 94107</span>
+                                            </li>
+                                            <li>
+                                                <div class="icon text-center">
+                                                    <i class="fa fa-mobile"></i>
+                                                </div>
+                                                <div class="fw-bold mb-0">Mobile</div>
+                                                <span>+ 202-555-2828</span>
+                                            </li>
+                                            <li>
+                                                <div class="icon text-center">
+                                                    <i class="fa fa-envelope"></i>
+                                                </div>
+                                                <div class="fw-bold mb-0">Email Address</div>
+                                                <span>HosseinShams@gmail.com</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="nav nav-tabs tab-card border-0" role="tablist">
+                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#appointment-dr" role="tab">Appointment</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#review-dr" role="tab">Review</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Settings</a>
+                                    <ul class="dropdown-menu border-0 shadow">
+                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="tab-content">
+                            <div class="tab-pane fade card show active" id="appointment-dr" role="tabpanel">
+                                <div class="card-header">
+                                    <h6 class="card-title mb-0">Appointment List</h6>
+                                    @@include('widgets/_card-action.html')
+                                </div>
+                                <table id="myAppointment" class="table card-table table-hover align-middle mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Patient</th>
+                                            <th>Appointment</th>
+                                            <th>Last Visit</th>
+                                            <th>Age</th>
+                                            <th>Number</th>
+                                            <th>Address</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>P015</td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="avatar sm rounded-circle me-2" alt="profile-image">
+                                                <span class="fw-bold">Alexander<span>
+                                            </td>
+                                            <td>Jan 11, 2021</td>
+                                            <td>Dec 25, 2020</td>
+                                            <td>23</td>
+                                            <td>404-447-6013</td>
+                                            <td>123 6th St. Melbourne, FL 32904</td>
+                                        </tr>
+                                        <tr>
+                                            <td>P016</td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar2.jpg" class="avatar sm rounded-circle me-2" alt="profile-image">
+                                                <span class="fw-bold">Cameron<span>
+                                            </td>
+                                            <td>Jan 11, 2021</td>
+                                            <td>Dec 26, 2020</td>
+                                            <td>30</td>
+                                            <td>404-447-9696</td>
+                                            <td>123 6th St. Melbourne, FL 32904</td>
+                                        </tr>
+                                        <tr>
+                                            <td>P017</td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="avatar sm rounded-circle me-2" alt="profile-image">
+                                                <span class="fw-bold">Alex lee<span>
+                                            </td>
+                                            <td>Jan 16, 2021</td>
+                                            <td>Dec 28, 2020</td>
+                                            <td>55</td>
+                                            <td>404-447-5858</td>
+                                            <td>123 6th St. Melbourne, FL 32904</td>
+                                        </tr>
+                                        <tr>
+                                            <td>P018</td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar4.jpg" class="avatar sm rounded-circle me-2" alt="profile-image">
+                                                <span class="fw-bold">Richard<span>
+                                            </td>
+                                            <td>Jan 20, 2021</td>
+                                            <td>Dec 28, 2020</td>
+                                            <td>47</td>
+                                            <td>404-447-6013</td>
+                                            <td>123 6th St. Melbourne, FL 32904</td>
+                                        </tr>
+                                        <tr>
+                                            <td>P020</td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar5.jpg" class="avatar sm rounded-circle me-2" alt="profile-image">
+                                                <span class="fw-bold">Stephen<span>
+                                            </td>
+                                            <td>Jan 20, 2021</td>
+                                            <td>Dec 30, 2020</td>
+                                            <td>26</td>
+                                            <td>404-447-2536</td>
+                                            <td>123 6th St. Melbourne, FL 32904</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade card" id="review-dr" role="tabpanel">
+                                <div class="card-header">
+                                    <h6 class="card-title mb-0">Review</h6>
+                                    @@include('widgets/_card-action.html')
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled list-group-custom mb-0">
+                                        <li class="d-flex list-group-item">
+                                            <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="avatar rounded" alt="profile-image">
+                                            <div class="flex-fill ms-3">
+                                                <h6 class="mb-0 fw-bold">Chris Fox</h6>
+                                                <div class="mb-2">
+                                                    <span class="badge bg-success me-2">5</span>
+                                                    <i class="fa fa-star small"></i>
+                                                    <i class="fa fa-star small"></i>
+                                                    <i class="fa fa-star small"></i>
+                                                    <i class="fa fa-star small"></i>
+                                                    <i class="fa fa-star small"></i>
+                                                </div>
+                                                <span>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</span>
+                                            </div>
+                                        </li>
+                                        <li class="d-flex list-group-item">
+                                            <img src="@@webRoot/assets/img/xs/avatar2.jpg" class="avatar rounded" alt="profile-image">
+                                            <div class="flex-fill ms-3">
+                                                <h6 class="mb-0 fw-bold">Chris Fox</h6>
+                                                <div class="mb-2">
+                                                    <span class="badge bg-success me-2">5</span>
+                                                    <i class="fa fa-star small"></i>
+                                                    <i class="fa fa-star small"></i>
+                                                    <i class="fa fa-star small"></i>
+                                                    <i class="fa fa-star small"></i>
+                                                    <i class="fa fa-star small"></i>
+                                                </div>
+                                                <span>Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure</span>
+                                            </div>
+                                        </li>
+                                        <li class="d-flex list-group-item">
+                                            <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="avatar rounded" alt="profile-image">
+                                            <div class="flex-fill ms-3">
+                                                <h6 class="mb-0 fw-bold">Chris Fox</h6>
+                                                <div class="mb-2">
+                                                    <span class="badge bg-success me-2">3.5</span>
+                                                    <i class="fa fa-star small"></i>
+                                                    <i class="fa fa-star small"></i>
+                                                    <i class="fa fa-star small"></i>
+                                                    <i class="fa fa-star-half-o small"></i>
+                                                    <i class="fa fa-star-o small"></i>
+                                                </div>
+                                                <span>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</span>
+                                            </div>
+                                        </li>
+                                        <li class="d-flex list-group-item">
+                                            <img src="@@webRoot/assets/img/xs/avatar4.jpg" class="avatar rounded" alt="profile-image">
+                                            <div class="flex-fill ms-3">
+                                                <h6 class="mb-0 fw-bold">Chris Fox</h6>
+                                                <div class="mb-2">
+                                                    <span class="badge bg-success me-2">4.5</span>
+                                                    <i class="fa fa-star small"></i>
+                                                    <i class="fa fa-star small"></i>
+                                                    <i class="fa fa-star small"></i>
+                                                    <i class="fa fa-star small"></i>
+                                                    <i class="fa fa-star-half-o small"></i>
+                                                </div>
+                                                <span>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

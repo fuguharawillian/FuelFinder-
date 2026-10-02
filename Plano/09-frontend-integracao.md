@@ -2,565 +2,491 @@
 
 ## Objetivo
 
-Construir a interface web responsiva do FuelFinder usando HTML5 semântico, Tailwind CSS 3.4+, Vanilla JavaScript ES2023+ e Leaflet 1.9.4 para visualização cartográfica, consumindo a API REST do backend com autenticação JWT.
+Entregar uma interface web responsiva para os fluxos do motorista e do
+administrador, consumindo os endpoints reais das Fases 2 a 8. O frontend é
+servido pelo Spring Boot a partir de `src/main/resources/static`, usa HTML
+semântico, Vanilla JavaScript ES modules, Bootstrap 5.2.3 via CDN e Leaflet
+1.9.4. A decisão de substituir Tailwind por Bootstrap foi aprovada e aplicada
+às telas da aplicação. Esta documentação distingue o que já está integrado e
+verificado do que ainda requer validação funcional e visual mais ampla.
 
-**Branch:** `feature/frontend-leaflet`
-**Dependências:** Fases 1-7 (todas as fases de backend)
+## Referência visual e decisão de integração
 
----
+A referência está em [`../Layout/`](../Layout/README.md), na raiz do
+repositório. É o LUNO (WrrapTheme/ThemeMakker, 2022), um kit de interface
+administrativa com mais de uma demonstração de dashboard, páginas de conta e
+aplicação, telas de autenticação, documentação de componentes, fontes SCSS,
+scripts e saída compilada. O `package.json` declara a faixa `^5.2.0` para
+Bootstrap; como não há lockfile no diretório, a versão exata instalada não está
+registrada. `src/`
+contém fontes e parciais Gulp/SCSS, enquanto `dist/` contém HTML e CSS/JS
+compilados. O projeto usa também jQuery e numerosos plugins opcionais.
 
-## Estrutura de Arquivos
+Pontos de inspeção da referência: [`src/index.html`](../Layout/src/index.html)
+e [`src/partials/`](../Layout/src/partials/) para shell e composição de tela;
+[`src/auth-signin.html`](../Layout/src/auth-signin.html) para autenticação;
+[`src/assets/scss/global/_variables.scss`](../Layout/src/assets/scss/global/_variables.scss),
+[`src/assets/scss/theme/core.scss`](../Layout/src/assets/scss/theme/core.scss),
+[`src/assets/scss/theme/_themes.scss`](../Layout/src/assets/scss/theme/_themes.scss)
+e [`src/assets/scss/skeleton/_layout.scss`](../Layout/src/assets/scss/skeleton/_layout.scss)
+para tokens, temas e breakpoints; [`src/docs/`](../Layout/src/docs/) para
+exemplos de componentes Bootstrap; e [`package.json`](../Layout/package.json)
+para versões e dependências declaradas.
+
+Não se deve tratar cada uma das centenas de demonstrações como requisito, nem
+copiar telas de CRM/e-commerce ou conteúdo ilustrativo. O objetivo é adaptar o
+shell, o sistema visual e os componentes compatíveis com o FuelFinder. A
+referência não fornece uma tela de mapa Leaflet nem lógica de domínio,
+autenticação, integração com API ou autorização; essas partes permanecem
+implementadas pelos módulos próprios já descritos neste documento.
+
+### Identidade visual observada
+
+- A variação selecionada nas páginas de entrada é `theme-blue`: azul
+  (`#2794eb`) como primária e verde-água (`#00AC9A`) como secundária. O
+  dashboard usa superfícies claras e discretas; a cascata SCSS para
+  `data-luno="theme-blue"` resulta em fundo `#f4f7f6`, cartões brancos
+  (`#ffffff`), borda `#e9e6e1` e texto principal `#464545`. Manter essa
+  combinação, sem misturar as demais variações (blush, indigo, cyan, green,
+  orange, red e dark) na mesma experiência.
+- Os estados semânticos definidos no SCSS são success `#4DCA88`, danger
+  `#FC5A69`, warning `#FFBA33` e info `#4FB8C9`. Cor não deve ser o único meio
+  de indicar estado: incluir rótulo, ícone acessível ou texto.
+- `core.scss` declara `data-luno="theme-blue"` duas vezes para o fundo; a
+  segunda regra vence na cascata (`#f4f7f6`). A sidebar tem largura `280px` no
+  layout, embora `$sidebar-width` declare `250px`; conferir o seletor efetivo
+  antes de portar dimensões como tokens.
+- A fonte padrão é Nunito; Open Sans, Quicksand e Raleway existem como
+  alternativas globais, não como combinação simultânea. Manter Nunito em
+  títulos e corpo para preservar a identidade. O SCSS define `$font-size: 14px`,
+  mas o estilo geral aplica 16px ao corpo e 15px em algumas variantes; priorizar
+  legibilidade móvel e não reduzir texto essencial para compensar densidade.
+- A hierarquia combina breadcrumb discreto, título de página, texto auxiliar,
+  ações alinhadas e conteúdo em cartões brancos. Há separação sutil entre áreas,
+  sombras leves e cantos arredondados (por exemplo, `border-radius: .75rem`).
+  Usar a escala de espaçamento do Bootstrap (múltiplos de 4px, especialmente
+  `g-3`/`g-4`) e os respiros dos parciais `page-toolbar`/`page-body`, evitando
+  densidade de dashboard administrativo em telas de motorista.
+- O pacote inclui Bootstrap Icons, Font Awesome, Feather, Line Awesome e outros
+  conjuntos. A implementação atual não carrega esses conjuntos: usar ícones
+  somente após escolher e justificar uma única dependência; não carregar todos
+  nem usar ícones como único rótulo de ação. Fotos e ilustrações da demonstração
+  são decorativas/de prévia, não conteúdo do FuelFinder.
+
+### Estado da migração visual e aplicação no FuelFinder
+
+- **Decisão registrada:** Bootstrap 5 substitui Tailwind; versão adotada no
+  frontend é 5.2.3, carregada pelo CDN jsDelivr. Vanilla JS e Leaflet são
+  preservados. Não manter as folhas/frameworks Tailwind e Bootstrap em paralelo.
+- **Implementado nesta etapa:** páginas HTML públicas e administrativas usam o
+  CSS e JavaScript Bootstrap e o CSS próprio `static/css/styles.css` concentra
+  os tokens LUNO (Nunito, primária `#2794eb`, secundária `#00ac9a`, fundo
+  `#f4f7f6`, superfícies brancas e bordas claras). Cards, campos, botões,
+  estados de formulário, grid responsivo e cabeçalho/menu usam componentes e
+  classes Bootstrap 5. CSS original do tema e classes semânticas da aplicação
+  continuam em uso apenas para os elementos de domínio sem equivalente pronto.
+- **Por tela:** a busca usa formulário destacado antes do mapa; mapa Leaflet e
+  lista são colunas empilháveis, com lista acessível e cards de posto. Login e
+  cadastro mantêm cartão central sem opções não suportadas. Veículos preservam
+  cadastro em cartão e lista em cards/linhas adaptáveis. Recomendações destacam
+  entrada e resultado em conteúdo empilhado. Detalhe de posto organiza preço,
+  rotas, avaliações e formulário em cartões. Administração mantém páginas
+  focadas por tarefa; formulário de postos e filtros/filas ANP/preços/moderação
+  usam grid e controles Bootstrap, e links do painel são cards.
+- **Breakpoints já aplicados:** classes Bootstrap `sm` (576px), `md` (768px),
+  `lg` (992px), `xl` (1200px) e `xxl` (1400px); regras próprias recolhem o menu
+  abaixo de 1200px, empilham componentes em 768px ou menos e apertam o
+  espaçamento em telas abaixo de 576px. Busca, cartões, formulários e ações
+  ocupam largura disponível em celular; mapa e lista ficam empilhados, com
+  altura mínima do mapa reduzida. Tabelas devem permanecer encapsuladas em
+  `.table-responsive` quando surgirem listas realmente tabulares.
+- **Não portado deliberadamente:** sidebar fixa/densa do LUNO é substituída por
+  navegação FuelFinder em cabeçalho compacto, colapsada em larguras abaixo de
+  1200px; plugins jQuery, exemplos de CRM/e-commerce, tabelas de demonstração,
+  imagens e ícones/fontes adicionais não são copiados. Conteúdo da API e os
+  fluxos de autenticação, GPS, Leaflet e autorização permanecem na lógica atual.
+- **Validação já registrada:** smoke visual do mapa em larguras de 360 a
+  1440px, ausência de overflow horizontal nas larguras verificadas e abertura
+  do menu móvel, inclusive fechamento com Escape. Home, login e navegação
+  também foram verificadas no navegador com sessão simulada.
+- **Ainda pendente:** validação visual/funcional de todas as páginas e dos
+  estados dinâmicos com backend e sessão reais, além de revisão de teclado e
+  touch nas telas administrativas. Os testes com sessão simulada não substituem
+  a integração real. A carga por CDN depende de rede externa; decidir se os
+  recursos continuarão externos ou serão fornecidos localmente.
+
+### Estrutura e recursos que podem ser adaptados
+
+| Referência LUNO | Uso recomendado no FuelFinder | Adaptação necessária |
+|---|---|---|
+| Shell `layout-1`, `sidebar`, `wrapper`, cabeçalho sticky, `page-toolbar`, `page-body` e breadcrumb | Base comum das áreas autenticadas; diferenciação visual de motorista e administrador por itens de navegação autorizados | Simplificar a navegação para Mapa, Veículos, Recomendações e, somente para admin, Gestão/Moderação/Importação. Não reutilizar menus de demonstração, seletor de projeto ou conteúdo de marketing. |
+| `auth-signin.html` e parciais de autenticação | Composição centrada em cartão para login e cadastro | Manter apenas fluxos oferecidos pela API; remover login social, “remember me” ou outros controles sem suporte. Traduzir todo texto visível para pt-BR. |
+| Cards (`.card`, header/body/footer), badges e list groups | Resultados de postos, preços, avaliações, veículos e opções de recomendação | Exibir dados e ações reais do domínio, definir ordem de leitura e estados vazio/carregando/erro/sucesso. |
+| Formulários Bootstrap (`.form-control`, `.form-select`, `.form-check`, input groups) | Busca por local/raio, veículos, avaliações, filtros e formulários administrativos | Labels explícitos, ajuda/validação associadas, mensagens em pt-BR e unidades de domínio; não depender de placeholder como label. Em telas pequenas, rótulo acima do controle. |
+| `.table-responsive`, tabelas, badges e paginação documentadas em `src/docs/` | Listas administrativas de postos, preços, reviews e histórico ANP quando a tabela realmente facilitar comparação | Em celular, reduzir colunas secundárias ou transformar linhas em cards; permitir rolagem horizontal somente como fallback localizado em tabelas inevitavelmente tabulares, sem alargar a página inteira. |
+| Alertas Bootstrap (`.alert-*`), toasts, spinners e feedback inline | Erros de API, GPS, importação e confirmações de operações | Usar mensagem acionável, texto além da cor e região acessível (`role="alert"`/`aria-live`) adequada à urgência; preferir feedback junto ao contexto. |
+| Modal com backdrop e diálogo scrollable | Confirmações pontuais e criação/edição curta de veículo ou registro | Não colocar fluxo longo ou formulário essencial em modal pequeno. No celular usar diálogo responsivo/tela cheia e rolagem interna com botões acessíveis. |
+| Collapse, dropdown, nav-tabs, navbar toggler e sidebar deslizante | Submenus de navegação, filtros avançados e alternância de lista/mapa | Preservar `aria-expanded`, foco, Escape e fechamento previsível. Evitar dropdown como único meio de navegação ou abas que escondam conteúdo crítico sem indicação. |
+| Sistema de grid (`container-fluid`, `row`, `col-*`, `g-*`) | Reorganizar conteúdo sem layouts fixos; cartões podem ocupar uma, duas ou mais colunas conforme espaço | Não fixar larguras estreitas nem usar valores que provoquem overflow; deixar ações quebrarem/empilharem em ordem lógica. |
+| Rodapé flexível (`page-footer`) | Rodapé discreto com identificação do FuelFinder, se necessário | Remover marcas, links comerciais, portfólio e licenças do template; em celular, empilhar conteúdo e centralizar quando apropriado. |
+
+Não há um componente de mapa de postos pronto na referência. Leaflet 1.9.4 e
+OpenStreetMap permanecem no mapa; o cartão do mapa deve seguir as superfícies,
+bordas, cabeçalho e respiro LUNO, com controles do mapa próprios e utilizáveis
+por toque. Cards de postos e painel/mapa precisam permanecer legíveis quando
+reorganizados em celular.
+
+### Bootstrap, dependências e limites de reutilização
+
+- A fonte do template usa Bootstrap 5 (dependência `^5.2.0`) e o JavaScript
+  correspondente, empacotado com Popper; há suporte a classes responsivas,
+  grid, cards, forms, buttons, alerts, tables, collapse, dropdowns, modals,
+  navs e pagination.
+- O build LUNO agrega CSS/SCSS customizado, ícones, jQuery e plugins (por
+  exemplo, DataTables, date pickers, Select2, SweetAlert2, charts). Não copiar
+  o bundle inteiro nem inicializar plugins globais sem necessidade. O frontend
+  atual é Vanilla JS com módulos ES e Bootstrap via CDN. Não introduzir
+  Tailwind em paralelo: manter uma só base de componentes e CSS.
+- Os arquivos de fonte incluem imports externos de Google Fonts e CDNs para
+  algumas famílias de ícones; revisar disponibilidade, privacidade, CSP e
+  dependência de rede antes de os reutilizar. Preferir assets aprovados e
+  controlados pelo projeto quando isso for permitido pela licença.
+- Integração aprovada: usar Bootstrap 5.2.3 como base responsiva e traduzir os
+  tokens/componentes visuais necessários do LUNO para CSS próprio enxuto;
+  manter Vanilla JS, Leaflet e os contratos atuais. Não importar sem auditoria
+  o CSS compilado completo nem dependências jQuery.
+- O SCSS do template define breakpoints próprios além dos breakpoints nativos
+  Bootstrap. As variáveis LUNO são 567, 640, 768, 992, 1024, 1200, 1280 e
+  1440px; Bootstrap usa xs <576, sm 576, md 768, lg 992, xl 1200 e
+  xxl 1400px. O shell oculta/desloca a sidebar até aproximadamente 1200px e
+  usa toggles distintos a partir de `xl`; não generalizar esses números como
+  breakpoints nativos nem duplicar regras incompatíveis.
+- A folha global do template desativa seleção de texto e remove outline de
+  foco em links, padrões que prejudicam usabilidade/acessibilidade. Não os
+  herdar: texto deve continuar selecionável e foco de teclado precisa de
+  indicador visível de alto contraste. Desativar animações não essenciais
+  quando `prefers-reduced-motion` estiver ativo.
+- O README do template identifica WrrapTheme/ThemeMakker e informa que imagens
+  são apenas para prévia; a pasta também contém recursos e créditos de terceiros.
+  Antes de copiar arquivos, fontes, imagens, ícones ou CSS compilado para os
+  assets do FuelFinder, confirmar licença e redistribuição permitida. Preferir
+  usar a referência visualmente, implementando componentes próprios.
+
+### Aplicação por tela
+
+- **Login/cadastro:** usar a proporção e o cartão centralizado de
+  `auth-signin.html`, campos claros, hierarquia título/explicação/formulário e
+  ação primária evidente. Usar logo FuelFinder e apenas opções de autenticação
+  suportadas. Em celular, cartão com largura disponível, margens seguras e
+  sem coluna decorativa que roube espaço.
+- **Mapa e busca:** aplicar o shell autenticado, cabeçalho de página, cartão de
+  busca/filtros e cartão de mapa Leaflet. Busca/localização e raio devem
+  permanecer fáceis de alcançar em todas as larguras. A lista de postos é
+  composta por cards concisos com preço, combustível, distância, nota e ações
+  essenciais; mostrar preços e datas conforme os dados reais da API.
+- **Detalhe do posto:** usar cabeçalho compacto com nome/localização e cards ou
+  seções para preços, coleta, avaliações e rotas. Não simular conteúdo de
+  demonstração. Reorganizar ações em linha apenas se couberem sem apertar área
+  de toque.
+- **Veículos:** usar cards/list-group para veículos e formulários responsivos
+  para criar/editar; explicitar unidades (L/m³, km/L/km/m³). Confirmação de
+  exclusão precisa ser clara e não depender apenas de modal.
+- **Recomendações:** destacar resultado e explicação no primeiro card; opções
+  comparáveis em lista/cards, com custo/unidade legível. Preservar dados e
+  ordenação fornecidos pela API, sem métricas decorativas do dashboard.
+- **Administração:** filtros no topo em formulário compacto e responsivo;
+  tabelas/listas para postos, preços e moderação apenas quando colunas forem
+  úteis; badges para status com texto; paginação quando suportada pelo contrato.
+  Importação ANP em cartão com campos de período, estados do processamento e
+  resumo acessível. Não integrar charts ou calendários do tema sem requisito
+  funcional correspondente.
+
+### Responsividade e experiência móvel
+
+Usar o grid Bootstrap e validar os breakpoints nativos junto aos pontos próprios
+do LUNO. A tabela define o comportamento esperado e a cobertura visual ainda
+necessária; as verificações executadas até aqui estão registradas em
+[Verificações executadas](#verificações-executadas) e não representam validação
+completa de todas as telas.
+
+| Largura/contexto | Navegação e conteúdo | Componentes e interação |
+|---|---|---|
+| `xxl` (>=1400px), incluindo 1440px | Sidebar persistente e área de conteúdo ampla; usar limite de largura para textos e tabelas densas. Busca e título não devem ficar dispersos. | Mapa e lista podem ficar lado a lado com largura mínima útil; cards em grid com `g-3`/`g-4`; tabelas completas. |
+| `xl` (1200–1399px) | No LUNO a sidebar está perto do ponto de transição para recolhida; conferir o shell na borda de 1200px. Manter área principal sem sobreposição. | Duas colunas somente se mapa, cards e controles mantiverem largura utilizável; caso contrário, priorizar mapa/lista em sequência. |
+| `lg` (992–1199px) | Sidebar torna-se drawer/off-canvas recolhível conforme o SCSS; inicia fechada em toque e não cobre permanentemente o conteúdo. | Empilhar filtros ou usar grid de duas colunas para campos; mapa/lista em sequência ou alternância explícita, sem reduzir mapa a faixa estreita. |
+| `md` (768–991px) | Drawer permanece sob demanda; título, ações e breadcrumb podem quebrar em linhas. | Cards em uma ou duas colunas conforme largura; formulários empilhados; tabelas simplificadas ou cards; popovers/dropdowns não podem sair da viewport. |
+| 576–767px (Bootstrap `sm`; inclui o corte LUNO de 640px) | Tratar como faixa compacta: cabeçalho mínimo, busca essencial no corpo ou em controle claramente identificado; esconder apenas ações secundárias. | Cards ocupam largura total; inputs e botões com largura adequada; filtros avançados em collapse; navegação com rótulos ou ícones acompanhados por texto acessível. |
+| <=567px, incluindo 375px e 360px | Drawer fechado por padrão; overlay/backdrop, controle de fechar e tecla Escape; restaurar foco ao botão de menu. Cabeçalho sem overflow. | Uma coluna; alvos de toque de pelo menos 44×44px como meta; botões de ação empilhados; formulário em coluna; tabela convertida em cards ou rolagem horizontal confinada; modal em tela cheia/altura disponível; nada de rolagem horizontal na página. |
+
+Aplicar ainda estas regras em todas as faixas:
+
+- Em celulares pequenos, manter conteúdo com padding lateral consistente (cerca
+  de 16px como referência inicial), espaçamento entre controles e foco visível;
+  não fixar altura de cards ou cortar rótulos/valores longos.
+- Cabeçalho LUNO oculta a busca a partir de `md` para baixo. Para o FuelFinder,
+  a busca de postos é função primária e não deve simplesmente desaparecer:
+  posicioná-la no início do conteúdo ou oferecer alternância com nome/estado
+  acessível.
+- No mapa, não comprimir marcadores/controles nem deixar ações Leaflet sob o
+  drawer. Dimensionar altura para toque e leitura, e oferecer alternativa de
+  lista acessível. Ao alternar mapa/lista em telas estreitas, preservar filtros
+  e seleção do posto.
+- Formulários de várias etapas permanecem em fluxo vertical; labels acima dos
+  inputs; mensagens de validação junto ao campo e resumo anunciado. Aumentar
+  padding/altura de controles e evitar grupos de botões menores que a área de
+  toque recomendada.
+- Usar `.table-responsive` apenas como contenção para a tabela, com foco e
+  indicação de rolagem; não fazer o `body` rolar na horizontal. Preferir cards
+  para dados de posto/veículo/review que tenham poucas propriedades.
+- Modais devem usar `modal-dialog-centered` quando adequado e
+  `modal-dialog-scrollable`; em celular ocupar a largura/altura útil, manter
+  cabeçalho/fechar e rodapé/ações alcançáveis, respeitar teclado virtual e não
+  esconder o botão de confirmação.
+- Validar dimensões em 360, 375, 567, 576, 640, 768, 992, 1024, 1200, 1280,
+  1400 e 1440px, além de orientação paisagem; observar cortes, sobreposições,
+  foco, rolagem, carregamento, vazio, sucesso, erro e permissões de GPS.
+- Todo texto visível adaptado ou inspirado no LUNO — títulos, navegação,
+  botões, rótulos, ajuda, mensagens e placeholders — deve ser escrito em
+  português do Brasil (pt-BR). Manter em inglês somente identificadores
+  técnicos, nomes próprios de APIs/bibliotecas e termos que não devam ser
+  traduzidos.
+
+## Estrutura entregue
 
 ```text
 src/main/resources/static/
-├── index.html                  # Página principal com mapa e busca
-├── login.html                  # Login e registro de motoristas
-├── vehicles.html               # Gestão de veículos do motorista
-├── station-detail.html         # Detalhes do posto (preços, avaliações)
-├── recommendations.html        # Tela de recomendação personalizada
-├── admin/                      # Painel administrativo
-│   ├── index.html              # Dashboard admin
-│   ├── stations.html           # Gestão de postos
-│   ├── prices.html             # Gestão de preços
-│   ├── reviews.html            # Moderação de avaliações
-│   └── anp-import.html         # Importação ANP
-├── css/
-│   └── styles.css              # Customizações sobre Tailwind
-├── js/
-│   ├── api.js                  # Client HTTP com interceptor JWT
-│   ├── auth.js                 # Login, registro, logout
-│   ├── map.js                  # Inicialização e controle do Leaflet
-│   ├── stations.js             # Busca e listagem de postos
-│   ├── vehicles.js             # CRUD de veículos
-│   ├── reviews.js              # Avaliações
-│   ├── recommendations.js      # Recomendações
-│   └── admin.js                # Funções administrativas
-└── img/
-    └── markers/                # Ícones de marcadores do mapa
-        ├── station-default.png
-        ├── station-selected.png
-        └── user-location.png
+├── index.html                 # Home pública (página padrão em /)
+├── map.html                   # Busca e mapa para usuários autenticados
+├── login.html
+├── vehicles.html
+├── station-detail.html
+├── recommendations.html
+├── admin/
+│   ├── index.html
+│   ├── stations.html
+│   ├── prices.html
+│   ├── reviews.html
+│   └── anp-import.html
+├── css/styles.css
+└── js/
+    ├── api.js
+    ├── auth.js
+    ├── public-home.js
+    ├── shell.js
+    ├── ui.js
+    ├── map.js
+    ├── home.js
+    ├── station-detail.js
+    ├── vehicles-page.js
+    ├── recommendations-page.js
+    ├── login-page.js
+    └── admin-page.js
 ```
 
----
+- `index.html` é a apresentação pública do produto e benefícios; visitantes
+  recebem links públicos e o botão visível **Entrar**, que leva ao login.
+- O Spring Boot serve `index.html` como welcome page em `/`; não é necessário
+  encaminhar visitantes para o formulário de login.
+- `login.html` não repete a ação Entrar no cabeçalho e não oferece navegação
+  restrita a usuários autenticados. Após login/registro, o destino padrão é
+  `map.html`; o parâmetro `next` continua limitado a caminhos internos.
+- `map.html` contém a busca e o mapa que antes ocupavam `index.html`. A página
+  exige sessão no controle do frontend. O menu e as ações mudam conforme a
+  autenticação/papel e atualizam no evento de mudança de sessão. A autorização
+  efetiva de páginas e APIs continua sendo responsabilidade do backend.
+- Na home pública, usuários não autenticados veem somente navegação para
+  conteúdo público e acesso ao login; com sessão válida, a navegação oferece
+  áreas correspondentes ao papel e ações autenticadas. Ao sair, a sessão é
+  limpa, a navegação é atualizada e o visitante retorna à home.
 
-## Tarefas de Implementação
+## Fluxos integrados
 
-### 9.1 Client HTTP com Interceptor JWT (`api.js`)
+- **Busca entregue atualmente:** consulta por cidade/bairro/CEP com fallback
+  textual e localização GPS com consentimento do navegador, escolha de raio,
+  mapa/lista de postos e marcadores. Quando a entrada contém somente números
+  e hífens, o campo aplica a máscara `00000-000` e limita o CEP a oito dígitos,
+  inclusive ao colar um valor maior. O backend normaliza CEP com ou sem hífen
+  e pesquisa os postos pelo CEP sem chamar o geocodificador. Os raios
+  selecionáveis no mapa são 5, 10, 20 e 50 km; 5 km é o padrão. Ao abrir um
+  popup, os preços são carregados pelo endpoint do posto; coordenadas nulas não
+  geram marcadores.
+- **Detalhe do posto:** preços e datas de coleta, avaliações publicadas,
+  submissão de avaliação por `ROLE_DRIVER`, gestão da própria avaliação e links
+  externos para Google Maps e Waze.
+- **Home e navegação:** apresentação pública em `/` e `/index.html`, login em
+  `/login.html` e mapa em `/map.html`. Menu/ações dependem da sessão válida e
+  do papel; login omite o botão duplicado no cabeçalho; entrada e saída emitem
+  mudança de sessão para atualizar a interface.
+- **Autenticação:** login/registro, restauração via refresh cookie, logout,
+  navegação e proteção de páginas por papel no cliente. A autorização dos dados
+  permanece sempre no backend.
+- **Veículos:** criação com unidades consistentes (`km/L`, `km/m³`, L e m³),
+  consulta, edição do apelido e exclusão.
+- **Recomendação:** seleção de veículo e coordenadas via GPS ou entrada manual;
+  exibe combustível recomendado, explicação, paridade e todas as opções
+  devolvidas pelo backend.
+- **Admin:** gestão de postos e preços, fila de avaliações filtrável por status
+  e importação ANP com histórico e detalhes do resultado.
 
-```javascript
-// js/api.js — Módulo de comunicação com a API
+## Sessão e segurança do navegador
 
-const API_BASE_URL = '/';
+- Access JWT fica somente na memória JavaScript, é enviado em `Authorization:
+  Bearer ...` às chamadas protegidas e é renovado uma vez após resposta 401.
+- Refresh token é exclusivamente cookie `HttpOnly`, transmitido com
+  `credentials: include` somente nos endpoints de autenticação que o utilizam.
+- Não há persistência de token/perfil em `localStorage` ou `sessionStorage`;
+  tokens não são adicionados a URLs nem logados.
+- Conteúdo vindo da API é inserido usando `textContent`/elementos DOM, não como
+  HTML executável.
+- **Situação atual da implementação:** páginas e assets estáticos podem ser
+  carregados sem autenticação; APIs aplicam as regras por endpoint.
+  `GET /stations/**` e `GET /fuel-prices/compare` aceitam acesso público;
+  leituras de avaliações por posto exigem autenticação. A lista de origens padrão inclui
+  `http://localhost:8080` para que refresh/logout com cookie funcionem quando a
+  UI é servida pelo próprio backend. Em ambientes externos, definir
+  `APP_SECURITY_ALLOWED_ORIGINS` explicitamente e configurar o cookie seguro
+  conforme HTTPS.
+- Bootstrap, Nunito, tiles OpenStreetMap e Leaflet carregam de CDNs externos. O mapa usa
+  marcador de localização desenhado (não precisa de imagens de marcador
+  adicionais).
 
-/**
- * Fetch wrapper que adiciona token JWT automaticamente
- */
-async function apiRequest(endpoint, options = {}) {
-    const token = localStorage.getItem('accessToken');
+## Endpoints administrativos
 
-    const headers = {
-        'Content-Type': 'application/json',
-        ...options.headers,
-    };
+Além dos endpoints de postos, preços e importação ANP já existentes, a UI usa
+`GET /admin/reviews?status=PENDING|APPROVED|REJECTED`. A rota é restrita a
+`ROLE_ADMIN` e retorna os nomes dos autores para a fila de moderação. A API
+existente de moderação continua sendo `PATCH /reviews/{id}/moderation`.
 
-    if (token) {
-        headers['Authorization'] = `Bearer ${token}`;
-    }
+## Acessibilidade e responsividade
 
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-        ...options,
-        headers,
-    });
+- Formulários associados a labels, estados de carregamento/erro em regiões
+  `aria-live`, navegação identificada por `aria-label` e elementos semânticos.
+- Foco visível no teclado e controles com tamanho mínimo de toque.
+- Layout mobile-first: busca e mapa empilham em telas estreitas; lista e mapa
+  ficam lado a lado em telas maiores.
 
-    // Token expirado ou inválido
-    if (response.status === 401) {
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('user');
-        window.location.href = '/login.html';
-        return;
-    }
+## Pendências após validação de uso
 
-    if (!response.ok) {
-        const error = await response.json().catch(() => ({}));
-        throw new Error(error.detail || `Erro ${response.status}`);
-    }
+Os itens desta seção permanecem pendentes; os fluxos implementados estão
+descritos acima.
 
-    if (response.status === 204) return null;
-    return response.json();
-}
+### Acesso, autenticação e navegação
 
-// Helpers
-const api = {
-    get: (url) => apiRequest(url),
-    post: (url, body) => apiRequest(url, {
-        method: 'POST', body: JSON.stringify(body)
-    }),
-    patch: (url, body) => apiRequest(url, {
-        method: 'PATCH', body: JSON.stringify(body)
-    }),
-    delete: (url) => apiRequest(url, { method: 'DELETE' }),
-};
+- A rota raiz `/` apresenta a home pública com informações e benefícios do
+  produto; o botão Entrar leva ao login. O mapa fica em `/map.html`.
+- Login e cadastro, e os endpoints mínimos de registro, login e renovação de
+  sessão, são públicos. A interface guarda o mapa e as ações autenticadas,
+  atualiza navegação após login/logout, filtra menu por papel, e preserva o
+  destino interno solicitado após autenticar.
+- A proteção deve existir no backend para páginas/recursos internos e APIs de
+  dados, não somente por ocultação de navegação ou guardas JavaScript.
+- O arquivo HTML do mapa continua acessível como asset estático público sob a
+  configuração atual; a guarda de sessão do navegador não substitui
+  autorização server-side.
+- Atualmente, `GET /stations/**` e `GET /fuel-prices/compare` são públicos na
+  configuração de segurança. Outras rotas de leitura, como avaliações por
+  posto, exigem autenticação; operações administrativas e de motorista usam
+  as permissões correspondentes. A guarda do frontend não protege os arquivos
+  HTML estáticos no servidor.
+
+### Layout e estados de interface
+
+- Seguir as orientações e o mapeamento de componentes da seção
+  [Referência visual e decisão de integração](#referência-visual-e-decisão-de-integração)
+  desta fase. O LUNO orienta composição e adaptação; telas/conteúdo de outros
+  domínios não são requisitos do FuelFinder.
+- A navegação atual é um cabeçalho FuelFinder compacto (em vez da sidebar
+  administrativa LUNO), com menu colapsável abaixo de 1200px. O botão expõe o
+  estado por `aria-expanded`; o menu fecha ao navegar e com Escape, devolvendo
+  foco ao botão. Esse comportamento foi verificado no smoke test; a revisão
+  completa de teclado e touch ainda é necessária. Usar os breakpoints
+  Bootstrap e customizações LUNO documentados na seção de responsividade, sem
+  presumir equivalência entre eles.
+- Aplicar espaçamento consistente e suficiente entre textos, campos, cartões
+  e botões; dimensionar áreas clicáveis para toque móvel sem controles
+  excessivamente próximos. Aplicar pt-BR a todo texto de interface e validar
+  nas larguras enumeradas na seção de responsividade.
+- Cada tela/ação relevante deve oferecer estados de carregamento, vazio,
+  sucesso e erro, com mensagens acionáveis e regiões acessíveis (`aria-live`).
+- A decisão de substituir Tailwind foi tomada e a versão Bootstrap 5.2.3 está
+  fixada nas páginas. Antes de distribuir assets do LUNO, verificar direitos e
+  licença; assets da referência ainda não foram copiados.
+
+### Mapa e localização
+
+- Após login e ao abrir a área do mapa, solicitar consentimento de
+  geolocalização. Se concedido, mostrar estado de carregamento, centralizar o
+  mapa na posição atual e buscar automaticamente postos próximos, sem exigir
+  uma primeira busca manual.
+- O raio da busca é configurável pelo seletor do mapa: 5, 10, 20 ou 50 km,
+  com padrão de 5 km. Ainda não existe configuração administrativa do raio.
+- Em permissão negada, localização indisponível ou erro, informar a causa sem
+  bloquear a aplicação e permitir pesquisa ou seleção manual de localização.
+  Nunca obter coordenadas sem consentimento.
+
+### Pendências de decisão e validação
+
+- Realizar revisão visual e funcional de todas as telas, inclusive listas
+  administrativas, estados dinâmicos e integração com backend/sessão reais.
+- Validar acessibilidade de teclado e touch de ponta a ponta e a legibilidade
+  das filas administrativas em dispositivos móveis.
+- Definir se Bootstrap, Leaflet, tiles OpenStreetMap e Nunito continuarão em
+  CDN ou serão fornecidos localmente, considerando rede, CSP, disponibilidade
+  e privacidade.
+- Validar licença antes de redistribuir qualquer asset do LUNO.
+- Completar validação visual em todas as larguras documentadas, orientação
+  paisagem e estados de carregamento/vazio/sucesso/erro; as verificações atuais
+  cobrem o mapa e alguns fluxos de home/login/menu, não todas as páginas.
+- Planejar testes de autorização server-side para navegação direta,
+  redirecionamento de retorno, sessão expirada e papel insuficiente, além de
+  confirmar a política desejada para páginas estáticas e leituras públicas de
+  postos/preços.
+
+## Critérios de aceitação
+
+- [x] Home pública padrão em `/` e `/index.html` com benefícios e CTA para login.
+- [x] Cabeçalho da tela de login sem botão Entrar duplicado nem menu sem opções úteis.
+- [x] Navegação e conteúdo atualizados ao entrar/sair e filtrados por autenticação/papel.
+- [x] Mapa separado em `map.html`, com guarda de sessão no frontend.
+- [ ] Proteger páginas internas também no servidor; HTML estático e algumas leituras continuam públicos conforme configuração atual.
+- [x] Leaflet 1.9.4 e tiles OpenStreetMap com marcadores baseados nos resultados.
+- [x] GPS e fallback por pesquisa textual.
+- [x] Preços e data de coleta disponíveis no detalhe e no popup selecionado.
+- [x] Deep links seguros para Google Maps e Waze.
+- [x] Fluxos de login/registro, veículos, avaliações e recomendações integrados.
+- [x] Painel admin com postos, preços, moderação por status e importação ANP.
+- [x] JWT somente em memória e refresh cookie limitado aos endpoints necessários.
+- [x] Assets estáticos acessíveis sem autenticação; a autorização das APIs é
+  por endpoint, com leituras públicas de postos e comparação de preços.
+- [x] Estrutura responsiva, semântica e com feedback acessível para operações.
+- [x] Teste de integração confirma entrega das páginas/assets sem autenticação e
+  autorização administrativa para a fila de moderação.
+- [x] Migração visual LUNO/Bootstrap 5.2.3 aplicada às telas; a revisão
+  visual/funcional completa e a validação integrada permanecem pendentes.
+
+## Verificações executadas
+
+```powershell
+mvn -q "-Dtest=ReviewServiceTest,ReviewControllerIntegrationTest,StationControllerIntegrationTest,SecurityConfigTest,OriginValidationFilterTest" test
 ```
 
-### 9.2 Autenticação no Cliente (`auth.js`)
-
-```javascript
-// js/auth.js
-
-async function register(fullName, email, password) {
-    const data = await api.post('auth/register', {
-        fullName, email, password
-    });
-    localStorage.setItem('accessToken', data.accessToken);
-    localStorage.setItem('user', JSON.stringify(data.user));
-    window.location.href = '/index.html';
-}
-
-async function login(email, password) {
-    const data = await api.post('auth/login', { email, password });
-    localStorage.setItem('accessToken', data.accessToken);
-    localStorage.setItem('user', JSON.stringify(data.user));
-    window.location.href = '/index.html';
-}
-
-function logout() {
-    api.post('auth/logout').catch(() => {});
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('user');
-    window.location.href = '/login.html';
-}
-
-function getCurrentUser() {
-    const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
-}
-
-function isAuthenticated() {
-    return !!localStorage.getItem('accessToken');
-}
-
-function isAdmin() {
-    const user = getCurrentUser();
-    return user && user.role === 'ROLE_ADMIN';
-}
-```
-
-### 9.3 Mapa Leaflet com OpenStreetMap (`map.js`)
-
-```javascript
-// js/map.js
-
-let map;
-let markers = [];
-let userMarker;
-
-/**
- * Inicializa o mapa Leaflet com tiles do OpenStreetMap
- */
-function initMap(containerId, lat = -23.5505, lng = -46.6333, zoom = 13) {
-    map = L.map(containerId).setView([lat, lng], zoom);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        maxZoom: 19,
-    }).addTo(map);
-
-    return map;
-}
-
-/**
- * Adiciona marcador do usuário no mapa
- */
-function setUserLocation(lat, lng) {
-    if (userMarker) {
-        map.removeLayer(userMarker);
-    }
-    userMarker = L.marker([lat, lng], {
-        icon: L.icon({
-            iconUrl: '/img/markers/user-location.png',
-            iconSize: [32, 32],
-            iconAnchor: [16, 32],
-        })
-    }).addTo(map).bindPopup('Sua localização');
-
-    map.setView([lat, lng], 14);
-}
-
-/**
- * Renderiza marcadores dos postos no mapa
- */
-function renderStationMarkers(stations) {
-    // Limpar marcadores anteriores
-    markers.forEach(m => map.removeLayer(m));
-    markers = [];
-
-    stations.forEach(station => {
-        const marker = L.marker([station.latitude, station.longitude])
-            .addTo(map)
-            .bindPopup(createPopupContent(station));
-
-        marker.on('click', () => showStationDetail(station));
-        markers.push(marker);
-    });
-
-    // Ajustar zoom para mostrar todos os marcadores
-    if (markers.length > 0) {
-        const group = L.featureGroup(markers);
-        map.fitBounds(group.getBounds().pad(0.1));
-    }
-}
-
-/**
- * Cria conteúdo do popup do marcador
- */
-function createPopupContent(station) {
-    const prices = station.prices
-        ? station.prices.map(p =>
-            `<div>${p.fuelTypeName}: <strong>R$ ${p.saleValue.toFixed(2)}</strong></div>`
-          ).join('')
-        : '<div>Sem preços disponíveis</div>';
-
-    return `
-        <div class="p-2">
-            <h3 class="font-bold text-sm">${station.tradeName || station.corporateName}</h3>
-            <p class="text-xs text-gray-600">${station.brand || 'Bandeira Branca'}</p>
-            <p class="text-xs">${station.distanceKm?.toFixed(2) || '?'} km</p>
-            <div class="mt-1 text-xs">${prices}</div>
-            <div class="mt-2 flex gap-1">
-                <button onclick="openGoogleMaps(${station.latitude}, ${station.longitude})"
-                        class="text-xs bg-blue-500 text-white px-2 py-1 rounded"
-                        aria-label="Abrir rota no Google Maps">
-                    Google Maps
-                </button>
-                <button onclick="openWaze(${station.latitude}, ${station.longitude})"
-                        class="text-xs bg-purple-500 text-white px-2 py-1 rounded"
-                        aria-label="Abrir rota no Waze">
-                    Waze
-                </button>
-            </div>
-        </div>
-    `;
-}
-```
-
-### 9.4 Geolocation API com Fallback (`stations.js`)
-
-```javascript
-// js/stations.js
-
-/**
- * Obtém localização do usuário via GPS ou fallback textual
- */
-async function getUserLocation() {
-    return new Promise((resolve, reject) => {
-        if ('geolocation' in navigator) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    resolve({
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude,
-                    });
-                },
-                (error) => {
-                    console.warn('GPS negado, usando fallback:', error.message);
-                    reject(error);
-                },
-                { enableHighAccuracy: true, timeout: 10000 }
-            );
-        } else {
-            reject(new Error('Geolocation API não disponível'));
-        }
-    });
-}
-
-/**
- * Busca postos próximos pela API
- */
-async function searchNearbyStations(lat, lng, radiusKm = 5) {
-    const stations = await api.get(
-        `stations?latitude=${lat}&longitude=${lng}&radiusKm=${radiusKm}`
-    );
-    renderStationMarkers(stations);
-    renderStationList(stations);
-    return stations;
-}
-
-/**
- * Renderiza lista ordenada de postos
- */
-function renderStationList(stations) {
-    const container = document.getElementById('station-list');
-    container.innerHTML = '';
-
-    stations.forEach(station => {
-        const card = document.createElement('article');
-        card.className = 'p-4 border rounded-lg shadow-sm hover:shadow-md transition';
-        card.setAttribute('aria-label', `Posto ${station.tradeName}`);
-        card.innerHTML = `
-            <div class="flex justify-between items-start">
-                <div>
-                    <h3 class="font-semibold text-lg">${station.tradeName || station.corporateName}</h3>
-                    <p class="text-sm text-gray-600">${station.brand || 'Bandeira Branca'}</p>
-                    <p class="text-sm text-gray-500">${station.address}</p>
-                </div>
-                <div class="text-right">
-                    <span class="text-sm font-medium">${station.distanceKm?.toFixed(1)} km</span>
-                    <div class="flex items-center gap-1 mt-1">
-                        <span class="text-yellow-500">★</span>
-                        <span class="text-sm">${station.averageRating?.toFixed(1) || '—'}</span>
-                        <span class="text-xs text-gray-400">(${station.totalReviews || 0})</span>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-2 flex gap-2">
-                <a href="/station-detail.html?id=${station.id}"
-                   class="text-sm text-blue-600 hover:underline">Ver detalhes</a>
-                <button onclick="openGoogleMaps(${station.latitude}, ${station.longitude})"
-                        class="text-sm text-green-600 hover:underline"
-                        aria-label="Abrir rota para ${station.tradeName}">
-                    Rotas
-                </button>
-            </div>
-        `;
-        container.appendChild(card);
-    });
-}
-```
-
-### 9.5 Deep Links de Navegação (Rotas)
-
-```javascript
-/**
- * Abre rota no Google Maps via deep link
- */
-function openGoogleMaps(lat, lng) {
-    const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
-    window.open(url, '_blank');
-}
-
-/**
- * Abre rota no Waze via deep link
- */
-function openWaze(lat, lng) {
-    const url = `https://waze.com/ul?ll=${lat},${lng}&navigate=yes`;
-    window.open(url, '_blank');
-}
-```
-
-### 9.6 Página Principal (`index.html`)
-
-```html
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FuelFinder — Encontre o Melhor Preço de Combustível</title>
-
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
-    <link rel="stylesheet" href="/css/styles.css" />
-</head>
-<body class="bg-gray-50 min-h-screen">
-
-    <!-- Navegação -->
-    <nav class="bg-white shadow-sm" aria-label="Navegação principal">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="/" class="text-xl font-bold text-green-600">⛽ FuelFinder</a>
-            <div id="nav-actions" class="flex gap-4 items-center">
-                <!-- Preenchido via JS -->
-            </div>
-        </div>
-    </nav>
-
-    <!-- Conteúdo principal -->
-    <main class="max-w-7xl mx-auto px-4 py-6">
-        <!-- Barra de busca -->
-        <section class="mb-6" aria-label="Busca de postos">
-            <div class="flex gap-2">
-                <input type="text" id="search-input"
-                       placeholder="Buscar por cidade, bairro ou CEP..."
-                       class="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500"
-                       aria-label="Campo de busca de postos" />
-                <button id="btn-search"
-                        class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
-                        aria-label="Buscar postos">
-                    Buscar
-                </button>
-                <button id="btn-gps"
-                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-                        aria-label="Usar localização GPS">
-                    📍 GPS
-                </button>
-            </div>
-        </section>
-
-        <!-- Mapa e Lista lado a lado -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <!-- Mapa Leaflet -->
-            <section aria-label="Mapa de postos">
-                <div id="map" class="h-96 lg:h-[600px] rounded-lg shadow-md"></div>
-            </section>
-
-            <!-- Lista de postos -->
-            <section aria-label="Lista de postos encontrados">
-                <h2 class="text-lg font-semibold mb-4">Postos Encontrados</h2>
-                <div id="station-list" class="space-y-4 max-h-[600px] overflow-y-auto">
-                    <p class="text-gray-400 text-center py-8">
-                        Use o GPS ou busque por localização para encontrar postos próximos.
-                    </p>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-    <!-- Scripts da aplicação -->
-    <script src="/js/api.js"></script>
-    <script src="/js/auth.js"></script>
-    <script src="/js/map.js"></script>
-    <script src="/js/stations.js"></script>
-
-    <script>
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', () => {
-            initMap('map');
-            updateNavBar();
-
-            // Botão GPS
-            document.getElementById('btn-gps').addEventListener('click', async () => {
-                try {
-                    const loc = await getUserLocation();
-                    setUserLocation(loc.latitude, loc.longitude);
-                    await searchNearbyStations(loc.latitude, loc.longitude);
-                } catch (e) {
-                    alert('Não foi possível obter sua localização. Use a busca textual.');
-                }
-            });
-
-            // Botão buscar (placeholder para implementação de geocoding no frontend)
-            document.getElementById('btn-search').addEventListener('click', () => {
-                const query = document.getElementById('search-input').value;
-                if (query) {
-                    // TODO: implementar busca por texto/CEP
-                    alert('Busca textual será implementada com Geoapify.');
-                }
-            });
-        });
-
-        function updateNavBar() {
-            const nav = document.getElementById('nav-actions');
-            const user = getCurrentUser();
-
-            if (user) {
-                nav.innerHTML = `
-                    <a href="/vehicles.html" class="text-sm text-gray-600 hover:text-green-600">Meus Veículos</a>
-                    <a href="/recommendations.html" class="text-sm text-gray-600 hover:text-green-600">Recomendações</a>
-                    ${isAdmin() ? '<a href="/admin/index.html" class="text-sm text-red-600 hover:text-red-800">Admin</a>' : ''}
-                    <span class="text-sm text-gray-500">${user.fullName}</span>
-                    <button onclick="logout()" class="text-sm text-red-500 hover:underline">Sair</button>
-                `;
-            } else {
-                nav.innerHTML = `
-                    <a href="/login.html" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Entrar</a>
-                `;
-            }
-        }
-    </script>
-</body>
-</html>
-```
-
----
-
-## Telas do Aplicativo
-
-| Tela | URL | Descrição | Acesso |
-|------|-----|-----------|--------|
-| Busca de postos (mapa) | `/index.html` | Mapa Leaflet + lista ordenada | Público |
-| Login / Registro | `/login.html` | Formulários de autenticação | Público |
-| Meus Veículos | `/vehicles.html` | CRUD de veículos | Motorista |
-| Detalhes do Posto | `/station-detail.html?id=...` | Preços, avaliações, rotas | Público |
-| Recomendação | `/recommendations.html` | Resultado personalizado | Motorista |
-| Admin — Dashboard | `/admin/index.html` | Visão geral | Admin |
-| Admin — Postos | `/admin/stations.html` | Gestão de postos | Admin |
-| Admin — Preços | `/admin/prices.html` | Gestão de preços | Admin |
-| Admin — Avaliações | `/admin/reviews.html` | Moderação | Admin |
-| Admin — ANP | `/admin/anp-import.html` | Importação ANP | Admin |
-
----
-
-## Requisitos de Acessibilidade (WCAG/W3C)
-
-1. **HTML semântico:** `<main>`, `<nav>`, `<section>`, `<article>`, `<header>`, `<footer>`
-2. **`aria-label`** em todos os botões e elementos interativos
-3. **Contraste de cores:** mínimo 4.5:1 para texto normal
-4. **Foco visível:** outline em elementos focáveis
-5. **Responsividade:** Tailwind `sm:`, `md:`, `lg:` breakpoints
-6. **Mobile-first:** layout em coluna única no mobile, grid no desktop
-
----
-
-## Responsividade
-
-| Viewport | Layout |
-|----------|--------|
-| **Mobile** (< 768px) | Mapa empilhado sobre lista, menu hamburger |
-| **Tablet** (768-1024px) | Mapa e lista lado a lado, 50/50 |
-| **Desktop** (> 1024px) | Mapa e lista lado a lado, mapa maior |
-
----
-
-## Testes Manuais
-
-### Funcional
-- [ ] Login e registro funcionam
-- [ ] Mapa renderiza com tiles do OpenStreetMap
-- [ ] GPS solicita permissão e centraliza o mapa
-- [ ] Busca retorna postos com marcadores no mapa
-- [ ] Clique no marcador mostra popup com preços
-- [ ] Botão "Rotas" abre Google Maps / Waze
-- [ ] CRUD de veículos funciona
-- [ ] Avaliação de posto funciona (criar, editar)
-- [ ] Recomendação exibe resultado personalizado
-- [ ] Painel admin acessível apenas para ROLE_ADMIN
-
-### Responsividade
-- [ ] Funciona em viewport 375px (iPhone SE)
-- [ ] Funciona em viewport 768px (iPad)
-- [ ] Funciona em viewport 1440px (Desktop)
-
-### Acessibilidade
-- [ ] Todos os botões têm `aria-label`
-- [ ] HTML usa tags semânticas
-- [ ] Navegação funciona via teclado (Tab)
-- [ ] Contraste adequado em todos os elementos de texto
-
----
-
-## Critérios de Aceitação
-
-- [ ] Mapa Leaflet 1.9.4 com tiles OpenStreetMap renderiza corretamente
-- [ ] Marcadores no mapa correspondem aos postos da API
-- [ ] GPS solicita permissão e faz fallback para busca textual
-- [ ] Botão "Rotas" abre Google Maps e Waze com coordenadas corretas
-- [ ] Interface responsiva em mobile, tablet e desktop
-- [ ] Tags semânticas e `aria-label` em elementos interativos
-- [ ] JWT armazenado no localStorage e enviado em todas as requests
-- [ ] Roteamento de telas funciona (login → mapa → detalhes → etc.)
-- [ ] Painel admin protegido por verificação de role no cliente
-
----
-
-## Commit Sugerido
-
-```
-feat: build responsive frontend with Leaflet map, auth flow and admin panel
-```
+Verificação manual recomendada: conferir GPS (permitido/negado), login e
+refresh/logout com navegador em `http://localhost:8080`, fluxos administrativos
+com conta `ROLE_ADMIN` e layout em larguras 375, 768 e 1440 px.
+
+Nesta etapa, `mvn -q -f app\pom.xml test`, verificação sintática dos módulos
+JavaScript (`node --input-type=module --check`) e `git diff --check` foram
+executados com sucesso. Smoke test visual via servidor estático local confirmou
+que o mapa não causa rolagem horizontal nas larguras verificadas (360, 375,
+576, 640, 768, 992, 1024, 1200, 1280, 1400 e 1440px), que o menu recolhe em
+larguras menores que 1200px e que o menu móvel abre/fecha por Escape. Como o
+servidor estático não implementa a API, estados de sessão e dados reais não
+foram validados nessa verificação visual.
+
+Para a home/login/mapa, o navegador confirmou a landing pública em `/`, CTA
+para `/login.html`, ausência do botão Entrar no cabeçalho de login, entrada
+simulada redirecionando para `/map.html`, navegação de motorista mostrando
+mapa/veículos/recomendações sem link administrativo, saída simulada
+restaurando as opções de visitante e menu móvel expandindo sem overflow
+horizontal em 360px. A autenticação foi simulada no navegador; não substitui o
+teste com backend e sessão reais.

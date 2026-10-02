@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Job Portal JobVacancy",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-orange">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-job.html', {"page": "jobvacancy"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Jobvacancy List</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-5">
+                    <div class="col-12">
+                        <div class="card fieldset border border-secondary">
+                            <span class="fieldset-tile text-secondary bg-body">Recommended Jobs</span>
+                            <div class="row row-cols-xl-5 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 g-2 row-deck">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="avatar lg rounded no-thumbnail"><i class="fa fa-google fa-2x"></i>
+                                                </div>
+                                            </div>
+                                            <div class="mt-3 p-2">
+                                                <h5 class="mb-0">Angular Developer</h5>
+                                                <span class="text-muted text-uppercase small">(Paris, France)</span>
+                                                <h5 class="mt-3 mb-3 card-footer border-0 fw-bold">$5k - $9k</h5>
+                                                <a href="jobvacancy-detail.html">View more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="avatar lg rounded no-thumbnail"><i class="fa fa-ioxhost fa-2x"></i>
+                                                </div>
+                                            </div>
+                                            <div class="mt-3 p-2">
+                                                <h5 class="mb-0">SEO Marketing</h5>
+                                                <span class="text-muted text-uppercase small">(NY, USA)</span>
+                                                <h5 class="mt-3 mb-3 card-footer border-0 fw-bold">$1.5k - $4k</h5>
+                                                <a href="jobvacancy-detail.html">View more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="avatar lg rounded no-thumbnail"><i class="fa fa-firefox fa-2x"></i>
+                                                </div>
+                                            </div>
+                                            <div class="mt-3 p-2">
+                                                <h5 class="mb-0">React Developer</h5>
+                                                <span class="text-muted text-uppercase small">(London, UK)</span>
+                                                <h5 class="mt-3 mb-3 card-footer border-0 fw-bold">$11k - $14k</h5>
+                                                <a href="jobvacancy-detail.html">View more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="avatar lg rounded no-thumbnail"><i class="fa fa-medium fa-2x"></i>
+                                                </div>
+                                            </div>
+                                            <div class="mt-3 p-2">
+                                                <h5 class="mb-0">UI/UX Designer</h5>
+                                                <span class="text-muted text-uppercase small">(NY, USA)</span>
+                                                <h5 class="mt-3 mb-3 card-footer border-0 fw-bold">$2k - $5k</h5>
+                                                <a href="jobvacancy-detail.html">View more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="avatar lg rounded no-thumbnail"><i
+                                                        class="fa fa-tripadvisor fa-2x"></i></div>
+                                            </div>
+                                            <div class="mt-3 p-2">
+                                                <h5 class="mb-0">PHP Developer</h5>
+                                                <span class="text-muted text-uppercase small">(NY, USA)</span>
+                                                <h5 class="mt-3 mb-3 card-footer border-0 fw-bold">$3k - $7k</h5>
+                                                <a href="#">Apply Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- .row end -->
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+                
+                <div class="row g-1">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">All Vacancy</h6>
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="row g-2">
+                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" placeholder="Search by job title, company, keywords">
+                                            <label class="form-label">Search...</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6">
+                                        <div class="form-floating">
+                                            <select class="form-control form-select">
+                                                <option>Select</option>
+                                                <option>Anywhere</option>
+                                                <option>USA</option>
+                                                <option>UK</option>
+                                                <option>UAE</option>
+                                                <option>IND</option>
+                                            </select>
+                                            <label class="form-label">Location</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6">
+                                        <div class="form-floating">
+                                            <select class="form-control form-select">
+                                                <option>Select</option>
+                                                <option>Design</option>
+                                                <option>Marketing</option>
+                                                <option>Sales</option>
+                                                <option>Developer</option>
+                                                <option>Graphics</option>
+                                                <option>Accounts</option>
+                                            </select>
+                                            <label class="form-label">Category</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6">
+                                        <div class="form-floating">
+                                            <select class="form-control form-select">
+                                                <option>Select</option>
+                                                <option>Long Term</option>
+                                                <option>Short Term</option>
+                                                <option>Freelance</option>
+                                                <option>Permanent</option>
+                                            </select>
+                                            <label class="form-label">Job Type</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-3 col-md-6 col-sm-12">
+                                        <button type="button" class="btn btn-lg w-100 btn-primary">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <a href="#" class="h5">Graphics and Web Designer</a>
+                                <div class="d-lg-flex justify-content-md-between align-items-center mb-lg-0 mb-2">
+                                    <div class="mt-3 mb-2">
+                                        <span class="text-muted me-3"><i class="fa fa-clock-o ps-1"></i> Freelance</span>
+                                        <span class="text-muted me-3"><i class="fa fa-wifi ps-1"></i> Remote Work Allow</span>
+                                        <span class="text-muted me-3"><i class="fa fa-money ps-1"></i> $28 / per hour</span>
+                                    </div>
+                                    <span class="text-muted mb-2"><i class="fa fa-map-marker ps-1"></i> 123 6th St. Melbourne, FL 32904</span>
+                                </div>
+                                <span class="badge rounded-pill bg-light text-dark me-1">Photoshop</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">Figma</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">HTML</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">illustrator</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <a href="#" class="h5">React.Js and React Native</a>
+                                <div class="d-lg-flex justify-content-md-between align-items-center mb-lg-0 mb-2">
+                                    <div class="mt-3 mb-2">
+                                        <span class="text-muted me-3"><i class="fa fa-clock-o ps-1"></i> Freelance</span>
+                                        <span class="text-muted me-3"><i class="fa fa-wifi ps-1"></i> Remote Work Allow</span>
+                                        <span class="text-muted me-3"><i class="fa fa-money ps-1"></i> $45 / per hour</span>
+                                    </div>
+                                    <span class="text-muted mb-2"><i class="fa fa-map-marker ps-1"></i> 44 Shirley Ave. West Chicago, IL 60185</span>
+                                </div>
+                                <span class="badge rounded-pill bg-light text-dark me-1">ReactJs</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">Redux</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">Next.Js</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">HTML</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <a href="#" class="h5">Flutter Web & Mobile Developer</a>
+                                <div class="d-lg-flex justify-content-md-between align-items-center mb-lg-0 mb-2">
+                                    <div class="mt-3 mb-2">
+                                        <span class="text-muted me-3"><i class="fa fa-clock-o ps-1"></i> Freelance</span>
+                                        <span class="text-muted me-3"><i class="fa fa-wifi ps-1"></i> Remote Work Allow</span>
+                                        <span class="text-muted me-3"><i class="fa fa-money ps-1"></i> $60 / per hour</span>
+                                    </div>
+                                    <span class="text-muted mb-2"><i class="fa fa-map-marker ps-1"></i> 70 Bowman St. South Windsor, CT 06074</span>
+                                </div>
+                                <span class="badge rounded-pill bg-light text-dark me-1">Bootstrap</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">JavaScript</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">Angular</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <a href="#" class="h5">Front-End Developer</a>
+                                <div class="d-lg-flex justify-content-md-between align-items-center mb-lg-0 mb-2">
+                                    <div class="mt-3 mb-2">
+                                        <span class="text-muted me-3"><i class="fa fa-clock-o ps-1"></i> Freelance</span>
+                                        <span class="text-muted me-3"><i class="fa fa-wifi ps-1"></i> Remote Work Allow</span>
+                                        <span class="text-muted me-3"><i class="fa fa-money ps-1"></i> $40 / per hour</span>
+                                    </div>
+                                    <span class="text-muted mb-2"><i class="fa fa-map-marker ps-1"></i> 123 6th St. Melbourne, FL 32904</span>
+                                </div>
+                                <span class="badge rounded-pill bg-light text-dark me-1">HTML</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">JavaScript</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">SCSS</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">Bootstrap</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">Responsive</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <a href="#" class="h5">React.Js and React Native</a>
+                                <div class="d-lg-flex justify-content-md-between align-items-center mb-lg-0 mb-2">
+                                    <div class="mt-3 mb-2">
+                                        <span class="text-muted me-3"><i class="fa fa-clock-o ps-1"></i> Freelance</span>
+                                        <span class="text-muted me-3"><i class="fa fa-wifi ps-1"></i> Remote Work Allow</span>
+                                        <span class="text-muted me-3"><i class="fa fa-money ps-1"></i> $45 / per hour</span>
+                                    </div>
+                                    <span class="text-muted mb-2"><i class="fa fa-map-marker ps-1"></i> 44 Shirley Ave. West Chicago, IL 60185</span>
+                                </div>
+                                <span class="badge rounded-pill bg-light text-dark me-1">ReactJs</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">Redux</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">Next.Js</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">HTML</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <a href="#" class="h5">Flutter Web & Mobile Developer</a>
+                                <div class="d-lg-flex justify-content-md-between align-items-center mb-lg-0 mb-2">
+                                    <div class="mt-3 mb-2">
+                                        <span class="text-muted me-3"><i class="fa fa-clock-o ps-1"></i> Freelance</span>
+                                        <span class="text-muted me-3"><i class="fa fa-wifi ps-1"></i> Remote Work Allow</span>
+                                        <span class="text-muted me-3"><i class="fa fa-money ps-1"></i> $60 / per hour</span>
+                                    </div>
+                                    <span class="text-muted mb-2"><i class="fa fa-map-marker ps-1"></i> 70 Bowman St. South Windsor, CT 06074</span>
+                                </div>
+                                <span class="badge rounded-pill bg-light text-dark me-1">Bootstrap</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">JavaScript</span>
+                                <span class="badge rounded-pill bg-light text-dark me-1">Angular</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <ul class="pagination mt-2">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

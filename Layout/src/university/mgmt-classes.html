@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "University Classes",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-indigo">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-university.html', {"page": "mgmt-classes"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">Management</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Classes</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Classes</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <table class="table myDataTable card-table mb-0 align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Class Name</th>
+                                        <th>Student Name</th>
+                                        <th>Teacher</th>
+                                        <th>Numeric Name</th>
+                                        <th>Options</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>BCA Sem1</td>
+                                        <td>Christina Thomas</td>
+                                        <td><img class="avatar sm rounded-circle me-2" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="" />Juan Freeman</td>
+                                        <td>112</td>
+                                        <td>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-edit me-2"></i></a>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>BCA Sem2</td>
+                                        <td>Christina Thomas</td>
+                                        <td><img class="avatar sm rounded-circle me-2" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="" />Juan Freeman</td>
+                                        <td>159</td>
+                                        <td>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-edit me-2"></i></a>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>BBA Sem1</td>
+                                        <td>Christina Thomas</td>
+                                        <td><img class="avatar sm rounded-circle me-2" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="" />Juan Freeman</td>
+                                        <td>754</td>
+                                        <td>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-edit me-2"></i></a>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>164</td>
+                                        <td>BCA Sem1</td>
+                                        <td>Christina Thomas</td>
+                                        <td><img class="avatar sm rounded-circle me-2" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="" />John</td>
+                                        <td>315</td>
+                                        <td>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-edit me-2"></i></a>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>56</td>
+                                        <td>BCA Sem2</td>
+                                        <td>Christina Thomas</td>
+                                        <td><img class="avatar sm rounded-circle me-2" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="" />Juan Freeman</td>
+                                        <td>147</td>
+                                        <td>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-edit me-2"></i></a>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>22</td>
+                                        <td>BBA Sem1</td>
+                                        <td>Christina Thomas</td>
+                                        <td><img class="avatar sm rounded-circle me-2" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="" />John</td>
+                                        <td>258</td>
+                                        <td>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-edit me-2"></i></a>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>MCA Sem5</td>
+                                        <td>Hossein Shams</td>
+                                        <td><img class="avatar sm rounded-circle me-2" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="" />Michael</td>
+                                        <td>452</td>
+                                        <td>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-edit me-2"></i></a>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>B.E Computar</td>
+                                        <td>Maryam Amiri</td>
+                                        <td><img class="avatar sm rounded-circle me-2" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="" />Michael</td>
+                                        <td>28</td>
+                                        <td>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-edit me-2"></i></a>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>BBA Sem1</td>
+                                        <td>Tim Hank</td>
+                                        <td><img class="avatar sm rounded-circle me-2" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="" />Juan Freeman</td>
+                                        <td>18</td>
+                                        <td>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-edit me-2"></i></a>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>BCA Sem1</td>
+                                        <td>Christina Thomas</td>
+                                        <td><img class="avatar sm rounded-circle me-2" src="@@webRoot/assets/img/xs/avatar5.jpg" alt="" />Monica Ward</td>
+                                        <td>123</td>
+                                        <td>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-edit me-2"></i></a>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>11</td>
+                                        <td>BCA Sem2</td>
+                                        <td>Fidel Tonn</td>
+                                        <td><img class="avatar sm rounded-circle me-2" src="@@webRoot/assets/img/xs/avatar6.jpg" alt="" />Dean Henry</td>
+                                        <td>19</td>
+                                        <td>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-edit me-2"></i></a>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>B.E Computer</td>
+                                        <td>Gary Camara</td>
+                                        <td><img class="avatar sm rounded-circle me-2" src="@@webRoot/assets/img/xs/avatar4.jpg" alt="" />Christian Kelly</td>
+                                        <td>19</td>
+                                        <td>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-edit me-2"></i></a>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>MCA Sem6</td>
+                                        <td>CFrank Camly</td>
+                                        <td><img class="avatar sm rounded-circle me-2" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="" />Juan Freeman</td>
+                                        <td>11</td>
+                                        <td>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-edit me-2"></i></a>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>13</td>
+                                        <td>BCA Sem5</td>
+                                        <td>Christina Thomas</td>
+                                        <td><img class="avatar sm rounded-circle me-2" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="" />John </td>
+                                        <td>11</td>
+                                        <td>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-edit me-2"></i></a>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>14</td>
+                                        <td>B.Com Sem3</td>
+                                        <td>Christina Thomas</td>
+                                        <td><img class="avatar sm rounded-circle me-2" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="" />Juan Freeman</td>
+                                        <td>11</td>
+                                        <td>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-edit me-2"></i></a>
+                                            <a class="px-2 py-1" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>                                            
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    // project data table
+    $('.myDataTable')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: true,
+        info: false,
+    });
+</script>
+</body>
+</html>

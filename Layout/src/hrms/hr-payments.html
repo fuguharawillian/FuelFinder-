@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "HRMS Payments",
+        "daterangepicker": true,
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-black">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hrms.html', {"page": "hr-payments"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">HR</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Payments</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Payments</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <table class="table myDataTable table-hover align-middle mb-0 card-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Clients Name</th>
+                                            <th>Project Name</th>
+                                            <th>Date</th>
+                                            <th>Type</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>LA 0218</td>
+                                            <td>WrrapTheme</td>
+                                            <td>Alpino - Bootstrap 4 </td>
+                                            <td>07 March, 2018</td>
+                                            <td><img src="@@webRoot/assets/img/paypal.png" class="rounded border" alt="paypal"></td>
+                                            <td>$4,205</td>
+                                        </tr>
+                                        <tr>
+                                            <td>LA 0220</td>
+                                            <td>ThemeMakker</td>
+                                            <td>Nexa Wordpress</td>
+                                            <td>25 Jun, 2018</td>
+                                            <td><img src="@@webRoot/assets/img/mastercard.png" class="rounded border" alt="mastercard"></td>
+                                            <td>$5,205</td>
+                                        </tr>
+                                        <tr>
+                                            <td>LA 0222</td>
+                                            <td>WrrapTheme</td>
+                                            <td>Lucid HR Management</td>
+                                            <td>12 July, 2018</td>
+                                            <td><img src="@@webRoot/assets/img/paypal.png" class="rounded border" alt="paypal"></td>
+                                            <td>$2,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>LA 0312</td>
+                                            <td>WrrapTheme</td>
+                                            <td>sQuare - Bootstrap 4 Angular5 Admin</td>
+                                            <td>13 July, 2018</td>
+                                            <td><img src="@@webRoot/assets/img/paypal.png" class="rounded border" alt="paypal"></td>
+                                            <td>$10,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>LA 0389</td>
+                                            <td>WrrapTheme</td>
+                                            <td>Compass Dashboard</td>
+                                            <td>27 July, 2018</td>
+                                            <td><img src="@@webRoot/assets/img/visa-card.png" class="rounded border" alt="visa card"></td>
+                                            <td>$1,205</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables":true,
+})
+<script>
+    $('.myDataTable')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+    });
+</script>
+</body>
+</html>

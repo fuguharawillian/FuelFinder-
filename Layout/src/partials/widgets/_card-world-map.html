@@ -1,0 +1,47 @@
+<div id="top_country" style="height: @@height;"></div>
+
+<script src="@@webRoot/assets/vendor/jvectormap/jquery-jvectormap-2.0.5.min.js"></script>
+<script src="@@webRoot/assets/vendor/jvectormap/jquery-jvectormap-world-mill.js"></script>
+
+<!-- Worldwide Analytics -->
+<script>
+    $('#top_country').vectorMap({
+        map: 'world_mill',
+        normalizeFunction: 'polynomial',
+        hoverOpacity: 0.2,
+        hoverColor: false,
+        backgroundColor: 'var(--card-color)',
+        regionStyle : {
+            initial : {
+                fill: 'var(--color-400)',
+                stroke: 'var(--card-color)'
+            }
+        },
+        markerStyle: {
+            initial: {
+                fill: 'var(--primary-color)',
+                stroke: 'var(--card-color)'
+            }
+        },
+        markers: [
+            {latLng: [36.77, -119.41],  name: 'USA : 25k'},
+            {latLng: [21.00, 78.00],    name: 'INDIA : 12k'},
+            {latLng: [-33.00, 151.00],  name: 'Australia : 11k'},
+            {latLng: [55.37, -3.41],    name: 'UK : 7k'},
+            {latLng: [41.90, 12.45],    name: 'Vatican City : 2540'},
+            {latLng: [1.3, 103.8],      name: 'Singapore : 1940'},
+            {latLng: [26.02, 50.55],    name: 'Bahrain : 2540'},
+        ],
+        series: {
+            regions: [{
+                values: {
+                    "US": 'var(--chart-color2)',
+                    "AU": 'var(--chart-color3)',
+                    "IN": 'var(--chart-color4)',
+                    "UK": 'var(--chart-color5)',
+                },
+                attribute: 'fill'
+            }]
+        },
+    });
+</script>

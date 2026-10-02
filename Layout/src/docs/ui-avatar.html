@@ -1,0 +1,223 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Avatar",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "ui-avatar"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Avatar</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="ui-alerts.html"><i class="fa fa-long-arrow-left me-2"></i>Bootstrap Alerts</a>
+                        <a class="btn btn-secondary" href="ui-badge.html">Bootstrap Badge<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+                
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-transparent border-0 py-3">
+                                <h6 class="card-title">Avatar Default</h6>
+                            </div>
+                            <div class="card-body">
+                                <img class="avatar rounded me-3 xs" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Avatar xs">
+                                <img class="avatar rounded me-3 sm" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Avatar sm">
+                                <img class="avatar rounded me-3" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Avatar">
+                                <img class="avatar rounded me-3 lg" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Avatar lg">
+                                <img class="avatar rounded me-3 xl" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Avatar xl">
+
+                                <div class="d-flex align-items-center mt-3">
+                                    <span class="me-3 avatar rounded xs no-thumbnail small">AL</span>
+                                    <span class="me-3 avatar rounded sm no-thumbnail">AL</span>
+                                    <span class="me-3 avatar rounded no-thumbnail">AL</span>
+                                    <span class="me-3 avatar rounded lg no-thumbnail fs-3">AL</span>
+                                    <span class="me-3 avatar rounded xl no-thumbnail fs-1">AL</span>
+                                </div>
+
+                                <h6 class="mt-4 border-bottom pb-2">HTML code</h6>
+<pre><code class="language-html" data-lang="html">&lt;img class=&quot;avatar rounded xs&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;top&quot; title=&quot;Avatar xs&quot;&gt;
+&lt;img class=&quot;avatar rounded sm&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;top&quot; title=&quot;Avatar sm&quot;&gt;
+&lt;img class=&quot;avatar rounded&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;top&quot; title=&quot;Avatar&quot;&gt;
+&lt;img class=&quot;avatar rounded lg&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;top&quot; title=&quot;Avatar lg&quot;&gt;
+&lt;img class=&quot;avatar rounded xl&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;top&quot; title=&quot;Avatar xl&quot;&gt;
+
+&lt;span class=&quot;avatar rounded xs no-thumbnail small&quot;&gt;AL&lt;/span&gt;
+&lt;span class=&quot;avatar rounded sm no-thumbnail&quot;&gt;AL&lt;/span&gt;
+&lt;span class=&quot;avatar rounded no-thumbnail&quot;&gt;AL&lt;/span&gt;
+&lt;span class=&quot;avatar rounded lg no-thumbnail fs-3&quot;&gt;AL&lt;/span&gt;
+&lt;span class=&quot;avatar rounded xl no-thumbnail fs-1&quot;&gt;AL&lt;/span&gt;
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-transparent border-0 py-3">
+                                <h6 class="card-title">Avatar Rounded Circle</h6>
+                            </div>
+                            <div class="card-body">
+                                <img class="avatar rounded-circle me-4 xs" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Avatar xs">
+                                <img class="avatar rounded-circle me-4 sm" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Avatar sm">
+                                <img class="avatar rounded-circle me-4" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Avatar">
+                                <img class="avatar rounded-circle me-4 lg" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Avatar lg">
+                                <img class="avatar rounded-circle me-4 xl" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Avatar xl">
+                                <div class="d-flex align-items-center mt-3">
+                                    <span class="me-4 avatar rounded-circle xs no-thumbnail small">AL</span>
+                                    <span class="me-4 avatar rounded-circle sm no-thumbnail">AL</span>
+                                    <span class="me-4 avatar rounded-circle no-thumbnail">AL</span>
+                                    <span class="me-4 avatar rounded-circle lg no-thumbnail fs-3">AL</span>
+                                    <span class="me-4 avatar rounded-circle xl no-thumbnail fs-1">AL</span>
+                                </div>
+                                <h6 class="mt-4 border-bottom pb-2">HTML code</h6>
+<pre><code class="language-html" data-lang="html">&lt;img class=&quot;avatar rounded-circle xs&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;top&quot; title=&quot;Avatar xs&quot;&gt;
+&lt;img class=&quot;avatar rounded-circle sm&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;top&quot; title=&quot;Avatar sm&quot;&gt;
+&lt;img class=&quot;avatar rounded-circle&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;top&quot; title=&quot;Avatar&quot;&gt;
+&lt;img class=&quot;avatar rounded-circle lg&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;top&quot; title=&quot;Avatar lg&quot;&gt;
+&lt;img class=&quot;avatar rounded-circle xl&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;top&quot; title=&quot;Avatar xl&quot;&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-transparent border-0 py-3">
+                                <h6 class="card-title">Avatar with shadow</h6>
+                            </div>
+                            <div class="card-body">
+                                <img class="avatar rounded img-thumbnail me-4 sm" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Avatar sm">
+                                <img class="avatar rounded shadow-sm img-thumbnail me-4" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Avatar">
+                                <img class="avatar rounded shadow img-thumbnail me-4 lg" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Avatar lg">
+                                <img class="avatar rounded shadow-lg img-thumbnail me-4 xl" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Avatar xl">
+                                <h6 class="mt-4 border-bottom pb-2">HTML code</h6>
+<pre><code class="language-html" data-lang="html">&lt;img class=&quot;avatar rounded shadow img-thumbnail sm&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;top&quot; title=&quot;Avatar sm&quot;&gt;
+&lt;img class=&quot;avatar rounded shadow img-thumbnail&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;top&quot; title=&quot;Avatar&quot;&gt;
+&lt;img class=&quot;avatar rounded shadow img-thumbnail lg&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;top&quot; title=&quot;Avatar lg&quot;&gt;
+&lt;img class=&quot;avatar rounded shadow img-thumbnail xl&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;top&quot; title=&quot;Avatar xl&quot;&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-transparent border-0 py-3">
+                                <h6 class="card-title">Avatar with shadow</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <label class="me-3">Avatar:</label>
+                                    <a href="#"><img class="avatar xs rounded-circle lift me-1" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" title="Avatar"></a>
+                                    <a href="#"><img class="avatar xs rounded-circle lift me-1" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="avatar" data-bs-toggle="tooltip" title="Avatar"></a>
+                                    <a href="#"><img class="avatar xs rounded-circle lift me-1" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="avatar" data-bs-toggle="tooltip" title="Avatar"></a>
+                                    <a href="#"><img class="avatar xs rounded-circle lift me-1" src="@@webRoot/assets/img/xs/avatar4.jpg" alt="avatar" data-bs-toggle="tooltip" title="Avatar"></a>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <label class="me-3">Avatar:</label>
+                                    <a href="#"><img class="avatar sm rounded-circle lift me-1" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" title="Avatar"></a>
+                                    <a href="#"><img class="avatar sm rounded-circle lift me-1" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="avatar" data-bs-toggle="tooltip" title="Avatar"></a>
+                                    <a href="#"><img class="avatar sm rounded-circle lift me-1" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="avatar" data-bs-toggle="tooltip" title="Avatar"></a>
+                                    <a href="#"><img class="avatar sm rounded-circle lift me-1" src="@@webRoot/assets/img/xs/avatar4.jpg" alt="avatar" data-bs-toggle="tooltip" title="Avatar"></a>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <label class="me-3">Avatar:</label>
+                                    <a href="#"><img class="avatar rounded-circle lift me-1" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" title="Avatar"></a>
+                                    <a href="#"><img class="avatar rounded-circle lift me-1" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="avatar" data-bs-toggle="tooltip" title="Avatar"></a>
+                                    <a href="#"><img class="avatar rounded-circle lift me-1" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="avatar" data-bs-toggle="tooltip" title="Avatar"></a>
+                                    <a href="#"><img class="avatar rounded-circle lift me-1" src="@@webRoot/assets/img/xs/avatar4.jpg" alt="avatar" data-bs-toggle="tooltip" title="Avatar"></a>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <label class="me-3">Avatar:</label>
+                                    <a href="#"><img class="avatar lg rounded-circle lift me-1" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" data-bs-toggle="tooltip" title="Avatar"></a>
+                                    <a href="#"><img class="avatar lg rounded-circle lift me-1" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="avatar" data-bs-toggle="tooltip" title="Avatar"></a>
+                                    <a href="#"><img class="avatar lg rounded-circle lift me-1" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="avatar" data-bs-toggle="tooltip" title="Avatar"></a>
+                                    <a href="#"><img class="avatar lg rounded-circle lift me-1" src="@@webRoot/assets/img/xs/avatar4.jpg" alt="avatar" data-bs-toggle="tooltip" title="Avatar"></a>
+                                </div>
+                                <h6 class="mt-4 border-bottom pb-2">HTML code</h6>
+<pre><code class="language-html" data-lang="html">&lt;div class=&quot;d-flex align-items-center mb-3&quot;&gt;
+    &lt;label class=&quot;me-3&quot;&gt;Avatar:&lt;/label&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;avatar xs rounded-circle lift me-1&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Avatar&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;avatar xs rounded-circle lift me-1&quot; src=&quot;../assets/img/xs/avatar2.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Avatar&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;avatar xs rounded-circle lift me-1&quot; src=&quot;../assets/img/xs/avatar3.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Avatar&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;avatar xs rounded-circle lift me-1&quot; src=&quot;../assets/img/xs/avatar4.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Avatar&quot;&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;d-flex align-items-center mb-3&quot;&gt;
+    &lt;label class=&quot;me-3&quot;&gt;Avatar:&lt;/label&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;avatar sm rounded-circle lift me-1&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Avatar&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;avatar sm rounded-circle lift me-1&quot; src=&quot;../assets/img/xs/avatar2.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Avatar&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;avatar sm rounded-circle lift me-1&quot; src=&quot;../assets/img/xs/avatar3.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Avatar&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;avatar sm rounded-circle lift me-1&quot; src=&quot;../assets/img/xs/avatar4.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Avatar&quot;&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;d-flex align-items-center mb-3&quot;&gt;
+    &lt;label class=&quot;me-3&quot;&gt;Avatar:&lt;/label&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;avatar rounded-circle lift me-1&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Avatar&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;avatar rounded-circle lift me-1&quot; src=&quot;../assets/img/xs/avatar2.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Avatar&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;avatar rounded-circle lift me-1&quot; src=&quot;../assets/img/xs/avatar3.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Avatar&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;avatar rounded-circle lift me-1&quot; src=&quot;../assets/img/xs/avatar4.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Avatar&quot;&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;d-flex align-items-center&quot;&gt;
+    &lt;label class=&quot;me-3&quot;&gt;Avatar:&lt;/label&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;avatar lg rounded-circle lift me-1&quot; src=&quot;../assets/img/xs/avatar1.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Avatar&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;avatar lg rounded-circle lift me-1&quot; src=&quot;../assets/img/xs/avatar2.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Avatar&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;avatar lg rounded-circle lift me-1&quot; src=&quot;../assets/img/xs/avatar3.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Avatar&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;avatar lg rounded-circle lift me-1&quot; src=&quot;../assets/img/xs/avatar4.jpg&quot; alt=&quot;avatar&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Avatar&quot;&gt;&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="ui-alerts.html"><i class="fa fa-long-arrow-left me-3"></i>Bootstrap alerts</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="ui-badge.html">Bootstrap badge<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Core Js -->
+@@include('docs/_scripts.html',{
+
+})
+</body>
+</html>

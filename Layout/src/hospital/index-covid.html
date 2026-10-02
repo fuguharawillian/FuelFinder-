@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Hospital Covid Dashboard",
+        "daterangepicker": true,
+        "jvectormap": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-cyan">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hospital.html', {"page": "covid"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Covid Dashboard</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-xl-8 col-lg-7 col-md-12">
+                        <div class="row g-3 row-deck">
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <span>CONFIRMED</span>
+                                        <div><span class="h4 fw-bold">251</span> <span class="text-muted">41 in ICU</span></div>
+                                    </div>
+                                    <div id="apexspark1"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <span>RECOVERED</span>
+                                        <div><span class="h4 fw-bold">151</span> <span class="text-muted">67 Discharg</span></div>
+                                    </div>
+                                    <div id="apexspark2"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <span>DEATHS</span>
+                                        <div><span class="h4 fw-bold">21</span> <span class="text-muted">8.2%</span></div>
+                                    </div>
+                                    <div id="apexspark3"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="card mb-2">
+                                    <div class="card-header">
+                                        <h6 class="card-title m-0">Number of Cases</h6>
+                                        @@include('widgets/_card-action.html')
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="apex-basic-column"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="card mb-2">
+                                    <div class="card-header">
+                                        <h6 class="card-title m-0">Patients Status</h6>
+                                        @@include('widgets/_card-action.html')
+                                    </div>
+                                    <div class="card-body">
+                                        <table id="myTableStatus" class="table card-table table-hover mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Patients</th>
+                                                    <th>Adress</th>
+                                                    <th>START Date</th>
+                                                    <th>END Date</th>
+                                                    <th>Priority</th>
+                                                    <th>Progress</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td><img src="@@webRoot/assets/img/xs/avatar3.jpg" class="rounded-circle sm avatar me-2" alt="profile-image"><span>John</span></td>
+                                                    <td><span class="text-info">70 Bowman St. South Windsor, CT 06074</span></td>
+                                                    <td>Sept 13, 2020</td>
+                                                    <td>Sept 16, 2020</td>
+                                                    <td><span class="badge bg-warning">MEDIUM</span></td>
+                                                    <td>
+                                                        <div class="progress" style="height: 3px;">
+                                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"> <span class="sr-only">40% Complete</span> </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge bg-success">Admit</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td><img src="@@webRoot/assets/img/xs/avatar1.jpg" class="rounded-circle sm avatar me-2" alt="profile-image"><span>Jack Bird</span></td>
+                                                    <td><span class="text-info">123 6th St. Melbourne, FL 32904</span></td>
+                                                    <td>Sept 13, 2020</td>
+                                                    <td>Sept 22, 2020</td>
+                                                    <td><span class="badge bg-warning">MEDIUM</span></td>
+                                                    <td>
+                                                        <div class="progress" style="height: 3px;">
+                                                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> <span class="sr-only">100% Complete</span> </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge bg-warning">Discharge</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td><img src="@@webRoot/assets/img/xs/avatar4.jpg" class="rounded-circle sm avatar me-2" alt="profile-image"><span>Dean Otto</span></td>
+                                                    <td><span class="text-info">123 6th St. Melbourne, FL 32904</span></td>
+                                                    <td>Sept 13, 2020</td>
+                                                    <td>Sept 23, 2020</td>
+                                                    <td><span class="badge bg-warning">MEDIUM</span></td>
+                                                    <td>
+                                                        <div class="progress" style="height: 3px;">
+                                                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 15%;"> <span class="sr-only">15% Complete</span> </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge bg-success">Admit</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td><img src="@@webRoot/assets/img/xs/avatar2.jpg" class="rounded-circle sm avatar me-2" alt="profile-image"><span>Jack Bird</span></td>
+                                                    <td><span class="text-info">4 Shirley Ave. West Chicago, IL 60185</span></td>
+                                                    <td>Sept 17, 2020</td>
+                                                    <td>Sept 16, 2020</td>
+                                                    <td><span class="badge bg-success">LOW</span></td>
+                                                    <td>
+                                                        <div class="progress" style="height: 3px;">
+                                                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> <span class="sr-only">100% Complete</span> </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge bg-warning">Discharge</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td><img src="@@webRoot/assets/img/xs/avatar5.jpg" class="rounded-circle sm avatar me-2" alt="profile-image"><span>Hughe L.</span></td>
+                                                    <td><span class="text-info">4 Shirley Ave. West Chicago, IL 60185</span></td>
+                                                    <td>Sept 18, 2020</td>
+                                                    <td>Sept 18, 2020</td>
+                                                    <td><span class="badge bg-danger">HIGH</span></td>
+                                                    <td>
+                                                        <div class="progress" style="height: 3px;">
+                                                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"> <span class="sr-only">85% Complete</span> </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge bg-success">Admit</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td><img src="@@webRoot/assets/img/xs/avatar1.jpg" class="rounded-circle sm avatar me-2" alt="profile-image"><span>Jack Bird</span></td>
+                                                    <td><span class="text-info">123 6th St. Melbourne, FL 32904</span></td>
+                                                    <td>Sept 13, 2020</td>
+                                                    <td>Sept 22, 2020</td>
+                                                    <td><span class="badge bg-warning">MEDIUM</span></td>
+                                                    <td>
+                                                        <div class="progress" style="height: 3px;">
+                                                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> <span class="sr-only">100% Complete</span> </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge bg-warning">Discharge</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5 col-md-12">
+                        <div class="row g-3 row-deck">
+                            <div class="col-lg-12 col-md-6 col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="card-title m-0">Worldwide Analytics</h6>
+                                        @@include('widgets/_card-action.html')
+                                    </div>
+                                    <div class="card-body">
+                                        @@include('widgets/_card-world-map.html', {"height": "200px",})
+                                    </div>
+                                    <table class="table card-table table-hover mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Country</th>
+                                                <th>Patients</th>
+                                                <th>%</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="ps-3">United States</td>
+                                                <td>45,05,454</td>
+                                                <td>34.99%</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="ps-3">Brazil</td>
+                                                <td>25,05,454</td>
+                                                <td>64.01%</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="ps-3">India</td>
+                                                <td>25,05,454</td>
+                                                <td>14.49%</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="ps-3">Russia</td>
+                                                <td>24,05,454</td>
+                                                <td>41.91%</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="ps-3">South Africa</td>
+                                                <td>14,05,454</td>
+                                                <td>22.99%</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="ps-3">Mexico</td>
+                                                <td>12,05,454</td>
+                                                <td>18.44%</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="ps-3">Peru</td>
+                                                <td>9,05,454</td>
+                                                <td>34.99%</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="card-footer">
+                                        <button class="btn btn-sm btn-primary">View More</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="card-title m-0">By Gender</h6>
+                                        @@include('widgets/_card-action.html')
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex text-center">
+                                            <div class="card-body">
+                                                <div class="text-uppercase small">Male</div>
+                                                <h5 class="mb-0">98,15,000</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="text-uppercase small">Female</div>
+                                                <h5 class="mb-0">25,89,258</h5>
+                                            </div>
+                                        </div>
+                                        <div id="apex-UseGander"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- .row end -->
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "apexcharts": true,
+    "dataTables": true,
+})
+<!-- Jquery Page Js -->
+<script>
+    $(function() {
+    "use strict";
+
+        var randomizeArray = function (arg) {
+            var array = arg.slice();
+            var currentIndex = array.length,
+            temporaryValue, randomIndex;
+        
+            while (0 !== currentIndex) {  
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+        
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }  
+            return array;
+        }
+
+        // data for the sparklines that appear below header area
+        var sparklineData = [47, 45, 54, 38, 56, 24, 65, 31, 54, 38, 56];    
+        // topb big chart
+        var spark1 = {
+            chart: {
+                type: 'area',
+                height: 60,
+                sparkline: {
+                enabled: true
+                },
+            },
+            stroke: {
+                width: 1
+            },
+            series: [{
+                data: randomizeArray(sparklineData)
+            }],
+            fill: {
+                type: "gradient",
+                gradient: {
+                    gradientToColors: ['var(--chart-color3)'],
+                    shadeIntensity: 2,
+                    opacityFrom: 0.7,
+                    opacityTo: 0.2,
+                    stops: [0, 100]
+                },
+            },
+            colors: ['var(--chart-color3)'],
+        }
+        var spark1 = new ApexCharts(document.querySelector("#apexspark1"), spark1); spark1.render();
+
+        var spark2 = {
+            chart: {
+                type: 'area',
+                height: 60,
+                sparkline: {
+                enabled: true
+                },
+            },
+            stroke: {
+                width: 1
+            },
+            series: [{
+                data: randomizeArray(sparklineData)
+            }],
+            fill: {
+                type: "gradient",
+                gradient: {
+                    gradientToColors: ['var(--chart-color5)'],
+                    shadeIntensity: 2,
+                    opacityFrom: 0.7,
+                    opacityTo: 0.2,
+                    stops: [0, 100]
+                },
+            },
+            colors: ['var(--chart-color5)'],
+        }
+        var spark2 = new ApexCharts(document.querySelector("#apexspark2"), spark2); spark2.render();
+
+        var spark3 = {
+            chart: {
+                type: 'area',
+                height: 60,
+                sparkline: {
+                enabled: true
+                },
+            },
+            stroke: {
+                width: 1
+            },
+            series: [{
+                data: randomizeArray(sparklineData)
+            }],
+            fill: {
+                type: "gradient",
+                gradient: {
+                    gradientToColors: ['var(--chart-color1)'],
+                    shadeIntensity: 2,
+                    opacityFrom: 0.7,
+                    opacityTo: 0.2,
+                    stops: [0, 100]
+                },
+            },
+            colors: ['var(--chart-color1)'],
+        }
+        var spark3 = new ApexCharts(document.querySelector("#apexspark3"), spark3); spark3.render();
+
+        // Number of Cases
+        $(document).ready(function() {
+            var options = {
+                chart: {
+                    height: 350,
+                    type: 'bar',
+                },
+                colors: ['var(--chart-color1)', 'var(--chart-color2)', 'var(--chart-color3)'],
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '55%',
+                        endingShape: 'rounded'	
+                    },
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    show: true,
+                    width: 1,
+                    colors: ['transparent']
+                },
+                series: [{
+                    name: 'CONFIRMED',
+                    data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+                }, {
+                    name: 'RECOVERED',
+                    data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+                }, {
+                    name: 'DEATHS',
+                    data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+                }],
+                xaxis: {
+                    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                },
+                yaxis: {
+                    title: {
+                        text: 'Our Hospital'
+                    }
+                },
+                fill: {
+                    opacity: 1
+
+                },
+                tooltip: {
+                    y: {
+                        formatter: function (val) {
+                            //return "$ " + val + " thousands"
+                        }
+                    }
+                }
+            }
+
+            var chart = new ApexCharts(document.querySelector("#apex-basic-column"),options);
+            chart.render();
+        });
+
+        // Use by Gander
+        $(document).ready(function() {
+            var options = {
+                chart: {
+                    height: 260,
+                    type: 'donut',
+                },
+                dataLabels: {
+                    enabled: false,
+                },
+                legend: {
+                    position: 'bottom', // top, bottom, left, right
+                    horizontalAlign: 'center',
+                    show: true,
+                },
+                
+                colors: ['var(--chart-color3)', 'var(--chart-color4)'],
+                series: [680, 320,],
+                labels: ['Male', 'Female'],
+            }
+
+            var chart = new ApexCharts(document.querySelector("#apex-UseGander"),options);
+            chart.render();
+        });
+
+        // project data table
+        $('#myTableStatus')
+        .addClass( 'nowrap' )
+        .dataTable( {
+            responsive: true,
+        });
+    });
+</script>
+</body>
+</html>

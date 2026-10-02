@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Crypto Market Capital",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-red">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-crypto.html', {"page": "capital"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Market Capital</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-xl-12">
+                        <table class="myDataTable table align-middle table-bordered mb-0 custom-table-2">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Coin</th>
+                                    <th>Last Price</th>
+                                    <th>Change</th>
+                                    <th>Volume</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/coin/BTC.svg" alt="">
+                                            <div class="flex-fill ms-3 me-3">
+                                                <div class="mb-0 h6">Bitcoin</div>
+                                            </div>
+                                            <div class="ac-line-transparent" id="apexspark-Bitcoin"></div>
+                                        </div>
+                                    </td>
+                                    <td>$30,597</td>
+                                    <td>7.78</td>
+                                    <td>$23,09,12,987</td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title=""><i class="fa fa-pencil"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title=""><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/coin/ETH.svg" alt="">
+                                            <div class="flex-fill ms-3 me-3">
+                                                <div class="mb-0 h6">Ethereum</div>
+                                            </div>
+                                            <div class="ac-line-transparent" id="apexspark-Ethereum"></div>
+                                        </div>
+                                    </td>
+                                    <td>$19,597</td>
+                                    <td>3.11</td>
+                                    <td>$11,09,12,667</td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title=""><i class="fa fa-pencil"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title=""><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/coin/DASH.svg" alt="">
+                                            <div class="flex-fill ms-3 me-3">
+                                                <div class="mb-0 h6">Monero</div>
+                                            </div>
+                                            <div class="ac-line-transparent" id="apexspark-Monero"></div>
+                                        </div>
+                                    </td>
+                                    <td>$27,221</td>
+                                    <td>4.90</td>
+                                    <td>$9,09,12,234</td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title=""><i class="fa fa-pencil"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title=""><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/coin/LTC.svg" alt="">
+                                            <div class="flex-fill ms-3 me-3">
+                                                <div class="mb-0 h6">Litecoin</div>
+                                            </div>
+                                            <div class="ac-line-transparent" id="apexspark-Litecoin"></div>
+                                        </div>
+                                    </td>
+                                    <td>$43,597</td>
+                                    <td>11.05</td>
+                                    <td>$65,09,12,556</td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title=""><i class="fa fa-pencil"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title=""><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/coin/XRP.svg" alt="">
+                                            <div class="flex-fill ms-3 me-3">
+                                                <div class="mb-0 h6">XRP</div>
+                                            </div>
+                                            <div class="ac-line-transparent" id="apexspark-XRP"></div>
+                                        </div>
+                                    </td>
+                                    <td>$19,597</td>
+                                    <td>3.11</td>
+                                    <td>$11,09,12,667</td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title=""><i class="fa fa-pencil"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title=""><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img class="avatar sm rounded-circle" src="@@webRoot/assets/img/coin/qtum.svg" alt="">
+                                            <div class="flex-fill ms-3 me-3">
+                                                <div class="mb-0 h6">NEO</div>
+                                            </div>
+                                            <div class="ac-line-transparent" id="apexspark-NEO"></div>
+                                        </div>
+                                    </td>
+                                    <td>$27,221</td>
+                                    <td>4.90</td>
+                                    <td>$9,09,12,234</td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title=""><i class="fa fa-pencil"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title=""><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+    "apexcharts": true,
+})
+<script>
+    var options1 = {
+        chart: {
+            type: 'line',
+            //width: 120,
+            height: 26,
+            sparkline: {
+                enabled: true
+            }
+        },
+        stroke: {
+            width: 1,
+        },
+        colors: ['var(--chart-color1)'],
+        series: [{
+            data: [25, 66, 41, 89, 63, 25, 89, 63, 25, 44, 12, 44, 12, 36, 9, 54, 89, 63, 25, 89, 63, 25, 44, 12, 44, 12, 63, 25, 44, 12]
+        }],
+
+        tooltip: {
+            fixed: {
+                enabled: false
+            },
+            x: {
+                show: false
+            },
+            y: {
+                title: {
+                    formatter: function (seriesName) {
+                        return ''
+                    }
+                }
+            },
+            marker: {
+                show: false,
+            }
+        }
+    }
+    new ApexCharts(document.querySelector("#apexspark-Bitcoin"), options1).render();
+
+    var options1 = {
+        chart: {
+            type: 'line',
+            //width: 120,
+            height: 26,
+            sparkline: {
+                enabled: true
+            }
+        },
+        stroke: {
+            width: 1,
+        },
+        colors: ['var(--chart-color1)'],
+        series: [{
+            data: [25, 66, 41, 89, 63, 63, 25, 89, 63, 25, 44, 12, 44, 12, 25, 89, 63, 25, 44, 12, 44, 12, 36, 9, 54, 89, 63, 25, 44, 12]
+        }],
+
+        tooltip: {
+            fixed: {
+                enabled: false
+            },
+            x: {
+                show: false
+            },
+            y: {
+                title: {
+                    formatter: function (seriesName) {
+                        return ''
+                    }
+                }
+            },
+            marker: {
+                show: false,
+            }
+        }
+    }
+    new ApexCharts(document.querySelector("#apexspark-Ethereum"), options1).render();
+
+    var options1 = {
+        chart: {
+            type: 'line',
+            //width: 120,
+            height: 26,
+            sparkline: {
+                enabled: true
+            }
+        },
+        stroke: {
+            width: 1,
+        },
+        colors: ['var(--chart-color1)'],
+        series: [{
+            data: [25, 44, 12, 36, 9, 54, 89, 63, 25, 89, 63, 25, 44, 66, 41, 89, 63, 25, 89, 63, 25, 44, 12, 12, 44, 12, 63, 25, 44, 12]
+        }],
+
+        tooltip: {
+            fixed: {
+                enabled: false
+            },
+            x: {
+                show: false
+            },
+            y: {
+                title: {
+                    formatter: function (seriesName) {
+                        return ''
+                    }
+                }
+            },
+            marker: {
+                show: false,
+            }
+        }
+    }
+    new ApexCharts(document.querySelector("#apexspark-Monero"), options1).render();
+
+    var options1 = {
+        chart: {
+            type: 'line',
+            //width: 120,
+            height: 26,
+            sparkline: {
+                enabled: true
+            }
+        },
+        stroke: {
+            width: 1,
+        },
+        colors: ['var(--chart-color1)'],
+        series: [{
+            data: [25, 66, 41, 89, 63, 25, 9, 54, 89, 63, 25, 89, 63, 25, 44, 12, 44, 89, 63, 25, 44, 12, 44, 12, 36, 12, 63, 25, 44, 12]
+        }],
+
+        tooltip: {
+            fixed: {
+                enabled: false
+            },
+            x: {
+                show: false
+            },
+            y: {
+                title: {
+                    formatter: function (seriesName) {
+                        return ''
+                    }
+                }
+            },
+            marker: {
+                show: false,
+            }
+        }
+    }
+    new ApexCharts(document.querySelector("#apexspark-Litecoin"), options1).render();
+
+    var options1 = {
+        chart: {
+            type: 'line',
+            //width: 120,
+            height: 26,
+            sparkline: {
+                enabled: true
+            }
+        },
+        stroke: {
+            width: 1,
+        },
+        colors: ['var(--chart-color1)'],
+        series: [{
+            data: [25, 66, 41, 89, 63, 25, 9, 54, 89, 63, 25, 89, 63, 25, 44, 12, 44, 89, 63, 25, 44, 12, 44, 12, 36, 12, 63, 25, 44, 12]
+        }],
+
+        tooltip: {
+            fixed: {
+                enabled: false
+            },
+            x: {
+                show: false
+            },
+            y: {
+                title: {
+                    formatter: function (seriesName) {
+                        return ''
+                    }
+                }
+            },
+            marker: {
+                show: false,
+            }
+        }
+    }
+    new ApexCharts(document.querySelector("#apexspark-XRP"), options1).render();
+
+    var options1 = {
+        chart: {
+            type: 'line',
+            //width: 120,
+            height: 26,
+            sparkline: {
+                enabled: true
+            }
+        },
+        stroke: {
+            width: 1,
+        },
+        colors: ['var(--chart-color1)'],
+        series: [{
+            data: [25, 66, 41, 89, 63, 25, 9, 54, 89, 63, 25, 89, 63, 25, 44, 12, 44, 89, 63, 25, 44, 12, 44, 12, 36, 12, 63, 25, 44, 12]
+        }],
+
+        tooltip: {
+            fixed: {
+                enabled: false
+            },
+            x: {
+                show: false
+            },
+            y: {
+                title: {
+                    formatter: function (seriesName) {
+                        return ''
+                    }
+                }
+            },
+            marker: {
+                show: false,
+            }
+        }
+    }
+    new ApexCharts(document.querySelector("#apexspark-NEO"), options1).render();
+
+    $(document).ready(function () {
+        $('.myDataTable')
+        .addClass('nowrap')
+        .dataTable({
+            responsive: true,
+        });
+        $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+			$($.fn.dataTable.tables(true)).DataTable()
+			.columns.adjust()
+			.responsive.recalc();
+		});
+    });
+</script>
+</body>
+</html>

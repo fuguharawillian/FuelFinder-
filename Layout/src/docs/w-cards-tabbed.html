@@ -1,0 +1,362 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Card Tabbed",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "w-cards-tabbed"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Card Tabbed</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="w-cards-user.html"><i class="fa fa-long-arrow-left me-2"></i>Cards user</a>
+                        <a class="btn btn-secondary" href="w-cards-ribbons.html">Cards ribbons<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+                
+                <!-- .card: tab -->
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="nav nav-tabs tab-card mb-4 border-top-0 border-start-0 border-end-0 border border-primary rounded-4 bg-white" role="tablist">
+                            <li class="nav-item"><a class="py-3 mx-1 nav-link" href="w-cards.html">Card's</a></li>
+                            <li class="nav-item"><a class="py-3 mx-1 nav-link" href="w-cards-tiles.html">Card Tiles</a></li>
+                            <li class="nav-item"><a class="py-3 mx-1 nav-link" href="w-cards-user.html">User Card's</a></li>
+                            <li class="nav-item"><a class="py-3 mx-1 nav-link active" href="w-cards-tabbed.html">Tabbed card</a></li>
+                            <li class="nav-item"><a class="py-3 mx-1 nav-link" href="w-cards-ribbons.html">Card Ribbons</a></li>
+                            <li class="nav-item"><a class="py-3 mx-1 nav-link" href="w-cards-list.html">Card List</a></li>
+                            <li class="nav-item"><a class="py-3 mx-1 nav-link" href="w-cards-charts.html">Card Chart</a></li>
+                            <li class="nav-item"><a class="py-3 mx-1 nav-link" href="w-cards-tables.html">Card Tables</a></li>
+                        </ul>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap">
+                            <h6 class="card-title">Tab Option 1</h6>
+                            <ul class="nav nav-tabs px-3 border-bottom-0" role="tablist">
+                                <li class="nav-item"><a class="nav-link border-0 active" data-bs-toggle="tab" href="#nav-home" role="tab">Home</a></li>
+                                <li class="nav-item"><a class="nav-link border-0" data-bs-toggle="tab" href="#nav-profile" role="tab">Profile</a></li>
+                                <li class="nav-item"><a class="nav-link border-0" data-bs-toggle="tab" href="#nav-HTML" role="tab">HTML</a></li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel">
+                                        <div class="mb-0">It is a long established fact that a reader will normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will ma sites still in their infancy.</div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel">
+                                        <div class="mb-0">Lorem Ipsum is simply dummy text of the galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently</div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-HTML" role="tabpanel">
+<pre class=" language-html m-0" data-lang="html"><code class=" language-html">&lt;div class=&quot;d-flex justify-content-between align-items-center flex-wrap&quot;&gt;
+    &lt;h6 class=&quot;card-title&quot;&gt;Tab Option 1&lt;/h6&gt;
+    &lt;ul class=&quot;nav nav-tabs px-3 border-bottom-0&quot; role=&quot;tablist&quot;&gt;
+        &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link border-0 active&quot; data-bs-toggle=&quot;tab&quot; href=&quot;#nav-home&quot; role=&quot;tab&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link border-0&quot; data-bs-toggle=&quot;tab&quot; href=&quot;#nav-profile&quot; role=&quot;tab&quot;&gt;Profile&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link border-0&quot; data-bs-toggle=&quot;tab&quot; href=&quot;#nav-contact&quot; role=&quot;tab&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;card&quot;&gt;
+    &lt;div class=&quot;card-body&quot;&gt;
+        &lt;div class=&quot;tab-content&quot;&gt;
+            &lt;div class=&quot;tab-pane fade show active&quot; id=&quot;nav-home&quot; role=&quot;tabpanel&quot;&gt;
+                &lt;div class=&quot;mb-0&quot;&gt;It is a long established fact that a reader will normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will ma sites still in their infancy.&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;tab-pane fade&quot; id=&quot;nav-profile&quot; role=&quot;tabpanel&quot;&gt;
+                &lt;div class=&quot;mb-0&quot;&gt;Lorem Ipsum is simply dummy text of the galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap">
+                            <ul class="nav nav-tabs px-3 border-bottom-0" role="tablist">
+                                <li class="nav-item"><a class="nav-link border-0 active" data-bs-toggle="tab" href="#nav-home-icon" role="tab"><i class="fa fa-home me-2"></i>Home</a></li>
+                                <li class="nav-item"><a class="nav-link border-0" data-bs-toggle="tab" href="#nav-profile-icon" role="tab"><i class="fa fa-user me-2"></i>Profile</a></li>
+                                <li class="nav-item"><a class="nav-link border-0" data-bs-toggle="tab" href="#nav-HTML-icon" role="tab"><i class="fa fa-address-card-o me-2"></i>HTML</a></li>
+                            </ul>
+                            <h6 class="card-title">Tab Option 1 with Icon</h6>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="nav-home-icon" role="tabpanel">
+                                        <div class="mb-0">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-profile-icon" role="tabpanel">
+                                        <div class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently</div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-HTML-icon" role="tabpanel">
+<pre class=" language-html m-0" data-lang="html"><code class=" language-html">&lt;div class=&quot;d-flex justify-content-between align-items-center flex-wrap&quot;&gt;
+    &lt;ul class=&quot;nav nav-tabs px-3 border-bottom-0&quot; role=&quot;tablist&quot;&gt;
+        &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link border-0 active&quot; data-bs-toggle=&quot;tab&quot; href=&quot;#nav-home-icon&quot; role=&quot;tab&quot;&gt;&lt;i class=&quot;fa fa-home me-2&quot;&gt;&lt;/i&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link border-0&quot; data-bs-toggle=&quot;tab&quot; href=&quot;#nav-profile-icon&quot; role=&quot;tab&quot;&gt;&lt;i class=&quot;fa fa-user me-2&quot;&gt;&lt;/i&gt;Profile&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link border-0&quot; data-bs-toggle=&quot;tab&quot; href=&quot;#nav-contact-icon&quot; role=&quot;tab&quot;&gt;&lt;i class=&quot;fa fa-address-card-o me-2&quot;&gt;&lt;/i&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;h6 class=&quot;card-title&quot;&gt;Tab Option 1 with Icon&lt;/h6&gt;
+&lt;/div&gt;
+&lt;div class=&quot;card&quot;&gt;
+    &lt;div class=&quot;card-body&quot;&gt;
+        &lt;div class=&quot;tab-content&quot;&gt;
+            &lt;div class=&quot;tab-pane fade show active&quot; id=&quot;nav-home-icon&quot; role=&quot;tabpanel&quot;&gt;
+                &lt;div class=&quot;mb-0&quot;&gt;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;tab-pane fade&quot; id=&quot;nav-profile-icon&quot; role=&quot;tabpanel&quot;&gt;
+                &lt;div class=&quot;mb-0&quot;&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Tab Option 2</h6>
+                                <ul class="nav nav-tabs tab-page-toolbar rounded d-inline-flex" role="tablist">
+                                    <li class="nav-item"><a class="nav-link border-0 active" data-bs-toggle="tab" href="#nav2-home" role="tab">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link border-0" data-bs-toggle="tab" href="#nav2-profile" role="tab">Profile</a></li>
+                                    <li class="nav-item"><a class="nav-link border-0" data-bs-toggle="tab" href="#nav2-contact" role="tab">Contact</a></li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="nav2-home" role="tabpanel">
+                                        <div class="mb-0">It is a long established fact that a reader will normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will ma sites still in their infancy.</div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav2-profile" role="tabpanel">
+                                        <div class="mb-0">Lorem Ipsum is simply dummy text of the galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Tab Option 2 with Icon</h6>
+                                <ul class="nav nav-tabs tab-page-toolbar rounded d-inline-flex" role="tablist">
+                                    <li class="nav-item"><a class="nav-link border-0 active" data-bs-toggle="tab" href="#nav2-home-icon" role="tab"><i class="fa fa-home me-2"></i>Home</a></li>
+                                    <li class="nav-item"><a class="nav-link border-0" data-bs-toggle="tab" href="#nav2-profile-icon" role="tab"><i class="fa fa-user me-2"></i>Profile</a></li>
+                                    <li class="nav-item"><a class="nav-link border-0" data-bs-toggle="tab" href="#nav2-contact-icon" role="tab"><i class="fa fa-address-card-o me-2"></i>Contact</a></li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="nav2-home-icon" role="tabpanel">
+                                        <div class="mb-0">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav2-profile-icon" role="tabpanel">
+                                        <div class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Tab Option 3</h6>
+                                <ul class="nav nav-tabs tab-page-toolbar rounded-pill d-inline-flex" role="tablist">
+                                    <li class="nav-item"><a class="nav-link rounded-pill border-0 active" data-bs-toggle="tab" href="#nav3-home" role="tab">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link rounded-pill border-0" data-bs-toggle="tab" href="#nav3-profile" role="tab">Profile</a></li>
+                                    <li class="nav-item"><a class="nav-link rounded-pill border-0" data-bs-toggle="tab" href="#nav3-contact" role="tab">Contact</a></li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="nav3-home" role="tabpanel">
+                                        <div class="mb-0">It is a long established fact that a reader will normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will ma sites still in their infancy.</div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav3-profile" role="tabpanel">
+                                        <div class="mb-0">Lorem Ipsum is simply dummy text of the galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Tab Option 3 with Icon</h6>
+                                <ul class="nav nav-tabs tab-page-toolbar rounded-pill d-inline-flex" role="tablist">
+                                    <li class="nav-item"><a class="nav-link rounded-pill border-0 active" data-bs-toggle="tab" href="#nav3-home-icon" role="tab"><i class="fa fa-home me-2"></i>Home</a></li>
+                                    <li class="nav-item"><a class="nav-link rounded-pill border-0" data-bs-toggle="tab" href="#nav3-profile-icon" role="tab"><i class="fa fa-user me-2"></i>Profile</a></li>
+                                    <li class="nav-item"><a class="nav-link rounded-pill border-0" data-bs-toggle="tab" href="#nav3-contact-icon" role="tab"><i class="fa fa-address-card-o me-2"></i>Contact</a></li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="nav3-home-icon" role="tabpanel">
+                                        <div class="mb-0">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav3-profile-icon" role="tabpanel">
+                                        <div class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Tab Option 4</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <ul class="nav nav-tabs tab-card" role="tablist">
+                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#nav4-home" role="tab">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav4-profile" role="tab">Profile</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav4-contact" role="tab">Contact</a></li>
+                            </ul>
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="nav4-home" role="tabpanel">
+                                        <div class="mb-0">It is a long established fact that a reader will normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will ma sites still in their infancy.</div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav4-profile" role="tabpanel">
+                                        <div class="mb-0">Lorem Ipsum is simply dummy text of the galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Tab Option 4 with Icon</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <ul class="nav nav-tabs tab-card" role="tablist">
+                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#nav4-home-icon" role="tab"><i class="fa fa-home me-2"></i>Home</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav4-profile-icon" role="tab"><i class="fa fa-user me-2"></i>Profile</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav4-contact-icon" role="tab"><i class="fa fa-address-card-o me-2"></i>Contact</a></li>
+                            </ul>
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="nav4-home-icon" role="tabpanel">
+                                        <div class="mb-0">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav4-profile-icon" role="tabpanel">
+                                        <div class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header pb-0">
+                                <h6 class="card-title mb-0">Tab option 5</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <ul class="nav nav-pills custom-pill mb-3" role="tablist">
+                                    <li class="nav-item"><a class="nav-link border border-primary mx-1 active" data-bs-toggle="tab" href="#nav5-home" role="tab">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link border border-primary mx-1" data-bs-toggle="tab" href="#nav5-profile" role="tab">Profile</a></li>
+                                    <li class="nav-item"><a class="nav-link border border-primary mx-1" data-bs-toggle="tab" href="#nav5-contact" role="tab">Contact</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="nav5-home" role="tabpanel">
+                                        <div class="mb-0">It is a long established fact that a reader will normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will ma sites still in their infancy.</div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav5-profile" role="tabpanel">
+                                        <div class="mb-0">Lorem Ipsum is simply dummy text of the galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Tab option 6</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body d-flex align-items-start">
+                                <ul class="nav nav-pills custom-horizontal me-2" role="tablist">
+                                    <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#nav6-Home" role="tab">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav6-Profile" role="tab">Profile</a></li>
+                                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav6-Contact" role="tab">Contact</a></li>
+                                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav6-Settings" role="tab">Settings</a></li>
+                                </ul>
+                            
+                                <div class="tab-content ps-3">
+                                    <div class="tab-pane fade show active" id="nav6-Home" role="tabpanel">
+                                        It is a long established fact that a reader will normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will ma sites still in their infancy.
+                                    </div>
+                                    <div class="tab-pane fade" id="nav6-Profile" role="tabpanel">
+                                        It is a long established fact that a reader will normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will ma sites still in their infancy.
+                                    </div>
+                                    <div class="tab-pane fade" id="nav6-Contact" role="tabpanel">
+                                        It is a long established fact that a reader will normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will ma sites still in their infancy.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+               <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="w-cards-user.html"><i class="fa fa-long-arrow-left me-3"></i>Card User</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="w-cards-ribbons.html"><i class="fa fa-long-arrow-right me-3"></i>Card Ribbons</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Core Js -->
+@@include('docs/_scripts.html',{
+
+})
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "thankyou"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Thank You</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="ui-tooltips.html"><i class="fa fa-long-arrow-left me-2"></i>Tooltips</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-lg-6 col-md-12 text-center text-lg-start">
+                                <img class="" src="@@webRoot/assets/img/thankyou.svg" alt="...">
+                            </div>
+                            <div class="col-lg-6 col-md-12 text-center text-lg-start">
+                                <div class="display-6 mb-4">Thank You!.</div>
+                                <p class="lead">Once again, thank you so much for purchasing this template. As I said at the beginning, I'd be glad to help you if you have any questions relating to this template.</p>
+                                <p class="lead">If you really like our work, design, performance and support then <a href="https://themeforest.net/downloads"> please don't forgot to rate us</a> on Themeforest,<br> it really motivate us to provide something better.
+                                    <span class="ms-2">
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                    </span>
+                                </p>
+                                <h6 class="fw-bold">Live Chat Support</h6>
+                                <span class="small text-muted">Time zone (IST)</span>
+                                <p class="text-muted">You have any Doubt or Any kind of Issue then ask Our Experts Because We’re always here to help you.</p>
+                                <a href="https://www.thememakker.com/contact/" target="_blank" class="btn text-uppercase btn-primary">Contact</a>
+                                <a href="https://tawk.to/chat/5c6d4867f324050cfe342c69/default" target="_blank" class="btn text-uppercase bg-secondary text-light">Chat with us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+<!-- Jquery Page Js -->
+@@include('docs/_scripts.html',{
+
+})
+</body>
+</html>

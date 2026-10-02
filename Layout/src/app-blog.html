@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('_head.html',{
+        "pageTitle": "App Blog",
+        "summernote": true,
+        "dropify": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-menu.html', {"page": "app-blog"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="app.html">App</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body blog-app px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-3">
+            <div class="container-fluid">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="card-title mb-0">New blog post</h6>
+                        @@include('widgets/_card-action.html')
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3 mb-3">
+                            <label class="col-xl-3 col-sm-4 col-form-label">Blog Title *</label>
+                            <div class="col-xl-9 col-sm-8">
+                                <input type="text" class="form-control form-control-lg" placeholder="Blog Title">
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <label class="col-xl-3 col-sm-4 col-form-label">Type</label>
+                            <div class="col-xl-9 col-sm-8">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="typeText" value="Type1">
+                                    <label class="form-check-label" for="typeText">Text</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="typeImage" value="Type2">
+                                    <label class="form-check-label" for="typeImage">Image</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="typeAudio" value="Type3">
+                                    <label class="form-check-label" for="typeAudio">Audio</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="typeVideo" value="Type4">
+                                    <label class="form-check-label" for="typeVideo">Video</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <label class="col-xl-3 col-sm-4 col-form-label">Select Category *</label>
+                            <div class="col-xl-9 col-sm-8">
+                                <select class="form-select form-select-lg" aria-label="Default select example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">Design</option>
+                                    <option value="2">Travel</option>
+                                    <option value="3">Animals</option>
+                                    <option value="4">Sports & Fitness</option>
+                                    <option value="5">lifestyle</option>
+                                    <option value="6">Food & Drink</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <label class="col-xl-3 col-sm-4 col-form-label">Tage</label>
+                            <div class="col-xl-9 col-sm-8">
+                                <input type="text" class="form-control form-control-lg" data-role="tagsinput" value="Design,Travel,lifestyle">
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <label class="col-xl-3 col-sm-4 col-form-label">Content</label>
+                            <div class="col-xl-9 col-sm-8">
+                                <div class="summernote">
+                                    Hello there,
+                                    <br/>
+                                    <p>The toolbar can be customized and it also supports various callbacks such as <code>oninit</code>, <code>onfocus</code>, <code>onpaste</code> and many more.</p>
+                                    <p>Please try <b>paste some texts</b> here</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <label class="col-xl-3 col-sm-4 col-form-label">Attachment</label>
+                            <div class="col-xl-9 col-sm-8">
+                                <div class="small text-muted">Note: <small>Image size should be 1024x640 with JPG file format.</small></div>
+                                <input type="file" class="dropify">
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <label class="col-xl-3 col-sm-4 col-form-label"></label>
+                            <div class="col-xl-9 col-sm-8">
+                                <button type="button" class="btn btn-secondary">Discard</button>
+                                <button type="button" class="btn btn-primary">Publish</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "bootstraptagsinput": true,
+    "summernote": true,
+    "dropify": true,
+})
+<script>
+    $(document).ready(function() {
+        $('.summernote').summernote();
+        $('.note-editor .note-btn').on('click',function(){
+            $(this).next().toggleClass("show");
+        });
+    });
+    
+    $(function() {
+        $('.dropify').dropify();
+
+        var drEvent = $('#dropify-event').dropify();
+        drEvent.on('dropify.beforeClear', function(event, element) {
+            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        });
+
+        drEvent.on('dropify.afterClear', function(event, element) {
+            alert('File deleted');
+        });
+    });
+
+</script>
+
+</body>
+</html>

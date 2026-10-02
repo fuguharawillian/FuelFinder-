@@ -1,0 +1,120 @@
+// Admin Layout (LUNO)
+// @author: WrrapTheme ( https://themeforest.net/user/wrraptheme )
+// @design by: ThemeMakker Infotech LLP.
+// @event-namespace: LUNO
+// Copyright 2022 WrrapTheme
+
+[data-luno="theme-black"] {
+    .body-header{
+        .nav-tabs.tab-card .nav-link.active,
+        .nav-tabs.tab-card .nav-link:hover{
+            border-color: var(--white-color);
+            color: var(--white-color);
+        }
+    }
+}
+
+.layout-3{
+    @include c_overflow(scroll);
+    color: var(--color-800);
+
+    .navbar {
+        padding: .8rem 0 .8rem .8rem;
+        .nav-link{
+            color: var(--color-600);
+        }
+        @media only screen and (max-width: $break-medium - 1px) {
+            .navbar-collapse{
+                @include transition(ease .1s);
+                background-color: var(--card-color);
+                box-shadow: 0 6px 1rem rgba($dark,.1),0 .5rem 1rem -.75rem rgba($dark,.1)!important;
+                position: fixed;
+                right: 0;
+                top: 0;
+                height: 100%;
+                width: 340px;
+                overflow-y: auto;
+                padding: 1.5rem;
+                z-index: 9;
+
+                .dropdown-toggle{
+                    display: none;
+                }
+                .nav-item{
+                    width: 100%;
+                }
+                .flex-grow-1{
+                    display: none !important;
+                }
+                .mega-dropdown{
+                    width: 100%;
+                    opacity: 1;
+                    visibility: visible;
+                    transform: scale(1, 1) !important;
+                    padding: 0 !important;
+                    box-shadow: none !important;
+
+                    .row {
+                        > div{
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .body-header{
+        padding-left: .8rem;
+        padding-right: .8rem;
+    }
+    .body-area{
+        padding: 2rem .8rem;
+    }
+    .body-footer{
+        padding: 2rem .8rem;
+    }
+
+    @media (min-width: 1600px){
+        .navbar,
+        .body-header,
+        .body-area,
+        .body-footer{
+            padding-left: 4rem !important;
+            padding-right: 4rem !important;
+        }
+    }
+    
+    @media (min-width: 1800px){
+        .navbar,
+        .body-header,
+        .body-area,
+        .body-footer{
+            padding-left: 8rem !important;
+            padding-right: 8rem !important;
+        }
+    }
+}
+
+.body-header{
+    background-color: var(--dark-color);
+    color: var(--white-color);
+    position: relative;
+    padding-top: 1rem;
+
+    .container,
+    .container-fluid{
+        position: relative;
+        z-index: 2;
+    }
+
+    > svg{
+        position: absolute;
+        top: 0;
+        right: 0;
+        opacity: .3;
+        z-index: 1;
+        height: 100%;
+    }
+}
+
+

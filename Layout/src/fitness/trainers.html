@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Fitness Trainer",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-fitness.html', {"page": "trainers"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Trainer</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center flex-column flex-md-row">
+                                    <img class="w120 rounded" src="@@webRoot/assets/img/lg/avatar1.jpg" alt="">
+                                    <div class="media-body ms-md-5 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                        <h6 class="fw-bold mb-1">Edit Toke</h6>
+                                        <div class="mb-3">
+                                            <span class="text-muted"><i class="fa fa-map-marker ps-1"></i> 123 6th St. Melbourne, FL 32904</span>
+                                            <p>I have been a Personal trainer for 2 years building a women's fitness company Bootcamp company in 2018.</p>
+                                        </div>
+                                        <div class="row row-cols-xl-6 row-cols-lg-4 row-cols-md-3 row-cols-sm-3 row-cols-2 g-1 mb-2">
+                                            <div class="col">
+                                                <strong>11 year</strong>
+                                                <div class="text-muted small">Experience</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>+ 41 012 345 5678</strong>
+                                                <div class="text-muted small">Mobile</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>$60</strong>
+                                                <div class="text-muted small">Per session</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>Level 3</strong>
+                                                <div class="text-muted small">Fitness Level</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                </strong>
+                                                <div class="text-muted small">Review</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>Yoga</strong>
+                                                <div class="text-muted small">Speciality</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center flex-column flex-md-row">
+                                    <img class="w120 rounded" src="@@webRoot/assets/img/lg/avatar2.jpg" alt="">
+                                    <div class="media-body ms-md-5 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                        <h6 class="fw-bold mb-1">Manuella Nevoresky</h6>
+                                        <div class="mb-3">
+                                            <span class="text-muted"><i class="fa fa-map-marker ps-1"></i> 44 Shirley Ave. West Chicago, IL 60185</span>
+                                            <p>I specialise in calisthenics and bodyweight workouts as well as classic weight training.</p>
+                                        </div>
+                                        <div class="row row-cols-xl-6 row-cols-lg-4 row-cols-md-3 row-cols-sm-3 row-cols-2 g-1 mb-2">
+                                            <div class="col">
+                                                <strong>8 year</strong>
+                                                <div class="text-muted small">Experience</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>+ 41 012 345 7878</strong>
+                                                <div class="text-muted small">Mobile</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>$55</strong>
+                                                <div class="text-muted small">Per session</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>Level 3</strong>
+                                                <div class="text-muted small">Fitness Level</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                </strong>
+                                                <div class="text-muted small">Review</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>GYM</strong>
+                                                <div class="text-muted small">Speciality</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center flex-column flex-md-row">
+                                    <img class="w120 rounded" src="@@webRoot/assets/img/lg/avatar4.jpg" alt="">
+                                    <div class="media-body ms-md-5 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                        <h6 class="fw-bold mb-1">Maryam Amiri</h6>
+                                        <div class="mb-3">
+                                            <span class="text-muted"><i class="fa fa-map-marker ps-1"></i> 70 Bowman St. South Windsor, CT 06074</span>
+                                            <p>I specialise in calisthenics and bodyweight workouts as well as classic weight training.</p>
+                                        </div>
+                                        <div class="row row-cols-xl-6 row-cols-lg-4 row-cols-md-3 row-cols-sm-3 row-cols-2 g-1 mb-2">
+                                            <div class="col">
+                                                <strong>5 year</strong>
+                                                <div class="text-muted small">Experience</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>+ 41 012 345 8585</strong>
+                                                <div class="text-muted small">Mobile</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>$70</strong>
+                                                <div class="text-muted small">Per session</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>Level 4</strong>
+                                                <div class="text-muted small">Fitness Level</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                </strong>
+                                                <div class="text-muted small">Review</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>Crossfit Trainer</strong>
+                                                <div class="text-muted small">Speciality</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center flex-column flex-md-row">
+                                    <img class="w120 rounded" src="@@webRoot/assets/img/lg/avatar3.jpg" alt="">
+                                    <div class="media-body ms-md-5 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                        <h6 class="fw-bold mb-1">Brian Swader</h6>
+                                        <div class="mb-3">
+                                            <span class="text-muted"><i class="fa fa-map-marker ps-1"></i> 44 Shirley Ave. West Chicago, IL 60185</span>
+                                            <p>I have been on my own fitness journey in the last few years dropping from nearly 100kg down to 85</p>
+                                        </div>
+                                        <div class="row row-cols-xl-6 row-cols-lg-4 row-cols-md-3 row-cols-sm-3 row-cols-2 g-1 mb-2">
+                                            <div class="col">
+                                                <strong>8 year</strong>
+                                                <div class="text-muted small">Experience</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>+ 41 012 345 2525</strong>
+                                                <div class="text-muted small">Mobile</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>$95</strong>
+                                                <div class="text-muted small">Per session</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>Level 5</strong>
+                                                <div class="text-muted small">Fitness Level</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                </strong>
+                                                <div class="text-muted small">Review</div>
+                                            </div>
+                                            <div class="col">
+                                                <strong>Nutrition</strong>
+                                                <div class="text-muted small">Speciality</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

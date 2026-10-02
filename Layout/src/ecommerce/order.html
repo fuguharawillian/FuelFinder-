@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "eCommerce Order",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-ecommerce.html', {"page": "order"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Order</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col d-flex justify-content-lg-end mt-2 mt-md-0">
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">8.18K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 1.3%</small></div>
+                            <small class="text-muted text-uppercase">Income</small>
+                        </div>
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">1.11K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 4.1%</small></div>
+                            <small class="text-muted text-uppercase">Expense</small>
+                        </div>
+                        <div class="p-2 pe-lg-0">
+                            <div><span class="h6 mb-0">3.66K</span> <small class="text-danger"><i class="fa fa-angle-down"></i> 7.5%</small></div>
+                            <small class="text-muted text-uppercase">Revenue</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Order List</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <table id="myTable" class="table myDataTable table-hover align-middle mb-0 card-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Order ID</th>
+                                            <th>Image</th>
+                                            <th>Product Name</th>
+                                            <th>Amount</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>John Smith</td>
+                                            <td>#2122109</td>
+                                            <td><img src="@@webRoot/assets/img/ecommerce/1.png" class="rounded-circle" width="40" alt="Product img"></td>
+                                            <td>
+                                                <h6 class="mb-0">Simple Black Clock</h6>
+                                            </td>
+                                            <td>$16.00</td>
+                                            <td>01-05-2020</td>
+                                            <td><span class="badge  bg-success text-white">Paid</span></td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hossein Shams</td>
+                                            <td>#2122100</td>
+                                            <td><img src="@@webRoot/assets/img/ecommerce/10.png" class="rounded-circle" width="40" alt="Product img"></td>
+                                            <td>
+                                                <h6 class="mb-0">Brone Candle</h6>
+                                            </td>
+                                            <td>$15.00</td>
+                                            <td>7-05-2020</td>
+                                            <td><span class="badge  bg-danger text-white">Failed</span></td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Maryam Amiri</td>
+                                            <td>#2122101</td>
+                                            <td><img src="@@webRoot/assets/img/ecommerce/11.png" class="rounded-circle" width="40" alt="Product img"></td>
+                                            <td>
+                                                <h6 class="mb-0">Wood Simple Clock</h6>
+                                            </td>
+                                            <td>$16.00</td>
+                                            <td>09-05-2020</td>
+                                            <td><span class="badge  bg-success text-white">Paid</span></td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tim Hank</td>
+                                            <td>#2122102</td>
+                                            <td><img src="@@webRoot/assets/img/ecommerce/5.png" class="rounded-circle" width="40" alt="Product img"></td>
+                                            <td>
+                                                <h6 class="mb-0">Unero Small Bag</h6>
+                                            </td>
+                                            <td>$23.00</td>
+                                            <td>14-05-2020</td>
+                                            <td><span class="badge bg-warning text-white">Pending</span></td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Frank Camly</td>
+                                            <td>#2122103</td>
+                                            <td><img src="@@webRoot/assets/img/ecommerce/6.png" class="rounded-circle" width="40" alt="Product img"></td>
+                                            <td>
+                                                <h6 class="mb-0">Simple Black Clock</h6>
+                                            </td>
+                                            <td>$16.00</td>
+                                            <td>24-05-2020</td>
+                                            <td><span class="badge  bg-success text-white">Paid</span></td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gary Camara</td>
+                                            <td>#2122104</td>
+                                            <td><img src="@@webRoot/assets/img/ecommerce/2.png" class="rounded-circle" width="40" alt="Product img"></td>
+                                            <td>
+                                                <h6 class="mb-0">Brone Lamp Glasses</h6>
+                                            </td>
+                                            <td>$12.00</td>
+                                            <td>24-05-2020</td>
+                                            <td><span class="badge  bg-danger text-white">Failed</span></td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fidel Tonn</td>
+                                            <td>#2122105</td>
+                                            <td><img src="@@webRoot/assets/img/ecommerce/3.png" class="rounded-circle" width="40" alt="Product img"></td>
+                                            <td>
+                                                <h6 class="mb-0">Simple Black Clock</h6>
+                                            </td>
+                                            <td>$22.00</td>
+                                            <td>26-05-2020</td>
+                                            <td><span class="badge  bg-success text-white">Paid</span></td>
+                                            <td>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    $(document).ready(function () {
+    $('#myTable')
+        .addClass('nowrap')
+        .dataTable({
+            responsive: true,
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Hospital Add new Patient",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-cyan">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hospital.html', {"page": "payments-add"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item">Payment</li>
+                            <li class="breadcrumb-item active" aria-current="page">Add</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Patients Information</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control form-control-lg" placeholder="Invoice Number">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-lg" placeholder="Patient Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <select class="form-control form-control-lg">
+                                            <option value="">- Doctor -</option>
+                                            <option>Dr. John Smith</option>
+                                            <option>Dr. Maryam Amiri</option>
+                                            <option>Dr. Hossein Shams </option>
+                                        </select>       
+                                    </div>                            
+                                </div>
+                                <div class="mt-5 mb-2">
+                                    <img src="@@webRoot/assets/img/mastercard.png" class="me-2" alt="">
+                                    <img src="@@webRoot/assets/img/visa-card.png" class="me-2" alt="">
+                                    <img src="@@webRoot/assets/img/paypal.png" alt="">
+                                </div>
+                                <p class="alert alert-success">Some text success or error</p>                            
+                                <form class="row g-3">
+                                    <div class="col-sm-5">
+                                        <label class="form-label">Full name (on the card)</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text border-0 px-4"><i class="fa fa-user"></i></span>
+                                            <input type="text" class="form-control form-control-lg" name="username" placeholder="" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <label class="form-label">Card number</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text border-0 px-4"><i class="fa fa-credit-card"></i></span>
+                                            <input type="text" class="form-control form-control-lg" name="cardNumber" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="form-label">Select Expiration month</label>
+                                        <select class="form-control form-control-lg">
+                                            <option>MM</option>
+                                            <option>01 - Janiary</option>
+                                            <option>02 - February</option>
+                                            <option>03 - February</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="form-label">Select Expiration yaer</label>
+                                        <select class="form-control form-control-lg">
+                                            <option>YY</option>
+                                            <option>2021</option>
+                                            <option>2022</option>
+                                            <option>2023</option>
+                                            <option>2024</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="form-label" data-bs-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
+                                            <input class="form-control form-control-lg" required="" type="text">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary" type="button">Confirm</button>
+                                <button class="btn btn-secondary" type="button">Cancle</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

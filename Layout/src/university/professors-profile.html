@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "University Professor Profile",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-indigo">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-university.html', {"page": "professors-profile"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">Professor</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body border-bottom">
+                                <div class="d-flex align-items-md-start align-items-center flex-column flex-md-row">
+                                    <img src="@@webRoot/assets/img/profile_av.png" alt="" class="rounded-4">
+                                    <div class="media-body ms-md-5 m-0 mt-4 mt-md-0 text-md-start text-center">
+                                        <h4 class="mb-1 fw-light">Pro. Hossein Shams<a href="#" class="fa fa-pencil-square-o fs-6 ms-2" data-bs-toggle="offcanvas" data-bs-target="#edit_profile" title="Edit Profile"></a></h4>
+                                        <p>hossein_shams@luno.com</p>
+                                        <span class="text-muted">It is a long established fact that a reader will be distracted by the readable<br> content of a page when looking at its layout.</span>
+                                        <div class="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-md-start">
+                                            <div class="card py-2 px-3 me-2 mt-2">
+                                                <small class="text-muted">Degree</small>
+                                                <div class="fs-6">PHD in Mathmatics</div>
+                                            </div>
+                                            <div class="card py-2 px-3 me-2 mt-2">
+                                                <small class="text-muted">Awards</small>
+                                                <div class="fs-6">45</div>
+                                            </div>
+                                            <div class="card py-2 px-3 me-2 mt-2">
+                                                <small class="text-muted">Experience</small>
+                                                <div class="fs-6">8+</div>
+                                            </div>
+                                            <div class="card py-2 px-3 me-2 mt-2">
+                                                <small class="text-muted">City</small>
+                                                <div class="fs-6">New york</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="nav nav-tabs tab-card border-bottom-0 pt-2 fs-6 justify-content-center justify-content-md-start" role="tablist">
+                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#profile_Students" role="tab" aria-selected="false"><span>Students</span></a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#profile_Groups" role="tab" aria-selected="false"><i class="fa fa-address-card-o"></i><span class="d-none d-sm-inline-block ms-2">Groups</span></a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Settings</a>
+                                    <ul class="dropdown-menu border-0 shadow">
+                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="tab-content">
+                            <!-- Tab: Students -->
+                            <div class="tab-pane fade active show" id="profile_Students" role="tabpanel">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="card-title mb-0">Student List</h6>
+                                        @@include('widgets/_card-action.html')
+                                    </div>
+                                    <table id="myStudents" class="table card-table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Students</th>
+                                                <th>Edmission date</th>
+                                                <th>Age</th>
+                                                <th>Number</th>
+                                                <th>Address</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>P015</td>
+                                                <td>
+                                                    <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="avatar sm rounded me-2" alt="profile-image">
+                                                    <span class="fw-bold">Alexander<span>
+                                                </td>
+                                                <td>Dec 25, 2020</td>
+                                                <td>23</td>
+                                                <td>404-447-6013</td>
+                                                <td>123 6th St. Melbourne, FL 32904</td>
+                                            </tr>
+                                            <tr>
+                                                <td>P016</td>
+                                                <td>
+                                                    <img src="@@webRoot/assets/img/xs/avatar2.jpg" class="avatar sm rounded me-2" alt="profile-image">
+                                                    <span class="fw-bold">Cameron<span>
+                                                </td>
+                                                <td>Dec 26, 2020</td>
+                                                <td>22</td>
+                                                <td>404-447-9696</td>
+                                                <td>123 6th St. Melbourne, FL 32904</td>
+                                            </tr>
+                                            <tr>
+                                                <td>P017</td>
+                                                <td>
+                                                    <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="avatar sm rounded me-2" alt="profile-image">
+                                                    <span class="fw-bold">Alex lee<span>
+                                                </td>
+                                                <td>Dec 28, 2020</td>
+                                                <td>22</td>
+                                                <td>404-447-5858</td>
+                                                <td>123 6th St. Melbourne, FL 32904</td>
+                                            </tr>
+                                            <tr>
+                                                <td>P018</td>
+                                                <td>
+                                                    <img src="@@webRoot/assets/img/xs/avatar4.jpg" class="avatar sm rounded me-2" alt="profile-image">
+                                                    <span class="fw-bold">Richard<span>
+                                                </td>
+                                                <td>Dec 28, 2020</td>
+                                                <td>23</td>
+                                                <td>404-447-6013</td>
+                                                <td>123 6th St. Melbourne, FL 32904</td>
+                                            </tr>
+                                            <tr>
+                                                <td>P020</td>
+                                                <td>
+                                                    <img src="@@webRoot/assets/img/xs/avatar5.jpg" class="avatar sm rounded me-2" alt="profile-image">
+                                                    <span class="fw-bold">Stephen<span>
+                                                </td>
+                                                <td>Dec 30, 2020</td>
+                                                <td>24</td>
+                                                <td>404-447-2536</td>
+                                                <td>123 6th St. Melbourne, FL 32904</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- Tab: Groups -->
+                            <div class="tab-pane fade" id="profile_Groups" role="tabpanel">
+                                <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-lg-4 row-cols-lg-3 row-cols-sm-2 row-cols-1 g-3 row-deck">
+                                    <div class="col">
+                                        <div class="card text-center overflow-visible">
+                                            <div class="dropdown morphing scale-left position-absolute top-0 end-0 mt-2 me-2">
+                                                @@include('widgets/_card-ellipsis-group.html')
+                                            </div>
+                                            <div class="card-body d-flex align-items-center justify-content-between flex-column">
+                                                <div class="me-auto ms-auto py-4">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar1.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar2.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar3.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar4.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar5.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                </div>
+                                                <div class="mt-2">
+                                                    <h6 class="mb-0">Out Sourcing</h6>
+                                                    <small class="text-muted">16 Contacts</small>
+                                                </div>
+                                            </div>
+                                        </div> <!-- .Card End -->
+                                    </div>
+                                    <div class="col">
+                                        <div class="card text-center overflow-visible">
+                                            <div class="dropdown morphing scale-left position-absolute top-0 end-0 mt-2 me-2">
+                                                @@include('widgets/_card-ellipsis-group.html')
+                                            </div>                                            
+                                            <div class="card-body d-flex align-items-center justify-content-between flex-column">
+                                                <div class="me-auto ms-auto py-4">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar6.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar7.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar8.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                </div>
+                                                <div class="mt-2">
+                                                    <h6 class="mb-0">Management</h6>
+                                                    <small class="text-muted">11 Contacts</small>
+                                                </div>
+                                            </div>
+                                        </div> <!-- .Card End -->
+                                    </div>
+                                    <div class="col">
+                                        <div class="card text-center overflow-visible">
+                                            <div class="dropdown morphing scale-left position-absolute top-0 end-0 mt-2 me-2">
+                                                @@include('widgets/_card-ellipsis-group.html')
+                                            </div>                                            
+                                            <div class="card-body d-flex align-items-center justify-content-between flex-column">
+                                                <div class="me-auto ms-auto py-4">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar10.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar9.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar3.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar2.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar5.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                </div>
+                                                <div class="mt-2">
+                                                    <h6 class="mb-0">Sold Properties</h6>
+                                                    <small class="text-muted">106 Contacts</small>
+                                                </div>
+                                            </div>
+                                        </div> <!-- .Card End -->
+                                    </div>
+                                    <div class="col">
+                                        <div class="card text-center overflow-visible">
+                                            <div class="dropdown morphing scale-left position-absolute top-0 end-0 mt-2 me-2">
+                                                @@include('widgets/_card-ellipsis-group.html')
+                                            </div>                                            
+                                            <div class="card-body d-flex align-items-center justify-content-between flex-column">
+                                                <div class="me-auto ms-auto py-4">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar1.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <div class="avatar rounded-circle m-1 lift d-inline-flex no-thumbnail">RH</div>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <h6 class="mb-0">San Fransisco</h6>
+                                                    <small class="text-muted">126 Contacts</small>
+                                                </div>
+                                            </div>
+                                        </div> <!-- .Card End -->
+                                    </div>
+                                    <div class="col">
+                                        <div class="card text-center overflow-visible">
+                                            <div class="dropdown morphing scale-left position-absolute top-0 end-0 mt-2 me-2">
+                                                @@include('widgets/_card-ellipsis-group.html')
+                                            </div>                                            
+                                            <div class="card-body d-flex align-items-center justify-content-between flex-column">
+                                                <div class="me-auto ms-auto py-4">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar6.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar7.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar8.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar1.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                </div>
+                                                <div class="mt-2">
+                                                    <h6 class="mb-0">Los Angeles</h6>
+                                                    <small class="text-muted">84 Contacts</small>
+                                                </div>
+                                            </div>
+                                        </div> <!-- .Card End -->
+                                    </div>
+                                    <div class="col">
+                                        <div class="card text-center overflow-visible">
+                                            <div class="dropdown morphing scale-left position-absolute top-0 end-0 mt-2 me-2">
+                                                @@include('widgets/_card-ellipsis-group.html')
+                                            </div>                                            
+                                            <div class="card-body d-flex align-items-center justify-content-between flex-column">
+                                                <div class="me-auto ms-auto py-4">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar10.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar9.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar2.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar5.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                </div>
+                                                <div class="mt-2">
+                                                    <h6 class="mb-0">Colleagues</h6>
+                                                    <small class="text-muted">245 Contacts</small>
+                                                </div>
+                                            </div>
+                                        </div> <!-- .Card End -->
+                                    </div>
+                                    <div class="col">
+                                        <div class="card text-center overflow-visible">
+                                            <div class="dropdown morphing scale-left position-absolute top-0 end-0 mt-2 me-2">
+                                                @@include('widgets/_card-ellipsis-group.html')
+                                            </div>                                            
+                                            <div class="card-body d-flex align-items-center justify-content-between flex-column">
+                                                <div class="me-auto ms-auto py-4">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar1.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <div class="avatar rounded-circle m-1 lift d-inline-flex no-thumbnail">RH</div>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <h6 class="mb-0">San Fransisco</h6>
+                                                    <small class="text-muted">126 Contacts</small>
+                                                </div>
+                                            </div>
+                                        </div> <!-- .Card End -->
+                                    </div>
+                                    <div class="col">
+                                        <div class="card text-center overflow-visible">
+                                            <div class="dropdown morphing scale-left position-absolute top-0 end-0 mt-2 me-2">
+                                                @@include('widgets/_card-ellipsis-group.html')
+                                            </div>                                            
+                                            <div class="card-body d-flex align-items-center justify-content-between flex-column">
+                                                <div class="me-auto ms-auto py-4">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar6.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar7.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar8.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                    <img class="avatar rounded-circle m-1 lift" src="@@webRoot/assets/img/xs/avatar1.jpg" data-bs-toggle="tooltip" data-placement="top" title="" alt="" data-bs-original-title="Avatar Name" aria-label="Avatar Name">
+                                                </div>
+                                                <div class="mt-2">
+                                                    <h6 class="mb-0">Los Angeles</h6>
+                                                    <small class="text-muted">84 Contacts</small>
+                                                </div>
+                                            </div>
+                                        </div> <!-- .Card End -->
+                                    </div>
+                                </div> <!-- Row end  -->
+                            </div>
+                        </div>
+                        <!-- offcanvas: Profile Edit -->
+                        @@include('modals/_modal-profile-edit.html')
+                    </div>
+                </div> <!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    // project data table
+    $('#myStudents')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: true,
+        info: false,
+    });
+</script>
+</body>
+</html>

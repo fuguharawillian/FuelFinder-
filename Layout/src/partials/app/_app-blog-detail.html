@@ -1,0 +1,41 @@
+<!-- Blog: banner -->
+<div class="blog-banner py-4">
+    <div class="container">
+
+        <div class="row g-xl-4 g-3 row-deck">
+            <div class="col-12">
+                <div class="card overflow-hidden">
+                    @@include('blog/_blog-slider.html'})
+                </div>
+            </div>
+        </div> <!-- .row end -->
+
+    </div>
+</div>
+
+<!-- Blog: Latest posts -->
+<div class="blog-posts py-5">
+    <div class="container">
+
+        <div class="row g-4">
+            <div class="col-xl-8 col-lg-8 col-md-12">
+                @@include('blog/_blog-detail.html'})
+                @@include('blog/_blog-author.html'})
+                @@include('blog/_blog-comment.html'})
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-12">
+                @@include('blog/_blog-rightbar.html'})
+            </div>
+        </div> <!-- .row end -->
+
+    </div>
+</div>
+
+<!-- Blog: Trending Topics -->
+<div class="blog-topics py-5 bg-dark mb-5 border-bottom border-secondary border-3">
+    <div class="container">
+        
+        @@include('blog/_blog-topics.html'})
+
+    </div>
+</div>
