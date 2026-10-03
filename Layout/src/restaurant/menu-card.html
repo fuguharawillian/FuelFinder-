@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Restaurant Menu Card",
+        "dataTables": true
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-restaurant.html', {"page": "menu-card"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Menu</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row row-cols-xl-4 row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-1 g-3 mb-3">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-start">
+                                <div class="avatar rounded no-thumbnail">
+                                    <i class="fa fa-shopping-basket fa-lg"></i>
+                                </div>
+                                <div class="flex-fill ms-3">
+                                    <div class="fw-bold"><span class="h4 mb-0">401</span><span class="text-success ms-1">2.55% <i class="fa fa-caret-up"></i></span></div>
+                                    <div class="text-muted small">Total Orders</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-start">
+                                <div class="avatar rounded no-thumbnail">
+                                    <i class="fa fa-users fa-lg"></i>
+                                </div>
+                                <div class="flex-fill ms-3">
+                                    <div class="fw-bold"><span class="h4 mb-0">1089</span><span class="text-danger ms-1">1.05% <i class="fa fa-caret-down"></i></span></div>
+                                    <div class="text-muted small">Customers</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-start">
+                                <div class="avatar rounded no-thumbnail">
+                                    <i class="fa fa-cart-plus fa-lg"></i>
+                                </div>
+                                <div class="flex-fill ms-3">
+                                    <div class="fw-bold"><span class="h4 mb-0">56</span><span class="text-success ms-1">5.77% <i class="fa fa-caret-up"></i></span></div>
+                                    <div class="text-muted">New Order</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-start">
+                                <div class="avatar rounded no-thumbnail">
+                                    <i class="fa fa-dollar fa-lg"></i>
+                                </div>
+                                <div class="flex-fill ms-3">
+                                    <div class="fw-bold"><span class="h4 mb-0">$42k</span><span class="text-success ms-1">9.22% <i class="fa fa-caret-up"></i></span></div>
+                                    <div class="text-muted">Total Revenue</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Menu List</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <table class="table myDataTable card-table mb-0">
+                                <thead>
+                                    <tr>                                       
+                                        <th>ID:</th>
+                                        <th>Name</th>
+                                        <th>Division</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>LA-0011</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="@@webRoot/assets/img/fitness/food-1.jpg" class="rounded-circle avatar" alt="">
+                                                <h6 class="ms-3 mb-0">Capsicum, Onion Pizza</h6>
+                                            </div>
+                                        </td>
+                                        <td>Food</td>
+                                        <td>Starters</td>
+                                        <td>$50.5</td>
+                                        <td class="text-end">
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>LA-0211</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="@@webRoot/assets/img/fitness/food-2.jpg" class="rounded-circle avatar" alt="">
+                                                <h6 class="ms-3 mb-0">Roomali Roti with Paneer Tikka Masala</h6>
+                                            </div>
+                                        </td>
+                                        <td>Food</td>
+                                        <td>Starters</td>
+                                        <td>$100.5</td>
+                                        <td class="text-end">
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>LA-0211</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="@@webRoot/assets/img/fitness/food-3.jpg" class="rounded-circle avatar" alt="">
+                                                <h6 class="ms-3 mb-0">Chilli Garlic Noodles</h6>
+                                            </div>
+                                        </td>
+                                        <td>Food</td>
+                                        <td>Noodles</td>
+                                        <td>$88</td>
+                                        <td class="text-end">
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>LA-0211</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="@@webRoot/assets/img/fitness/food-1.jpg" class="rounded-circle avatar" alt="">
+                                                <h6 class="ms-3 mb-0">Fresh lime Water Sweet / Salt</h6>
+                                            </div>
+                                        </td>
+                                        <td>Beverages</td>
+                                        <td>Starters</td>
+                                        <td>$11</td>
+                                        <td class="text-end">
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>LA-0211</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="@@webRoot/assets/img/fitness/food-4.jpg" class="rounded-circle avatar" alt="">
+                                                <h6 class="ms-3 mb-0">Tomato Soup</h6>
+                                            </div>
+                                        </td>
+                                        <td>Food</td>
+                                        <td>Starters</td>
+                                        <td>$15</td>
+                                        <td class="text-end">
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>LA-0211</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="@@webRoot/assets/img/fitness/food-5.jpg" class="rounded-circle avatar" alt="">
+                                                <h6 class="ms-3 mb-0">Chocolate Almond Fudge</h6>
+                                            </div>
+                                        </td>
+                                        <td>Food</td>
+                                        <td>Ice Cream</td>
+                                        <td>$25</td>
+                                        <td class="text-end">
+                                            @@include('widgets/_card-ellipsis.html')
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> <!-- .card end -->
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true
+})
+<script>
+    // project data table
+    $('.myDataTable').addClass( 'nowrap' );
+    $('.myDataTable')
+    .dataTable( {
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: false,
+        info: false,
+    });
+</script>
+</body>
+</html>

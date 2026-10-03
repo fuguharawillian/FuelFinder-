@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Real-Estate Agencies",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-red">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-realestate.html', {"page": "agencies"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Agencies</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col d-flex justify-content-lg-end mt-2 mt-md-0">
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">8.18K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 1.3%</small></div>
+                            <small class="text-muted text-uppercase">Income</small>
+                        </div>
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">1.11K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 4.1%</small></div>
+                            <small class="text-muted text-uppercase">Expense</small>
+                        </div>
+                        <div class="p-2 pe-lg-0">
+                            <div><span class="h6 mb-0">3.66K</span> <small class="text-danger"><i class="fa fa-angle-down"></i> 7.5%</small></div>
+                            <small class="text-muted text-uppercase">Revenue</small>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row clearfix">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Agencies List</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body border-top">
+                                <table id="myAgencies" class="table dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Market(USD)</th>
+                                            <th>Contact</th>
+                                            <th>Agents</th>
+                                            <th>Sector</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <strong>NewYork Brothers inc.</strong>
+                                                <small class="text-muted d-block">123 6th St. Melbourne, FL 32904</small>
+                                            </td>
+                                            <td><span class="badge bg-success">105M <i class="fa fa-caret-up"></i></span></td>
+                                            <td>+245-854-8563</td>
+                                            <td>
+                                                <div class="team-members">
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar4.jpg" alt="Avatar"></a>
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar5.jpg" alt="Avatar"></a>
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar6.jpg" alt="Avatar"></a>
+                                                </div>
+                                            </td>
+                                            <td>Commercial</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>HFMT inc.</strong>
+                                                <small class="text-muted d-block">514 S. Magnolia St. Orlando, FL 32806</small>
+                                            </td>
+                                            <td><span class="badge bg-success">185M <i class="fa fa-caret-up"></i></span></td>
+                                            <td>+124-264-4523</td>
+                                            <td>
+                                                <div class="team-members">
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="Avatar"></a>
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar6.jpg" alt="Avatar"></a>
+                                                </div>
+                                            </td>
+                                            <td>Residential</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>GPO Realty Services.</strong>
+                                                <small class="text-muted d-block">70 Bowman St. South Windsor, CT 06074</small>
+                                            </td>
+                                            <td><span class="badge bg-danger">580M <i class="fa fa-caret-down"></i></span></td>
+                                            <td>+589-125-1425</td>
+                                            <td>
+                                                <div class="team-members">
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="Avatar"></a>
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar9.jpg" alt="Avatar"></a>
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar5.jpg" alt="Avatar"></a>
+                                                </div>
+                                            </td>
+                                            <td>Commercial</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Tommy Groups</strong>
+                                                <small class="text-muted d-block">215 6th St. Melbourne, FL 32904</small>
+                                            </td>
+                                            <td><span class="badge bg-danger">345M <i class="fa fa-caret-down"></i></span></td>
+                                            <td>+143-549-7823</td>
+                                            <td>
+                                                <div class="team-members">
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="Avatar"></a>
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar4.jpg" alt="Avatar"></a>
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar8.jpg" alt="Avatar"></a>
+                                                </div>
+                                            </td>
+                                            <td>Residential</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>SK Capital Partners</strong>
+                                                <small class="text-muted d-block">44 Shirley Ave. West Chicago, IL 60185</small>
+                                            </td>
+                                            <td><span class="badge bg-success">285M <i class="fa fa-caret-up"></i></span></td>
+                                            <td>+549-349-8541</td>
+                                            <td>
+                                                <div class="team-members">
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar9.jpg" alt="Avatar"></a>
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar6.jpg" alt="Avatar"></a>
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="Avatar"></a>
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="Avatar"></a>
+                                                </div>
+                                            </td>
+                                            <td>Commercial</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>TTM Realtor.</strong>
+                                                <small class="text-muted d-block">514 S. Magnolia St. Orlando, FL 32806</small>
+                                            </td>
+                                            <td><span class="badge bg-success">185M <i class="fa fa-caret-up"></i></span></td>
+                                            <td>+875-568-4523</td>
+                                            <td>
+                                                <div class="team-members">
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar9.jpg" alt="Avatar"></a>
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar7.jpg" alt="Avatar"></a>
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar5.jpg" alt="Avatar"></a>
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="Avatar"></a>
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="Avatar"></a>
+                                                </div>
+                                            </td>
+                                            <td>Residential</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>KK Realty Services.</strong>
+                                                <small class="text-muted d-block">70 Bowman St. South Windsor, CT 06074</small>
+                                            </td>
+                                            <td><span class="badge bg-danger">580M <i class="fa fa-caret-down"></i></span></td>
+                                            <td>+254-879-1425</td>
+                                            <td>
+                                                <div class="team-members">
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="Avatar"></a>
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar5.jpg" alt="Avatar"></a>
+                                                    <a href="#"><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar8.jpg" alt="Avatar"></a>
+                                                </div>
+                                            </td>
+                                            <td>Commercial</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables":true,
+})
+<script>
+    // project data table
+    $('#myAgencies')
+    .addClass('nowrap')
+    .dataTable({
+        responsive: true,
+        pageLength: 5,
+        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']]
+    });
+</script>
+</body>
+</html>

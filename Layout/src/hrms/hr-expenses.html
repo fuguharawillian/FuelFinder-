@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "HRMS Expenses",
+        "daterangepicker": true,
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-black">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hrms.html', {"page": "hr-expenses"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">Account</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Expenses</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card bg-transparent">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Expenses</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <table class="table myDataTable table-hover align-middle mb-0 card-table">
+                                    <thead>
+                                        <tr>                                       
+                                            <th>ID</th>
+                                            <th>Item Name</th>
+                                            <th>Purchase Source</th>
+                                            <th>Purchase Date</th>
+                                            <th>Purchase By</th>
+                                            <th>Quality</th>
+                                            <th>Amount</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>ZY-021</td>
+                                            <td>Stationery</td>
+                                            <td>Joy Stationary</td>
+                                            <td>9 Jan 2021</td>
+                                            <td>Cameron</td>
+                                            <td>21</td>
+                                            <td>$352</td>
+                                            <td><button type="button" class="btn btn-sm btn-white border" data-bs-toggle="modal" data-bs-target="#invoice_detail">Invoice</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZY-023</td>
+                                            <td>Table</td>
+                                            <td>Joy Stationary</td>
+                                            <td>7 Jan 2021</td>
+                                            <td>Orlando</td>
+                                            <td>4</td>
+                                            <td>$452</td>
+                                            <td><button type="button" class="btn btn-sm btn-white border" data-bs-toggle="modal" data-bs-target="#invoice_detail">Invoice</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZY-025</td>
+                                            <td>Sports equipment</td>
+                                            <td>Joy Stationary</td>
+                                            <td>12 Jan 2021</td>
+                                            <td>Orlando</td>
+                                            <td>26</td>
+                                            <td>$802</td>
+                                            <td><button type="button" class="btn btn-sm btn-white border" data-bs-toggle="modal" data-bs-target="#invoice_detail">Invoice</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZY-031</td>
+                                            <td>Water Bottle</td>
+                                            <td>Joy Stationary</td>
+                                            <td>11 Jan 2021</td>
+                                            <td>Cameron</td>
+                                            <td>15</td>
+                                            <td>$300</td>
+                                            <td><button type="button" class="btn btn-sm btn-white border" data-bs-toggle="modal" data-bs-target="#invoice_detail">Invoice</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZY-033</td>
+                                            <td>Chair</td>
+                                            <td>Joy Stationary</td>
+                                            <td>11 Dec 2020</td>
+                                            <td>Cameron</td>
+                                            <td>50</td>
+                                            <td>$1070</td>
+                                            <td><button type="button" class="btn btn-sm btn-white border" data-bs-toggle="modal" data-bs-target="#invoice_detail">Invoice</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZY-018</td>
+                                            <td>Laptop</td>
+                                            <td>Sony Center</td>
+                                            <td>13 Dec 2020</td>
+                                            <td>Cameron</td>
+                                            <td>11</td>
+                                            <td>$4052</td>
+                                            <td><button type="button" class="btn btn-sm btn-white border" data-bs-toggle="modal" data-bs-target="#invoice_detail">Invoice</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZY-028</td>
+                                            <td>Projector</td>
+                                            <td>Sony Center</td>
+                                            <td>16 Dec 2020</td>
+                                            <td>Rose</td>
+                                            <td>3</td>
+                                            <td>$752</td>
+                                            <td><button type="button" class="btn btn-sm btn-white border" data-bs-toggle="modal" data-bs-target="#invoice_detail">Invoice</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZY-039</td>
+                                            <td>Hard disk</td>
+                                            <td>Online</td>
+                                            <td>11 Jan 2021</td>
+                                            <td>Frank</td>
+                                            <td>1</td>
+                                            <td>$152</td>
+                                            <td><button type="button" class="btn btn-sm btn-white border" data-bs-toggle="modal" data-bs-target="#invoice_detail">Invoice</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZY-045</td>
+                                            <td>Desk</td>
+                                            <td>Sony Center</td>
+                                            <td>11 Jan 2021</td>
+                                            <td>Cameron</td>
+                                            <td>10</td>
+                                            <td>$1024</td>
+                                            <td><button type="button" class="btn btn-sm btn-white border" data-bs-toggle="modal" data-bs-target="#invoice_detail">Invoice</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZY-041</td>
+                                            <td>Table</td>
+                                            <td>Real Shop</td>
+                                            <td>14 Jan 2021</td>
+                                            <td>Brian</td>
+                                            <td>2</td>
+                                            <td>$105</td>
+                                            <td><button type="button" class="btn btn-sm btn-white border" data-bs-toggle="modal" data-bs-target="#invoice_detail">Invoice</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZY-026</td>
+                                            <td>Note books</td>
+                                            <td>Online</td>
+                                            <td>15 Jan 2021</td>
+                                            <td>Cameron</td>
+                                            <td>22</td>
+                                            <td>$403</td>
+                                            <td><button type="button" class="btn btn-sm btn-white border" data-bs-toggle="modal" data-bs-target="#invoice_detail">Invoice</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Modal: invoice detail -->
+                        @@include('modals/_modal-invoice-detail.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true
+})
+<script>
+    $('.myDataTable')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+    });
+</script>
+</body>
+</html>

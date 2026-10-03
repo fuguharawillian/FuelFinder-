@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Inventory Category",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-inventory.html', {"page": "category"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Category</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#add_category" type="button">Add Category</button>
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Date</a></li>
+                                        <li><a class="dropdown-item" href="#">Customer</a></li>
+                                        <li><a class="dropdown-item" href="#">Status</a></li>
+                                        <li><a class="dropdown-item" href="#">Biller</a></li>
+                                    </ul>
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <button class="btn btn-secondary" type="button">Search</button>
+                                </div>
+                            </div>
+                            <table id="myDataTable_no_filter" class="table card-table myDataTable mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Code</th>
+                                        <th>Category</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/ecommerce/1.png" alt="">
+                                                <div class="flex-fill ms-3">
+                                                    <div class="mb-0 h6">Organic Cream</div>
+                                                    <span class="text-muted small">This is test Product</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>P0122</td>
+                                        <td>Beauty</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>
+                                            <a href="javascript:void(0);"
+                                                class="d-flex align-items-center link-secondary">
+                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/ecommerce/2.png"
+                                                    alt="">
+                                                <div class="flex-fill ms-3">
+                                                    <div class="mb-0 h6">WD My Passport 1 TB External Hard Disk Drive
+                                                    </div>
+                                                    <span class="text-muted small">This is test Product</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>P0165</td>
+                                        <td>Grocery</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/ecommerce/3.png" alt="">
+                                                <div class="flex-fill ms-3">
+                                                    <div class="mb-0 h6">Serum Bottle </div>
+                                                    <span class="text-muted small">This is test Product</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>P0185</td>
+                                        <td>Food</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/ecommerce/4.png" alt="">
+                                                <div class="flex-fill ms-3">
+                                                    <div class="mb-0 h6">Mi 4A 100 cm (40 inch) Full HD</div>
+                                                    <span class="text-muted small">This is test Product</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>P0122</td>
+                                        <td>Beauty</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/ecommerce/5.png" alt="">
+                                                <div class="flex-fill ms-3">
+                                                    <div class="mb-0 h6">Organic Cream</div>
+                                                    <span class="text-muted small">This is test Product</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>P0165</td>
+                                        <td>Fashion</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="d-flex align-items-center link-secondary">
+                                                <img class="avatar rounded-circle" src="@@webRoot/assets/img/ecommerce/6.png" alt="">
+                                                <div class="flex-fill ms-3">
+                                                    <div class="mb-0 h6">Serum Bottle </div>
+                                                    <span class="text-muted small">This is test Product</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>P0185</td>
+                                        <td>Electronics</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Modal: Add Category -->
+                        @@include('modals/_modal-add-category.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    // DataTable
+    $('#myDataTable_no_filter')
+    .addClass('nowrap')
+    .dataTable({
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: false,
+        info: false,
+    });
+</script>
+</body>
+</html>

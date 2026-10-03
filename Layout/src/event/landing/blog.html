@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Landing Page Blog",
+        "fancybox": true,
+    })
+</head>
+
+<body class="landing-page" data-luno="theme-cyan">
+    
+    <!-- Header  -->
+    <header class="section sticky-top bg-card py-0">
+        @@include('onepage/_navbar.html', {
+            "navbarClass": "navbar-expand-lg navbar-light py-3",
+            "brandName": "LUNO",
+            "tagLine": "Fitness & Health Studio",
+        })
+    </header>
+
+    @@include('app/_app-blog.html')
+
+    <!-- Section: Footer -->
+    @@include('onepage/_footer.html', {
+        "sectionClass": "footer",
+        "rowClass": "g-2",
+        "SectionTag": "Contact Information",
+        "SectionTitle": "Get in touch",
+    })
+    
+    <!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+    <a class="page-setting" href="#" title="Settings" data-bs-toggle="modal" data-bs-target="#SettingsModal"><i class="fa fa-gear text-light"></i></a>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fa fa-arrow-up"></i></a>
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "fancybox": true
+})
+<script>
+    /*	end gallery */
+    $(document).ready(function() {
+        $(".fancybox").fancybox({
+            openEffect: "none",
+            closeEffect: "none"
+        });
+    });
+</script>
+</body>
+</html>

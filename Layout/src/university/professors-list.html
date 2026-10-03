@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "University Professor List",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-indigo">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-university.html', {"page": "professors-list"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">Professor</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">List</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card fieldset border border-primary">
+                            <span class="fieldset-tile text-primary bg-body">Professors List</span>
+                            <div class="row g-3">
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="member-thumb">
+                                                <img src="@@webRoot/assets/img/lg/avatar1.jpg" class="img-fluid rounded" alt="profile-image">                               
+                                            </div>
+                                            <div class="detail mt-3">
+                                                <h4 class="mb-0">Pro. John</h4>
+                                                <p class="text-muted">Mathematics</p>
+                                                <ul class="list-unstyled d-flex mt-2">
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                                                </ul>
+                                                <p class="text-muted">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>                           
+                                                <a href="professors-profile.html" class="btn btn-outline-secondary">View Profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="member-thumb">
+                                                <img src="@@webRoot/assets/img/lg/avatar2.jpg" class="img-fluid rounded" alt="profile-image">                               
+                                            </div>
+                                            <div class="detail mt-3">
+                                                <h4 class="mb-0">Pro. Amelia</h4>
+                                                <p class="text-muted">Architecture</p>
+                                                <ul class="list-unstyled d-flex mt-2">
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                                                </ul>
+                                                <p class="text-muted">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>                           
+                                                <a href="professors-profile.html" class="btn btn-outline-secondary">View Profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="member-thumb">
+                                                <img src="@@webRoot/assets/img/lg/avatar3.jpg" class="img-fluid rounded" alt="profile-image">                               
+                                            </div>
+                                            <div class="detail mt-3">
+                                                <h4 class="mb-0">Pro. Jack </h4>
+                                                <p class="text-muted">Civil Engineering</p>
+                                                <ul class="list-unstyled d-flex mt-2">
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                                                </ul>
+                                                <p class="text-muted">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>                           
+                                                <a href="professors-profile.html" class="btn btn-outline-secondary">View Profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="member-thumb">
+                                                <img src="@@webRoot/assets/img/lg/avatar4.jpg" class="img-fluid rounded" alt="profile-image">                               
+                                            </div>
+                                            <div class="detail mt-3">
+                                                <h4 class="mb-0">Pro. Jessica </h4>
+                                                <p class="text-muted">Chemistry</p>
+                                                <ul class="list-unstyled d-flex mt-2">
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                                                </ul>
+                                                <p class="text-muted">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>                           
+                                                <a href="professors-profile.html" class="btn btn-outline-secondary">View Profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="member-thumb">
+                                                <img src="@@webRoot/assets/img/lg/avatar5.jpg" class="img-fluid rounded" alt="profile-image">                               
+                                            </div>
+                                            <div class="detail mt-3">
+                                                <h4 class="mb-0">Pro. Joseph </h4>
+                                                <p class="text-muted">Biology</p>
+                                                <ul class="list-unstyled d-flex mt-2">
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                                                </ul>
+                                                <p class="text-muted">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>                           
+                                                <a href="professors-profile.html" class="btn btn-outline-secondary">View Profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="member-thumb">
+                                                <img src="@@webRoot/assets/img/lg/avatar6.jpg" class="img-fluid rounded" alt="profile-image">                               
+                                            </div>
+                                            <div class="detail mt-3">
+                                                <h4 class="mb-0">Pro. Charlie </h4>
+                                                <p class="text-muted">Manegment</p>
+                                                <ul class="list-unstyled d-flex mt-2">
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                                                </ul>
+                                                <p class="text-muted">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>                           
+                                                <a href="professors-profile.html" class="btn btn-outline-secondary">View Profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="member-thumb">
+                                                <img src="@@webRoot/assets/img/lg/avatar7.jpg" class="img-fluid rounded" alt="profile-image">                               
+                                            </div>
+                                            <div class="detail mt-3">
+                                                <h4 class="mb-0">Pro. William </h4>
+                                                <p class="text-muted">Computer Engineering</p>
+                                                <ul class="list-unstyled d-flex mt-2">
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                                                </ul>
+                                                <p class="text-muted">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>                           
+                                                <a href="professors-profile.html" class="btn btn-outline-secondary">View Profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="member-thumb">
+                                                <img src="@@webRoot/assets/img/lg/avatar8.jpg" class="img-fluid rounded" alt="profile-image">                               
+                                            </div>
+                                            <div class="detail mt-3">
+                                                <h4 class="mb-0">Pro. Sophie </h4>
+                                                <p class="text-muted">Mathematics</p>
+                                                <ul class="list-unstyled d-flex mt-2">
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                                                </ul>
+                                                <p class="text-muted">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>                           
+                                                <a href="professors-profile.html" class="btn btn-outline-secondary">View Profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "eCommerce Product All",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-ecommerce.html', {"page": "product-all"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item">Product</li>
+                            <li class="breadcrumb-item active" aria-current="page">Product Grid</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col d-flex justify-content-lg-end mt-2 mt-md-0">
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">8.18K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 1.3%</small></div>
+                            <small class="text-muted text-uppercase">Income</small>
+                        </div>
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">1.11K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 4.1%</small></div>
+                            <small class="text-muted text-uppercase">Expense</small>
+                        </div>
+                        <div class="p-2 pe-lg-0">
+                            <div><span class="h6 mb-0">3.66K</span> <small class="text-danger"><i class="fa fa-angle-down"></i> 7.5%</small></div>
+                            <small class="text-muted text-uppercase">Revenue</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-lg-3 col-md-4 col-sm-12">
+                        <div class="card product-card">
+                            <div class="card-body">
+                                <div class="product-img text-center">
+                                    <img src="@@webRoot/assets/img/ecommerce/1.png" class="img-fluid" alt="">
+                                    <div class="btn-hover text-center">
+                                        <button class="btn btn-primary me-1"><i class="fa fa-plus"></i></button>
+                                        <button class="btn btn-primary cart-btn"><i class="fa fa-shopping-cart"></i></button>
+                                    </div>
+                                </div>
+                                <div class="product-detail text-center pt-3">
+                                    <h6><a href="product-detail.html"><strong class="text-capitalize">Decoration Item</strong></a></h6>
+                                    <h6 class="mb-0"><del class="me-2">$25</del> <mark>$18</mark></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-12">
+                        <div class="card product-card">
+                            <div class="card-body">
+                                <div class="product-img text-center">
+                                    <img src="@@webRoot/assets/img/ecommerce/2.png" class="img-fluid" alt="">
+                                    <div class="btn-hover text-center">
+                                        <button class="btn btn-primary me-1"><i class="fa fa-plus"></i></button>
+                                        <button class="btn btn-primary cart-btn"><i class="fa fa-shopping-cart"></i></button>
+                                    </div>
+                                </div>
+                                <div class="product-detail text-center pt-3">
+                                    <h6><a href="product-detail.html"><strong class="text-capitalize">Wooden Chair - Black</strong></a></h6>
+                                    <h6 class="mb-0"><del class="me-2">$25</del> <mark>$18</mark></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-12">
+                        <div class="card product-card">
+                            <div class="card-body">
+                                <div class="product-img text-center">
+                                    <img src="@@webRoot/assets/img/ecommerce/3.png" class="img-fluid" alt="">
+                                    <div class="btn-hover text-center">
+                                        <button class="btn btn-primary me-1"><i class="fa fa-plus"></i></button>
+                                        <button class="btn btn-primary cart-btn"><i class="fa fa-shopping-cart"></i></button>
+                                    </div>
+                                </div>
+                                <div class="product-detail text-center pt-3">
+                                    <h6><a href="product-detail.html"><strong class="text-capitalize">Wall Clock</strong></a></h6>
+                                    <h6 class="mb-0"><del class="me-2">$25</del> <mark>$18</mark></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-12">
+                        <div class="card product-card">
+                            <div class="card-body">
+                                <div class="product-img text-center">
+                                    <img src="@@webRoot/assets/img/ecommerce/4.png" class="img-fluid" alt="">
+                                    <div class="btn-hover text-center">
+                                        <button class="btn btn-primary me-1"><i class="fa fa-plus"></i></button>
+                                        <button class="btn btn-primary cart-btn"><i class="fa fa-shopping-cart"></i></button>
+                                    </div>
+                                </div>
+                                <div class="product-detail text-center pt-3">
+                                    <h6><a href="product-detail.html"><strong class="text-capitalize">traveller bag</strong></a></h6>
+                                    <h6 class="mb-0"><del class="me-2">$25</del> <mark>$18</mark></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-12">
+                        <div class="card product-card">
+                            <div class="card-body">
+                                <div class="product-img text-center">
+                                    <img src="@@webRoot/assets/img/ecommerce/5.png" class="img-fluid" alt="">
+                                    <div class="btn-hover text-center">
+                                        <button class="btn btn-primary me-1"><i class="fa fa-plus"></i></button>
+                                        <button class="btn btn-primary cart-btn"><i class="fa fa-shopping-cart"></i></button>
+                                    </div>
+                                </div>
+                                <div class="product-detail text-center pt-3">
+                                    <h6><a href="product-detail.html"><strong class="text-capitalize">Water Jug</strong></a></h6>
+                                    <h6 class="mb-0"><del class="me-2">$25</del> <mark>$18</mark></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-12">
+                        <div class="card product-card">
+                            <div class="card-body">
+                                <div class="product-img text-center">
+                                    <img src="@@webRoot/assets/img/ecommerce/6.png" class="img-fluid" alt="">
+                                    <div class="btn-hover text-center">
+                                        <button class="btn btn-primary me-1"><i class="fa fa-plus"></i></button>
+                                        <button class="btn btn-primary cart-btn"><i class="fa fa-shopping-cart"></i></button>
+                                    </div>
+                                </div>
+                                <div class="product-detail text-center pt-3">
+                                    <h6><a href="product-detail.html"><strong class="text-capitalize">Wooden Decoration</strong></a></h6>
+                                    <h6 class="mb-0"><del class="me-2">$25</del> <mark>$18</mark></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-12">
+                        <div class="card product-card">
+                            <div class="card-body">
+                                <div class="product-img text-center">
+                                    <img src="@@webRoot/assets/img/ecommerce/7.png" class="img-fluid" alt="">
+                                    <div class="btn-hover text-center">
+                                        <button class="btn btn-primary me-1"><i class="fa fa-plus"></i></button>
+                                        <button class="btn btn-primary cart-btn"><i class="fa fa-shopping-cart"></i></button>
+                                    </div>
+                                </div>
+                                <div class="product-detail text-center pt-3">
+                                    <h6><a href="product-detail.html"><strong class="text-capitalize">Laptop Pouch</strong></a></h6>
+                                    <h6 class="mb-0"><del class="me-2">$25</del> <mark>$18</mark></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-12">
+                        <div class="card product-card">
+                            <div class="card-body">
+                                <div class="product-img text-center">
+                                    <img src="@@webRoot/assets/img/ecommerce/8.png" class="img-fluid" alt="">
+                                    <div class="btn-hover text-center">
+                                        <button class="btn btn-primary me-1"><i class="fa fa-plus"></i></button>
+                                        <button class="btn btn-primary cart-btn"><i class="fa fa-shopping-cart"></i></button>
+                                    </div>
+                                </div>
+                                <div class="product-detail text-center pt-3">
+                                    <h6><a href="product-detail.html"><strong class="text-capitalize">stationery pouch</strong></a></h6>
+                                    <h6 class="mb-0"><del class="me-2">$25</del> <mark>$18</mark></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

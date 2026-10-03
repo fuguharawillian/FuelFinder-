@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "HRMS Client List",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-black">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hrms.html', {"page": "client-list"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Client</li>
+                            <li class="breadcrumb-item active" aria-current="page">List</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Client List</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <table class="table myDataTable table-hover align-middle mb-0 card-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Project</th>
+                                            <th>Payments</th>
+                                            <th>Hired</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>CL-0215</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-2">
+                                                        <div class="mb-0">Marshall Nichols</div>
+                                                        <span class="text-muted">vPro Infoweb LLC. (Australia)</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>Completed:<span class="fw-bold ms-1">45</span></div>
+                                                <div>In progress:<span class="fw-bold ms-1">17</span></div>
+                                            </td>
+                                            <td>
+                                                <div>Paid:<span class="fw-bold ms-1">$48,021</span></div>
+                                                <div>Unpaid:<span class="fw-bold ms-1 text-danger">$2,500</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold">12 (Developers)</div>
+                                                <small>$20 / hour</small>
+                                            </td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td class="project-actions">
+                                                <a href="@@webRoot/client-detail.html" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-secondary"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CL-0248</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar2.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-2">
+                                                        <div class="mb-0">Maryam Amiri</div>
+                                                        <span class="text-muted">BT Technology (USA)</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>Completed:<span class="fw-bold ms-1">33</span></div>
+                                                <div>In progress:<span class="fw-bold ms-1">7</span></div>
+                                            </td>
+                                            <td>
+                                                <div>Paid:<span class="fw-bold ms-1">$35,500</span></div>
+                                                <div>Unpaid:<span class="fw-bold ms-1 text-danger">$4,800</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold">8 (Developers)</div>
+                                                <small>$22 / hour</small>
+                                            </td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td class="project-actions">
+                                                <a href="@@webRoot/client-detail.html" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-secondary"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CL-0269</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-2">
+                                                        <div class="mb-0">Tim Hank</div>
+                                                        <span class="text-muted">AUR Tech LLC. (Germany)</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>Completed:<span class="fw-bold ms-1">19</span></div>
+                                                <div>In progress:<span class="fw-bold ms-1">8</span></div>
+                                            </td>
+                                            <td>
+                                                <div>Paid:<span class="fw-bold ms-1">$26,000</span></div>
+                                                <div>Unpaid:<span class="fw-bold ms-1 text-danger">$3,750</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold">9 (Developers)</div>
+                                                <small>$16 / hour</small>
+                                            </td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td class="project-actions">
+                                                <a href="@@webRoot/client-detail.html" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-secondary"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CL-0258</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar4.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-2">
+                                                        <div class="mb-0">Frank Camly</div>
+                                                        <span class="text-muted">Core Infoweb Pvt. (USA)</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>Completed:<span class="fw-bold ms-1">23</span></div>
+                                                <div>In progress:<span class="fw-bold ms-1">5</span></div>
+                                            </td>
+                                            <td>
+                                                <div>Paid:<span class="fw-bold ms-1">$19,021</span></div>
+                                                <div>Unpaid:<span class="fw-bold ms-1 text-danger">$4,500</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold">6 (Developers)</div>
+                                                <small>$18 / hour</small>
+                                            </td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td class="project-actions">
+                                                <a href="@@webRoot/client-detail.html" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-secondary"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CL-0345</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar5.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-2">
+                                                        <div class="mb-0">Gary Camara</div>
+                                                        <span class="text-muted">Fly2 Infotech (Netherlands)</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>Completed:<span class="fw-bold ms-1">33</span></div>
+                                                <div>In progress:<span class="fw-bold ms-1">21</span></div>
+                                            </td>
+                                            <td>
+                                                <div>Paid:<span class="fw-bold ms-1">$81,000</span></div>
+                                                <div>Unpaid:<span class="fw-bold ms-1 text-danger">$10,500</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold">18 (Developers)</div>
+                                                <small>$24 / hour</small>
+                                            </td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td class="project-actions">
+                                                <a href="@@webRoot/client-detail.html" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-secondary"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CL-0218</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@@webRoot/assets/img/xs/avatar6.jpg" class="rounded-circle avatar" alt="">
+                                                    <div class="ms-2">
+                                                        <div class="mb-0">John Smith</div>
+                                                        <span class="text-muted">Carlson Software (Italy)</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>Completed:<span class="fw-bold ms-1">22</span></div>
+                                                <div>In progress:<span class="fw-bold ms-1">8</span></div>
+                                            </td>
+                                            <td>
+                                                <div>Paid:<span class="fw-bold ms-1">$28,021</span></div>
+                                                <div>Unpaid:<span class="fw-bold ms-1 text-danger">$3,000</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold">7 (Developers)</div>
+                                                <small>$16 / hour</small>
+                                            </td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td class="project-actions">
+                                                <a href="@@webRoot/client-detail.html" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-secondary"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables":true,
+})
+<script>
+    $('.myDataTable')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+    });
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Summernote",
+        "summernote": true
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "plugin-summernote"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Summernote</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="plugin-jsgrid.html"><i class="fa fa-long-arrow-left me-2"></i>jsgrid</a>
+                        <a class="btn btn-secondary" href="plugin-owlcarousel.html">owlcarousel<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+
+                <div class="row clearfix">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Summernote</h6>
+                            </div>
+                            <div class="card-body">
+                                <h6>Super simple WYSIWYG Editor.</h6>
+                                <p class="fs-6">Summernote is a JavaScript library that helps you create WYSIWYG editors online. <a href="https://summernote.org" rel="nofollow">https://summernote.org</a></p>
+                                <h6>Installation and dependencies</h6>
+                                <p>Summernote is built on <a href="http://jquery.com/" rel="nofollow">jQuery</a>.</p>
+                            </div>
+                            <div class="card-body pt-0">
+<pre class=" language-html m-0" data-lang="html"><code class=" language-html">&lt;!-- plugin css file  --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/bundles/summernote.min.css&quot;/&gt;
+
+&lt;!-- Plugin Js --&gt;
+&lt;script src=&quot;../assets/bundles/summernote.bundle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Page Js --&gt;
+&lt;script&gt;
+    $(document).ready(function() {
+        $('.summernote').summernote();
+        $('.note-editor .note-btn').on('click',function(){
+            $(this).next().toggleClass(&quot;show&quot;);
+        });
+    }); 
+&lt;/script&gt;
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <div class="summernote">
+                            Hello there,
+                            <br/>
+                            <p>The toolbar can be customized and it also supports various callbacks such as <code>oninit</code>, <code>onfocus</code>, <code>onpaste</code> and many more.</p>
+                            <p>Please try <b>paste some texts</b> here</p>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="plugin-jsgrid.html"><i class="fa fa-long-arrow-left me-3"></i>JsGrid Table</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="plugin-owlcarousel.html">Owl Carousel<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Core Js -->
+@@include('docs/_scripts.html',{
+    "summernote": true
+})
+<script>
+    $(document).ready(function() {
+        $('.summernote').summernote();
+        $('.note-editor .note-btn').on('click',function(){
+            $(this).next().toggleClass("show");
+        });
+    }); 
+</script>
+</body>
+</html>

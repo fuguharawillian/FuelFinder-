@@ -1,0 +1,1 @@
+[/plan](slashCommand;plan) Atue como um especialista em engenharia de software com IA e a partir dos 4 arquivos architecture.md, business-rules.md, standards.md e tech-stack.md onde estão definidos a estrutura, regras, intruções e contexto do projeto. Monte um plano de desenvolvimendo do aplicativo dentro de uma pasta com nome "Plano" no diretório do projeto.

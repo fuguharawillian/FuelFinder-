@@ -1,0 +1,132 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Full Calendar",
+        "fullcalendar": true
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "plugin-fullcalendar"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Fullcalendar</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="plugin-typedjs.html"><i class="fa fa-long-arrow-left me-2"></i>Typedjs</a>
+                        <a class="btn btn-secondary" href="plugin-countup.html">Countup<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Fullcalendar</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="fs-5">FullCalendar is a full-sized drag &amp; drop event calendar. This packages is an easily consumable combination of standard plugins. It makes the root namespace available as the <code>FullCalendar</code> browser global. <a href="https://fullcalendar.io/docs/getting-started" rel="nofollow">View the docs »</a></p>
+                            </div>
+                            <div class="card-body pt-0">
+<pre class=" language-html m-0" data-lang="html"><code class=" language-html">&lt;!-- plugin css file  --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/bundles/fullcalendar.min.css&quot;&gt;
+
+&lt;!-- Plugin Js --&gt;
+&lt;script src=&quot;assets/bundles/fullcalendar.bundle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Jquery Page Js --&gt;
+&lt;script&gt;
+    document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('my_calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        timeZone: 'UTC',
+        initialView: 'dayGridMonth',
+        events: 'https://fullcalendar.io/demo-events.json',
+        editable: true,
+        selectable: true
+    });
+
+    calendar.render();
+    });
+&lt;/script&gt;
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-2 mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body" id='my_calendar'></div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="plugin-typedjs.html"><i class="fa fa-long-arrow-left me-3"></i>typedjs</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="plugin-countup.html">Count Up<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Core Js -->
+@@include('docs/_scripts.html',{
+    "fullcalendar": true
+})
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('my_calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        timeZone: 'UTC',
+        initialView: 'dayGridMonth',
+        events: 'https://fullcalendar.io/demo-events.json',
+        editable: true,
+        selectable: true
+    });
+
+    calendar.render();
+    });
+</script>
+</body>
+</html>

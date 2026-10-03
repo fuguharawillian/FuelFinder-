@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Real-Estate Construction Site",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-red">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-realestate.html', {"page": "centres"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Our Construction Site</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col d-flex justify-content-lg-end mt-2 mt-md-0">
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">8.18K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 1.3%</small></div>
+                            <small class="text-muted text-uppercase">Income</small>
+                        </div>
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">1.11K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 4.1%</small></div>
+                            <small class="text-muted text-uppercase">Expense</small>
+                        </div>
+                        <div class="p-2 pe-lg-0">
+                            <div><span class="h6 mb-0">3.66K</span> <small class="text-danger"><i class="fa fa-angle-down"></i> 7.5%</small></div>
+                            <small class="text-muted text-uppercase">Revenue</small>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card fieldset border border-primary">
+                            <span class="fieldset-tile text-primary bg-body">Construction Site</span>
+                            <div class="row g-2 row-deck">
+                                <div class="col-lg-2 col-md-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <i class="fa fa-map-marker"></i>
+                                            <h5>370</h5>
+                                            <p class="mb-0">America</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <i class="fa fa-map-marker"></i>
+                                            <h5>215</h5>
+                                            <p class="mb-0">Australia</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <i class="fa fa-map-marker"></i>
+                                            <h5>347</h5>
+                                            <p class="mb-0">Canada</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <i class="fa fa-map-marker"></i>
+                                            <h5>295</h5>
+                                            <p class="mb-0">India</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <i class="fa fa-map-marker"></i>
+                                            <h5>185</h5>
+                                            <p class="mb-0">UK</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <i class="fa fa-map-marker"></i>
+                                            <h5>80</h5>
+                                            <p class="mb-0">Other</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=+()&amp;t=p&amp;z=13&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

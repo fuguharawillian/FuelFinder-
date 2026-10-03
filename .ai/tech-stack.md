@@ -1,103 +1,78 @@
-# Stack Tecnológica e Bibliotecas Permitidas — FuelFinder
+# Stack Tecnológica — FuelFinder
 
-Este documento define expressamente as versões de runtime, frameworks, dependências aprovadas e ferramentas permitidas para o desenvolvimento da plataforma **FuelFinder**.
+Este documento detalha o conjunto oficial de tecnologias, frameworks, bibliotecas homologadas e decisões de infraestrutura para o desenvolvimento da plataforma **FuelFinder**. 
 
----
-
-## 1. Runtime e Linguagem
-
-| Componente | Versão Aprovada | Finalidade / Justificativa |
-| :--- | :--- | :--- |
-| **Java JDK** | **Java 25** (OpenJDK / Eclipse Temurin) | Runtime da aplicação com suporte a Virtual Threads de alta performance, Records modernos e Pattern Matching. |
-| **Build Tool** | **Maven 3.9+** (ou Gradle 8.10+) | Gerenciamento de dependências e automação de build contínuo. |
-| **Encoding** | **UTF-8** | Padrão obrigatório para todo o código-fonte e recursos. |
+O objetivo desta revisão é consolidar as escolhas técnicas para fornecer uma **base pronta para implementação na próxima aula**, sanando indefinições e respeitando rigorosamente a especificação do projeto.
 
 ---
 
-## 2. Framework Principal: Spring Boot Ecosystem
+## 1. Classificação Geral das Tecnologias
 
-| Módulo / Starter | Versão | Descrição de Uso |
-| :--- | :--- | :--- |
-| **Spring Boot** | **3.4.x / 3.5.x** | Core do backend monolítico modular. |
-| **spring-boot-starter-web** | Versão do BOM | Exposição das APIs REST HTTP com suporte a Tomcat embarcado. |
-| **spring-boot-starter-security** | Versão do BOM | Autenticação, autorização de rotas e filtros de segurança RBAC. |
-| **spring-boot-starter-data-jpa** | Versão do BOM | Mapeamento objeto-relacional com Hibernate 6.6+. |
-| **spring-boot-starter-validation**| Versão do BOM | Validação declarativa de entrada via Jakarta Bean Validation. |
-| **spring-boot-starter-actuator**  | Versão do BOM | Métricas, health checks (`/actuator/health`) e observabilidade. |
+A matriz tecnológica está estruturada em três níveis:
+
+1. **Definidas na Especificação:** Tecnologias e bibliotecas explicitamente determinadas na especificação e diretrizes da aula.
+2. **Homologadas para Implementação (Base da Próxima Aula):** Escolhas de engenharia padronizadas para sanar as decisões técnicas em aberto (versões de Java, Spring Boot, PostgreSQL, libs de JWT e migração), permitindo iniciar o desenvolvimento sem bloqueios.
+3. **Pós-MVP / Em Avaliação:** Recursos e componentes reservados para expansões futuras (ex.: PostGIS avançado, OCR com IA para fotos de totens de combustível).
 
 ---
 
-## 3. Spring AI (Mecanismo de Inteligência Artificial)
+## 2. Matriz Consolidada da Stack Tecnológica
 
-| Dependência | Versão | Finalidade |
-| :--- | :--- | :--- |
-| **spring-ai-bom** | **1.0.0-M6** (ou mais recente) | Alinhamento de dependências do ecossistema Spring AI. |
-| **spring-ai-google-genai-spring-boot-starter** *(ou Vertex AI / OpenAI)* | Versão do BOM | Integração com Gemini API para geração de recomendações personalizadas, análise de sentimento em avaliações e comparações contextuais. |
-
-### Configuração de IA Recomendada:
-- **Modelo Base**: `gemini-1.5-flash` / `gemini-2.0-flash` para baixa latência em respostas da API.
-- **Temperatura**: `0.2` a `0.4` para recomendações determinísticas e consistentes sobre custo-benefício.
-
----
-
-## 4. Persistência de Dados e Suporte Geoespacial
-
-| Tecnologia / Driver | Versão | Justificativa |
-| :--- | :--- | :--- |
-| **PostgreSQL** | **16+ / 17+** | Banco de dados relacional principal da aplicação. |
-| **PostGIS** | **3.4+** | Extensão geoespacial para cálculos de raio (`ST_DWithin`) e ordenação esferoidal de distância. |
-| **postgresql** (Driver JDBC) | Versão gerenciada | Driver oficial de conexão com o banco. |
-| **hibernate-spatial** | Versão compatível com Hibernate 6.6+ | Suporte a tipos geométricos (`org.locationtech.jts.geom.Point`) em entidades JPA. |
-| **jts-core** | **1.19+** | Biblioteca Java Topology Suite para manipulação de coordenadas espaciais. |
-| **Flyway** (`flyway-core`, `flyway-database-postgresql`) | **10.x+** | Migrações e versionamento estruturado do esquema do banco de dados. |
-| **HikariCP** | Gerenciado | Pool de conexões JDBC de alta performance padrão do Spring Boot. |
-
----
-
-## 5. Segurança, Criptografia e Autenticação
-
-| Biblioteca | Versão | Finalidade |
-| :--- | :--- | :--- |
-| **jjwt-api**, **jjwt-impl**, **jjwt-jackson** | **0.12.6+** | Criação, assinatura (HMAC-SHA256) e decodificação de tokens JWT. |
-| **BCryptPasswordEncoder** | Nativo Spring Security | Algoritmo obrigatório para hash de senhas de usuários (fator de custo 12). |
+| Categoria | Tecnologia | Versão Homologada | Status | Finalidade / Justificativa |
+| :--- | :--- | :--- | :--- | :--- |
+| **Linguagem / Runtime** | **Java (JDK)** | **21 LTS** | Homologada | Recursos modernos da linguagem (Records, Pattern Matching, Virtual Threads), suporte LTS estável e compatibilidade plena com o ecossistema Spring. |
+| **Framework Backend** | **Spring Boot** | **3.4.x** | Homologada | Núcleo do monólito modular, suporte nativo a REST, injeção de dependência e alta produtividade. |
+| **Build & Dependências** | **Maven** | **3.9+** | Homologada | Gerenciamento padronizado de ciclo de vida, dependências e plugins. |
+| **Banco de Dados Relacional**| **PostgreSQL** | **16+** | Definida | SGBD relacional para consistência ACID, alta performance em cargas volumosas (ANP) e suporte a funções matemáticas de distância. |
+| **Migração de Banco** | **Flyway** | **10.x+** | Homologada | Versionamento declarativo e reprodutível do esquema de banco de dados (`V1__initial_schema.sql`). |
+| **Biblioteca de Mapas** | **Leaflet** | **1.9.4** | Definida | Visualização cartográfica interativa, leve, gratuita e responsiva no navegador. |
+| **Provedor de Mapas** | **OpenStreetMap** | — | Definida | Camada de tiles gratuita e aberta consumida diretamente pelo Leaflet sem custos de licença no MVP. |
+| **Estrutura Frontend** | **HTML5 Semântico + CSS3** | Padrão W3C | Definida | Interface web responsiva para dispositivos móveis e desktop, com conformidade WCAG/W3C. |
+| **Estilização frontend** | **Bootstrap 5 via CDN + CSS próprio** | **5.2.3** | Implementada; validação visual ampla pendente | Substitui Tailwind nas telas; adaptação da identidade visual LUNO conforme [`../Plano/09-frontend-integracao.md`](../Plano/09-frontend-integracao.md). Não carregar os dois frameworks simultaneamente. |
+| **Scripts Frontend** | **Vanilla JavaScript** | **ES2023+** | Homologada | Modularidade nativa, consumo da API Fetch, manipulação do Leaflet e captura da Geolocation API. |
+| **Autenticação & Token** | **JWT (JJWT)** | **0.12.6+** | Homologada | Access JWT de curta duração com assinatura HMAC-SHA256 e sessões server-side para rotação e revogação de refresh tokens. |
+| **Segurança Backend** | **Spring Security** | **6.4+** | Homologada | Proteção de rotas com RBAC (`ROLE_DRIVER` e `ROLE_ADMIN`), filtros de segurança e hash BCrypt com custo mínimo 12; senha exige maiúscula, minúscula, número e caractere especial. |
+| **Persistência / ORM** | **Spring Data JPA / Hibernate**| **6.6+** | Homologada | Mapeamento objeto-relacional, repositórios com queries derivadas e projeções DTO de alta performance. |
+| **Validação de Entrada** | **Jakarta Bean Validation** | **3.0+** | Homologada | Validação declarativa de invariantes de negócio nos DTOs de entrada (`@NotNull`, `@Size`, `@Positive`). |
+| **Documentação da API** | **Springdoc OpenAPI (Swagger)** | **2.7.x** | Homologada | Documentação viva interativa acessível via `/swagger-ui.html` para testes e alinhamento de contratos REST. |
+| **Navegação Veicular** | **Google Maps / Waze** | Deep Links | Definida | Redirecionamento externo via botão "Rotas" com coordenadas geográficas do posto selecionado. |
+| **Fonte Primária de Dados** | **ANP - Dados Abertos** | Séries semestrais | Definida | Arquivo histórico oficial de postos e preços revendedores, disponível como CSV/TSV ou ZIP contendo CSV; o período será informado por ano e semestre em campos separados. |
+| **IA / Recomendações** | **Spring AI (adaptador opcional)** | Provedor/modelo pendentes | Pendente de aprovação | Integração desacoplada e configurável para explicações complementares. Não fixa fornecedor ou credencial; inicialização e fluxos essenciais funcionam sem IA configurada. |
+| **Geocodificação** | **Geoapify Geocoding API** | Plano gratuito | Opcional | Para testar chamadas reais, ler `GEOAPIFY_API_KEY` exclusivamente do ambiente e chamar somente pelo backend; sem a variável, a aplicação inicia e os demais fluxos permanecem disponíveis. |
+| **Testes Automatizados** | **JUnit 5, Mockito, AssertJ** | Versões Spring BOM | Homologada | Testes unitários de serviços e integração de controladores. |
+| **OCR / Fotos de Totem** | **Processador de Imagens** | — | Pós-MVP / Em Avaliação | Extração de preços e validação de metadados em fotos enviadas por condutores (conceito de aula SOC). |
+| **Extensão Espacial** | **PostGIS** | — | Pós-MVP / Em Avaliação | Avaliação posterior caso haja necessidade de índices espaciais GIST complexos além da fórmula de Haversine. |
 
 ---
 
-## 6. Documentação da API
+## 3. Detalhamento e Justificativas das Decisões Homologadas
 
-| Dependência | Versão | Finalidade |
-| :--- | :--- | :--- |
-| **springdoc-openapi-starter-webmvc-ui** | **2.7.0+** | Geração automática da especificação OpenAPI 3.0 e disponibilização do Swagger UI em `/swagger-ui.html`. |
+### 3.1 Backend: Java 21 LTS e Spring Boot 3.4
+- **Justificativa:** Java 21 é uma versão LTS de longo prazo que introduz **Records** (fundamentais para DTOs imutáveis), **Pattern Matching** e suporte maduro a **Virtual Threads** no Spring Boot 3.4. Permite uma arquitetura moderna sem risco de incompatibilidades em bibliotecas de terceiros.
 
----
+### 3.2 Frontend: HTML5 + Vanilla JS + Leaflet 1.9.4
+- **Base funcional preservada:** HTML semântico, Vanilla JS em módulos ES, Leaflet 1.9.4 para o mapa e integrações existentes com a API.
+- **Referência visual:** O template [`../Layout/`](../Layout/README.md) declara Bootstrap `^5.2.0`, usa SCSS próprio, Gulp e um conjunto amplo de plugins. Não há lockfile no diretório da referência para determinar a versão instalada exata. A análise e os mapeamentos de componentes estão em [`../Plano/09-frontend-integracao.md`](../Plano/09-frontend-integracao.md).
+- **Decisão de migração:** aprovada pelo usuário; Bootstrap 5.2.3 via CDN substitui Tailwind. O CSS próprio implementa tokens LUNO, sem importar os bundles de plugins, jQuery ou os assets demonstrativos do template.
+- **Estado da implementação:** páginas de busca/mapa, login/cadastro, veículos, recomendações, detalhe do posto e administração usam o grid/componentes Bootstrap e o CSS próprio inspirado no LUNO. Há smoke tests visuais registrados para o mapa, home, login e menu; validação de todas as telas e integração com backend/sessão reais ainda estão pendentes.
+- **Limites:** não copiar bundles de plugins, jQuery, conteúdo de demonstração, fontes ou imagens antes de avaliar necessidade, acessibilidade e licença. Toda interface derivada deve estar em português do Brasil (pt-BR); detalhes responsivos devem seguir a Fase 9.
 
-## 7. Testes Automatizados e Qualidade de Código
+### 3.3 Banco de Dados: PostgreSQL 16 com Flyway
+- **Justificativa:** PostgreSQL oferece suporte nativo robusto a cálculos trigonométricos (`acos`, `cos`, `sin`, `radians`) para o cálculo de distância em linha reta via Haversine sem exigir a instalação obrigatória da extensão PostGIS no primeiro dia de aula. O Flyway garante que o esquema de tabelas e as cargas de teste sejam versionados no Git.
 
-| Ferramenta / Lib | Versão | Escopo | Finalidade |
-| :--- | :--- | :--- | :--- |
-| **JUnit Jupiter (JUnit 5)** | Gerenciado | `test` | Framework de testes unitários e de integração. |
-| **Mockito** & **mockito-junit-jupiter** | Gerenciado | `test` | Mocks para serviços e dependências externas. |
-| **AssertJ** | Gerenciado | `test` | Asserções fluentes e expressivas. |
-| **Testcontainers PostgreSQL** | **1.20+** | `test` | Subida de contêiner real com PostGIS para testes de integração de repositório. |
+### 3.4 Segurança: Spring Security + JJWT (Java JWT)
+- **Justificativa:** A biblioteca `io.jsonwebtoken:jjwt-api:0.12.6` é utilizada para emissão, validação e extração de claims dos access tokens JWT. O estado das sessões e os hashes dos refresh tokens são persistidos no servidor para permitir rotação e revogação imediata.
 
----
-
-## 8. Frontend e Recursos de Interface
-
-| Recurso | Versão / Padrão | Finalidade |
-| :--- | :--- | :--- |
-| **HTML5 Semântico** | Standard W3C | Estruturação acessível das páginas web da aplicação. |
-| **CSS3 / Tailwind CSS** | **3.4+** (ou 4.0 via CDN/CLI) | Estilização responsiva e ágil, com foco em usabilidade mobile. |
-| **Vanilla JavaScript** | **ES2023+** | Manipulação do DOM, chamadas Fetch API assíncronas e integração de geolocalização. |
-| **Leaflet.js** | **1.9.4+** | Biblioteca leve para renderização do mapa interativo e marcadores dos postos. |
-| **OpenStreetMap Tiles** | Standard OSM | Camada gratuita de mapas sem necessidade de cartão de crédito no MVP. |
+### 3.5 Integração Opcional de IA: Spring AI
+- **Decisão pendente:** provedor e modelo ainda precisam de aprovação. Não fixar uma implementação ou credencial antes dessa decisão.
+- **Arquitetura:** isolar a integração atrás de um adaptador configurável. O cálculo de recomendação e explicações determinísticas por template funcionam sem Spring AI, sem credenciais e sem dependência da integração para inicializar o backend.
+- **Segredos:** credenciais de IA, quando aprovadas, devem vir de variável de ambiente ou gestor de segredos externo; nunca do código, Git ou frontend.
 
 ---
 
-## 9. Diretrizes de Dependências e Proibições
+## 4. Proibições e Diretrizes de Qualidade Técnica
 
-### ⚠️ Práticas e Bibliotecas Proibidas:
-1. **Pacotes `javax.*` obsoletos**: Usar exclusivamente a especificação moderna `jakarta.*` (Jakarta EE 10+).
-2. **WebSecurityConfigurerAdapter**: Proibido estender esta classe descontinuada; utilizar a configuração baseada no bean `SecurityFilterChain`.
-3. **Lógica de Banco no Código**: Não concatenar strings em consultas SQL para evitar injeção de SQL; sempre usar parâmetros nomeados (`:param`) ou Spring Data Method Queries.
-4. **Dependências Não Homologadas**: Não adicionar bibliotecas externas adicionais (ex.: Apache Commons desnecessários ou bibliotecas de reflexão não auditadas) sem prévia revisão de segurança e performance.
+* **OWASP Top 10:** Proibida concatenação de strings em consultas SQL (obrigatório uso de parâmetros com JPA); proteção contra ataques de injeção e validação estrita de dados recebidos da ANP.
+* **W3C / WCAG:** Código HTML semântico com tags `<main>`, `<section>`, `<article>`, atributos `aria-label` nos botões de rotas e contraste visual acessível.
+* **IETF:** Comunicação via HTTPS; conformidade com os verbos HTTP (utilizando `PATCH` para atualizações parciais, corrigindo a divergência do documento base).
+* **Idempotência na Carga ANP:** A rotina de importação deve utilizar chaves de deduplicação (CNPJ + Produto + Data da Coleta) para evitar registros duplicados.

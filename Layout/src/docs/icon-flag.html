@@ -1,0 +1,2687 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Flag Icon",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "icon-flag"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Flag Icon</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="icon-bootstrap.html"><i class="fa fa-long-arrow-left me-2"></i>Bootstrap icons</a>
+                        <a class="btn btn-secondary" href="icon-custom.html">SVG Custom Icon<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+                
+                <style>
+                    .icons-list .country { padding: 10px; background-color: var(--card-color); }
+                    .icons-list .name { color: var(--color-800); }
+                    .icons-list .flag { width: 100%; }
+                    .icons-list .alpha-2 { font-weight: 700; }
+                    .icons-list .capital { margin-bottom: 10px; color: var(--color-500); }
+                </style>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Flags icons</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="lead">A collection of all country flags in SVG — plus the CSS for easier integration. See the <a href="https://flagicons.lipis.dev/" target="_blank">demo</a></p>
+                                <p>For using the flags inline with text add the classes .flag-icon and .flag-icon-xx (where xx is the ISO 3166-1-alpha-2 code of a country) to an empty <span>. If you want to have a squared version flag then add the class flag-icon-squared as well. Example:</p>
+<pre><code class="language-html" data-lang="html">&lt;span class=&quot;flag-icon flag-icon-gr&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;flag-icon flag-icon-gr flag-icon-squared&quot;&gt;&lt;/span&gt;</code></pre>
+                                <div role="alert" class="alert alert-primary">Check out a <a target="_blank" href="https://github.com/lipis/flag-icon-css">https://github.com/lipis/flag-icon-css</a> of the Flag Icon.</div>
+                                <h1>
+                                    h1
+                                    <span class="flag-icon flag-icon-gr"></span>
+                                    <span class="flag-icon flag-icon-squared flag-icon-gr"></span>
+                                    <span class="badge bg-primary"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-success"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-info"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-warning"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-danger"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                </h1>
+                                <h2>
+                                    h2
+                                    <span class="flag-icon flag-icon-au"></span>
+                                    <span class="flag-icon flag-icon-squared flag-icon-au"></span>
+                                    <span class="badge bg-primary"><span class="flag-icon flag-icon-au"></span> AU</span>
+                                    <span class="badge bg-success"><span class="flag-icon flag-icon-au"></span> AU</span>
+                                    <span class="badge bg-info"><span class="flag-icon flag-icon-au"></span> AU</span>
+                                    <span class="badge bg-warning"><span class="flag-icon flag-icon-au"></span> AU</span>
+                                    <span class="badge bg-danger"><span class="flag-icon flag-icon-au"></span> AU</span>
+                                </h2>
+                                <h3>
+                                    h3
+                                    <span class="flag-icon flag-icon-us"></span>
+                                    <span class="flag-icon flag-icon-squared flag-icon-us"></span>
+                                    <span class="badge bg-primary"><span class="flag-icon flag-icon-us"></span> US</span>
+                                    <span class="badge bg-success"><span class="flag-icon flag-icon-us"></span> US</span>
+                                    <span class="badge bg-info"><span class="flag-icon flag-icon-us"></span> US</span>
+                                    <span class="badge bg-warning"><span class="flag-icon flag-icon-us"></span> US</span>
+                                    <span class="badge bg-danger"><span class="flag-icon flag-icon-us"></span> US</span>
+                                </h3>
+                                <h4>
+                                    h4
+                                    <span class="flag-icon flag-icon-dk"></span>
+                                    <span class="flag-icon flag-icon-squared flag-icon-dk"></span>
+                                    <span class="badge bg-primary"><span class="flag-icon flag-icon-dk"></span> DK</span>
+                                    <span class="badge bg-success"><span class="flag-icon flag-icon-dk"></span> DK</span>
+                                    <span class="badge bg-info"><span class="flag-icon flag-icon-dk"></span> DK</span>
+                                    <span class="badge bg-warning"><span class="flag-icon flag-icon-dk"></span> DK</span>
+                                    <span class="badge bg-danger"><span class="flag-icon flag-icon-dk"></span> DK</span>
+                                </h4>
+                                <h5>
+                                    h5
+                                    <span class="flag-icon flag-icon-gr"></span>
+                                    <span class="flag-icon flag-icon-squared flag-icon-gr"></span>
+                                    <span class="badge bg-primary"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-success"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-info"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-warning"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-danger"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                </h5>
+                                <h6>
+                                    h6
+                                    <span class="flag-icon flag-icon-gr"></span>
+                                    <span class="flag-icon flag-icon-squared flag-icon-gr"></span>
+                                    <span class="badge bg-primary"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-success"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-info"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-warning"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-danger"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                </h6>
+                                <p>
+                                    p
+                                    <span class="flag-icon flag-icon-gr"></span>
+                                    <span class="flag-icon flag-icon-squared flag-icon-gr"></span>
+                                    <span class="badge bg-primary"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-success"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-info"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-warning"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-danger"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                </p>
+                                <p class="lead mb-0">
+                                    p.lead
+                                    <span class="flag-icon flag-icon-gr"></span>
+                                    <span class="flag-icon flag-icon-squared flag-icon-gr"></span>
+                                    <span class="badge bg-primary"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-success"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-info"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-warning"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                    <span class="badge bg-danger"><span class="flag-icon flag-icon-gr"></span> GR</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row mt-4 g-1 row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2 mb-0 icons-list row-deck">
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Afghanistan" data-continent="Asia">
+                            <div class="name" title="Afghanistan">
+                                <span class="alpha-2">AF</span>
+                                Afghanistan
+                            </div>
+                            <div class="capital">Kabul</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/af.svg" alt="Afghanistan Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Aland Islands" data-continent="Europe">
+                            <div class="name" title="Aland Islands">
+                                <span class="alpha-2">AX</span>
+                                Aland Islands
+                            </div>
+                            <div class="capital">Mariehamn</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ax.svg" alt="Aland Islands Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Albania" data-continent="Europe">
+                            <div class="name" title="Albania">
+                                <span class="alpha-2">AL</span>
+                                Albania
+                            </div>
+                            <div class="capital">Tirana</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/al.svg" alt="Albania Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Algeria" data-continent="Africa">
+                            <div class="name" title="Algeria">
+                                <span class="alpha-2">DZ</span>
+                                Algeria
+                            </div>
+                            <div class="capital">Algiers</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/dz.svg" alt="Algeria Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="American Samoa" data-continent="Oceania">
+                            <div class="name" title="American Samoa">
+                                <span class="alpha-2">AS</span>
+                                American Samoa
+                            </div>
+                            <div class="capital">Pago Pago</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/as.svg" alt="American Samoa Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Andorra" data-continent="Europe">
+                            <div class="name" title="Andorra">
+                                <span class="alpha-2">AD</span>
+                                Andorra
+                            </div>
+                            <div class="capital">Andorra la Vella</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ad.svg" alt="Andorra Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Angola" data-continent="Africa">
+                            <div class="name" title="Angola">
+                                <span class="alpha-2">AO</span>
+                                Angola
+                            </div>
+                            <div class="capital">Luanda</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ao.svg" alt="Angola Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Anguilla" data-continent="North America">
+                            <div class="name" title="Anguilla">
+                                <span class="alpha-2">AI</span>
+                                Anguilla
+                            </div>
+                            <div class="capital">The Valley</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ai.svg" alt="Anguilla Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Antigua and Barbuda" data-continent="North America">
+                            <div class="name" title="Antigua and Barbuda">
+                                <span class="alpha-2">AG</span>
+                                Antigua and Barbuda
+                            </div>
+                            <div class="capital">St. John's</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ag.svg" alt="Antigua and Barbuda Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Argentina" data-continent="South America">
+                            <div class="name" title="Argentina">
+                                <span class="alpha-2">AR</span>
+                                Argentina
+                            </div>
+                            <div class="capital">Buenos Aires</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ar.svg" alt="Argentina Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Armenia" data-continent="Asia">
+                            <div class="name" title="Armenia">
+                                <span class="alpha-2">AM</span>
+                                Armenia
+                            </div>
+                            <div class="capital">Yerevan</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/am.svg" alt="Armenia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Aruba" data-continent="South America">
+                            <div class="name" title="Aruba">
+                                <span class="alpha-2">AW</span>
+                                Aruba
+                            </div>
+                            <div class="capital">Oranjestad</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/aw.svg" alt="Aruba Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Australia" data-continent="Oceania">
+                            <div class="name" title="Australia">
+                                <span class="alpha-2">AU</span>
+                                Australia
+                            </div>
+                            <div class="capital">Canberra</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/au.svg" alt="Australia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Austria" data-continent="Europe">
+                            <div class="name" title="Austria">
+                                <span class="alpha-2">AT</span>
+                                Austria
+                            </div>
+                            <div class="capital">Vienna</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/at.svg" alt="Austria Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Azerbaijan" data-continent="Asia">
+                            <div class="name" title="Azerbaijan">
+                                <span class="alpha-2">AZ</span>
+                                Azerbaijan
+                            </div>
+                            <div class="capital">Baku</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/az.svg" alt="Azerbaijan Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Bahamas" data-continent="North America">
+                            <div class="name" title="Bahamas">
+                                <span class="alpha-2">BS</span>
+                                Bahamas
+                            </div>
+                            <div class="capital">Nassau</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/bs.svg" alt="Bahamas Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Bahrain" data-continent="Asia">
+                            <div class="name" title="Bahrain">
+                                <span class="alpha-2">BH</span>
+                                Bahrain
+                            </div>
+                            <div class="capital">Manama</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/bh.svg" alt="Bahrain Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Bangladesh" data-continent="Asia">
+                            <div class="name" title="Bangladesh">
+                                <span class="alpha-2">BD</span>
+                                Bangladesh
+                            </div>
+                            <div class="capital">Dhaka</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/bd.svg" alt="Bangladesh Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Barbados" data-continent="North America">
+                            <div class="name" title="Barbados">
+                                <span class="alpha-2">BB</span>
+                                Barbados
+                            </div>
+                            <div class="capital">Bridgetown</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/bb.svg" alt="Barbados Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Belarus" data-continent="Europe">
+                            <div class="name" title="Belarus">
+                                <span class="alpha-2">BY</span>
+                                Belarus
+                            </div>
+                            <div class="capital">Minsk</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/by.svg" alt="Belarus Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Belgium" data-continent="Europe">
+                            <div class="name" title="Belgium">
+                                <span class="alpha-2">BE</span>
+                                Belgium
+                            </div>
+                            <div class="capital">Brussels</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/be.svg" alt="Belgium Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Belize" data-continent="North America">
+                            <div class="name" title="Belize">
+                                <span class="alpha-2">BZ</span>
+                                Belize
+                            </div>
+                            <div class="capital">Belmopan</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/bz.svg" alt="Belize Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Benin" data-continent="Africa">
+                            <div class="name" title="Benin">
+                                <span class="alpha-2">BJ</span>
+                                Benin
+                            </div>
+                            <div class="capital">Porto-Novo</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/bj.svg" alt="Benin Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Bermuda" data-continent="North America">
+                            <div class="name" title="Bermuda">
+                                <span class="alpha-2">BM</span>
+                                Bermuda
+                            </div>
+                            <div class="capital">Hamilton</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/bm.svg" alt="Bermuda Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Bhutan" data-continent="Asia">
+                            <div class="name" title="Bhutan">
+                                <span class="alpha-2">BT</span>
+                                Bhutan
+                            </div>
+                            <div class="capital">Thimphu</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/bt.svg" alt="Bhutan Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Bolivia (Plurinational State of)" data-continent="South America">
+                            <div class="name" title="Bolivia (Plurinational State of)">
+                                <span class="alpha-2">BO</span>
+                                Bolivia (Plurinational State of)
+                            </div>
+                            <div class="capital">Sucre</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/bo.svg" alt="Bolivia (Plurinational State of) Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Bonaire, Sint Eustatius and Saba" data-continent="South America">
+                            <div class="name" title="Bonaire, Sint Eustatius and Saba">
+                                <span class="alpha-2">BQ</span>
+                                Bonaire, Sint Eustatius and Saba
+                            </div>
+                            <div class="capital">Kralendijk</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/bq.svg" alt="Bonaire, Sint Eustatius and Saba Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Bosnia and Herzegovina" data-continent="Europe">
+                            <div class="name" title="Bosnia and Herzegovina">
+                                <span class="alpha-2">BA</span>
+                                Bosnia and Herzegovina
+                            </div>
+                            <div class="capital">Sarajevo</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ba.svg" alt="Bosnia and Herzegovina Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Botswana" data-continent="Africa">
+                            <div class="name" title="Botswana">
+                                <span class="alpha-2">BW</span>
+                                Botswana
+                            </div>
+                            <div class="capital">Gaborone</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/bw.svg" alt="Botswana Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Brazil" data-continent="South America">
+                            <div class="name" title="Brazil">
+                                <span class="alpha-2">BR</span>
+                                Brazil
+                            </div>
+                            <div class="capital">Brasília</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/br.svg" alt="Brazil Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="British Indian Ocean Territory" data-continent="Asia">
+                            <div class="name" title="British Indian Ocean Territory">
+                                <span class="alpha-2">IO</span>
+                                British Indian Ocean Territory
+                            </div>
+                            <div class="capital">Diego Garcia</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/io.svg" alt="British Indian Ocean Territory Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Brunei Darussalam" data-continent="Asia">
+                            <div class="name" title="Brunei Darussalam">
+                                <span class="alpha-2">BN</span>
+                                Brunei Darussalam
+                            </div>
+                            <div class="capital">Bandar Seri Begawan</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/bn.svg" alt="Brunei Darussalam Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Bulgaria" data-continent="Europe">
+                            <div class="name" title="Bulgaria">
+                                <span class="alpha-2">BG</span>
+                                Bulgaria
+                            </div>
+                            <div class="capital">Sofia</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/bg.svg" alt="Bulgaria Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Burkina Faso" data-continent="Africa">
+                            <div class="name" title="Burkina Faso">
+                                <span class="alpha-2">BF</span>
+                                Burkina Faso
+                            </div>
+                            <div class="capital">Ouagadougou</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/bf.svg" alt="Burkina Faso Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Burundi" data-continent="Africa">
+                            <div class="name" title="Burundi">
+                                <span class="alpha-2">BI</span>
+                                Burundi
+                            </div>
+                            <div class="capital">Bujumbura</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/bi.svg" alt="Burundi Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Cabo Verde" data-continent="Africa">
+                            <div class="name" title="Cabo Verde">
+                                <span class="alpha-2">CV</span>
+                                Cabo Verde
+                            </div>
+                            <div class="capital">Praia</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/cv.svg" alt="Cabo Verde Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Cambodia" data-continent="Asia">
+                            <div class="name" title="Cambodia">
+                                <span class="alpha-2">KH</span>
+                                Cambodia
+                            </div>
+                            <div class="capital">Phnom Penh</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/kh.svg" alt="Cambodia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Cameroon" data-continent="Africa">
+                            <div class="name" title="Cameroon">
+                                <span class="alpha-2">CM</span>
+                                Cameroon
+                            </div>
+                            <div class="capital">Yaoundé</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/cm.svg" alt="Cameroon Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Canada" data-continent="North America">
+                            <div class="name" title="Canada">
+                                <span class="alpha-2">CA</span>
+                                Canada
+                            </div>
+                            <div class="capital">Ottawa</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ca.svg" alt="Canada Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Cayman Islands" data-continent="North America">
+                            <div class="name" title="Cayman Islands">
+                                <span class="alpha-2">KY</span>
+                                Cayman Islands
+                            </div>
+                            <div class="capital">George Town</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ky.svg" alt="Cayman Islands Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Central African Republic" data-continent="Africa">
+                            <div class="name" title="Central African Republic">
+                                <span class="alpha-2">CF</span>
+                                Central African Republic
+                            </div>
+                            <div class="capital">Bangui</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/cf.svg" alt="Central African Republic Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Chad" data-continent="Africa">
+                            <div class="name" title="Chad">
+                                <span class="alpha-2">TD</span>
+                                Chad
+                            </div>
+                            <div class="capital">N'Djamena</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/td.svg" alt="Chad Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Chile" data-continent="South America">
+                            <div class="name" title="Chile">
+                                <span class="alpha-2">CL</span>
+                                Chile
+                            </div>
+                            <div class="capital">Santiago</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/cl.svg" alt="Chile Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="China" data-continent="Asia">
+                            <div class="name" title="China">
+                                <span class="alpha-2">CN</span>
+                                China
+                            </div>
+                            <div class="capital">Beijing</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/cn.svg" alt="China Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Christmas Island" data-continent="Asia">
+                            <div class="name" title="Christmas Island">
+                                <span class="alpha-2">CX</span>
+                                Christmas Island
+                            </div>
+                            <div class="capital">Flying Fish Cove</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/cx.svg" alt="Christmas Island Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Cocos (Keeling) Islands" data-continent="Asia">
+                            <div class="name" title="Cocos (Keeling) Islands">
+                                <span class="alpha-2">CC</span>
+                                Cocos (Keeling) Islands
+                            </div>
+                            <div class="capital">West Island</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/cc.svg" alt="Cocos (Keeling) Islands Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Colombia" data-continent="South America">
+                            <div class="name" title="Colombia">
+                                <span class="alpha-2">CO</span>
+                                Colombia
+                            </div>
+                            <div class="capital">Bogotá</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/co.svg" alt="Colombia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Comoros" data-continent="Africa">
+                            <div class="name" title="Comoros">
+                                <span class="alpha-2">KM</span>
+                                Comoros
+                            </div>
+                            <div class="capital">Moroni</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/km.svg" alt="Comoros Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Cook Islands" data-continent="Oceania">
+                            <div class="name" title="Cook Islands">
+                                <span class="alpha-2">CK</span>
+                                Cook Islands
+                            </div>
+                            <div class="capital">Avarua</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ck.svg" alt="Cook Islands Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Costa Rica" data-continent="North America">
+                            <div class="name" title="Costa Rica">
+                                <span class="alpha-2">CR</span>
+                                Costa Rica
+                            </div>
+                            <div class="capital">San José</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/cr.svg" alt="Costa Rica Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Croatia" data-continent="Europe">
+                            <div class="name" title="Croatia">
+                                <span class="alpha-2">HR</span>
+                                Croatia
+                            </div>
+                            <div class="capital">Zagreb</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/hr.svg" alt="Croatia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Cuba" data-continent="North America">
+                            <div class="name" title="Cuba">
+                                <span class="alpha-2">CU</span>
+                                Cuba
+                            </div>
+                            <div class="capital">Havana</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/cu.svg" alt="Cuba Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Curaçao" data-continent="South America">
+                            <div class="name" title="Curaçao">
+                                <span class="alpha-2">CW</span>
+                                Curaçao
+                            </div>
+                            <div class="capital">Willemstad</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/cw.svg" alt="Curaçao Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Cyprus" data-continent="Europe">
+                            <div class="name" title="Cyprus">
+                                <span class="alpha-2">CY</span>
+                                Cyprus
+                            </div>
+                            <div class="capital">Nicosia</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/cy.svg" alt="Cyprus Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Czech Republic" data-continent="Europe">
+                            <div class="name" title="Czech Republic">
+                                <span class="alpha-2">CZ</span>
+                                Czech Republic
+                            </div>
+                            <div class="capital">Prague</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/cz.svg" alt="Czech Republic Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Côte d'Ivoire" data-continent="Africa">
+                            <div class="name" title="Côte d'Ivoire">
+                                <span class="alpha-2">CI</span>
+                                Côte d'Ivoire
+                            </div>
+                            <div class="capital">Yamoussoukro</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ci.svg" alt="Côte d'Ivoire Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Democratic Republic of the Congo" data-continent="Africa">
+                            <div class="name" title="Democratic Republic of the Congo">
+                                <span class="alpha-2">CD</span>
+                                Democratic Republic of the Congo
+                            </div>
+                            <div class="capital">Kinshasa</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/cd.svg" alt="Democratic Republic of the Congo Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Denmark" data-continent="Europe">
+                            <div class="name" title="Denmark">
+                                <span class="alpha-2">DK</span>
+                                Denmark
+                            </div>
+                            <div class="capital">Copenhagen</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/dk.svg" alt="Denmark Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Djibouti" data-continent="Africa">
+                            <div class="name" title="Djibouti">
+                                <span class="alpha-2">DJ</span>
+                                Djibouti
+                            </div>
+                            <div class="capital">Djibouti</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/dj.svg" alt="Djibouti Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Dominica" data-continent="North America">
+                            <div class="name" title="Dominica">
+                                <span class="alpha-2">DM</span>
+                                Dominica
+                            </div>
+                            <div class="capital">Roseau</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/dm.svg" alt="Dominica Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Dominican Republic" data-continent="North America">
+                            <div class="name" title="Dominican Republic">
+                                <span class="alpha-2">DO</span>
+                                Dominican Republic
+                            </div>
+                            <div class="capital">Santo Domingo</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/do.svg" alt="Dominican Republic Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Ecuador" data-continent="South America">
+                            <div class="name" title="Ecuador">
+                                <span class="alpha-2">EC</span>
+                                Ecuador
+                            </div>
+                            <div class="capital">Quito</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ec.svg" alt="Ecuador Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Egypt" data-continent="Africa">
+                            <div class="name" title="Egypt">
+                                <span class="alpha-2">EG</span>
+                                Egypt
+                            </div>
+                            <div class="capital">Cairo</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/eg.svg" alt="Egypt Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="El Salvador" data-continent="North America">
+                            <div class="name" title="El Salvador">
+                                <span class="alpha-2">SV</span>
+                                El Salvador
+                            </div>
+                            <div class="capital">San Salvador</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/sv.svg" alt="El Salvador Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="England" data-continent="Europe">
+                            <div class="name" title="England">
+                                <span class="alpha-2">GB-ENG</span>
+                                England
+                            </div>
+                            <div class="capital">London</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gb-eng.svg" alt="England Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Equatorial Guinea" data-continent="Africa">
+                            <div class="name" title="Equatorial Guinea">
+                                <span class="alpha-2">GQ</span>
+                                Equatorial Guinea
+                            </div>
+                            <div class="capital">Malabo</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gq.svg" alt="Equatorial Guinea Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Eritrea" data-continent="Africa">
+                            <div class="name" title="Eritrea">
+                                <span class="alpha-2">ER</span>
+                                Eritrea
+                            </div>
+                            <div class="capital">Asmara</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/er.svg" alt="Eritrea Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Estonia" data-continent="Europe">
+                            <div class="name" title="Estonia">
+                                <span class="alpha-2">EE</span>
+                                Estonia
+                            </div>
+                            <div class="capital">Tallinn</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ee.svg" alt="Estonia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Ethiopia" data-continent="Africa">
+                            <div class="name" title="Ethiopia">
+                                <span class="alpha-2">ET</span>
+                                Ethiopia
+                            </div>
+                            <div class="capital">Addis Ababa</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/et.svg" alt="Ethiopia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Falkland Islands" data-continent="South America">
+                            <div class="name" title="Falkland Islands">
+                                <span class="alpha-2">FK</span>
+                                Falkland Islands
+                            </div>
+                            <div class="capital">Stanley</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/fk.svg" alt="Falkland Islands Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Faroe Islands" data-continent="Europe">
+                            <div class="name" title="Faroe Islands">
+                                <span class="alpha-2">FO</span>
+                                Faroe Islands
+                            </div>
+                            <div class="capital">Tórshavn</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/fo.svg" alt="Faroe Islands Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Federated States of Micronesia" data-continent="Oceania">
+                            <div class="name" title="Federated States of Micronesia">
+                                <span class="alpha-2">FM</span>
+                                Federated States of Micronesia
+                            </div>
+                            <div class="capital">Palikir</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/fm.svg" alt="Federated States of Micronesia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Fiji" data-continent="Oceania">
+                            <div class="name" title="Fiji">
+                                <span class="alpha-2">FJ</span>
+                                Fiji
+                            </div>
+                            <div class="capital">Suva</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/fj.svg" alt="Fiji Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Finland" data-continent="Europe">
+                            <div class="name" title="Finland">
+                                <span class="alpha-2">FI</span>
+                                Finland
+                            </div>
+                            <div class="capital">Helsinki</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/fi.svg" alt="Finland Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="France" data-continent="Europe">
+                            <div class="name" title="France">
+                                <span class="alpha-2">FR</span>
+                                France
+                            </div>
+                            <div class="capital">Paris</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/fr.svg" alt="France Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="French Guiana" data-continent="South America">
+                            <div class="name" title="French Guiana">
+                                <span class="alpha-2">GF</span>
+                                French Guiana
+                            </div>
+                            <div class="capital">Cayenne</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gf.svg" alt="French Guiana Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="French Polynesia" data-continent="Oceania">
+                            <div class="name" title="French Polynesia">
+                                <span class="alpha-2">PF</span>
+                                French Polynesia
+                            </div>
+                            <div class="capital">Papeete</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/pf.svg" alt="French Polynesia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="French Southern Territories" data-continent="Africa">
+                            <div class="name" title="French Southern Territories">
+                                <span class="alpha-2">TF</span>
+                                French Southern Territories
+                            </div>
+                            <div class="capital">Saint-Pierre, Réunion</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/tf.svg" alt="French Southern Territories Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Gabon" data-continent="Africa">
+                            <div class="name" title="Gabon">
+                                <span class="alpha-2">GA</span>
+                                Gabon
+                            </div>
+                            <div class="capital">Libreville</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ga.svg" alt="Gabon Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Gambia" data-continent="Africa">
+                            <div class="name" title="Gambia">
+                                <span class="alpha-2">GM</span>
+                                Gambia
+                            </div>
+                            <div class="capital">Banjul</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gm.svg" alt="Gambia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Georgia" data-continent="Asia">
+                            <div class="name" title="Georgia">
+                                <span class="alpha-2">GE</span>
+                                Georgia
+                            </div>
+                            <div class="capital">Tbilisi</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ge.svg" alt="Georgia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Germany" data-continent="Europe">
+                            <div class="name" title="Germany">
+                                <span class="alpha-2">DE</span>
+                                Germany
+                            </div>
+                            <div class="capital">Berlin</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/de.svg" alt="Germany Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Ghana" data-continent="Africa">
+                            <div class="name" title="Ghana">
+                                <span class="alpha-2">GH</span>
+                                Ghana
+                            </div>
+                            <div class="capital">Accra</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gh.svg" alt="Ghana Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Gibraltar" data-continent="Europe">
+                            <div class="name" title="Gibraltar">
+                                <span class="alpha-2">GI</span>
+                                Gibraltar
+                            </div>
+                            <div class="capital">Gibraltar</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gi.svg" alt="Gibraltar Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Greece" data-continent="Europe">
+                            <div class="name" title="Greece">
+                                <span class="alpha-2">GR</span>
+                                Greece
+                            </div>
+                            <div class="capital">Athens</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gr.svg" alt="Greece Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Greenland" data-continent="North America">
+                            <div class="name" title="Greenland">
+                                <span class="alpha-2">GL</span>
+                                Greenland
+                            </div>
+                            <div class="capital">Nuuk</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gl.svg" alt="Greenland Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Grenada" data-continent="North America">
+                            <div class="name" title="Grenada">
+                                <span class="alpha-2">GD</span>
+                                Grenada
+                            </div>
+                            <div class="capital">St. George's</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gd.svg" alt="Grenada Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Guadeloupe" data-continent="North America">
+                            <div class="name" title="Guadeloupe">
+                                <span class="alpha-2">GP</span>
+                                Guadeloupe
+                            </div>
+                            <div class="capital">Basse-Terre</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gp.svg" alt="Guadeloupe Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Guam" data-continent="Oceania">
+                            <div class="name" title="Guam">
+                                <span class="alpha-2">GU</span>
+                                Guam
+                            </div>
+                            <div class="capital">Hagåtña</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gu.svg" alt="Guam Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Guatemala" data-continent="North America">
+                            <div class="name" title="Guatemala">
+                                <span class="alpha-2">GT</span>
+                                Guatemala
+                            </div>
+                            <div class="capital">Guatemala City</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gt.svg" alt="Guatemala Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Guernsey" data-continent="Europe">
+                            <div class="name" title="Guernsey">
+                                <span class="alpha-2">GG</span>
+                                Guernsey
+                            </div>
+                            <div class="capital">Saint Peter Port</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gg.svg" alt="Guernsey Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Guinea" data-continent="Africa">
+                            <div class="name" title="Guinea">
+                                <span class="alpha-2">GN</span>
+                                Guinea
+                            </div>
+                            <div class="capital">Conakry</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gn.svg" alt="Guinea Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Guinea-Bissau" data-continent="Africa">
+                            <div class="name" title="Guinea-Bissau">
+                                <span class="alpha-2">GW</span>
+                                Guinea-Bissau
+                            </div>
+                            <div class="capital">Bissau</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gw.svg" alt="Guinea-Bissau Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Guyana" data-continent="South America">
+                            <div class="name" title="Guyana">
+                                <span class="alpha-2">GY</span>
+                                Guyana
+                            </div>
+                            <div class="capital">Georgetown</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gy.svg" alt="Guyana Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Haiti" data-continent="North America">
+                            <div class="name" title="Haiti">
+                                <span class="alpha-2">HT</span>
+                                Haiti
+                            </div>
+                            <div class="capital">Port-au-Prince</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ht.svg" alt="Haiti Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Holy See" data-continent="Europe">
+                            <div class="name" title="Holy See">
+                                <span class="alpha-2">VA</span>
+                                Holy See
+                            </div>
+                            <div class="capital">Vatican City</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/va.svg" alt="Holy See Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Honduras" data-continent="North America">
+                            <div class="name" title="Honduras">
+                                <span class="alpha-2">HN</span>
+                                Honduras
+                            </div>
+                            <div class="capital">Tegucigalpa</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/hn.svg" alt="Honduras Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Hong Kong" data-continent="Asia">
+                            <div class="name" title="Hong Kong">
+                                <span class="alpha-2">HK</span>
+                                Hong Kong
+                            </div>
+                            <div class="capital">Hong Kong</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/hk.svg" alt="Hong Kong Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Hungary" data-continent="Europe">
+                            <div class="name" title="Hungary">
+                                <span class="alpha-2">HU</span>
+                                Hungary
+                            </div>
+                            <div class="capital">Budapest</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/hu.svg" alt="Hungary Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Iceland" data-continent="Europe">
+                            <div class="name" title="Iceland">
+                                <span class="alpha-2">IS</span>
+                                Iceland
+                            </div>
+                            <div class="capital">Reykjavik</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/is.svg" alt="Iceland Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="India" data-continent="Asia">
+                            <div class="name" title="India">
+                                <span class="alpha-2">IN</span>
+                                India
+                            </div>
+                            <div class="capital">New Delhi</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/in.svg" alt="India Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Indonesia" data-continent="Asia">
+                            <div class="name" title="Indonesia">
+                                <span class="alpha-2">ID</span>
+                                Indonesia
+                            </div>
+                            <div class="capital">Jakarta</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/id.svg" alt="Indonesia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Iran (Islamic Republic of)" data-continent="Asia">
+                            <div class="name" title="Iran (Islamic Republic of)">
+                                <span class="alpha-2">IR</span>
+                                Iran (Islamic Republic of)
+                            </div>
+                            <div class="capital">Tehran</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ir.svg" alt="Iran (Islamic Republic of) Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Iraq" data-continent="Asia">
+                            <div class="name" title="Iraq">
+                                <span class="alpha-2">IQ</span>
+                                Iraq
+                            </div>
+                            <div class="capital">Baghdad</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/iq.svg" alt="Iraq Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Ireland" data-continent="Europe">
+                            <div class="name" title="Ireland">
+                                <span class="alpha-2">IE</span>
+                                Ireland
+                            </div>
+                            <div class="capital">Dublin</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ie.svg" alt="Ireland Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Isle of Man" data-continent="Europe">
+                            <div class="name" title="Isle of Man">
+                                <span class="alpha-2">IM</span>
+                                Isle of Man
+                            </div>
+                            <div class="capital">Douglas</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/im.svg" alt="Isle of Man Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Israel" data-continent="Asia">
+                            <div class="name" title="Israel">
+                                <span class="alpha-2">IL</span>
+                                Israel
+                            </div>
+                            <div class="capital">Jerusalem</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/il.svg" alt="Israel Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Italy" data-continent="Europe">
+                            <div class="name" title="Italy">
+                                <span class="alpha-2">IT</span>
+                                Italy
+                            </div>
+                            <div class="capital">Rome</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/it.svg" alt="Italy Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Jamaica" data-continent="North America">
+                            <div class="name" title="Jamaica">
+                                <span class="alpha-2">JM</span>
+                                Jamaica
+                            </div>
+                            <div class="capital">Kingston</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/jm.svg" alt="Jamaica Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Japan" data-continent="Asia">
+                            <div class="name" title="Japan">
+                                <span class="alpha-2">JP</span>
+                                Japan
+                            </div>
+                            <div class="capital">Tokyo</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/jp.svg" alt="Japan Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Jersey" data-continent="Europe">
+                            <div class="name" title="Jersey">
+                                <span class="alpha-2">JE</span>
+                                Jersey
+                            </div>
+                            <div class="capital">Saint Helier</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/je.svg" alt="Jersey Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Jordan" data-continent="Asia">
+                            <div class="name" title="Jordan">
+                                <span class="alpha-2">JO</span>
+                                Jordan
+                            </div>
+                            <div class="capital">Amman</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/jo.svg" alt="Jordan Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Kazakhstan" data-continent="Asia">
+                            <div class="name" title="Kazakhstan">
+                                <span class="alpha-2">KZ</span>
+                                Kazakhstan
+                            </div>
+                            <div class="capital">Astana</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/kz.svg" alt="Kazakhstan Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Kenya" data-continent="Africa">
+                            <div class="name" title="Kenya">
+                                <span class="alpha-2">KE</span>
+                                Kenya
+                            </div>
+                            <div class="capital">Nairobi</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ke.svg" alt="Kenya Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Kiribati" data-continent="Oceania">
+                            <div class="name" title="Kiribati">
+                                <span class="alpha-2">KI</span>
+                                Kiribati
+                            </div>
+                            <div class="capital">South Tarawa</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ki.svg" alt="Kiribati Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Kosovo" data-continent="Europe">
+                            <div class="name" title="Kosovo">
+                                <span class="alpha-2">XK</span>
+                                Kosovo
+                            </div>
+                            <div class="capital">Pristina</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/xk.svg" alt="Kosovo Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Kuwait" data-continent="Asia">
+                            <div class="name" title="Kuwait">
+                                <span class="alpha-2">KW</span>
+                                Kuwait
+                            </div>
+                            <div class="capital">Kuwait City</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/kw.svg" alt="Kuwait Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Kyrgyzstan" data-continent="Asia">
+                            <div class="name" title="Kyrgyzstan">
+                                <span class="alpha-2">KG</span>
+                                Kyrgyzstan
+                            </div>
+                            <div class="capital">Bishkek</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/kg.svg" alt="Kyrgyzstan Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Laos" data-continent="Asia">
+                            <div class="name" title="Laos">
+                                <span class="alpha-2">LA</span>
+                                Laos
+                            </div>
+                            <div class="capital">Vientiane</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/la.svg" alt="Laos Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Latvia" data-continent="Europe">
+                            <div class="name" title="Latvia">
+                                <span class="alpha-2">LV</span>
+                                Latvia
+                            </div>
+                            <div class="capital">Riga</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/lv.svg" alt="Latvia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Lebanon" data-continent="Asia">
+                            <div class="name" title="Lebanon">
+                                <span class="alpha-2">LB</span>
+                                Lebanon
+                            </div>
+                            <div class="capital">Beirut</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/lb.svg" alt="Lebanon Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Lesotho" data-continent="Africa">
+                            <div class="name" title="Lesotho">
+                                <span class="alpha-2">LS</span>
+                                Lesotho
+                            </div>
+                            <div class="capital">Maseru</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ls.svg" alt="Lesotho Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Liberia" data-continent="Africa">
+                            <div class="name" title="Liberia">
+                                <span class="alpha-2">LR</span>
+                                Liberia
+                            </div>
+                            <div class="capital">Monrovia</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/lr.svg" alt="Liberia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Libya" data-continent="Africa">
+                            <div class="name" title="Libya">
+                                <span class="alpha-2">LY</span>
+                                Libya
+                            </div>
+                            <div class="capital">Tripoli</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ly.svg" alt="Libya Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Liechtenstein" data-continent="Europe">
+                            <div class="name" title="Liechtenstein">
+                                <span class="alpha-2">LI</span>
+                                Liechtenstein
+                            </div>
+                            <div class="capital">Vaduz</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/li.svg" alt="Liechtenstein Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Lithuania" data-continent="Europe">
+                            <div class="name" title="Lithuania">
+                                <span class="alpha-2">LT</span>
+                                Lithuania
+                            </div>
+                            <div class="capital">Vilnius</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/lt.svg" alt="Lithuania Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Luxembourg" data-continent="Europe">
+                            <div class="name" title="Luxembourg">
+                                <span class="alpha-2">LU</span>
+                                Luxembourg
+                            </div>
+                            <div class="capital">Luxembourg City</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/lu.svg" alt="Luxembourg Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Macau" data-continent="Asia">
+                            <div class="name" title="Macau">
+                                <span class="alpha-2">MO</span>
+                                Macau
+                            </div>
+                            <div class="capital">Macau</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mo.svg" alt="Macau Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Madagascar" data-continent="Africa">
+                            <div class="name" title="Madagascar">
+                                <span class="alpha-2">MG</span>
+                                Madagascar
+                            </div>
+                            <div class="capital">Antananarivo</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mg.svg" alt="Madagascar Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Malawi" data-continent="Africa">
+                            <div class="name" title="Malawi">
+                                <span class="alpha-2">MW</span>
+                                Malawi
+                            </div>
+                            <div class="capital">Lilongwe</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mw.svg" alt="Malawi Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Malaysia" data-continent="Asia">
+                            <div class="name" title="Malaysia">
+                                <span class="alpha-2">MY</span>
+                                Malaysia
+                            </div>
+                            <div class="capital">Kuala Lumpur</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/my.svg" alt="Malaysia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Maldives" data-continent="Asia">
+                            <div class="name" title="Maldives">
+                                <span class="alpha-2">MV</span>
+                                Maldives
+                            </div>
+                            <div class="capital">Malé</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mv.svg" alt="Maldives Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Mali" data-continent="Africa">
+                            <div class="name" title="Mali">
+                                <span class="alpha-2">ML</span>
+                                Mali
+                            </div>
+                            <div class="capital">Bamako</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ml.svg" alt="Mali Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Malta" data-continent="Europe">
+                            <div class="name" title="Malta">
+                                <span class="alpha-2">MT</span>
+                                Malta
+                            </div>
+                            <div class="capital">Valletta</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mt.svg" alt="Malta Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Marshall Islands" data-continent="Oceania">
+                            <div class="name" title="Marshall Islands">
+                                <span class="alpha-2">MH</span>
+                                Marshall Islands
+                            </div>
+                            <div class="capital">Majuro</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mh.svg" alt="Marshall Islands Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Martinique" data-continent="North America">
+                            <div class="name" title="Martinique">
+                                <span class="alpha-2">MQ</span>
+                                Martinique
+                            </div>
+                            <div class="capital">Fort-de-France</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mq.svg" alt="Martinique Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Mauritania" data-continent="Africa">
+                            <div class="name" title="Mauritania">
+                                <span class="alpha-2">MR</span>
+                                Mauritania
+                            </div>
+                            <div class="capital">Nouakchott</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mr.svg" alt="Mauritania Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Mauritius" data-continent="Africa">
+                            <div class="name" title="Mauritius">
+                                <span class="alpha-2">MU</span>
+                                Mauritius
+                            </div>
+                            <div class="capital">Port Louis</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mu.svg" alt="Mauritius Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Mayotte" data-continent="Africa">
+                            <div class="name" title="Mayotte">
+                                <span class="alpha-2">YT</span>
+                                Mayotte
+                            </div>
+                            <div class="capital">Mamoudzou</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/yt.svg" alt="Mayotte Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Mexico" data-continent="North America">
+                            <div class="name" title="Mexico">
+                                <span class="alpha-2">MX</span>
+                                Mexico
+                            </div>
+                            <div class="capital">Mexico City</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mx.svg" alt="Mexico Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Moldova" data-continent="Europe">
+                            <div class="name" title="Moldova">
+                                <span class="alpha-2">MD</span>
+                                Moldova
+                            </div>
+                            <div class="capital">Chișinău</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/md.svg" alt="Moldova Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Monaco" data-continent="Europe">
+                            <div class="name" title="Monaco">
+                                <span class="alpha-2">MC</span>
+                                Monaco
+                            </div>
+                            <div class="capital">Monaco</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mc.svg" alt="Monaco Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Mongolia" data-continent="Asia">
+                            <div class="name" title="Mongolia">
+                                <span class="alpha-2">MN</span>
+                                Mongolia
+                            </div>
+                            <div class="capital">Ulaanbaatar</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mn.svg" alt="Mongolia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Montenegro" data-continent="Europe">
+                            <div class="name" title="Montenegro">
+                                <span class="alpha-2">ME</span>
+                                Montenegro
+                            </div>
+                            <div class="capital">Podgorica</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/me.svg" alt="Montenegro Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Montserrat" data-continent="North America">
+                            <div class="name" title="Montserrat">
+                                <span class="alpha-2">MS</span>
+                                Montserrat
+                            </div>
+                            <div class="capital">Little Bay, Brades, Plymouth</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ms.svg" alt="Montserrat Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Morocco" data-continent="Africa">
+                            <div class="name" title="Morocco">
+                                <span class="alpha-2">MA</span>
+                                Morocco
+                            </div>
+                            <div class="capital">Rabat</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ma.svg" alt="Morocco Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Mozambique" data-continent="Africa">
+                            <div class="name" title="Mozambique">
+                                <span class="alpha-2">MZ</span>
+                                Mozambique
+                            </div>
+                            <div class="capital">Maputo</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mz.svg" alt="Mozambique Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Myanmar" data-continent="Asia">
+                            <div class="name" title="Myanmar">
+                                <span class="alpha-2">MM</span>
+                                Myanmar
+                            </div>
+                            <div class="capital">Naypyidaw</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mm.svg" alt="Myanmar Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Namibia" data-continent="Africa">
+                            <div class="name" title="Namibia">
+                                <span class="alpha-2">NA</span>
+                                Namibia
+                            </div>
+                            <div class="capital">Windhoek</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/na.svg" alt="Namibia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Nauru" data-continent="Oceania">
+                            <div class="name" title="Nauru">
+                                <span class="alpha-2">NR</span>
+                                Nauru
+                            </div>
+                            <div class="capital">Yaren District</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/nr.svg" alt="Nauru Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Nepal" data-continent="Asia">
+                            <div class="name" title="Nepal">
+                                <span class="alpha-2">NP</span>
+                                Nepal
+                            </div>
+                            <div class="capital">Kathmandu</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/np.svg" alt="Nepal Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Netherlands" data-continent="Europe">
+                            <div class="name" title="Netherlands">
+                                <span class="alpha-2">NL</span>
+                                Netherlands
+                            </div>
+                            <div class="capital">Amsterdam</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/nl.svg" alt="Netherlands Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="New Caledonia" data-continent="Oceania">
+                            <div class="name" title="New Caledonia">
+                                <span class="alpha-2">NC</span>
+                                New Caledonia
+                            </div>
+                            <div class="capital">Nouméa</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/nc.svg" alt="New Caledonia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="New Zealand" data-continent="Oceania">
+                            <div class="name" title="New Zealand">
+                                <span class="alpha-2">NZ</span>
+                                New Zealand
+                            </div>
+                            <div class="capital">Wellington</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/nz.svg" alt="New Zealand Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Nicaragua" data-continent="North America">
+                            <div class="name" title="Nicaragua">
+                                <span class="alpha-2">NI</span>
+                                Nicaragua
+                            </div>
+                            <div class="capital">Managua</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ni.svg" alt="Nicaragua Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Niger" data-continent="Africa">
+                            <div class="name" title="Niger">
+                                <span class="alpha-2">NE</span>
+                                Niger
+                            </div>
+                            <div class="capital">Niamey</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ne.svg" alt="Niger Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Nigeria" data-continent="Africa">
+                            <div class="name" title="Nigeria">
+                                <span class="alpha-2">NG</span>
+                                Nigeria
+                            </div>
+                            <div class="capital">Abuja</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ng.svg" alt="Nigeria Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Niue" data-continent="Oceania">
+                            <div class="name" title="Niue">
+                                <span class="alpha-2">NU</span>
+                                Niue
+                            </div>
+                            <div class="capital">Alofi</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/nu.svg" alt="Niue Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Norfolk Island" data-continent="Oceania">
+                            <div class="name" title="Norfolk Island">
+                                <span class="alpha-2">NF</span>
+                                Norfolk Island
+                            </div>
+                            <div class="capital">Kingston</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/nf.svg" alt="Norfolk Island Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="North Korea" data-continent="Asia">
+                            <div class="name" title="North Korea">
+                                <span class="alpha-2">KP</span>
+                                North Korea
+                            </div>
+                            <div class="capital">Pyongyang</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/kp.svg" alt="North Korea Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="North Macedonia" data-continent="Europe">
+                            <div class="name" title="North Macedonia">
+                                <span class="alpha-2">MK</span>
+                                North Macedonia
+                            </div>
+                            <div class="capital">Skopje</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mk.svg" alt="North Macedonia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Northern Ireland" data-continent="Europe">
+                            <div class="name" title="Northern Ireland">
+                                <span class="alpha-2">GB-NIR</span>
+                                Northern Ireland
+                            </div>
+                            <div class="capital">Belfast</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gb-nir.svg" alt="Northern Ireland Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Northern Mariana Islands" data-continent="Oceania">
+                            <div class="name" title="Northern Mariana Islands">
+                                <span class="alpha-2">MP</span>
+                                Northern Mariana Islands
+                            </div>
+                            <div class="capital">Saipan</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mp.svg" alt="Northern Mariana Islands Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Norway" data-continent="Europe">
+                            <div class="name" title="Norway">
+                                <span class="alpha-2">NO</span>
+                                Norway
+                            </div>
+                            <div class="capital">Oslo</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/no.svg" alt="Norway Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Oman" data-continent="Asia">
+                            <div class="name" title="Oman">
+                                <span class="alpha-2">OM</span>
+                                Oman
+                            </div>
+                            <div class="capital">Muscat</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/om.svg" alt="Oman Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Pakistan" data-continent="Asia">
+                            <div class="name" title="Pakistan">
+                                <span class="alpha-2">PK</span>
+                                Pakistan
+                            </div>
+                            <div class="capital">Islamabad</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/pk.svg" alt="Pakistan Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Palau" data-continent="Oceania">
+                            <div class="name" title="Palau">
+                                <span class="alpha-2">PW</span>
+                                Palau
+                            </div>
+                            <div class="capital">Ngerulmud</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/pw.svg" alt="Palau Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Panama" data-continent="North America">
+                            <div class="name" title="Panama">
+                                <span class="alpha-2">PA</span>
+                                Panama
+                            </div>
+                            <div class="capital">Panama City</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/pa.svg" alt="Panama Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Papua New Guinea" data-continent="Oceania">
+                            <div class="name" title="Papua New Guinea">
+                                <span class="alpha-2">PG</span>
+                                Papua New Guinea
+                            </div>
+                            <div class="capital">Port Moresby</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/pg.svg" alt="Papua New Guinea Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Paraguay" data-continent="South America">
+                            <div class="name" title="Paraguay">
+                                <span class="alpha-2">PY</span>
+                                Paraguay
+                            </div>
+                            <div class="capital">Asunción</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/py.svg" alt="Paraguay Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Peru" data-continent="South America">
+                            <div class="name" title="Peru">
+                                <span class="alpha-2">PE</span>
+                                Peru
+                            </div>
+                            <div class="capital">Lima</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/pe.svg" alt="Peru Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Philippines" data-continent="Asia">
+                            <div class="name" title="Philippines">
+                                <span class="alpha-2">PH</span>
+                                Philippines
+                            </div>
+                            <div class="capital">Manila</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ph.svg" alt="Philippines Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Pitcairn" data-continent="Oceania">
+                            <div class="name" title="Pitcairn">
+                                <span class="alpha-2">PN</span>
+                                Pitcairn
+                            </div>
+                            <div class="capital">Adamstown</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/pn.svg" alt="Pitcairn Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Poland" data-continent="Europe">
+                            <div class="name" title="Poland">
+                                <span class="alpha-2">PL</span>
+                                Poland
+                            </div>
+                            <div class="capital">Warsaw</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/pl.svg" alt="Poland Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Portugal" data-continent="Europe">
+                            <div class="name" title="Portugal">
+                                <span class="alpha-2">PT</span>
+                                Portugal
+                            </div>
+                            <div class="capital">Lisbon</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/pt.svg" alt="Portugal Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Puerto Rico" data-continent="North America">
+                            <div class="name" title="Puerto Rico">
+                                <span class="alpha-2">PR</span>
+                                Puerto Rico
+                            </div>
+                            <div class="capital">San Juan</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/pr.svg" alt="Puerto Rico Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Qatar" data-continent="Asia">
+                            <div class="name" title="Qatar">
+                                <span class="alpha-2">QA</span>
+                                Qatar
+                            </div>
+                            <div class="capital">Doha</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/qa.svg" alt="Qatar Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Republic of the Congo" data-continent="Africa">
+                            <div class="name" title="Republic of the Congo">
+                                <span class="alpha-2">CG</span>
+                                Republic of the Congo
+                            </div>
+                            <div class="capital">Brazzaville</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/cg.svg" alt="Republic of the Congo Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Romania" data-continent="Europe">
+                            <div class="name" title="Romania">
+                                <span class="alpha-2">RO</span>
+                                Romania
+                            </div>
+                            <div class="capital">Bucharest</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ro.svg" alt="Romania Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Russia" data-continent="Europe">
+                            <div class="name" title="Russia">
+                                <span class="alpha-2">RU</span>
+                                Russia
+                            </div>
+                            <div class="capital">Moscow</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ru.svg" alt="Russia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Rwanda" data-continent="Africa">
+                            <div class="name" title="Rwanda">
+                                <span class="alpha-2">RW</span>
+                                Rwanda
+                            </div>
+                            <div class="capital">Kigali</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/rw.svg" alt="Rwanda Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Réunion" data-continent="Africa">
+                            <div class="name" title="Réunion">
+                                <span class="alpha-2">RE</span>
+                                Réunion
+                            </div>
+                            <div class="capital">Saint-Denis</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/re.svg" alt="Réunion Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Saint Barthélemy" data-continent="North America">
+                            <div class="name" title="Saint Barthélemy">
+                                <span class="alpha-2">BL</span>
+                                Saint Barthélemy
+                            </div>
+                            <div class="capital">Gustavia</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/bl.svg" alt="Saint Barthélemy Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Saint Helena, Ascension and Tristan da Cunha" data-continent="Africa">
+                            <div class="name" title="Saint Helena, Ascension and Tristan da Cunha">
+                                <span class="alpha-2">SH</span>
+                                Saint Helena, Ascension and Tristan da Cunha
+                            </div>
+                            <div class="capital">Jamestown</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/sh.svg" alt="Saint Helena, Ascension and Tristan da Cunha Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Saint Kitts and Nevis" data-continent="North America">
+                            <div class="name" title="Saint Kitts and Nevis">
+                                <span class="alpha-2">KN</span>
+                                Saint Kitts and Nevis
+                            </div>
+                            <div class="capital">Basseterre</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/kn.svg" alt="Saint Kitts and Nevis Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Saint Lucia" data-continent="North America">
+                            <div class="name" title="Saint Lucia">
+                                <span class="alpha-2">LC</span>
+                                Saint Lucia
+                            </div>
+                            <div class="capital">Castries</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/lc.svg" alt="Saint Lucia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Saint Martin" data-continent="North America">
+                            <div class="name" title="Saint Martin">
+                                <span class="alpha-2">MF</span>
+                                Saint Martin
+                            </div>
+                            <div class="capital">Marigot</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/mf.svg" alt="Saint Martin Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Saint Pierre and Miquelon" data-continent="North America">
+                            <div class="name" title="Saint Pierre and Miquelon">
+                                <span class="alpha-2">PM</span>
+                                Saint Pierre and Miquelon
+                            </div>
+                            <div class="capital">Saint-Pierre</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/pm.svg" alt="Saint Pierre and Miquelon Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Saint Vincent and the Grenadines" data-continent="North America">
+                            <div class="name" title="Saint Vincent and the Grenadines">
+                                <span class="alpha-2">VC</span>
+                                Saint Vincent and the Grenadines
+                            </div>
+                            <div class="capital">Kingstown</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/vc.svg" alt="Saint Vincent and the Grenadines Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Samoa" data-continent="Oceania">
+                            <div class="name" title="Samoa">
+                                <span class="alpha-2">WS</span>
+                                Samoa
+                            </div>
+                            <div class="capital">Apia</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ws.svg" alt="Samoa Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="San Marino" data-continent="Europe">
+                            <div class="name" title="San Marino">
+                                <span class="alpha-2">SM</span>
+                                San Marino
+                            </div>
+                            <div class="capital">San Marino</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/sm.svg" alt="San Marino Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Sao Tome and Principe" data-continent="Africa">
+                            <div class="name" title="Sao Tome and Principe">
+                                <span class="alpha-2">ST</span>
+                                Sao Tome and Principe
+                            </div>
+                            <div class="capital">São Tomé</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/st.svg" alt="Sao Tome and Principe Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Saudi Arabia" data-continent="Asia">
+                            <div class="name" title="Saudi Arabia">
+                                <span class="alpha-2">SA</span>
+                                Saudi Arabia
+                            </div>
+                            <div class="capital">Riyadh</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/sa.svg" alt="Saudi Arabia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Scotland" data-continent="Europe">
+                            <div class="name" title="Scotland">
+                                <span class="alpha-2">GB-SCT</span>
+                                Scotland
+                            </div>
+                            <div class="capital">Edinburgh</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gb-sct.svg" alt="Scotland Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Senegal" data-continent="Africa">
+                            <div class="name" title="Senegal">
+                                <span class="alpha-2">SN</span>
+                                Senegal
+                            </div>
+                            <div class="capital">Dakar</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/sn.svg" alt="Senegal Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Serbia" data-continent="Europe">
+                            <div class="name" title="Serbia">
+                                <span class="alpha-2">RS</span>
+                                Serbia
+                            </div>
+                            <div class="capital">Belgrade</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/rs.svg" alt="Serbia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Seychelles" data-continent="Africa">
+                            <div class="name" title="Seychelles">
+                                <span class="alpha-2">SC</span>
+                                Seychelles
+                            </div>
+                            <div class="capital">Victoria</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/sc.svg" alt="Seychelles Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Sierra Leone" data-continent="Africa">
+                            <div class="name" title="Sierra Leone">
+                                <span class="alpha-2">SL</span>
+                                Sierra Leone
+                            </div>
+                            <div class="capital">Freetown</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/sl.svg" alt="Sierra Leone Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Singapore" data-continent="Asia">
+                            <div class="name" title="Singapore">
+                                <span class="alpha-2">SG</span>
+                                Singapore
+                            </div>
+                            <div class="capital">Singapore</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/sg.svg" alt="Singapore Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Sint Maarten" data-continent="North America">
+                            <div class="name" title="Sint Maarten">
+                                <span class="alpha-2">SX</span>
+                                Sint Maarten
+                            </div>
+                            <div class="capital">Philipsburg</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/sx.svg" alt="Sint Maarten Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Slovakia" data-continent="Europe">
+                            <div class="name" title="Slovakia">
+                                <span class="alpha-2">SK</span>
+                                Slovakia
+                            </div>
+                            <div class="capital">Bratislava</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/sk.svg" alt="Slovakia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Slovenia" data-continent="Europe">
+                            <div class="name" title="Slovenia">
+                                <span class="alpha-2">SI</span>
+                                Slovenia
+                            </div>
+                            <div class="capital">Ljubljana</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/si.svg" alt="Slovenia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Solomon Islands" data-continent="Oceania">
+                            <div class="name" title="Solomon Islands">
+                                <span class="alpha-2">SB</span>
+                                Solomon Islands
+                            </div>
+                            <div class="capital">Honiara</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/sb.svg" alt="Solomon Islands Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Somalia" data-continent="Africa">
+                            <div class="name" title="Somalia">
+                                <span class="alpha-2">SO</span>
+                                Somalia
+                            </div>
+                            <div class="capital">Mogadishu</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/so.svg" alt="Somalia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="South Africa" data-continent="Africa">
+                            <div class="name" title="South Africa">
+                                <span class="alpha-2">ZA</span>
+                                South Africa
+                            </div>
+                            <div class="capital">Pretoria</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/za.svg" alt="South Africa Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="South Georgia and the South Sandwich Islands" data-continent="Antarctica">
+                            <div class="name" title="South Georgia and the South Sandwich Islands">
+                                <span class="alpha-2">GS</span>
+                                South Georgia and the South Sandwich Islands
+                            </div>
+                            <div class="capital">King Edward Point</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gs.svg" alt="South Georgia and the South Sandwich Islands Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="South Korea" data-continent="Asia">
+                            <div class="name" title="South Korea">
+                                <span class="alpha-2">KR</span>
+                                South Korea
+                            </div>
+                            <div class="capital">Seoul</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/kr.svg" alt="South Korea Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="South Sudan" data-continent="Africa">
+                            <div class="name" title="South Sudan">
+                                <span class="alpha-2">SS</span>
+                                South Sudan
+                            </div>
+                            <div class="capital">Juba</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ss.svg" alt="South Sudan Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Spain" data-continent="Europe">
+                            <div class="name" title="Spain">
+                                <span class="alpha-2">ES</span>
+                                Spain
+                            </div>
+                            <div class="capital">Madrid</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/es.svg" alt="Spain Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Sri Lanka" data-continent="Asia">
+                            <div class="name" title="Sri Lanka">
+                                <span class="alpha-2">LK</span>
+                                Sri Lanka
+                            </div>
+                            <div class="capital">Sri Jayawardenepura Kotte, Colombo</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/lk.svg" alt="Sri Lanka Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="State of Palestine" data-continent="Asia">
+                            <div class="name" title="State of Palestine">
+                                <span class="alpha-2">PS</span>
+                                State of Palestine
+                            </div>
+                            <div class="capital">Ramallah</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ps.svg" alt="State of Palestine Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Sudan" data-continent="Africa">
+                            <div class="name" title="Sudan">
+                                <span class="alpha-2">SD</span>
+                                Sudan
+                            </div>
+                            <div class="capital">Khartoum</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/sd.svg" alt="Sudan Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Suriname" data-continent="South America">
+                            <div class="name" title="Suriname">
+                                <span class="alpha-2">SR</span>
+                                Suriname
+                            </div>
+                            <div class="capital">Paramaribo</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/sr.svg" alt="Suriname Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Svalbard and Jan Mayen" data-continent="Europe">
+                            <div class="name" title="Svalbard and Jan Mayen">
+                                <span class="alpha-2">SJ</span>
+                                Svalbard and Jan Mayen
+                            </div>
+                            <div class="capital">Longyearbyen</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/sj.svg" alt="Svalbard and Jan Mayen Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Swaziland" data-continent="Africa">
+                            <div class="name" title="Swaziland">
+                                <span class="alpha-2">SZ</span>
+                                Swaziland
+                            </div>
+                            <div class="capital">Lobamba, Mbabane</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/sz.svg" alt="Swaziland Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Sweden" data-continent="Europe">
+                            <div class="name" title="Sweden">
+                                <span class="alpha-2">SE</span>
+                                Sweden
+                            </div>
+                            <div class="capital">Stockholm</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/se.svg" alt="Sweden Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Switzerland" data-continent="Europe">
+                            <div class="name" title="Switzerland">
+                                <span class="alpha-2">CH</span>
+                                Switzerland
+                            </div>
+                            <div class="capital">Bern</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ch.svg" alt="Switzerland Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Syrian Arab Republic" data-continent="Asia">
+                            <div class="name" title="Syrian Arab Republic">
+                                <span class="alpha-2">SY</span>
+                                Syrian Arab Republic
+                            </div>
+                            <div class="capital">Damascus</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/sy.svg" alt="Syrian Arab Republic Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Taiwan" data-continent="Asia">
+                            <div class="name" title="Taiwan">
+                                <span class="alpha-2">TW</span>
+                                Taiwan
+                            </div>
+                            <div class="capital">Taipei</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/tw.svg" alt="Taiwan Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Tajikistan" data-continent="Asia">
+                            <div class="name" title="Tajikistan">
+                                <span class="alpha-2">TJ</span>
+                                Tajikistan
+                            </div>
+                            <div class="capital">Dushanbe</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/tj.svg" alt="Tajikistan Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Tanzania" data-continent="Africa">
+                            <div class="name" title="Tanzania">
+                                <span class="alpha-2">TZ</span>
+                                Tanzania
+                            </div>
+                            <div class="capital">Dodoma</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/tz.svg" alt="Tanzania Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Thailand" data-continent="Asia">
+                            <div class="name" title="Thailand">
+                                <span class="alpha-2">TH</span>
+                                Thailand
+                            </div>
+                            <div class="capital">Bangkok</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/th.svg" alt="Thailand Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Timor-Leste" data-continent="Asia">
+                            <div class="name" title="Timor-Leste">
+                                <span class="alpha-2">TL</span>
+                                Timor-Leste
+                            </div>
+                            <div class="capital">Dili</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/tl.svg" alt="Timor-Leste Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Togo" data-continent="Africa">
+                            <div class="name" title="Togo">
+                                <span class="alpha-2">TG</span>
+                                Togo
+                            </div>
+                            <div class="capital">Lomé</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/tg.svg" alt="Togo Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Tokelau" data-continent="Oceania">
+                            <div class="name" title="Tokelau">
+                                <span class="alpha-2">TK</span>
+                                Tokelau
+                            </div>
+                            <div class="capital">Nukunonu, Atafu,Tokelau</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/tk.svg" alt="Tokelau Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Tonga" data-continent="Oceania">
+                            <div class="name" title="Tonga">
+                                <span class="alpha-2">TO</span>
+                                Tonga
+                            </div>
+                            <div class="capital">Nukuʻalofa</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/to.svg" alt="Tonga Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Trinidad and Tobago" data-continent="South America">
+                            <div class="name" title="Trinidad and Tobago">
+                                <span class="alpha-2">TT</span>
+                                Trinidad and Tobago
+                            </div>
+                            <div class="capital">Port of Spain</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/tt.svg" alt="Trinidad and Tobago Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Tunisia" data-continent="Africa">
+                            <div class="name" title="Tunisia">
+                                <span class="alpha-2">TN</span>
+                                Tunisia
+                            </div>
+                            <div class="capital">Tunis</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/tn.svg" alt="Tunisia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Turkey" data-continent="Asia">
+                            <div class="name" title="Turkey">
+                                <span class="alpha-2">TR</span>
+                                Turkey
+                            </div>
+                            <div class="capital">Ankara</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/tr.svg" alt="Turkey Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Turkmenistan" data-continent="Asia">
+                            <div class="name" title="Turkmenistan">
+                                <span class="alpha-2">TM</span>
+                                Turkmenistan
+                            </div>
+                            <div class="capital">Ashgabat</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/tm.svg" alt="Turkmenistan Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Turks and Caicos Islands" data-continent="North America">
+                            <div class="name" title="Turks and Caicos Islands">
+                                <span class="alpha-2">TC</span>
+                                Turks and Caicos Islands
+                            </div>
+                            <div class="capital">Cockburn Town</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/tc.svg" alt="Turks and Caicos Islands Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Tuvalu" data-continent="Oceania">
+                            <div class="name" title="Tuvalu">
+                                <span class="alpha-2">TV</span>
+                                Tuvalu
+                            </div>
+                            <div class="capital">Funafuti</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/tv.svg" alt="Tuvalu Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Uganda" data-continent="Africa">
+                            <div class="name" title="Uganda">
+                                <span class="alpha-2">UG</span>
+                                Uganda
+                            </div>
+                            <div class="capital">Kampala</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ug.svg" alt="Uganda Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Ukraine" data-continent="Europe">
+                            <div class="name" title="Ukraine">
+                                <span class="alpha-2">UA</span>
+                                Ukraine
+                            </div>
+                            <div class="capital">Kiev</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ua.svg" alt="Ukraine Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="United Arab Emirates" data-continent="Asia">
+                            <div class="name" title="United Arab Emirates">
+                                <span class="alpha-2">AE</span>
+                                United Arab Emirates
+                            </div>
+                            <div class="capital">Abu Dhabi</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ae.svg" alt="United Arab Emirates Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="United Kingdom" data-continent="Europe">
+                            <div class="name" title="United Kingdom">
+                                <span class="alpha-2">GB</span>
+                                United Kingdom
+                            </div>
+                            <div class="capital">London</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gb.svg" alt="United Kingdom Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="United States Minor Outlying Islands" data-continent="North America">
+                            <div class="name" title="United States Minor Outlying Islands">
+                                <span class="alpha-2">UM</span>
+                                United States Minor Outlying Islands
+                            </div>
+                            <div class="capital">Washington, D.C.</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/um.svg" alt="United States Minor Outlying Islands Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="United States of America" data-continent="North America">
+                            <div class="name" title="United States of America">
+                                <span class="alpha-2">US</span>
+                                United States of America
+                            </div>
+                            <div class="capital">Washington, D.C.</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/us.svg" alt="United States of America Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Uruguay" data-continent="South America">
+                            <div class="name" title="Uruguay">
+                                <span class="alpha-2">UY</span>
+                                Uruguay
+                            </div>
+                            <div class="capital">Montevideo</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/uy.svg" alt="Uruguay Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Uzbekistan" data-continent="Asia">
+                            <div class="name" title="Uzbekistan">
+                                <span class="alpha-2">UZ</span>
+                                Uzbekistan
+                            </div>
+                            <div class="capital">Tashkent</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/uz.svg" alt="Uzbekistan Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Vanuatu" data-continent="Oceania">
+                            <div class="name" title="Vanuatu">
+                                <span class="alpha-2">VU</span>
+                                Vanuatu
+                            </div>
+                            <div class="capital">Port Vila</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/vu.svg" alt="Vanuatu Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Venezuela (Bolivarian Republic of)" data-continent="South America">
+                            <div class="name" title="Venezuela (Bolivarian Republic of)">
+                                <span class="alpha-2">VE</span>
+                                Venezuela (Bolivarian Republic of)
+                            </div>
+                            <div class="capital">Caracas</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ve.svg" alt="Venezuela (Bolivarian Republic of) Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Vietnam" data-continent="Asia">
+                            <div class="name" title="Vietnam">
+                                <span class="alpha-2">VN</span>
+                                Vietnam
+                            </div>
+                            <div class="capital">Hanoi</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/vn.svg" alt="Vietnam Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Virgin Islands (British)" data-continent="North America">
+                            <div class="name" title="Virgin Islands (British)">
+                                <span class="alpha-2">VG</span>
+                                Virgin Islands (British)
+                            </div>
+                            <div class="capital">Road Town</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/vg.svg" alt="Virgin Islands (British) Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Virgin Islands (U.S.)" data-continent="North America">
+                            <div class="name" title="Virgin Islands (U.S.)">
+                                <span class="alpha-2">VI</span>
+                                Virgin Islands (U.S.)
+                            </div>
+                            <div class="capital">Charlotte Amalie</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/vi.svg" alt="Virgin Islands (U.S.) Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Wales" data-continent="Europe">
+                            <div class="name" title="Wales">
+                                <span class="alpha-2">GB-WLS</span>
+                                Wales
+                            </div>
+                            <div class="capital">Cardiff</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/gb-wls.svg" alt="Wales Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Wallis and Futuna" data-continent="Oceania">
+                            <div class="name" title="Wallis and Futuna">
+                                <span class="alpha-2">WF</span>
+                                Wallis and Futuna
+                            </div>
+                            <div class="capital">Mata-Utu</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/wf.svg" alt="Wallis and Futuna Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Western Sahara" data-continent="Africa">
+                            <div class="name" title="Western Sahara">
+                                <span class="alpha-2">EH</span>
+                                Western Sahara
+                            </div>
+                            <div class="capital">Laayoune</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/eh.svg" alt="Western Sahara Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Yemen" data-continent="Asia">
+                            <div class="name" title="Yemen">
+                                <span class="alpha-2">YE</span>
+                                Yemen
+                            </div>
+                            <div class="capital">Sana'a</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/ye.svg" alt="Yemen Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Zambia" data-continent="Africa">
+                            <div class="name" title="Zambia">
+                                <span class="alpha-2">ZM</span>
+                                Zambia
+                            </div>
+                            <div class="capital">Lusaka</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/zm.svg" alt="Zambia Flag">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="country" data-name="Zimbabwe" data-continent="Africa">
+                            <div class="name" title="Zimbabwe">
+                                <span class="alpha-2">ZW</span>
+                                Zimbabwe
+                            </div>
+                            <div class="capital">Harare</div>
+                            <img class="flag" src="../dist/assets/fonts/flag-icon/flags/4x3/zw.svg" alt="Zimbabwe Flag">
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="icon-bootstrap.html"><i class="fa fa-long-arrow-left me-3"></i>Bootstrap icons</a>
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="icon-custom.html"><i class="fa fa-long-arrow-left me-3"></i>SVG Custom Icon</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('docs/_scripts.html',{
+
+})
+</body>
+</html>

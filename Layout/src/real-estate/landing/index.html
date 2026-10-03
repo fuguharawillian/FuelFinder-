@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Real Estate Landing Page",
+        "swiper": true,
+        "onepage": true,
+    })
+</head>
+
+<body class="landing-page" data-luno="theme-blue">
+
+    <!-- Section: Header -->
+    <header class="section sticky-top shadow-sm border-top py-0 bg-card">
+        @@include('onepage/_navbar.html', {
+            "navbarClass": "navbar-expand-lg navbar-light py-3",
+            "brandName": "LUNO",
+            "tagLine": "Real Estate Management",
+        })
+    </header>
+
+    <!--  Section: Hero Section  -->
+    <div class="section" id="hero">
+        <div class="container">
+
+            <div class="row g-3 py-0 py-lg-5">
+                <div class="col-xl-6 col-lg-6 col-md-12">
+                    <div class="d-flex flex-column h-100 justify-content-center mb-5 mb-lg-0">
+                        <h2 class="bg-text color-900"><span class="text-gradient fw-bold d-block">Real Estate</span> Property for you</h2>
+                        <p class="color-900 lead mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                        <div class="d-flex flex-column flex-md-row">
+                            <a href="#" class="btn btn-primary btn-lg px-5 fs-5 my-2 my-md-0">Contact Us</a>
+                            <a href="#" class="btn btn-primary btn-lg px-5 fs-5 my-2 my-md-0 ms-0 ms-md-3"><i class="fa fa-youtube-play me-2"></i> Video</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12">
+                    <div class="owl-carousel owl-theme" id="owl_banner">
+                        <div class="item">
+                            <div class="card overflow-hidden">
+                                <img class="" src="@@webRoot/assets/img/real-estate/2.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="card overflow-hidden">
+                                <img class="" src="@@webRoot/assets/img/real-estate/4.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="card overflow-hidden">
+                                <img class="" src="@@webRoot/assets/img/real-estate/6.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .row end -->
+
+        </div>
+    </div><!-- End Hero -->
+
+    <!-- Section: Why Us -->
+    <div class="section pt-0" id="about">
+        <div class="container">
+
+            <div class="row g-3">
+                <div class="col-lg-6 col-md-12">
+                    <h2 class="fw-bold">Why Choose LUNO?</h2>
+                    <p class="fs-5 fw-normal">Our goal is to make sure with advances in technology</p>
+                    <p class="fs-5 fw-normal">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer</p>
+                    <p class="fs-5 fw-normal">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                    <a class="btn btn-lg btn-primary px-4 text-uppercase" href="#">Learn More</a>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="row g-1">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="avatar lg rounded no-thumbnail mb-4 p-2">
+                                        <svg width="40" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="fill-secondary" d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1H1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+                                            <path class="fill-muted" d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V5zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2H3z"/>
+                                        </svg>
+                                    </div>
+                                    <h5>Easy EMI</h5>
+                                    <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                    <a href="#">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="avatar lg rounded no-thumbnail mb-4 p-2">
+                                        <svg width="40" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="fill-muted" d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+                                            <path class="fill-secondary" d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                                        </svg>
+                                    </div>
+                                    <h5>CCTV Surveillance System</h5>
+                                    <p class="text-muted">The point of using Lorem is that it has a more-or-less normal distribution of letters</p>
+                                    <a href="#">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="avatar lg rounded no-thumbnail mb-4 p-2">
+                                        <svg width="40" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="fill-muted" d="M13.4049 4.02698C13.1973 2.98015 12.6601 2.02719 11.8721 1.30746C11.0841 0.587731 10.0865 0.13897 9.02517 0.0267924C7.96384 -0.0853848 6.89446 0.144906 5.97338 0.683993C5.05231 1.22308 4.32785 2.04269 3.90592 3.02298C3.43276 2.96848 2.95345 3.01111 2.49734 3.14829C2.04123 3.28547 1.61792 3.51429 1.25332 3.82076C0.888721 4.12723 0.59051 4.50488 0.376944 4.93061C0.163378 5.35634 0.0389514 5.82118 0.0112822 6.29666C-0.016387 6.77215 0.0532835 7.24828 0.216028 7.69591C0.378773 8.14353 0.631167 8.55323 0.957757 8.89992C1.28435 9.24661 1.67826 9.52299 2.11538 9.71214C2.5525 9.9013 3.02363 9.99924 3.49992 9.99998H12.9999C13.761 10.0009 14.494 9.7124 15.0504 9.19306C15.6068 8.67371 15.945 7.9623 15.9965 7.20294C16.048 6.44357 15.8089 5.69302 15.3277 5.10332C14.8465 4.51362 14.1592 4.12886 13.4049 4.02698ZM8.49992 0.999984C9.48388 0.99978 10.4334 1.36225 11.1669 2.0181C11.9004 2.67394 12.3665 3.57714 12.4759 4.55498C12.4895 4.67784 12.5481 4.79131 12.6405 4.87349C12.7328 4.95567 12.8523 5.00073 12.9759 4.99998H12.9999C13.5304 4.99998 14.0391 5.2107 14.4141 5.58577C14.7892 5.96084 14.9999 6.46955 14.9999 6.99998C14.9999 7.53042 14.7892 8.03912 14.4141 8.4142C14.0391 8.78927 13.5304 8.99998 12.9999 8.99998H3.49992C3.146 8.99981 2.79614 8.92448 2.4735 8.779C2.15086 8.63351 1.86279 8.42118 1.62834 8.15604C1.39389 7.8909 1.21841 7.57901 1.11351 7.24098C1.0086 6.90296 0.976666 6.54652 1.01981 6.19523C1.06295 5.84394 1.1802 5.50582 1.36378 5.20323C1.54736 4.90064 1.7931 4.64048 2.08474 4.43995C2.37638 4.23943 2.70727 4.10311 3.05553 4.04002C3.40379 3.97693 3.76147 3.98851 4.10492 4.07398C4.22745 4.10455 4.35701 4.08761 4.46756 4.02658C4.57812 3.96555 4.66149 3.86495 4.70092 3.74498C4.9652 2.94616 5.47454 2.25095 6.15654 1.75816C6.83854 1.26538 7.65852 1.00008 8.49992 0.999984Z"/>
+                                            <path class="fill-secondary" fill-rule="evenodd" clip-rule="evenodd" d="M5.84177 14.9743C5.57981 14.887 5.43825 14.6038 5.52559 14.3418L6.52582 11.3419C6.61316 11.0799 6.89633 10.9384 7.1583 11.0257C7.42026 11.113 7.56182 11.3962 7.47448 11.6582L6.47425 14.6581C6.38691 14.9201 6.10374 15.0617 5.84177 14.9743ZM3.34178 13.4743C3.07982 13.3869 2.93827 13.1037 3.02563 12.8418L3.52583 11.3418C3.61318 11.0799 3.89636 10.9383 4.15832 11.0257C4.42028 11.113 4.56183 11.3962 4.47447 11.6582L3.97427 13.1581C3.88692 13.4201 3.60374 13.5616 3.34178 13.4743Z"/>
+                                            <path class="fill-secondary" fill-rule="evenodd" clip-rule="evenodd" d="M11.8418 14.9743C11.5798 14.887 11.4383 14.6038 11.5256 14.3419L12.5255 11.3419C12.6128 11.0799 12.8959 10.9383 13.1579 11.0256C13.4199 11.113 13.5615 11.3961 13.4742 11.6581L12.4743 14.6581C12.3869 14.9201 12.1038 15.0617 11.8418 14.9743ZM9.34156 13.4744C9.07959 13.387 8.93803 13.1038 9.02537 12.8419L9.52549 11.3419C9.61284 11.0799 9.89601 10.9383 10.158 11.0257C10.4199 11.113 10.5615 11.3962 10.4742 11.6581L9.97403 13.1582C9.88669 13.4201 9.60352 13.5617 9.34156 13.4744Z"/>
+                                        </svg>                                            
+                                    </div>
+                                    <h5>Rain Water Harvesting</h5>
+                                    <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                    <a href="#">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="avatar lg rounded no-thumbnail mb-4 p-2">
+                                        <svg width="40" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="fill-secondary" d="M12.5028 1.59585H11.4641V4.4496C11.4641 4.58788 11.5762 4.70016 11.7147 4.70016C11.8531 4.70016 11.9652 4.58805 11.9652 4.4496V3.58969H12.503C13.0296 3.58969 13.4579 3.16135 13.4579 2.6349V2.55065C13.4578 2.0242 13.0294 1.59585 12.5028 1.59585ZM12.9568 2.63473C12.9568 2.88512 12.7532 3.08857 12.5028 3.08857H11.965V2.0968H12.5028C12.7532 2.0968 12.9568 2.30042 12.9568 2.55065V2.63473Z"/>
+                                            <path class="fill-muted" d="M3.25043 12.5842H1.95407C1.57721 12.5842 1.2706 12.2776 1.2706 11.9007V11.5367C1.2706 11.1599 1.57721 10.8533 1.95407 10.8533H3.25043C3.62728 10.8533 3.9339 11.1599 3.9339 11.5367V11.9007C3.9339 12.2776 3.62728 12.5842 3.25043 12.5842ZM1.95407 11.3544C1.85344 11.3544 1.77155 11.4363 1.77155 11.5369V11.9009C1.77155 12.0015 1.85344 12.0834 1.95407 12.0834H3.25043C3.35106 12.0834 3.43294 12.0015 3.43294 11.9009V11.5369C3.43294 11.4363 3.35106 11.3544 3.25043 11.3544H1.95407Z"/>
+                                            <path class="fill-muted" d="M9.09412 12.5842H7.79776C7.42091 12.5842 7.11429 12.2776 7.11429 11.9007V11.5367C7.11429 11.1599 7.42091 10.8533 7.79776 10.8533H9.09412C9.47098 10.8533 9.77776 11.1599 9.77776 11.5367V11.9007C9.77759 12.2776 9.47098 12.5842 9.09412 12.5842ZM7.79776 11.3544C7.69713 11.3544 7.61524 11.4363 7.61524 11.5369V11.9009C7.61524 12.0015 7.69713 12.0834 7.79776 12.0834H9.09412C9.19492 12.0834 9.27681 12.0015 9.27681 11.9009V11.5369C9.27681 11.4363 9.19492 11.3544 9.09412 11.3544H7.79776Z"/>
+                                            <path class="fill-muted" d="M6.29597 11.9693H4.75243C4.61398 11.9693 4.50187 11.8572 4.50187 11.7187C4.50187 11.5803 4.61398 11.4682 4.75243 11.4682H6.29614C6.43459 11.4682 6.5467 11.5803 6.5467 11.7187C6.5467 11.8572 6.43442 11.9693 6.29597 11.9693Z"/>
+                                            <path class="fill-muted" d="M10.7073 10.8134L10.2933 10.1559C10.1859 9.9854 10.0194 9.86823 9.82948 9.82247L8.93226 7.51374C8.80867 7.19564 8.49632 6.98189 8.15526 6.98189H2.89316C2.5467 6.98189 2.24177 7.19058 2.11615 7.51357L1.2191 9.8223C1.02899 9.86823 0.862509 9.9854 0.755126 10.1558L0.340959 10.8134C0.264643 10.9351 0.224121 11.0753 0.224121 11.2186V14.4509C0.22429 14.9294 0.613299 15.3184 1.09163 15.3184H2.29293C2.77126 15.3184 3.16043 14.9294 3.16043 14.4511V13.552H7.88815V14.4511C7.88815 14.9294 8.27733 15.3184 8.75565 15.3184H9.95679C10.4351 15.3184 10.8241 14.9294 10.8241 14.4511V11.2188C10.8241 11.0749 10.7838 10.9348 10.7073 10.8134ZM2.58317 7.69491C2.63331 7.56608 2.75505 7.48267 2.89333 7.48267H8.15526C8.29134 7.48267 8.41595 7.56794 8.46525 7.69491L9.28345 9.80035H8.51235C8.3913 9.02048 7.71711 8.42092 6.90381 8.42092C6.0905 8.42092 5.41632 9.02048 5.29526 9.80035H1.76496L2.58317 7.69491ZM8.00364 9.80035H5.80364C5.91794 9.29822 6.36723 8.92187 6.90364 8.92187C7.43988 8.92187 7.88916 9.29822 8.00364 9.80035ZM2.65931 14.4511C2.65931 14.6532 2.49486 14.8175 2.29276 14.8175H1.09163C0.889523 14.8175 0.725241 14.653 0.725241 14.4511V13.5034C0.806622 13.5333 0.893407 13.552 0.985087 13.552H2.65948L2.65931 14.4511ZM9.95679 14.8175H8.75565C8.55338 14.8175 8.3891 14.653 8.3891 14.4511V13.552H10.0635C10.1552 13.552 10.2418 13.5331 10.3233 13.5034V14.4511C10.3232 14.653 10.1589 14.8175 9.95679 14.8175ZM10.3232 12.7914C10.3232 12.9345 10.2065 13.0512 10.0633 13.0512H0.984918C0.841741 13.0512 0.725072 12.9345 0.725072 12.7914V11.2188C0.725072 11.1697 0.738917 11.1217 0.765088 11.0802L1.17909 10.4227C1.22687 10.3467 1.30909 10.3013 1.39892 10.3013H1.40466C1.4055 10.3013 1.40635 10.3013 1.40719 10.3013H9.64933C9.73915 10.3013 9.82138 10.3466 9.86916 10.4227L10.2832 11.0803C10.3093 11.1217 10.3232 11.1695 10.3232 11.2188V12.7914Z"/>
+                                            <path class="fill-secondary" d="M13.7902 0.122742H10.8454C10.0549 0.122742 9.41165 0.766026 9.41165 1.55654V4.50113C9.41165 5.29181 10.0548 5.93509 10.8454 5.93509H12.1854V15.0679C12.1854 15.2061 12.2975 15.3184 12.4359 15.3184C12.5742 15.3184 12.6865 15.2063 12.6865 15.0679V5.93509H13.7904C14.5809 5.93509 15.2243 5.29181 15.2243 4.50113V1.55654C15.224 0.766026 14.5807 0.122742 13.7902 0.122742ZM14.723 4.50129C14.723 5.01575 14.3047 5.43431 13.79 5.43431H10.8454C10.3312 5.43431 9.9126 5.01575 9.9126 4.50129V1.55654C9.9126 1.04208 10.331 0.623693 10.8454 0.623693H13.7902C14.3047 0.623693 14.7232 1.04208 14.7232 1.55654L14.723 4.50129Z"/>
+                                        </svg>
+                                    </div>
+                                    <h5>Free Parking</h5>
+                                    <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                    <a href="#">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: Type  -->
+    <div class="section">
+        <div class="container">
+
+            <div class="row g-3">
+                <div class="col-12">
+                    <span class="bg-dark px-2 py-1 color-fff text-uppercase">Deals</span>
+                    <h2 class="mb-1 mt-4 color-900">Better Deals for You</h2>
+                    <p class="lead">There are many variations of passages of the majority have suffered alteration.</p>
+                </div>
+                <div class="col-12 mt-3">
+                    <ul class="nav nav-tabs tab-card border-bottom-0 fs-6 justify-content-start px-0 flex-column flex-md-row" role="tablist">
+                        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#apartment" role="tab">Apartment</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#bungalows" role="tab">Bungalows / Villa</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#farm" role="tab">Farm House</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#corporate" role="tab">Corporate Offices</a></li>
+                    </ul>
+                    <div class="tab-content mt-4">
+                        <div class="tab-pane fade show active" id="apartment" role="tabpanel">
+                            <div class="owl-carousel owl-theme" id="owl_apartment">
+                                <div class="item">
+                                    <div class="card overflow-hidden">
+                                        <img class="" src="@@webRoot/assets/img/real-estate/ap1.jpg" alt="">
+                                        <div class="grid-content p-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <button class="btn btn-sm btn-primary">For Rent</button>
+                                                    <button class="btn btn-sm btn-secondary">Inquiry</button>
+                                                </div>
+                                                <h5 class="mb-0">$8,499/<small class="fs-6">mo</small></h5>
+                                            </div>
+                                            <div class="d-flex flex-column mt-3">
+                                                <p class="text-danger">House</p>
+                                                <h5>Luxury Family Home</h5>
+                                                <p><i class="fa fa-map-pin"></i> 1421 San Pedro St, Los Angeles, CA 90015</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between property-info">
+                                                <p class="mb-0">Beds: <strong>3</strong></p>
+                                                <p class="mb-0">Baths: <strong>2</strong></p>
+                                                <p class="mb-0">Sq Ft: <strong>1840</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="card overflow-hidden">
+                                        <img class="" src="@@webRoot/assets/img/real-estate/ap2.jpg" alt="">
+                                        <div class="grid-content p-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <button class="btn btn-sm btn-primary">For Sell</button>
+                                                    <button class="btn btn-sm btn-secondary">Inquiry</button>
+                                                </div>
+                                                <h5 class="mb-0">$28,000</h5>
+                                            </div>
+                                            <div class="d-flex flex-column mt-3">
+                                                <p class="text-danger">Apartment</p>
+                                                <h5>Luxury Penthouse</h5>
+                                                <p><i class="fa fa-map-pin"></i> 795 Folsom Ave, 600 San Francisco, 94107</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between property-info">
+                                                <p class="mb-0">Beds: <strong>5</strong></p>
+                                                <p class="mb-0">Baths: <strong>3</strong></p>
+                                                <p class="mb-0">Sq Ft: <strong>4770</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="card overflow-hidden">
+                                        <img class="" src="@@webRoot/assets/img/real-estate/ap3.jpg" alt="">
+                                        <div class="grid-content p-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <button class="btn btn-sm btn-primary">For Sell</button>
+                                                    <button class="btn btn-sm btn-secondary">Inquiry</button>
+                                                </div>
+                                                <h5 class="mb-0">$31,700</h5>
+                                            </div>
+                                            <div class="d-flex flex-column mt-3">
+                                                <p class="text-danger">Apartment</p>
+                                                <h5>See View</h5>
+                                                <p><i class="fa fa-map-pin"></i> 795 Folsom Ave, 600 San Francisco, 94107</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between property-info">
+                                                <p class="mb-0">Beds: <strong>10</strong></p>
+                                                <p class="mb-0">Baths: <strong>10</strong></p>
+                                                <p class="mb-0">Sq Ft: <strong>5610</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="bungalows" role="tabpanel">
+                            <div class="owl-carousel owl-theme" id="owl_bungalows">
+                                <div class="item">
+                                    <div class="card overflow-hidden">
+                                        <img class="" src="@@webRoot/assets/img/real-estate/bv1.jpg" alt="">
+                                        <div class="grid-content p-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <button class="btn btn-sm btn-primary">For Rent</button>
+                                                    <button class="btn btn-sm btn-secondary">Inquiry</button>
+                                                </div>
+                                                <h5 class="mb-0">$8,499/<small class="fs-6">mo</small></h5>
+                                            </div>
+                                            <div class="d-flex flex-column mt-3">
+                                                <p class="text-danger">Bungalows</p>
+                                                <h5>Luxury Family Home</h5>
+                                                <p><i class="fa fa-map-pin"></i> 1421 San Pedro St, Los Angeles, CA 90015</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between property-info">
+                                                <p class="mb-0">Beds: <strong>3</strong></p>
+                                                <p class="mb-0">Baths: <strong>2</strong></p>
+                                                <p class="mb-0">Sq Ft: <strong>1840</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="card overflow-hidden">
+                                        <img class="" src="@@webRoot/assets/img/real-estate/11.jpg" alt="">
+                                        <div class="grid-content p-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <button class="btn btn-sm btn-primary">For Sell</button>
+                                                    <button class="btn btn-sm btn-secondary">Inquiry</button>
+                                                </div>
+                                                <h5 class="mb-0">$31,700</h5>
+                                            </div>
+                                            <div class="d-flex flex-column mt-3">
+                                                <p class="text-danger">Bungalows</p>
+                                                <h5>Royal Villa</h5>
+                                                <p><i class="fa fa-map-pin"></i> 795 Folsom Ave, 600 San Francisco, 94107</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between property-info">
+                                                <p class="mb-0">Beds: <strong>10</strong></p>
+                                                <p class="mb-0">Baths: <strong>10</strong></p>
+                                                <p class="mb-0">Sq Ft: <strong>5610</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="card overflow-hidden">
+                                        <img class="" src="@@webRoot/assets/img/real-estate/2.jpg" alt="">
+                                        <div class="grid-content p-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <button class="btn btn-sm btn-primary">For Sell</button>
+                                                    <button class="btn btn-sm btn-secondary">Inquiry</button>
+                                                </div>
+                                                <h5 class="mb-0">$28,000</h5>
+                                            </div>
+                                            <div class="d-flex flex-column mt-3">
+                                                <p class="text-danger">Bungalows</p>
+                                                <h5>Luxury Penthouse</h5>
+                                                <p><i class="fa fa-map-pin"></i> 795 Folsom Ave, 600 San Francisco, 94107</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between property-info">
+                                                <p class="mb-0">Beds: <strong>5</strong></p>
+                                                <p class="mb-0">Baths: <strong>3</strong></p>
+                                                <p class="mb-0">Sq Ft: <strong>4770</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="card overflow-hidden">
+                                        <img class="" src="@@webRoot/assets/img/real-estate/bv2.jpg" alt="">
+                                        <div class="grid-content p-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <button class="btn btn-sm btn-primary">For Sell</button>
+                                                    <button class="btn btn-sm btn-secondary">Inquiry</button>
+                                                </div>
+                                                <h5 class="mb-0">$31,700</h5>
+                                            </div>
+                                            <div class="d-flex flex-column mt-3">
+                                                <p class="text-danger">Bungalows</p>
+                                                <h5>See View</h5>
+                                                <p><i class="fa fa-map-pin"></i> 795 Folsom Ave, 600 San Francisco, 94107</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between property-info">
+                                                <p class="mb-0">Beds: <strong>10</strong></p>
+                                                <p class="mb-0">Baths: <strong>10</strong></p>
+                                                <p class="mb-0">Sq Ft: <strong>5610</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="farm" role="tabpanel">
+                            <div class="owl-carousel owl-theme" id="owl_farm">
+                                <div class="item">
+                                    <div class="card overflow-hidden">
+                                        <img class="" src="@@webRoot/assets/img/real-estate/fh1.jpg" alt="">
+                                        <div class="grid-content p-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <button class="btn btn-sm btn-primary">For Rent</button>
+                                                    <button class="btn btn-sm btn-secondary">Inquiry</button>
+                                                </div>
+                                                <h5 class="mb-0">$8,499/<small class="fs-6">mo</small></h5>
+                                            </div>
+                                            <div class="d-flex flex-column mt-3">
+                                                <p class="text-danger">Farm</p>
+                                                <h5>Luxury Family Home</h5>
+                                                <p><i class="fa fa-map-pin"></i> 1421 San Pedro St, Los Angeles, CA 90015</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between property-info">
+                                                <p class="mb-0">Beds: <strong>3</strong></p>
+                                                <p class="mb-0">Baths: <strong>2</strong></p>
+                                                <p class="mb-0">Sq Ft: <strong>1840</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="card overflow-hidden">
+                                        <img class="" src="@@webRoot/assets/img/real-estate/fh2.jpg" alt="">
+                                        <div class="grid-content p-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <button class="btn btn-sm btn-primary">For Sell</button>
+                                                    <button class="btn btn-sm btn-secondary">Inquiry</button>
+                                                </div>
+                                                <h5 class="mb-0">$31,700</h5>
+                                            </div>
+                                            <div class="d-flex flex-column mt-3">
+                                                <p class="text-danger">Farm</p>
+                                                <h5>Royal Villa</h5>
+                                                <p><i class="fa fa-map-pin"></i> 795 Folsom Ave, 600 San Francisco, 94107</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between property-info">
+                                                <p class="mb-0">Beds: <strong>10</strong></p>
+                                                <p class="mb-0">Baths: <strong>10</strong></p>
+                                                <p class="mb-0">Sq Ft: <strong>5610</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="card overflow-hidden">
+                                        <img class="" src="@@webRoot/assets/img/real-estate/fh3.jpg" alt="">
+                                        <div class="grid-content p-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <button class="btn btn-sm btn-primary">For Sell</button>
+                                                    <button class="btn btn-sm btn-secondary">Inquiry</button>
+                                                </div>
+                                                <h5 class="mb-0">$28,000</h5>
+                                            </div>
+                                            <div class="d-flex flex-column mt-3">
+                                                <p class="text-danger">Farm</p>
+                                                <h5>Luxury Penthouse</h5>
+                                                <p><i class="fa fa-map-pin"></i> 795 Folsom Ave, 600 San Francisco, 94107</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between property-info">
+                                                <p class="mb-0">Beds: <strong>5</strong></p>
+                                                <p class="mb-0">Baths: <strong>3</strong></p>
+                                                <p class="mb-0">Sq Ft: <strong>4770</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="corporate" role="tabpanel">
+                            <div class="owl-carousel owl-theme" id="owl_corporate">
+                                <div class="item">
+                                    <div class="card overflow-hidden">
+                                        <img class="" src="@@webRoot/assets/img/real-estate/co1.jpg" alt="">
+                                        <div class="grid-content p-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <button class="btn btn-sm btn-primary">For Rent</button>
+                                                    <button class="btn btn-sm btn-secondary">Inquiry</button>
+                                                </div>
+                                                <h5 class="mb-0">$8,499/<small class="fs-6">mo</small></h5>
+                                            </div>
+                                            <div class="d-flex flex-column mt-3">
+                                                <p class="text-danger">Office</p>
+                                                <h5>Luxury Family Home</h5>
+                                                <p><i class="fa fa-map-pin"></i> 1421 San Pedro St, Los Angeles, CA 90015</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between property-info">
+                                                <p class="mb-0">Beds: <strong>3</strong></p>
+                                                <p class="mb-0">Baths: <strong>2</strong></p>
+                                                <p class="mb-0">Sq Ft: <strong>1840</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="card overflow-hidden">
+                                        <img class="" src="@@webRoot/assets/img/real-estate/co2.jpg" alt="">
+                                        <div class="grid-content p-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <button class="btn btn-sm btn-primary">For Sell</button>
+                                                    <button class="btn btn-sm btn-secondary">Inquiry</button>
+                                                </div>
+                                                <h5 class="mb-0">$31,700</h5>
+                                            </div>
+                                            <div class="d-flex flex-column mt-3">
+                                                <p class="text-danger">Office</p>
+                                                <h5>Royal Villa</h5>
+                                                <p><i class="fa fa-map-pin"></i> 795 Folsom Ave, 600 San Francisco, 94107</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between property-info">
+                                                <p class="mb-0">Beds: <strong>10</strong></p>
+                                                <p class="mb-0">Baths: <strong>10</strong></p>
+                                                <p class="mb-0">Sq Ft: <strong>5610</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="card overflow-hidden">
+                                        <img class="" src="@@webRoot/assets/img/real-estate/co3.jpg" alt="">
+                                        <div class="grid-content p-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <button class="btn btn-sm btn-primary">For Sell</button>
+                                                    <button class="btn btn-sm btn-secondary">Inquiry</button>
+                                                </div>
+                                                <h5 class="mb-0">$28,000</h5>
+                                            </div>
+                                            <div class="d-flex flex-column mt-3">
+                                                <p class="text-danger">Office</p>
+                                                <h5>Luxury Penthouse</h5>
+                                                <p><i class="fa fa-map-pin"></i> 795 Folsom Ave, 600 San Francisco, 94107</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between property-info">
+                                                <p class="mb-0">Beds: <strong>5</strong></p>
+                                                <p class="mb-0">Baths: <strong>3</strong></p>
+                                                <p class="mb-0">Sq Ft: <strong>4770</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: Fun fact  -->
+    <div class="section bg-dark text-center">
+        <div class="container">
+            
+            @@include('onepage/_fun-fact.html', {
+                "cardClass": "border-0 bg-transparent text-muted",
+                "rowClass": "row-cols-lg-4 row-cols-md-2 row-cols-sm-2 row-cols-1 g-1 text-center",
+                "funFact1": "20,000",
+                "funFactLabel1": "ALL PROPERTIES",
+                "funFact2": "3,150",
+                "funFactLabel2": "PROPERTIES FOR SALE",
+                "funFact3": "1,150",
+                "funFactLabel3": "PROPERTIES FOR RENT",
+                "funFact4": "10+",
+                "funFactLabel4": "AWARDS",
+            })
+
+        </div>
+    </div>
+
+    <!--  Section: Services  -->
+    <div class="section services-2" id="services">
+        <div class="container">
+            
+            <div class="row justify-content-center mb-3 text-center">
+                <div class="col-lg-12">
+                    <span class="bg-dark px-2 py-1 color-fff">World class</span>
+                    <h2 class="mb-1 mt-4 color-900">Our Services</h2>
+                    <p class="lead">There are many variations of passages of the majority have suffered alteration.</p>
+                </div>
+            </div><!-- .row end -->
+
+            <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-2 row-cols-1 g-0 row-deck">
+                <div class="col">
+                    <div class="card p-lg-5 p-4 text-center">
+                        <div class="icon"><i class="fa fa-heartbeat"></i></div>
+                        <h4 class="mt-3"><a href="#" class="color-600">Development</a></h4>
+                        <p class="mb-0 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. <a href="#">Read More</a></p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-lg-5 p-4 text-center">
+                        <div class="icon"><i class="fa fa-delicious"></i></div>
+                        <h4 class="mt-3"><a href="#" class="color-600">Sales and marketing</a></h4>
+                        <p class="mb-0 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. <a href="#">Read More</a></p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-lg-5 p-4 text-center">
+                        <div class="icon"><i class="fa fa-hospital-o"></i></div>
+                        <h4 class="mt-3"><a href="#" class="color-600">Brokerage</a></h4>
+                        <p class="mb-0 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. <a href="#">Read More</a></p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-lg-5 p-4 text-center">
+                        <div class="icon"><i class="fa fa-renren"></i></div>
+                        <h4 class="mt-3"><a href="#" class="color-600">Property management</a></h4>
+                        <p class="mb-0 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. <a href="#">Read More</a></p>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!-- Section: Properties By Location -->
+    <div class="section">
+        <div class="container">
+
+            <div class="row mb-3">
+                <div class="col-lg-12">
+                    <span class="bg-dark px-2 py-1 color-fff">World class</span>
+                    <h2 class="mb-1 mt-4 color-900">Properties By Location</h2>
+                    <p class="lead">There are many variations of passages of the majority have suffered alteration.</p>
+                </div>
+            </div><!-- .row end -->
+
+            <div class="row g-3">
+                <div class="col-12">
+                    <div class="card fieldset border border-primary">
+                        <span class="fieldset-tile text-primary bg-body">Country</span>
+                        <div class="row g-2 row-deck">
+                            <div class="col-lg-2 col-md-4 col-6">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <i class="fa fa-map-marker"></i>
+                                        <h5>370</h5>
+                                        <p class="mb-0">America</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-6">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <i class="fa fa-map-marker"></i>
+                                        <h5>215</h5>
+                                        <p class="mb-0">Australia</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-6">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <i class="fa fa-map-marker"></i>
+                                        <h5>347</h5>
+                                        <p class="mb-0">Canada</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-6">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <i class="fa fa-map-marker"></i>
+                                        <h5>295</h5>
+                                        <p class="mb-0">India</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-6">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <i class="fa fa-map-marker"></i>
+                                        <h5>185</h5>
+                                        <p class="mb-0">UK</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-6">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <i class="fa fa-map-marker"></i>
+                                        <h5>80</h5>
+                                        <p class="mb-0">Other</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=+()&amp;t=p&amp;z=13&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Row end  -->
+
+        </div>
+    </div>
+
+    <!-- Section: Our Successful Projects -->
+    <div class="section">
+        <div class="container">
+
+            <div class="row mb-3">
+                <div class="col-lg-12">
+                    <span class="bg-dark px-2 py-1 color-fff">World class</span>
+                    <h2 class="mb-1 mt-4 color-900">Our Successful Projects</h2>
+                    <p class="lead">There are many variations of passages of the majority have suffered alteration.</p>
+                </div>
+            </div><!-- .row end -->
+
+            <div class="row g-3">
+                <div class="col-12">
+                    <div class="owl-carousel owl-theme" id="owl_success">
+                        <div class="item">
+                            <div class="card overflow-hidden">
+                                <img class="" src="@@webRoot/assets/img/real-estate/s2.jpg" alt="">
+                                <h4 class="mb-0 p-2">Los Angeles</h4>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="card overflow-hidden">
+                                <img class="" src="@@webRoot/assets/img/real-estate/s4.jpg" alt="">
+                                <h4 class="mb-0 p-2">London</h4>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="card overflow-hidden">
+                                <img class="" src="@@webRoot/assets/img/real-estate/s1.jpg" alt="">
+                                <h4 class="mb-0 p-2">Mumbai Bridge</h4>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="card overflow-hidden">
+                                <img class="" src="@@webRoot/assets/img/real-estate/s3.jpg" alt="">
+                                <h4 class="mb-0 p-2">Miami</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: Agents  -->
+    <div class="section">
+        <div class="container">
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-lg-12">
+                    <span class="chart-color4 px-2 py-1 color-fff">Doctors</span>
+                    <h3 class="mb-1 mt-4 color-900">Meet Our Agents</h3>
+                    <p class="lead">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem</p>
+                </div>
+            </div> <!-- .row end -->
+
+            <div class="row g-3">
+                <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                            <img class="w240 rounded" src="@@webRoot/assets/img/lg/avatar1.jpg" alt="">
+                            <div class="media-body ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                <h5 class="fw-bold mb-2">Hossein Shams</h5>
+                                <div class="mb-3">
+                                    <p class="mt-2">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s</p>
+                                </div>
+                                <div class="row row-cols-md-2 row-cols-sm-2 row-cols-2 g-1 mb-2">
+                                    <div class="col">
+                                        <strong>11 year</strong>
+                                        <div class="text-muted small">Experience</div>
+                                    </div>
+                                    <div class="col">
+                                        <strong>Apartments</strong>
+                                        <div class="text-muted small">Speciality</div>
+                                    </div>
+                                </div>
+                                <ul class="social mb-0 list-inline mt-3">
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                            <img class="w240 rounded" src="@@webRoot/assets/img/lg/avatar2.jpg" alt="">
+                            <div class="media-body ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                <h5 class="fw-bold mb-2">Brian Swader</h5>
+                                <div class="mb-3">
+                                    <p class="mt-2">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s</p>
+                                </div>
+                                <div class="row row-cols-md-2 row-cols-sm-2 row-cols-2 g-1 mb-2">
+                                    <div class="col">
+                                        <strong>09 year</strong>
+                                        <div class="text-muted small">Experience</div>
+                                    </div>
+                                    <div class="col">
+                                        <strong>Loan</strong>
+                                        <div class="text-muted small">Speciality</div>
+                                    </div>
+                                </div>
+                                <ul class="social mb-0 list-inline mt-3">
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                            <img class="w240 rounded" src="@@webRoot/assets/img/lg/avatar3.jpg" alt="">
+                            <div class="media-body ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                <h5 class="fw-bold mb-2">Maryam Amiri</h5>
+                                <div class="mb-3">
+                                    <p class="mt-2">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s</p>
+                                </div>
+                                <div class="row row-cols-md-2 row-cols-sm-2 row-cols-2 g-1 mb-2">
+                                    <div class="col">
+                                        <strong>15 year</strong>
+                                        <div class="text-muted small">Experience</div>
+                                    </div>
+                                    <div class="col">
+                                        <strong>Corporate</strong>
+                                        <div class="text-muted small">Speciality</div>
+                                    </div>
+                                </div>
+                                <ul class="social mb-0 list-inline mt-3">
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                            <img class="w240 rounded" src="@@webRoot/assets/img/lg/avatar6.jpg" alt="">
+                            <div class="media-body ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                <h5 class="fw-bold mb-2">Manuella Nevoresky</h5>
+                                <div class="mb-3">
+                                    <p class="mt-2">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s</p>
+                                </div>
+                                <div class="row row-cols-md-2 row-cols-sm-2 row-cols-2 g-1 mb-2">
+                                    <div class="col">
+                                        <strong>03 year</strong>
+                                        <div class="text-muted small">Experience</div>
+                                    </div>
+                                    <div class="col">
+                                        <strong>Account</strong>
+                                        <div class="text-muted small">Speciality</div>
+                                    </div>
+                                </div>
+                                <ul class="social mb-0 list-inline mt-3">
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: FAQa  -->
+    <div class="section" id="faq">
+        <div class="container">
+
+            @@include('onepage/_faqs.html', {
+                "rowClass": "g-3",
+                "sectionTag": "FAQs",
+                "sectionTitle": "Frequently Asked Questions",
+                "sectionSubTitle": "It was popularised in the 1960s with the release of Letraset sheets containing."
+            })
+
+        </div>
+    </div>
+
+    <!--  Section: Testimonials  -->
+    @@include('onepage/sliders/_sliders-testimonials.html', { "cardClass": "sliders-2 bg-body", })
+
+    <!--  Section: Gallery  -->
+    <div class="section pb-0">
+        <div class="container">
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-lg-12">
+                    <span class="bg-dark px-2 py-1 color-fff">Gallery</span>
+                    <h2 class="mb-1 mt-4 color-900">Awesome Portfolio</h2>
+                    <p class="lead">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem</p>
+                </div>
+            </div><!-- .row end -->
+
+        </div>
+        <div class="container-fluid">
+
+            @@include('onepage/_img-gallery.html',{
+                "imgGalleryPath": "@@webRoot/assets/img/real-estate"
+            })
+
+        </div>
+    </div>
+
+    <!-- Section: call to action -->
+    <div class="section call-action">
+        <div class="container">
+
+            <div class="row justify-content-center text-center text-white">
+                <div class="col-xl-7 col-lg-10 col-12">
+                    <span class="bg-white px-3 py-2 text-dark">GETTING STARTED TO WORK</span>
+                    <h2 class="mb-3 mt-4">Take a look at All the layouts of LUNO</h2>
+                    <p class="lead">It helps you to increase your chances of finding a suitable job and let recruiters contact you about jobs that are not needed to pay for advertising.</p>
+                    <div class="mt-5">
+                        <a href="https://themeforest.net/checkout/from_item/36214125?license=extended&size=source&ref=phpbits" class="btn lift btn-lg px-5  btn-light fs-6">Buy a License</a>
+                        <a class="btn lift btn-lg px-5  bg-dark text-white fs-6" href="https://themeforest.net/item/luno-bootstrap-5-responsive-admin-dashboard-template/36214125">Download Now</a>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+    <!--  Section: contact us form  -->
+    <div class="section">
+        <div class="container">
+
+            @@include('onepage/contact/_contact-form.html', {
+                "rowClass": "g-2",
+                "SectionTag": "Contact Information",
+                "SectionTitle": "Get in touch",
+            })
+
+        </div>
+    </div>
+
+    <!-- Section: call-to-action app download -->
+    <div class="section bg-dark text-light">
+        <div class="container">
+
+            @@include('onepage/call-to-action/_call-to-action-app.html', {
+                "rowClass": "g-3 align-items-center justify-content-center",
+                "sectionTitle": "Download Our Best Apps",
+            })
+
+        </div>
+    </div>
+
+    <!-- Section: Footer -->
+    @@include('onepage/_footer.html', {
+        "sectionClass": "footer",
+        "rowClass": "g-2",
+        "SectionTag": "Contact Information",
+        "SectionTitle": "Get in touch",
+    })    
+    
+    <!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+    <a class="page-setting" href="#" title="Settings" data-bs-toggle="modal" data-bs-target="#SettingsModal"><i class="fa fa-gear text-light"></i></a>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fa fa-arrow-up"></i></a>
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "swiper": true,
+})
+<script src="@@webRoot/assets/js/bundle/owlcarousel.bundle.js"></script>
+<script>
+    var owl = $('#owl_banner');
+    owl.owlCarousel({
+        loop: true,
+        margin: 10,
+        autoplay:true,
+        autoplayTimeout:3000,
+        autoplayHoverPause:true,
+        nav: true,
+        dots: false,
+        responsive:{
+            320:{items:1},
+        }
+    });
+
+    var owl = $('#owl_apartment, #owl_bungalows, #owl_farm, #owl_corporate, #owl_success');
+    owl.owlCarousel({
+        loop: true,
+        margin: 10,
+        autoplay:true,
+        autoplayTimeout:3000,
+        autoplayHoverPause:true,
+        nav: true,
+        dots: false,
+        responsive:{
+            320:{items:1},
+            800:{items:2},
+            1200:{items:3},
+        }
+    });
+</script>
+</body>
+</html>

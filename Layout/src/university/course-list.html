@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "University Course List",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-indigo">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-university.html', {"page": "course-list"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">Course</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">List</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <img src="@@webRoot/assets/img/gallery/1.jpg" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h6 class="mb-4 fw-bold">Magento Programmer Course</h6>
+                                <ul class="list-unstyled">
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Duration:</label>
+                                        <span>6 Months</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Fees:</label>
+                                        <span class="text-danger">$315.60</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Professor:</label>
+                                        <span>Will Smith</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Students:</label>
+                                        <span>115+</span>
+                                    </li>
+                                </ul>
+                                <a href="course-info.html" class="btn px-4 btn-outline-secondary" role="button">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <img src="@@webRoot/assets/img/gallery/2.jpg" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h6 class="mb-4 fw-bold">Angular Programmer Course</h6>
+                                <ul class="list-unstyled">
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Duration:</label>
+                                        <span>6 Months</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Fees:</label>
+                                        <span class="text-danger">$80.00</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Professor:</label>
+                                        <span>Fidel Tonn</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Students:</label>
+                                        <span>50+</span>
+                                    </li>
+                                </ul>
+                                <a href="course-info.html" class="btn px-4 btn-outline-secondary" role="button">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <img src="@@webRoot/assets/img/gallery/3.jpg" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h6 class="mb-4 fw-bold">Account Management Course</h6>
+                                <ul class="list-unstyled">
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Duration:</label>
+                                        <span>6 Months</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Fees:</label>
+                                        <span class="text-danger">$458.00</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Professor:</label>
+                                        <span>Gary Camara</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Students:</label>
+                                        <span>200+</span>
+                                    </li>
+                                </ul>
+                                <a href="course-info.html" class="btn px-4 btn-outline-secondary" role="button">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <img src="@@webRoot/assets/img/gallery/4.jpg" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h6 class="mb-4 fw-bold">UI UX Design Course</h6>
+                                <ul class="list-unstyled">
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Duration:</label>
+                                        <span>6 Months</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Fees:</label>
+                                        <span class="text-danger">$278.50</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Professor:</label>
+                                        <span>Frank Camly</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Students:</label>
+                                        <span>90+</span>
+                                    </li>
+                                </ul>
+                                <a href="course-info.html" class="btn px-4 btn-outline-secondary" role="button">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <img src="@@webRoot/assets/img/gallery/5.jpg" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h6 class="mb-4 fw-bold">Angular Programmer Course</h6>
+                                <ul class="list-unstyled">
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Duration:</label>
+                                        <span>6 Months</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Fees:</label>
+                                        <span class="text-danger">$800.00</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Professor:</label>
+                                        <span>Hossein Shams</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Students:</label>
+                                        <span>250+</span>
+                                    </li>
+                                </ul>
+                                <a href="course-info.html" class="btn px-4 btn-outline-secondary" role="button">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <img src="@@webRoot/assets/img/gallery/6.jpg" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h6 class="mb-4 fw-bold">Account Management Course</h6>
+                                <ul class="list-unstyled">
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Duration:</label>
+                                        <span>6 Months</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Fees:</label>
+                                        <span class="text-danger">$115.80</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Professor:</label>
+                                        <span>Maryam Amiri</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Students:</label>
+                                        <span>30+</span>
+                                    </li>
+                                </ul>
+                                <a href="course-info.html" class="btn px-4 btn-outline-secondary" role="button">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <img src="@@webRoot/assets/img/gallery/7.jpg" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h6 class="mb-4 fw-bold">Angular Programmer Course</h6>
+                                <ul class="list-unstyled">
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Duration:</label>
+                                        <span>6 Months</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Fees:</label>
+                                        <span class="text-danger">$80.00</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Professor:</label>
+                                        <span>Fidel Tonn</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Students:</label>
+                                        <span>50+</span>
+                                    </li>
+                                </ul>
+                                <a href="course-info.html" class="btn px-4 btn-outline-secondary" role="button">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <img src="@@webRoot/assets/img/gallery/8.jpg" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h6 class="mb-4 fw-bold">Account Management Course</h6>
+                                <ul class="list-unstyled">
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Duration:</label>
+                                        <span>6 Months</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Fees:</label>
+                                        <span class="text-danger">$458.00</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Professor:</label>
+                                        <span>Gary Camara</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label class="mb-2 text-muted">Students:</label>
+                                        <span>200+</span>
+                                    </li>
+                                </ul>
+                                <a href="course-info.html" class="btn px-4 btn-outline-secondary" role="button">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

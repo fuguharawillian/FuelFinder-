@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "NFT Dashboard",
+        "daterangepicker": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-red">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-nft.html', {"page": "index"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Chris!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 row-deck">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="fw-bold">
+                                    <span class="h4 mb-0">40k</span>
+                                    <span class="text-success ms-1">2.55% <i class="fa fa-caret-up"></i></span>
+                                </div>
+                                <div class="text-muted">Artworks</div>
+                                <div class="mt-3">
+                                    <label class="small d-flex justify-content-between">This Week<span class="fw-bold">24K</span></label>
+                                    <div class="progress mt-1" style="height: 1px;">
+                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <label class="small d-flex justify-content-between">Last Week<span class="fw-bold">14K</span></label>
+                                    <div class="progress mt-1" style="height: 1px;">
+                                        <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="44" aria-valuemin="0" aria-valuemax="100" style="width: 44%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="fw-bold">
+                                    <span class="h4 mb-0">23k</span>
+                                    <span class="text-success ms-1">4.12% <i class="fa fa-caret-up"></i></span>
+                                </div>
+                                <div class="text-muted">Auction</div>
+                                <div class="mt-3">
+                                    <label class="small d-flex justify-content-between">This Week<span class="fw-bold">4K</span></label>
+                                    <div class="progress mt-1" style="height: 1px;">
+                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100" style="width: 12%;"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <label class="small d-flex justify-content-between">Last Week<span class="fw-bold">17K</span></label>
+                                    <div class="progress mt-1" style="height: 1px;">
+                                        <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100" style="width: 83%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="fw-bold">
+                                    <span class="h4 mb-0">102k</span>
+                                    <span class="text-success ms-1">7.15% <i class="fa fa-caret-up"></i></span>
+                                </div>
+                                <div class="text-muted">Creators</div>
+                                <div class="mt-3">
+                                    <label class="small d-flex justify-content-between">This Week<span class="fw-bold">42K</span></label>
+                                    <div class="progress mt-1" style="height: 1px;">
+                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100" style="width: 67%;"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <label class="small d-flex justify-content-between">Last Week<span class="fw-bold">60K</span></label>
+                                    <div class="progress mt-1" style="height: 1px;">
+                                        <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" style="width: 88%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="fw-bold">
+                                    <span class="h4 mb-0">11k</span>
+                                    <span class="text-success ms-1">2.02% <i class="fa fa-caret-up"></i></span>
+                                </div>
+                                <div class="text-muted">Games</div>
+                                <div class="mt-3">
+                                    <label class="small d-flex justify-content-between">This Week<span class="fw-bold">24K</span></label>
+                                    <div class="progress mt-1" style="height: 1px;">
+                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 55%;"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <label class="small d-flex justify-content-between">Last Week<span class="fw-bold">14K</span></label>
+                                    <div class="progress mt-1" style="height: 1px;">
+                                        <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="69" aria-valuemin="0" aria-valuemax="100" style="width: 69%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-8 col-xl-7 col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">ETH Price</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div id="chart-area"></div>
+                                <div id="chart-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Top Creators</h6>
+                            </div>
+                            <span></span>
+                            <ul class="list-group list-group-flush list-group-custom mb-0">
+                                <li class="list-group-item px-4 d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img class="avatar lg rounded-circle" src="../assets/img/xs/avatar4.jpg" alt="avatar" title="">
+                                        <div class="flex-fill ms-3 text-truncate">
+                                            <h5 class="mb-0">Maryam Amiri</h5>
+                                            <span class="text-muted">60 Items</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-sm btn-primary">Follow</button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item px-4 d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img class="avatar lg rounded-circle" src="../assets/img/xs/avatar2.jpg" alt="avatar" title="">
+                                        <div class="flex-fill ms-3 text-truncate">
+                                            <h5 class="mb-0">Michelle Green</h5>
+                                            <span class="text-muted">60 Items</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-sm btn-primary">Follow</button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item px-4 d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img class="avatar lg rounded-circle" src="../assets/img/xs/avatar5.jpg" alt="avatar" title="">
+                                        <div class="flex-fill ms-3 text-truncate">
+                                            <h5 class="mb-0">Kevin Gill</h5>
+                                            <span class="text-muted">60 Items</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-sm btn-primary">Follow</button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item px-4 d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img class="avatar lg rounded-circle" src="../assets/img/xs/avatar1.jpg" alt="avatar" title="">
+                                        <div class="flex-fill ms-3 text-truncate">
+                                            <h5 class="mb-0">Terry Camacho</h5>
+                                            <span class="text-muted">60 Items</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-sm btn-primary">Follow</button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item px-4 d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img class="avatar lg rounded-circle" src="../assets/img/xs/avatar5.jpg" alt="avatar" title="">
+                                        <div class="flex-fill ms-3 text-truncate">
+                                            <h5 class="mb-0">Kevin Gill</h5>
+                                            <span class="text-muted">60 Items</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-sm btn-primary">Follow</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-5 d-flex justify-content-between">
+                        <span class="fs-4 fw-bold">Trending Bids:</span> <a href="#">View All</a>
+                    </div>
+                    <div class="col-12">
+                        <div class="owl-carousel owl-theme" id="trending_bids">
+                            <div class="item card overflow-hidden">
+                                <img src="@@webRoot/assets/img/nft/img-2.png" class="img-fluid rounded-top mb-3" alt="">
+                                <div class="card-body">
+                                    <h4 class="card-title">LUNO Rave</h4>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <div class="text-start">
+                                            <small>Auction Time</small>
+                                            <h6 class="text-muted mt-2">3h 1m 50s</h6>
+                                        </div>
+                                        <div class="text-end">
+                                            <small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+                                            <h6 class="text-muted mt-2">0.15 ETH</h6>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-primary w-100">Place a Bid</a>
+                                </div>
+                            </div>
+                            <div class="item card overflow-hidden">
+                                <img src="@@webRoot/assets/img/nft/img-3.png" class="img-fluid rounded-top mb-3" alt="">
+                                <div class="card-body">
+                                    <h4 class="card-title">LUNO Gave</h4>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <div class="text-start">
+                                            <small>Auction Time</small>
+                                            <h6 class="text-muted mt-2">3h 1m 50s</h6>
+                                        </div>
+                                        <div class="text-end">
+                                            <small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+                                            <h6 class="text-muted mt-2">0.15 ETH</h6>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-primary w-100">Place a Bid</a>
+                                </div>
+                            </div>
+                            <div class="item card overflow-hidden">
+                                <img src="@@webRoot/assets/img/nft/img-4.png" class="img-fluid rounded-top mb-3" alt="">
+                                <div class="card-body">
+                                    <h4 class="card-title">LUNO Tave</h4>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <div class="text-start">
+                                            <small>Auction Time</small>
+                                            <h6 class="text-muted mt-2">3h 1m 50s</h6>
+                                        </div>
+                                        <div class="text-end">
+                                            <small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+                                            <h6 class="text-muted mt-2">0.15 ETH</h6>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-primary w-100">Place a Bid</a>
+                                </div>
+                            </div>
+                            <div class="item card overflow-hidden">
+                                <img src="@@webRoot/assets/img/nft/img-5.png" class="img-fluid rounded-top mb-3" alt="">
+                                <div class="card-body">
+                                    <h4 class="card-title">LUNO Wave</h4>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <div class="text-start">
+                                            <small>Auction Time</small>
+                                            <h6 class="text-muted mt-2">3h 1m 50s</h6>
+                                        </div>
+                                        <div class="text-end">
+                                            <small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+                                            <h6 class="text-muted mt-2">0.15 ETH</h6>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-primary w-100">Place a Bid</a>
+                                </div>
+                            </div>
+                            <div class="item card overflow-hidden">
+                                <img src="@@webRoot/assets/img/nft/img-1.png" class="img-fluid rounded-top mb-3" alt="">
+                                <div class="card-body">
+                                    <h4 class="card-title">Liguid Wave</h4>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <div class="text-start">
+                                            <small>Auction Time</small>
+                                            <h6 class="text-muted mt-2">3h 1m 50s</h6>
+                                        </div>
+                                        <div class="text-end">
+                                            <small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+                                            <h6 class="text-muted mt-2">0.15 ETH</h6>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-primary w-100">Place a Bid</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "owlcarousel":true,
+    "apexcharts": true,
+})
+<script>
+    
+    var data = generateDayWiseTimeSeries(new Date("22 Apr 2022").getTime(), 115, {
+        min: 30,
+        max: 90
+    });
+    var options1 = {
+        chart: {
+            id: "chart2",
+            type: "area",
+            height: 200,
+            foreColor: "var(--primary-color)",
+            toolbar: {
+                autoSelected: "pan",
+                show: false
+            }
+        },
+        colors: ["var(--primary-color)"],
+        stroke: {
+            width: 3
+        },
+        grid: {
+            borderColor: "var(--primary-color)",
+            clipMarkers: false,
+            yaxis: {
+                lines: {
+                    show: false
+                }
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        fill: {
+            gradient: {
+                enabled: true,
+                opacityFrom: 0.55,
+                opacityTo: 0
+            }
+        },
+        markers: {
+            size: 5,
+            colors: ["var(--primary-color)"],
+            strokeColor: "#00BAEC",
+            strokeWidth: 3
+        },
+        series: [{
+            data: data
+        }],
+        tooltip: {
+            theme: "dark"
+        },
+        xaxis: {
+            type: "datetime"
+        },
+        yaxis: {
+            min: 0,
+            tickAmount: 4
+        }
+    };
+    var chart1 = new ApexCharts(document.querySelector("#chart-area"), options1);
+    chart1.render();
+
+    var options2 = {
+        chart: {
+            id: "chart1",
+            height: 100,
+            type: "area",
+            foreColor: "var(--secondary-color)",
+            brush: {
+                target: "chart2",
+                enabled: true
+            },
+            selection: {
+                enabled: true,
+                fill: {
+                    color: "#fff",
+                    opacity: 0.4
+                },
+                xaxis: {
+                    min: new Date("27 Jul 2022 10:00:00").getTime(),
+                    max: new Date("14 Aug 2022 10:00:00").getTime()
+                }
+            }
+        },
+        colors: ["var(--secondary-color)"],
+        series: [{
+            data: data
+        }],
+        stroke: {
+            width: 2
+        },
+        grid: {
+            borderColor: "var(--secondary-color)"
+        },
+        markers: {
+            size: 0
+        },
+        xaxis: {
+            type: "datetime",
+            tooltip: {
+                enabled: false
+            }
+        },
+        yaxis: {
+            tickAmount: 2
+        }
+    };
+    var chart2 = new ApexCharts(document.querySelector("#chart-bar"), options2);
+    chart2.render();
+
+    function generateDayWiseTimeSeries(baseval, count, yrange) {
+        var i = 0;
+        var series = [];
+        while (i < count) {
+            var x = baseval;
+            var y =
+                Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+
+            series.push([x, y]);
+            baseval += 86400000;
+            i++;
+        }
+        return series;
+    }
+
+
+    $('#trending_bids').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        dots: false,
+        autoplay:true,
+        responsive:{
+            0:{items:1},
+            600:{items:2},
+            992:{items:3},
+            1600:{items:5}
+        }
+    })
+
+</script>
+</body>
+</html>

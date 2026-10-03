@@ -1,0 +1,210 @@
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Bootstrap 5 Toast",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "plugin-bs5-toast"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">bs5-toast</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="plugin-stepper.html"><i class="fa fa-long-arrow-left me-2"></i>Bootstrap Stepper</a>
+                        <a class="btn btn-secondary" href="ui-alerts.html">Alerts<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Bootstrap 5 Toast</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="fs-5">Bootstrap 5 toasts generator. <a href="https://bs5-toast.vercel.app/" rel="nofollow">Live Demo</a></p>
+                                <ul class="mb-0">
+                                    <li>Customizable content</li>
+                                    <li>Smooth animation</li>
+                                    <li>Typed safe</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-3 mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title">Basic</h6>
+                            </div>
+                            <div class="card-body">
+                                <p>Push notifications to your visitors with a toast, a lightweight and easily customizable alert message.</p>
+                                <button class="btn btn-dark" type="button" id="hello">Hello</button>
+                                <button class="btn btn-dark" type="button" id="hello-header">Hello with header</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title">Color schemes</h6>
+                            </div>
+                            <div class="card-body">
+                                <p>Create different toast color schemes with Bootstrap color and background utilities.</p>
+                                <button class="btn btn-primary" type="button" id="color-primary">Primary</button>
+                                <button class="btn bg-secondary" type="button" id="color-secondary">Secondary</button>
+                                <button class="btn btn-success" type="button" id="color-success">Success</button>
+                                <button class="btn btn-danger" type="button" id="color-danger">Danger</button>
+                                <button class="btn btn-warning" type="button" id="color-warning">Warning</button>
+                                <button class="btn btn-info" type="button" id="color-info">Info</button>
+                                <button class="btn btn-dark" type="button" id="color-dark">Dark</button>
+                                <button class="btn btn-light" type="button" id="color-light">Light</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="plugin-stepper.html"><i class="fa fa-long-arrow-left me-3"></i>Bootstrap Stepper</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="ui-alerts.html">Alerts<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Core Js -->
+@@include('docs/_scripts.html',{
+    "bs5toast": "true"
+})
+
+<script>
+
+    // Basic
+    document.querySelector('#hello').addEventListener('click', () => {
+        new bs5.Toast({
+            body: 'LUNO admin template is one of the modern dashboard template. It is also a premium admin dashboard with high-end features, where users can easily change their projects according to their choice.',
+        }).show()
+    })
+
+    // Basic with header
+    document.querySelector('#hello-header').addEventListener('click', () => {
+        new bs5.Toast({
+            header: `<h6 class="mb-0">Hello, world!</h6><small class="ms-auto">just now</small>`,
+            body: 'LUNO admin template is one of the modern dashboard template. It is also a premium admin dashboard with high-end features, where users can easily change their projects according to their choice.',
+        }).show()
+    })
+
+    // Color scheme: primary
+    document.querySelector('#color-primary').addEventListener('click', () => {
+        new bs5.Toast({
+            body: '<h5>Hello, LUNO!</h5> Bootstrap 5 Admin Dashboard Template & Front-End Elements.',
+            className: 'border-0 bg-primary text-white',
+            btnCloseWhite: true,
+        }).show()
+    })
+
+    // Color scheme: secondary
+    document.querySelector('#color-secondary').addEventListener('click', () => {
+        new bs5.Toast({
+            body: '<h5>Hello, LUNO!</h5> Bootstrap 5 Admin Dashboard Template & Front-End Elements.',
+            className: 'border-0 bg-secondary text-white',
+            btnCloseWhite: true,
+        }).show()
+    })
+
+    // Color scheme: success
+    document.querySelector('#color-success').addEventListener('click', () => {
+        new bs5.Toast({
+            body: '<h5>Hello, LUNO!</h5> Bootstrap 5 Admin Dashboard Template & Front-End Elements.',
+            className: 'border-0 bg-success text-white',
+            btnCloseWhite: true,
+        }).show()
+    })
+
+    // Color scheme: danger
+    document.querySelector('#color-danger').addEventListener('click', () => {
+        new bs5.Toast({
+            body: '<h5>Hello, LUNO!</h5> Bootstrap 5 Admin Dashboard Template & Front-End Elements.',
+            className: 'border-0 bg-danger text-white',
+            btnCloseWhite: true,
+        }).show()
+    })
+
+    // Color scheme: warning
+    document.querySelector('#color-warning').addEventListener('click', () => {
+        new bs5.Toast({
+            body: '<h5>Hello, LUNO!</h5> Bootstrap 5 Admin Dashboard Template & Front-End Elements.',
+            className: 'border-0 bg-warning',
+        }).show()
+    })
+
+    // Color scheme: info
+    document.querySelector('#color-info').addEventListener('click', () => {
+        new bs5.Toast({
+            body: '<h5>Hello, LUNO!</h5> Bootstrap 5 Admin Dashboard Template & Front-End Elements.',
+            className: 'border-0 bg-info',
+        }).show()
+    })
+
+    // Color scheme: dark
+    document.querySelector('#color-dark').addEventListener('click', () => {
+        new bs5.Toast({
+            body: '<h5>Hello, LUNO!</h5> Bootstrap 5 Admin Dashboard Template & Front-End Elements.',
+            className: 'border-0 bg-dark text-white',
+            btnCloseWhite: true,
+        }).show()
+    })
+
+    // Color scheme: light
+    document.querySelector('#color-light').addEventListener('click', () => {
+        new bs5.Toast({
+            body: '<h5>Hello, LUNO!</h5> Bootstrap 5 Admin Dashboard Template & Front-End Elements.',
+            className: 'border-0 bg-light',
+        }).show()
+    })
+    
+</script>
+
+</body>
+</html>

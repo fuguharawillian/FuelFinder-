@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Landing Page Event Management",
+        "swiper": true,
+    })
+</head>
+
+<body class="landing-page" data-luno="theme-cyan">
+    
+    <!-- Header  -->
+    <header class="section sticky-top bg-card py-0">
+        @@include('onepage/_navbar.html', {
+            "navbarClass": "navbar-expand-lg navbar-light py-3",
+            "brandName": "LUNO",
+            "tagLine": "Event Management",
+        })
+    </header>
+
+    <!-- Hero Section -->
+    <div class="section sliders-4" id="hero_banner">
+        <div class="hero-container">
+
+            <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+                <div class="carousel-inner text-center text-white" role="listbox">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active" style="background: url(@@webRoot/assets/img/event/slide/slide-1.jpg);">
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+                                <h2 class="display-5 mb-4 fw-bold">DIGITAL <span>WORLD CONFERENCE</span> 2022</h2>
+                                <p class="lead">Don't miss out! Register today and discover our latest offers!</p>
+                                <div>
+                                    <span class="text-light"><i class="bi bi-calendar2-week px-2"></i> Mar 18 2021</span>
+                                    <span class="text-light"><i class="bi bi-geo-alt-fill px-2"></i> 15/a E Park Ave, Rocklin, CA, 95765</span>
+                                </div>
+                                <a href="#" class="btn btn-lg bg-secondary text-uppercase text-white px-5 mt-5">Book a Ticket Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-item" style="background: url(@@webRoot/assets/img/event/slide/slide-2.jpg);">
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+                                <h2 class="display-5 mb-4 fw-bold">DIGITAL <span>WEB CONFERENCE</span> 2022</h2>
+                                <p class="lead">Don't miss out! Register today and discover our latest offers!</p>
+                                <div>
+                                    <span class="text-light"><i class="bi bi-calendar2-week px-2"></i> Mar 18 2021</span>
+                                    <span class="text-light"><i class="bi bi-geo-alt-fill px-2"></i> 15/a E Park Ave, Rocklin, CA, 95765</span>
+                                </div>
+                                <a href="#" class="btn btn-lg bg-secondary text-uppercase text-white px-5 mt-5">Book a Ticket Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-item" style="background: url(@@webRoot/assets/img/event/slide/slide-3.jpg);">
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+                                <h2 class="display-5 mb-4 fw-bold">DIGITAL <span>WORLD CONFERENCE</span> 2022</h2>
+                                <p class="lead">Don't miss out! Register today and discover our latest offers!</p>
+                                <div>
+                                    <span class="text-light"><i class="bi bi-calendar2-week px-2"></i> Mar 18 2021</span>
+                                    <span class="text-light"><i class="bi bi-geo-alt-fill px-2"></i> 15/a E Park Ave, Rocklin, CA, 95765</span>
+                                </div>
+                                <a href="#" class="btn btn-lg bg-secondary text-uppercase text-white px-5 mt-5">Book a Ticket Now</a>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+                <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span></a>
+                <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next"><span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span></a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- main Section -->
+    <div class="main-raised bg-card shadow overflow-hidden rounded-4">
+
+        <!-- Upcomming Section -->
+        <div class="container-fluid p-0">
+            
+            <div class="row g-3">
+                <div class="col-12">
+                    <div class="card bg-secondary rounded-0 border-0">
+                        <div class="card-body text-center">
+                            <span class="bg-dark px-2 py-1 color-fff rounded-2 small mt-3">Next event coming up</span>
+                            <h2 class="display-4 mt-3 text-white" id="eventdata"></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- About Section -->
+        <div class="section about-us" id="about_us">
+            <div class="container">
+
+                <div class="row g-3 justify-content-lg-between">
+                    <div class="col-xl-5 col-lg-6">
+                        <span class="bg-dark px-2 py-1 color-fff rounded-2 small">About event</span>
+                        <h2 class="mb-1 mt-4 color-900">WELCOME TO GREATEST <strong>DIGITAL</strong> CONFERENCE 22</h2>
+                        <p class="lead">Natoque quis est vulputate volutpat aliquet cubilia vestibulum dolor iaculis arcu lacus donec morbi</p>
+                        <ul class="resume-box ps-0">
+                            <li>
+                                <div class="icon text-center"><i class="fa fa-code"></i></div>
+                                <h5>Better Coding</h5>
+                                <span>Dapibus urna sodales elit sed etiam gravida phasellus.</span>
+                            </li>
+                            <li>
+                                <div class="icon text-center"><i class="fa fa-line-chart"></i></div>
+                                <h5>Secret to Succeess</h5>
+                                <span>Ante vel vestibulum eros feugiat etiam mi gravida.</span>
+                            </li>
+                            <li>
+                                <div class="icon text-center"><i class="fa fa-lightbulb-o"></i></div>
+                                <h5>Make Ideas Happen</h5>
+                                <span>Pulvinar quis at placerat taciti himenaeos in egestas facilisi blandit lorem.</span>
+                            </li>
+                        </ul>
+                        <a href="https://themeforest.net/user/wrraptheme/portfolio" class="btn btn-lg rounded-pill btn-primary px-5 lead text-uppercase">View More</a>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 order-1 order-lg-2">
+                        <svg class="img-fluid d-none d-lg-block" viewBox="0 0 533 593" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <rect x="7" y="8" width="250" height="300" rx="5" fill="url(#pattern0)"></rect>
+                            <rect x="277" y="86" width="152" height="183" rx="5" fill="url(#pattern1)"></rect>
+                            <rect x="7" y="328" width="250" height="150" rx="5" fill="url(#pattern2)"></rect>
+                            <rect x="277" y="289" width="250" height="300" rx="5" fill="url(#pattern3)"></rect>
+                            <path class="fill-secondary" d="M481.5 28L509.646 76.75L453.354 76.75L481.5 28Z" fill="#C4C4C4"></path>
+                            <path class="fill-secondary" d="M51.5 507L69.2535 537.75L33.7465 537.75L51.5 507Z" fill="#C4C4C4"></path>
+                            <path class="fill-secondary" d="M92.5 548L110.254 578.75L74.7465 578.75L92.5 548Z" fill="#C4C4C4"></path>
+                            <defs>
+                                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                    <use xlink:href="#about_img_1" transform="translate(-0.400901) scale(0.0036036 0.003003)"></use>
+                                </pattern>
+                                <pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                    <use xlink:href="#about_img_2" transform="translate(-0.0599571 -0.196721) scale(0.00211991 0.0017608)"></use>
+                                </pattern>
+                                <pattern id="pattern2" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                    <use xlink:href="#about_img_3" transform="translate(0 -0.055) scale(0.002 0.00333333)"></use>
+                                </pattern>
+                                <pattern id="pattern3" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                    <use xlink:href="#about_img_4" transform="translate(-0.280901) scale(0.0036036 0.003003)"></use>
+                                </pattern>
+                                <image id="about_img_1" width="500" height="333" xlink:href="@@webRoot/assets/img/event/hero-img-small1.png"></image>
+                                <image id="about_img_2" width="500" height="749" xlink:href="@@webRoot/assets/img/event/hero-img-small2.png"></image>
+                                <image id="about_img_3" width="500" height="333" xlink:href="@@webRoot/assets/img/event/hero-img-small3.png"></image>
+                                <image id="about_img_4" width="430" height="333" xlink:href="@@webRoot/assets/img/event/hero-img-small4.png"></image>
+                            </defs>
+                        </svg>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- Event Section -->
+        <div class="section bg-body" id="event_schedule">
+            <div class="container">
+
+                <div class="row g-3">
+                    <div class="col-lg-8 col-md-12">
+                        <h3 class="mb-1 color-900">Event Schedule</h3>
+                        <span>503 Old Buffalo Street, New York, USA</span>
+                        <p class="lead mt-3 text-muted">Laoreet hac eget cursus vitae potenti sit bibendum rhoncus commodo duis vestibulum leo orci</p>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table card-table align-middle mb-0 text-center">
+                                <thead>
+                                    <tr class="bg-light-gray">
+                                        <th>Time</th>
+                                        <th>First Day<br>12 Jun 2022</th>
+                                        <th>Second Day<br>13 Jun 2022</th>
+                                        <th>Third Day<br>14 Jun 2022</th>
+                                        <th>fourth Day<br>15 Jun 2022</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="align-middle">09:00am</td>
+                                        <td>
+                                            <span class="badge bg-info text-dark">Event Intro</span>
+                                            <div class="mt-2">9:00-10:00</div>
+                                            <div class="small text-muted"><a href="#" title="Event Speakers" data-bs-toggle="tooltip" data-bs-placement="top"><img class="avatar xs rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt=""> Chris Fox</a></div>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-info text-dark">Bootstrap</span>
+                                            <div class="mt-2">9:00-10:00</div>
+                                            <div class="small text-muted"><a href="#" title="Event Speakers" data-bs-toggle="tooltip" data-bs-placement="top"><img class="avatar xs rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt=""> James Smith</a></div>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-dark">UI UX Design</span>
+                                            <div class="mt-2">9:00-10:00</div>
+                                            <div class="small text-muted"><a href="#" title="Event Speakers" data-bs-toggle="tooltip" data-bs-placement="top"><img class="avatar xs rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt=""> Chris Fox</a></div>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-dark">UI UX Design</span>
+                                            <div class="mt-2">9:00-10:00</div>
+                                            <div class="small text-muted"><a href="#" title="Event Speakers" data-bs-toggle="tooltip" data-bs-placement="top"><img class="avatar xs rounded-circle" src="@@webRoot/assets/img/xs/avatar3.jpg" alt=""> Jack Bird</a></div>
+                                        </td>
+                                    </tr>
+        
+                                    <tr>
+                                        <td class="align-middle">10:00am</td>
+                                        <td>
+                                            <span class="badge bg-danger">Angular + Bootstrap</span>
+                                            <div class="mt-2">10:00-11:00</div>
+                                            <div class="small text-muted"><a href="#" title="Event Speakers" data-bs-toggle="tooltip" data-bs-placement="top"><img class="avatar xs rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt=""> Chris Fox</a></div>
+                                        </td>
+                                        <td class="bg-light-gray">
+        
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-primary">Front-End</span>
+                                            <div class="mt-2">10:00-11:00</div>
+                                            <div class="small text-muted"><a href="#" title="Event Speakers" data-bs-toggle="tooltip" data-bs-placement="top"><img class="avatar xs rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt=""> James Smith</a></div>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-primary">Front-End</span>
+                                            <div class="mt-2">10:00-11:00</div>
+                                            <div class="small text-muted"><a href="#" title="Event Speakers" data-bs-toggle="tooltip" data-bs-placement="top"><img class="avatar xs rounded-circle" src="@@webRoot/assets/img/xs/avatar2.jpg" alt=""> James Smith</a></div>
+                                        </td>
+                                    </tr>
+        
+                                    <tr>
+                                        <td class="align-middle">11:00am</td>
+                                        <td>
+                                            <span class="badge bg-light text-dark">Break</span>
+                                            <div class="mt-2">11:00-12:00</div>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-light text-dark">Break</span>
+                                            <div class="mt-2">11:00-12:00</div>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-light text-dark">Break</span>
+                                            <div class="mt-2">11:00-12:00</div>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-light text-dark">Break</span>
+                                            <div class="mt-2">11:00-12:00</div>
+                                        </td>
+                                    </tr>
+        
+                                    <tr>
+                                        <td class="align-middle">12:00pm</td>
+                                        <td class="bg-light-gray">
+        
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-danger">Angular + Bootstrap</span>
+                                            <div class="mt-2">12:00-1:00</div>
+                                            <div class="small text-muted"><a href="#" title="Event Speakers" data-bs-toggle="tooltip" data-bs-placement="top"><img class="avatar xs rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt=""> Chris Fox</a></div>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-danger">Angular + Bootstrap</span>
+                                            <div class="mt-2">12:00-1:00</div>
+                                            <div class="small text-muted"><a href="#" title="Event Speakers" data-bs-toggle="tooltip" data-bs-placement="top"><img class="avatar xs rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt=""> Chris Fox</a></div>
+                                        </td>
+                                        <td class="bg-light-gray">
+        
+                                        </td>
+                                    </tr>
+        
+                                    <tr>
+                                        <td class="align-middle">01:00pm</td>
+                                        <td>
+                                            <span class="badge bg-dark">UI UX Design</span>
+                                            <div class="mt-2">1:00-2:00</div>
+                                            <div class="small text-muted"><a href="#" title="Event Speakers" data-bs-toggle="tooltip" data-bs-placement="top"><img class="avatar xs rounded-circle" src="@@webRoot/assets/img/xs/avatar3.jpg" alt=""> Jack Bird</a></div>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-danger">Angular + Bootstrap</span>
+                                            <div class="mt-2">1:00-2:00</div>
+                                            <div class="small text-muted"><a href="#" title="Event Speakers" data-bs-toggle="tooltip" data-bs-placement="top"><img class="avatar xs rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt=""> Chris Fox</a></div>
+                                        </td>
+                                        <td class="bg-light-gray">
+        
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-danger">Angular + Bootstrap</span>
+                                            <div class="mt-2">1:00-2:00</div>
+                                            <div class="small text-muted"><a href="#" title="Event Speakers" data-bs-toggle="tooltip" data-bs-placement="top"><img class="avatar xs rounded-circle" src="@@webRoot/assets/img/xs/avatar1.jpg" alt=""> Chris Fox</a></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- speakers Section -->
+        <div class="section speaking bg-card" id="speakers">
+            <div class="container">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <h3 class="mb-1 color-900">Who's Speaking</h3>
+                        <p class="lead">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem</p>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-3">
+                        <div class="card img-effect2">
+                            <div class="team-block">
+                                <div class="team-img" style="background-image: url(@@webRoot/assets/img/lg/avatar1.jpg)"></div>
+                                <div class="team-content flex-column">
+                                    <h6 class="team-caption fw-bold">James Smith</h6>
+                                    <div class="social">
+                                        <a href="#" class="px-1"><span class="fa fa-twitter"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-facebook"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-instagram"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-linkedin"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-3">
+                        <div class="card img-effect2">
+                            <div class="team-block">
+                                <div class="team-img" style="background-image: url(@@webRoot/assets/img/lg/avatar3.jpg)"></div>
+                                <div class="team-content flex-column">
+                                    <h6 class="team-caption fw-bold">Dean Otto</h6>
+                                    <div class="social">
+                                        <a href="#" class="px-1"><span class="fa fa-twitter"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-facebook"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-instagram"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-linkedin"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-3">
+                        <div class="card img-effect2">
+                            <div class="team-block">
+                                <div class="team-img" style="background-image: url(@@webRoot/assets/img/lg/avatar8.jpg)"></div>
+                                <div class="team-content flex-column">
+                                    <h6 class="team-caption fw-bold">Chris Fox</h6>
+                                    <div class="social">
+                                        <a href="#" class="px-1"><span class="fa fa-twitter"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-facebook"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-instagram"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-linkedin"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-3">
+                        <div class="card img-effect2">
+                            <div class="team-block">
+                                <div class="team-img" style="background-image: url(@@webRoot/assets/img/lg/avatar5.jpg)"></div>
+                                <div class="team-content flex-column">
+                                    <h6 class="team-caption fw-bold">John laisa do</h6>
+                                    <div class="social">
+                                        <a href="#" class="px-1"><span class="fa fa-twitter"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-facebook"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-instagram"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-linkedin"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-3">
+                        <div class="card img-effect2">
+                            <div class="team-block">
+                                <div class="team-img" style="background-image: url(@@webRoot/assets/img/lg/avatar9.jpg)"></div>
+                                <div class="team-content flex-column">
+                                    <h6 class="team-caption fw-bold">Dean Otto</h6>
+                                    <div class="social">
+                                        <a href="#" class="px-1"><span class="fa fa-twitter"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-facebook"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-instagram"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-linkedin"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-3">
+                        <div class="card img-effect2">
+                            <div class="team-block">
+                                <div class="team-img" style="background-image: url(@@webRoot/assets/img/lg/avatar2.jpg)"></div>
+                                <div class="team-content flex-column">
+                                    <h6 class="team-caption fw-bold">Chris Fox</h6>
+                                    <div class="social">
+                                        <a href="#" class="px-1"><span class="fa fa-twitter"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-facebook"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-instagram"></span></a>
+                                        <a href="#" class="px-1"><span class="fa fa-linkedin"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- Our Features -->
+        <div class="section bg-card">
+            <div class="container">
+    
+                <div class="row g-3">
+                    <div class="col-lg-12">
+                        <span class="bg-dark px-2 py-1 color-fff rounded-2 small">Our Features</span>
+                        <h4 class="mb-1 mt-4 color-900">Features For Our Client For Your Event</h4>
+                        <p class="lead text-muted">There are many variations of passages of the majority have suffered alteration.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 service-list">
+                        <div class="avatar lg rounded no-thumbnail chart-color1 text-white mb-3"><i class="fa fa-desktop fa-lg"></i></div>
+                        <h5>Confirm Speakers</h5>
+                        <p class="text-muted">Lorem Ipsum has been industry's dummy text ever since the 1500s</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 service-list">
+                        <div class="avatar lg rounded no-thumbnail chart-color2 text-white mb-3"><i class="fa fa-apple fa-lg"></i></div>
+                        <h5>Best Digital Ideas</h5>
+                        <p class="text-muted">Lorem ipsum dolor amet constetur adipisicing explicabo inventore.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 service-list">
+                        <div class="avatar lg rounded no-thumbnail chart-color3 text-white mb-3"><i class="fa fa-paint-brush fa-lg"></i></div>
+                        <h5>Networking People</h5>
+                        <p class="text-muted">The point of using Lorem is it has a more-or-less normal of letters.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 service-list">
+                        <div class="avatar lg rounded no-thumbnail chart-color4 text-white mb-3"><i class="fa fa-calendar-o fa-lg"></i></div>
+                        <h5>Inspiring Keynotes</h5>
+                        <p class="text-muted">If you are going to use a passage of Lorem Ipsum, you need to be sure.</p>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+
+        <!-- book ticket Section -->
+        <div class="section bg-dark text-white" id="bookticket">
+            <div class="container">
+
+                <div class="row g-3">
+                    <div class="col-12 d-xl-flex justify-content-between align-items-center text-center text-xl-start">
+                        <div class="mb-3 mb-xl-0">
+                            <h3>Get Ticket Now!</h3>
+                            <p class="lead mb-0">Experience the conference wherever you are. Register now for online access. Tune in live for the keynotes and watch sessions on demand. Also be sure to join our event</p>
+                        </div>
+                        <button type="button" class="btn px-4 text-uppercase btn-primary btn-lg lift">Book Ticket</button>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- Section: Blog -->
+        <div class="section" id="ourevent">
+            <div class="container">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <span class="bg-dark px-2 py-1 color-fff rounded-2 small">News & blogs</span>
+                        <h3 class="mb-1 mt-4 color-900">Latest From Newsroom</h3>
+                        <p class="lead">Torquent orci augue suscipit semper ullamcorper volutpat pharetra eleifend per leo montes</p>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="card overflow-hidden lift">
+                            <img src="@@webRoot/assets/img/gallery/11.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <div class="mb-3"><a class="small fw-bold text-success text-uppercase" href="#">Lifestyle.</a></div>
+                                <div class="d-flex flex-column">
+                                    <h4 class="fw-light mb-xl-4 mb-3"><a class="color-600" href="app-blog-detail.html" title="">Life and Death in the Empire of the Tiger</a></h4>
+                                    <div class="small text-muted text-uppercase">
+                                        <span class="post-on">27 August</span>
+                                        <span class="mx-2 time-reading has-dot">12 mins read</span>
+                                        <span class="post-by has-dot">23k views</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="card overflow-hidden lift">
+                            <img src="@@webRoot/assets/img/gallery/7.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <div class="mb-3"><a class="small fw-bold text-warning text-uppercase" href="#">Travel.</a></div>
+                                <div class="d-flex flex-column">
+                                    <h4 class="fw-light mb-xl-4 mb-3"><a class="color-600" href="app-blog-detail.html" title="">When Two Wheels Are Better Than Four</a></h4>
+                                    <div class="small text-muted text-uppercase">
+                                        <span class="post-on">27 August</span>
+                                        <span class="mx-2 time-reading has-dot">12 mins read</span>
+                                        <span class="post-by has-dot">23k views</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="card overflow-hidden lift d-none d-xl-inline-block">
+                            <img src="@@webRoot/assets/img/gallery/5.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <div class="mb-3"><a class="small fw-bold text-danger text-uppercase" href="#">Fashion.</a></div>
+                                <div class="d-flex flex-column">
+                                    <h4 class="fw-light mb-xl-4 mb-3"><a class="color-600" href="#" title="">it look like readable English packages and web</a></h4>
+                                    <div class="small text-muted text-uppercase">
+                                        <span class="post-on">27 August</span>
+                                        <span class="mx-2 time-reading has-dot">12 mins read</span>
+                                        <span class="post-by has-dot">23k views</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!--  pricing-table  -->
+        <div class="section pricing-table bg-card" id="pricing">
+            <div class="container">
+
+                <div class="bg-body p-xl-5 p-4 rounded-4 text-lg-start text-center">
+                    <div class="row g-3 justify-content-between">
+                        <div class="col-xl-5 col-lg-5">
+                            <span class="bg-dark px-2 py-1 color-fff rounded-2 small rounded-2 small">PRICING PLANS</span>
+                            <h2 class="mb-1 mt-4 color-900">GET YOUR TICKET</h2>
+                            <p class="lead">Ligula auctor lobortis id imperdiet aptent turpis platea euismod suscipit morbi odio praesent tincidunt sollicitudin habitant ipsum orci venenatis mattis</p>
+                            <h5 class="mt-5 chart-text-color2">REFUND POLICY</h5>
+                            <p class="mb-0">Sit vel nulla quisque sapien turpis lorem id pretium litora pharetra natoque nascetur mi pede</p>
+                            <ul class="social mb-0 list-inline mt-5">
+                                <li class="list-inline-item"><a href="#" class="pe-3 color-900 fs-6">Terms of use</a></li>
+                                <li class="list-inline-item"><a href="#" class="pe-3 color-900 fs-6">FAQs</a></li>
+                                <li class="list-inline-item"><a href="#" class="pe-3 color-900 fs-6">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xl-6 col-lg-7">
+                            <div class="row g-xl-3 g-2">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="card lift">
+                                        <div class="card-body">
+                                            <h5>EARLY BIRD</h5>
+                                            <div class="display-6 fw-bold mt-4">$ 99</div>
+                                            <div>2 Day's</div>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-unstyled lh-lg mb-4">
+                                                <li><i class="fa fa-check me-2"></i>Unlimited Entrance</li>
+                                                <li><i class="fa fa-check me-2"></i>Lunch and snacks</li>
+                                                <li><i class="fa fa-check me-2"></i>Professioal worksop</li>
+                                                <li><i class="fa fa-check me-2"></i>Experience certificate</li>
+                                            </ul>
+                                            <a href="#" class="btn bg-primary text-white px-4 text-uppercase">Buy Ticket</a>
+                                        </div>
+                                    </div>    
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="card lift bg-transparent">
+                                        <div class="card-body">
+                                            <h5>PREMIUM</h5>
+                                            <div class="display-6 fw-bold mt-4">$ 149</div>
+                                            <div>2 Day's</div>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-unstyled lh-lg mb-4">
+                                                <li><i class="fa fa-check me-2"></i>Unlimited Entrance</li>
+                                                <li><i class="fa fa-check me-2"></i>Lunch and snacks</li>
+                                                <li><i class="fa fa-check me-2"></i>Professioal worksop</li>
+                                                <li><i class="fa fa-check me-2"></i>Experience certificate</li>
+                                                <li><i class="fa fa-check me-2"></i>Access to exhibition floor</li>
+                                            </ul>
+                                            <a href="#" class="btn bg-secondary text-white px-4 text-uppercase">Buy Ticket</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- .row end -->
+                </div>
+
+            </div>
+        </div>
+
+        <!--  Testimonials  -->
+        @@include('onepage/sliders/_sliders-testimonials.html', { "cardClass": "sliders-2 bg-card", })
+
+        <!-- sponsors -->
+        @@include('onepage/sponsor/_sponsor-d2.html', {
+            "cardClass": "sponsor-2 bg-card",
+            "RowcardClass": "g-4 justify-content-between",
+            "SectionTitleClass": "color-900",
+            "SectionTitle": "Some Of Our Awesome Sponsors",
+            "SectionSubTitle": "Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem",
+            "SectionSubTitleClass": "lead"
+        })
+
+        <!--  Download app  -->
+        <div class="section download-app bg-dark text-center text-xl-start">
+            <div class="container">
+
+                <div class="row g-3 align-items-center justify-content-center py-4">
+                    <div class="col-lg-6 col-12">
+                        <h3 class="color-fff">Download Our Best Apps</h3>
+                        <span class="lead color-fff">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</span>
+                    </div>
+                    <div class="col-lg-6 col-12 text-md-end">
+                        <a class="btn btn-light btn-lg px-4 lift" href="#"><i class="fa fa-play"></i> App Store</a>
+                        <a class="btn btn-light btn-lg px-4 lift" href="#"><i class="fa fa-google"></i> Google Play</a>
+                    </div>
+                </div><!-- .row end -->
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Section: Footer -->
+    @@include('onepage/_footer.html', {
+        "sectionClass": "footer",
+        "rowClass": "g-2",
+        "SectionTag": "Contact Information",
+        "SectionTitle": "Get in touch",
+    })
+    
+    <!-- Modal: Setting -->
+    <a class="page-setting" href="#" title="Settings" data-bs-toggle="modal" data-bs-target="#SettingsModal"><i class="fa fa-gear text-light"></i></a>
+	@@include('_modal-theme-setting.html')
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fa fa-arrow-up"></i></a>
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "swiper": true,
+})
+<!-- Template Main JS File -->
+<script>
+
+    // Easy selector helper function
+    const select = (el, all = false) => {
+        el = el.trim()
+        if (all) {
+            return [...document.querySelectorAll(el)]
+        } else {
+            return document.querySelector(el)
+        }
+    }
+
+    // Easy event listener function
+    const on = (type, el, listener, all = false) => {
+        let selectEl = select(el, all)
+        if (selectEl) {
+            if (all) {
+                selectEl.forEach(e => e.addEventListener(type, listener))
+            } else {
+                selectEl.addEventListener(type, listener)
+            }
+        }
+    }
+
+    // Event Timer 
+    var countDownDate = new Date("Nov 13, 2022 15:30:30").getTime();
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("eventdata").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("eventdata").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+
+    /** * Hero carousel indicators */
+    let heroCarouselIndicators = select("#hero-carousel-indicators")
+    let heroCarouselItems = select('#heroCarousel .carousel-item', true)
+
+    heroCarouselItems.forEach((item, index) => {
+        (index === 0) ?
+        heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>":
+        heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
+    });
+</script>
+</body>
+</html>

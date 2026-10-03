@@ -1,0 +1,63 @@
+<nav class="navbar @@navbarClass">
+    <div class="container">
+        <a class="navbar-brand p-0 m-0" href="index.html">
+            <span class="fs-3 fw-bold text-secondary">@@brandName</span>
+            <small class="text-muted d-flex">@@tagLine</small>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse fs-6" id="main_navbar">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                @@if (context.tagLine === 'Digital Web Agency') {
+                    @@include('onepage/_webagency-h-menu.html')
+                }
+                @@if (context.tagLine === 'Customer Relationship Management') {
+                    @@include('onepage/_crm-h-menu.html')
+                }
+                @@if (context.tagLine === 'Crypto Market') {
+                    @@include('onepage/_crypto-h-menu.html')
+                }
+                @@if (context.tagLine === 'eCommerce') {
+                    @@include('onepage/_eCommerce-h-menu.html')
+                }
+                @@if (context.tagLine === 'Event Management') {
+                    @@include('onepage/_event-h-menu.html')
+                }
+                @@if (context.tagLine === 'Fitness & Health Studio') {
+                    @@include('onepage/_fitness-h-menu.html')
+                }
+                @@if (context.tagLine === 'Hospital Management') {
+                    @@include('onepage/_hospital-h-menu.html')
+                }
+                @@if (context.tagLine === 'HR & Project Management') {
+                    @@include('onepage/_hrms-h-menu.html')
+                }
+                @@if (context.tagLine === 'Inventory Management') {
+                    @@include('onepage/_inventory-h-menu.html')
+                }
+                @@if (context.tagLine === 'Find Your CAREER') {
+                    @@include('onepage/_job-h-menu.html')
+                }
+                @@if (context.tagLine === 'Music Management') {
+                    @@include('onepage/_music-h-menu.html')
+                }
+                @@if (context.tagLine === 'NFT Management') {
+                    @@include('onepage/_nft-h-menu.html')
+                }
+                @@if (context.tagLine === 'Real Estate Management') {
+                    @@include('onepage/_real-estate-h-menu.html')
+                }
+                @@if (context.tagLine === 'Restaurant Management') {
+                    @@include('onepage/_restaurant-h-menu.html')
+                }
+                @@if (context.tagLine === 'Online learning Courses') {
+                    @@include('onepage/_university-h-menu.html')
+                }
+            </ul>
+            <form class="d-flex ms-4">
+                <a class="btn px-4 rounded btn-primary" href="https://themeforest.net/item/luno-bootstrap-5-responsive-admin-dashboard-template/36214125">Download</a>
+            </form>
+        </div>
+    </div>
+</nav>

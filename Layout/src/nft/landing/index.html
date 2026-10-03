@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('_head.html',{
+		"pageTitle": "NFT's Landing Page",
+		"swiper": true,
+		"onepage": true,
+	})
+</head>
+
+<body class="landing-page bg-card" data-luno="theme-red">
+
+	<!-- Section: Top Bar -->
+	<div class="topbar py-2" id="topbar">
+		<div class="container">
+
+			<div class="row g-2">
+				<div class="col-md-8">
+					<div class="text-muted d-flex align-items-center small">
+						<a class="me-4 text-muted" href="#"><i class="fa fa-envelope me-2"></i>contact@example.com</a>
+						<span><i class="fa fa-phone me-2"></i>+1 1234 5678 990</span>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="d-none d-md-flex social-links align-items-center justify-content-end">
+						<a href="#" class="text-muted ps-3 ms-1"><i class="fa fa-twitter"></i></a>
+						<a href="#" class="text-muted ps-3 ms-1"><i class="fa fa-facebook"></i></a>
+						<a href="#" class="text-muted ps-3 ms-1"><i class="fa fa-instagram"></i></a>
+						<a href="#" class="text-muted ps-3 ms-1"><i class="fa fa-linkedin"></i></a>
+					</div>
+				</div>
+			</div> <!-- .row end -->
+
+		</div>
+	</div>
+
+	<!-- Section: Header -->
+	<header class="section sticky-top bg-card py-0 border-top">
+		@@include('onepage/_navbar.html', {
+			"navbarClass": "navbar-expand-lg navbar-light py-3",
+			"brandName": "LUNO",
+			"tagLine": "NFT Management",
+		})
+	</header>
+
+	<!--  Section: Hero Section  -->
+	<div class="section hero d-flex align-items-center" id="hero">
+		<div class="container">
+
+			<div class="row g-3 align-items-center justify-content-between">
+				<div class="col-xxl-6 col-lg-6 col-md-12">
+					<h5 class="color-900">Bootstrap 5 powered</h5>
+					<h2 class="bg-text color-900"><span class="text-gradient fw-bold">Discover</span> and <span class="text-gradient fw-bold">Collect</span> new <span class="text-gradient fw-bold">NFT's</span></h2>
+					<p class="color-500 lead mb-4">Build a beautiful, modern website with flexible Bootstrap components built from scratch.</p>
+					<button class="btn btn-lg btn-primary mb-4">Explore</button>
+					<div class="row">
+						<div class="col">
+							<div class="card">
+								<div class="card-body">
+									<div class="fw-bold">
+									  <span class="h4 mb-0">40k</span>
+									  <span class="text-success ms-1">2.55% <i class="fa fa-caret-up"></i></span>
+									</div>
+									<div class="text-muted">Artworks</div>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card">
+								<div class="card-body">
+									<div class="fw-bold">
+									  <span class="h4 mb-0">23k</span>
+									  <span class="text-danger ms-1">4.12% <i class="fa fa-caret-down"></i></span>
+									</div>
+									<div class="text-muted">Auction</div>
+								</div>
+							</div>
+						</div>
+						<div class="col d-none d-md-block">
+							<div class="card">
+								<div class="card-body">
+									<div class="fw-bold">
+									  <span class="h4 mb-0">102k</span>
+									  <span class="text-success ms-1">7.15% <i class="fa fa-caret-up"></i></span>
+									</div>
+									<div class="text-muted">Creators</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xxl-5 col-lg-5 col-md-12 text-lg-end text-center">
+					<img class="img-fluid" src="@@webRoot/assets/img/nft/img-6.png" alt="">
+				</div>
+			</div><!-- .row end -->
+
+		</div>
+	</div>
+
+	<!--  Section: Latest  -->
+	<div class="section" id="sold">
+		<div class="container">
+			
+			<div class="row">
+				<div class="col-12">
+					<div class="section-heading mb-4 d-flex justify-content-between align-items-center">
+						<div>
+							<span class="bg-dark px-2 py-1 color-fff">Sold</span>
+							<h2 class="fw-bold mt-3 mb-0">Our Most Sold NFTs</h2>
+						</div>
+						<a href="javascript:void(0);">View All</a>
+					</div>
+				</div>
+			</div><!-- .row end -->
+
+			<div class="row g-3 row-deck">
+				<div class="owl-carousel owl-theme" id="latest">
+					<div class="item card overflow-hidden">
+						<img src="@@webRoot/assets/img/nft/img-2.png" class="img-fluid rounded-top mb-3" alt="">
+						<div class="card-body">
+							<h4 class="card-title">LUNO Rave</h4>
+							<div class="d-flex flex-column justify-content-between mb-3">
+								<div>
+									<small>Auction Time</small>
+									<h6 class="text-muted">3h 1m 50s</h6>
+								</div>
+								<div>
+									<small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+									<h6 class="text-muted">0.15 ETH</h6>
+								</div>
+							</div>
+							<a href="#" class="btn btn-primary w-100">Place a Bid</a>
+						</div>
+					</div>
+					<div class="item card overflow-hidden">
+						<img src="@@webRoot/assets/img/nft/img-3.png" class="img-fluid rounded-top mb-3" alt="">
+						<div class="card-body">
+							<h4 class="card-title">LUNO Gave</h4>
+							<div class="d-flex flex-column justify-content-between mb-3">
+								<div>
+									<small>Auction Time</small>
+									<h6 class="text-muted">3h 1m 50s</h6>
+								</div>
+								<div>
+									<small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+									<h6 class="text-muted">0.15 ETH</h6>
+								</div>
+							</div>
+							<a href="#" class="btn btn-primary w-100">Place a Bid</a>
+						</div>
+					</div>
+					<div class="item card overflow-hidden">
+						<img src="@@webRoot/assets/img/nft/img-4.png" class="img-fluid rounded-top mb-3" alt="">
+						<div class="card-body">
+							<h4 class="card-title">LUNO Tave</h4>
+							<div class="d-flex flex-column justify-content-between mb-3">
+								<div>
+									<small>Auction Time</small>
+									<h6 class="text-muted">3h 1m 50s</h6>
+								</div>
+								<div>
+									<small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+									<h6 class="text-muted">0.15 ETH</h6>
+								</div>
+							</div>
+							<a href="#" class="btn btn-primary w-100">Place a Bid</a>
+						</div>
+					</div>
+					<div class="item card overflow-hidden">
+						<img src="@@webRoot/assets/img/nft/img-5.png" class="img-fluid rounded-top mb-3" alt="">
+						<div class="card-body">
+							<h4 class="card-title">LUNO Wave</h4>
+							<div class="d-flex flex-column justify-content-between mb-3">
+								<div>
+									<small>Auction Time</small>
+									<h6 class="text-muted">3h 1m 50s</h6>
+								</div>
+								<div>
+									<small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+									<h6 class="text-muted">0.15 ETH</h6>
+								</div>
+							</div>
+							<a href="#" class="btn btn-primary w-100">Place a Bid</a>
+						</div>
+					</div>
+					<div class="item card overflow-hidden">
+						<img src="@@webRoot/assets/img/nft/img-1.png" class="img-fluid rounded-top mb-3" alt="">
+						<div class="card-body">
+							<h4 class="card-title">Liguid Wave</h4>
+							<div class="d-flex flex-column justify-content-between mb-3">
+								<div>
+									<small>Auction Time</small>
+									<h6 class="text-muted">3h 1m 50s</h6>
+								</div>
+								<div>
+									<small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+									<h6 class="text-muted">0.15 ETH</h6>
+								</div>
+							</div>
+							<a href="#" class="btn btn-primary w-100">Place a Bid</a>
+						</div>
+					</div>
+				</div>
+			</div><!-- .row end -->
+
+		</div>
+	</div>
+
+	<!-- Section: Learn & Earn -->
+    <div class="section learn pt-0" id="learn">
+        <div class="container">
+
+            <div class="row g-3 row-deck text-center">
+                <div class="col-12">
+                    <div class="card bg-secondary text-white py-4">
+                        <div class="card-body">
+                            <h2 class="fw-bold">Learn and Earn Free NFTs</h2>
+                            <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus</p>
+                            <p class="px-xl-5 px-lg-4 m-auto lead mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis quis doloremque aliquid neque, velit laudantium minus pariatur repellat maiores impedit in dolor illo dicta, quisquam possimus ad. Molestias, ea velit.</p>
+                            <a class="btn btn-lg px-4 btn-light text-uppercase" href="#">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+	<!--  Section: Bid  -->
+	<div class="section" id="bid">
+		<div class="container">
+			
+			<div class="row">
+				<div class="col-12">
+					<div class="section-heading mb-4 d-flex justify-content-between align-items-center">
+						<div>
+							<span class="bg-dark px-2 py-1 color-fff">Bid</span>
+							<h2 class="fw-bold mt-3 mb-0">Latest Bid</h2>
+						</div>
+						<a href="javascript:void(0);">View All</a>
+					</div>
+				</div>
+			</div><!-- .row end -->
+
+			<div class="row g-3 row-deck">
+				<div class="owl-carousel owl-theme" id="trending_bids">
+					<div class="item card overflow-hidden">
+						<img src="@@webRoot/assets/img/nft/img-1.png" class="img-fluid rounded-top mb-3" alt="">
+						<div class="card-body">
+							<h4 class="card-title">LUNO Rave</h4>
+							<div class="d-flex flex-column justify-content-between mb-3">
+								<div>
+									<small>Auction Time</small>
+									<h6 class="text-muted">3h 1m 50s</h6>
+								</div>
+								<div>
+									<small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+									<h6 class="text-muted">0.15 ETH</h6>
+								</div>
+							</div>
+							<a href="#" class="btn btn-primary w-100">Place a Bid</a>
+						</div>
+					</div>
+					<div class="item card overflow-hidden">
+						<img src="@@webRoot/assets/img/nft/img-6.png" class="img-fluid rounded-top mb-3" alt="">
+						<div class="card-body">
+							<h4 class="card-title">LUNO Gave</h4>
+							<div class="d-flex flex-column justify-content-between mb-3">
+								<div>
+									<small>Auction Time</small>
+									<h6 class="text-muted">3h 1m 50s</h6>
+								</div>
+								<div>
+									<small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+									<h6 class="text-muted">0.15 ETH</h6>
+								</div>
+							</div>
+							<a href="#" class="btn btn-primary w-100">Place a Bid</a>
+						</div>
+					</div>
+					<div class="item card overflow-hidden">
+						<img src="@@webRoot/assets/img/nft/img-4.png" class="img-fluid rounded-top mb-3" alt="">
+						<div class="card-body">
+							<h4 class="card-title">LUNO Tave</h4>
+							<div class="d-flex flex-column justify-content-between mb-3">
+								<div>
+									<small>Auction Time</small>
+									<h6 class="text-muted">3h 1m 50s</h6>
+								</div>
+								<div>
+									<small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+									<h6 class="text-muted">0.15 ETH</h6>
+								</div>
+							</div>
+							<a href="#" class="btn btn-primary w-100">Place a Bid</a>
+						</div>
+					</div>
+					<div class="item card overflow-hidden">
+						<img src="@@webRoot/assets/img/nft/img-2.png" class="img-fluid rounded-top mb-3" alt="">
+						<div class="card-body">
+							<h4 class="card-title">LUNO Wave</h4>
+							<div class="d-flex flex-column justify-content-between mb-3">
+								<div>
+									<small>Auction Time</small>
+									<h6 class="text-muted">3h 1m 50s</h6>
+								</div>
+								<div>
+									<small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+									<h6 class="text-muted">0.15 ETH</h6>
+								</div>
+							</div>
+							<a href="#" class="btn btn-primary w-100">Place a Bid</a>
+						</div>
+					</div>
+					<div class="item card overflow-hidden">
+						<img src="@@webRoot/assets/img/nft/img-3.png" class="img-fluid rounded-top mb-3" alt="">
+						<div class="card-body">
+							<h4 class="card-title">Liguid Wave</h4>
+							<div class="d-flex flex-column justify-content-between mb-3">
+								<div>
+									<small>Auction Time</small>
+									<h6 class="text-muted">3h 1m 50s</h6>
+								</div>
+								<div>
+									<small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+									<h6 class="text-muted">0.15 ETH</h6>
+								</div>
+							</div>
+							<a href="#" class="btn btn-primary w-100">Place a Bid</a>
+						</div>
+					</div>
+				</div>
+			</div><!-- .row end -->
+
+		</div>
+	</div>
+
+	<!--  Section: FAQa  -->
+	<div class="section" id="faq">
+		<div class="container">
+
+			@@include('onepage/_faqs.html', {
+				"rowClass": "g-3",
+				"sectionTag": "FAQs",
+				"sectionTitle": "Frequently Asked Questions",
+				"sectionSubTitle": "It was popularised in the 1960s with the release of Letraset sheets containing."
+			})
+
+		</div>
+	</div>
+
+	<!--  Section: Gallery  -->
+	<div class="section pb-0">
+		<div class="container">
+
+			<div class="row justify-content-center mb-3">
+				<div class="col-lg-12">
+					<span class="bg-dark px-2 py-1 color-fff">Gallery</span>
+					<h2 class="mb-1 mt-4 color-900">Awesome Portfolio</h2>
+					<p class="lead">Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem</p>
+				</div>
+			</div><!-- .row end -->
+
+		</div>
+		<div class="container-fluid">
+
+			@@include('onepage/_img-gallery.html',{
+				"imgGalleryPath": "@@webRoot/assets/img/nft/gallery"
+			})
+
+		</div>
+	</div>
+
+	<!-- Section: call to action -->
+	<div class="section call-action">
+		<div class="container">
+
+			<div class="row justify-content-center text-center text-white">
+				<div class="col-xl-7 col-lg-10 col-12">
+					<span class="bg-white px-3 py-2 text-dark">GETTING STARTED TO WORK</span>
+					<h2 class="mb-3 mt-4">Take a look at All the layouts of LUNO</h2>
+					<p class="lead">It helps you to increase your chances of finding a suitable job and let recruiters contact you about jobs that are not needed to pay for advertising.</p>
+					<div class="mt-5">
+						<a href="https://themeforest.net/checkout/from_item/36214125?license=extended&size=source&ref=phpbits" class="btn lift btn-lg px-5  btn-light fs-6">Buy a License</a>
+						<a class="btn lift btn-lg px-5  bg-dark text-white fs-6" href="https://themeforest.net/item/luno-bootstrap-5-responsive-admin-dashboard-template/36214125">Download Now</a>
+					</div>
+				</div>
+			</div> <!-- .row end -->
+
+		</div>
+	</div>
+
+	<!--  Section: contact us form  -->
+	<div class="section">
+		<div class="container">
+
+			@@include('onepage/contact/_contact-form.html', {
+				"rowClass": "g-2",
+				"SectionTag": "Contact Information",
+				"SectionTitle": "Get in touch",
+			})
+
+		</div>
+	</div>
+
+	<!-- Section: call-to-action app download -->
+	<div class="section bg-dark text-light">
+		<div class="container">
+
+			@@include('onepage/call-to-action/_call-to-action-app.html', {
+				"rowClass": "g-3 align-items-center justify-content-center",
+				"sectionTitle": "Download Our Best Apps",
+			})
+
+		</div>
+	</div>
+
+	<!-- Section: Footer -->
+	@@include('onepage/_footer.html', {
+		"sectionClass": "footer",
+		"rowClass": "g-2",
+		"SectionTag": "Contact Information",
+		"SectionTitle": "Get in touch",
+	})    
+	
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+	<a class="page-setting" href="#" title="Settings" data-bs-toggle="modal" data-bs-target="#SettingsModal"><i class="fa fa-gear text-light"></i></a>
+
+	<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fa fa-arrow-up"></i></a>
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+	"swiper": true,
+	"owlcarousel":true,
+})
+<script>
+	$('#trending_bids, #latest').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        dots: false,
+        autoplay:true,
+        responsive:{
+            0:{items:1},
+            600:{items:2},
+            992:{items:3},
+            1199:{items:4},
+            1440:{items:5}
+        }
+    })
+</script>
+</body>
+</html>

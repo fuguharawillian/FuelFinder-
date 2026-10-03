@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Server Database",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-server.html', {"page": "databases"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Database</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row row-cols-xl-4 row-cols-lg-4 row-cols-md-2 row-cols-sm-2 row-cols-1 g-1 mb-5 row-deck">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="dropdown morphing scale-left position-absolute top-0 end-0 mt-2 me-2">
+                                    @@include('widgets/_card-ellipsis.html')
+                                </div>
+                                <h6 class="m-0">MSSQL 1 <button type="button" class="btn p-1 btn-link" data-bs-toggle="modal" data-bs-target="#ServerDetails"><i class="fa fa-info-circle"></i></button></h6>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <label class="small d-flex justify-content-between text-uppercase">Response Time <span>5ms</span></label>
+                                    <div class="progress mt-1" style="height: 5px;">
+                                        <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100" style="width: 12%;"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="small d-flex justify-content-between text-uppercase">CPU Used <span>32.73%</span></label>
+                                    <div class="progress mt-1" style="height: 5px;">
+                                        <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100" style="width: 32%;"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="small d-flex justify-content-between text-uppercase">Memory Used <span>77.23%</span></label>
+                                    <div class="progress mt-1" style="height: 5px;">
+                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 77%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="list-group list-group-custom list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Locks
+                                    <span class="badge bg-primary rounded-pill">234</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Blockers
+                                    <span class="badge bg-primary rounded-pill">2</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Deadlocks
+                                    <span class="badge bg-primary rounded-pill">1</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="dropdown morphing scale-left position-absolute top-0 end-0 mt-2 me-2">
+                                    @@include('widgets/_card-ellipsis.html')
+                                </div>
+                                <h6 class="m-0">MSSQL 2 <button type="button" class="btn p-1 btn-link" data-bs-toggle="modal" data-bs-target="#ServerDetails"><i class="fa fa-info-circle"></i></button></h6>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <label class="small d-flex justify-content-between text-uppercase">Response Time <span>9ms</span></label>
+                                    <div class="progress mt-1" style="height: 5px;">
+                                        <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="24" aria-valuemin="0" aria-valuemax="100" style="width: 24%;"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="small d-flex justify-content-between text-uppercase">CPU Used <span>40.80%</span></label>
+                                    <div class="progress mt-1" style="height: 5px;">
+                                        <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="small d-flex justify-content-between text-uppercase">Memory Used <span>65.10%</span></label>
+                                    <div class="progress mt-1" style="height: 5px;">
+                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="list-group list-group-custom list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Locks
+                                    <span class="badge bg-primary rounded-pill">209</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Blockers
+                                    <span class="badge bg-primary rounded-pill">7</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Deadlocks
+                                    <span class="badge bg-primary rounded-pill">9</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="dropdown morphing scale-left position-absolute top-0 end-0 mt-2 me-2">
+                                    @@include('widgets/_card-ellipsis.html')
+                                </div>
+                                <h6 class="m-0">DB 2</h6>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <label class="small d-flex justify-content-between text-uppercase">Response Time <span>125ms</span></label>
+                                    <div class="progress mt-1" style="height: 5px;">
+                                        <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" style="width: 88%;"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="small d-flex justify-content-between text-uppercase">CPU Used <span>80.20%</span></label>
+                                    <div class="progress mt-1" style="height: 5px;">
+                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="small d-flex justify-content-between text-uppercase">Memory Used <span>96%</span></label>
+                                    <div class="progress mt-1" style="height: 5px;">
+                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100" style="width: 96%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="list-group list-group-custom list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Locks
+                                    <span class="badge bg-primary rounded-pill">186</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Blockers
+                                    <span class="badge bg-primary rounded-pill">4</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Deadlocks
+                                    <span class="badge bg-danger rounded-pill">34</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="dropdown morphing scale-left position-absolute top-0 end-0 mt-2 me-2">
+                                    @@include('widgets/_card-ellipsis.html')
+                                </div>
+                                <h6 class="m-0">Oracle</h6>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <label class="small d-flex justify-content-between text-uppercase">Response Time <span>5ms</span></label>
+                                    <div class="progress mt-1" style="height: 5px;">
+                                        <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100" style="width: 12%;"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="small d-flex justify-content-between text-uppercase">CPU Used <span>32.73%</span></label>
+                                    <div class="progress mt-1" style="height: 5px;">
+                                        <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100" style="width: 32%;"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="small d-flex justify-content-between text-uppercase">Memory Used <span>77.23%</span></label>
+                                    <div class="progress mt-1" style="height: 5px;">
+                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 77%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="list-group list-group-custom list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Locks
+                                    <span class="badge bg-primary rounded-pill">255</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Blockers
+                                    <span class="badge bg-primary rounded-pill">3</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Deadlocks
+                                    <span class="badge bg-primary rounded-pill">5</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Modal: Server details -->
+                    <div class="modal fade" id="ServerDetails" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Database server</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <ul class="list-unstyled list-group-custom">
+                                        <li class="border-bottom py-2 row">
+                                            <div class="col-4">Server:</div>
+                                            <div class="col-8">Localhost via UNIX socket</div>
+                                        </li>
+                                        <li class="border-bottom py-2 row">
+                                            <div class="col-4">Server type:</div>
+                                            <div class="col-8">MySQL</div>
+                                        </li>
+                                        <li class="border-bottom py-2 row">
+                                            <div class="col-4">Server connection:</div>
+                                            <div class="col-8">SSL is not being used Documentation</div>
+                                        </li>
+                                        <li class="border-bottom py-2 row">
+                                            <div class="col-4">Server version:</div>
+                                            <div class="col-8">5.6.49-cll-lve - MySQL Community Server (GPL)</div>
+                                        </li>
+                                        <li class="border-bottom py-2 row">
+                                            <div class="col-4">Protocol version:</div>
+                                            <div class="col-8">10</div>
+                                        </li>
+                                        <li class="border-bottom py-2 row">
+                                            <div class="col-4">User:</div>
+                                            <div class="col-8">demo@localhost</div>
+                                        </li>
+                                        <li class="border-bottom py-2 row">
+                                            <div class="col-4">Server charset:</div>
+                                            <div class="col-8">cp1252 West European (latin1)</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <h4>Current Databases</h4>
+                        <table id="myDataTable_no_filter" class="table card-table">
+                            <thead>
+                                <tr>
+                                    <th>Database Name</th>
+                                    <th>Size</th>
+                                    <th>Privileged Users</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>myttmwork</td>
+                                    <td><span class="badge bg-primary">58MB</span></td>
+                                    <td>ttmUserDemo</td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>myDataSite</td>
+                                    <td><span class="badge bg-primary">120MB</span></td>
+                                    <td>ymtUser</td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>myUserSiteData</td>
+                                    <td><span class="badge bg-primary">290MB</span></td>
+                                    <td>myUser</td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    $('#myDataTable_no_filter')
+    .addClass('nowrap')
+    .dataTable({
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: true,
+        info: false,
+    });
+</script>
+</body>
+</html>

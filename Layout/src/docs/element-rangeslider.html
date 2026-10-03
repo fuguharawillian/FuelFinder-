@@ -1,0 +1,239 @@
+<!doctype html>
+<html class="no-js " lang="en">
+<head>
+    @@include('docs/_head.html',{
+        "pageTitle": "Range Slider",
+        "rangeslider": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+    <!-- sidebar -->
+    @@include('docs/_sidebar.html', {"page": "element-rangeslider"})
+
+    <!-- start: body area -->
+    <div class="wrapper">
+
+        <!-- start: page header -->
+        @@include('docs/_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container">
+                
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="@@webRoot/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Documentation</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Rangeslider</li>
+                        </ol>
+                    </div>
+                    <div class="col text-md-end">
+                        <a class="btn btn-primary" href="element-passwordmeter.html"><i class="fa fa-long-arrow-left me-2"></i>Password meter</a>
+                        <a class="btn btn-secondary" href="element-sweetalert2.html">Sweetalert 2<i class="fa fa-long-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container">
+
+                <div class="row g-3 mb-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Introduction</h6>
+                            </div>
+                            <div class="card-body">
+                                <h4>Range slider</h4>
+                                <p class="fs-6">Ion.RangeSlider. Is an easy, flexible and responsive range slider with tons of options.. For more info, please visit the <a href="http://ionden.com/a/plugins/ion.rangeSlider/index.html" target="_blank">plugin's site</a></p>
+                                <ul class="lh-lg">
+                                    <li>Ion.RangeSlider — cool, comfortable, responsive and easily customizable range slider</li>
+                                    <li>Supports events and public methods, has flexible settings, can be completely altered with CSS</li>
+                                    <li>Cross-browser: Google Chrome, Mozilla Firefox 3.6+, Opera 12+, Safari 5+, Internet Explorer 8+</li>
+                                    <li>Ion.RangeSlider supports touch-devices (iPhone, iPad, Nexus, etc.).</li>
+                                    <li>Ion.RangeSlider freely distributed under terms of <a href="http://ionden.com/a/plugins/licence.html" rel="nofollow">MIT licence</a>.</li>
+                                    <li>With this plugin you will be able to build beautiful range sliders, like this:</li>
+                                </ul>
+                            </div>
+                            <div class="card-body pt-0">
+<pre class="language-html m-0" data-lang="html"><code class=" language-html">&lt;!-- plugin css file  --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/bundles/rangeslider.min.css&quot;&gt;
+
+&lt;!-- Plugin Js --&gt;
+&lt;script src=&quot;assets/bundles/rangeslider.bundle.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body range_slider">
+                                <div class="irs-demo mb-4 pb-4 border-bottom">
+                                    <p>Start without params</p>
+                                    <input type="text" id="range_01" value="" />
+                                </div>
+                                <div class="irs-demo mb-4 pb-4 border-bottom">
+                                    <p>Set min value, max value and start point</p>
+                                    <input type="text" id="range_02" value="" />
+                                </div>
+                                <div class="irs-demo mb-4 pb-4 border-bottom">
+                                    <p>Set type to double and specify range, also showing grid and adding prefix "$"</p>
+                                    <input type="text" id="range_03" value="" />
+                                </div>
+                                <div class="irs-demo mb-4 pb-4 border-bottom">
+                                    <p>Set up range with negative values</p>
+                                    <input type="text" id="range_04" value="" />
+                                </div>
+                                <div class="irs-demo mb-4 pb-4 border-bottom">
+                                    <p>Using step 250</p>
+                                    <input type="text" id="range_05" value="" />
+                                </div>
+                                <div class="irs-demo mb-4 pb-4 border-bottom">
+                                    <p>Set up range with fractional values, using fractional step</p>
+                                    <input type="text" id="range_06" value="" />
+                                </div>
+                                <div class="irs-demo mb-4 pb-4 border-bottom">
+                                    <p>Set up you own numbers</p>
+                                    <input type="text" id="range_07" value="" />
+                                </div>
+                                <div class="irs-demo mb-4 pb-4 border-bottom">
+                                    <p>Using any strings as your values</p>
+                                    <input type="text" id="range_08" value="" />
+                                </div>
+                                <div class="irs-demo mb-4 pb-4 border-bottom">
+                                    <p>One more example with strings</p>
+                                    <input type="text" id="range_09" value="" />
+                                </div>
+                                <div class="irs-demo">
+                                    <p>No prettify. Big numbers are ugly and unreadable</p>
+                                    <input type="text" id="range_10" value="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+               <!-- start: navigation btn -->
+                <div class="row g-3 text-center text-lg-start mt-4">
+                    <div class="col-12">
+                        <a class="btn lift btn-lg rounded-4 btn-primary" href="element-passwordmeter.html"><i class="fa fa-long-arrow-left me-3"></i>Password meter</a>
+                        <a class="btn lift btn-lg rounded-4 btn-secondary" href="element-sweetalert2.html">Sweetalert 2<i class="fa fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+        @@include('docs/_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Setting -->
+    @@include('docs/_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('docs/_scripts.html',{
+    "rangeslider": true,
+})
+<script>
+    
+    $(function () {
+        $("#range_01").ionRangeSlider();
+
+        $("#range_02").ionRangeSlider({
+            min: 100,
+            max: 1000,
+            from: 550
+        });
+
+        $("#range_03").ionRangeSlider({
+            type: "double",
+            grid: true,
+            min: 0,
+            max: 1000,
+            from: 200,
+            to: 800,
+            prefix: "$"
+        });
+
+        $("#range_04").ionRangeSlider({
+            type: "double",
+            grid: true,
+            min: -1000,
+            max: 1000,
+            from: -500,
+            to: 500
+        });
+
+        $("#range_05").ionRangeSlider({
+            type: "double",
+            grid: true,
+            min: -1000,
+            max: 1000,
+            from: -500,
+            to: 500,
+            step: 250
+        });
+
+        $("#range_06").ionRangeSlider({
+            type: "double",
+            grid: true,
+            min: -12.8,
+            max: 12.8,
+            from: -3.2,
+            to: 3.2,
+            step: 0.1
+        });
+
+        $("#range_07").ionRangeSlider({
+            type: "double",
+            grid: true,
+            from: 1,
+            to: 5,
+            values: [0, 10, 100, 1000, 10000, 100000, 1000000]
+        });
+
+        $("#range_08").ionRangeSlider({
+            grid: true,
+            from: 5,
+            values: [
+                "zero", "one",
+                "two", "three",
+                "four", "five",
+                "six", "seven",
+                "eight", "nine",
+                "ten"
+            ]
+        });
+
+        $("#range_09").ionRangeSlider({
+            grid: true,
+            from: 3,
+            values: [
+                "January", "February", "March",
+                "April", "May", "June",
+                "July", "August", "September",
+                "October", "November", "December"
+            ]
+        });
+
+        $("#range_10").ionRangeSlider({
+            grid: true,
+            min: 1000,
+            max: 1000000,
+            from: 100000,
+            step: 1000,
+            prettify_enabled: false
+        });
+    });
+
+</script>
+</body>
+</html>

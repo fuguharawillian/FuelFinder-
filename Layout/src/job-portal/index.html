@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Job Portal Dashboard",
+        "daterangepicker": true
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-orange">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-job.html', {"page": "index"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 g-3 mb-3">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase">Applications</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">10.5K</span>
+                                    <span class="text-success ms-1">2.55% <i class="fa fa-caret-up"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase">Company</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">814</span>
+                                    <span class="text-success ms-1">18.60% <i class="fa fa-caret-up"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase">Shortlisted</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">5.2K</span>
+                                    <span class="text-success ms-1">3.08% <i class="fa fa-caret-up"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase">On-Hold</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">2.2K</span>
+                                    <span class="text-success ms-1">1.72% <i class="fa fa-caret-up"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase">Vacancies</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">24</span>
+                                    <span class="text-warning ms-1">Recomended</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase">Vacancies</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">12</span>
+                                    <span class="text-info ms-1">Saved</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase">Vacancies</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">7</span>
+                                    <span class="text-danger ms-1">Sent</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-muted text-uppercase">Vacancies</div>
+                                <div class="mt-1">
+                                    <span class="fw-bold h4 mb-0">24</span>
+                                    <span class="text-success ms-1">Feedback</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-3 row-deck">
+                    <div class="col-xl-6 col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Job Statistic</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div id="apex-JobStatistic" class="ac-line-transparent"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Job Vacancy</h6>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <div id="apex-JobVacancy"></div>
+                            </div>
+                            <div class="card-body">
+                                <div class="mt-3">
+                                    <label class="small d-flex justify-content-between">Private Sector<span class="fw-bold">2.8K</span></label>
+                                    <div class="progress mt-1" style="height: 2px;">
+                                        <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="small d-flex justify-content-between">Government Sector<span class="fw-bold">795</span></label>
+                                    <div class="progress mt-1" style="height: 2px;">
+                                        <div class="progress-bar chart-color2" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Candidates by Gender</h6>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <div id="apex-CandidatesbyGender"></div>
+                            </div>
+                            <div class="card-body">
+                                <div class="mt-3">
+                                    <label class="small d-flex justify-content-between">Private Sector<span class="fw-bold">2.8K</span></label>
+                                    <div class="progress mt-1" style="height: 2px;">
+                                        <div class="progress-bar chart-color3" role="progressbar" aria-valuenow="81" aria-valuemin="0" aria-valuemax="100" style="width: 81%;"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="small d-flex justify-content-between">Government Sector<span class="fw-bold">795</span></label>
+                                    <div class="progress mt-1" style="height: 2px;">
+                                        <div class="progress-bar chart-color4" role="progressbar" aria-valuenow="19" aria-valuemin="0" aria-valuemax="100" style="width: 19%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="card-body">
+                                            <div class="avatar lg rounded-circle no-thumbnail"><i class="fa fa-google fa-2x text-danger"></i></div>
+                                            <div class="mt-3">
+                                                <h5 class="mb-0">Angular Developer</h5>
+                                                <span class="text-muted text-uppercase small">ThemeMakker inc. (Paris, France)</span>
+                                                <h3 class="mt-2 mb-1">$5k - $9k</h3>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="badge rounded-pill bg-light text-dark me-1">Ful-Time</span>
+                                                    <span class="text-primary ms-auto">Vacancy. <strong>12</strong></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <span class="text-muted small">Required Skills</span>
+                                            <ul class="list-group list-group-custom mt-1 mb-2">
+                                                <li class="list-group-item">Angular CLI, AngularJs</li>
+                                                <li class="list-group-item">NPM, Git, TypeScript</li>
+                                                <li class="list-group-item">HTML, SCSS</li>
+                                                <li class="list-group-item">Communication</li>
+                                            </ul>
+                                            <button type="button" class="btn btn-primary btn-sm">Apply Now</button>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="card-body">
+                                            <div class="avatar lg rounded-circle no-thumbnail"><i class="fa fa-twitter fa-2x text-info"></i></div>
+                                            <div class="mt-3">
+                                                <h5 class="mb-0">React Developer</h5>
+                                                <span class="text-muted text-uppercase small">ThemeMakker inc. (NY, USA)</span>
+                                                <h3 class="mt-2 mb-1">$11k - $15k</h3>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="badge rounded-pill bg-light text-dark me-1">Remote</span>
+                                                    <span class="text-primary ms-auto">Vacancy. <strong>8</strong></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <span class="text-muted small">Required Skills</span>
+                                            <ul class="list-group list-group-custom mt-1 mb-2">
+                                                <li class="list-group-item">ReactJS, Redux</li>
+                                                <li class="list-group-item">Node + NPM</li>
+                                                <li class="list-group-item">HTML + CSS & JavaScript</li>
+                                                <li class="list-group-item">Communication</li>
+                                            </ul>
+                                            <button type="button" class="btn btn-primary btn-sm">Apply Now</button>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="card-body">
+                                            <div class="avatar lg rounded-circle no-thumbnail"><i class="fa fa-github fa-2x text-dark"></i></div>
+                                            <div class="mt-3">
+                                                <h5 class="mb-0">Fullstack Developer</h5>
+                                                <span class="text-muted text-uppercase small">ThemeMakker inc. (DC, USA)</span>
+                                                <h3 class="mt-2 mb-1">$17k - $21k</h3>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="badge rounded-pill bg-light text-dark me-1">Part-Time</span>
+                                                    <span class="text-primary ms-auto">Vacancy. <strong>23</strong></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <span class="text-muted small">Required Skills</span>
+                                            <ul class="list-group list-group-custom mt-1 mb-2">
+                                                <li class="list-group-item">MEAN, RoR & Django</li>
+                                                <li class="list-group-item">Database & Web Storage</li>
+                                                <li class="list-group-item">HTML, SCSS</li>
+                                                <li class="list-group-item">Communication</li>
+                                            </ul>
+                                            <button type="button" class="btn btn-primary btn-sm">Apply Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="@@webRoot/assets/img/profile_av.png" alt="" class="rounded avatar lg mb-3">
+                                <h5 class="mb-0">Manuella Nevoresky</h5>
+                                <span class="small text-uppercase text-muted">Web Designer</span>
+                                <ul class="social mb-0 list-inline mt-3 mb-4">
+                                    <li class="list-inline-item"><a href="#" class="p-1"><i class="fa fa-dribbble"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-1"><i class="fa fa-pinterest"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="p-1"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                                <div class="mb-3">
+                                    <small class="text-muted">Phone</small>
+                                    <div class="mb-0 fw-bold">+123 456 789</div>
+                                </div>
+                                <div class="mb-3">
+                                    <small class="text-muted">Email ID</small>
+                                    <div class="mb-0 fw-bold">eliana.smith@info.com</div>
+                                </div>
+                                <ul class="list-unstyled">
+                                    <li class="mb-3">
+                                        <div class="small">Photoshop</div>
+                                        <div class="progress" style="height: 2px;">
+                                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%"></div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-3">
+                                        <div class="small">illustrator</div>
+                                        <div class="progress" style="height: 2px;">
+                                            <div class="progress-bar bg-info" role="progressbar" aria-valuenow="81" aria-valuemin="0" aria-valuemax="100" style="width: 81%"></div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-3">
+                                        <div class="small">HTML</div>
+                                        <div class="progress" style="height: 2px;">
+                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 55%"> </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="small">CSS</div>
+                                        <div class="progress" style="height: 2px;">
+                                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"> </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="mb-4">Top Referrers</h6>
+                                <div class="mb-3">
+                                    <div class="mb-0 fw-bold">Direct</div>
+                                    <small class="text-muted">514 Pageview</small>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="mb-0 fw-bold">Google</div>
+                                    <small class="text-muted">784 Pageview</small>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="mb-0 fw-bold">Jobs.lever.co.uk</div>
+                                    <small class="text-muted">105 Pageview</small>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="mb-0 fw-bold">Mail Campaign</div>
+                                    <small class="text-muted">215 Pageview</small>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="mb-0 fw-bold">Facebook Campaign</div>
+                                    <small class="text-muted">980 Pageview</small>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="mb-0 fw-bold">linkedin Post</div>
+                                    <small class="text-muted">348 Pageview</small>
+                                </div>
+                                <div>
+                                    <div class="mb-0 fw-bold">Direct</div>
+                                    <small class="text-muted">514 Pageview</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h5 class="mb-0">Loan to Value</h5>
+                                <div class="mt-3" id="apex-LoantoValue"></div>
+                                <h3 class="mb-0 text-primary">$25,480</h3>
+                                <span class="text-muted small">Loan Balance</span>
+                                <h6 class="mt-3 mb-0 fw-bold text-danger">102.10%</h6>
+                                <span class="text-muted small">Debt Service Coverage</span>
+                                <h6 class="mt-3 mb-0 fw-bold">Debt Yield</h6>
+                                <span class="text-muted">22.74%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "apexcharts": true
+})
+<script>
+    // Job Statistic
+    var options = {
+        series: [{
+            name: "Application",
+            data: [87, 57, 74, 39, 75, 38, 62, 47, 42, 56, 45, 47]
+        },{
+            name: "Sortlist",
+            data: [45, 52, 38, 24, 33, 26, 21, 20, 16, 18, 15, 10]
+        },{
+            name: "Rejected",
+            data: [22, 11, 15, 28, 10, 27, 23, 19, 15, 21, 26, 28]
+        }],
+
+        chart: {
+            height: 300,
+            type: 'line', // line, bar, area
+            toolbar: {
+                show: false,
+            },
+            zoom: {
+                enabled: false
+            },
+        },
+        responsive: [{
+            breakpoint: 1200,
+            options: {
+                chart: {
+                    height: 345,
+                },
+            }
+        }],
+        colors: ['var(--chart-color2)', 'var(--chart-color5)', 'var(--chart-color4)'],
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            width: [3, 4, 2],
+            curve: 'smooth', // straight, smooth
+            dashArray: [5]
+        },
+        legend: {
+            tooltipHoverFormatter: function(val, opts) {
+                return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+            }
+        },
+        markers: {
+            size: 0,
+            hover: {
+                sizeOffset: 6
+            }
+        },
+        xaxis: {
+            categories: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+        },
+        tooltip: {
+            y: [{
+                title: {
+                    formatter: function (val) {
+                        return val + " (People)"
+                    }
+                }
+            },{
+                title: {
+                    formatter: function (val) {
+                        return val + " (People)"
+                    }
+                }
+            }]
+        },
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-JobStatistic"), options);
+    chart.render();
+
+    // Job Vacancy
+    var options = {
+        series: [32, 68],
+        chart: {
+            type: 'donut',
+            width: 300,
+            toolbar: {
+                show: false,
+            },
+        },
+        responsive: [{
+            breakpoint: 1200,
+            options: {
+                chart: {
+                    width: 260
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }],
+        labels: ['Government', 'Private'],
+        colors: ['var(--chart-color2)', 'var(--chart-color1)'],
+        dataLabels: {
+            enabled: false
+        },
+        legend: {
+            position: 'bottom', // top, bottom
+            enabled: false
+        }
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-JobVacancy"), options);
+    chart.render();
+
+    // Candidates by Gender
+    var options = {
+        series: [81, 19],
+        chart: {
+            type: 'donut',
+            width: 300,
+            toolbar: {
+                show: false,
+            },
+        },
+        responsive: [{
+            breakpoint: 1200,
+            options: {
+                chart: {
+                    width: 260
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }],
+        labels: ['Male', 'Female'],
+        colors: ['var(--chart-color3)', 'var(--chart-color4)'],
+        dataLabels: {
+            enabled: false
+        },
+        legend: {
+            position: 'bottom', // top, bottom
+            enabled: false
+        }
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-CandidatesbyGender"), options);
+    chart.render();
+
+    // Loan to Value
+    var options = {
+        series: [43],
+        chart: {
+            height: 220,
+            type: 'radialBar',
+            toolbar: {
+                show: false
+            }
+        },
+        plotOptions: {
+            radialBar: {
+                startAngle: -135,
+                endAngle: 225,
+                    hollow: {
+                    margin: 0,
+                    size: '70%',
+                    background: '#fff',
+                    image: undefined,
+                    imageOffsetX: 0,
+                    imageOffsetY: 0,
+                    position: 'front',
+                    dropShadow: {
+                        enabled: true,
+                        top: 3,
+                        left: 0,
+                        blur: 4,
+                        opacity: 0.24
+                    }
+                },
+                track: {
+                    background: '#fff',
+                    strokeWidth: '70%',
+                    margin: 0, // margin is in pixels
+                    dropShadow: {
+                        enabled: true,
+                        top: -3,
+                        left: 0,
+                        blur: 4,
+                        opacity: 0.35
+                    }
+                },
+            
+                dataLabels: {
+                    show: true,
+                    name: {
+                        offsetY: -10,
+                        show: true,
+                        color: '#888',
+                        fontSize: '17px'
+                    },
+                    value: {
+                        formatter: function(val) {
+                            return parseInt(val);
+                        },
+                        color: '#111',
+                        fontSize: '36px',
+                        show: true,
+                    }
+                }
+            }
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shade: 'dark',
+                type: 'horizontal',
+                shadeIntensity: 0.5,
+                gradientToColors: ['var(--chart-color1)'],
+                inverseColors: true,
+                opacityFrom: 1,
+                opacityTo: 1,
+                stops: [0, 100]
+            }
+        },
+        colors: ['var(--chart-color2)'],
+        stroke: {
+            lineCap: 'round'
+        },
+        labels: ['Percent %'],
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-LoantoValue"), options);
+    chart.render();
+</script>
+</body>
+</html>

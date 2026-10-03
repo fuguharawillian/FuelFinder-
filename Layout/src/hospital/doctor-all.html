@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Hospital Doctor List",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-cyan">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hospital.html', {"page": "doctor-all"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item">Doctor</li>
+                            <li class="breadcrumb-item active" aria-current="page">All</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-2 row-deck">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Doctor List</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <table id="myAllDoctor" class="table card-table table-hover align-middle mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Doctor</th>
+                                            <th>Specialist</th>
+                                            <th>Schedule</th>
+                                            <th>Progress</th>
+                                            <th>Date Join</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>DH0015</td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="avatar rounded-circle me-3" alt="profile-image">
+                                                    <div>
+                                                        <div class="fw-bold">Hossein Shams</div>
+                                                        <span class="small text-muted">+ 44 123 456 2121</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Physical Therapy</td>
+                                            <td><button type="button" class="btn btn-secondary btn-sm">No Schedule</button></td>
+                                            <td>
+                                                <div class="progress" style="height: 3px;">
+                                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%;"> <span class="sr-only">40% Complete</span> </div>
+                                                </div>
+                                            </td>
+                                            <td>Sept 16, 2016</td>
+                                            <td class="text-muted">Unavailable</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0025</td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <img src="@@webRoot/assets/img/xs/avatar2.jpg" class="avatar rounded-circle me-3" alt="profile-image">
+                                                    <div>
+                                                        <div class="fw-bold">Maryam Amiri</div>
+                                                        <span class="small text-muted">+ 44 123 456 1414</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Dentist</td>
+                                            <td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#book_appointment">2 Appointment</button></td>
+                                            <td>
+                                                <div class="progress" style="height: 3px;">
+                                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100" style="width: 38%;"> <span class="sr-only">40% Complete</span> </div>
+                                                </div>
+                                            </td>
+                                            <td>Sept 16, 2016</td>
+                                            <td class="text-muted">Unavailable</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0055</td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="avatar rounded-circle me-3" alt="profile-image">
+                                                    <div>
+                                                        <div class="fw-bold">Frank Camly</div>
+                                                        <span class="small text-muted">+ 44 123 456 2626</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Nursing</td>
+                                            <td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#book_appointment">3 Appointment</button></td>
+                                            <td>
+                                                <div class="progress" style="height: 3px;">
+                                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"> <span class="sr-only">40% Complete</span> </div>
+                                                </div>
+                                            </td>
+                                            <td>Sept 16, 2016</td>
+                                            <td class="text-muted">Unavailable</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0027</td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <img src="@@webRoot/assets/img/xs/avatar4.jpg" class="avatar rounded-circle me-3" alt="profile-image">
+                                                    <div>
+                                                        <div class="fw-bold">Tim Hank</div>
+                                                        <span class="small text-muted">+ 44 123 456 5926</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Dentist</td>
+                                            <td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#book_appointment">1 Appointment</button></td>
+                                            <td>
+                                                <div class="progress" style="height: 3px;">
+                                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"> <span class="sr-only">40% Complete</span> </div>
+                                                </div>
+                                            </td>
+                                            <td>Sept 16, 2016</td>
+                                            <td class="text-success">Available</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0061</td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <img src="@@webRoot/assets/img/xs/avatar5.jpg" class="avatar rounded-circle me-3" alt="profile-image">
+                                                    <div>
+                                                        <div class="fw-bold">Cindy Anderson</div>
+                                                        <span class="small text-muted">+ 44 123 456 4848</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Cardiologist</td>
+                                            <td><button type="button" class="btn btn-secondary btn-sm">No Schedule</button></td>
+                                            <td>
+                                                <div class="progress" style="height: 3px;">
+                                                    <div class="progress-bar bg-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"> <span class="sr-only">40% Complete</span> </div>
+                                                </div>
+                                            </td>
+                                            <td>Nov 10, 2010</td>
+                                            <td class="text-muted">Unavailable</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0026</td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <img src="@@webRoot/assets/img/xs/avatar6.jpg" class="avatar rounded-circle me-3" alt="profile-image">
+                                                    <div>
+                                                        <div class="fw-bold">David Lee</div>
+                                                        <span class="small text-muted">+ 44 123 456 7575</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Dermatologists</td>
+                                            <td><button type="button" class="btn btn-danger btn-sm">Holiday</button></td>
+                                            <td>
+                                                <div class="progress" style="height: 3px;">
+                                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100" style="width: 23%;"> <span class="sr-only">40% Complete</span> </div>
+                                                </div>
+                                            </td>
+                                            <td>Jun 13, 2017</td>
+                                            <td class="text-success">Available</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0021</td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <img src="@@webRoot/assets/img/xs/avatar7.jpg" class="avatar rounded-circle me-3" alt="profile-image">
+                                                    <div>
+                                                        <div class="fw-bold">Hossein Shams</div>
+                                                        <span class="small text-muted">+ 44 123 456 4545</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Dentist</td>
+                                            <td><button type="button" class="btn btn-secondary btn-sm">No Schedule</button></td>
+                                            <td>
+                                                <div class="progress" style="height: 3px;">
+                                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"> <span class="sr-only">40% Complete</span> </div>
+                                                </div>
+                                            </td>
+                                            <td>Sept 11, 2016</td>
+                                            <td class="text-success">Available</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0022</td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <img src="@@webRoot/assets/img/xs/avatar8.jpg" class="avatar rounded-circle me-3" alt="profile-image">
+                                                    <div>
+                                                        <div class="fw-bold">Brian Swader</div>
+                                                        <span class="small text-muted">+ 44 123 456 1425</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Family Physicians</td>
+                                            <td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#book_appointment">2 Appointment</button></td>
+                                            <td>
+                                                <div class="progress" style="height: 3px;">
+                                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" style="width: 87%;"> <span class="sr-only">40% Complete</span> </div>
+                                                </div>
+                                            </td>
+                                            <td>Aug 22, 2020</td>
+                                            <td class="text-muted">Unavailable</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0023</td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <img src="@@webRoot/assets/img/xs/avatar9.jpg" class="avatar rounded-circle me-3" alt="profile-image">
+                                                    <div>
+                                                        <div class="fw-bold">Orlando Lentz</div>
+                                                        <span class="small text-muted">+ 44 123 456 2525</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Rectal Surgeons</td>
+                                            <td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#book_appointment">4 Appointment</button></td>
+                                            <td>
+                                                <div class="progress" style="height: 3px;">
+                                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100" style="width: 56%;"> <span class="sr-only">40% Complete</span> </div>
+                                                </div>
+                                            </td>
+                                            <td>Sept 16, 2019</td>
+                                            <td class="text-success">Available</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Modal: book appointment -->
+                            @@include('modals/_modal-book-appointment.html')
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    // project data table
+    $('#myAllDoctor')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+    });
+</script>
+</body>
+</html>

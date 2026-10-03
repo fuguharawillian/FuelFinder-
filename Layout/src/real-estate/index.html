@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Real-Estate Dashboard",
+        "daterangepicker": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-red">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-realestate.html', {"page": "index"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 row-deck">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <span class="text-uppercase">ALL PROPERTIES</span>
+                                <h4 class="mb-0 mt-2">28,650</h4>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                            <div id="apexspark1"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <span class="text-uppercase">PROPERTIES FOR SALE</span>
+                                <h4 class="mb-0 mt-2">2,950</h4>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                            <div id="apexspark2"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <span class="text-uppercase">PROPERTIES FOR RENT</span>
+                                <h4 class="mb-0 mt-2">1,320</h4>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                            <div id="apexspark3"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <span class="text-uppercase">TOTAL EARNINGS</span>
+                                <h4 class="mb-0 mt-2">$1,29,589</h4>
+                                <small class="text-muted">Analytics for last week</small>
+                            </div>
+                            <div id="apexspark4"></div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-6 col-xl-8 col-lg-7 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Properties Stats</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div id="apex-PropertiesStats"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xxl-3 col-xl-4 col-lg-5 col-md-6">
+                        <div class="row g-3 row-deck">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="oneExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active" data-bs-interval="5000">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-fill me-3 text-truncate">
+                                                            <div class="text-muted mb-2 text-uppercase">Expense</div>
+                                                            <h4 class="mb-0">35k <div class="fs-6 d-inline"> <small class="text-muted"><i class="fa fa-level-up"></i> 13%</small></div></h4>
+                                                            <small class="text-muted">Analytics last week</small>
+                                                        </div>
+                                                        <div class="avatar lg rounded-circle no-thumbnail"><i class="fa fa-eye fa-lg"></i></div>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item" data-bs-interval="5000">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-fill me-3 text-truncate">
+                                                            <div class="text-muted mb-2 text-uppercase">Income</div>
+                                                            <h4 class="mb-0">351k <div class="fs-6 d-inline"> <small class="text-muted"><i class="fa fa-level-up"></i> 8.2%</small></div></h4>
+                                                            <small class="text-muted">Analytics for last week</small>
+                                                        </div>
+                                                        <div class="avatar lg rounded-circle no-thumbnail"><i class="fa fa-eye fa-lg"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="twoExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active" data-bs-interval="8000">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-fill me-3 text-truncate">
+                                                            <div class="text-muted mb-2 text-uppercase">Total Agent</div>
+                                                            <h4 class="mb-0">3,251 <div class="fs-6 d-inline"> <small class="text-muted"><i class="fa fa-level-up"></i> 18%</small></div></h4>
+                                                        </div>
+                                                        <div class="avatar lg rounded-circle no-thumbnail"><i class="fa fa-user fa-lg"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item" data-bs-interval="8000">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-fill me-3 text-truncate">
+                                                            <div class="text-muted mb-2 text-uppercase">CORPORATE AGENTS</div>
+                                                            <h4 class="mb-0">295 <div class="fs-6 d-inline"> <small class="text-muted"><i class="fa fa-level-up"></i> 6.2%</small></div></h4>
+                                                        </div>
+                                                        <div class="avatar lg rounded-circle no-thumbnail"><i class="fa fa-user fa-lg"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="threeExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active" data-bs-interval="2000">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-fill me-3 text-truncate">
+                                                            <div class="text-muted mb-2 text-uppercase">OUR CENTER</div>
+                                                            <h4 class="mb-0">654</h4>
+                                                        </div>
+                                                        <div class="avatar lg rounded-circle no-thumbnail"><i class="fa fa-thumbs-o-up fa-lg"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item" data-bs-interval="2000">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-fill me-3 text-truncate">
+                                                            <div class="text-muted mb-2 text-uppercase">Smiley Faces</div>
+                                                            <h4 class="mb-0">5,212</h4>
+                                                        </div>
+                                                        <div class="avatar lg rounded-circle no-thumbnail"><i class="fa fa-smile-o fa-lg"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Sessions by Device</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div id="apex-SessionsDevice"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Gender Ratio</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div id="apex-GenderRatio"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Social Counter</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled mb-0">
+                                    <li class="d-flex justify-content-between mb-3">
+                                        <label><i class="fa fa-facebook-square me-1"></i>Facebook</label>
+                                        <span class="badge bg-info">29,589</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between mb-3">
+                                        <label><i class="fa fa-twitter-square me-1"></i>Twitter</label>
+                                        <span class="badge bg-info">2,365</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between mb-3">
+                                        <label><i class="fa fa-linkedin-square me-1"></i>Linkedin</label>
+                                        <span class="badge bg-info">9,021</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between mb-3">
+                                        <label><i class="fa fa-behance-square me-1"></i>Behance</label>
+                                        <span class="badge bg-info">1,725</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <label><i class="fa fa-dribbble me-1"></i>Dribbble</label>
+                                        <span class="badge bg-info">4,800</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-6 col-xl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Properties Stats</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-lg table-nowrap card-table mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <h6 class="mb-0">Rivera Height's</h6>
+                                                <span class="font-12 text-muted">Due Date: 25 Jan 2023</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <a href="#" class="d-flex align-items-center">
+                                                    <div class="me-2">
+                                                        <img class="rounded-circle avatar sm" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" title="">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        Chris Fox
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td class="align-middle">
+                                                <div class="progress" style="height: 5px; width: 60px;">
+                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h6 class="mb-0">Happy Homes</h6>
+                                                <span class="font-12 text-muted">Due Date: 18 June 2021</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <a href="#" class="d-flex align-items-center">
+                                                    <div class="me-2">
+                                                        <img class="rounded-circle avatar sm" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" title="">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        Chris Fox
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td class="align-middle">
+                                                <div class="progress" style="height: 5px; width: 60px;">
+                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h6 class="mb-0">Sivalik Park 2</h6>
+                                                <span class="font-12 text-muted">Due Date: 22 Nov 2024</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <a href="#" class="d-flex align-items-center">
+                                                    <div class="me-2">
+                                                        <img class="rounded-circle avatar sm" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="avatar" title="">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        Chris Fox
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td class="align-middle">
+                                                <div class="progress" style="height: 5px; width: 60px;">
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables":true,
+    "apexcharts":true,
+})
+<script>
+    // top sparklines
+    var randomizeArray = function (arg) {
+        var array = arg.slice();
+        var currentIndex = array.length,
+        temporaryValue,
+        randomIndex;
+
+        while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+        }
+        return array;
+    };
+
+    // data for the sparklines that appear below header area
+    var sparklineData = [57, 43, 50, 32, 60, 28, 70, 41];
+
+    // topb big chart
+    var spark1 = {
+        chart: {
+            type: "area",
+            height: 50,
+            sparkline: {
+                enabled: true,
+            },
+        },
+        stroke: {
+            width: 1,
+        },
+        series: [{
+            data: randomizeArray(sparklineData),
+        },],
+        fill: {
+            type: "gradient",
+            gradient: {
+                gradientToColors: ["var(--chart-color1)"],
+                shadeIntensity: 2,
+                opacityFrom: 0.7,
+                opacityTo: 0.2,
+                stops: [0, 100],
+            },
+        },
+        colors: ["var(--chart-color1)"],
+    };
+    var spark1 = new ApexCharts(document.querySelector("#apexspark1"), spark1);
+    spark1.render();
+
+    var spark2 = {
+        chart: {
+            type: "area",
+            height: 50,
+            sparkline: {
+                enabled: true,
+            },
+        },
+        stroke: {
+            width: 1,
+        },
+        series: [{
+            data: randomizeArray(sparklineData),
+        },],
+        fill: {
+            type: "gradient",
+            gradient: {
+                gradientToColors: ["var(--chart-color2)"],
+                shadeIntensity: 2,
+                opacityFrom: 0.7,
+                opacityTo: 0.2,
+                stops: [0, 100],
+            },
+        },
+        colors: ["var(--chart-color2)"],
+    };
+    var spark2 = new ApexCharts(document.querySelector("#apexspark2"), spark2);
+    spark2.render();
+
+    var spark3 = {
+        chart: {
+            type: "area",
+            height: 50,
+            sparkline: {
+                enabled: true,
+            },
+        },
+        stroke: {
+            width: 1,
+        },
+        series: [{
+            data: randomizeArray(sparklineData),
+        },],
+        fill: {
+            type: "gradient",
+            gradient: {
+                gradientToColors: ["var(--chart-color3)"],
+                shadeIntensity: 2,
+                opacityFrom: 0.7,
+                opacityTo: 0.2,
+                stops: [0, 100],
+            },
+        },
+        colors: ["var(--chart-color3)"],       
+    };
+    var spark3 = new ApexCharts(document.querySelector("#apexspark3"), spark3);
+    spark3.render();
+
+    var spark4 = {
+        chart: {
+        type: "area",
+            height: 50,
+            sparkline: {
+                enabled: true,
+            },
+        },
+        stroke: {
+            width: 1,
+        },
+        series: [{
+            data: randomizeArray(sparklineData),
+        },],
+        fill: {
+            type: "gradient",
+            gradient: {
+                gradientToColors: ["var(--chart-color5)"],
+                shadeIntensity: 2,
+                opacityFrom: 0.7,
+                opacityTo: 0.2,
+                stops: [0, 100],
+            },
+        },
+        colors: ["var(--chart-color5)"],
+    };
+    var spark4 = new ApexCharts(document.querySelector("#apexspark4"), spark4);
+    spark4.render();
+
+    // Properties Stats
+    var options = {
+        chart: {
+        height: 240,
+            type: "line",
+            toolbar: {
+                show: false,
+            },
+        },
+        colors: ["var(--chart-color1)", "var(--chart-color2)"],
+        series: [{
+            name: "Buying",
+            type: "column",
+            data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160],
+        },
+        {
+            name: "Selling",
+            type: "column",
+            data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16],
+        },],
+        stroke: {
+            width: [0, 0],
+        },
+        labels: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",],
+        yaxis: [{
+            title: {
+            text: "Buying",
+            },
+        },
+        {
+            opposite: true,
+            title: {
+            text: "Selling",
+            },
+        },],
+    };
+    var chart = new ApexCharts( document.querySelector("#apex-PropertiesStats"), options);
+    chart.render();
+
+    // Sessions by Device
+    var options = {
+        series: [50, 17, 10, 15],
+        chart: {
+            height: 260,
+            type: "donut",
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        labels: ["Commercial", "Residential", "Purchased", "Rented"],
+        legend: {
+            position: "bottom", // left, right, top, bottom
+            horizontalAlign: "center",
+        },
+        colors: [
+            "var(--chart-color1)",
+            "var(--chart-color2)",
+            "var(--chart-color3)",
+            "var(--chart-color4)",
+        ],
+    };
+    var chart = new ApexCharts( document.querySelector("#apex-SessionsDevice"), options );
+    chart.render();
+
+    // Gender Ratio
+    var options = {
+        series: [27, 73],
+        chart: {
+            height: 220,
+            type: "donut",
+        },
+        labels: ["Male", "Female"],
+        legend: {
+            position: "bottom", // left, right, top, bottom
+            horizontalAlign: "center",
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        colors: ["var(--chart-color1)", "var(--chart-color2)"],
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-GenderRatio"),options);
+    chart.render();
+</script>
+</body>
+</html>

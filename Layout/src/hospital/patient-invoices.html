@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Hospital Patient Invoice",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-cyan">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hospital.html', {"page": "patient-invoices"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item">Patient</li>
+                            <li class="breadcrumb-item active" aria-current="page">Invoice</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Patient invoice list</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <table id="myPatientInvoice" class="table table-hover align-middle mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Patient</th>
+                                            <th>Phy. Name</th>
+                                            <th>Ward no.</th>
+                                            <th>Admit Date</th>
+                                            <th>Invoice Date</th>
+                                            <th>Advance</th>
+                                            <th>Total</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>DH0015</td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="avatar sm rounded-circle me-2" alt="profile-image">
+                                                <span class="fw-bold">Hossein Shams</span>
+                                            </td>
+                                            <td>Dr. Cameron</td>
+                                            <td>C-02</td>
+                                            <td>Dec 16, 2020</td>
+                                            <td>Dec 26, 2020</td>
+                                            <td>$200.00</td>
+                                            <td>$1475.50</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-send"></i> Send</a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-cloud-download"></i></a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-print"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0016</td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar2.jpg" class="avatar sm rounded-circle me-2" alt="profile-image">
+                                                <span class="fw-bold">Frank Camly</span>
+                                            </td>
+                                            <td>Dr. Cameron</td>
+                                            <td>C-10</td>
+                                            <td>Dec 16, 2020</td>
+                                            <td>Dec 26, 2020</td>
+                                            <td>$150.00</td>
+                                            <td>$475.50</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-send"></i> Send</a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-cloud-download"></i></a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-print"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0017</td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="avatar sm rounded-circle me-2" alt="profile-image">
+                                                <span class="fw-bold">John Smith</span>
+                                            </td>
+                                            <td>Dr. Joseph</td>
+                                            <td>C-07</td>
+                                            <td>Dec 16, 2020</td>
+                                            <td>Dec 26, 2020</td>
+                                            <td>$200.00</td>
+                                            <td>$450.50</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-send"></i> Send</a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-cloud-download"></i></a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-print"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0017</td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar4.jpg" class="avatar sm rounded-circle me-2" alt="profile-image">
+                                                <span class="fw-bold">Maryam Amiri</span>
+                                            </td>
+                                            <td>Dr. Murad</td>
+                                            <td>C-05</td>
+                                            <td>Dec 16, 2020</td>
+                                            <td>Dec 26, 2020</td>
+                                            <td>$140.00</td>
+                                            <td>$250.50</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-send"></i> Send</a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-cloud-download"></i></a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-print"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0018</td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar5.jpg" class="avatar sm rounded-circle me-2" alt="profile-image">
+                                                <span class="fw-bold">Hossein Shams</span>
+                                            </td>
+                                            <td>Dr. Joseph</td>
+                                            <td>B-02</td>
+                                            <td>Dec 16, 2020</td>
+                                            <td>Dec 26, 2020</td>
+                                            <td>$90.00</td>
+                                            <td>$400.50</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-send"></i> Send</a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-cloud-download"></i></a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-print"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0018</td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar6.jpg" class="avatar sm rounded-circle me-2" alt="profile-image">
+                                                <span class="fw-bold">Tim Hank</span>
+                                            </td>
+                                            <td>Dr. Joseph</td>
+                                            <td>A-06</td>
+                                            <td>Dec 16, 2020</td>
+                                            <td>Dec 26, 2020</td>
+                                            <td>$200.00</td>
+                                            <td>$475.50</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-send"></i> Send</a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-cloud-download"></i></a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-print"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0018</td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar7.jpg" class="avatar sm rounded-circle me-2" alt="profile-image">
+                                                <span class="fw-bold">Hossein Shams</span>
+                                            </td>
+                                            <td>Dr. Richard</td>
+                                            <td>C-04</td>
+                                            <td>Dec 16, 2020</td>
+                                            <td>Dec 26, 2020</td>
+                                            <td>$120.00</td>
+                                            <td>$350.50</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-send"></i> Send</a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-cloud-download"></i></a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-print"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0020</td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar8.jpg" class="avatar sm rounded-circle me-2" alt="profile-image">
+                                                <span class="fw-bold">Maryam Amiri</span>
+                                            </td>
+                                            <td>Dr. Murad</td>
+                                            <td>D-02</td>
+                                            <td>Dec 16, 2020</td>
+                                            <td>Dec 26, 2020</td>
+                                            <td>$200.00</td>
+                                            <td>$320.50</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-send"></i> Send</a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-cloud-download"></i></a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-print"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0021</td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar9.jpg" class="avatar sm rounded-circle me-2" alt="profile-image">
+                                                <span class="fw-bold">Alex Shams</span>
+                                            </td>
+                                            <td>Dr. Murad</td>
+                                            <td>A-11</td>
+                                            <td>Dec 16, 2020</td>
+                                            <td>Dec 26, 2020</td>
+                                            <td>$150.00</td>
+                                            <td>$475.50</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-send"></i> Send</a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-cloud-download"></i></a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-print"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>DH0022</td>
+                                            <td>
+                                                <img src="@@webRoot/assets/img/xs/avatar10.jpg" class="avatar sm rounded-circle me-2" alt="profile-image">
+                                                <span class="fw-bold">Samuel Lee</span>
+                                            </td>
+                                            <td>Dr. Richard</td>
+                                            <td>C-09</td>
+                                            <td>Dec 16, 2020</td>
+                                            <td>Dec 26, 2020</td>
+                                            <td>$100.00</td>
+                                            <td>$505.50</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-send"></i> Send</a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-cloud-download"></i></a>
+                                                <a class="btn btn-sm btn-white border lift" href="#"><i class="fa fa-print"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    // project data table
+    $('#myPatientInvoice')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+    });
+</script>
+</body>
+</html>

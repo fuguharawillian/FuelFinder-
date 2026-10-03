@@ -1,0 +1,76 @@
+<button class="btn btn-primary px-4 text-uppercase" data-bs-toggle="modal" data-bs-target="#CreateEvent" type="button">View in modals</button>
+
+<div class="modal fade" id="CreateEvent" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content text-start">
+            <div class="modal-body custom_scroll p-lg-5">
+                <button type="button" class="btn-close position-absolute top-0 end-0 mt-3 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h4 class="modal-title">Create Event</h4>
+                <p class="text-muted">All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary</p>
+                <div class="row g-2 mt-3">
+                    <div class="col-12">
+                        <label class="form-label">Event Title</label>
+                        <input type="text" class="form-control" placeholder="Event Title">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Event description</label>
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Date</label>
+                        <input class="form-control" type="date">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Time</label>
+                        <input class="form-control" type="time">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Duration</label>
+                        <input class="form-control" type="number" placeholder="1h 45m">
+                    </div>
+                    <div class="col-12 text-muted">
+                        <p class="small"><span class="fa fa-check-circle pe-1"></span>This event will take place on the july 14, 2022 form 02:30 PM untill 05:15 PM</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Location</label>
+                        <input class="form-control" type="text" placeholder="Location">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Add guests</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Recipient's username">
+                            <button class="btn btn-outline-secondary" type="button">Add</button>
+                        </div>
+                    </div>
+                    <div class="col-12 my-4">
+                        <label class="me-3">Participate :</label>
+                        <a href="#" title=""><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="friend"> </a>
+                        <a href="#" title=""><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="friend"> </a>
+                        <a href="#" title=""><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar7.jpg" alt="friend"> </a>
+                        <a href="#" title=""><img class="avatar sm rounded" src="@@webRoot/assets/img/xs/avatar9.jpg" alt="friend"> </a>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Set reminder</label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Email" value="option1">
+                                    <label class="form-check-label" for="Email">Email</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Stack" value="option2">
+                                    <label class="form-check-label" for="Stack">Stack</label>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" aria-label="1 hour before event">
+                        </div>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <button class="btn btn-lg btn-secondary text-uppercase" type="button" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-lg btn-primary text-uppercase" type="button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

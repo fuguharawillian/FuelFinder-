@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Hospital Patient Room Allotment",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-cyan">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hospital.html', {"page": "allotment"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Room Allotment</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 row-deck">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Room Allotment List</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <table id="myRoomAllotment" class="table card-table table-hover mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Avatar</th>
+                                            <th>Room No</th>
+                                            <th>Patient Name</th>
+                                            <th>Room Type</th>
+                                            <th>Sex</th>                                            
+                                            <th>Admin date</th>
+                                            <th>Discharge date</th>
+                                            <th>Actione</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><img src="@@webRoot/assets/img/xs/avatar1.jpg" class="rounded-circle avatar sm" alt=""></td>
+                                            <td>A-101</td>
+                                            <td>Juan Freeman</td>
+                                            <td>Delux</td>
+                                            <td>Male</td>
+                                            <td>06/11/2020</td>
+                                            <td>06/18/2020</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="@@webRoot/assets/img/xs/avatar2.jpg" class="rounded-circle avatar sm" alt=""></td>
+                                            <td>A-102</td>
+                                            <td>Juan Freeman</td>
+                                            <td>Delux</td>
+                                            <td>Male</td>
+                                            <td>06/11/2020</td>
+                                            <td>06/15/2020</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="@@webRoot/assets/img/xs/avatar3.jpg" class="rounded-circle avatar sm" alt=""></td>
+                                            <td>A-103</td>
+                                            <td>Frank Camly</td>
+                                            <td>Super Delux</td>
+                                            <td>Male</td>
+                                            <td>06/11/2020</td>
+                                            <td>06/21/2020</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="@@webRoot/assets/img/xs/avatar4.jpg" class="rounded-circle avatar sm" alt=""></td>
+                                            <td>A-104</td>
+                                            <td>Juan Freeman</td>
+                                            <td>Delux</td>
+                                            <td>Female</td>
+                                            <td>06/13/2020</td>
+                                            <td>06/18/2020</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="@@webRoot/assets/img/xs/avatar5.jpg" class="rounded-circle avatar sm" alt=""></td>
+                                            <td>A-105</td>
+                                            <td>Rose Rivera</td>
+                                            <td>ICU</td>
+                                            <td>Male</td>
+                                            <td>06/14/2020</td>
+                                            <td>06/18/2020</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="@@webRoot/assets/img/xs/avatar6.jpg" class="rounded-circle avatar sm" alt=""></td>
+                                            <td>B-103</td>
+                                            <td>Richard Foos</td>
+                                            <td>Super Delux</td>
+                                            <td>Female</td>
+                                            <td>06/18/2020</td>
+                                            <td>06/18/2020</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="@@webRoot/assets/img/xs/avatar7.jpg" class="rounded-circle avatar sm" alt=""></td>
+                                            <td>A-106</td>
+                                            <td>Juan Freeman</td>
+                                            <td>Delux</td>
+                                            <td>Female</td>
+                                            <td>07/05/2020</td>
+                                            <td>07/11/2020</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="@@webRoot/assets/img/xs/avatar2.jpg" class="rounded-circle avatar sm" alt=""></td>
+                                            <td>A-201</td>
+                                            <td>Brian Swader</td>
+                                            <td>ICU</td>
+                                            <td>Male</td>
+                                            <td>07/11/2020</td>
+                                            <td>07/18/2020</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="@@webRoot/assets/img/xs/avatar3.jpg" class="rounded-circle avatar sm" alt=""></td>
+                                            <td>A-204</td>
+                                            <td>Barbara Kelly</td>
+                                            <td>Super Delux</td>
+                                            <td>Male</td>
+                                            <td>07/11/2020</td>
+                                            <td>07/18/2020</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="@@webRoot/assets/img/xs/avatar4.jpg" class="rounded-circle avatar sm" alt=""></td>
+                                            <td>A-303</td>
+                                            <td>Orlando Lentz</td>
+                                            <td>Delux</td>
+                                            <td>Female</td>
+                                            <td>06/17/2020</td>
+                                            <td>06/18/2020</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="@@webRoot/assets/img/xs/avatar5.jpg" class="rounded-circle avatar sm" alt=""></td>
+                                            <td>A-304</td>
+                                            <td>Dr. Hossein Shams</td>
+                                            <td>ICU</td>
+                                            <td>Male</td>
+                                            <td>06/16/2020</td>
+                                            <td>06/25/2020</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    // project data table
+    $('#myRoomAllotment')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+    });
+</script>
+</body>
+</html>

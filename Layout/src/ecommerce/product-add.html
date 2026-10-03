@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "eCommerce Add new Product",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-ecommerce.html', {"page": "product-add"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item">Product</li>
+                            <li class="breadcrumb-item active" aria-current="page">Add New</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col d-flex justify-content-lg-end mt-2 mt-md-0">
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">8.18K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 1.3%</small></div>
+                            <small class="text-muted text-uppercase">Income</small>
+                        </div>
+                        <div class="p-2 me-md-3">
+                            <div><span class="h6 mb-0">1.11K</span> <small class="text-secondary"><i class="fa fa-angle-up"></i> 4.1%</small></div>
+                            <small class="text-muted text-uppercase">Expense</small>
+                        </div>
+                        <div class="p-2 pe-lg-0">
+                            <div><span class="h6 mb-0">3.66K</span> <small class="text-danger"><i class="fa fa-angle-down"></i> 7.5%</small></div>
+                            <small class="text-muted text-uppercase">Revenue</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Add New Product</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-sm-4">
+                                        <label class="form-label">Product SKU*</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="#2255">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="form-label">Product Name</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Name">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="form-label">Quantity</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Enter here">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="form-label">Purchase Price</label>
+                                        <input type="number" class="form-control form-control-lg" placeholder="$12.29">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="form-label">Retail Price</label>
+                                        <input type="number" class="form-control form-control-lg" placeholder="$18.99">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="form-label">Brand</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Nike">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="form-label">Manufacture</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Nike India">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="form-label">Category</label>
+                                        <select class="form-control form-control-lg" tabindex="-98">
+                                            <option value="">- Category -</option>
+                                            <option value="10">Cloths</option>
+                                            <option value="20">Electronics</option>
+                                            <option value="30">Home Appliance</option>
+                                            <option value="40">Mobile</option>
+                                        </select>
+                                    </div>
+                
+                                    <div class="col-sm-3">
+                                        <label class="form-label">Package Dimensions</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Length in Inches">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="form-label">&nbsp;</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Width in Inches">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="form-label">&nbsp;</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Height in Inches">
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label class="form-label">Upload Product Images</label>
+                                        <input type="file" class="form-control">
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <label class="form-label">Product Description</label>
+                                        <textarea rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="button" class="btn btn-primary">Add</button>
+                                <button type="button" class="btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

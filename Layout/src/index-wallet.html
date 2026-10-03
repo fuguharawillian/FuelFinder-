@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('_head.html',{
+        "pageTitle": "My Wallet",
+        "daterangepicker": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-menu.html', {"page": "index-wallet"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+		<!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item">Dashboard</li>
+                            <li class="breadcrumb-item active" aria-current="page">My Wallet</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+		<!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-xxl-7 col-xl-8 col-lg-12">
+                        <div class="row g-3">
+                            <div class="col-md-3 col-sm-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="avatar lg rounded no-thumbnail bg-primary">
+                                            <i class="fa fa-dollar fa-lg text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="mb-1">$8.5k</h4>
+                                        <span class="text-muted">Income</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="avatar lg rounded no-thumbnail bg-danger">
+                                            <i class="fa fa-credit-card fa-lg text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="mb-1">$3.5k</h4>
+                                        <span class="text-muted">Expense</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="avatar lg rounded no-thumbnail bg-warning">
+                                            <i class="fa fa-level-down fa-lg text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="mb-1">$2.5k</h4>
+                                        <span class="text-muted">Upcoming</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="avatar lg rounded no-thumbnail bg-success">
+                                            <i class="fa fa-bank fa-lg text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="mb-1">$41.8k</h4>
+                                        <span class="text-muted">Savings</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div>
+                                            <h6 class="card-title mb-0">Analytics Statistic</h6>
+                                            <small class="text-muted">Or you can <a href="#">sync data to Dashboard</a> to ensure your data is always up-to-date.</small>
+                                        </div>
+                                        @@include('widgets/_card-action.html')
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="btn-group" role="group">
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1">
+                                            <label class="btn btn-sm btn-outline-secondary" for="btnradio1">Week</label>
+                                        
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2">
+                                            <label class="btn btn-sm btn-outline-secondary" for="btnradio2">Month</label>
+                                        
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" checked="">
+                                            <label class="btn btn-sm btn-outline-secondary" for="btnradio3">Year</label>
+                                        </div>
+                                        <div id="apex-Analytics"></div>
+                                    </div>
+                                </div> <!-- .card end -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-5 col-xl-4 col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Transactions</h6>
+                                <a href="#" title="">View All</a>
+                            </div>
+                            <ul class="list-unstyled list-group list-group-custom list-group-flush mb-0">
+                                <li class="list-group-item d-flex align-items-center py-3">
+                                    <div class="avatar lg rounded no-thumbnail bg-light"><i class="fa fa-shopping-basket"></i></div>
+                                    <div class="flex-fill ms-3">
+                                        <div class="h6 mb-0">G&F Supershop</div>
+                                        <small class="text-muted">April 06,2022 at 2:00 pm</small>
+                                    </div>
+                                    <div class="mx-4">Shopping</div>
+                                    <div class="flex-end" style="min-width: 120px;">
+                                        <strong class="text-danger">-$74</strong>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center py-3">
+                                    <div class="avatar lg rounded no-thumbnail bg-light"><i class="fa fa-cc-mastercard"></i></div>
+                                    <div class="flex-fill ms-3">
+                                        <div class="h6 mb-0">Bank Transfer</div>
+                                        <small class="text-muted">April 06,2022 at 11:00 am</small>
+                                    </div>
+                                    <div class="mx-4">Hobby & Life</div>
+                                    <div class="flex-end" style="min-width: 120px;">
+                                        <strong class="text-success">$1074</strong>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center py-3">
+                                    <div class="avatar lg rounded no-thumbnail bg-light"><i class="fa fa-cc-mastercard"></i></div>
+                                    <div class="flex-fill ms-3">
+                                        <div class="h6 mb-0">Bank Transfer</div>
+                                        <small class="text-muted">April 06,2022 at 6:00 pm</small>
+                                    </div>
+                                    <div class="mx-4">Mutual fund SIP</div>
+                                    <div class="flex-end" style="min-width: 120px;">
+                                        <strong class="text-success">$200</strong>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center py-3">
+                                    <div class="avatar lg rounded no-thumbnail bg-light"><i class="fa fa-arrow-down"></i></div>
+                                    <div class="flex-fill ms-3">
+                                        <div class="h6 mb-0">Mastercard</div>
+                                        <small class="text-muted">April 06,2022 at 6:00 pm</small>
+                                    </div>
+                                    <div class="mx-4">Shopping</div>
+                                    <div class="flex-end" style="min-width: 120px;">
+                                        <strong class="text-danger">-$50</strong>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center py-3">
+                                    <div class="avatar lg rounded no-thumbnail bg-light"><i class="fa fa-arrow-down"></i></div>
+                                    <div class="flex-fill ms-3">
+                                        <div class="h6 mb-0">Mastercard</div>
+                                        <small class="text-muted">April 06,2022 at 3:00 pm</small>
+                                    </div>
+                                    <div class="mx-4">School fees</div>
+                                    <div class="flex-end" style="min-width: 120px;">
+                                        <strong class="text-danger">-$150</strong>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center py-3">
+                                    <div class="avatar lg rounded no-thumbnail bg-light"><i class="fa fa-paypal"></i></div>
+                                    <div class="flex-fill ms-3">
+                                        <div class="h6 mb-0">Paypal</div>
+                                        <small class="text-muted">April 06,2022 at 10:30 pm</small>
+                                    </div>
+                                    <div class="mx-4">Freelancer payment</div>
+                                    <div class="flex-end" style="min-width: 120px;">
+                                        <strong class="text-success">$750.50</strong>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center py-3">
+                                    <div class="avatar lg rounded no-thumbnail bg-light"><i class="fa fa-arrow-down"></i></div>
+                                    <div class="flex-fill ms-3">
+                                        <div class="h6 mb-0">Mastercard</div>
+                                        <small class="text-muted">April 06,2022 at 6:00 pm</small>
+                                    </div>
+                                    <div class="mx-4">Life insurance</div>
+                                    <div class="flex-end" style="min-width: 120px;">
+                                        <strong class="text-danger">-$110</strong>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+		<!-- start: page footer -->
+		@@include('_page-footer.html')
+
+	</div>
+
+	<!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "apexcharts": true,
+})
+<script>
+	
+    // Apex-wc-9
+    var apexwc9 = {
+        series: [{
+            name: "Income",
+            data: [45, 52, 38, 24, 33, 26, 44, 55, 45, 48, 35, 61]
+        },{
+            name: "Expense",
+            data: [33, 42, 25, 20, 30, 38, 29, 47, 44, 56, 18, 47]
+        },{
+            name: 'Savings',
+            data: [13, 22, 28, 20, 13, 18, 29, 15, 24, 31, 9, 27]
+        }],
+
+        chart: {
+            height: 285,
+            type: 'line', // line, bar, area
+            toolbar: {
+                show: false,
+            },
+            zoom: {
+                enabled: false
+            },
+        },
+        colors: ['var(--chart-color1)', 'var(--bs-danger)',  'var(--bs-success)'],
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            width: [2, 2, 2],
+            curve: 'smooth', // straight, smooth
+            dashArray: [0, 8, 0]
+        },
+        legend: {
+            tooltipHoverFormatter: function(val, opts) {
+                return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+            }
+        },
+        markers: {
+            size: 0,
+            hover: {
+                sizeOffset: 6
+            }
+        },
+        xaxis: {
+            categories: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+        },
+        tooltip: {
+            y: [{
+                title: {
+                    formatter: function (val) {
+                        return val + " (USD)"
+                    }
+                }
+            },{
+                title: {
+                    formatter: function (val) {
+                        return val + " (USD)"
+                    }
+                }
+            },{
+                title: {
+                    formatter: function (val) {
+                        return val + " (USD)"
+                    }
+                }
+            }]
+        },
+    };
+    new ApexCharts(document.querySelector("#apex-Analytics"), apexwc9).render();
+    
+</script>
+</body>
+</html>

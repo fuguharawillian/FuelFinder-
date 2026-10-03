@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "My profile",
+        "daterangepicker": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-red">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-nft.html', {"page": "nft-profile"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">profile</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body border-bottom">
+                                <div class="d-flex align-items-md-start align-items-center flex-column flex-md-row">
+                                    <img src="@@webRoot/assets/img/profile_av.png" alt="" class="rounded-4">
+                                    <div class="media-body ms-md-5 m-0 mt-4 mt-md-0 text-md-start text-center">
+                                        <h4 class="mb-1 fw-light">Allie Grater<a href="#" class="fa fa-pencil-square-o fs-6 ms-2" data-bs-toggle="offcanvas" data-bs-target="#edit_profile" title="Edit Profile"></a></h4>
+                                        <p>alliegrater@luno.com</p>
+                                        <span class="text-muted">It is a long established fact that a reader will be distracted by the readable<br> content of a page when looking at its layout.</span>
+                                        <div class="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-md-start">
+                                            <div class="card py-2 px-3 me-2 mt-2">
+                                                <small class="text-muted">Total Earnings</small>
+                                                <div class="fs-5">$10,705</div>
+                                            </div>
+                                            <div class="card py-2 px-3 me-2 mt-2">
+                                                <small class="text-muted">Awards</small>
+                                                <div class="fs-5">45</div>
+                                            </div>
+                                            <div class="card py-2 px-3 me-2 mt-2">
+                                                <small class="text-muted">Experience</small>
+                                                <div class="fs-5">8+</div>
+                                            </div>
+                                            <div class="card py-2 px-3 me-2 mt-2">
+                                                <small class="text-muted">City</small>
+                                                <div class="fs-5">New york</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5 col-md-12">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h6 class="card-title mb-3">Personal Information</h6>
+                                <p class="card-text text-muted">Hi I'm Allie Grater, Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature.</p>
+                                <ul class="list-unstyled mb-0">
+                                    <li class="py-2"><span class="text-muted me-2 w90 d-inline-block">Full Name:</span>Allie Grater</li>
+                                    <li class="py-2"><span class="text-muted me-2 w90 d-inline-block">E-mail:</span>alliegrater@luno.com</li>
+                                    <li class="py-2"><span class="text-muted me-2 w90 d-inline-block">Phone:</span>+01 (741) 852 123</li>
+                                    <li class="py-2"><span class="text-muted me-2 w90 d-inline-block">Location:</span>California, USA</li>
+                                    <li class="py-2"><span class="text-muted me-2 w90 d-inline-block">Website:</span>http://website.com</li>
+                                    <li class="py-2"><span class="text-muted me-2 w90 d-inline-block">Social:</span>
+                                        <a href="#" class="py-1 px-2"><i class="fa fa-globe"></i></a>
+                                        <a href="#" class="py-1 px-2"><i class="fa fa-linkedin"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h6 class="card-title mb-3">Average Agent Rating</h6>
+                                <h3>4.4/<small class="fs-6">5</small></h3>
+                                <button class="btn btn-sm btn-warning rounded-circle"><i class="fa fa-star"></i></button>
+                                <button class="btn btn-sm btn-warning rounded-circle"><i class="fa fa-star"></i></button>
+                                <button class="btn btn-sm btn-warning rounded-circle"><i class="fa fa-star"></i></button>
+                                <button class="btn btn-sm btn-warning rounded-circle"><i class="fa fa-star"></i></button>
+                                <button class="btn btn-sm btn-warning rounded-circle"><i class="fa fa-star-half-empty"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7 col-md-12">
+                        <div class="card">
+                            <ul class="nav nav-tabs tab-card border-bottom-0 pt-2 fs-6 justify-content-center justify-content-md-start" role="tablist">
+                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#Artworks" role="tab">Artworks</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#Auction" role="tab">Auction</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#Creators" role="tab">Creators</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content mt-3">
+                            <div class="tab-pane fade show active" id="Artworks" role="tabpanel">
+                                <div class="row g-3 row-deck">
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <img src="@@webRoot/assets/img/nft/img-2.png" class="img-fluid card-img-top mb-3" alt="">
+                                            <div class="card-body">
+                                                <h4 class="card-title">LUNO Rave</h4>
+                                                <div class="d-flex justify-content-between mb-3">
+                                                    <div class="text-start">
+                                                        <small>Auction Time</small>
+                                                        <h6 class="text-muted mt-2">3h 1m 50s</h6>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+                                                        <h6 class="text-muted mt-2">0.15 ETH</h6>
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="btn btn-primary w-100">Place a Bid</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <img src="@@webRoot/assets/img/nft/img-3.png" class="img-fluid card-img-top mb-3" alt="">
+                                            <div class="card-body">
+                                                <h4 class="card-title">LUNO Gave</h4>
+                                                <div class="d-flex justify-content-between mb-3">
+                                                    <div class="text-start">
+                                                        <small>Auction Time</small>
+                                                        <h6 class="text-muted mt-2">3h 1m 50s</h6>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+                                                        <h6 class="text-muted mt-2">0.15 ETH</h6>
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="btn btn-primary w-100">Place a Bid</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <img src="@@webRoot/assets/img/nft/img-4.png" class="img-fluid card-img-top mb-3" alt="">
+                                            <div class="card-body">
+                                                <h4 class="card-title">LUNO Tave</h4>
+                                                <div class="d-flex justify-content-between mb-3">
+                                                    <div class="text-start">
+                                                        <small>Auction Time</small>
+                                                        <h6 class="text-muted mt-2">3h 1m 50s</h6>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+                                                        <h6 class="text-muted mt-2">0.15 ETH</h6>
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="btn btn-primary w-100">Place a Bid</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <img src="@@webRoot/assets/img/nft/img-5.png" class="img-fluid card-img-top mb-3" alt="">
+                                            <div class="card-body">
+                                                <h4 class="card-title">LUNO Wave</h4>
+                                                <div class="d-flex justify-content-between mb-3">
+                                                    <div class="text-start">
+                                                        <small>Auction Time</small>
+                                                        <h6 class="text-muted mt-2">3h 1m 50s</h6>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+                                                        <h6 class="text-muted mt-2">0.15 ETH</h6>
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="btn btn-primary w-100">Place a Bid</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <img src="@@webRoot/assets/img/nft/img-1.png" class="img-fluid card-img-top mb-3" alt="">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Liguid Wave</h4>
+                                                <div class="d-flex justify-content-between mb-3">
+                                                    <div class="text-start">
+                                                        <small>Auction Time</small>
+                                                        <h6 class="text-muted mt-2">3h 1m 50s</h6>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+                                                        <h6 class="text-muted mt-2">0.15 ETH</h6>
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="btn btn-primary w-100">Place a Bid</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <img src="@@webRoot/assets/img/nft/img-3.png" class="img-fluid card-img-top mb-3" alt="">
+                                            <div class="card-body">
+                                                <h4 class="card-title">LUNO Gave</h4>
+                                                <div class="d-flex justify-content-between mb-3">
+                                                    <div class="text-start">
+                                                        <small>Auction Time</small>
+                                                        <h6 class="text-muted mt-2">3h 1m 50s</h6>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+                                                        <h6 class="text-muted mt-2">0.15 ETH</h6>
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="btn btn-primary w-100">Place a Bid</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <img src="@@webRoot/assets/img/nft/img-4.png" class="img-fluid card-img-top mb-3" alt="">
+                                            <div class="card-body">
+                                                <h4 class="card-title">LUNO Tave</h4>
+                                                <div class="d-flex justify-content-between mb-3">
+                                                    <div class="text-start">
+                                                        <small>Auction Time</small>
+                                                        <h6 class="text-muted mt-2">3h 1m 50s</h6>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+                                                        <h6 class="text-muted mt-2">0.15 ETH</h6>
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="btn btn-primary w-100">Place a Bid</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <img src="@@webRoot/assets/img/nft/img-5.png" class="img-fluid card-img-top mb-3" alt="">
+                                            <div class="card-body">
+                                                <h4 class="card-title">LUNO Wave</h4>
+                                                <div class="d-flex justify-content-between mb-3">
+                                                    <div class="text-start">
+                                                        <small>Auction Time</small>
+                                                        <h6 class="text-muted mt-2">3h 1m 50s</h6>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <small>Current Bid: <strong class="text-primary">0.15 ETH</strong></small>
+                                                        <h6 class="text-muted mt-2">0.15 ETH</h6>
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="btn btn-primary w-100">Place a Bid</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- .row end -->
+                            </div>
+                            <div class="tab-pane fade" id="Auction" role="tabpanel">
+                                @@include('widgets/_no-data.html')
+                            </div>
+                            <div class="tab-pane fade" id="Creators" role="tabpanel">
+                                @@include('widgets/_no-data.html')
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Row end  -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+})
+
+</body>
+</html>

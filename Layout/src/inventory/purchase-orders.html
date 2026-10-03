@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Inventory Purchase Orders",
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-inventory.html', {"page": "purchase"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Purchase Orders</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#add_purchase_order" type="button">Add Purchase</button>
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Date</a></li>
+                                        <li><a class="dropdown-item" href="#">Reference</a></li>
+                                        <li><a class="dropdown-item" href="#">Balance</a></li>
+                                        <li><a class="dropdown-item" href="#">Payment</a></li>
+                                    </ul>
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <button class="btn btn-secondary" type="button">Search</button>
+                                </div>
+                            </div>
+                            <table id="myDataTable_no_filter" class="table card-table myDataTable mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Date</th>
+                                        <th>Reference No</th>
+                                        <th>Total</th>
+                                        <th>Paid</th>
+                                        <th>Balance</th>
+                                        <th>Purchase Status</th>
+                                        <th>Payment Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>22 Feb 2021</td>
+                                        <td>P0122</td>
+                                        <td>$22</td>
+                                        <td>$21</td>
+                                        <td>$1</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>13 Feb 2021</td>
+                                        <td>Brian Swader</td>
+                                        <td>$77</td>
+                                        <td>$70</td>
+                                        <td>$7</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>28 Feb 2021</td>
+                                        <td>Richard Foos</td>
+                                        <td>$120</td>
+                                        <td>$110</td>
+                                        <td>$10</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>28 Feb 2021</td>
+                                        <td>Frank Camly</td>
+                                        <td>$105</td>
+                                        <td>$100</td>
+                                        <td>$5</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>11 March 2021</td>
+                                        <td>Chris Fox</td>
+                                        <td>$100</td>
+                                        <td>$100</td>
+                                        <td>$00</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>13 March 2021</td>
+                                        <td>Orlando Lentz</td>
+                                        <td>$200</td>
+                                        <td>$180</td>
+                                        <td>$20</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>14 March 2021</td>
+                                        <td>Chris Fox</td>
+                                        <td>$100</td>
+                                        <td>$90</td>
+                                        <td>$10</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>9 April 2021</td>
+                                        <td>Barbara Kelly</td>
+                                        <td>$100</td>
+                                        <td>$95</td>
+                                        <td>$5</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>2 May 2021</td>
+                                        <td>Robert Hammer</td>
+                                        <td>$200</td>
+                                        <td>$190</td>
+                                        <td>$10</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                            <button type="button" class="btn btn-link btn-sm text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Modal: Add purchase -->
+                        @@include('modals/_modal-add-purchase-order.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true,
+})
+<script>
+    // DataTable
+    $('#myDataTable_no_filter')
+    .addClass('nowrap')
+    .dataTable({
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: false,
+        info: false,
+    });
+</script>
+</body>
+</html>

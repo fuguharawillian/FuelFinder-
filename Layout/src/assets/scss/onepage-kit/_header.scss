@@ -1,0 +1,276 @@
+// Admin Layout (LUNO)
+// @author: WrrapTheme ( https://themeforest.net/user/wrraptheme )
+// @design by: ThemeMakker Infotech LLP.
+// @event-namespace: LUNO
+// Copyright 2022 WrrapTheme
+
+.landing-page{
+
+    // section: Header 
+    .section{
+
+        &.header{
+            background-color: var(--card-color);
+        }
+        &.header-2{
+            color: var(--white-color);
+            background-image: url("../../assets/img/fronend-uikit/hero-1-bg.jpg");
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            background-position: contain;
+
+            .brand-icon{
+                margin-right: 2rem;
+            }
+
+            .nav {
+                font-size: 1rem;
+                .nav-link{
+                    color: var(--white-color);
+                    &.active,
+                    &:hover{
+                        color: var(--secondary-color);
+                    }
+                }
+            }
+        }
+        &.header-3{
+            background-color: var(--card-color);
+        }
+        &.header-4{
+            background-color: var(--card-color);
+        }
+        &.header-5{
+            background-image: url("../../assets/img/fronend-uikit/hero-2-bg.jpg");
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            background-position: contain;
+
+            .brand-icon{
+                margin-right: 2rem;
+            }
+
+            .nav {
+                font-size: 1rem;
+                .nav-link{
+                    color: var(--white-color);
+                    &.active,
+                    &:hover{
+                        color: var(--secondary-color);
+                    }
+                }
+            }
+        }
+        &.header-6{
+            display: flex;
+            align-items: center;
+            top: 20px;
+            height: 70px;
+            z-index: 997;
+            transition: all 0.5s;
+            padding: 10px 0;
+
+            .logo {
+                a {
+                    color: var(--white-color);
+                    font-weight: bold;
+                    text-decoration: none;
+                    font-size: 28px;
+                    margin: 0;
+                    line-height: 1;
+                    
+                    &:hover {
+                        color: var(--white-color);
+                        text-decoration: none;
+                    }
+                }
+            }
+            &.header-scrolled {
+                top: 0;
+                background: rgba(26, 24, 22, 0.85);
+            }
+        
+            @media (max-width: 992px) {
+                top:0px;
+            }
+            .navbar {
+                padding: 0;
+                ul {
+                    display: flex;
+                    list-style: none;
+                    align-items: center;
+                    margin: 0;
+                    padding: 0;
+                    
+                    @media (max-width: 991px) {
+                        display: none;
+                    }
+                }
+                > ul > li {
+                    position: relative;
+                    white-space: nowrap;
+                    padding: 8px 0 8px 20px;
+                }
+                li {
+                    position: relative;
+                }
+                a, a:focus{
+                    color: var(--white-color);
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    white-space: nowrap;
+                    transition: 0.3s;
+                    border-bottom: 2px solid transparent;
+                    padding: 5px 2px;
+                    font-size: 16px;
+    
+                    i{
+                        font-size: 12px;
+                        line-height: 0;
+                        margin-left: 5px;
+                    }
+                }
+                a:hover,
+                .active,
+                .active:focus,
+                li:hover > a {
+                    color: var(--primary-color);
+                    border-bottom: 2px solid var(--primary-color);
+                }
+                .mobile-nav-toggle {
+                    color: var(--color-500);
+                    cursor: pointer;
+                    display: none;
+                    font-size: 28px;
+                    line-height: 0;
+                    transition: 0.5s;
+                    &.bi-x {
+                        color: var(--white-color);
+                    }
+                    @media (max-width: 991px) {
+                        display: block;
+                    }
+                }
+                &.navbar-mobile {
+                    background: var(--primary-color);
+                    position: fixed;
+                    overflow: hidden;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    bottom: 0;
+                    transition: 0.3s;
+                    z-index: 999;
+                
+                    .mobile-nav-toggle {
+                        position: absolute;
+                        top: 30px;
+                        right: 15px;
+                    }
+                    ul {
+                        background-color: var(--white-color);
+                        overflow-y: auto;
+                        display: block;
+                        position: absolute;
+                        top: 55px;
+                        right: 15px;
+                        bottom: 15px;
+                        left: 15px;
+                        padding: 10px 0;
+                        transition: 0.3s;
+                    }
+                    > ul > li {
+                        padding: 0;
+                    }
+                    a {
+                        color: var(--color-500);
+                        border: none;
+                        padding: 10px 20px !important;
+                    }
+                    .dropdown {
+                        ul {
+                            background: var(--white-color);
+                            visibility: visible;
+                            position: static;
+                            display: none;
+                            margin: 10px 20px;
+                            padding: 10px 0;
+                            z-index: 99;
+                            opacity: 1;
+                            box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+                            li {
+                                min-width: 200px;
+                            }
+                            a {
+                                padding: 10px 20px;
+                            }            
+                        }
+                        > .dropdown-active {
+                            display: block;
+                        }
+                    }
+                    .getstarted {
+                        margin: 15px;
+                    }
+                }
+            }
+        }
+        &.header-7{
+            background: var(--body-color);
+            position: relative;
+            padding: 0;
+        
+            .navbar-brand{
+                color: var(--color-900);
+                small{
+                    font-size: 14px;
+                    letter-spacing: 2px;
+                }
+            }
+            .navbar{
+                position: relative;
+                z-index: 999;
+            }
+            .banner-text{
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100vh - 100px);
+                z-index: 10;
+        
+                @media (max-width: 768px) {
+                    .row {
+                        background: var(--card-color);
+                        padding: 0 30px;
+                    }
+                }
+                @media (max-width: 600px) {
+                    .row {
+                        background: transparent;
+                        padding: 0;
+                    }
+                }
+            }
+            .hero-img{
+                position: absolute;
+                right: 0;
+                top: -130px;
+                z-index: 9;
+                @media (max-height: 900px) {
+                    width: 1090px;
+                }
+                @media (max-width: 1366px) {
+                    width: 880px;
+                }
+                @media (max-width: 600px) {
+                    display: none;
+                }
+                
+            }
+        }
+    }
+}

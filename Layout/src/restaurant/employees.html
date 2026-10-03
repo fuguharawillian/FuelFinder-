@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Restaurant Employees",
+        "dataTables": true
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-restaurant.html', {"page": "employees"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Employees</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-2 row-deck">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Employee List</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <table class="table myDataTable card-table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="form-check" style="font-size: 16px;">
+                                                <input class="form-check-input select-all" type="checkbox" value="">
+                                            </div>
+                                        </th>
+                                        <th>Name</th>
+                                        <th>Employee ID</th>
+                                        <th>Phone</th>
+                                        <th>Join Date</th>
+                                        <th>Role</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="row-selectable">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                            </div>
+                                        </td>
+                                        <td class="d-flex">
+                                            <img src="@@webRoot/assets/img/xs/avatar1.jpg" class="rounded-circle avatar" alt="">
+                                            <div class="ms-2">
+                                                <h6 class="mb-0">Marshall Nichols</h6>
+                                                <span>marshall-n@gmail.com</span>
+                                            </div>
+                                        </td>
+                                        <td><span>LA-0215</span></td>
+                                        <td><span>+ 264-625-2583</span></td>
+                                        <td>24 Jun, 2015</td>
+                                        <td>Restaurant Manager</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="row-selectable">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                            </div>
+                                        </td>
+                                        <td class="d-flex">
+                                            <img src="@@webRoot/assets/img/xs/avatar2.jpg" class="rounded-circle avatar" alt="">
+                                            <div class="ms-2">
+                                                <h6 class="mb-0">Susie Willis</h6>
+                                                <span>sussie-w@gmail.com</span>
+                                            </div>
+                                        </td>
+                                        <td><span>LA-0216</span></td>
+                                        <td><span>+ 264-625-2583</span></td>
+                                        <td>28 Jun, 2015</td>
+                                        <td>Bar Manager</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="row-selectable">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                            </div>
+                                        </td>
+                                        <td class="d-flex">
+                                            <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="rounded-circle avatar" alt="">
+                                            <div class="ms-2">
+                                                <h6 class="mb-0">Debra Stewart</h6>
+                                                <span>debra@gmail.com</span>
+                                            </div>
+                                        </td>
+                                        <td><span>LA-0218</span></td>
+                                        <td><span>+ 264-625-2583</span></td>
+                                        <td>21 July, 2015</td>
+                                        <td>Bartender</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="row-selectable">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                            </div>
+                                        </td>
+                                        <td class="d-flex">
+                                            <img src="@@webRoot/assets/img/xs/avatar4.jpg" class="rounded-circle avatar" alt="">
+                                            <div class="ms-2">
+                                                <h6 class="mb-0">Francisco Vasquez</h6>
+                                                <span>francis-v@gmail.com</span>
+                                            </div>
+                                        </td>
+                                        <td><span>LA-0222</span></td>
+                                        <td><span>+ 264-625-2583</span></td>
+                                        <td>18 Jan, 2016</td>
+                                        <td>Sous Chef</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="row-selectable">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                            </div>
+                                        </td>
+                                        <td class="d-flex">
+                                            <img src="@@webRoot/assets/img/xs/avatar5.jpg" class="rounded-circle avatar" alt="">
+                                            <div class="ms-2">
+                                                <h6 class="mb-0">Jane Hunt</h6>
+                                                <span>jane-hunt@gmail.com</span>
+                                            </div>
+                                        </td>
+                                        <td><span>LA-0232</span></td>
+                                        <td><span>+ 264-625-2583</span></td>
+                                        <td>08 Mar, 2016</td>
+                                        <td>Floor Manager</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="row-selectable">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                            </div>
+                                        </td>
+                                        <td class="d-flex">
+                                            <img src="@@webRoot/assets/img/xs/avatar6.jpg" class="rounded-circle avatar" alt="">
+                                            <div class="ms-2">
+                                                <h6 class="mb-0">Darryl Day</h6>
+                                                <span>darryl.day@gmail.com</span>
+                                            </div>
+                                        </td>
+                                        <td><span>LA-0233</span></td>
+                                        <td><span>+ 264-625-2583</span></td>
+                                        <td>13 Nov, 2016</td>
+                                        <td>Executive Chef</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="row-selectable">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                            </div>
+                                        </td>
+                                        <td class="d-flex">
+                                            <img src="@@webRoot/assets/img/xs/avatar7.jpg" class="rounded-circle avatar" alt="">
+                                            <div class="ms-2">
+                                                <h6 class="mb-0">Marshall Nichols</h6>
+                                                <span>marshall-n@gmail.com</span>
+                                            </div>
+                                        </td>
+                                        <td><span>LA-0215</span></td>
+                                        <td><span>+ 264-625-2583</span></td>
+                                        <td>24 Jun, 2015</td>
+                                        <td>Cashier</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="row-selectable">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                            </div>
+                                        </td>
+                                        <td class="d-flex">
+                                            <img src="@@webRoot/assets/img/xs/avatar8.jpg" class="rounded-circle avatar" alt="">
+                                            <div class="ms-2">
+                                                <h6 class="mb-0">Susie Willis</h6>
+                                                <span>sussie-w@gmail.com</span>
+                                            </div>
+                                        </td>
+                                        <td><span>LA-0216</span></td>
+                                        <td><span>+ 264-625-2583</span></td>
+                                        <td>28 Jun, 2015</td>
+                                        <td>Head Chef</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="row-selectable">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                            </div>
+                                        </td>
+                                        <td class="d-flex">
+                                            <img src="@@webRoot/assets/img/xs/avatar9.jpg" class="rounded-circle avatar" alt="">
+                                            <div class="ms-2">
+                                                <h6 class="mb-0">Debra Stewart</h6>
+                                                <span>debra@gmail.com</span>
+                                            </div>
+                                        </td>
+                                        <td><span>LA-0218</span></td>
+                                        <td><span>+ 264-625-2583</span></td>
+                                        <td>21 July, 2015</td>
+                                        <td>Velet</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="row-selectable">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                            </div>
+                                        </td>
+                                        <td class="d-flex">
+                                            <img src="@@webRoot/assets/img/xs/avatar10.jpg" class="rounded-circle avatar" alt="">
+                                            <div class="ms-2">
+                                                <h6 class="mb-0">Francisco Vasquez</h6>
+                                                <span>francis-v@gmail.com</span>
+                                            </div>
+                                        </td>
+                                        <td><span>LA-0222</span></td>
+                                        <td><span>+ 264-625-2583</span></td>
+                                        <td>18 Jan, 2016</td>
+                                        <td>Bartender</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="row-selectable">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                            </div>
+                                        </td>
+                                        <td class="d-flex">
+                                            <img src="@@webRoot/assets/img/xs/avatar3.jpg" class="rounded-circle avatar" alt="">
+                                            <div class="ms-2">
+                                                <h6 class="mb-0">Jane Hunt</h6>
+                                                <span>jane-hunt@gmail.com</span>
+                                            </div>
+                                        </td>
+                                        <td><span>LA-0232</span></td>
+                                        <td><span>+ 264-625-2583</span></td>
+                                        <td>08 Mar, 2016</td>
+                                        <td>Club Manager</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="row-selectable">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                            </div>
+                                        </td>
+                                        <td class="d-flex">
+                                            <img src="@@webRoot/assets/img/xs/avatar6.jpg" class="rounded-circle avatar" alt="">
+                                            <div class="ms-2">
+                                                <h6 class="mb-0">Darryl Day</h6>
+                                                <span>darryl.day@gmail.com</span>
+                                            </div>
+                                        </td>
+                                        <td><span>LA-0233</span></td>
+                                        <td><span>+ 264-625-2583</span></td>
+                                        <td>13 Nov, 2016</td>
+                                        <td>Event Manager</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables": true
+})
+<script>
+    // project data table
+    $('.myDataTable').addClass( 'nowrap' );
+    $('.myDataTable')
+    .dataTable( {
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: false,
+        info: false,
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Onepage UiKit Services",
+        "onepage": true
+    })
+</head>
+
+<body class="landing-page" data-luno="theme-blue">
+
+    <!-- Page Wrapper Start -->
+    <div class="wrapper">
+
+        <!-- Service #1 :  -->
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-lg-12">
+                    <span class="fs-4 px-2 py-2 text-muted">Service #1</span>
+                </div>
+            </div> <!-- .row end -->
+        </div>
+        <!-- Start -->
+        @@include('onepage/services/_services-d1.html', {
+            "SectionTag": "Service",
+            "SectionTagClass": "bg-dark px-2 py-1 color-fff",
+            "cardClass": "service-d1 bg-card",
+            "SectionTitle": "Services That We Serve With Extra Care.",
+        })
+        
+
+        <!-- Service #2 :  -->
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-lg-12">
+                    <span class="fs-4 px-2 py-2 text-muted">Service #2</span>
+                </div>
+            </div> <!-- .row end -->
+        </div>
+        <!-- Start -->
+        @@include('onepage/services/_services-d2.html', {
+            "SectionTag": "Service",
+            "SectionTagClass": "bg-dark px-2 py-1 color-fff",
+            "cardClass": "service-d2 bg-card",
+            "SectionTitle": "Services That We Serve With Extra Care.",
+        })
+
+        <!-- Service #3 :  -->
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-lg-12">
+                    <span class="fs-4 px-2 py-2 text-muted">Service #3</span>
+                </div>
+            </div> <!-- .row end -->
+        </div>
+        <!-- Start -->
+        @@include('onepage/services/_services-d3.html', {
+            "SectionTag": "Service",
+            "SectionTagClass": "bg-dark px-2 py-1 color-fff",
+            "cardClass": "service-d3 bg-card",
+            "SectionTitle": "Services That We Serve With Extra Care.",
+        })
+        
+        <!-- Service #4 :  -->
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-lg-12">
+                    <span class="fs-4 px-2 py-2 text-muted">Service #4</span>
+                </div>
+            </div> <!-- .row end -->
+        </div>
+        <!-- Start -->
+        @@include('onepage/services/_services-d4.html', {
+            "SectionTag": "Awesome Features",
+            "SectionTagClass": "bg-dark px-2 py-1 color-fff",
+            "cardClass": "service-d4 bg-card",
+            "SectionTitle": "What Makes LUNO Different?",
+        })
+
+        <!-- Service #5 :  -->
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-lg-12">
+                    <span class="fs-4 px-2 py-2 text-muted">Service #5</span>
+                </div>
+            </div> <!-- .row end -->
+        </div>
+        <!-- Start -->
+        @@include('onepage/services/_services-d5.html', {
+            "SectionTag": "Awesome Features",
+            "SectionTagClass": "bg-dark px-2 py-1 color-fff",
+            "cardClass": "service-d5 bg-card",
+            "SectionTitle": "What Makes LUNO Different?",
+        })
+        
+        
+    </div>
+    <!-- Page Wrapper End -->
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>

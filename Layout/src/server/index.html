@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Server Dashboard",
+        "daterangepicker": true,
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-server.html', {"page": "index"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-2 row-cols-sm-2 row-cols-1 g-3 mb-3 row-deck">
+                    <div class="col">
+                        <div class="card p-lg-4 p-3">
+                            <div class="text-muted text-uppercase">File Usage</div>
+                            <div class="mt-3">
+                                <label class="small d-flex justify-content-between">130,347 / 250,000<span>52.14%</span></label>
+                                <div class="progress mt-1" style="height: 2px;">
+                                    <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100" style="width: 52%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-lg-4 p-3">
+                            <div class="text-muted text-uppercase">Disk Usage</div>
+                            <div class="mt-3">
+                                <label class="small d-flex justify-content-between">3.82 GB / 30 GB <span>12.73%</span></label>
+                                <div class="progress mt-1" style="height: 2px;">
+                                    <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100" style="width: 12%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-lg-4 p-3">
+                            <div class="text-muted text-uppercase">MySQL® Disk Usage</div>
+                            <div class="mt-3">
+                                <label class="small d-flex justify-content-between">9.08 GB / 26.2 GB <span>22.74%</span></label>
+                                <div class="progress mt-1" style="height: 2px;">
+                                    <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100" style="width: 22%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-lg-4 p-3">
+                            <div class="text-muted text-uppercase">MySQL® Databases</div>
+                            <div class="mt-3">
+                                <label class="small d-flex justify-content-between">1 / 1 <span>100%</span></label>
+                                <div class="progress mt-1" style="height: 2px;">
+                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-lg-4 p-3">
+                            <div class="text-muted text-uppercase">Email Accounts</div>
+                            <div class="mt-3">
+                                <label class="small d-flex justify-content-between">8 / 10 <span>80%</span></label>
+                                <div class="progress mt-1" style="height: 2px;">
+                                    <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-lg-4 p-3">
+                            <div class="text-muted text-uppercase">Physical Memory Usage</div>
+                            <div class="mt-3">
+                                <label class="small d-flex justify-content-between">40.82 MB / 512 MB <span>8%</span></label>
+                                <div class="progress mt-1" style="height: 2px;">
+                                    <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100" style="width: 8%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-lg-4 p-3">
+                            <div class="text-muted text-uppercase">FTP Accounts</div>
+                            <div class="mt-3">
+                                <label class="small d-flex justify-content-between">2 / 50 <span>4%</span></label>
+                                <div class="progress mt-1" style="height: 2px;">
+                                    <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100" style="width: 4%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-lg-4 p-3">
+                            <div class="text-muted text-uppercase">Number of Processes</div>
+                            <div class="mt-3">
+                                <label class="small d-flex justify-content-between">45 / 200 <span>25%</span></label>
+                                <div class="progress mt-1" style="height: 2px;">
+                                    <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100" style="width: 12%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-lg-4 p-3">
+                            <div class="text-muted text-uppercase">CPU Usage</div>
+                            <div class="mt-3">
+                                <label class="small d-flex justify-content-between">23 / 100 <span>23%</span></label>
+                                <div class="progress mt-1" style="height: 2px;">
+                                    <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100" style="width: 23%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card p-lg-4 p-3">
+                            <div class="text-muted text-uppercase">IOPS</div>
+                            <div class="mt-3">
+                                <label class="small d-flex justify-content-between">87 / 1,024 <span>5%</span></label>
+                                <div class="progress mt-1" style="height: 2px;">
+                                    <div class="progress-bar chart-color1" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 5%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row g-3 mb-5 row-deck">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Server Performance</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <ul class="nav nav-tabs tab-card px-4" role="tablist" id="server_performance">
+                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#nav-CPU" role="tab">CPU</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav-Memory" role="tab">Memory</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav-Disk" role="tab">Disk</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#nav-Ethernet" role="tab">Ethernet</a></li>
+                            </ul>
+                            <div class="card-body">
+                                <div class="tab-content mt-2">
+                                    <div class="tab-pane fade show active" id="nav-CPU" role="tabpanel">
+                                        <div id="apex-CPU" class="ac-line-transparent"></div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-Memory" role="tabpanel">
+                                        <div id="apex-Memory" class="ac-line-transparent"></div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-Disk" role="tabpanel">
+                                        <div id="apex-Disk" class="ac-line-transparent"></div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-Ethernet" role="tabpanel">
+                                        <div id="apex-Ethernet" class="ac-line-transparent"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Traffic general overview</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <div class="card p-3">
+                                            <div class="fw-bold"><span class="h4 mb-0">11.54</span><span class="text-success ms-1">/ 15 GB</span></div>
+                                            <div class="text-muted small">Daily traffic</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="card p-3">
+                                            <div class="fw-bold"><span class="h4 mb-0">5.87</span><span class="text-success ms-1">/ 15 GB</span></div>
+                                            <div class="text-muted small">Hourly traffic</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="apex-TrafficOverview" class="ac-line-transparent"></div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Monitoring</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <div id="apex-Monitoring"></div>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between property-info">
+                                    <p class="mb-0">CPU: <strong>3.20 GHz</strong></p>
+                                    <p class="mb-0">RAM: <strong>12 GB</strong></p>
+                                    <p class="mb-0">HDD: <strong>1 TB</strong></p>
+                                </div>
+                            </div>
+                        </div> <!-- .card end -->
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="card bg-primary text-light">
+                            <div class="card-body p-4">
+                                <div class="avatar lg rounded-circle no-thumbnail mb-2 bg-white">
+                                    <i class="fa fa-shield fa-2x"></i>
+                                </div>
+                                <h5 class="mb-0 mb-4">Unauthorized Threats has been Terminated</h5>
+                                <p>4 Subpicious Packet Data</p>
+                                <p>3 Subpicious Login Attemption</p>
+                                <p>10 Account try to Spam</p>
+                                <p>15 Virus is try to Inject Server</p>
+                                <button class="btn btn-light text-uppercase" type="button">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <h5 class="fw-bold mb-2">Server List</h5>
+                        <table id="myDataTable_no_filter" style="width: 100%;" class="table align-middle table-bordered mb-0 custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Domain</th>
+                                    <th>Status</th>
+                                    <th>Storage</th>
+                                    <th>Date</th>
+                                    <th>IPV4</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>http://thememakker.com</td>
+                                    <td><span class="badge bg-primary">Health</span></td>
+                                    <td>1 TB</td>
+                                    <td>25 March 2021 - 11:12 AM</td>
+                                    <td>168.100.1.111</td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Report"><i class="fa fa-envelope"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>http://wrraptheme.com/</td>
+                                    <td><span class="badge bg-primary">Health</span></td>
+                                    <td>500 GB</td>
+                                    <td>26 March 2021 - 10:45 PM</td>
+                                    <td>168.100.1.222</td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Report"><i class="fa fa-envelope"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>http://aloeri.co.in</td>
+                                    <td><span class="badge bg-danger">Risk</span></td>
+                                    <td>250 GB</td>
+                                    <td>26 March 2021 - 11:12 AM</td>
+                                    <td>168.100.1.333</td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Manage"><i class="fa fa-gear"></i></button>
+                                        <button type="button" class="btn btn-link btn-sm text-muted" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Report"><i class="fa fa-envelope"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "apexcharts": true,
+    "dataTables": true,
+})
+<script>
+    // CPU - Server Performance
+    var options1 = {
+        series: [{
+            name: "CPU",
+            data: [80, 50, 70, 40, 90, 30, 60, 40, 40, 50, 55, 40]
+        }],
+
+        chart: {
+            height: 160,
+            type: 'line', // line, bar, area
+            toolbar: {
+                show: false,
+            },
+            zoom: {
+                enabled: false
+            },
+        },
+        responsive: [{
+            breakpoint: 1200,
+            options: {
+                chart: {
+                    height: 200,
+                },
+            }
+        }],
+        colors: ['var(--chart-color2)'],
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            width: [3],
+            curve: 'smooth', // straight, smooth
+            //dashArray: [5]
+        },
+        legend: {
+            tooltipHoverFormatter: function(val, opts) {
+                return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+            }
+        },
+        markers: {
+            size: 0,
+            hover: {
+                sizeOffset: 6
+            }
+        },
+        xaxis: {
+            categories: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+        },
+        tooltip: {
+            y: [{
+                title: {
+                    formatter: function (val) {
+                        return val + " (%)"
+                    }
+                }
+            },{
+                title: {
+                    formatter: function (val) {
+                        return val + " (%)"
+                    }
+                }
+            }]
+        },
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-CPU"), options1); chart.render();
+
+    // Memory - Server Performance
+    var options2 = {
+        series: [{
+            name: "Memory",
+            data: [45, 55, 35, 25, 95, 25, 65, 5, 15, 35, 85, 15]
+        }],
+
+        chart: {
+            height: 160,
+            type: 'line', // line, bar, area
+            toolbar: {
+                show: false,
+            },
+            zoom: {
+                enabled: false
+            },
+        },
+        responsive: [{
+            breakpoint: 1200,
+            options: {
+                chart: {
+                    height: 200,
+                },
+            }
+        }],
+        colors: ['var(--chart-color3)'],
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            width: [3],
+            curve: 'smooth', // straight, smooth
+            //dashArray: [5]
+        },
+        legend: {
+            tooltipHoverFormatter: function(val, opts) {
+                return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+            }
+        },
+        markers: {
+            size: 0,
+            hover: {
+                sizeOffset: 6
+            }
+        },
+        xaxis: {
+            categories: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+        },
+        tooltip: {
+            y: [{
+                title: {
+                    formatter: function (val) {
+                        return val + " (%)"
+                    }
+                }
+            },{
+                title: {
+                    formatter: function (val) {
+                        return val + " (%)"
+                    }
+                }
+            }]
+        },
+    };
+    
+    // Disk - Server Performance
+    var options3 = {
+        series: [{
+            name: "Disk",
+            data: [22, 11, 15, 28, 10, 27, 23, 19, 15, 21, 26, 28]
+        }],
+
+        chart: {
+            height: 160,
+            type: 'line', // line, bar, area
+            toolbar: {
+                show: false,
+            },
+            zoom: {
+                enabled: false
+            },
+        },
+        responsive: [{
+            breakpoint: 1200,
+            options: {
+                chart: {
+                    height: 200,
+                },
+            }
+        }],
+        colors: ['var(--chart-color4)'],
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            width: [3],
+            curve: 'smooth', // straight, smooth
+            //dashArray: [5]
+        },
+        legend: {
+            tooltipHoverFormatter: function(val, opts) {
+                return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+            }
+        },
+        markers: {
+            size: 0,
+            hover: {
+                sizeOffset: 6
+            }
+        },
+        xaxis: {
+            categories: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+        },
+        tooltip: {
+            y: [{
+                title: {
+                    formatter: function (val) {
+                        return val + " (%)"
+                    }
+                }
+            },{
+                title: {
+                    formatter: function (val) {
+                        return val + " (%)"
+                    }
+                }
+            }]
+        },
+    };
+    
+    // EtherNet - Server Performance
+    var options4 = {
+        series: [{
+            name: "Ethernet",
+            data: [45, 10, 80, 20, 45, 55, 95, 10, 30, 20, 75, 40]
+        }],
+
+        chart: {
+            height: 160,
+            type: 'line', // line, bar, area
+            toolbar: {
+                show: false,
+            },
+            zoom: {
+                enabled: false
+            },
+        },
+        responsive: [{
+            breakpoint: 1200,
+            options: {
+                chart: {
+                    height: 200,
+                },
+            }
+        }],
+        colors: ['var(--chart-color3)'],
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            width: [3],
+            curve: 'smooth', // straight, smooth
+            //dashArray: [5]
+        },
+        legend: {
+            tooltipHoverFormatter: function(val, opts) {
+                return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+            }
+        },
+        markers: {
+            size: 0,
+            hover: {
+                sizeOffset: 6
+            }
+        },
+        xaxis: {
+            categories: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+        },
+        tooltip: {
+            y: [{
+                title: {
+                    formatter: function (val) {
+                        return val + " (%)"
+                    }
+                }
+            },{
+                title: {
+                    formatter: function (val) {
+                        return val + " (%)"
+                    }
+                }
+            }]
+        },
+    };
+    
+    $("#server_performance a").on("click",function() {
+        setTimeout(function() {
+            var chart = new ApexCharts(document.querySelector("#apex-Memory"), options2); chart.render();
+            var chart = new ApexCharts(document.querySelector("#apex-Disk"), options3); chart.render();
+            var chart = new ApexCharts(document.querySelector("#apex-Ethernet"), options4); chart.render();
+        },700);
+    });
+
+    // Traffic Overview
+    var options5 = {
+        series: [{
+            name: 'Upload',
+            data: [13, 23, 20, 8, 13, 27, 33, 12, 67, 22, 43, 21, 49, 13, 23]
+        }, {
+            name: 'Download',
+            data: [44, 55, 41, 67, 22, 43, 21, 49, 13, 23, 20, 8, 13, 27, 33]
+        }],
+        chart: {
+            type: 'bar',
+            height: 200,
+            stacked: true,
+            //stackType: '100%',
+            toolbar: {
+                show: false,
+            },
+        },
+        colors: ['var(--chart-color1)', 'var(--chart-color5)'],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                legend: {
+                    position: 'bottom',
+                    offsetX: -10,
+                    offsetY: 0
+                }
+            }
+        }],
+        xaxis: {
+            categories: ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15',],
+        },
+        fill: {
+            opacity: 1
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        legend: {
+            position: 'bottom',
+        },
+        tooltip: {
+            y: [{
+                title: {
+                    formatter: function (val) {
+                        return val + " (GB)"
+                    }
+                }
+            },{
+                title: {
+                    formatter: function (val) {
+                        return val + " (GB)"
+                    }
+                }
+            }]
+        },
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-TrafficOverview"), options5); chart.render();
+    
+    // Monitoring
+    var options6 = {
+        series: [32, 56, 12],
+        chart: {
+            type: 'donut',
+            width: 340,
+            toolbar: {
+                show: false,
+            },
+        },
+        responsive: [{
+            breakpoint: 1200,
+            options: {
+                chart: {
+                    width: 260
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }],
+        labels: ['CPU', 'RAM', 'HDD'],
+        colors: ['var(--chart-color1)', 'var(--chart-color2)', 'var(--chart-color3)'],
+        dataLabels: {
+            enabled: false
+        },
+        legend: {
+            position: 'bottom', // top, bottom
+            enabled: false
+        }
+    };
+    var chart = new ApexCharts(document.querySelector("#apex-Monitoring"), options6); chart.render();
+
+    // Datatable
+    $('#myDataTable_no_filter')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+        searching: false,
+        paging: false,
+        ordering: false,
+        info: false,
+    });
+</script>
+</body>
+</html>

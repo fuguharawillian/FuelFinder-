@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "HRMS Salary",
+        "daterangepicker": true,
+        "dataTables": true,
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-black">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-hrms.html', {"page": "hr-salary"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">hr</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Employee Salary</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fs-5 color-900 mt-1 mb-0">Welcome back, Allie!</h1>
+                        <small class="text-muted">You have 12 new messages and 7 new notifications.</small>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-12 mt-2 mt-md-0">
+                        <!-- daterange picker -->
+                        @@include('widgets/_daterange.html')
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Employee Salary</h6>
+                                @@include('widgets/_card-action.html')
+                            </div>
+                            <div class="card-body">
+                                <table class="table myDataTable table-hover align-middle mb-0 card-table">
+                                    <thead>
+                                        <tr>                                       
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Gross Pay</th>
+                                            <th>PF Fund</th>
+                                            <th>Deduction</th>
+                                            <th>Net Payble</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>OU 00456</td>
+                                            <td><img class="rounded-circle avatar sm me-2" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">Joseph</td>
+                                            <td>$7,500</td>
+                                            <td>$500</td>
+                                            <td>0</td>
+                                            <td>$7,000</td>
+                                            <td><span class="badge bg-primary">Paid</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="tooltip" title="send salary slip"><i class="fa fa-envelope-o"></i> Slip</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="list-name">KU 00789</span></td>
+                                            <td><img class="rounded-circle avatar sm me-2" src="@@webRoot/assets/img/xs/avatar2.jpg" alt="">Cameron</td>
+                                            <td>$3,000</td>
+                                            <td>$500</td>
+                                            <td>0</td>
+                                            <td>$2,500</td>
+                                            <td><span class="badge bg-danger">Unpaid</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="tooltip" title="send salary slip"><i class="fa fa-envelope-o"></i> Slip</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="list-name">KU 00987</span></td>
+                                            <td><img class="rounded-circle avatar sm me-2" src="@@webRoot/assets/img/xs/avatar3.jpg" alt="">Alex</td>
+                                            <td>$2,000</td>
+                                            <td>$500</td>
+                                            <td>0</td>
+                                            <td>$1,500</td>
+                                            <td><span class="badge bg-primary">Paid</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="tooltip" title="send salary slip"><i class="fa fa-envelope-o"></i> Slip</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="list-name">OU 00951</span></td>
+                                            <td><img class="rounded-circle avatar sm me-2" src="@@webRoot/assets/img/xs/avatar4.jpg" alt="">James</td>
+                                            <td>$7,500</td>
+                                            <td>$500</td>
+                                            <td>0</td>
+                                            <td>$7,000</td>
+                                            <td><span class="badge bg-primary">Paid</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="tooltip" title="send salary slip"><i class="fa fa-envelope-o"></i> Slip</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="list-name">OU 00953</span></td>
+                                            <td><img class="rounded-circle avatar sm me-2" src="@@webRoot/assets/img/xs/avatar5.jpg" alt="">charlie</td>
+                                            <td>$11,300</td>
+                                            <td>$500</td>
+                                            <td>0</td>
+                                            <td>$10,800</td>
+                                            <td><span class="badge bg-primary">Paid</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="tooltip" title="send salary slip"><i class="fa fa-envelope-o"></i> Slip</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="list-name">OU 00456</span></td>
+                                            <td><img class="rounded-circle avatar sm me-2" src="@@webRoot/assets/img/xs/avatar6.jpg" alt="">Joseph</td>
+                                            <td>$7,000</td>
+                                            <td>$500</td>
+                                            <td>0</td>
+                                            <td>$6,500</td>
+                                            <td><span class="badge bg-primary">Paid</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="tooltip" title="send salary slip"><i class="fa fa-envelope-o"></i> Slip</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="list-name">KU 00789</span></td>
+                                            <td><img class="rounded-circle avatar sm me-2" src="@@webRoot/assets/img/xs/avatar7.jpg" alt="">Cameron</td>
+                                            <td>$7,500</td>
+                                            <td>$500</td>
+                                            <td>0</td>
+                                            <td>$7,000</td>
+                                            <td><span class="badge bg-primary">Paid</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="tooltip" title="send salary slip"><i class="fa fa-envelope-o"></i> Slip</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="list-name">KU 00987</span></td>
+                                            <td><img class="rounded-circle avatar sm me-2" src="@@webRoot/assets/img/xs/avatar8.jpg" alt="">Alex</td>
+                                            <td>$7,000</td>
+                                            <td>$500</td>
+                                            <td>0</td>
+                                            <td>$6,500</td>
+                                            <td><span class="badge bg-primary">Paid</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="tooltip" title="send salary slip"><i class="fa fa-envelope-o"></i> Slip</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="list-name">OU 00951</span></td>
+                                            <td><img class="rounded-circle avatar sm me-2" src="@@webRoot/assets/img/xs/avatar9.jpg" alt="">James</td>
+                                            <td>$7,500</td>
+                                            <td>$500</td>
+                                            <td>0</td>
+                                            <td>$7,000</td>
+                                            <td><span class="badge bg-danger">Unpaid</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="tooltip" title="send salary slip"><i class="fa fa-envelope-o"></i> Slip</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="list-name">OU 00953</span></td>
+                                            <td><img class="rounded-circle avatar sm me-2" src="@@webRoot/assets/img/xs/avatar1.jpg" alt="">Charlie</td>
+                                            <td>$6,500</td>
+                                            <td>$500</td>
+                                            <td>0</td>
+                                            <td>$6,000</td>
+                                            <td><span class="badge bg-primary">Paid</span></td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="tooltip" title="send salary slip"><i class="fa fa-envelope-o"></i> Slip</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+    "dataTables":true,
+})
+<script>
+    $('.myDataTable')
+    .addClass( 'nowrap' )
+    .dataTable( {
+        responsive: true,
+    });
+</script>
+</body>
+</html>

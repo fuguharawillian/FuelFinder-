@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('_head.html',{
+        "pageTitle": "Fitness Diat Plan",
+    })
+</head>
+
+<body class="layout-1" data-luno="theme-blue">
+
+	<!-- start: sidebar -->
+	@@include('sidebar/_sidebar-fitness.html', {"page": "diatplan"})
+
+	<!-- start: body area -->
+    <div class="wrapper">
+
+		<!-- start: page header -->
+		@@include('_page-header.html')
+
+        <!-- start: page toolbar -->
+        <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+            <div class="container-fluid">
+
+                <div class="row g-3 mb-3 align-items-center">
+                    <div class="col">
+                        <ol class="breadcrumb bg-transparent mb-0">
+                            <li class="breadcrumb-item"><a class="text-secondary" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Diat Plan</li>
+                        </ol>
+                    </div>
+                </div> <!-- .row end -->
+
+                @@include('widgets/_page-stats.html')
+
+            </div>
+        </div>
+
+        <!-- start: page body -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0 mt-lg-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-xl-8 col-lg-12 col-md-12">
+                        <ul class="nav nav-tabs tab-page-toolbar rounded d-inline-flex" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link px-2 px-md-3 active" data-bs-toggle="tab" href="#nav-Monday" role="tab">
+                                    <strong class="d-inline-block d-sm-none small">Mon</strong><span class="d-none d-sm-block"><strong>Mon</strong>day</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-2 px-md-3" data-bs-toggle="tab" href="#nav-Tuesday" role="tab">
+                                    <strong class="d-inline-block d-sm-none small">Tue</strong><span class="d-none d-sm-block"><strong>Tue</strong>sday</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-2 px-md-3" data-bs-toggle="tab" href="#nav-Wednesday" role="tab">
+                                    <strong class="d-inline-block d-sm-none small">Wed</strong><span class="d-none d-sm-block"><strong>Wed</strong>nesday</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-2 px-md-3" data-bs-toggle="tab" href="#nav-Thursday" role="tab">
+                                    <strong class="d-inline-block d-sm-none small">Thu</strong><span class="d-none d-sm-block"><strong>Thu</strong>rsday</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-2 px-md-3" data-bs-toggle="tab" href="#nav-Friday" role="tab">
+                                    <strong class="d-inline-block d-sm-none small">Fri</strong><span class="d-none d-sm-block"><strong>Fri</strong>day</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-2 px-md-3 text-danger" data-bs-toggle="tab" href="#nav-Saturday" role="tab">
+                                    <strong class="d-inline-block d-sm-none small">Sat</strong><span class="d-none d-sm-block"><strong>Sat</strong>urday</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-2 px-md-3 text-danger" data-bs-toggle="tab" href="#nav-Sunday" role="tab">
+                                    <strong class="d-inline-block d-sm-none small">Sun</strong><span class="d-none d-sm-block"><strong>Sun</strong>day</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content mt-4">
+                            <div class="tab-pane fade show active" id="nav-Monday" role="tabpanel">
+                                <div class="card fieldset border border-primary mb-4">
+                                    <span class="fieldset-tile text-primary bg-body">Breakfast</span>
+                                    <div class="card mb-1">
+                                        <div class="form-check form-switch position-absolute top-0 end-0 py-3 px-3">
+                                            <input class="form-check-input" type="checkbox" id="Eaten-switch1" checked="">
+                                            <label class="form-check-label" for="Eaten-switch1">Eaten</label>
+                                        </div>
+                                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                                            <img class="w120 rounded img-fluid" src="@@webRoot/assets/img/fitness/food-1.jpg" alt="">
+                                            <div class="ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                                <h6 class="mb-3">Potatoes with Pepper & Onions</h6>
+                                                <div class="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-md-start">
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Calories</div>
+                                                        <strong>380</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Size</div>
+                                                        <strong>80g</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Servings</div>
+                                                        <strong>2</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Store</div>
+                                                        <strong>Thomas's Joe</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="form-check form-switch position-absolute top-0 end-0 py-3 px-3">
+                                            <input class="form-check-input" type="checkbox" id="Eaten-switch2" checked="">
+                                            <label class="form-check-label" for="Eaten-switch2">Eaten</label>
+                                        </div>
+                                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                                            <img class="w120 rounded" src="@@webRoot/assets/img/fitness/food-2.jpg" alt="">
+                                            <div class="ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                                <h6 class="mb-3">Potatoes with Pepper & Onions</h6>
+                                                <div class="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-md-start">
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Calories</div>
+                                                        <strong>450</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Size</div>
+                                                        <strong>50g</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Servings</div>
+                                                        <strong>5</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Store</div>
+                                                        <strong>Thomas's Joe</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                </div>
+                                <div class="card fieldset border border-secondary mb-4">
+                                    <span class="fieldset-tile text-secondary bg-body">Lunch</span>
+                                    <div class="card mb-1">
+                                        <div class="form-check form-switch position-absolute top-0 end-0 py-3 px-3">
+                                            <input class="form-check-input" type="checkbox" id="Eaten-switch3">
+                                            <label class="form-check-label" for="Eaten-switch3">Eaten</label>
+                                        </div>
+                                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                                            <img class="w120 rounded" src="@@webRoot/assets/img/fitness/food-3.jpg" alt="">
+                                            <div class="ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                                <h6 class="mb-3">Potatoes with Pepper & Onions</h6>
+                                                <div class="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-md-start">
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Calories</div>
+                                                        <strong>550</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Size</div>
+                                                        <strong>100g</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Servings</div>
+                                                        <strong>3</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Store</div>
+                                                        <strong>Thomas's Joe</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="form-check form-switch position-absolute top-0 end-0 py-3 px-3">
+                                            <input class="form-check-input" type="checkbox" id="Eaten-switch4">
+                                            <label class="form-check-label" for="Eaten-switch4">Eaten</label>
+                                        </div>
+                                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                                            <img class="w120 rounded" src="@@webRoot/assets/img/fitness/food-4.jpg" alt="">
+                                            <div class="ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                                <h6 class="mb-3">Potatoes with Pepper & Onions</h6>
+                                                <div class="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-md-start">
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Calories</div>
+                                                        <strong>450</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Size</div>
+                                                        <strong>50g</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Servings</div>
+                                                        <strong>5</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Store</div>
+                                                        <strong>Thomas's Joe</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card fieldset border border-success mb-4">
+                                    <span class="fieldset-tile text-success bg-body">Dinner</span>
+                                    <div class="card">
+                                        <div class="form-check form-switch position-absolute top-0 end-0 py-3 px-3">
+                                            <input class="form-check-input" type="checkbox" id="Eaten-switch5">
+                                            <label class="form-check-label" for="Eaten-switch5">Eaten</label>
+                                        </div>
+                                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                                            <img class="w120 rounded" src="@@webRoot/assets/img/fitness/food-5.jpg" alt="">
+                                            <div class="ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                                <h6 class="mb-3">Potatoes with Pepper & Onions</h6>
+                                                <div class="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-md-start">
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Calories</div>
+                                                        <strong>450</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Size</div>
+                                                        <strong>50g</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Servings</div>
+                                                        <strong>5</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Store</div>
+                                                        <strong>Thomas's Joe</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nav-Tuesday" role="tabpanel">
+                                <div class="card fieldset border border-success mb-4">
+                                    <span class="fieldset-tile text-success bg-body">Breakfast</span>
+                                    <div class="card">
+                                        <div class="form-check form-switch position-absolute top-0 end-0 py-3 px-3">
+                                            <input class="form-check-input" type="checkbox" id="Eaten-switch5">
+                                            <label class="form-check-label" for="Eaten-switch5">Eaten</label>
+                                        </div>
+                                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                                            <img class="w120 rounded" src="@@webRoot/assets/img/fitness/food-5.jpg" alt="">
+                                            <div class="ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                                <h6 class="mb-3">Potatoes with Pepper & Onions</h6>
+                                                <div class="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-md-start">
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Calories</div>
+                                                        <strong>450</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Size</div>
+                                                        <strong>50g</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Servings</div>
+                                                        <strong>5</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Store</div>
+                                                        <strong>Thomas's Joe</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card fieldset border border-primary mb-4">
+                                    <span class="fieldset-tile text-primary bg-body">Lunch</span>
+                                    <div class="card mb-1">
+                                        <div class="form-check form-switch position-absolute top-0 end-0 py-3 px-3">
+                                            <input class="form-check-input" type="checkbox" id="Eaten-switch1" checked="">
+                                            <label class="form-check-label" for="Eaten-switch1">Eaten</label>
+                                        </div>
+                                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                                            <img class="w120 rounded img-fluid" src="@@webRoot/assets/img/fitness/food-1.jpg" alt="">
+                                            <div class="ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                                <h6 class="mb-3">Potatoes with Pepper & Onions</h6>
+                                                <div class="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-md-start">
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Calories</div>
+                                                        <strong>380</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Size</div>
+                                                        <strong>80g</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Servings</div>
+                                                        <strong>2</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Store</div>
+                                                        <strong>Thomas's Joe</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="form-check form-switch position-absolute top-0 end-0 py-3 px-3">
+                                            <input class="form-check-input" type="checkbox" id="Eaten-switch2" checked="">
+                                            <label class="form-check-label" for="Eaten-switch2">Eaten</label>
+                                        </div>
+                                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                                            <img class="w120 rounded" src="@@webRoot/assets/img/fitness/food-2.jpg" alt="">
+                                            <div class="ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                                <h6 class="mb-3">Potatoes with Pepper & Onions</h6>
+                                                <div class="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-md-start">
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Calories</div>
+                                                        <strong>450</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Size</div>
+                                                        <strong>50g</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Servings</div>
+                                                        <strong>5</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Store</div>
+                                                        <strong>Thomas's Joe</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                </div>
+                                <div class="card fieldset border border-secondary mb-4">
+                                    <span class="fieldset-tile text-secondary bg-body">Dinner</span>
+                                    <div class="card mb-1">
+                                        <div class="form-check form-switch position-absolute top-0 end-0 py-3 px-3">
+                                            <input class="form-check-input" type="checkbox" id="Eaten-switch3">
+                                            <label class="form-check-label" for="Eaten-switch3">Eaten</label>
+                                        </div>
+                                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                                            <img class="w120 rounded" src="@@webRoot/assets/img/fitness/food-3.jpg" alt="">
+                                            <div class="ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                                <h6 class="mb-3">Potatoes with Pepper & Onions</h6>
+                                                <div class="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-md-start">
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Calories</div>
+                                                        <strong>550</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Size</div>
+                                                        <strong>100g</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Servings</div>
+                                                        <strong>3</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Store</div>
+                                                        <strong>Thomas's Joe</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="form-check form-switch position-absolute top-0 end-0 py-3 px-3">
+                                            <input class="form-check-input" type="checkbox" id="Eaten-switch4">
+                                            <label class="form-check-label" for="Eaten-switch4">Eaten</label>
+                                        </div>
+                                        <div class="card-body d-flex align-items-center flex-column flex-md-row">
+                                            <img class="w120 rounded" src="@@webRoot/assets/img/fitness/food-4.jpg" alt="">
+                                            <div class="ms-md-4 m-0 mt-4 mt-md-0 text-md-start text-center w-100">
+                                                <h6 class="mb-3">Potatoes with Pepper & Onions</h6>
+                                                <div class="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-md-start">
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Calories</div>
+                                                        <strong>450</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Size</div>
+                                                        <strong>50g</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Servings</div>
+                                                        <strong>5</strong>
+                                                    </div>
+                                                    <div class="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
+                                                        <div class="text-muted small">Store</div>
+                                                        <strong>Thomas's Joe</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <img class="img-fluid" src="@@webRoot/assets/img/working_out.svg" alt="">
+                            </div>
+                            <div class="card-body">
+                                <h6 class="mb-3">This Week</h6>
+                                <span class="d-flex justify-content-between">Calories: <span class="text-custom text-muted">870/1000 kCal</span></span>
+                                <div class="progress mt-1 mb-3" style="height: 1px;">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
+                                </div>
+                                <span class="d-flex justify-content-between">Fat: <span class="text-custom text-muted">450/1000 Gram</span></span>
+                                <div class="progress mt-1 mb-3" style="height: 1px;">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%;"></div>
+                                </div>
+                                <span class="d-flex justify-content-between">Glucose: <span class="text-custom text-muted">73/100 mg/dl</span></span>
+                                <div class="progress mt-1" style="height: 1px;">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 73%;"></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="mb-3">Last Week</h6>
+                                <span class="d-flex justify-content-between">Calories: <span class="text-custom text-muted">750/1000 kCal</span></span>
+                                <div class="progress mt-1 mb-3" style="height: 1px;">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                                </div>
+                                <span class="d-flex justify-content-between">Fat: <span class="text-custom text-muted">200/1000 Gram</span></span>
+                                <div class="progress mt-1 mb-3" style="height: 1px;">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"></div>
+                                </div>
+                                <span class="d-flex justify-content-between">Glucose: <span class="text-custom text-muted">88/100 mg/dl</span></span>
+                                <div class="progress mt-1" style="height: 1px;">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" style="width: 88%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+        <!-- start: page footer -->
+		@@include('_page-footer.html')
+
+    </div>
+
+    <!-- Modal: Create project -->
+	@@include('_modal-create-project.html')
+
+	<!-- Modal: my notes -->
+	@@include('_modal-my-notes.html')
+
+	<!-- Modal: Schedule -->
+	@@include('_modal-my-schedule.html')
+
+	<!-- Modal: RecentChat -->
+	@@include('_modal-recent-chat.html')
+
+	<!-- Modal: Setting -->
+	@@include('_modal-theme-setting.html')
+
+<!-- Jquery Page Js -->
+@@include('_scripts.html',{
+
+})
+</body>
+</html>
